@@ -30,10 +30,13 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_localizations:
+    sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  intl_phone_field:
 
 dev_dependencies:
   flutter_test:
@@ -76,25 +79,25 @@ flutter:
   fonts:
     - family: Inter
       fonts:
-#        - asset: assets/fonts/inter/Inter-Regular.otf
-#        - asset: assets/fonts/inter/Inter-Black.otf
-#        - asset: assets/fonts/inter/Inter-BlackItalic.otf
-#        - asset: assets/fonts/inter/Inter-Bold.otf
-#        - asset: assets/fonts/inter/Inter-BoldItalic.otf
-#        - asset: assets/fonts/inter/Inter-ExtraBold.otf
-#        - asset: assets/fonts/inter/Inter-ExtraBoldItalic.otf
-#        - asset: assets/fonts/inter/Inter-ExtraLight.otf
-#        - asset: assets/fonts/inter/Inter-ExtraLightItalic.otf
-#        - asset: assets/fonts/inter/Inter-Italic.otf
-#        - asset: assets/fonts/inter/Inter-Light.otf
-#        - asset: assets/fonts/inter/Inter-LightItalic.otf
-#        - asset: assets/fonts/inter/Inter-Medium.otf
-#        - asset: assets/fonts/inter/Inter-MediumItalic.otf
-#        - asset: assets/fonts/inter/Inter-SemiBold.otf
-#        - asset: assets/fonts/inter/Inter-SemiBoldItalic.otf
+        - asset: assets/fonts/inter/Inter-Regular.otf
+        - asset: assets/fonts/inter/Inter-Black.otf
+        - asset: assets/fonts/inter/Inter-Bold.otf
+        - asset: assets/fonts/inter/Inter-BlackItalic.otf
+        - asset: assets/fonts/inter/Inter-BoldItalic.otf
+        - asset: assets/fonts/inter/Inter-ExtraBold.otf
+        - asset: assets/fonts/inter/Inter-ExtraBoldItalic.otf
+        - asset: assets/fonts/inter/Inter-ExtraLight.otf
+        - asset: assets/fonts/inter/Inter-ExtraLightItalic.otf
+        - asset: assets/fonts/inter/Inter-Italic.otf
+        - asset: assets/fonts/inter/Inter-Light.otf
+        - asset: assets/fonts/inter/Inter-LightItalic.otf
+        - asset: assets/fonts/inter/Inter-Medium.otf
+        - asset: assets/fonts/inter/Inter-MediumItalic.otf
+        - asset: assets/fonts/inter/Inter-SemiBold.otf
+        - asset: assets/fonts/inter/Inter-SemiBoldItalic.otf
         - asset: assets/fonts/inter/Inter-Thin.otf
-#        - asset: assets/fonts/inter/Inter-ThinItalic.otf
-#        - asset: assets/fonts/inter/Inter-V.ttf
+        - asset: assets/fonts/inter/Inter-ThinItalic.otf
+        - asset: assets/fonts/inter/Inter-V.ttf
 
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/auth/login_second_page.dart';
+import 'package:network_app/main.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,22 +13,27 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white70,
+      backgroundColor: Colors.grey.shade400,
       appBar: AppBar(
         toolbarHeight: 65,
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Padding(
           padding: const EdgeInsets.only(top: 15),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Icon(Icons.circle, color: Colors.black, size: 56,),
-              Padding(
-                padding: EdgeInsets.only(left: 5.0),
-                child: Text('network', style: TextStyle(fontSize: 30, color: Colors.black,),),
-              )
-            ],),
+          child: InkWell(
+            onTap: ((){
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const MyHomePage()));
+            }),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                Icon(Icons.circle, color: Colors.black, size: 56,),
+                Padding(
+                  padding: EdgeInsets.only(left: 5.0),
+                  child: Text('network', style: TextStyle(fontSize: 30, color: Colors.black,),),
+                )
+              ],),
+          ),
         ),
 
       ),
@@ -59,12 +66,12 @@ class _LoginPageState extends State<LoginPage> {
                 const Padding(
                   padding: EdgeInsets.only(top: 36),
                   child: Text('Главное в связах\n - это связи', style: TextStyle(
-                      fontSize: 34,
-                      letterSpacing: 1.5,
-                      wordSpacing: 0,
-                      color: Colors.black,
-                      // fontWeight: FontWeight.normal,
-                      fontFamily: 'Inter'
+                    fontSize: 34,
+                    // letterSpacing: 1.5,
+                    // wordSpacing: 0,
+                    // color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    // fontFamily: 'Inter'
                   ),),
                 ),
 
@@ -78,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
 
                       ElevatedButton(
                         onPressed: (){
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LoginPage()));
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LoginSecondPage()));
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(Colors.white),
@@ -92,22 +99,28 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         child: const Padding(
                           padding: EdgeInsets.only(left: 45, right: 45, top: 19, bottom: 19),
-                          child: Text('Войти', style: TextStyle(fontSize: 18),),
+                          child: Text('Войти', style: TextStyle(fontSize: 18, color: Colors.black),),
                         ),
                       ),
 
 
                       Padding(
                         padding: const EdgeInsets.only(left: 10),
-                        child: Container(
-                          padding: const EdgeInsets.all(1),
-                          width: 60,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: Colors.black87,
-                            borderRadius: BorderRadius.circular(15),
+                        child: InkWell(
+                          onTap: ((){
+                            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LoginSecondPage()));
+                          }),
+                          child: Container(
+                            padding: const EdgeInsets.all(1),
+                            width: 60,
+                            height: 60,
+                            decoration: BoxDecoration(
+                              // color: Colors.black87,
+                              color: Colors.grey.shade800,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: const Center(child: Text('G', style: TextStyle(color: Colors.red, fontSize: 20),),),
                           ),
-                          child: const Center(child: Text('G', style: TextStyle(color: Colors.red, fontSize: 20),),),
                         ),
                       ),
 
@@ -118,7 +131,8 @@ class _LoginPageState extends State<LoginPage> {
                           width: 60,
                           height: 60,
                           decoration: BoxDecoration(
-                            color: Colors.black87,
+                            // color: Colors.black87,
+                            color: Colors.grey.shade800,
                             borderRadius: BorderRadius.circular(15),
                           ),
                           child: const Center(child: Text('F', style: TextStyle(color: Colors.blue, fontSize: 20),),),
@@ -128,11 +142,15 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 Container(
-                  padding: const EdgeInsets.only(top: 20, left: 170),
+                    padding: const EdgeInsets.only(top: 20, left: 170),
                     // alignment: Alignment.bottomRight,
                     child: InkWell(
-                        onTap: ((){}),
-                        child: const Text('Проблемы со входом?', style: TextStyle(decoration: TextDecoration.underline),))),
+                        onTap: ((){
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LoginSecondPage()));
+                        }),
+                        child: const Text('Проблемы со входом?', style: TextStyle(decoration: TextDecoration.underline, fontWeight: FontWeight.w600),))
+                ),
+
               ],
             ),
           )
