@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:network_app/auth/auth_succes_page.dart';
-import 'package:network_app/auth/recovery_page.dart';
+import 'package:network_app/auth/login_second_page.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:network_app/constants.dart';
 
@@ -15,7 +15,7 @@ class PhoneAuthPage extends StatefulWidget {
 
 class _PhoneAuthPageState extends State<PhoneAuthPage> {
 
-  List listCheck = [false, false, false, false];
+  List listCheck = <bool>[false, false, false, false];
 
   final node1 = FocusNode();
   final node2 = FocusNode();
@@ -58,9 +58,8 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                   });
                 }
                 else{
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const RecoveryPage()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const LoginSecondPage()));
                 }
-
 
               },
               icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25,)),
@@ -174,7 +173,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
     ),
   );
 
-  Widget inputCell({focusNode, position}) => SizedBox(
+  Widget inputCell({required FocusNode focusNode, required int position}) => SizedBox(
     width: 65,
     height: 80,
     child: TextFormField(
@@ -302,7 +301,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                 FocusManager.instance.primaryFocus?.unfocus();
 
                 if(showSendButton){
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const AuthSuccesPage()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const AuthSuccesPage()));
                 }
 
               }),
@@ -331,7 +330,6 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                       showSendButton = false;
                     });
 
-                    // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LoginSecondPage()));
                   }),
                   child: const Text('Повторить попытку', style: TextStyle(decoration: TextDecoration.underline, fontWeight: FontWeight.w600),)),
             ),

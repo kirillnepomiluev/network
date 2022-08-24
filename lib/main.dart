@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:network_app/auth/auth_succes_page.dart';
-import 'package:network_app/auth/phone_auth_page.dart';
+import 'package:network_app/auth/login_page.dart';
+import 'package:network_app/profile/home_page.dart';
 
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Network',
       theme: ThemeData(
         fontFamily: 'Inter',
@@ -46,23 +49,27 @@ class MyApp extends StatelessWidget {
         Locale('ru', 'RU'), // English, no country code
       ],
 
-      home: const MyHomePage(),
+      home:
+      // const FirstPage(),
+      const HomePage(),
+
+
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class FirstPage extends StatefulWidget {
+  const FirstPage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<FirstPage> createState() => _FirstPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _FirstPageState extends State<FirstPage> {
 
   @override
   void initState() {
-    SystemChannels.textInput.invokeMethod('TextInput.hide');
+    SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
     // FocusManager.instance.primaryFocus?.unfocus();
     super.initState();
   }
@@ -89,12 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: const EdgeInsets.only(top: 50),
               child: ElevatedButton(onPressed: (){
-
-                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const PhoneAuthPage()));
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const AuthSuccesPage()));
-
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LoginPage()));
-
+                Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const LoginPage()));
               }, child: const Text('Далее')),
             )
           ],

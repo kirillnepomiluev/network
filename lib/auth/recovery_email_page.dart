@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/auth/phone_auth_page.dart';
+import 'package:network_app/auth/login_second_page.dart';
 import 'package:network_app/auth/recovery_page.dart';
 
 class RecoveryEmailPage extends StatefulWidget {
@@ -30,7 +30,7 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
           child: Center(child:
           IconButton(
             onPressed: (){
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const RecoveryPage()));
+              Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const RecoveryPage()));
             },
             icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25,)),
           ),
@@ -77,7 +77,7 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
               Center(
                 child: InkWell(
                   onTap: ((){
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const PhoneAuthPage()));
+                    Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const LoginSecondPage()));
                   }),
                   child: Container(
                     width: MediaQuery.of(context).size.width*0.8,

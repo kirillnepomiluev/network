@@ -9,14 +9,17 @@ class Constants{
 }
 
 
-showSimpleDialog({required title,required text, required BuildContext context, barrier=false}){
-  showDialog(
+void showSimpleDialog({required String title, required String text, required BuildContext context, bool barrier=false}){
+
+  showDialog<void>(
       barrierDismissible: !barrier,
       context: context,
-      builder: (BuildContext context) => simpleDialog(title, text, context, barrier));
+      builder: (BuildContext context) => simpleDialog(title, text, context, barrier)
+  );
+
 }
 
-Widget simpleDialog(title, text, BuildContext context, barrier) {
+Widget simpleDialog(String title, String text, BuildContext context, bool barrier) {
   return AlertDialog(
     // shape: RoundedRectangleBorder(
     //   borderRadius: BorderRadius.circular(5),

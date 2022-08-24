@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/auth/phone_auth_page.dart';
 import 'package:network_app/auth/recovery_page.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/main.dart';
@@ -24,7 +25,9 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
         Padding(
           padding: EdgeInsets.only(bottom: 15, right: MediaQuery.of(context).size.width*0.1),
           child: InkWell(
-            onTap:((){}),
+            onTap:((){
+              Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const RecoveryPage()));
+            }),
             child: const Text('Проблемы со входом?', style: TextStyle(
                 decoration: TextDecoration.underline,
                 fontWeight: FontWeight.w600
@@ -41,7 +44,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
           padding: const EdgeInsets.only(top: 15),
           child: InkWell(
             onTap: ((){
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const MyHomePage()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const FirstPage()));
             }),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -71,7 +74,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
               padding: const EdgeInsets.only(top: 30),
               child: InkWell(
                 onTap: ((){
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const RecoveryPage()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const PhoneAuthPage()));
                 }),
                 child: Container(
                     width: MediaQuery.of(context).size.width*0.8,
@@ -105,7 +108,6 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
               padding: const EdgeInsets.only(top: 30),
               child: InkWell(
                 onTap: ((){
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const RecoveryPage()));
                 }),
                 child: Container(
                     width: MediaQuery.of(context).size.width*0.8,
@@ -141,7 +143,6 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
               padding: const EdgeInsets.only(top: 30),
               child: InkWell(
                 onTap: ((){
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const RecoveryPage()));
                 }),
                 child: Container(
                     width: MediaQuery.of(context).size.width*0.8,
@@ -172,21 +173,20 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
               ),
             ),
 
-                    // Padding(
-                    //     padding: EdgeInsets.only(bottom: 20, right: MediaQuery.of(context).size.width*0.1),
-                    //   child: InkWell(onTap: ((){
-                    //     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LoginPageSecond()));
-                    //   }),
-                    //     child: Container(
-                    //       // constraints: BoxConstraints(maxWidth: 100),
-                    //       // width: 100,
-                    //       decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black, width: 2))),
-                    //         padding: const EdgeInsets.only(bottom: 10,),
-                    //             child: const Text('Проблемы со входом?', style: TextStyle(
-                    //                 fontWeight: FontWeight.w500
-                    //             ), textAlign: TextAlign.end,)),
-                    //   ),
-                    // ),
+            // Padding(
+            //     padding: EdgeInsets.only(bottom: 20, right: MediaQuery.of(context).size.width*0.1),
+            //   child: InkWell(onTap: ((){
+            //   }),
+            //     child: Container(
+            //       // constraints: BoxConstraints(maxWidth: 100),
+            //       // width: 100,
+            //       decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black, width: 2))),
+            //         padding: const EdgeInsets.only(bottom: 10,),
+            //             child: const Text('Проблемы со входом?', style: TextStyle(
+            //                 fontWeight: FontWeight.w500
+            //             ), textAlign: TextAlign.end,)),
+            //   ),
+            // ),
 
           ],
         ),

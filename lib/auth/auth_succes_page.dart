@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/auth/recovery_page.dart';
 import 'package:network_app/constants.dart';
 
 
@@ -16,28 +15,6 @@ class _AuthSuccesPageState extends State<AuthSuccesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade400,
-      // appBar: AppBar(
-      //   toolbarHeight: 65,
-      //   backgroundColor: Colors.transparent,
-      //   elevation: 0,
-      //   // leading:
-      //   title:
-      //   Container(
-      //     width: 55,
-      //     height: 55,
-      //     decoration: BoxDecoration(
-      //       color: Colors.white70,
-      //       borderRadius: BorderRadius.circular(20),
-      //     ),
-      //     child: Center(child:
-      //     IconButton(
-      //         onPressed: (){
-      //           Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const RecoveryPage()));
-      //         },
-      //         icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25,)),
-      //     ),
-      //   ),
-      // ),
       body:
         SafeArea(
           child: SingleChildScrollView(
@@ -60,20 +37,20 @@ class _AuthSuccesPageState extends State<AuthSuccesPage> {
                     // padding: EdgeInsets.only(top: 20),
                     width: 140,
                 height: 140,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                       color: Colors.red,
                       shape: BoxShape.circle
                 )),
               ),
 
 
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(top: 30),
                 child: Text('Поздравляем!', textAlign: TextAlign.center, style: TextStyle(
                       color: Colors.black, fontSize: 22, fontWeight: FontWeight.w500),),
               ),
 
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: Text('Вы успешно зарегистрировались\nв нашем приложении!!', textAlign: TextAlign.center, style: TextStyle(
                       color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500),),
@@ -96,7 +73,7 @@ class _AuthSuccesPageState extends State<AuthSuccesPage> {
 
 
                   ListView.builder(
-                    padding: EdgeInsets.only(left: 5, top: 25),
+                    padding: const EdgeInsets.only(left: 5, top: 25),
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       itemCount: 4,
@@ -105,14 +82,14 @@ class _AuthSuccesPageState extends State<AuthSuccesPage> {
                           ListTile(
                             // leading: Icon(Icons.circle, size: 12,),
                             title: Row(
-                              children: [
+                              children: const [
                                 Icon(Icons.circle, size: 9,),
                                 Text('  Правило 1', style: TextStyle(color: Colors.black),),
                               ],
                             ),
                             contentPadding: EdgeInsets.zero,
-                            subtitle: Padding(
-                              padding: const EdgeInsets.only(top: 7),
+                            subtitle: const Padding(
+                              padding: EdgeInsets.only(top: 7),
                               child: Text(Constants.strLoremIpsum, maxLines: 2, style: TextStyle(fontSize: 12),),
                             ),
 
@@ -126,7 +103,6 @@ class _AuthSuccesPageState extends State<AuthSuccesPage> {
                   //
                   //   InkWell(
                   //     onTap: ((){
-                  //         // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const AuthSuccesPage()));
                   //     }),
                   //     child: Container(
                   //       width: MediaQuery.of(context).size.width*0.8,
@@ -158,10 +134,10 @@ class _AuthSuccesPageState extends State<AuthSuccesPage> {
         child:
         InkWell(
           onTap: ((){
-            // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const AuthSuccesPage()));
+
           }),
           child: Container(
-            margin: EdgeInsets.only(bottom: 10, left: 20, right: 20),
+            margin: const EdgeInsets.only(bottom: 10, left: 20, right: 20),
             // width: MediaQuery.of(context).size.width*0.8,
             padding: const EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 20),
             decoration: BoxDecoration(
