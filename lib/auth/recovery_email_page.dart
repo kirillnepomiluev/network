@@ -58,6 +58,7 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
                 child: TextFormField(
                   autofocus: true,
                   decoration: InputDecoration(
+                    // contentPadding: EdgeInsets.only(left: 15),
                     focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(width: 1, color: Colors.white),
                         borderRadius: BorderRadius.circular(20)

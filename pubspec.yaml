@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   intl_phone_field:
   bottom_bar:
+  percent_indicator:
 
 dev_dependencies:
   flutter_test:

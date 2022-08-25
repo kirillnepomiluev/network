@@ -1,6 +1,7 @@
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/profile/profile_page.dart';
+import 'package:network_app/store/stoe_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,10 +23,9 @@ class _HomePageState extends State<HomePage> {
         children: [
           Container(color: Colors.blue),
           const ProfilePage(),
-          // Container(color: Colors.red),
           Container(color: Colors.purple),
           Container(color: Colors.greenAccent.shade700),
-          Container(color: Colors.orange),
+          const StorePage(),
         ],
         onPageChanged: (index) {
           // Use a better state management solution
