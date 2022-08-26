@@ -26,7 +26,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
           padding: EdgeInsets.only(bottom: 15, right: MediaQuery.of(context).size.width*0.1),
           child: InkWell(
             onTap:((){
-              Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const RecoveryPage()));
+              Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const RecoveryPage()));
             }),
             child: const Text('Проблемы со входом?', style: TextStyle(
                 decoration: TextDecoration.underline,
@@ -37,6 +37,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
           ),
         )),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 65,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -44,7 +45,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
           padding: const EdgeInsets.only(top: 15),
           child: InkWell(
             onTap: ((){
-                  Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const FirstPage()));
+                  Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const FirstPage()));
             }),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -74,7 +75,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
               padding: const EdgeInsets.only(top: 30),
               child: InkWell(
                 onTap: ((){
-                  Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const PhoneAuthPage()));
+                  Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const PhoneAuthPage()));
                 }),
                 child: Container(
                     width: MediaQuery.of(context).size.width*0.8,

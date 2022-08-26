@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:network_app/auth/auth_succes_page.dart';
-import 'package:network_app/auth/login_second_page.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:network_app/constants.dart';
 
@@ -35,6 +34,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade400,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 65,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -58,7 +58,8 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                   });
                 }
                 else{
-                  Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const LoginSecondPage()));
+                  Navigator.of(context).pop();
+                  // Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const LoginSecondPage()));
                 }
 
               },
@@ -301,7 +302,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                 FocusManager.instance.primaryFocus?.unfocus();
 
                 if(showSendButton){
-                  Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const AuthSuccesPage()));
+                  Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const AuthSuccesPage()));
                 }
 
               }),

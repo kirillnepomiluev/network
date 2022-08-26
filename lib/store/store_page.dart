@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/store/view_category_avatar_page.dart';
+import 'package:network_app/store/view_category_hats.dart';
 
 class StorePage extends StatefulWidget {
   const StorePage({Key? key}) : super(key: key);
@@ -66,15 +68,17 @@ class _StorePageState extends State<StorePage> {
     ),
   );
 
-  ScrollController _avatarScrollContr = ScrollController();
-  ScrollController _hatScrollContr = ScrollController();
+  final _avatarScrollContr = ScrollController();
+  final _hatScrollContr = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // extendBody: true,
       backgroundColor: Colors.grey.shade400,
       body:
-      SafeArea(
+      Padding(
+        padding: const EdgeInsets.only(top: 20),
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(10),
@@ -110,15 +114,18 @@ class _StorePageState extends State<StorePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('Аватары', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold), textAlign: TextAlign.start,),
+                      Text(_active==1 ? 'Аватары' : 'Боксы аватаров', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold), textAlign: TextAlign.start,),
 
                       IconButton(onPressed: (){
-                        const double moveWidth = 390;
-                        _avatarScrollContr.animateTo(
-                            moveWidth,
-                            curve: Curves.easeOut,
-                            duration: const Duration(seconds: 1)
-                        );
+
+                        Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const ViewCategoryAvatarPage()));
+
+                        // const double moveWidth = 400;
+                        // _avatarScrollContr.animateTo(
+                        //     moveWidth,
+                        //     curve: Curves.easeOut,
+                        //     duration: const Duration(seconds: 1)
+                        // );
                       }, icon: const Icon(Icons.arrow_forward))
                     ],
                   ),
@@ -131,12 +138,12 @@ class _StorePageState extends State<StorePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      avatarContainer(),
-                      avatarContainer(),
-                      avatarContainer(),
-                      avatarContainer(),
-                      avatarContainer(),
-                      avatarContainer(),
+                      avatarContainer(context: context, isBoxes: _active==2,),
+                      avatarContainer(context: context, isBoxes: _active==2,),
+                      avatarContainer(context: context, isBoxes: _active==2,),
+                      avatarContainer(context: context, isBoxes: _active==2,),
+                      avatarContainer(context: context, isBoxes: _active==2,),
+                      avatarContainer(context: context, isBoxes: _active==2,),
                     ],
                   ),
                 ),
@@ -147,15 +154,18 @@ class _StorePageState extends State<StorePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('Головные уборы', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold), textAlign: TextAlign.start,),
+                      Text(_active==1 ? 'Головные уборы' : 'Боксы одежды', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold), textAlign: TextAlign.start,),
 
                       IconButton(onPressed: (){
-                        const double moveWidth = 390;
-                        _hatScrollContr.animateTo(
-                            moveWidth,
-                            curve: Curves.easeOut,
-                            duration: const Duration(seconds: 1)
-                        );
+
+                        Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const ViewCategoryHatsPage()));
+
+                        // const double moveWidth = 320;
+                        // _hatScrollContr.animateTo(
+                        //     moveWidth,
+                        //     curve: Curves.easeOut,
+                        //     duration: const Duration(seconds: 1)
+                        // );
                       }, icon: const Icon(Icons.arrow_forward))
                     ],
                   ),
@@ -168,12 +178,12 @@ class _StorePageState extends State<StorePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      avatarContainer(contWidth: 150),
-                      avatarContainer(contWidth: 150),
-                      avatarContainer(contWidth: 150),
-                      avatarContainer(contWidth: 150),
-                      avatarContainer(contWidth: 150),
-                      avatarContainer(contWidth: 150),
+                      hatContainer(context: context,),
+                      hatContainer(context: context,),
+                      hatContainer(context: context,),
+                      hatContainer(context: context,),
+                      hatContainer(context: context,),
+                      hatContainer(context: context,),
                     ],
                   ),
                 ),
@@ -200,74 +210,8 @@ class _StorePageState extends State<StorePage> {
         ),
       ),
 
-
     );
   }
 
-  Widget avatarContainer({double contWidth = 185}) => Padding(
-    padding: const EdgeInsets.only(right: 10),
-    child: InkWell(
-      onTap: ((){
-      }),
-      child: Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-        ),
-        // height: 310,
-        width: contWidth,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-
-          const Padding(
-            padding: EdgeInsets.only(bottom: 20,),
-            child: Text('Категория', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),),
-          ),
-
-            Container(
-              height: contWidth-35,
-              decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(10)
-              ),
-            ),
-
-          const Padding(
-            padding: EdgeInsets.only(top: 25),
-            child: Text('Имя аватара', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),),
-          ),
-
-          const Padding(
-            padding: EdgeInsets.only(top: 2),
-            child: Text('#0863246', style: TextStyle(fontSize: 11),),
-          ),
-
-          const Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: Text('1.6 SOL', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.only(top: 5),
-            child: Wrap(
-              direction: Axis.horizontal,
-              alignment: WrapAlignment.spaceBetween,
-              children: const [
-                Text('Уровень "Базовый"', style: TextStyle(fontSize: 10),),
-
-                Text('Баллы +150', style: TextStyle(fontSize: 10),),
-              ],
-            ),
-          ),
-
-        ],),
-      ),
-    ),
-  );
-
-
-
 }
+

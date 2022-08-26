@@ -96,7 +96,7 @@ class _FirstPageState extends State<FirstPage> {
             Padding(
               padding: const EdgeInsets.only(top: 50),
               child: ElevatedButton(onPressed: (){
-                Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const LoginPage()));
+                Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const LoginPage()));
               }, child: const Text('Далее')),
             )
           ],

@@ -42,7 +42,7 @@ class _RecoveryPageState extends State<RecoveryPage> {
               padding: const EdgeInsets.only(top: 30),
               child: InkWell(
                 onTap: ((){
-                  Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const RecoveryEmailPage()));
+                  Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const RecoveryEmailPage()));
                 }),
                 child: Container(
                     width: MediaQuery.of(context).size.width*0.8,

@@ -16,6 +16,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade400,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 65,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -23,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
           padding: const EdgeInsets.only(top: 15),
           child: InkWell(
             onTap: ((){
-              Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const FirstPage()));
+              Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const FirstPage()));
 
             }),
             child: Row(
@@ -87,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
 
                       ElevatedButton(
                         onPressed: (){
-                          Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const LoginSecondPage()));
+                          Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const LoginSecondPage()));
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(Colors.white),
@@ -147,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                     // alignment: Alignment.bottomRight,
                     child: InkWell(
                         onTap: ((){
-                          Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const RecoveryPage()));
+                          Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const RecoveryPage()));
                         }),
                         child: const Text('Проблемы со входом?', style: TextStyle(decoration: TextDecoration.underline, fontWeight: FontWeight.w600),))
                 ),

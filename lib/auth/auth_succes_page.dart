@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/profile/home_page.dart';
 
 
 class AuthSuccesPage extends StatefulWidget {
@@ -134,7 +135,7 @@ class _AuthSuccesPageState extends State<AuthSuccesPage> {
         child:
         InkWell(
           onTap: ((){
-
+            Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const HomePage()));
           }),
           child: Container(
             margin: const EdgeInsets.only(bottom: 10, left: 20, right: 20),

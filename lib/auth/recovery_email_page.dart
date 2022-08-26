@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:network_app/auth/login_second_page.dart';
-import 'package:network_app/auth/recovery_page.dart';
 
 class RecoveryEmailPage extends StatefulWidget {
   const RecoveryEmailPage({Key? key}) : super(key: key);
@@ -15,6 +15,7 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade400,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 65,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -30,7 +31,8 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
           child: Center(child:
           IconButton(
             onPressed: (){
-              Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const RecoveryPage()));
+              Navigator.of(context).pop();
+              // Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const RecoveryPage()));
             },
             icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25,)),
           ),
@@ -78,7 +80,10 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
               Center(
                 child: InkWell(
                   onTap: ((){
-                    Navigator.of(context).pushReplacement(MaterialPageRoute<void>(builder: (context) => const LoginSecondPage()));
+                    SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
+                    FocusManager.instance.primaryFocus?.unfocus();
+
+                    Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const LoginSecondPage()));
                   }),
                   child: Container(
                     width: MediaQuery.of(context).size.width*0.8,
@@ -89,7 +94,6 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
                     ),
                     child:
                     const Text('Восстановить доступ', style: TextStyle(fontSize: 17, color: Colors.white, fontWeight: FontWeight.w500), textAlign: TextAlign.center,),
-
                   ),
                 ),
               ),
