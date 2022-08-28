@@ -115,7 +115,7 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
     // padding: EdgeInsets.all(30),
     decoration: BoxDecoration(
       color: Colors.grey.shade100,
-      borderRadius: BorderRadius.vertical(bottom: Radius.circular(50)),
+      borderRadius: const BorderRadius.vertical(bottom: Radius.circular(50)),
     ),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,

@@ -127,7 +127,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.grey.shade100,
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(50)),
+        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(50)),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -155,13 +155,13 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
 
 
               Container(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade500,
                   borderRadius: BorderRadius.circular(20),
                 ),
 
-                child: Center(child:
+                child: const Center(child:
                 Text('Деловая встреча', style: TextStyle(color: Colors.white, fontSize: 10),)
                 ),
               ),
@@ -216,7 +216,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
               mainAxisSize: MainAxisSize.min,
               children: [
 
-                Text('250 м в направлении',
+                const Text('250 м в направлении',
                     style: TextStyle(
                         fontSize: 12,
                         color: Colors.black,
@@ -225,7 +225,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                 ),
 
                 Padding(
-                  padding: EdgeInsets.only(left: 8),
+                  padding: const EdgeInsets.only(left: 8),
                   child:
                   // Icon(Icons.arrow_circle_right, color: Colors.black, size: 20,),
 
@@ -237,7 +237,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                     width: 17,
                     height: 17,
                     child:
-                    Icon(Icons.call_received, size: 11, color: Colors.white,), //Icons.turn
+                    const Icon(Icons.call_received, size: 11, color: Colors.white,), //Icons.turn
                   ),
 
                 ),
@@ -298,7 +298,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 2,
                           blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
+                          offset: const Offset(0, 3), // changes position of shadow
                         ),
                       ],
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/profile/home_page.dart';
-import 'package:network_app/profile/view_partner_profile_page.dart';
 
 
 class ProfilePage extends StatefulWidget {
@@ -56,8 +55,8 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
 
           Padding(
-            padding: EdgeInsets.only(left: 10),
-            child: Text(text, style: TextStyle(fontSize: 12),),
+            padding: const EdgeInsets.only(left: 10),
+            child: Text(text, style: const TextStyle(fontSize: 12),),
           ),
 
           Padding(

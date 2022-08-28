@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/meetings/matching_page.dart';
 import 'package:network_app/profile/home_page.dart';
 
 
@@ -43,8 +44,8 @@ class _InvitationsPageState extends State<InvitationsPage> {
 
                 buttonBack(context),
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 20, bottom: 20),
+                const Padding(
+                  padding: EdgeInsets.only(top: 20, bottom: 20),
                   child: Text('Приглашения', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
                 ),
 
@@ -78,14 +79,14 @@ class _InvitationsPageState extends State<InvitationsPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade500,
                   borderRadius: BorderRadius.circular(20),
                 ),
 
                 child: Center(child:
-                Text(strType, style: TextStyle(color: Colors.white, fontSize: 10),)
+                Text(strType, style: const TextStyle(color: Colors.white, fontSize: 10),)
                 ),
               ),
 
@@ -158,11 +159,11 @@ class _InvitationsPageState extends State<InvitationsPage> {
                           width: 17,
                           height: 17,
                           child:
-                          Icon(Icons.call_received, size: 11, color: Colors.white,),
+                          const Icon(Icons.call_received, size: 11, color: Colors.white,),
                       ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 5),
                       child: Text('250 м', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                     )
 
@@ -180,7 +181,11 @@ class _InvitationsPageState extends State<InvitationsPage> {
                     width: 50,
                     height: 70,
                     child:
-                    IconButton(onPressed: (){}, icon: const Icon(Icons.arrow_right_alt_rounded, color: Colors.black,), iconSize: 30,)
+                    IconButton(onPressed: (){
+
+                      Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const MatchingPage()));
+
+                    }, icon: const Icon(Icons.arrow_right_alt_rounded, color: Colors.black,), iconSize: 30,)
                 ),
 
             ],),

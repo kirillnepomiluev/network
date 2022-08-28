@@ -1,5 +1,6 @@
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/chat/messages_page.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/meetings/meetings_page.dart';
 import 'package:network_app/profile/profile_page.dart';
@@ -30,8 +31,7 @@ class _HomePageState extends State<HomePage> {
           const MeetingsPage(),
           const ProfilePage(),
           Container(color: Colors.purple),
-          Container(color: Colors.greenAccent.shade700),
-
+          const MessagesPage(),
           const StorePage(),
         ],
         onPageChanged: (index) {

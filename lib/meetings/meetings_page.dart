@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/meetings/invitations_page.dart';
-import 'package:network_app/profile/home_page.dart';
 import 'package:network_app/profile/view_partner_profile_page.dart';
 
 class MeetingsPage extends StatefulWidget {
@@ -35,13 +34,13 @@ class _MeetingsPageState extends State<MeetingsPage> {
         child: Row(children: [
 
           Padding(
-            padding: EdgeInsets.only(left: 10, right: 10),
-            child: Text(text, style: TextStyle(fontSize: 10),),
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: Text(text, style: const TextStyle(fontSize: 10),),
           ),
 
           position !=3 ? Container():
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
+          const Padding(
+            padding: EdgeInsets.only(right: 8.0),
             child: Icon(Icons.arrow_drop_down
                 // Icons.arrow_right_outlined
             ),
