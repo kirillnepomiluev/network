@@ -15,32 +15,32 @@ class _ViewProdHatPageState extends State<ViewProdHatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        shape: const Border(
-            bottom: BorderSide(
-                color: Colors.white,
-                width: 0
-            )),
-        toolbarHeight: 65,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: Container(
-          width: 55,
-          height: 55,
-          decoration: BoxDecoration(
-            color: Colors.grey.shade200,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Center(child:
-          IconButton(
-              onPressed: (){
-                Navigator.of(context).pop();
-              },
-              icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25,)),
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   shape: const Border(
+      //       bottom: BorderSide(
+      //           color: Colors.white,
+      //           width: 0
+      //       )),
+      //   toolbarHeight: 65,
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      //   automaticallyImplyLeading: false,
+      //   title: Container(
+      //     width: 55,
+      //     height: 55,
+      //     decoration: BoxDecoration(
+      //       color: Colors.grey.shade200,
+      //       borderRadius: BorderRadius.circular(20),
+      //     ),
+      //     child: Center(child:
+      //     IconButton(
+      //         onPressed: (){
+      //           Navigator.of(context).pop();
+      //         },
+      //         icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25,)),
+      //     ),
+      //   ),
+      // ),
       backgroundColor: Colors.grey.shade400,
 
       bottomNavigationBar:
@@ -86,36 +86,28 @@ class _ViewProdHatPageState extends State<ViewProdHatPage> {
       SafeArea(
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    viewAvatarContainer(),
+              viewAvatarContainer(),
 
-
-                    const Padding(
-                      padding: EdgeInsets.only(left: 20, top: 30),
-                      child: Text('Преимущества', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          statContainer(title: '', subtitle: 'Базовый уровень'),
-                          statContainer(title: '+10', subtitle: 'баллов'),
-                          statContainer(title: '+0.2', subtitle: 'рейтинг'),
-                        ],),
-                    ),
-
-                    // _statColumn()
-
-                  ],
-                ),
+              const Padding(
+                padding: EdgeInsets.only(left: 20, top: 30),
+                child: Text('Преимущества', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
               ),
+
+              Padding(
+                padding: const EdgeInsets.only(top: 15, bottom: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    statContainer(title: '', subtitle: 'Базовый уровень'),
+                    statContainer(title: '+10', subtitle: 'баллов'),
+                    statContainer(title: '+0.2', subtitle: 'рейтинг'),
+                  ],),
+              ),
+
+              // _statColumn()
+
             ],
           ),
         ),
@@ -129,17 +121,22 @@ class _ViewProdHatPageState extends State<ViewProdHatPage> {
     padding: const EdgeInsets.only(bottom: 0),
     child: Container(
       width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 10),
+      padding: const EdgeInsets.all(10),
       // padding: EdgeInsets.symmetric(vertical: 0, horizontal: 100),
       // padding: EdgeInsets.all(30),
-      decoration: const BoxDecoration(
-        color: Colors.white,
+      decoration: BoxDecoration(
+        color: Colors.grey.shade100,
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(50)),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: buttonBack(context),
+          ),
 
           Container(
             width: 200,

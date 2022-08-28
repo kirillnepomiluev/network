@@ -171,20 +171,23 @@ class _StorePageState extends State<StorePage> {
                   ),
                 ),
 
-                SingleChildScrollView(
-                  controller: _hatScrollContr,
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      hatContainer(context: context,),
-                      hatContainer(context: context,),
-                      hatContainer(context: context,),
-                      hatContainer(context: context,),
-                      hatContainer(context: context,),
-                      hatContainer(context: context,),
-                    ],
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 85),
+                  child: SingleChildScrollView(
+                    controller: _hatScrollContr,
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        hatContainer(context: context,),
+                        hatContainer(context: context,),
+                        hatContainer(context: context,),
+                        hatContainer(context: context,),
+                        hatContainer(context: context,),
+                        hatContainer(context: context,),
+                      ],
+                    ),
                   ),
                 ),
 

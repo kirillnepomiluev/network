@@ -1,6 +1,7 @@
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/meetings/meetings_page.dart';
 import 'package:network_app/profile/profile_page.dart';
 import 'package:network_app/store/store_page.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -25,7 +26,8 @@ class _HomePageState extends State<HomePage> {
       body: PageView(
         controller: _pageController,
         children: [
-          Container(color: Colors.blue),
+          // Container(color: Colors.blue),
+          const MeetingsPage(),
           const ProfilePage(),
           Container(color: Colors.purple),
           Container(color: Colors.greenAccent.shade700),
@@ -33,79 +35,10 @@ class _HomePageState extends State<HomePage> {
           const StorePage(),
         ],
         onPageChanged: (index) {
-          // Use a better state management solution
-          // setState is used for simplicity
           setState(() => _currentPage = index);
         },
       ),
       bottomNavigationBar:
-
-      // _currentPage==1?
-      // Stack(
-      //   alignment: Alignment.bottomCenter,
-      //   children: [
-      //     InkWell(
-      //       onTap: ((){
-      //         openBottomSheetProfile();
-      //       }),
-      //       child: Container(
-      //         height: 120,
-      //         decoration: BoxDecoration(
-      //             color: Colors.white,
-      //             borderRadius: BorderRadius.vertical(top: Radius.circular(35))
-      //         ),
-      //       ),
-      //     ),
-      //
-      //     Padding(
-      //       padding: const EdgeInsets.all(8.0),
-      //       child: Card(
-      //         color: Colors.grey.shade900,
-      //         shape: RoundedRectangleBorder(
-      //           borderRadius: BorderRadius.circular(15),
-      //         ),
-      //         child: BottomBar(
-      //           // height: 65,
-      //           // backgroundColor: Colors.grey.shade900,
-      //           backgroundColor: Colors.transparent,
-      //           selectedIndex: _currentPage,
-      //           onTap: (int index) {
-      //             _pageController.jumpToPage(index);
-      //             setState(() => _currentPage = index);
-      //           },
-      //           items: <BottomBarItem>[
-      //             barItem(
-      //                 icon: Icons.people_outline,
-      //                 text: 'Встречи'
-      //             ),
-      //
-      //             barItem(
-      //                 icon: Icons.person_outline,
-      //                 text: 'Профиль'
-      //             ),
-      //
-      //             barItem(
-      //                 icon: Icons.account_balance_wallet_outlined,
-      //                 text: 'Инвентарь'
-      //             ),
-      //
-      //             barItem(
-      //                 icon: Icons.chat_bubble_outline,
-      //                 text: 'Чат'
-      //             ),
-      //
-      //             barItem(
-      //                 icon: Icons.shopping_bag_outlined,
-      //                 text: 'Магазин'
-      //             ),
-      //
-      //           ],
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // )
-      //     :
       Container(
         color: Colors.transparent,
         padding: const EdgeInsets.all(8.0),
@@ -238,6 +171,45 @@ Widget progressParametr({required String text1, required String text2, bool isMe
 );
 
 
+Widget hobbitsContainer(String text) => Container(
+  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+  decoration: BoxDecoration(
+      color: Colors.grey.shade300,
+      borderRadius: BorderRadius.circular(15)
+  ),
+  child: Text(text, style: const TextStyle(fontSize: 12),),
+);
+
+Widget textField(String hintText, {bool isEnable = true}) => TextFormField(
+  enabled: isEnable,
+  maxLines: null,
+  style: const TextStyle(color: Colors.black),
+  initialValue: hintText ,
+  autofocus: false,
+  decoration: InputDecoration(
+    isDense: true,
+    contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+
+    focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(width: 1, color: Colors.white),
+        borderRadius: BorderRadius.circular(15)
+    ),
+    enabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(width: 1, color: Colors.white),
+        borderRadius: BorderRadius.circular(15)
+    ),
+    disabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(width: 1, color: Colors.white),
+        borderRadius: BorderRadius.circular(15)
+    ),
+    filled: true,
+    fillColor: Colors.white,
+    // hintText: hintText,
+  ),
+
+);
+
+
 
 void opeinInfoSheet({required BuildContext context, required String title}){
 
@@ -292,3 +264,24 @@ void opeinInfoSheet({required BuildContext context, required String title}){
             ),)
   );
 }
+
+
+Widget buttonBack(BuildContext context) => Align(
+  alignment: Alignment.topLeft,
+  child:   Container(
+    // alignment: Alignment.topLeft,
+    width: 55,
+    height: 55,
+    decoration: BoxDecoration(
+      color: Colors.grey.shade300,
+      borderRadius: BorderRadius.circular(20),
+    ),
+    child: Center(child:
+    IconButton(
+        onPressed: (){
+          Navigator.of(context).pop();
+        },
+        icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25,)),
+    ),
+  ),
+);

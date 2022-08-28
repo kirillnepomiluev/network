@@ -15,32 +15,32 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        shape: const Border(
-        bottom: BorderSide(
-        color: Colors.white,
-        width: 0
-    )),
-        toolbarHeight: 65,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: Container(
-          width: 55,
-          height: 55,
-          decoration: BoxDecoration(
-            color: Colors.grey.shade200,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Center(child:
-          IconButton(
-              onPressed: (){
-                Navigator.of(context).pop();
-              },
-              icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25,)),
-          ),
-        ),
-      ),
+    //   appBar: AppBar(
+    //     shape: const Border(
+    //     bottom: BorderSide(
+    //     color: Colors.white,
+    //     width: 0
+    // )),
+    //     toolbarHeight: 65,
+    //     backgroundColor: Colors.white,
+    //     elevation: 0,
+    //     automaticallyImplyLeading: false,
+    //     title: Container(
+    //       width: 55,
+    //       height: 55,
+    //       decoration: BoxDecoration(
+    //         color: Colors.grey.shade200,
+    //         borderRadius: BorderRadius.circular(20),
+    //       ),
+    //       child: Center(child:
+    //       IconButton(
+    //           onPressed: (){
+    //             Navigator.of(context).pop();
+    //           },
+    //           icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25,)),
+    //       ),
+    //     ),
+    //   ),
       backgroundColor: Colors.grey.shade400,
 
         bottomNavigationBar:
@@ -108,58 +108,59 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
 
 
 
-  Widget viewAvatarContainer() => Padding(
-    padding: const EdgeInsets.only(bottom: 0),
-    child: Container(
-      width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 10),
-      // padding: EdgeInsets.symmetric(vertical: 0, horizontal: 100),
-      // padding: EdgeInsets.all(30),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(50)),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-
-          Container(
-            width: 200,
-            height: 200,
-            decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(10)
-            ),
-          ),
-
-          const Padding(
-            padding: EdgeInsets.only(top: 30),
-            child:
-            Text('Аватар', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),),
-          ),
-
-
-          const Padding(
-            padding: EdgeInsets.only(top: 10),
-            child:
-            Text('Имя аватара', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 25),
-            child:
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade400,
-                  borderRadius: BorderRadius.circular(15)
-                ),
-                child: const Text('Категория', style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),)),
-          ),
-
-        ],),
+  Widget viewAvatarContainer() => Container(
+    width: MediaQuery.of(context).size.width,
+    padding: const EdgeInsets.all(10),
+    // padding: EdgeInsets.symmetric(vertical: 0, horizontal: 100),
+    // padding: EdgeInsets.all(30),
+    decoration: BoxDecoration(
+      color: Colors.grey.shade100,
+      borderRadius: BorderRadius.vertical(bottom: Radius.circular(50)),
     ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+
+        Padding(
+          padding: const EdgeInsets.only(bottom: 20),
+          child: buttonBack(context),
+        ),
+
+        Container(
+          width: 200,
+          height: 200,
+          decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(10)
+          ),
+        ),
+
+        const Padding(
+          padding: EdgeInsets.only(top: 30),
+          child:
+          Text('Аватар', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),),
+        ),
+
+        const Padding(
+          padding: EdgeInsets.only(top: 10),
+          child:
+          Text('Имя аватара', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+        ),
+
+        Padding(
+          padding: const EdgeInsets.only(top: 10, bottom: 25),
+          child:
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade400,
+                borderRadius: BorderRadius.circular(15)
+              ),
+              child: const Text('Категория', style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),)),
+        ),
+
+      ],),
   );
 
 
@@ -231,18 +232,3 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
   );
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
