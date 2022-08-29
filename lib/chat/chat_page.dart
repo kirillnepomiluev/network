@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/meetings/matching_page.dart';
 import 'package:network_app/profile/home_page.dart';
 
 
@@ -89,7 +88,7 @@ class _ChatPageState extends State<ChatPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               buttonBack(context),
-              Text('Джоли',
+              const Text('Джоли',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -138,11 +137,11 @@ class _ChatPageState extends State<ChatPage> {
               Expanded(child: textEditor()),
 
               showSendButton==false?
-              IconButton(onPressed: (){}, icon: Icon(Icons.tag_faces_sharp)):
+              IconButton(onPressed: (){}, icon: const Icon(Icons.tag_faces_sharp)):
               // Container():
               IconButton(onPressed: (){
                 sendFunction();
-              }, icon: Icon(Icons.send))
+              }, icon: const Icon(Icons.send))
 
             ],
           ),
@@ -171,13 +170,13 @@ class _ChatPageState extends State<ChatPage> {
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Column(children: [
 
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 25),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 25),
                       child: Text('Сегодня, 12:01', style: TextStyle(fontWeight: FontWeight.w500),),
                     ),
 
                     Container(
-                      padding: EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(15),
                       width: MediaQuery.of(context).size.width * 0.9,
                       decoration: BoxDecoration(
                         color: Colors.grey.shade300,
@@ -219,13 +218,13 @@ class _ChatPageState extends State<ChatPage> {
                                       child:
 
                                       Container(
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                               color: Colors.black,
                                               shape: BoxShape.circle),
                                           width: 16,
                                           height: 16,
                                           child:
-                                          Icon(Icons.electric_bolt, size: 9, color: Colors.white,)
+                                          const Icon(Icons.electric_bolt, size: 9, color: Colors.white,)
                                       )
 
                                   )
@@ -235,7 +234,7 @@ class _ChatPageState extends State<ChatPage> {
                             ),
                           ),
 
-                          Flexible(child: Text('У вас запланирована встреча с Джоли. Пообщайтесь и обговорите важные моменты.',
+                          const Flexible(child: Text('У вас запланирована встреча с Джоли. Пообщайтесь и обговорите важные моменты.',
                             style: TextStyle(fontWeight: FontWeight.w500),
                             maxLines: null,)),
                         ],
@@ -274,8 +273,8 @@ class _ChatPageState extends State<ChatPage> {
                 borderRadius: BorderRadius.circular(15),
                 color: Colors.white
             ),
-            padding: EdgeInsets.all(15),
-            child: Text(strText, style: TextStyle(fontSize: 14, color: Colors.black)),
+            padding: const EdgeInsets.all(15),
+            child: Text(strText, style: const TextStyle(fontSize: 14, color: Colors.black)),
           ),
 
           intMin<2? Container() :
@@ -291,7 +290,7 @@ class _ChatPageState extends State<ChatPage> {
                   width: 12,
                   height: 9,
                   child: Stack(
-                    children: [
+                    children: const [
                       Positioned(
                           left: 4,
                           child: Icon(Icons.check, size: 10, color: Colors.black)),
@@ -352,8 +351,6 @@ class _ChatPageState extends State<ChatPage> {
       maxLines: 3,
       controller: _controller,
       onSubmitted: (value){
-        print('submitted - $value');
-
 
         if(value.isNotEmpty){
           sendFunction();
@@ -372,16 +369,16 @@ class _ChatPageState extends State<ChatPage> {
       // maxLines: 2,
       // maxLength: 1,
       autofocus: false,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         counterText: '',
         focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 0, color: Colors.white),
+            borderSide: BorderSide(width: 0, color: Colors.white),
             borderRadius: BorderRadius.only(topLeft: Radius.circular(15), bottomLeft: Radius.circular(15))
         ),
         enabledBorder:
 
         OutlineInputBorder(
-            borderSide: const BorderSide(width: 0, color: Colors.white),
+            borderSide: BorderSide(width: 0, color: Colors.white),
             borderRadius: BorderRadius.only(topLeft: Radius.circular(15), bottomLeft: Radius.circular(15))
           // borderRadius: BorderRadius.circular(15)
         ),

@@ -8,6 +8,20 @@ class Constants{
 
 }
 
+class ConstColor{
+
+  static const Color salad100 = Color(0xFFE7FE55); //салатовый в 100
+  static const Color salad90 = Color.fromRGBO(231, 254, 05, 0.9); //салатоый
+  static const Color darkSalad = Color(0xFF3E4C14); //темно-салатовый
+  static Color halfDarkSalad = Color(0xFF3E4C14).withOpacity(0.4); //темно-салатовый
+
+  static Color halfWhite = Colors.white.withOpacity(0.15); //Полупрозрачный белый
+  static Color halflBlack = Colors.black.withOpacity(0.7); //Полупрозрачный чёрный
+  static const Color grey = Color(0xFFA9A9A9);  //серый
+
+}
+
+
 
 void showSimpleDialog({required String title, required String text, required BuildContext context, bool barrier=false}){
 

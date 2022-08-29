@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/chat/chat_page.dart';
-import 'package:network_app/meetings/matching_page.dart';
 import 'package:network_app/profile/home_page.dart';
 
 class MessagesPage extends StatefulWidget {
@@ -80,7 +79,7 @@ class _MessagesPageState extends State<MessagesPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     buttonBack(context),
-                    Text(
+                    const Text(
                       'Сообщения',
                       style: TextStyle(
                           color: Colors.black,
@@ -124,11 +123,11 @@ class _MessagesPageState extends State<MessagesPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
 
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15, top: 15),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 15, top: 15),
                           child: Text(
                             'Приглашения',
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.w500,
                                 color: Colors.black,
                                 fontSize: 12
@@ -216,7 +215,7 @@ class _MessagesPageState extends State<MessagesPage> {
       child: Column(
         children: [
           Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle),
               width: 40,
@@ -230,8 +229,8 @@ class _MessagesPageState extends State<MessagesPage> {
                 iconSize: 20,
               )),
 
-          Padding(
-            padding: const EdgeInsets.only(top: 5),
+          const Padding(
+            padding: EdgeInsets.only(top: 5),
             child: Text('Джоли', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500),),
           )
 
@@ -267,8 +266,8 @@ class _MessagesPageState extends State<MessagesPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 25),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 25),
                       child:
                       Text('Джоли',
                           style: TextStyle(
@@ -311,7 +310,7 @@ class _MessagesPageState extends State<MessagesPage> {
                             width: 12,
                             height: 9,
                             child: Stack(
-                              children: [
+                              children: const [
                                 Positioned(
                                     left: 4,
                                     child: Icon(Icons.check, size: 8,)),
@@ -326,8 +325,8 @@ class _MessagesPageState extends State<MessagesPage> {
                       ),
                     ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 10),
                       child: Text('Я предлагаю встретиться в каком-нибудь красивом...', style: TextStyle(fontSize: 10),),
                     )
 

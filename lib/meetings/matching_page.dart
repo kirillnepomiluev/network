@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/meetings/invitations_page.dart';
 import 'package:network_app/profile/home_page.dart';
-import 'package:network_app/profile/view_partner_profile_page.dart';
 import 'dart:math' as math;
 
 class MatchingPage extends StatefulWidget {
@@ -94,7 +92,7 @@ class _MatchingPageState extends State<MatchingPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
 
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(top: 20, bottom: 20),
                         child: Align(
                           alignment: Alignment.center,
@@ -109,7 +107,7 @@ class _MatchingPageState extends State<MatchingPage> {
 
                       Container(
                         width: double.infinity,
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: Colors.grey.shade400,
                           borderRadius: BorderRadius.circular(15)
@@ -151,7 +149,7 @@ class _MatchingPageState extends State<MatchingPage> {
                       ),
 
 
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(top: 20, bottom: 20),
                         child: Align(
                           alignment: Alignment.topLeft,
@@ -258,8 +256,8 @@ class _MatchingPageState extends State<MatchingPage> {
                                 ),
                               ),
                               onPressed: (){},
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 35),
+                              child: const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 35),
                                 child: Text('Создать чат', style: TextStyle(fontSize: 18),),
                               )
                           ),
@@ -304,7 +302,7 @@ class _MatchingPageState extends State<MatchingPage> {
   Widget questionContainer({required String text, required double align}) => Transform.rotate(
     angle: align,
     child: Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       width: 140,
       height: 100,
       decoration: BoxDecoration(
@@ -312,11 +310,9 @@ class _MatchingPageState extends State<MatchingPage> {
         borderRadius: BorderRadius.circular(15)
       ),
       child:
-      Center(child: Text(text, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500), textAlign: TextAlign.center,),),
+      Center(child: Text(text, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w500), textAlign: TextAlign.center,),),
     ),
   );
-
-
 
 
   Widget profileMini({required String strName}) => Column(
@@ -337,14 +333,14 @@ class _MatchingPageState extends State<MatchingPage> {
           children: [
 
             Text('$strName, 28',
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 16,
                     color: Colors.black,
                     fontWeight: FontWeight.w500
                 )
             ),
 
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 3),
               child: Icon(Icons.verified, color: Colors.black, size: 14,),
             ),
