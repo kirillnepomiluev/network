@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/store/view_category_avatar_page.dart';
 import 'package:network_app/store/view_category_hats.dart';
@@ -29,7 +30,7 @@ class _StorePageState extends State<StorePage> {
             // width: 140,
             height: 56,
             // padding: EdgeInsets.all(5),
-            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
             decoration: BoxDecoration(
               color: ConstColor.halfWhite,
               borderRadius: BorderRadius.circular(20),
@@ -41,9 +42,9 @@ class _StorePageState extends State<StorePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 _activeStoreTab == position
-                    ? Icon(
-                        Icons.person_outline,
-                        size: 22,
+                    ? const Icon(
+                        Network.person,
+                        size: 20,
                         color: Colors.white,
                       )
                     : Container(),

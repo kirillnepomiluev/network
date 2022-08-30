@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/profile/home_page.dart';
 
 
@@ -318,7 +319,9 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                           width: 38,
                           height: 38,
                           child:
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.electric_bolt_sharp, color: Colors.white,), iconSize: 18,)
+                          IconButton(onPressed: (){}, icon: const Icon(
+                            Network.electric,
+                            color: Colors.white,), iconSize: 18,)
                       ),
 
                       const Text('Встретиться', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500)),

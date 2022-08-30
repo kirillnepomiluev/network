@@ -1,6 +1,10 @@
+import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/profile/home_page.dart';
+import 'dart:ui' as ui;
+import 'package:blurrycontainer/blurrycontainer.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -8,6 +12,59 @@ class ProfilePage extends StatefulWidget {
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
+
+Widget blurContainer({double sigma = 10, double width=double.infinity, double height = double.infinity, required Widget child}) => SizedBox(
+  width: width,
+  height: height,
+  child: Stack(children: [
+    child,
+    // Container(
+    //   decoration: BoxDecoration(
+    //     color: ConstColor.salad100,
+    //     shape: BoxShape.circle,
+    //   ),
+    //   child: Center(child: Text('фывфывф', style: TextStyle(color: Colors.black),)),
+    // ),
+
+    BackdropFilter(
+      filter: ui.ImageFilter.blur(
+        sigmaX: sigma,
+        sigmaY: sigma,
+      ),
+      child: Container(
+      ),
+    ),
+
+  ],),
+);
+
+
+
+Widget blurCircle({double sigma = 55, double radius = 271}) => SizedBox(
+  width: radius,
+  height: radius,
+  child: Stack(children: [
+    Container(
+      decoration: BoxDecoration(
+        color: ConstColor.salad100,
+        shape: BoxShape.circle,
+      ),
+      child: Center(child: Text('фывфывф', style: TextStyle(color: Colors.black),)),
+    ),
+
+    BackdropFilter(
+      filter: ui.ImageFilter.blur(
+        sigmaX: sigma,
+        sigmaY: sigma,
+      ),
+      child: Container(
+      ),
+    ),
+
+  ],),
+);
+
+
 
 class _ProfilePageState extends State<ProfilePage> {
   int _activeProfileTab = 1;
@@ -24,16 +81,19 @@ class _ProfilePageState extends State<ProfilePage> {
               _activeProfileTab = position;
             });
           }),
-          child: Container(
+          child: BlurryContainer(
+            blur: 10,
+            color: ConstColor.halfWhite,
+            borderRadius: BorderRadius.circular(20),
             // width: 140,
             height: 56,
             // padding: EdgeInsets.all(5),
-            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-            decoration: BoxDecoration(
-                color: ConstColor.halfWhite,
-                borderRadius: BorderRadius.circular(20),
-                // border: Border.all(width: _activeProfileTab == position ? 2 : 0)
-              ),
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+            // decoration: BoxDecoration(
+            //     color: ConstColor.halfWhite,
+            //     borderRadius: BorderRadius.circular(20),
+            //     // border: Border.all(width: _activeProfileTab == position ? 2 : 0)
+            //   ),
 
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,7 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
 
                 _activeProfileTab==position?
-                    Icon(Icons.person_outline, size: 22, color: Colors.white,)
+                    const Icon(Network.person, size: 20, color: Colors.white,)
                 : Container(),
 
                 Padding(
@@ -71,56 +131,53 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       );
 
+
   @override
   Widget build(BuildContext context) {
+    final mediaHeight = MediaQuery.of(context).size.height;
+    final mediaWitdh = MediaQuery.of(context).size.width;
+    final mediaRadius = MediaQuery.of(context).size.width*0.45;
+
+    print('width - ${mediaWitdh*0.45}');
     return Scaffold(
         extendBody: true,
-        // backgroundColor: Colors.grey.shade400,
-        // backgroundColor: ConstantsColor.darkSalad,
-        backgroundColor: Colors.black,
+        backgroundColor: ConstColor.blackBack,
         body: Stack(
           children: [
+            // Container(
+            //   color: ConstColor.darkSalad.withOpacity(0.4),
+            //   // color: Colors.black.withOpacity(0.9),
+            // ),
 
-            Container(
-              color: ConstColor.halfDarkSalad,
+            Positioned(
+            top: -mediaRadius*0.05,
+            right: -mediaRadius*0.22,
+              child:
+              blurCircle(
+                radius: mediaRadius,
+                sigma: 0,
+              )
             ),
 
             Positioned(
-              top: -210,
-              right: -260,
-              child: Container(
-                width: 600,
-                height: 600,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: RadialGradient(colors: [
-                    ConstColor.salad100.withOpacity(0.7),
-                    ConstColor.salad100.withOpacity(0.65),
-                    ConstColor.salad100.withOpacity(0.5),
-                    ConstColor.salad100.withOpacity(0.3),
-                    ConstColor.salad100.withOpacity(0.1),
-                    ConstColor.salad100.withOpacity(0),
-                  ], radius: 0.35),
-                ),
-              ),
+                top: mediaHeight*0.43,
+                left: -mediaRadius*0.85,
+                child:
+                blurCircle(
+                  radius: mediaRadius,
+                  sigma: mediaRadius * 0.33,
+                  // sigma: 0,
+                )
             ),
 
             Positioned(
-              top: 200,
-              left: -350,
-              child: Container(
-                width: 500,
-                height: 500,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: RadialGradient(colors: [
-                    ConstColor.salad100.withOpacity(0.5),
-                    ConstColor.salad100.withOpacity(0.3),
-                    ConstColor.salad100.withOpacity(0),
-                    ConstColor.salad100.withOpacity(0),
-                  ], radius: 0.7),
-                ),
-              ),
+              top: 175,
+              // top: mediaHeight*0.2,
+                right: 0,
+                child: Container(
+                    // width: 715,
+                    // height: 679,
+                    child: Image.asset('assets/images/2.png'))
             ),
 
             Padding(
@@ -165,10 +222,15 @@ class _ProfilePageState extends State<ProfilePage> {
                                           width: 58,
                                           height: 58,
                                           decoration: BoxDecoration(
-                                            color: Colors.white70,
+                                            image: DecorationImage(
+                                              image: AssetImage('assets/images/1.png')
+                                            ),
+                                            // image: Image.asset('assets/images/1.png'),
+                                            // color: Colors.white70,
                                             borderRadius:
                                                 BorderRadius.circular(15),
                                           ),
+                                          // child: Image.asset('assets/images/1.png', fit: BoxFit.fill,),
                                         ),
                                       ),
                                       Column(
@@ -195,8 +257,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                                             69),
                                                     color: ConstColor
                                                         .halfWhite),
-                                                child: Center(
-                                                    child: const Text(
+                                                child: const Center(
+                                                    child: Text(
                                                   'я люблю веселиться 😁',
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.w400,
@@ -235,7 +297,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
+                                    const Text(
                                       'Имя аватара',
                                       style: TextStyle(
                                         color: Colors.white,
@@ -271,15 +333,15 @@ class _ProfilePageState extends State<ProfilePage> {
                                           child: Row(
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
+                                            children: const [
 
                                               Icon(Icons.check, size: 22, color: Colors.black,),
 
                                               Padding(
-                                                padding: const EdgeInsets.only(left: 5),
+                                                padding: EdgeInsets.only(left: 5),
                                                 child: Text(
                                                   'Готов к встрече',
-                                                  style: const TextStyle(
+                                                  style: TextStyle(
                                                       color: Colors.black,
                                                       fontSize: 14,
                                                       fontWeight: FontWeight.w500
@@ -379,131 +441,248 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
             ),
+
           ],
         ),
+
         bottomNavigationBar: InkWell(
           onTap: (() {
             openBottomSheetProfile();
           }),
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
+          child: Container(
+            color: Colors.transparent,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
 
-            Positioned(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 120,
-                    decoration: BoxDecoration(
-                        color: ConstColor.halfWhite,
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(35))
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 120,
+                        decoration: BoxDecoration(
+                            color: ConstColor.halfWhite,
+                            borderRadius:
+                            BorderRadius.only(
+                                topLeft: Radius.circular(30),
+                                topRight: Radius.circular(25)
+                            )
+                        ),
+                      ),
                     ),
 
+                    Container(
+                      alignment: Alignment.bottomCenter,
+                      color: ConstColor.halfWhite,
+                      // color: Colors.green,
+                      width: mediaWitdh*0.31,
+                      // width: MediaQuery.of(context).size.width,
+                      height: 120,
+                      // decoration: BoxDecoration(
+                      //     color: ConstantsColor.halfWhite,
+                      //     borderRadius:
+                      //         BorderRadius.vertical(top: Radius.circular(35))),
+                    ),
+
+                    Expanded(
+                      child: Container(
+                        // width: MediaQuery.of(context).size.width,
+                        height: 120,
+                        decoration: BoxDecoration(
+                            color: ConstColor.halfWhite,
+                            //   color: Colors.red,
+                            borderRadius:
+                            // BorderRadius.vertical(top: Radius.circular(35))
+                            BorderRadius.only(
+                                topLeft: Radius.circular(25),
+                                topRight: Radius.circular(30)
+                            )
+                        ),
+                      ),
+                    ),
+
+
+
+                  ],
                 ),
-              ),
 
-              // Row(
-              //   children: [
-              //     Expanded(
-              //       child: Container(
-              //         // width: MediaQuery.of(context).size.width,
-              //         height: 120,
-              //         decoration: BoxDecoration(
-              //             color: Colors.red,
-              //             // color: ConstantsColor.halfWhite,
-              //             borderRadius:
-              //             BorderRadius.only(
-              //                 topLeft: Radius.circular(35),
-              //                 topRight: Radius.circular(20)
-              //             )
-              //         ),
-              //       ),
-              //     ),
-              //
-              //     Expanded(
-              //       child: Container(
-              //         alignment: Alignment.bottomCenter,
-              //         // color: ConstantsColor.halfWhite,
-              //         color: Colors.green,
-              //         // width: MediaQuery.of(context).size.width,
-              //         height: 50,
-              //         // decoration: BoxDecoration(
-              //         //     color: ConstantsColor.halfWhite,
-              //         //     borderRadius:
-              //         //         BorderRadius.vertical(top: Radius.circular(35))),
-              //       ),
-              //     ),
-              //
-              //     Expanded(
-              //       child: Container(
-              //         // width: MediaQuery.of(context).size.width,
-              //         height: 120,
-              //         decoration: BoxDecoration(
-              //           // color: ConstantsColor.halfWhite,
-              //             color: Colors.red,
-              //             borderRadius:
-              //             // BorderRadius.vertical(top: Radius.circular(35))
-              //             BorderRadius.only(
-              //                 topLeft: Radius.circular(20),
-              //                 topRight: Radius.circular(30)
-              //             )
-              //         ),
-              //       ),
-              //     ),
-              //
-              //
-              //
-              //   ],
-              // ),
+                Positioned(
+                  bottom: 80,
+                  child: Container(
+                    width: mediaWitdh*0.4,
+                    height: mediaWitdh*0.4*0.76,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(70),
+                        // shape: BoxShape.circle,
+                        color:
+                        // Colors.white
+                        ConstColor.blackBack
 
-              Positioned(
-                bottom: 90,
-                child: Container(
-                  width: 168,
-                  height: 128,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(70),
-                      // shape: BoxShape.circle,
-                      color:
-                      Colors.black
-
-                    // ConstantsColor.halflBlack
-
+                    ),
                   ),
                 ),
-              ),
 
-              Positioned(
-                bottom: 90,
-                child: Container(
-                  width: 168,
-                  height: 128,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(70),
-                      // shape: BoxShape.circle,
-                      color:
-                  ConstColor.halfDarkSalad
-
-                  // ConstantsColor.halflBlack
-
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 0,
-                child: Container(
-                  height: 5,
-                  width: 40,
-                  decoration: BoxDecoration(
+                // Positioned(
+                //   bottom: 80,
+                //   child: Container(
+                //     width: 168,
+                //     height: 128,
+                //     decoration: BoxDecoration(
+                //       borderRadius: BorderRadius.circular(70),
+                //         // shape: BoxShape.circle,
+                //         color: Colors.white
+                //         // color: ConstColor.halfDarkSalad
+                //
+                //     // ConstantsColor.halflBlack
+                //
+                //     ),
+                //   ),
+                // ),
+                Positioned(
+                  top: 0,
+                  child: Container(
+                    height: 5,
+                    width: 40,
+                    decoration: BoxDecoration(
                       // shape: BoxShape.circle,
                       color:
                       // Colors.white
-                  ConstColor.halfWhite,
+                      ConstColor.halfWhite,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ));
+        )
+
+        // bottomNavigationBar: InkWell(
+        //   onTap: (() {
+        //     openBottomSheetProfile();
+        //   }),
+        //   child: Container(
+        //     color: Colors.transparent,
+        //     child: Stack(
+        //       alignment: Alignment.center,
+        //       children: [
+        //
+        //       // Positioned(
+        //       //       child: Container(
+        //       //         width: MediaQuery.of(context).size.width,
+        //       //         height: 120,
+        //       //         decoration: BoxDecoration(
+        //       //             color: ConstColor.halfWhite,
+        //       //             borderRadius: const BorderRadius.vertical(top: Radius.circular(30))
+        //       //         ),
+        //       //
+        //       //     ),
+        //       //   ),
+        //
+        //         Row(
+        //           children: [
+        //             Expanded(
+        //               child: Container(
+        //                 // width: MediaQuery.of(context).size.width,
+        //                 height: 120,
+        //                 decoration: BoxDecoration(
+        //                     // color: Colors.red,
+        //                     color: ConstColor.halfWhite,
+        //                     borderRadius:
+        //                     BorderRadius.only(
+        //                         topLeft: Radius.circular(35),
+        //                         topRight: Radius.circular(20)
+        //                     )
+        //                 ),
+        //               ),
+        //             ),
+        //
+        //             Container(
+        //               alignment: Alignment.bottomCenter,
+        //               color: ConstColor.halfWhite,
+        //               // color: Colors.green,
+        //               width: mediaWitdh*0.38,
+        //               // width: MediaQuery.of(context).size.width,
+        //               height: 120,
+        //               // decoration: BoxDecoration(
+        //               //     color: ConstantsColor.halfWhite,
+        //               //     borderRadius:
+        //               //         BorderRadius.vertical(top: Radius.circular(35))),
+        //             ),
+        //
+        //             Expanded(
+        //               child: Container(
+        //                 // width: MediaQuery.of(context).size.width,
+        //                 height: 120,
+        //                 decoration: BoxDecoration(
+        //                   color: ConstColor.halfWhite,
+        //                   //   color: Colors.red,
+        //                     borderRadius:
+        //                     // BorderRadius.vertical(top: Radius.circular(35))
+        //                     BorderRadius.only(
+        //                         topLeft: Radius.circular(20),
+        //                         topRight: Radius.circular(30)
+        //                     )
+        //                 ),
+        //               ),
+        //             ),
+        //
+        //
+        //
+        //           ],
+        //         ),
+        //
+        //         Positioned(
+        //           bottom: 80,
+        //           child: Container(
+        //             width: mediaWitdh*0.45,
+        //             height: mediaWitdh*0.45*0.76,
+        //             decoration: BoxDecoration(
+        //                 borderRadius: BorderRadius.circular(70),
+        //                 // shape: BoxShape.circle,
+        //                 color:
+        //                 // Colors.white
+        //               ConstColor.blackBack
+        //
+        //             ),
+        //           ),
+        //         ),
+        //
+        //         // Positioned(
+        //         //   bottom: 80,
+        //         //   child: Container(
+        //         //     width: 168,
+        //         //     height: 128,
+        //         //     decoration: BoxDecoration(
+        //         //       borderRadius: BorderRadius.circular(70),
+        //         //         // shape: BoxShape.circle,
+        //         //         color: Colors.white
+        //         //         // color: ConstColor.halfDarkSalad
+        //         //
+        //         //     // ConstantsColor.halflBlack
+        //         //
+        //         //     ),
+        //         //   ),
+        //         // ),
+        //         Positioned(
+        //           top: 0,
+        //           child: Container(
+        //             height: 5,
+        //             width: 40,
+        //             decoration: BoxDecoration(
+        //                 // shape: BoxShape.circle,
+        //                 color:
+        //                 // Colors.white
+        //             ConstColor.halfWhite,
+        //             ),
+        //           ),
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        // )
+
+
+    );
   }
 
   void openBottomSheetProfile() {

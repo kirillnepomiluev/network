@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/profile/home_page.dart';
 
 
@@ -205,10 +206,10 @@ class _ChatPageState extends State<ChatPage> {
                                         child: IconButton(
                                           onPressed: () {},
                                           icon: const Icon(
-                                            Icons.person_outline,
+                                            Network.person,
                                             color: Colors.black,
                                           ),
-                                          iconSize: 20,
+                                          iconSize: 18,
                                         )),
                                   ),
 
@@ -224,7 +225,8 @@ class _ChatPageState extends State<ChatPage> {
                                           width: 16,
                                           height: 16,
                                           child:
-                                          const Icon(Icons.electric_bolt, size: 9, color: Colors.white,)
+                                          const Icon(
+                                              Network.electric, size: 9, color: Colors.white,)
                                       )
 
                                   )

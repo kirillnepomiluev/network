@@ -1,6 +1,8 @@
+import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/chat/messages_page.dart';
+import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/meetings/meetings_page.dart';
 import 'package:network_app/profile/profile_page.dart';
@@ -70,8 +72,8 @@ class _HomePageState extends State<HomePage> {
             // itemPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
             // padding: EdgeInsets.symmetric(vertical: 0, horizontal: 1),
             itemPadding:
-                EdgeInsets.only(left: 15, right: 15, top: 13, bottom: 13),
-            padding: EdgeInsets.only(left: 3, right: 3, top: 0, bottom: 0),
+                const EdgeInsets.only(left: 15, right: 15, top: 13, bottom: 13),
+            padding: const EdgeInsets.only(left: 3, right: 3, top: 0, bottom: 0),
             backgroundColor: Colors.transparent,
             selectedIndex: _currentPage,
             onTap: (int index) {
@@ -79,13 +81,16 @@ class _HomePageState extends State<HomePage> {
               setState(() => _currentPage = index);
             },
             items: <BottomBarItem>[
-              barItem(icon: Icons.people_outline, text: 'Встречи'),
-              barItem(icon: Icons.person_outline, text: 'Профиль'),
+              // barItem(icon: Icons.people_outline, text: 'Встречи'),
+              barItem(icon: Network.people, text: 'Встречи'),
+
+              barItem(icon: Network.person, text: 'Профиль'),
               barItem(
+                iconSize: 18,
                   icon: Icons.account_balance_wallet_outlined,
                   text: 'Инвентарь'),
-              barItem(icon: Icons.chat_bubble_outline, text: 'Чат'),
-              barItem(icon: Icons.shopping_bag_outlined, text: 'Магазин'),
+              barItem(icon: Network.chat, text: 'Чат'),
+              barItem(icon: Network.bag, text: 'Магазин'),
             ],
           ),
         ),
@@ -93,10 +98,11 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  BottomBarItem barItem({required IconData icon, required String text}) =>
+  BottomBarItem barItem({required IconData icon, double iconSize = 16, required String text}) =>
       BottomBarItem(
           icon: Icon(
             icon,
+            size: iconSize,
             color: Colors.black,
           ),
           title: Text(
@@ -105,6 +111,7 @@ class _HomePageState extends State<HomePage> {
           ),
           activeColor: ConstColor.salad100,
           inactiveIcon: Icon(
+            size: iconSize+6,
             icon,
             color: Colors.white,
           ),
@@ -114,59 +121,99 @@ class _HomePageState extends State<HomePage> {
 Widget statContainer({required String title, required String subtitle}) =>
     Padding(
       padding: const EdgeInsets.only(right: 10),
-      child: Stack(
-        children: [
-          BackdropFilter(
-            filter: ui.ImageFilter.blur(
-              sigmaX: 0.1,
-              sigmaY: 0.1,
-            ),
-            child: Container(
-              height: 162,
-              width: 107,
-              decoration: BoxDecoration(
-                  color: ConstColor.halfWhite,
-                  borderRadius: BorderRadius.circular(50)),
-            ),
-          ),
-          Container(
-            // height: 140,
-            // width: 95,
-            height: 162,
-            width: 107,
-            decoration: BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(73)),
+      child:
 
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                title == ''
-                    ? Container()
-                    : Text(
-                        title,
-                        style: const TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white),
-                      ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 5),
-                  child: Text(
-                    subtitle,
-                    style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white),
-                    textAlign: TextAlign.center,
-                  ),
-                )
-              ],
+      BlurryContainer(
+        blur: 10,
+        height: 162,
+        width: 107,
+        // decoration: BoxDecoration(
+            color: ConstColor.halfWhite,
+            borderRadius: BorderRadius.circular(73),
+        // ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            title == ''
+                ? Container()
+                : Text(
+              title,
+              style: const TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white),
             ),
-          ),
-        ],
-      ),
+            Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: Text(
+                subtitle,
+                style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
+                textAlign: TextAlign.center,
+              ),
+            )
+          ],
+        ),
+      )
+
+      // Stack(
+      //   children: [
+      //     BackdropFilter(
+      //       filter: ui.ImageFilter.blur(
+      //         sigmaX: 0.1,
+      //         sigmaY: 0.1,
+      //       ),
+      //       child: Container(
+      //         height: 162,
+      //         width: 107,
+      //         decoration: BoxDecoration(
+      //             color: ConstColor.halfWhite,
+      //             borderRadius: BorderRadius.circular(50)),
+      //       ),
+      //     ),
+      //     Container(
+      //       // height: 140,
+      //       // width: 95,
+      //       height: 162,
+      //       width: 107,
+      //       decoration: BoxDecoration(
+      //           color: Colors.transparent,
+      //           borderRadius: BorderRadius.circular(73)),
+      //
+      //       child: Column(
+      //         mainAxisAlignment: MainAxisAlignment.center,
+      //         crossAxisAlignment: CrossAxisAlignment.center,
+      //         children: [
+      //           title == ''
+      //               ? Container()
+      //               : Text(
+      //                   title,
+      //                   style: const TextStyle(
+      //                       fontSize: 28,
+      //                       fontWeight: FontWeight.w500,
+      //                       color: Colors.white),
+      //                 ),
+      //           Padding(
+      //             padding: const EdgeInsets.only(top: 5),
+      //             child: Text(
+      //               subtitle,
+      //               style: const TextStyle(
+      //                   fontSize: 16,
+      //                   fontWeight: FontWeight.w500,
+      //                   color: Colors.white),
+      //               textAlign: TextAlign.center,
+      //             ),
+      //           )
+      //         ],
+      //       ),
+      //     ),
+      //   ],
+      // ),
+      //
+
     );
 
 Widget titleStatText(String text) => Padding(
@@ -235,10 +282,10 @@ Widget progressParametr(
 Widget hobbitsContainer(String text) => Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-          color: Colors.grey.shade300, borderRadius: BorderRadius.circular(15)),
+          color: Colors.grey.shade300, borderRadius: BorderRadius.circular(22)),
       child: Text(
         text,
-        style: const TextStyle(fontSize: 12),
+        style: const TextStyle(fontSize: 14),
       ),
     );
 

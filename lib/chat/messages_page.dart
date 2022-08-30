@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/chat/chat_page.dart';
+import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/profile/home_page.dart';
 
 class MessagesPage extends StatefulWidget {
@@ -223,10 +224,10 @@ class _MessagesPageState extends State<MessagesPage> {
               child: IconButton(
                 onPressed: () {},
                 icon: const Icon(
-                  Icons.person_outline,
+                  Network.person,
                   color: Colors.black,
                 ),
-                iconSize: 20,
+                iconSize: 18,
               )),
 
           const Padding(
@@ -353,10 +354,10 @@ class _MessagesPageState extends State<MessagesPage> {
                         child: IconButton(
                           onPressed: () {},
                           icon: const Icon(
-                            Icons.person_outline,
+                            Network.person,
                             color: Colors.black,
                           ),
-                          iconSize: 20,
+                          iconSize: 18,
                         )),
                   ),
 

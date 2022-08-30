@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/profile/home_page.dart';
 import 'package:network_app/store/view_prod_avatar_page.dart';
-import 'dart:ui' as ui;
+// import 'dart:ui' as ui;
 
 class ViewCategoryAvatarPage extends StatefulWidget {
   const ViewCategoryAvatarPage({Key? key}) : super(key: key);
@@ -185,7 +185,7 @@ Widget avatarContainer(
         child: Container(
           // height: isBoxes? 220 : null,
           // padding: EdgeInsets.all(isView ? 30 : 15),
-          padding: isView? EdgeInsets.all(15) : EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+          padding: isView? const EdgeInsets.all(15) : const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           decoration: BoxDecoration(
             color: isView? Colors.white : ConstColor.halfWhite,
             borderRadius: BorderRadius.circular(15),
@@ -200,7 +200,7 @@ Widget avatarContainer(
               isBoxes
                   ? Container()
                   : Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         bottom: 10,
                       ),
                       child: Text(
@@ -219,7 +219,10 @@ Widget avatarContainer(
                   height: contHeight-144,
                   // height: contHeight-180,
                   decoration: BoxDecoration(
-                      color: Colors.red,
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/${strCategory=='Обычный'? '4': '3'}.png')
+                    ),
+                      // color: Colors.red,
                       borderRadius: BorderRadius.circular(10)),
                 ),
               ),
@@ -268,7 +271,7 @@ Widget avatarContainer(
                                       ),
                                       isView == false
                                           ? Container()
-                                          : Padding(
+                                          : const Padding(
                                               padding: EdgeInsets.only(left: 50),
                                               child: Text(
                                                 '1.6 SOL',
@@ -281,8 +284,8 @@ Widget avatarContainer(
                                     ],
                                   ),
 
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 2),
+                                  const Padding(
+                                    padding: EdgeInsets.only(top: 2),
                                     child: Text(
                                       '#0863246',
                                       style: TextStyle(
@@ -305,7 +308,7 @@ Widget avatarContainer(
                                 child: IconButton(onPressed: (){
                                   Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const ViewProdAvatarPage()));
                                 },
-                                  icon: Icon(Icons.keyboard_arrow_right,
+                                  icon: const Icon(Icons.keyboard_arrow_right,
                                     size: 20,
                                     color: Colors.white,),
                                 ),
@@ -317,7 +320,7 @@ Widget avatarContainer(
                           isView
                               ? Container()
                               : Padding(
-                                  padding: EdgeInsets.only(top: 10),
+                                  padding: const EdgeInsets.only(top: 10),
                                   child: Text(
                                     '1.6 SOL',
                                     style: TextStyle(
@@ -333,7 +336,7 @@ Widget avatarContainer(
                               direction: Axis.horizontal,
                               alignment: WrapAlignment.spaceBetween,
                               children: [
-                                Text(
+                                const Text(
                                   'Уровень 6',
                                   style: TextStyle(
                                       // fontSize: isView ? 11 : 10,
@@ -342,7 +345,7 @@ Widget avatarContainer(
                                 ),
                                 Text(
                                   isView ? '+150 баллов' : 'Баллы +150',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       // fontSize: isView ? 11 : 10,
                                     fontSize: 12,
                                       color: ConstColor.grey),

@@ -4,7 +4,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:network_app/auth/login_page.dart';
 import 'package:network_app/profile/home_page.dart';
 
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -52,8 +51,6 @@ class MyApp extends StatelessWidget {
       home:
       // const FirstPage(),
       const HomePage(),
-
-
     );
   }
 }
@@ -66,7 +63,6 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
-
   @override
   void initState() {
     SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
@@ -78,30 +74,18 @@ class _FirstPageState extends State<FirstPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade400,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Icon(Icons.circle, color: Colors.black, size: 56,),
-                Padding(
-                  padding: EdgeInsets.only(left: 5.0),
-                  child: Text('network', style: TextStyle(fontSize: 30, color: Colors.black, fontWeight: FontWeight.w600),),
-                )
-              ],),
+      body:
 
-            Padding(
-              padding: const EdgeInsets.only(top: 50),
-              child: ElevatedButton(onPressed: (){
-                Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const LoginPage()));
-              }, child: const Text('Далее')),
-            )
-          ],
+      Center(
+        child: InkWell(
+          onTap: (){
+            Navigator.of(context).push(MaterialPageRoute<void>(
+                builder: (context) => const LoginPage()));
+          },
+          child: newtworkRow(),
         ),
       ),
+
     );
   }
 }
@@ -111,3 +95,34 @@ class _FirstPageState extends State<FirstPage> {
 //     return Theme.of(context).textTheme.display4.copyWith(fontSize: 192.0);
 //   }
 // }
+
+Widget newtworkRow({bool isAppBar = false}) => Row(
+  mainAxisAlignment: isAppBar? MainAxisAlignment.start : MainAxisAlignment.center,
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: [
+    // Icon(
+    //   Icons.circle,
+    //   color: Colors.black,
+    //   size: 53,
+    // ),
+    Container(
+      width: 53,
+      height: 53,
+      decoration: BoxDecoration(
+          color: Colors.black,
+          shape: BoxShape.circle
+      ),
+    ),
+
+    Padding(
+      padding: EdgeInsets.only(left: 15.0),
+      child: Text(
+        'network',
+        style: TextStyle(
+            fontSize: 34,
+            color: Colors.black,
+            fontWeight: FontWeight.w600),
+      ),
+    )
+  ],
+);

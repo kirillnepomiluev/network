@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/profile/home_page.dart';
 import 'package:network_app/store/view_prod_hat.dart';
-import 'dart:ui' as ui;
+// import 'dart:ui' as ui;
 
 class ViewCategoryHatsPage extends StatefulWidget {
   const ViewCategoryHatsPage({Key? key}) : super(key: key);
@@ -219,7 +219,7 @@ Widget hatContainer({
               builder: (context) => const ViewProdHatPage()));
         }),
         child: Container(
-          padding: EdgeInsets.all(12),
+          padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
             color: isView? Colors.white : ConstColor.halfWhite,
             borderRadius: BorderRadius.circular(12),
@@ -231,7 +231,7 @@ Widget hatContainer({
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   bottom: 10,
                 ),
                 child: Text(
@@ -245,10 +245,14 @@ Widget hatContainer({
                 // height: contWidth * 0.7,
                 height: contHeight- 120.1,
                 decoration: BoxDecoration(
-                    color: Colors.red, borderRadius: BorderRadius.circular(10)),
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/${strCategory=='Обычный'? '4': '3'}.png')
+                    ),
+                    // color: Colors.red,
+                    borderRadius: BorderRadius.circular(10)),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(top: 20),
                 child: Text(
                   '1.6 SOL',
                   style: TextStyle(
@@ -256,8 +260,8 @@ Widget hatContainer({
                       fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 2, bottom: 10),
+              const Padding(
+                padding: EdgeInsets.only(top: 2, bottom: 10),
                 child: Text(
                   '#0863246',
                   style: TextStyle(fontSize: 12, color: ConstColor.grey),

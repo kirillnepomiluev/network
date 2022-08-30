@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/meetings/matching_page.dart';
 import 'package:network_app/profile/home_page.dart';
 
@@ -142,7 +143,8 @@ class _InvitationsPageState extends State<InvitationsPage> {
                     width: 70,
                     height: 70,
                     child:
-                    IconButton(onPressed: (){}, icon: const Icon(Icons.person_outline, color: Colors.black,), iconSize: 30,)
+                    IconButton(onPressed: (){}, icon: const Icon(
+                      Network.person, color: Colors.black,), iconSize: 28,)
                 ),
 
                 Padding(

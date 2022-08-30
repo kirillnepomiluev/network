@@ -21,29 +21,17 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Padding(
-          padding: const EdgeInsets.only(top: 15),
-          child: InkWell(
-            onTap: ((){
-              Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const FirstPage()));
-
-            }),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Icon(Icons.circle, color: Colors.black, size: 56,),
-                Padding(
-                  padding: EdgeInsets.only(left: 5.0),
-                  child: Text('network', style: TextStyle(fontSize: 30, color: Colors.black,),),
-                )
-              ],),
-          ),
+          padding: const EdgeInsets.only(top: 10),
+          child: newtworkRow(isAppBar: true),
         ),
 
       ),
-      body: ListView(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 45),
+            padding: const EdgeInsets.only(top: 55),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               // mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   // alignment: Alignment.centerRight,
                   width: 270,
-                  height: 275,
+                  height: 289,
                   decoration: const BoxDecoration(
                     color: Colors.red,
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
@@ -69,18 +57,14 @@ class _LoginPageState extends State<LoginPage> {
                 const Padding(
                   padding: EdgeInsets.only(top: 36),
                   child: Text('Главное в связах\n - это связи', style: TextStyle(
-                    fontSize: 34,
-                    // letterSpacing: 1.5,
-                    // wordSpacing: 0,
-                    // color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    // fontFamily: 'Inter'
+                    fontSize: 36,
+                    fontWeight: FontWeight.w700,
                   ),),
                 ),
 
                 Padding(
                   // padding: const EdgeInsets.only(left: 15, top: 45),
-                  padding: const EdgeInsets.only(top: 45),
+                  padding: const EdgeInsets.only(top: 51),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     // crossAxisAlignment: CrossAxisAlignment.center,
@@ -94,15 +78,17 @@ class _LoginPageState extends State<LoginPage> {
                             backgroundColor: MaterialStateProperty.all(Colors.white),
                             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(15),
                                   // side: BorderSide(color: Colors.red)
                                 )
                             )
                           // backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
                         ),
                         child: const Padding(
-                          padding: EdgeInsets.only(left: 45, right: 45, top: 19, bottom: 19),
-                          child: Text('Войти', style: TextStyle(fontSize: 18, color: Colors.black),),
+                          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 57,),
+                          child: Text('Войти', style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18, color: Colors.black),),
                         ),
                       ),
 
