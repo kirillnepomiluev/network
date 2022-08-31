@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/auth/login_page.dart';
 import 'package:network_app/auth/phone_auth_page.dart';
 import 'package:network_app/auth/recovery_page.dart';
+import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/main.dart';
 
@@ -11,54 +13,44 @@ class LoginSecondPage extends StatefulWidget {
   State<LoginSecondPage> createState() => _LoginSecondPageState();
 }
 
-
 class _LoginSecondPageState extends State<LoginSecondPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade400,
-      bottomNavigationBar:
-      BottomAppBar(
-        color: Colors.transparent,
-        elevation: 0,
-        child:
-        Padding(
-          padding: EdgeInsets.only(bottom: 15, right: MediaQuery.of(context).size.width*0.1),
-          child: InkWell(
-            onTap:((){
-              Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const RecoveryPage()));
-            }),
-            child: const Text('Проблемы со входом?', style: TextStyle(
-                decoration: TextDecoration.underline,
-                fontWeight: FontWeight.w600
-            ),
-              textAlign: TextAlign.end,
-            ),
-          ),
-        )),
+      bottomNavigationBar: Padding(
+          padding: const EdgeInsets.only(bottom: 20, right: 20),
+          child: troubleEnter(context)),
+
+      // BottomAppBar(
+      //     color: Colors.transparent,
+      //     elevation: 0,
+      //     child: Padding(
+      //       padding: EdgeInsets.only(
+      //           bottom: 15, right: MediaQuery.of(context).size.width * 0.1),
+      //       child: InkWell(
+      //         onTap: (() {
+      //           Navigator.of(context).push(MaterialPageRoute<void>(
+      //               builder: (context) => const RecoveryPage()));
+      //         }),
+      //         child: const Text(
+      //           'Проблемы со входом?',
+      //           style: TextStyle(
+      //               decoration: TextDecoration.underline,
+      //               fontWeight: FontWeight.w600),
+      //           textAlign: TextAlign.end,
+      //         ),
+      //       ),
+      //     )),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         toolbarHeight: 65,
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Padding(
-          padding: const EdgeInsets.only(top: 15),
-          child: InkWell(
-            onTap: ((){
-                  Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const FirstPage()));
-            }),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Icon(Icons.circle, color: Colors.black, size: 56,),
-                Padding(
-                  padding: EdgeInsets.only(left: 5.0),
-                  child: Text('network', style: TextStyle(fontSize: 30, color: Colors.black,),),
-                )
-              ],),
-          ),
+          padding: const EdgeInsets.only(top: 10),
+          child: newtworkRow(isAppBar: true),
         ),
-
       ),
       body: Center(
         child: Column(
@@ -66,19 +58,27 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width*0.8,
-              child: const Text(Constants.strLoremIpsum, textAlign: TextAlign.center, style: TextStyle(color: Colors.black),),
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: const Text(
+                Constants.strLoremIpsum,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black),
+              ),
             ),
 
             //Войти по номеру телефона
             Padding(
-              padding: const EdgeInsets.only(top: 30),
+              padding: const EdgeInsets.only(top: 57),
               child: InkWell(
-                onTap: ((){
-                  Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const PhoneAuthPage()));
+                onTap: (() {
+                  Navigator.of(context).push(MaterialPageRoute<void>(
+                      builder: (context) => const PhoneAuthPage()));
                 }),
                 child: Container(
-                    width: MediaQuery.of(context).size.width*0.8,
+                    width: MediaQuery.of(context).size.width * 0.8,
                     padding: const EdgeInsets.all(15),
                     // width: 60,
                     height: 60,
@@ -87,20 +87,27 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child:
-                    // const Center(child: Text('F', style: TextStyle(color: Colors.blue, fontSize: 20),),),
-                    Row(
+                        // const Center(child: Text('F', style: TextStyle(color: Colors.blue, fontSize: 20),),),
+                        Row(
                       // mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         Padding(
-                          padding: EdgeInsets.only(left: 15, right: 8),
-                          child: Icon(Icons.phone_in_talk_sharp, color: Colors.white, size: 25),
+                          padding: EdgeInsets.only(left: 15, right: 10),
+                          child:
+                              Icon(Network.call, color: Colors.white, size: 22),
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 8, right: 8),
-                          child: Text('Войти по номеру телефона', style: TextStyle(fontSize: 17, color: Colors.white, fontWeight: FontWeight.w500),),
+                          child: Text(
+                            'Войти по номеру телефона',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500),
+                          ),
                         )
-                      ],)
-                ),
+                      ],
+                    )),
               ),
             ),
 
@@ -108,10 +115,9 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
             Padding(
               padding: const EdgeInsets.only(top: 30),
               child: InkWell(
-                onTap: ((){
-                }),
+                onTap: (() {}),
                 child: Container(
-                    width: MediaQuery.of(context).size.width*0.8,
+                    width: MediaQuery.of(context).size.width * 0.8,
                     padding: const EdgeInsets.all(15),
                     // width: 60,
                     height: 60,
@@ -120,22 +126,32 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child:
-                    // const Center(child: Text('F', style: TextStyle(color: Colors.blue, fontSize: 20),),),
-                    Row(
+                        // const Center(child: Text('F', style: TextStyle(color: Colors.blue, fontSize: 20),),),
+                        Row(
                       // mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Padding(
-                          padding: EdgeInsets.only(left: 15, right: 8),
-                          child:
-                          // Icon(Icons.phone_in_talk_sharp, color: Colors.white, size: 25),
-                          Text('G', style: TextStyle(color: Colors.red, fontSize: 25),)
+                          padding: EdgeInsets.only(
+                              left: 15, right: 8, top: 4, bottom: 4),
+                          child: Image.asset(
+                            'assets/icons/logo_google.png',
+                          ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 8, right: 8),
-                          child: Text('Войти через Google', style: TextStyle(fontSize: 17, color: Colors.white, fontWeight: FontWeight.w500),),
+                          padding: EdgeInsets.only(
+                            left: 8,
+                            right: 8,
+                          ),
+                          child: Text(
+                            'Войти через Google',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500),
+                          ),
                         )
-                      ],)
-                ),
+                      ],
+                    )),
               ),
             ),
 
@@ -143,10 +159,9 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
             Padding(
               padding: const EdgeInsets.only(top: 30),
               child: InkWell(
-                onTap: ((){
-                }),
+                onTap: (() {}),
                 child: Container(
-                    width: MediaQuery.of(context).size.width*0.8,
+                    width: MediaQuery.of(context).size.width * 0.8,
                     padding: const EdgeInsets.all(15),
                     // width: 60,
                     height: 60,
@@ -155,22 +170,29 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child:
-                    // const Center(child: Text('F', style: TextStyle(color: Colors.blue, fontSize: 20),),),
-                    Row(
+                        // const Center(child: Text('F', style: TextStyle(color: Colors.blue, fontSize: 20),),),
+                        Row(
                       // mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Padding(
-                            padding: EdgeInsets.only(left: 15, right: 8),
-                            child:
-                            // Icon(Icons.phone_in_talk_sharp, color: Colors.white, size: 25),
-                            Text('F', style: TextStyle(color: Colors.blue, fontSize: 25),)
+                          padding: EdgeInsets.only(
+                              left: 8, right: 0, top: 4, bottom: 4),
+                          child: Image.asset(
+                            'assets/icons/logo_facebook.png',
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 8, right: 8),
-                          child: Text('Войти через Facebook', style: TextStyle(fontSize: 17, color: Colors.white, fontWeight: FontWeight.w500),),
+                          child: Text(
+                            'Войти через Facebook',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500),
+                          ),
                         )
-                      ],)
-                ),
+                      ],
+                    )),
               ),
             ),
 
@@ -188,7 +210,6 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
             //             ), textAlign: TextAlign.end,)),
             //   ),
             // ),
-
           ],
         ),
       ),

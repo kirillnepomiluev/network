@@ -92,7 +92,7 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    viewAvatarContainer(),
+                    viewProdAvatar(),
 
                     _statColumn()
 
@@ -108,7 +108,7 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
 
 
 
-  Widget viewAvatarContainer() => Container(
+  Widget viewProdAvatar() => Container(
     width: MediaQuery.of(context).size.width,
     padding: const EdgeInsets.all(10),
     // padding: EdgeInsets.symmetric(vertical: 0, horizontal: 100),
@@ -128,8 +128,8 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
         ),
 
         Container(
-          width: 200,
-          height: 200,
+          width: 234,
+          height: 219,
           decoration: BoxDecoration(
               color: Colors.red,
               borderRadius: BorderRadius.circular(10)

@@ -1,4 +1,3 @@
-import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
@@ -45,11 +44,11 @@ Widget blurCircle({double sigma = 55, double radius = 271}) => SizedBox(
   height: radius,
   child: Stack(children: [
     Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: ConstColor.salad100,
         shape: BoxShape.circle,
       ),
-      child: Center(child: Text('фывфывф', style: TextStyle(color: Colors.black),)),
+      child: const Center(child: Text('фывфывф', style: TextStyle(color: Colors.black),)),
     ),
 
     BackdropFilter(
@@ -136,9 +135,13 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWitdh = MediaQuery.of(context).size.width;
+
+    print('mediaWitdh - $mediaWitdh');
+
+    final sheetHeight = 147.00;
+
     final mediaRadius = MediaQuery.of(context).size.width*0.45;
 
-    print('width - ${mediaWitdh*0.45}');
     return Scaffold(
         extendBody: true,
         backgroundColor: ConstColor.blackBack,
@@ -170,14 +173,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 )
             ),
 
+            _activeProfileTab !=1? Container():
             Positioned(
               top: 175,
               // top: mediaHeight*0.2,
                 right: 0,
-                child: Container(
-                    // width: 715,
-                    // height: 679,
-                    child: Image.asset('assets/images/2.png'))
+                child: Image.asset('assets/images/2.png')
             ),
 
             Padding(
@@ -222,7 +223,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           width: 58,
                                           height: 58,
                                           decoration: BoxDecoration(
-                                            image: DecorationImage(
+                                            image: const DecorationImage(
                                               image: AssetImage('assets/images/1.png')
                                             ),
                                             // image: Image.asset('assets/images/1.png'),
@@ -378,20 +379,20 @@ class _ProfilePageState extends State<ProfilePage> {
                             ? Container()
                             : Center(
                                 child: Padding(
-                                  padding: const EdgeInsets.only(top: 80),
+                                  padding: const EdgeInsets.only(top: 156),
                                   child: Column(
                                     // crossAxisAlignment: CrossAxisAlignment.center,
                                     // mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       const Padding(
-                                        padding: EdgeInsets.only(bottom: 20),
+                                        padding: EdgeInsets.only(bottom: 21),
                                         child: Text(
                                           'Шкаф пустой',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 24,
-                                              fontWeight: FontWeight.bold),
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w700),
                                         ),
                                       ),
                                       const Text(
@@ -400,30 +401,29 @@ class _ProfilePageState extends State<ProfilePage> {
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 16,
-                                            fontWeight: FontWeight.w500),
+                                            fontWeight: FontWeight.w400),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(top: 30),
+                                        padding: const EdgeInsets.only(top: 59),
                                         child: InkWell(
                                           onTap: (() {
                                             // Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const RecoveryEmailPage()));
                                           }),
                                           child: Container(
                                             // width: MediaQuery.of(context).size.width*0.8,
-                                            padding: const EdgeInsets.only(
-                                                left: 25,
-                                                right: 25,
-                                                top: 15,
-                                                bottom: 15),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 36,
+                                              vertical: 17
+                                            ),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
-                                                  BorderRadius.circular(25),
+                                                  BorderRadius.circular(52),
                                             ),
                                             child: const Text(
                                               'Посетить магазин',
                                               style: TextStyle(
-                                                  fontSize: 17,
+                                                  fontSize: 16,
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.w500),
                                               textAlign: TextAlign.center,
@@ -445,243 +445,96 @@ class _ProfilePageState extends State<ProfilePage> {
           ],
         ),
 
-        bottomNavigationBar: InkWell(
-          onTap: (() {
-            openBottomSheetProfile();
-          }),
-          child: Container(
-            color: Colors.transparent,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
+        bottomNavigationBar:
 
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 120,
-                        decoration: BoxDecoration(
-                            color: ConstColor.halfWhite,
-                            borderRadius:
-                            BorderRadius.only(
-                                topLeft: Radius.circular(30),
-                                topRight: Radius.circular(25)
-                            )
-                        ),
-                      ),
-                    ),
+        SizedBox(
+          height: sheetHeight,
+          child:
+          _activeProfileTab !=1? Container():
+          InkWell(
+            onTap: (() {
+              openBottomSheetProfile();
+            }),
+            child: Container(
+              alignment: Alignment.bottomCenter,
+              color: Colors.transparent,
+              child:
+              CustomPaint(
+                size: Size(375, sheetHeight),
+                painter: RPSCustomPainter(),
+              ),
 
-                    Container(
-                      alignment: Alignment.bottomCenter,
-                      color: ConstColor.halfWhite,
-                      // color: Colors.green,
-                      width: mediaWitdh*0.31,
-                      // width: MediaQuery.of(context).size.width,
-                      height: 120,
-                      // decoration: BoxDecoration(
-                      //     color: ConstantsColor.halfWhite,
-                      //     borderRadius:
-                      //         BorderRadius.vertical(top: Radius.circular(35))),
-                    ),
+          //     Stack(
+          //       alignment: Alignment.center,
+          //       children: [
+          //
+          //         CustomPaint(
+          //           size: Size(375, sheetHeight),
+          //           painter: RPSCustomPainter(),
+          //         ),
+          //
+          //         Row(
+          //           children: [
+          //
+          //             Expanded(
+          //               child: Container(
+          //                 height: sheetHeight,
+          //                 decoration: BoxDecoration(
+          //                     color: ConstColor.halfWhite,
+          //                     borderRadius:
+          //                     const BorderRadius.only(
+          //                         topLeft: Radius.circular(30),
+          //                         // topRight: Radius.circular(25)
+          //                     )
+          //                 ),
+          //               ),
+          //             ),
+          //
+          //
+          //             Container(
+          //               // alignment: Alignment.bottomCenter,
+          //               width: 70,
+          //               height: sheetHeight,
+          //               decoration: BoxDecoration(
+          //                   color: ConstColor.halfWhite,
+          //                   // color: Colors.red,
+          //                   borderRadius:
+          //                   const BorderRadius.only(
+          //                     topRight: Radius.circular(45)
+          //                   )
+          //               ),
+          //             ),
+          //
+          //
+          //             Expanded(
+          //               child: Container(
+          //                 // width: MediaQuery.of(context).size.width,
+          //                 height: sheetHeight,
+          //                 decoration: BoxDecoration(
+          //                     color: ConstColor.halfWhite,
+          //                     //   color: Colors.red,
+          //                     borderRadius:
+          //                     // BorderRadius.vertical(top: Radius.circular(35))
+          //                     const BorderRadius.only(
+          //                         // topLeft: Radius.circular(25),
+          //                         topRight: Radius.circular(30)
+          //                     )
+          //                 ),
+          //               ),
+          //             ),
+          //
+          //
+          //           ],
+          //         ),
+          //
+          //
+          //
+          //       ],
+          //     ),
 
-                    Expanded(
-                      child: Container(
-                        // width: MediaQuery.of(context).size.width,
-                        height: 120,
-                        decoration: BoxDecoration(
-                            color: ConstColor.halfWhite,
-                            //   color: Colors.red,
-                            borderRadius:
-                            // BorderRadius.vertical(top: Radius.circular(35))
-                            BorderRadius.only(
-                                topLeft: Radius.circular(25),
-                                topRight: Radius.circular(30)
-                            )
-                        ),
-                      ),
-                    ),
-
-
-
-                  ],
-                ),
-
-                Positioned(
-                  bottom: 80,
-                  child: Container(
-                    width: mediaWitdh*0.4,
-                    height: mediaWitdh*0.4*0.76,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(70),
-                        // shape: BoxShape.circle,
-                        color:
-                        // Colors.white
-                        ConstColor.blackBack
-
-                    ),
-                  ),
-                ),
-
-                // Positioned(
-                //   bottom: 80,
-                //   child: Container(
-                //     width: 168,
-                //     height: 128,
-                //     decoration: BoxDecoration(
-                //       borderRadius: BorderRadius.circular(70),
-                //         // shape: BoxShape.circle,
-                //         color: Colors.white
-                //         // color: ConstColor.halfDarkSalad
-                //
-                //     // ConstantsColor.halflBlack
-                //
-                //     ),
-                //   ),
-                // ),
-                Positioned(
-                  top: 0,
-                  child: Container(
-                    height: 5,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      // shape: BoxShape.circle,
-                      color:
-                      // Colors.white
-                      ConstColor.halfWhite,
-                    ),
-                  ),
-                ),
-              ],
             ),
           ),
         )
-
-        // bottomNavigationBar: InkWell(
-        //   onTap: (() {
-        //     openBottomSheetProfile();
-        //   }),
-        //   child: Container(
-        //     color: Colors.transparent,
-        //     child: Stack(
-        //       alignment: Alignment.center,
-        //       children: [
-        //
-        //       // Positioned(
-        //       //       child: Container(
-        //       //         width: MediaQuery.of(context).size.width,
-        //       //         height: 120,
-        //       //         decoration: BoxDecoration(
-        //       //             color: ConstColor.halfWhite,
-        //       //             borderRadius: const BorderRadius.vertical(top: Radius.circular(30))
-        //       //         ),
-        //       //
-        //       //     ),
-        //       //   ),
-        //
-        //         Row(
-        //           children: [
-        //             Expanded(
-        //               child: Container(
-        //                 // width: MediaQuery.of(context).size.width,
-        //                 height: 120,
-        //                 decoration: BoxDecoration(
-        //                     // color: Colors.red,
-        //                     color: ConstColor.halfWhite,
-        //                     borderRadius:
-        //                     BorderRadius.only(
-        //                         topLeft: Radius.circular(35),
-        //                         topRight: Radius.circular(20)
-        //                     )
-        //                 ),
-        //               ),
-        //             ),
-        //
-        //             Container(
-        //               alignment: Alignment.bottomCenter,
-        //               color: ConstColor.halfWhite,
-        //               // color: Colors.green,
-        //               width: mediaWitdh*0.38,
-        //               // width: MediaQuery.of(context).size.width,
-        //               height: 120,
-        //               // decoration: BoxDecoration(
-        //               //     color: ConstantsColor.halfWhite,
-        //               //     borderRadius:
-        //               //         BorderRadius.vertical(top: Radius.circular(35))),
-        //             ),
-        //
-        //             Expanded(
-        //               child: Container(
-        //                 // width: MediaQuery.of(context).size.width,
-        //                 height: 120,
-        //                 decoration: BoxDecoration(
-        //                   color: ConstColor.halfWhite,
-        //                   //   color: Colors.red,
-        //                     borderRadius:
-        //                     // BorderRadius.vertical(top: Radius.circular(35))
-        //                     BorderRadius.only(
-        //                         topLeft: Radius.circular(20),
-        //                         topRight: Radius.circular(30)
-        //                     )
-        //                 ),
-        //               ),
-        //             ),
-        //
-        //
-        //
-        //           ],
-        //         ),
-        //
-        //         Positioned(
-        //           bottom: 80,
-        //           child: Container(
-        //             width: mediaWitdh*0.45,
-        //             height: mediaWitdh*0.45*0.76,
-        //             decoration: BoxDecoration(
-        //                 borderRadius: BorderRadius.circular(70),
-        //                 // shape: BoxShape.circle,
-        //                 color:
-        //                 // Colors.white
-        //               ConstColor.blackBack
-        //
-        //             ),
-        //           ),
-        //         ),
-        //
-        //         // Positioned(
-        //         //   bottom: 80,
-        //         //   child: Container(
-        //         //     width: 168,
-        //         //     height: 128,
-        //         //     decoration: BoxDecoration(
-        //         //       borderRadius: BorderRadius.circular(70),
-        //         //         // shape: BoxShape.circle,
-        //         //         color: Colors.white
-        //         //         // color: ConstColor.halfDarkSalad
-        //         //
-        //         //     // ConstantsColor.halflBlack
-        //         //
-        //         //     ),
-        //         //   ),
-        //         // ),
-        //         Positioned(
-        //           top: 0,
-        //           child: Container(
-        //             height: 5,
-        //             width: 40,
-        //             decoration: BoxDecoration(
-        //                 // shape: BoxShape.circle,
-        //                 color:
-        //                 // Colors.white
-        //             ConstColor.halfWhite,
-        //             ),
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // )
-
-
     );
   }
 
@@ -891,5 +744,52 @@ class _RadioListState extends State<RadioList> {
                 });
           }),
     );
+  }
+}
+
+
+
+
+//Add this CustomPaint widget to the Widget Tree
+
+
+//Copy this CustomPainter code to the Bottom of the File
+class RPSCustomPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+
+    Path path_0 = Path();
+    path_0.moveTo(129.837,15.8958);
+    path_0.cubicTo(118.093,7.58198,104.983,0,90.5936,0);
+    path_0.lineTo(30,0);
+    path_0.cubicTo(13.4315,0,0,13.4315,0,30);
+    path_0.lineTo(0,673);
+    path_0.cubicTo(0,689.569,13.4315,703,30,703);
+    path_0.lineTo(345,703);
+    path_0.cubicTo(361.569,703,375,689.569,375,673);
+    path_0.lineTo(375,30);
+    path_0.cubicTo(375,13.4315,361.569,0,345,0);
+    path_0.lineTo(283.406,0);
+    path_0.cubicTo(269.017,0,255.907,7.58198,244.163,15.8958);
+    path_0.cubicTo(229.17,26.5094,209.08,33,187,33);
+    path_0.cubicTo(164.92,33,144.83,26.5094,129.837,15.8958);
+    path_0.close();
+
+    Paint paint_0_fill = Paint()..style=PaintingStyle.fill;
+    // paint_0_fill.color = Color(0xffF2F2F2).withOpacity(1.0);
+    paint_0_fill.color = ConstColor.halfWhite;
+    canvas.drawPath(path_0,paint_0_fill);
+
+    Paint paint_1_stroke = Paint()..style=PaintingStyle.stroke..strokeWidth=size.width*0.01333333;
+    // paint_1_stroke.color=Color(0xffF2F2F2).withOpacity(1.0);
+    paint_1_stroke.color=ConstColor.halfWhite;
+    paint_1_stroke.strokeCap = StrokeCap.round;
+    canvas.drawLine(Offset(size.width*0.4533333,size.height*0.01700680),Offset(size.width*0.5466987,size.height*0.01700680),paint_1_stroke);
+
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
   }
 }

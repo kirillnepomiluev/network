@@ -20,21 +20,24 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         // leading:
-        title:
-        Container(
+        title: Container(
           width: 55,
           height: 55,
           decoration: BoxDecoration(
             color: Colors.white70,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Center(child:
-          IconButton(
-            onPressed: (){
-              Navigator.of(context).pop();
-              // Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const RecoveryPage()));
-            },
-            icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25,)),
+          child: Center(
+            child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  // Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const RecoveryPage()));
+                },
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                  size: 25,
+                )),
           ),
         ),
       ),
@@ -45,16 +48,23 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-
-              const Text('Введите адрес\nэлектронной почты', style: TextStyle(
-                  color: Colors.black, fontSize: 24, fontWeight: FontWeight.w500),),
-
-              const Padding(
-                padding: EdgeInsets.only(top: 30, bottom: 30),
-                child: Text('Чтобы восстановить доступ\nк своему аккаунту', style: TextStyle(
-                    color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500),),
+              const Text(
+                'Введите адрес\nэлектронной почты',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 28,
+                    fontWeight: FontWeight.w400),
               ),
-
+              const Padding(
+                padding: EdgeInsets.only(top: 26, bottom: 36),
+                child: Text(
+                  'Чтобы восстановить доступ\nк своему аккаунту',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 50),
                 child: TextFormField(
@@ -62,38 +72,45 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
                   decoration: InputDecoration(
                     // contentPadding: EdgeInsets.only(left: 15),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(width: 1, color: Colors.white),
-                        borderRadius: BorderRadius.circular(20)
-                    ),
+                        borderSide:
+                            const BorderSide(width: 1, color: Colors.white),
+                        borderRadius: BorderRadius.circular(20)),
                     enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(width: 1, color: Colors.white),
-                        borderRadius: BorderRadius.circular(20)
-                    ),
+                        borderSide:
+                            const BorderSide(width: 1, color: Colors.white),
+                        borderRadius: BorderRadius.circular(20)),
                     filled: true,
                     fillColor: Colors.white,
                     hintText: ' Введите адрес электронной почты',
                   ),
                 ),
               ),
-
-
               Center(
                 child: InkWell(
-                  onTap: ((){
-                    SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
+                  onTap: (() {
+                    SystemChannels.textInput
+                        .invokeMethod<void>('TextInput.hide');
                     FocusManager.instance.primaryFocus?.unfocus();
 
-                    Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const LoginSecondPage()));
+                    Navigator.of(context).push(MaterialPageRoute<void>(
+                        builder: (context) => const LoginSecondPage()));
                   }),
                   child: Container(
-                    width: MediaQuery.of(context).size.width*0.8,
-                    padding: const EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 20),
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    padding: const EdgeInsets.only(
+                        left: 15, right: 15, top: 20, bottom: 20),
                     decoration: BoxDecoration(
                       color: Colors.grey.shade800,
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    child:
-                    const Text('Восстановить доступ', style: TextStyle(fontSize: 17, color: Colors.white, fontWeight: FontWeight.w500), textAlign: TextAlign.center,),
+                    child: const Text(
+                      'Восстановить доступ',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               ),

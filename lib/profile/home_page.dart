@@ -8,7 +8,6 @@ import 'package:network_app/meetings/meetings_page.dart';
 import 'package:network_app/profile/profile_page.dart';
 import 'package:network_app/store/store_page.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'dart:ui' as ui;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -64,7 +63,7 @@ class _HomePageState extends State<HomePage> {
             borderRadius: BorderRadius.circular(15),
           ),
           child: BottomBar(
-            // height: 75,
+            height: 54,
             border: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18),
               // side:  BorderSide(width: 3),
@@ -86,11 +85,10 @@ class _HomePageState extends State<HomePage> {
 
               barItem(icon: Network.person, text: 'Профиль'),
               barItem(
-                iconSize: 18,
-                  icon: Icons.account_balance_wallet_outlined,
+                  icon: Network.wallet,
                   text: 'Инвентарь'),
               barItem(icon: Network.chat, text: 'Чат'),
-              barItem(icon: Network.bag, text: 'Магазин'),
+              barItem(icon: Network.cart, text: 'Магазин'),
             ],
           ),
         ),
@@ -98,7 +96,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  BottomBarItem barItem({required IconData icon, double iconSize = 16, required String text}) =>
+  BottomBarItem barItem({required IconData icon, double iconSize = 21, required String text}) =>
       BottomBarItem(
           icon: Icon(
             icon,
@@ -111,7 +109,7 @@ class _HomePageState extends State<HomePage> {
           ),
           activeColor: ConstColor.salad100,
           inactiveIcon: Icon(
-            size: iconSize+6,
+            size: iconSize,
             icon,
             color: Colors.white,
           ),
@@ -220,7 +218,7 @@ Widget titleStatText(String text) => Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 10),
       child: Text(
         text,
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
     );
 

@@ -74,18 +74,15 @@ class _FirstPageState extends State<FirstPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade400,
-      body:
-
-      Center(
+      body: Center(
         child: InkWell(
-          onTap: (){
+          onTap: () {
             Navigator.of(context).push(MaterialPageRoute<void>(
                 builder: (context) => const LoginPage()));
           },
           child: newtworkRow(),
         ),
       ),
-
     );
   }
 }
@@ -97,32 +94,29 @@ class _FirstPageState extends State<FirstPage> {
 // }
 
 Widget newtworkRow({bool isAppBar = false}) => Row(
-  mainAxisAlignment: isAppBar? MainAxisAlignment.start : MainAxisAlignment.center,
-  crossAxisAlignment: CrossAxisAlignment.center,
-  children: [
-    // Icon(
-    //   Icons.circle,
-    //   color: Colors.black,
-    //   size: 53,
-    // ),
-    Container(
-      width: 53,
-      height: 53,
-      decoration: BoxDecoration(
-          color: Colors.black,
-          shape: BoxShape.circle
-      ),
-    ),
+      mainAxisAlignment:
+          isAppBar ? MainAxisAlignment.start : MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        // Icon(
+        //   Icons.circle,
+        //   color: Colors.black,
+        //   size: 53,
+        // ),
+        Container(
+          width: 53,
+          height: 53,
+          decoration:
+              const BoxDecoration(color: Colors.black, shape: BoxShape.circle),
+        ),
 
-    Padding(
-      padding: EdgeInsets.only(left: 15.0),
-      child: Text(
-        'network',
-        style: TextStyle(
-            fontSize: 34,
-            color: Colors.black,
-            fontWeight: FontWeight.w600),
-      ),
-    )
-  ],
-);
+        const Padding(
+          padding: EdgeInsets.only(left: 15.0),
+          child: Text(
+            'network',
+            style: TextStyle(
+                fontSize: 34, color: Colors.black, fontWeight: FontWeight.w600),
+          ),
+        )
+      ],
+    );

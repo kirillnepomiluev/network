@@ -101,10 +101,10 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
                 ),
 
                 const Padding(
-                  padding: EdgeInsets.only(bottom: 15),
+                  padding: EdgeInsets.only(bottom: 13),
                   child: Text(
                     'Аватары',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
                     textAlign: TextAlign.start,
                   ),
                 ),
@@ -114,7 +114,7 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
                     overflow: TextOverflow.clip,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 14,
+                      fontSize: 16,
                       fontWeight: FontWeight.w400,
                     )),
 
@@ -140,15 +140,19 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
                       avatarContainer(
                           context: context,
                           isView: true,
-                          contWidth: MediaQuery.of(context).size.width,
-                          contHeight: MediaQuery.of(context).size.width*1.1
+                          contWidth: 342,
+                          contHeight: 453
+                          // contWidth: MediaQuery.of(context).size.width,
+                          // contHeight: MediaQuery.of(context).size.width*1.1
                       ),
 
                       avatarContainer(
                           context: context,
                           isView: true,
-                          contWidth: MediaQuery.of(context).size.width,
-                          contHeight: MediaQuery.of(context).size.width*1.1
+                          contWidth: 342,
+                          contHeight: 453
+                        // contWidth: MediaQuery.of(context).size.width,
+                        // contHeight: MediaQuery.of(context).size.width*1.1
                       ),
 
                     ],
@@ -170,7 +174,7 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
 Widget avatarContainer(
         {required BuildContext context,
         double contWidth = 217.57,
-        double contHeight = 364,
+        double contHeight = 370,
         bool isView = false,
         bool isBoxes = false,
         String strCategory = 'Обычный'
@@ -185,7 +189,9 @@ Widget avatarContainer(
         child: Container(
           // height: isBoxes? 220 : null,
           // padding: EdgeInsets.all(isView ? 30 : 15),
-          padding: isView? const EdgeInsets.all(15) : const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+          padding: isView? const EdgeInsets.all(35) :
+          const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 9),
+
           decoration: BoxDecoration(
             color: isView? Colors.white : ConstColor.halfWhite,
             borderRadius: BorderRadius.circular(15),
@@ -193,15 +199,15 @@ Widget avatarContainer(
           height: contHeight,
           width: contWidth,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
               isBoxes
                   ? Container()
                   : Padding(
-                      padding: const EdgeInsets.only(
-                        bottom: 10,
+                      padding: EdgeInsets.only(
+                        bottom: isView? 20 : 5,
                       ),
                       child: Text(
                         strCategory,
@@ -213,12 +219,13 @@ Widget avatarContainer(
                     ),
 
               Padding(
-                padding: EdgeInsets.only(top: isBoxes ? 20 : 0),
+                padding: EdgeInsets.only(top: isBoxes? 20 : 0),
                 child: Container(
                   // height: isView ? contWidth * 0.7 : contWidth - 35,
-                  height: contHeight-144,
-                  // height: contHeight-180,
+                  // height: contHeight*0.46,
+                  height: isView? 254.4 : 220,
                   decoration: BoxDecoration(
+                    // color: Colors.red,
                     image: DecorationImage(
                       image: AssetImage('assets/images/${strCategory=='Обычный'? '4': '3'}.png')
                     ),
@@ -249,7 +256,7 @@ Widget avatarContainer(
                       ),
                     )
                   : Padding(
-                    padding: const EdgeInsets.only(top: 5),
+                    padding: EdgeInsets.only(top: isView? 27 : 12),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -271,12 +278,12 @@ Widget avatarContainer(
                                       ),
                                       isView == false
                                           ? Container()
-                                          : const Padding(
+                                          : Padding(
                                               padding: EdgeInsets.only(left: 50),
                                               child: Text(
                                                 '1.6 SOL',
                                                 style: TextStyle(
-                                                  color: ConstColor.salad100,
+                                                  color: isView? Colors.black : ConstColor.salad100,
                                                     fontSize: 16,
                                                     fontWeight: FontWeight.bold),
                                               ),
@@ -285,7 +292,7 @@ Widget avatarContainer(
                                   ),
 
                                   const Padding(
-                                    padding: EdgeInsets.only(top: 2),
+                                    padding: EdgeInsets.only(top: 5),
                                     child: Text(
                                       '#0863246',
                                       style: TextStyle(
@@ -316,7 +323,6 @@ Widget avatarContainer(
                             ],
                           ),
 
-
                           isView
                               ? Container()
                               : Padding(
@@ -326,7 +332,7 @@ Widget avatarContainer(
                                     style: TextStyle(
                                         color: isView? Colors.black : ConstColor.salad100,
                                         fontSize: 16,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.w600),
                                   ),
                                 ),
                           Padding(
@@ -334,7 +340,7 @@ Widget avatarContainer(
                             child: Wrap(
                               spacing: isView ? 80 : 10,
                               direction: Axis.horizontal,
-                              alignment: WrapAlignment.spaceBetween,
+                              // alignment: WrapAlignment.spaceBetween,
                               children: [
                                 const Text(
                                   'Уровень 6',

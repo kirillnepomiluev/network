@@ -154,11 +154,9 @@ class _MatchingPageState extends State<MatchingPage> {
                           Positioned(
                               right: 30,
                               top: 0,
-                              child: Container(
-                                child: Image.asset('assets/images/lines.png'),
-                              )),
+                              child: Image.asset('assets/images/lines.png')),
 
-                          Positioned(
+                          const Positioned(
                             top: 20,
                             left: 0,
                             child: Text(

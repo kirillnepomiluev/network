@@ -41,8 +41,8 @@ class _MeetingsPageState extends State<MeetingsPage> {
               children: [
                 Padding(
                   padding: position==3?
-                  EdgeInsets.only(left: 14, bottom: 14, top: 14, right: 0)
-                      : EdgeInsets.all(14),
+                  const EdgeInsets.only(left: 14, bottom: 14, top: 14, right: 0)
+                      : const EdgeInsets.all(14),
                   child: Text(
                     text,
                     style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
@@ -97,8 +97,8 @@ class _MeetingsPageState extends State<MeetingsPage> {
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 10),
                       child: Text(
                         'Уровень "Базовый"',
                         style: TextStyle(
