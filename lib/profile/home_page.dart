@@ -116,15 +116,15 @@ class _HomePageState extends State<HomePage> {
           backgroundColorOpacity: 1);
 }
 
-Widget statContainer({required String title, required String subtitle}) =>
+Widget statContainer({required String title, required String subtitle, double width = 107, double height = 162, double fontSize = 28}) =>
     Padding(
       padding: const EdgeInsets.only(right: 10),
       child:
 
       BlurryContainer(
         blur: 10,
-        height: 162,
-        width: 107,
+        height: height,
+        width: width,
         // decoration: BoxDecoration(
             color: ConstColor.halfWhite,
             borderRadius: BorderRadius.circular(73),
@@ -137,8 +137,8 @@ Widget statContainer({required String title, required String subtitle}) =>
                 ? Container()
                 : Text(
               title,
-              style: const TextStyle(
-                  fontSize: 28,
+              style: TextStyle(
+                  fontSize: fontSize,
                   fontWeight: FontWeight.w500,
                   color: Colors.white),
             ),
@@ -146,8 +146,8 @@ Widget statContainer({required String title, required String subtitle}) =>
               padding: const EdgeInsets.only(top: 5),
               child: Text(
                 subtitle,
-                style: const TextStyle(
-                    fontSize: 16,
+                style: TextStyle(
+                    fontSize: fontSize-12,
                     fontWeight: FontWeight.w500,
                     color: Colors.white),
                 textAlign: TextAlign.center,

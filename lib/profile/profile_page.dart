@@ -17,14 +17,6 @@ Widget blurContainer({double sigma = 10, double width=double.infinity, double he
   height: height,
   child: Stack(children: [
     child,
-    // Container(
-    //   decoration: BoxDecoration(
-    //     color: ConstColor.salad100,
-    //     shape: BoxShape.circle,
-    //   ),
-    //   child: Center(child: Text('фывфывф', style: TextStyle(color: Colors.black),)),
-    // ),
-
     BackdropFilter(
       filter: ui.ImageFilter.blur(
         sigmaX: sigma,
@@ -33,7 +25,6 @@ Widget blurContainer({double sigma = 10, double width=double.infinity, double he
       child: Container(
       ),
     ),
-
   ],),
 );
 
@@ -135,11 +126,9 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWitdh = MediaQuery.of(context).size.width;
+    print('mediaWitdh - $mediaWitdh  mediaHeight - $mediaHeight');
 
-    print('mediaWitdh - $mediaWitdh');
-
-    final sheetHeight = 147.00;
-
+    final double sheetHeight = mediaHeight * 0.15;  //147
     final mediaRadius = MediaQuery.of(context).size.width*0.45;
 
     return Scaffold(
@@ -355,16 +344,28 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ),
 
                                     Padding(
-                                      padding: const EdgeInsets.only(top: 100),
+                                      padding: EdgeInsets.only(top: mediaHeight*0.075),  //100
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
                                           statContainer(
-                                              title: '9.4k', subtitle: 'баллов'),
+                                            width: mediaWitdh*0.25, //107
+                                              height: mediaWitdh*0.25*1.5, //162
+                                              fontSize: mediaWitdh*0.25<100 ? 22 : 28, //28
+                                              title: '9.4k',
+                                              subtitle: 'баллов'
+                                          ),
+
                                           statContainer(
+                                              width: mediaWitdh*0.25, //107
+                                              height: mediaWitdh*0.25*1.5, //162
+                                              fontSize: mediaWitdh*0.25<100 ? 22 : 28, //28
                                               title: '23', subtitle: 'встречи'),
                                           statContainer(
+                                              width: mediaWitdh*0.25, //107
+                                              height: mediaWitdh*0.25*1.5, //162
+                                              fontSize: mediaWitdh*0.25<100 ? 22 : 28, //28
                                               title: '4.5', subtitle: 'рейтинг'),
                                         ],
                                       ),
@@ -463,6 +464,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 size: Size(375, sheetHeight),
                 painter: RPSCustomPainter(),
               ),
+
+                // CustomPaint(
+                //   size: Size(mediaWitdh, (mediaWitdh*0.392).toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                //   painter: RPSCustomPainter(),
+                // )
 
           //     Stack(
           //       alignment: Alignment.center,
@@ -698,6 +704,11 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 }
 
+
+
+
+
+
 class RadioList extends StatefulWidget {
   final List<String> listOptions;
   const RadioList({Key? key, required this.listOptions}) : super(key: key);
@@ -749,40 +760,33 @@ class _RadioListState extends State<RadioList> {
 
 
 
-
-//Add this CustomPaint widget to the Widget Tree
-
-
-//Copy this CustomPainter code to the Bottom of the File
 class RPSCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
 
     Path path_0 = Path();
-    path_0.moveTo(129.837,15.8958);
-    path_0.cubicTo(118.093,7.58198,104.983,0,90.5936,0);
-    path_0.lineTo(30,0);
-    path_0.cubicTo(13.4315,0,0,13.4315,0,30);
-    path_0.lineTo(0,673);
-    path_0.cubicTo(0,689.569,13.4315,703,30,703);
-    path_0.lineTo(345,703);
-    path_0.cubicTo(361.569,703,375,689.569,375,673);
-    path_0.lineTo(375,30);
-    path_0.cubicTo(375,13.4315,361.569,0,345,0);
-    path_0.lineTo(283.406,0);
-    path_0.cubicTo(269.017,0,255.907,7.58198,244.163,15.8958);
-    path_0.cubicTo(229.17,26.5094,209.08,33,187,33);
-    path_0.cubicTo(164.92,33,144.83,26.5094,129.837,15.8958);
+    path_0.moveTo(size.width*0.3462320,size.height*0.1081347);
+    path_0.cubicTo(size.width*0.3149147,size.height*0.05157810,size.width*0.2799547,0,size.width*0.2415829,0);
+    path_0.lineTo(size.width*0.08000000,0);
+    path_0.cubicTo(size.width*0.03581733,0,0,size.height*0.09137075,0,size.height*0.2040816);
+    path_0.lineTo(0,size.height*4.578231);
+    path_0.cubicTo(0,size.height*4.690946,size.width*0.03581733,size.height*4.782313,size.width*0.08000000,size.height*4.782313);
+    path_0.lineTo(size.width*0.9200000,size.height*4.782313);
+    path_0.cubicTo(size.width*0.9641840,size.height*4.782313,size.width,size.height*4.690946,size.width,size.height*4.578231);
+    path_0.lineTo(size.width,size.height*0.2040816);
+    path_0.cubicTo(size.width,size.height*0.09137075,size.width*0.9641840,0,size.width*0.9200000,0);
+    path_0.lineTo(size.width*0.7557493,0);
+    path_0.cubicTo(size.width*0.7173787,0,size.width*0.6824187,size.height*0.05157810,size.width*0.6511013,size.height*0.1081347);
+    path_0.cubicTo(size.width*0.6111200,size.height*0.1803361,size.width*0.5575467,size.height*0.2244898,size.width*0.4986667,size.height*0.2244898);
+    path_0.cubicTo(size.width*0.4397867,size.height*0.2244898,size.width*0.3862133,size.height*0.1803361,size.width*0.3462320,size.height*0.1081347);
     path_0.close();
 
     Paint paint_0_fill = Paint()..style=PaintingStyle.fill;
-    // paint_0_fill.color = Color(0xffF2F2F2).withOpacity(1.0);
     paint_0_fill.color = ConstColor.halfWhite;
     canvas.drawPath(path_0,paint_0_fill);
 
     Paint paint_1_stroke = Paint()..style=PaintingStyle.stroke..strokeWidth=size.width*0.01333333;
-    // paint_1_stroke.color=Color(0xffF2F2F2).withOpacity(1.0);
-    paint_1_stroke.color=ConstColor.halfWhite;
+    paint_1_stroke.color= ConstColor.halfWhite;
     paint_1_stroke.strokeCap = StrokeCap.round;
     canvas.drawLine(Offset(size.width*0.4533333,size.height*0.01700680),Offset(size.width*0.5466987,size.height*0.01700680),paint_1_stroke);
 

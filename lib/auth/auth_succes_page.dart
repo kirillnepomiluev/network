@@ -75,6 +75,7 @@ class _AuthSuccesPageState extends State<AuthSuccesPage> {
                   ),
 
                   ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
                       padding: const EdgeInsets.only(left: 5, top: 41),
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,

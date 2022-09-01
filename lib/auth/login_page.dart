@@ -11,8 +11,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
   @override
   Widget build(BuildContext context) {
+    final mediaHeight = MediaQuery.of(context).size.height;
+    final mediaWitdh = MediaQuery.of(context).size.width;
+    print('mediaWitdh - $mediaWitdh  mediaHeight - $mediaHeight');
+
     return Scaffold(
       bottomNavigationBar: Padding(
           padding: const EdgeInsets.only(bottom: 20, right: 20),
@@ -33,15 +38,15 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 55),
+            padding: const EdgeInsets.only(top: 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   // alignment: Alignment.centerRight,
-                  width: 270,
-                  height: 289,
+                  width: mediaWitdh*0.6,  //270
+                  height: mediaWitdh*0.6, //289
                   decoration: const BoxDecoration(
                     color: Colors.red,
                     borderRadius: BorderRadius.only(
@@ -55,10 +60,11 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: const EdgeInsets.only(left: 15),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(top: 36),
+                Padding(
+                  padding: EdgeInsets.only(top: 0),
                   child: Text(
                     'Главное в связах\n - это связи',
                     style: TextStyle(
@@ -69,8 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 Padding(
-                  // padding: const EdgeInsets.only(left: 15, top: 45),
-                  padding: const EdgeInsets.only(top: 51),
+                  padding: EdgeInsets.only(top:  30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     // crossAxisAlignment: CrossAxisAlignment.center,
@@ -90,10 +95,10 @@ class _LoginPageState extends State<LoginPage> {
                             ))
                             // backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
                             ),
-                        child: const Padding(
+                        child: Padding(
                           padding: EdgeInsets.symmetric(
-                            vertical: 20,
-                            horizontal: 57,
+                            horizontal: mediaWitdh<420? 30 : 57,  //57
+                            vertical: 20,    //20
                           ),
                           child: Text(
                             'Войти',
@@ -110,8 +115,8 @@ class _LoginPageState extends State<LoginPage> {
                           onTap: (() {}),
                           child: Container(
                             padding: const EdgeInsets.all(22),
-                            width: 66,
-                            height: 64,
+                            width: 66,  //66
+                            height: 64, //64
                             decoration: BoxDecoration(
                               // image: DecorationImage(
                               //     image: AssetImage('assets/icons/logo_google.png')

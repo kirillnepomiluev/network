@@ -16,6 +16,11 @@ class LoginSecondPage extends StatefulWidget {
 class _LoginSecondPageState extends State<LoginSecondPage> {
   @override
   Widget build(BuildContext context) {
+
+    final mediaHeight = MediaQuery.of(context).size.height;
+    final mediaWitdh = MediaQuery.of(context).size.width;
+    print('mediaWitdh - $mediaWitdh  mediaHeight - $mediaHeight');
+
     return Scaffold(
       backgroundColor: Colors.grey.shade400,
       bottomNavigationBar: Padding(
@@ -90,18 +95,18 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                         // const Center(child: Text('F', style: TextStyle(color: Colors.blue, fontSize: 20),),),
                         Row(
                       // mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Padding(
                           padding: EdgeInsets.only(left: 15, right: 10),
                           child:
                               Icon(Network.call, color: Colors.white, size: 22),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 8, right: 8),
+                          padding: EdgeInsets.only(left: 0, right: 0),
                           child: Text(
                             'Войти по номеру телефона',
                             style: TextStyle(
-                                fontSize: 18,
+                                fontSize: mediaWitdh<400? 15 :18,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500),
                           ),
@@ -119,7 +124,6 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                 child: Container(
                     width: MediaQuery.of(context).size.width * 0.8,
                     padding: const EdgeInsets.all(15),
-                    // width: 60,
                     height: 60,
                     decoration: BoxDecoration(
                       color: Colors.grey.shade800,
@@ -132,20 +136,20 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(
-                              left: 15, right: 8, top: 4, bottom: 4),
+                              left: 15, right: 10, top: 4, bottom: 4),
                           child: Image.asset(
                             'assets/icons/logo_google.png',
                           ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(
-                            left: 8,
-                            right: 8,
+                            left: 0,
+                            right: 0,
                           ),
                           child: Text(
                             'Войти через Google',
                             style: TextStyle(
-                                fontSize: 18,
+                                fontSize:  mediaWitdh<400? 15 : 18,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500),
                           ),
@@ -182,11 +186,11 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 8, right: 8),
+                          padding: EdgeInsets.only(left: 0, right: 0),
                           child: Text(
                             'Войти через Facebook',
                             style: TextStyle(
-                                fontSize: 18,
+                                fontSize:  mediaWitdh<400? 15 : 18,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500),
                           ),

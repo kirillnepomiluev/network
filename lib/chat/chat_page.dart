@@ -48,6 +48,8 @@ class _ChatPageState extends State<ChatPage> {
   final _controller = TextEditingController();
   bool showSendButton = false;
 
+  final _scrollContr = ScrollController();
+
   void sendFunction(){
 
     messagesList.add(
@@ -62,8 +64,31 @@ class _ChatPageState extends State<ChatPage> {
     FocusManager.instance.primaryFocus?.unfocus();
     _controller.clear();
 
+    _scrollContr.jumpTo(200);
+
+    // _scrollContr.animateTo(
+    //     // MediaQuery.of(context).size.height,
+    //     300,
+    //     curve: Curves.easeOut,
+    //     duration: const Duration(seconds: 0)
+    // );
+
       setState(() {});
 
+  }
+
+  @override
+  void initState() {
+
+    // _scrollContr.jumpTo(500);
+
+    // _scrollContr.animateTo(
+    //     100,
+    //     curve: Curves.easeOut,
+    //     duration: const Duration(seconds: 1)
+    // );
+
+    super.initState();
   }
 
   @override
@@ -155,8 +180,10 @@ class _ChatPageState extends State<ChatPage> {
   Widget _body() =>  GestureDetector(
     onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
     child: ListView.builder(
+        controller: _scrollContr,
+        // physics: NeverScrollableScrollPhysics(),
       // reverse: true,
-        padding: const EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.only(top: 10, bottom: 10),
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         itemCount: messagesList.length,
@@ -246,6 +273,9 @@ class _ChatPageState extends State<ChatPage> {
                 ),
 
                 messageCont(messagesList[index]),
+
+                index!=messagesList.length-1? Container(): SizedBox(height: 100,)
+
               ],
             );
 
