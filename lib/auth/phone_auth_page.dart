@@ -114,23 +114,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                   onChanged: (phone) {
                     strPhone = phone.completeNumber;
 
-                    strPhone = strPhone.substring(0, 1) +
-                            ' ' //+
-                            +
-                            strPhone.substring(1, 2) +
-                            ' ' //7
-                            +
-                            strPhone.substring(2, 5) +
-                            ' ' //937
-                            +
-                            strPhone.substring(5, 8) +
-                            ' ' //213
-                            +
-                            strPhone.substring(8, 10) +
-                            ' ' //33
-                            +
-                            strPhone.substring(10) +
-                            ' ' //33
+                    strPhone = '${strPhone.substring(0, 1)} ${strPhone.substring(1, 2)} ${strPhone.substring(2, 5)} ${strPhone.substring(5, 8)} ${strPhone.substring(8, 10)} ${strPhone.substring(10)}' //33
 
                         ;
 
@@ -220,7 +204,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
         height: 70,
         width: 70,
         child: TextFormField(
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
           validator: (val) {
             if (val!.isEmpty) {
               return "Пусто";
@@ -265,7 +249,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
           maxLength: 1,
           autofocus: true,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 27),
+            contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 27),
             counterText: '',
             focusedBorder: OutlineInputBorder(
                 borderSide: const BorderSide(width: 0, color: Colors.white),
@@ -391,7 +375,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                         // width: 200,
                         child: Stack(
                           alignment: Alignment.center,
-                          children: [
+                          children: const [
                             Positioned(
                               bottom: 10,
                               child: Text(

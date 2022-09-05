@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/profile/home_page.dart';
+import 'package:network_app/home_page.dart';
 import 'dart:ui' as ui;
 import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:network_app/components/network_icons.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -126,7 +126,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWitdh = MediaQuery.of(context).size.width;
-    print('mediaWitdh - $mediaWitdh  mediaHeight - $mediaHeight');
+    // print('mediaWitdh - $mediaWitdh  mediaHeight - $mediaHeight');
 
     final double sheetHeight = mediaHeight * 0.15;  //147
     final mediaRadius = MediaQuery.of(context).size.width*0.45;
@@ -781,14 +781,14 @@ class RPSCustomPainter extends CustomPainter {
     path_0.cubicTo(size.width*0.4397867,size.height*0.2244898,size.width*0.3862133,size.height*0.1803361,size.width*0.3462320,size.height*0.1081347);
     path_0.close();
 
-    Paint paint_0_fill = Paint()..style=PaintingStyle.fill;
-    paint_0_fill.color = ConstColor.halfWhite;
-    canvas.drawPath(path_0,paint_0_fill);
+    Paint paint0Fill = Paint()..style=PaintingStyle.fill;
+    paint0Fill.color = ConstColor.halfWhite;
+    canvas.drawPath(path_0,paint0Fill);
 
-    Paint paint_1_stroke = Paint()..style=PaintingStyle.stroke..strokeWidth=size.width*0.01333333;
-    paint_1_stroke.color= ConstColor.halfWhite;
-    paint_1_stroke.strokeCap = StrokeCap.round;
-    canvas.drawLine(Offset(size.width*0.4533333,size.height*0.01700680),Offset(size.width*0.5466987,size.height*0.01700680),paint_1_stroke);
+    Paint paint1Stroke = Paint()..style=PaintingStyle.stroke..strokeWidth=size.width*0.01333333;
+    paint1Stroke.color= ConstColor.halfWhite;
+    paint1Stroke.strokeCap = StrokeCap.round;
+    canvas.drawLine(Offset(size.width*0.4533333,size.height*0.01700680),Offset(size.width*0.5466987,size.height*0.01700680),paint1Stroke);
 
   }
 

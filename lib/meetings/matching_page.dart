@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/components/network_icons.dart';
-import 'package:network_app/profile/home_page.dart';
+import 'package:network_app/home_page.dart';
 import 'dart:math' as math;
+
+import 'package:network_app/components/network_icons.dart';
 
 class MatchingPage extends StatefulWidget {
   const MatchingPage({Key? key}) : super(key: key);
@@ -43,7 +44,7 @@ class _MatchingPageState extends State<MatchingPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 10, top: 10, bottom: 25),
-                child: buttonBack(context),
+                child: backButton(context),
               ),
 
               Padding(
@@ -82,8 +83,7 @@ class _MatchingPageState extends State<MatchingPage> {
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     color: Colors.grey.shade100,
-                    borderRadius:
-                        const BorderRadius.vertical(top: Radius.circular(31))),
+                    borderRadius: BorderRadius.circular(30)),
                 child: SizedBox(
                   width: 343,
                   child: Column(
@@ -109,7 +109,7 @@ class _MatchingPageState extends State<MatchingPage> {
                         width: double.infinity,
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                            color: Colors.grey.shade400,
+                            color: Colors.grey.shade300,
                             borderRadius: BorderRadius.circular(31)),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,11 +137,11 @@ class _MatchingPageState extends State<MatchingPage> {
                               runSpacing: 10,
                               direction: Axis.horizontal,
                               children: [
-                                hobbitsContainer('Большой теннис'),
-                                hobbitsContainer('Маркетинг'),
+                                hobbitsContainer('Большой теннис', isDark: false),
+                                hobbitsContainer('Маркетинг', isDark: false),
                                 // hobbitsContainer('Управление'),
-                                hobbitsContainer('Маркетинг'),
-                                hobbitsContainer('Большой теннис'),
+                                hobbitsContainer('Маркетинг', isDark: false),
+                                hobbitsContainer('Большой теннис', isDark: false),
                               ],
                             ),
                           ],
@@ -251,57 +251,38 @@ class _MatchingPageState extends State<MatchingPage> {
                         ],
                       ),
 
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Center(
-                          child: ElevatedButton(
-                              style: ButtonStyle(
-                                padding: MaterialStateProperty.all(
-                                    const EdgeInsets.symmetric(vertical: 15)),
-                                backgroundColor:
-                                    MaterialStateProperty.all(Colors.black),
-                                shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                ),
-                              ),
-                              onPressed: () {},
-                              child: const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 35),
-                                child: Text(
-                                  'Создать чат',
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                              )),
-                        ),
-                      ),
-
-                      // Padding(
-                      //   padding: const EdgeInsets.only(top: 10, left: 0),
-                      //   child: Container(
-                      //     decoration: BoxDecoration(
-                      //         color: Colors.black,
-                      //         borderRadius: BorderRadius.circular(30)
-                      //     ),
-                      //     padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                      //     // alignment: Alignment.topLeft,
-                      //     // width: 73,
-                      //     child: Row(
-                      //       mainAxisAlignment: MainAxisAlignment.start,
-                      //       mainAxisSize: MainAxisSize.min,
-                      //       children: const [
-                      //         Icon(Icons.circle, color: Colors.greenAccent, size: 8,),
-                      //         Padding(
-                      //           padding: EdgeInsets.only(left: 4),
-                      //           child: Text('Онлайн', style: TextStyle(fontSize: 10, color: Colors.white),),
-                      //         )
-                      //       ],),),
-                      // ),
                     ],
                   ),
                 ),
-              )
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(top: 20, bottom: 23),
+                child: Center(
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all(
+                            const EdgeInsets.symmetric(vertical: 15)),
+                        backgroundColor:
+                        MaterialStateProperty.all(Colors.black),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 35),
+                        child: Text(
+                          // 'Создать чат',
+                          'Начать с 1-го вопроса',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      )),
+                ),
+              ),
+
             ],
           ),
         ),

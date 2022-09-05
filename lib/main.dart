@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:network_app/auth/login_page.dart';
-import 'package:network_app/profile/home_page.dart';
+import 'package:network_app/home_page.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,27 +32,32 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Network',
-      theme: ThemeData(
-        fontFamily: 'Inter',
-        // primarySwatch: colorCustom,
-      ),
+    return
+      ResponsiveSizer(
+        builder: (context, orientation, screenType) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Network',
+            theme: ThemeData(
+              fontFamily: 'Inter',
+              // primarySwatch: colorCustom,
+            ),
 
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('ru', 'RU'), // English, no country code
-      ],
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('ru', 'RU'), // English, no country code
+            ],
 
-      home:
-      const FirstPage(),
-      // const HomePage(),
-    );
+            home:
+            // const FirstPage(),
+            const HomePage(),
+          );
+        },
+      );
   }
 }
 

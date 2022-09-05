@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/chat/chat_page.dart';
+import 'package:network_app/home_page.dart';
 import 'package:network_app/components/network_icons.dart';
-import 'package:network_app/profile/home_page.dart';
 
 class MessagesPage extends StatefulWidget {
   const MessagesPage({Key? key}) : super(key: key);
@@ -79,7 +79,7 @@ class _MessagesPageState extends State<MessagesPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    buttonBack(context),
+                    backButton(context, func: (){}),
                     const Text(
                       'Сообщения',
                       style: TextStyle(
@@ -101,7 +101,7 @@ class _MessagesPageState extends State<MessagesPage> {
                               // Navigator.of(context).pop();
                             },
                             icon: const Icon(
-                              Icons.search,
+                              Network.search,
                               color: Colors.black,
                               size: 25,
                             )),

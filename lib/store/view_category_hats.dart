@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/profile/home_page.dart';
+import 'package:network_app/home_page.dart';
 import 'package:network_app/store/view_prod_hat.dart';
 // import 'dart:ui' as ui;
 
@@ -97,7 +97,7 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
 
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
-                  child: buttonBack(context),
+                  child: backButton(context),
                 ),
 
                 const Padding(

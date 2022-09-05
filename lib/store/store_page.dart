@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/store/view_category_avatar_page.dart';
 import 'package:network_app/store/view_category_hats.dart';
 

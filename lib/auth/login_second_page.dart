@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/auth/login_page.dart';
 import 'package:network_app/auth/phone_auth_page.dart';
-import 'package:network_app/auth/recovery_page.dart';
-import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/main.dart';
+import 'package:network_app/components/network_icons.dart';
 
 class LoginSecondPage extends StatefulWidget {
   const LoginSecondPage({Key? key}) : super(key: key);
@@ -17,9 +16,9 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
   @override
   Widget build(BuildContext context) {
 
-    final mediaHeight = MediaQuery.of(context).size.height;
+    // final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWitdh = MediaQuery.of(context).size.width;
-    print('mediaWitdh - $mediaWitdh  mediaHeight - $mediaHeight');
+    // print('mediaWitdh - $mediaWitdh  mediaHeight - $mediaHeight');
 
     return Scaffold(
       backgroundColor: Colors.grey.shade400,
@@ -96,13 +95,13 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                         Row(
                       // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(left: 15, right: 10),
                           child:
                               Icon(Network.call, color: Colors.white, size: 22),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 0, right: 0),
+                          padding: const EdgeInsets.only(left: 0, right: 0),
                           child: Text(
                             'Войти по номеру телефона',
                             style: TextStyle(
@@ -135,14 +134,14 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                       // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               left: 15, right: 10, top: 4, bottom: 4),
                           child: Image.asset(
                             'assets/icons/logo_google.png',
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                             left: 0,
                             right: 0,
                           ),
@@ -179,14 +178,14 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                       // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               left: 8, right: 0, top: 4, bottom: 4),
                           child: Image.asset(
                             'assets/icons/logo_facebook.png',
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 0, right: 0),
+                          padding: const EdgeInsets.only(left: 0, right: 0),
                           child: Text(
                             'Войти через Facebook',
                             style: TextStyle(

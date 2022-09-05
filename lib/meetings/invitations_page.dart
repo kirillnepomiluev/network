@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/components/network_icons.dart';
+import 'package:network_app/constants.dart';
 import 'package:network_app/meetings/matching_page.dart';
-import 'package:network_app/profile/home_page.dart';
+import 'package:network_app/home_page.dart';
+import 'package:network_app/components/network_icons.dart';
 
 
 class InvitationsPage extends StatefulWidget {
@@ -12,6 +13,57 @@ class InvitationsPage extends StatefulWidget {
 }
 
 class _InvitationsPageState extends State<InvitationsPage> {
+
+  int _activeInvitationTab = 1;
+
+  Widget miniContainer({
+    required int position,
+    required String text,
+  }) => Padding(
+    padding: const EdgeInsets.only(right: 10),
+    child: InkWell(
+      onTap: (() {
+        setState(() {
+          _activeInvitationTab = position;
+        });
+      }),
+      child: Container(
+        decoration: BoxDecoration(
+          color: _activeInvitationTab == position
+              ? ConstColor.grey
+              : Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          // border: isMeeting? null : Border.all(width: _activeProfileTab==position? 2 : 0)
+        ),
+        // height: 35,
+        // width: 100,
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Padding(
+              padding: position==3?
+              const EdgeInsets.only(left: 14, bottom: 14, top: 14, right: 0)
+                  : const EdgeInsets.all(14),
+              child: Text(
+                text,
+                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+              ),
+            ),
+            position != 3
+                ? Container()
+                : const Padding(
+              padding: EdgeInsets.only(right: 8),
+              child: Icon(Icons.arrow_drop_down
+                // Icons.arrow_right_outlined
+              ),
+            )
+          ],
+        ),
+      ),
+    ),
+  );
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +78,11 @@ class _InvitationsPageState extends State<InvitationsPage> {
                 color: Colors.black,
                 shape: BoxShape.circle
             ),
-            width: 65,
-            height: 65,
+            width: 69,
+            height: 69,
             child:
-            IconButton(onPressed: (){}, icon: const Icon(Icons.tune_outlined, color: Colors.white,), iconSize: 28,)
+            IconButton(onPressed: (){}, icon: const Icon(Network.tune
+              , color: Colors.white,), iconSize: 20,)
         ),
       ),
       backgroundColor: Colors.grey.shade400,
@@ -43,11 +96,30 @@ class _InvitationsPageState extends State<InvitationsPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
-                buttonBack(context),
+                backButton(context),
 
-                const Padding(
-                  padding: EdgeInsets.only(top: 20, bottom: 20),
-                  child: Text('Приглашения', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                // const Padding(
+                //   padding: EdgeInsets.only(top: 20, bottom: 20),
+                //   child: Text('Приглашения', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                // ),
+
+                //Выбор интерфейса
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, bottom: 13),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      miniContainer(
+                        position: 1,
+                        text: 'Пригашения',
+                      ),
+                      miniContainer(
+                        position: 2,
+                        text: 'Друзья',
+                      ),
+
+                    ],
+                  ),
                 ),
 
                 viewInviteContainer(strType: 'Деловая встреча'),
@@ -66,7 +138,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
     padding: const EdgeInsets.only(bottom: 10),
     child: Container(
       width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 21),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(35),
@@ -79,24 +151,77 @@ class _InvitationsPageState extends State<InvitationsPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 17),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade500,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(15),
                 ),
 
                 child: Center(child:
-                Text(strType, style: const TextStyle(color: Colors.white, fontSize: 10),)
+                Text(strType, style: const TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w600),)
                 ),
               ),
 
-              Text('2 ч назад', style: TextStyle(fontSize: 12, color: Colors.grey.shade500),)
+
+              _activeInvitationTab==2?
+              Text('2 ч назад', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: ConstColor.grey3),)
+                  :
+              strType=='Деловая встреча'?
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 17),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade500,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+
+                child: Row(
+                  children: [
+                    Text('Готов к встрече', style: const TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w600),),
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5.75),
+                      child: Icon(Icons.check_circle, size: 16, color: Colors.black,),
+                    )
+                  ],
+                ),
+              )
+                  :
+              Container(
+                  width: 110.57,
+                  height: 39.57,
+                  padding: const EdgeInsets.only(
+                      left: 17,
+                      right: 17,
+                      top: 10,
+                      bottom: 10
+                  ),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.grey.shade500),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        '02:04:15',
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 5),
+                        child: Icon(
+                          Icons.incomplete_circle,
+                          size: 16,
+                        ),
+                      )
+                    ],
+                  )),
+
 
             ],
           ),
-
-
 
           Padding(
             padding: const EdgeInsets.only(top: 15),
@@ -106,14 +231,14 @@ class _InvitationsPageState extends State<InvitationsPage> {
 
                 Text('Джоли, 28',
                     style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 18,
                         color: Colors.black,
-                        fontWeight: FontWeight.bold
+                        fontWeight: FontWeight.w600
                     )
                 ),
 
                 Padding(
-                  padding: EdgeInsets.only(left: 8),
+                  padding: EdgeInsets.only(left: 5.75),
                   child: Icon(Icons.verified, color: Colors.black, size: 16,),
                 ),
 
@@ -122,13 +247,22 @@ class _InvitationsPageState extends State<InvitationsPage> {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Text('Уровень "Базовый"', style: TextStyle(fontSize: 11, color: Colors.grey.shade500, fontWeight: FontWeight.bold),),
+            padding: const EdgeInsets.only(top: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Уровень "Базовый"', style: TextStyle(
+                    fontSize: 14, color: ConstColor.grey3, fontWeight: FontWeight.w400),),
+
+                Text('+150 баллов', style: TextStyle(
+                    fontSize: 14, color: Colors.black, fontWeight: FontWeight.w400),),
+              ],
+            ),
           ),
 
 
           Padding(
-            padding: const EdgeInsets.only(top: 20, bottom: 0),
+            padding: const EdgeInsets.only(top: 29,),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -140,15 +274,15 @@ class _InvitationsPageState extends State<InvitationsPage> {
                         color: Colors.grey.shade300,
                         shape: BoxShape.circle
                     ),
-                    width: 70,
-                    height: 70,
+                    width: 83,
+                    height: 83,
                     child:
                     IconButton(onPressed: (){}, icon: const Icon(
                       Network.person, color: Colors.black,), iconSize: 28,)
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.only(left: 15),
+                  padding: const EdgeInsets.only(left: 21),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -158,15 +292,16 @@ class _InvitationsPageState extends State<InvitationsPage> {
                               color: Colors.black,
                               shape: BoxShape.circle
                           ),
-                          width: 17,
-                          height: 17,
+                          width: 20,
+                          height: 20,
                           child:
-                          const Icon(Icons.call_received, size: 11, color: Colors.white,),
+                          const Icon(Icons.call_received, size: 12, color: Colors.white,),
                       ),
 
                     const Padding(
-                      padding: EdgeInsets.only(top: 5),
-                      child: Text('250 м', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                      padding: EdgeInsets.only(top: 10),
+                      child: Text('250 м', style: TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 20),),
                     )
 
                   ],),
@@ -180,14 +315,20 @@ class _InvitationsPageState extends State<InvitationsPage> {
                         color: Colors.grey.shade500,
                         // shape: BoxShape.circle
                     ),
-                    width: 50,
-                    height: 70,
+                    width: 66,
+                    height: 92,
                     child:
-                    IconButton(onPressed: (){
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: IconButton(onPressed: (){
 
-                      Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const MatchingPage()));
+                        Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const MatchingPage()));
 
-                    }, icon: const Icon(Icons.arrow_right_alt_rounded, color: Colors.black,), iconSize: 30,)
+                      },
+                        icon: const Icon(
+                          Network.arrow_right_long, color: Colors.black,),
+                        iconSize: 14,),
+                    )
                 ),
 
             ],),

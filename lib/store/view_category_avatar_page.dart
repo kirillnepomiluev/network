@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/profile/home_page.dart';
+import 'package:network_app/home_page.dart';
 import 'package:network_app/store/view_prod_avatar_page.dart';
 // import 'dart:ui' as ui;
 
@@ -97,7 +97,7 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
 
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
-                  child: buttonBack(context),
+                  child: backButton(context),
                 ),
 
                 const Padding(
@@ -279,7 +279,7 @@ Widget avatarContainer(
                                       isView == false
                                           ? Container()
                                           : Padding(
-                                              padding: EdgeInsets.only(left: 50),
+                                              padding: const EdgeInsets.only(left: 50),
                                               child: Text(
                                                 '1.6 SOL',
                                                 style: TextStyle(

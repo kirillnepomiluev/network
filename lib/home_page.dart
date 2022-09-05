@@ -2,9 +2,9 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/chat/messages_page.dart';
-import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/meetings/meetings_page.dart';
+import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/profile/profile_page.dart';
 import 'package:network_app/store/store_page.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -30,23 +30,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           const MeetingsPage(),
           const ProfilePage(),
-          Container(color: Colors.purple
-              // decoration: BoxDecoration(
-              //   gradient: RadialGradient(
-              //     colors: [
-              //       ConstantsColor.saladIn100,
-              //       ConstantsColor.darkSalad,
-              //     ],
-              //     center: Alignment.topRight,
-              //     // begin: Alignment.centerRight,
-              //     // end: Alignment.centerLeft,
-              //     stops: [
-              //       0.4,
-              //       1
-              //     ]
-              //   )
-              // ),
-              ),
+          Container(color: Colors.purple),
           const MessagesPage(),
           const StorePage(),
         ],
@@ -63,16 +47,15 @@ class _HomePageState extends State<HomePage> {
             borderRadius: BorderRadius.circular(15),
           ),
           child: BottomBar(
-            height: 54,
+            height: 60,
             border: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18),
               // side:  BorderSide(width: 3),
             ),
-            // itemPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+            // itemPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             // padding: EdgeInsets.symmetric(vertical: 0, horizontal: 1),
-            itemPadding:
-                const EdgeInsets.only(left: 15, right: 15, top: 13, bottom: 13),
-            padding: const EdgeInsets.only(left: 3, right: 3, top: 0, bottom: 0),
+            // itemPadding: const EdgeInsets.only(left: 15, right: 15, top: 13, bottom: 13),
+            // padding: const EdgeInsets.only(left: 3, right: 3, top: 0, bottom: 0),
             backgroundColor: Colors.transparent,
             selectedIndex: _currentPage,
             onTap: (int index) {
@@ -80,13 +63,9 @@ class _HomePageState extends State<HomePage> {
               setState(() => _currentPage = index);
             },
             items: <BottomBarItem>[
-              // barItem(icon: Icons.people_outline, text: 'Встречи'),
               barItem(icon: Network.people, text: 'Встречи'),
-
               barItem(icon: Network.person, text: 'Профиль'),
-              barItem(
-                  icon: Network.wallet,
-                  text: 'Инвентарь'),
+              barItem(icon: Network.wallet, text: 'Инвентарь'),
               barItem(icon: Network.chat, text: 'Чат'),
               barItem(icon: Network.cart, text: 'Магазин'),
             ],
@@ -277,10 +256,10 @@ Widget progressParametr(
       ),
     );
 
-Widget hobbitsContainer(String text) => Container(
+Widget hobbitsContainer(String text, {bool isDark = true}) => Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-          color: Colors.grey.shade300, borderRadius: BorderRadius.circular(22)),
+          color: isDark? Colors.grey.shade300 : Colors.grey.shade200, borderRadius: BorderRadius.circular(22)),
       child: Text(
         text,
         style: const TextStyle(fontSize: 14),
@@ -352,7 +331,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
           ));
 }
 
-Widget buttonBack(BuildContext context) => Align(
+Widget backButton(BuildContext context, {Function? func}) => Align(
       alignment: Alignment.topLeft,
       child: Container(
         // alignment: Alignment.topLeft,
@@ -365,7 +344,12 @@ Widget buttonBack(BuildContext context) => Align(
         child: Center(
           child: IconButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                if(func==null) {
+                  Navigator.of(context).pop();
+                }
+                else{
+                  func();
+                }
               },
               icon: const Icon(
                 Icons.arrow_back,

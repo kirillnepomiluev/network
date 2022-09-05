@@ -3,6 +3,29 @@ import 'package:flutter/material.dart';
 class Constants {
   static const String strLoremIpsum =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci pharetra nibh integer id adipiscing odio. Enim faucibus ut vel sit sed. Sit sit neque mi id ornare malesuada sed purus. Amet dolor sed et ornare mauris amet.';
+
+
+  static const List<String> hobbiesList = [
+    'Чтение',
+    'Общение',
+    'Мотоциклы',
+    'Коллекционирование',
+    'Спорт',
+    'Дизайн',
+    'Автомобили',
+    'Компьютерные игры',
+    'Кино',
+    'Интернет',
+    'Сканворды и кроссворды',
+    'Писательская деятельность',
+    'Живопись',
+    'Стенография',
+    'Астрология',
+    'Паркур',
+    'Хореография',
+    'Модельный бизнес',
+  ];
+
 }
 
 class ConstColor {
@@ -16,8 +39,10 @@ class ConstColor {
       Colors.white.withOpacity(0.15); //Полупрозрачный белый
   static Color halflBlack =
       Colors.black.withOpacity(0.7); //Полупрозрачный чёрный
+
   static const Color grey = Color(0xFFA9A9A9); //серый
-  static const Color blackBack = Color(0xFF0F1511); //серый
+  static const Color grey3 = Color(0xFF828282); //серый3
+  static const Color blackBack = Color(0xFF0F1511); //
 
 }
 
@@ -32,6 +57,7 @@ void showSimpleDialog(
       builder: (BuildContext context) =>
           simpleDialog(title, text, context, barrier));
 }
+
 
 Widget simpleDialog(
     String title, String text, BuildContext context, bool barrier) {

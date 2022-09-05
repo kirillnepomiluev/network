@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/home_page.dart';
 import 'package:network_app/components/network_icons.dart';
-import 'package:network_app/profile/home_page.dart';
 
 
 class ChatPage extends StatefulWidget {
@@ -113,7 +113,7 @@ class _ChatPageState extends State<ChatPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              buttonBack(context),
+              backButton(context),
               const Text('Джоли',
                 style: TextStyle(
                     color: Colors.black,
@@ -274,7 +274,7 @@ class _ChatPageState extends State<ChatPage> {
 
                 messageCont(messagesList[index]),
 
-                index!=messagesList.length-1? Container(): SizedBox(height: 100,)
+                index!=messagesList.length-1? Container(): const SizedBox(height: 100,)
 
               ],
             );

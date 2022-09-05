@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/profile/home_page.dart';
+import 'package:network_app/home_page.dart';
 
 class AuthSuccesPage extends StatefulWidget {
   const AuthSuccesPage({Key? key}) : super(key: key);
@@ -75,7 +75,7 @@ class _AuthSuccesPageState extends State<AuthSuccesPage> {
                   ),
 
                   ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                       padding: const EdgeInsets.only(left: 5, top: 41),
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,

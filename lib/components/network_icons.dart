@@ -12,6 +12,8 @@ class Network {
 
   static const String _fontFamily = 'Network';
 
+  static const IconData arrow_right_long = IconData(0xe90a, fontFamily: _fontFamily);
+  static const IconData search = IconData(0xe909, fontFamily: _fontFamily);
   static const IconData call = IconData(0xe900, fontFamily: _fontFamily);
   static const IconData cart = IconData(0xe901, fontFamily: _fontFamily);
   static const IconData chat = IconData(0xe902, fontFamily: _fontFamily);
