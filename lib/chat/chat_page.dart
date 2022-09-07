@@ -94,86 +94,118 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     final keyboardSize = MediaQuery.of(context).viewInsets.bottom;
-    return Scaffold(
-      extendBody: true,
-      extendBodyBehindAppBar: false,
-      // extendBody: true,
-      // extendBodyBehindAppBar: true,
-      // resizeToAvoidBottomInset: true,
-      backgroundColor: Colors.grey.shade400,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-          toolbarHeight: 70,
-          backgroundColor: Colors.grey.shade400,
-          elevation: 0,
-        title:
-        GestureDetector(
-          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              backButton(context),
-              const Text('Джоли',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500),
-              ),
-              Container(
-                // alignment: Alignment.topLeft,
-                width: 55,
-                height: 55,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(20),
+    return WillPopScope(
+      onWillPop: () async {
+
+        Navigator.of(context).push(MaterialPageRoute<void>(
+            builder: (context) => const HomePage(initIndex: 3,)));
+
+        return false;
+      },
+      child: Scaffold(
+        extendBody: true,
+        extendBodyBehindAppBar: false,
+        // extendBody: true,
+        // extendBodyBehindAppBar: true,
+        // resizeToAvoidBottomInset: true,
+        backgroundColor: Colors.grey.shade400,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+            toolbarHeight: 70,
+            backgroundColor: Colors.grey.shade400,
+            elevation: 0,
+          title:
+          GestureDetector(
+            onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                backButton(context, func: (){
+                  Navigator.of(context).push(MaterialPageRoute<void>(
+                      builder: (context) => const HomePage(initIndex: 3,)));
+                }),
+                const Text('Джоли',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500),
                 ),
-                child: Center(
-                  child: IconButton(
-                      onPressed: () {
-                        // Navigator.of(context).pop();
-                      },
-                      icon: const Icon(
-                        Icons.more_horiz,
+
+                Row(
+                  children: [
+
+                    Container(
+                      // alignment: Alignment.topLeft,
+                      width: 55,
+                      height: 55,
+                      decoration: BoxDecoration(
                         color: Colors.black,
-                        size: 25,
-                      )),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 7),
+                      child: Container(
+                        // alignment: Alignment.topLeft,
+                        width: 55,
+                        height: 55,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(
+                          child: IconButton(
+                              onPressed: () {
+                                // Navigator.of(context).pop();
+                              },
+                              icon: const Icon(
+                                Icons.more_horiz,
+                                color: Colors.black,
+                                size: 25,
+                              )),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
 
-      body: _body(),
+        body: _body(),
 
-      bottomNavigationBar:
-      Container(
-        color: Colors.transparent,
-        // padding: EdgeInsets.all(20),
-        padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: keyboardSize+10),
-        child: Container(
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15)
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(child: textEditor()),
+        bottomNavigationBar:
+        Container(
+          color: Colors.transparent,
+          // padding: EdgeInsets.all(20),
+          padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: keyboardSize+10),
+          child: Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15)
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(child: _textEditor()),
 
-              showSendButton==false?
-              IconButton(onPressed: (){}, icon: const Icon(Icons.tag_faces_sharp)):
-              // Container():
-              IconButton(onPressed: (){
-                sendFunction();
-              }, icon: const Icon(Icons.send))
+                showSendButton==false?
+                IconButton(onPressed: (){}, icon: const Icon(Icons.tag_faces_sharp)):
+                // Container():
+                IconButton(onPressed: (){
+                  sendFunction();
+                }, icon: const Icon(Icons.send))
 
-            ],
+              ],
+            ),
           ),
         ),
-      ),
 
+      ),
     );
   }
 
@@ -353,7 +385,7 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  Widget textEditor() => SizedBox(
+  Widget _textEditor() => SizedBox(
     height: 75,
     // width: double.infinity,
     child: TextField(
@@ -382,14 +414,15 @@ class _ChatPageState extends State<ChatPage> {
       },
       maxLines: 3,
       controller: _controller,
-      onSubmitted: (value){
+      // onSubmitted: (value){
+      //
+      //   if(value.isNotEmpty){
+      //     sendFunction();
+      //   }
+      //
+      // },
+      // textInputAction: TextInputAction.send,
 
-        if(value.isNotEmpty){
-          sendFunction();
-        }
-
-      },
-      textInputAction: TextInputAction.send,
       // onFieldSubmitted: (value){
       //   print('submitted - $value');
       //

@@ -10,7 +10,8 @@ import 'package:network_app/store/store_page.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final initIndex;
+  const HomePage({Key? key, required this.initIndex}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -18,7 +19,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentPage = 0;
-  final _pageController = PageController();
+  var _pageController = PageController(initialPage: 0);
+
+  @override
+  void initState() {
+
+    _currentPage = widget.initIndex;
+    _pageController = PageController(initialPage: _currentPage);
+    // _pageController.;
+
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -339,7 +351,7 @@ Widget backButton(BuildContext context, {Function? func}) => Align(
         height: 55,
         decoration: BoxDecoration(
           color: Colors.grey.shade300,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(15),
         ),
         child: Center(
           child: IconButton(

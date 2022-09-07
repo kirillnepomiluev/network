@@ -41,6 +41,7 @@ dependencies:
   percent_indicator:
   blurrycontainer:
   responsive_sizer:
+  simple_circular_progress_bar:
 
 dev_dependencies:
   flutter_test:

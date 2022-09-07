@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/components/network_icons.dart';
+import 'package:network_app/meetings/meetings_page.dart';
 
 
 class ViewPartnerProfilePage extends StatefulWidget {
@@ -274,83 +275,87 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
 
           Padding(
             padding: const EdgeInsets.only(bottom: 20,),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                    decoration: const BoxDecoration(
-                        color: Colors.black,
-                        shape: BoxShape.circle
-                    ),
-                    width: 40,
-                    height: 40,
-                    child:
-                    IconButton(onPressed: (){}, icon: const Icon(Icons.close_outlined, color: Colors.white,), iconSize: 18,)
-                ),
+            child:
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //   children: [
+            //     Container(
+            //         decoration: const BoxDecoration(
+            //             color: Colors.black,
+            //             shape: BoxShape.circle
+            //         ),
+            //         width: 40,
+            //         height: 40,
+            //         child:
+            //         IconButton(onPressed: (){}, icon: const Icon(Icons.close_outlined, color: Colors.white,), iconSize: 18,)
+            //     ),
+            //
+            //
+            //     Container(
+            //       width: 175,
+            //       padding: const EdgeInsets.all(3),
+            //       decoration: BoxDecoration(
+            //
+            //           boxShadow: [
+            //             BoxShadow(
+            //               color: Colors.grey.withOpacity(0.5),
+            //               spreadRadius: 2,
+            //               blurRadius: 7,
+            //               offset: const Offset(0, 3), // changes position of shadow
+            //             ),
+            //           ],
+            //
+            //           color: Colors.white,
+            //           borderRadius: BorderRadius.circular(30)
+            //       ),
+            //
+            //       child:
+            //       Row(
+            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //         children: [
+            //           Container(
+            //               decoration: const BoxDecoration(
+            //                   color: Colors.black,
+            //                   shape: BoxShape.circle
+            //               ),
+            //               width: 38,
+            //               height: 38,
+            //               child:
+            //               IconButton(onPressed: (){}, icon: const Icon(
+            //                 Network.electric,
+            //                 color: Colors.white,), iconSize: 18,)
+            //           ),
+            //
+            //           const Text('Встретиться', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500)),
+            //
+            //           // Icon(Icons.keyboard_arrow_right, size: 15, color: Colors.grey.shade500,),
+            //           // Icon(Icons.keyboard_arrow_right, size: 16, color: Colors.grey.shade800,),
+            //
+            //           Padding(
+            //             padding: const EdgeInsets.only(right: 12),
+            //             child: Icon(Icons.keyboard_double_arrow_right, size: 16, color: Colors.grey.shade800,),
+            //           ),
+            //
+            //         ],)
+            //       ,),
+            //
+            //
+            //     Container(
+            //         decoration: const BoxDecoration(
+            //             color: Colors.black,
+            //             shape: BoxShape.circle
+            //         ),
+            //         width: 40,
+            //         height: 40,
+            //         child:
+            //         IconButton(onPressed: (){}, icon: const Icon(Icons.star_border_outlined, color: Colors.white,), iconSize: 18,)
+            //     ),
+            //
+            //   ],
+            // ),
 
+            meetRow(context),
 
-                Container(
-                  width: 175,
-                  padding: const EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 7,
-                          offset: const Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30)
-                  ),
-
-                  child:
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                          decoration: const BoxDecoration(
-                              color: Colors.black,
-                              shape: BoxShape.circle
-                          ),
-                          width: 38,
-                          height: 38,
-                          child:
-                          IconButton(onPressed: (){}, icon: const Icon(
-                            Network.electric,
-                            color: Colors.white,), iconSize: 18,)
-                      ),
-
-                      const Text('Встретиться', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500)),
-
-                      // Icon(Icons.keyboard_arrow_right, size: 15, color: Colors.grey.shade500,),
-                      // Icon(Icons.keyboard_arrow_right, size: 16, color: Colors.grey.shade800,),
-
-                      Padding(
-                        padding: const EdgeInsets.only(right: 12),
-                        child: Icon(Icons.keyboard_double_arrow_right, size: 16, color: Colors.grey.shade800,),
-                      ),
-
-                    ],)
-                  ,),
-
-
-                Container(
-                    decoration: const BoxDecoration(
-                        color: Colors.black,
-                        shape: BoxShape.circle
-                    ),
-                    width: 40,
-                    height: 40,
-                    child:
-                    IconButton(onPressed: (){}, icon: const Icon(Icons.star_border_outlined, color: Colors.white,), iconSize: 18,)
-                ),
-
-              ],
-            ),
           )
 
         ],),

@@ -3,6 +3,7 @@ import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/meetings/invitations_page.dart';
 import 'package:network_app/components/network_icons.dart';
+import 'package:network_app/meetings/timer_page.dart';
 import 'package:network_app/profile/view_partner_profile_page.dart';
 
 class MeetingsPage extends StatefulWidget {
@@ -271,7 +272,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
               ),
             ),
 
-            meetRow(),
+            meetRow(context),
           ],
         ),
       ),
@@ -536,7 +537,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
 
 }
 
-meetRow() => Row(
+meetRow(BuildContext context) => Row(
   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
   children: [
 
@@ -557,63 +558,71 @@ meetRow() => Row(
           iconSize: 25,
         )),
 
-    Container(
-      height: 54,
-      width: 209,
-      padding: const EdgeInsets.all(3),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15)
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-              decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(15)
-                // shape: BoxShape.circle
-              ),
-              width: 48,
-              height: 48,
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Network.electric,
-                  color: Colors.white,
+    InkWell(
+      onTap: (){
+        Navigator.of(context).push(
+            MaterialPageRoute<void>(
+                builder: (context) =>
+                const TimerPage()));
+      },
+      child: Container(
+        height: 54,
+        width: 209,
+        padding: const EdgeInsets.all(3),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15)
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(15)
+                  // shape: BoxShape.circle
                 ),
-                iconSize: 25,
-              )),
+                width: 48,
+                height: 48,
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Network.electric,
+                    color: Colors.white,
+                  ),
+                  iconSize: 25,
+                )),
 
-          const Text('Встретиться',
-              style: TextStyle(
-                  fontSize: 12, fontWeight: FontWeight.w500)),
+            const Text('Встретиться',
+                style: TextStyle(
+                    fontSize: 12, fontWeight: FontWeight.w500)),
 
-          Padding(
-            padding: const EdgeInsets.only(right: 21),
-            child: SizedBox(
-              width: 20,
-              height: 20,
-              child: Stack(
-                children: const [
-                  Positioned(
-                      left: 0,
-                      child: Icon(
-                        Icons.keyboard_arrow_right,
-                        size: 20,
-                        color: ConstColor.grey,
-                      )),
-                  Positioned(
-                      left: 6,
-                      child: Icon(
-                        Icons.keyboard_arrow_right,
-                        size: 20,
-                      )),
-                ],
+            Padding(
+              padding: const EdgeInsets.only(right: 21),
+              child: SizedBox(
+                width: 20,
+                height: 20,
+                child: Stack(
+                  children: const [
+                    Positioned(
+                        left: 0,
+                        child: Icon(
+                          Icons.keyboard_arrow_right,
+                          size: 20,
+                          color: ConstColor.grey,
+                        )),
+                    Positioned(
+                        left: 6,
+                        child: Icon(
+                          Icons.keyboard_arrow_right,
+                          size: 20,
+                        )),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     ),
     Container(

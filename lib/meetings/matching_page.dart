@@ -3,6 +3,7 @@ import 'package:network_app/home_page.dart';
 import 'dart:math' as math;
 
 import 'package:network_app/components/network_icons.dart';
+import 'package:network_app/meetings/questions_page.dart';
 
 class MatchingPage extends StatefulWidget {
   const MatchingPage({Key? key}) : super(key: key);
@@ -271,7 +272,12 @@ class _MatchingPageState extends State<MatchingPage> {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+
+                        Navigator.of(context).push(MaterialPageRoute<void>(
+                            builder: (context) => const QuestionsPage()));
+
+                      },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 35),
                         child: Text(

@@ -131,7 +131,7 @@ class _AuthSuccesPageState extends State<AuthSuccesPage> {
           child: InkWell(
             onTap: (() {
               Navigator.of(context).push(MaterialPageRoute<void>(
-                  builder: (context) => const HomePage()));
+                  builder: (context) => const HomePage(initIndex: 0,)));
             }),
             child: Container(
               margin: const EdgeInsets.only(bottom: 10, left: 20, right: 20),

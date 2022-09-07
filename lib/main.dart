@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
 
             home:
             // const FirstPage(),
-            const HomePage(),
+            const HomePage(initIndex: 0,),
           );
         },
       );
