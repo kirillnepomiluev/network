@@ -1,11 +1,10 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:network_app/chat/chat_page.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/meetings/complaint_page.dart';
+import 'package:network_app/meetings/rate_page.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 
@@ -18,7 +17,8 @@ class TimerPage extends StatefulWidget {
 
 class _TimerPageState extends State<TimerPage> {
 
-  Duration duration = const Duration(minutes: 1);
+  // Duration duration = const Duration(minutes: 1);
+  Duration duration = const Duration(seconds: 10);
   Timer? timer;
 
   int maxSeconds = 0;
@@ -315,8 +315,6 @@ class _TimerPageState extends State<TimerPage> {
                             Navigator.of(context).pop();
                             Navigator.of(context).pop();
 
-                            // Navigator.of(context).push(MaterialPageRoute<void>(
-                            //     builder: (context) => const ChatPage()));
                           },
                           child: Text('Прервать', style: TextStyle(
                             fontSize: 14,
@@ -465,8 +463,10 @@ class _TimerPageState extends State<TimerPage> {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.of(context).pop();
-                          startTimer();
+
+                          Navigator.of(context).push(MaterialPageRoute<void>(
+                              builder: (context) => const RatePage()));
+
                         },
                         child: Text(
                           'Оценить встречу',
@@ -494,7 +494,7 @@ class _TimerPageState extends State<TimerPage> {
                           ),
                           onPressed: () {
                             Navigator.of(context).pop();
-                            startTimer();
+                            Navigator.of(context).pop();
                           },
                           child: Text(
                             'Оценить позже',

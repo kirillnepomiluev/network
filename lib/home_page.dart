@@ -23,7 +23,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-
     _currentPage = widget.initIndex;
     _pageController = PageController(initialPage: _currentPage);
     // _pageController.;
@@ -87,7 +86,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  BottomBarItem barItem({required IconData icon, double iconSize = 21, required String text}) =>
+  BottomBarItem barItem(
+          {required IconData icon,
+          double iconSize = 21,
+          required String text}) =>
       BottomBarItem(
           icon: Icon(
             icon,
@@ -107,103 +109,106 @@ class _HomePageState extends State<HomePage> {
           backgroundColorOpacity: 1);
 }
 
-Widget statContainer({required String title, required String subtitle, double width = 107, double height = 162, double fontSize = 28}) =>
+Widget statContainer(
+        {required String title,
+        required String subtitle,
+        double width = 107,
+        double height = 162,
+        double fontSize = 28}) =>
     Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child:
+        padding: const EdgeInsets.only(right: 10),
+        child: BlurryContainer(
+          blur: 10,
+          height: height,
+          width: width,
+          // decoration: BoxDecoration(
+          color: ConstColor.halfWhite,
+          borderRadius: BorderRadius.circular(73),
+          // ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              title == ''
+                  ? Container()
+                  : Text(
+                      title,
+                      style: TextStyle(
+                          fontSize: fontSize,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    ),
+              Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: Text(
+                  subtitle,
+                  style: TextStyle(
+                      fontSize: fontSize - 12,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white),
+                  textAlign: TextAlign.center,
+                ),
+              )
+            ],
+          ),
+        )
 
-      BlurryContainer(
-        blur: 10,
-        height: height,
-        width: width,
-        // decoration: BoxDecoration(
-            color: ConstColor.halfWhite,
-            borderRadius: BorderRadius.circular(73),
+        // Stack(
+        //   children: [
+        //     BackdropFilter(
+        //       filter: ui.ImageFilter.blur(
+        //         sigmaX: 0.1,
+        //         sigmaY: 0.1,
+        //       ),
+        //       child: Container(
+        //         height: 162,
+        //         width: 107,
+        //         decoration: BoxDecoration(
+        //             color: ConstColor.halfWhite,
+        //             borderRadius: BorderRadius.circular(50)),
+        //       ),
+        //     ),
+        //     Container(
+        //       // height: 140,
+        //       // width: 95,
+        //       height: 162,
+        //       width: 107,
+        //       decoration: BoxDecoration(
+        //           color: Colors.transparent,
+        //           borderRadius: BorderRadius.circular(73)),
+        //
+        //       child: Column(
+        //         mainAxisAlignment: MainAxisAlignment.center,
+        //         crossAxisAlignment: CrossAxisAlignment.center,
+        //         children: [
+        //           title == ''
+        //               ? Container()
+        //               : Text(
+        //                   title,
+        //                   style: const TextStyle(
+        //                       fontSize: 28,
+        //                       fontWeight: FontWeight.w500,
+        //                       color: Colors.white),
+        //                 ),
+        //           Padding(
+        //             padding: const EdgeInsets.only(top: 5),
+        //             child: Text(
+        //               subtitle,
+        //               style: const TextStyle(
+        //                   fontSize: 16,
+        //                   fontWeight: FontWeight.w500,
+        //                   color: Colors.white),
+        //               textAlign: TextAlign.center,
+        //             ),
+        //           )
+        //         ],
+        //       ),
+        //     ),
+        //   ],
         // ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            title == ''
-                ? Container()
-                : Text(
-              title,
-              style: TextStyle(
-                  fontSize: fontSize,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 5),
-              child: Text(
-                subtitle,
-                style: TextStyle(
-                    fontSize: fontSize-12,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white),
-                textAlign: TextAlign.center,
-              ),
-            )
-          ],
-        ),
-      )
+        //
 
-      // Stack(
-      //   children: [
-      //     BackdropFilter(
-      //       filter: ui.ImageFilter.blur(
-      //         sigmaX: 0.1,
-      //         sigmaY: 0.1,
-      //       ),
-      //       child: Container(
-      //         height: 162,
-      //         width: 107,
-      //         decoration: BoxDecoration(
-      //             color: ConstColor.halfWhite,
-      //             borderRadius: BorderRadius.circular(50)),
-      //       ),
-      //     ),
-      //     Container(
-      //       // height: 140,
-      //       // width: 95,
-      //       height: 162,
-      //       width: 107,
-      //       decoration: BoxDecoration(
-      //           color: Colors.transparent,
-      //           borderRadius: BorderRadius.circular(73)),
-      //
-      //       child: Column(
-      //         mainAxisAlignment: MainAxisAlignment.center,
-      //         crossAxisAlignment: CrossAxisAlignment.center,
-      //         children: [
-      //           title == ''
-      //               ? Container()
-      //               : Text(
-      //                   title,
-      //                   style: const TextStyle(
-      //                       fontSize: 28,
-      //                       fontWeight: FontWeight.w500,
-      //                       color: Colors.white),
-      //                 ),
-      //           Padding(
-      //             padding: const EdgeInsets.only(top: 5),
-      //             child: Text(
-      //               subtitle,
-      //               style: const TextStyle(
-      //                   fontSize: 16,
-      //                   fontWeight: FontWeight.w500,
-      //                   color: Colors.white),
-      //               textAlign: TextAlign.center,
-      //             ),
-      //           )
-      //         ],
-      //       ),
-      //     ),
-      //   ],
-      // ),
-      //
-
-    );
+        );
 
 Widget titleStatText(String text) => Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 10),
@@ -271,7 +276,8 @@ Widget progressParametr(
 Widget hobbitsContainer(String text, {bool isDark = true}) => Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-          color: isDark? Colors.grey.shade300 : Colors.grey.shade200, borderRadius: BorderRadius.circular(22)),
+          color: isDark ? Colors.grey.shade300 : Colors.grey.shade200,
+          borderRadius: BorderRadius.circular(22)),
       child: Text(
         text,
         style: const TextStyle(fontSize: 14),
@@ -356,10 +362,9 @@ Widget backButton(BuildContext context, {Function? func}) => Align(
         child: Center(
           child: IconButton(
               onPressed: () {
-                if(func==null) {
+                if (func == null) {
                   Navigator.of(context).pop();
-                }
-                else{
+                } else {
                   func();
                 }
               },
@@ -371,3 +376,48 @@ Widget backButton(BuildContext context, {Function? func}) => Align(
         ),
       ),
     );
+
+ButtonStyle buttonStyleCustom({
+  double padH = 61,
+  double padV = 17,
+  double radius = 52,
+  Color color = Colors.black,
+}) =>
+    ButtonStyle(
+      padding: MaterialStateProperty.all(
+          EdgeInsets.symmetric(vertical: padV, horizontal: padH)),
+      backgroundColor: MaterialStateProperty.all(color),
+      shape: MaterialStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(radius),
+        ),
+      ),
+    );
+
+// Widget buttomCustom(
+//         {double padH = 61,
+//         double padV = 17,
+//         double radius = 52,
+//         required Function func,
+//         Color color = Colors.black,
+//         required String text,
+//         double textSize = 16,
+//           textColor = Colors.white
+//         }) =>
+//     ElevatedButton(
+//         style: ButtonStyle(
+//           padding: MaterialStateProperty.all(
+//               EdgeInsets.symmetric(vertical: padV, horizontal: padH)),
+//           backgroundColor: MaterialStateProperty.all(color),
+//           shape: MaterialStateProperty.all(
+//             RoundedRectangleBorder(
+//               borderRadius: BorderRadius.circular(52),
+//             ),
+//           ),
+//         ),
+//         onPressed: () {},
+//         child: Text(
+//           text,
+//           style: TextStyle(
+//               fontSize: textSize, fontWeight: FontWeight.w500, color: textColor),
+//         ));

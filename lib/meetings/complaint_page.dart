@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/chat/chat_page.dart';
 import 'package:network_app/components/network_icons.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
 
 

@@ -42,6 +42,7 @@ dependencies:
   blurrycontainer:
   responsive_sizer:
   simple_circular_progress_bar:
+  syncfusion_flutter_sliders:
 
 dev_dependencies:
   flutter_test:
