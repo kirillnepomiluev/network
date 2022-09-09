@@ -39,29 +39,48 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          // Padding(
+          //   padding: EdgeInsets.only(top: 0.068 * mediaHeight), //49
+          //   child: Column(
+          //     crossAxisAlignment: CrossAxisAlignment.end,
+          //     // mainAxisAlignment: MainAxisAlignment.center,
+          //     children: [
+          //       Container(
+          //         // alignment: Alignment.centerRight,
+          //         width: mediaWitdh * 0.72, //270
+          //         height: mediaWitdh * 0.72, //289
+          //         decoration: const BoxDecoration(
+          //           color: Colors.red,
+          //           borderRadius: BorderRadius.only(
+          //               topLeft: Radius.circular(10),
+          //               bottomLeft: Radius.circular(10)),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+
           Padding(
             padding: EdgeInsets.only(top: 0.068 * mediaHeight), //49
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  // alignment: Alignment.centerRight,
-                  width: mediaWitdh * 0.72, //270
-                  height: mediaWitdh * 0.72, //289
-                  decoration: const BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        bottomLeft: Radius.circular(10)),
-                  ),
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Container(
+                // alignment: Alignment.centerRight,
+                width: mediaWitdh * 0.72, //270
+                height: mediaWitdh * 0.72, //289
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      bottomLeft: Radius.circular(10)),
                 ),
-              ],
+              ),
             ),
           ),
+
           Padding(
             padding: EdgeInsets.only(
                 left: 0.04 * mediaWitdh, top: 0.062 * mediaHeight), //45
@@ -79,8 +98,9 @@ class _LoginPageState extends State<LoginPage> {
 
                 Padding(
                   padding: EdgeInsets.only(top: 0.07 * mediaHeight), //51
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  child: Wrap(
+                    direction: Axis.horizontal,
+                    // mainAxisAlignment: MainAxisAlignment.start,
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ElevatedButton(
@@ -100,9 +120,8 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                         child: Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 0.152 * mediaWitdh, //57
-                              vertical:
-                                  0.028 * mediaHeight //0.053*mediaWidth  20
+                              horizontal: mediaWitdh<300? 10 : 0.152 * mediaWitdh, //57
+                              vertical: 0.028 * mediaHeight //0.053*mediaWidth  20
                               // horizontal: mediaWitdh<420? 30 : 57,  //57
                               // vertical: 20,    //20
                               ),

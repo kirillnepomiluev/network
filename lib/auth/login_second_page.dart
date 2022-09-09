@@ -4,6 +4,7 @@ import 'package:network_app/auth/phone_auth_page.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/main.dart';
 import 'package:network_app/components/network_icons.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class LoginSecondPage extends StatefulWidget {
   const LoginSecondPage({Key? key}) : super(key: key);
@@ -13,11 +14,13 @@ class LoginSecondPage extends StatefulWidget {
 }
 
 class _LoginSecondPageState extends State<LoginSecondPage> {
+  double mediaWitdh = 0;
+  double mediaHeight = 0;
+
   @override
   Widget build(BuildContext context) {
-
-    // final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWitdh = MediaQuery.of(context).size.width;
+    mediaHeight = MediaQuery.of(context).size.height;
+    mediaWitdh = MediaQuery.of(context).size.width;
     // print('mediaWitdh - $mediaWitdh  mediaHeight - $mediaHeight');
 
     return Scaffold(
@@ -25,27 +28,6 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
       bottomNavigationBar: Padding(
           padding: const EdgeInsets.only(bottom: 20, right: 20),
           child: troubleEnter(context)),
-
-      // BottomAppBar(
-      //     color: Colors.transparent,
-      //     elevation: 0,
-      //     child: Padding(
-      //       padding: EdgeInsets.only(
-      //           bottom: 15, right: MediaQuery.of(context).size.width * 0.1),
-      //       child: InkWell(
-      //         onTap: (() {
-      //           Navigator.of(context).push(MaterialPageRoute<void>(
-      //               builder: (context) => const RecoveryPage()));
-      //         }),
-      //         child: const Text(
-      //           'Проблемы со входом?',
-      //           style: TextStyle(
-      //               decoration: TextDecoration.underline,
-      //               fontWeight: FontWeight.w600),
-      //           textAlign: TextAlign.end,
-      //         ),
-      //       ),
-      //     )),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         toolbarHeight: 65,
@@ -57,165 +39,89 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
         ),
       ),
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              child: const Text(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
                 Constants.strLoremIpsum,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 17.5.sp, //16
                     fontWeight: FontWeight.w400,
                     color: Colors.black),
               ),
-            ),
-
-            //Войти по номеру телефона
-            Padding(
-              padding: const EdgeInsets.only(top: 57),
-              child: InkWell(
-                onTap: (() {
-                  Navigator.of(context).push(MaterialPageRoute<void>(
-                      builder: (context) => const PhoneAuthPage()));
-                }),
-                child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    padding: const EdgeInsets.all(15),
-                    // width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade800,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child:
-                        // const Center(child: Text('F', style: TextStyle(color: Colors.blue, fontSize: 20),),),
-                        Row(
-                      // mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(left: 15, right: 10),
-                          child:
-                              Icon(Network.call, color: Colors.white, size: 22),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 0, right: 0),
-                          child: Text(
-                            'Войти по номеру телефона',
-                            style: TextStyle(
-                                fontSize: mediaWitdh<400? 15 :18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        )
-                      ],
-                    )),
+              Padding(
+                padding: const EdgeInsets.only(top: 57),
+                child: enterContainer(
+                  iconName: 'icon',
+                  title: 'Войти по номеру телефона',
+                  leftPad: 30
+                ),
               ),
-            ),
-
-            //Google
-            Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: InkWell(
-                onTap: (() {}),
-                child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    padding: const EdgeInsets.all(15),
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade800,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child:
-                        // const Center(child: Text('F', style: TextStyle(color: Colors.blue, fontSize: 20),),),
-                        Row(
-                      // mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 15, right: 10, top: 4, bottom: 4),
-                          child: Image.asset(
-                            'assets/icons/logo_google.png',
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 0,
-                            right: 0,
-                          ),
-                          child: Text(
-                            'Войти через Google',
-                            style: TextStyle(
-                                fontSize:  mediaWitdh<400? 15 : 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        )
-                      ],
-                    )),
+              Padding(
+                padding: const EdgeInsets.only(top: 21),
+                child: enterContainer(
+                  iconName: 'logo_google',
+                  title: 'Войти через Google',
+                  leftPad: 28
+                ),
               ),
-            ),
-
-            //Facebok
-            Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: InkWell(
-                onTap: (() {}),
-                child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    padding: const EdgeInsets.all(15),
-                    // width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade800,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child:
-                        // const Center(child: Text('F', style: TextStyle(color: Colors.blue, fontSize: 20),),),
-                        Row(
-                      // mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 8, right: 0, top: 4, bottom: 4),
-                          child: Image.asset(
-                            'assets/icons/logo_facebook.png',
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 0, right: 0),
-                          child: Text(
-                            'Войти через Facebook',
-                            style: TextStyle(
-                                fontSize:  mediaWitdh<400? 15 : 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        )
-                      ],
-                    )),
+              Padding(
+                padding: const EdgeInsets.only(top: 21),
+                child: enterContainer(
+                  iconName: 'logo_facebook',
+                  title: 'Войти через Facebook',
+                  leftPad: 28
+                ),
               ),
-            ),
-
-            // Padding(
-            //     padding: EdgeInsets.only(bottom: 20, right: MediaQuery.of(context).size.width*0.1),
-            //   child: InkWell(onTap: ((){
-            //   }),
-            //     child: Container(
-            //       // constraints: BoxConstraints(maxWidth: 100),
-            //       // width: 100,
-            //       decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black, width: 2))),
-            //         padding: const EdgeInsets.only(bottom: 10,),
-            //             child: const Text('Проблемы со входом?', style: TextStyle(
-            //                 fontWeight: FontWeight.w500
-            //             ), textAlign: TextAlign.end,)),
-            //   ),
-            // ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
+
+  Widget enterContainer({iconName, title, leftPad}) => InkWell(
+        onTap: (() {
+          Navigator.of(context).push(MaterialPageRoute<void>(
+              builder: (context) => const PhoneAuthPage()));
+        }),
+        child: Container(
+            height: 60,
+            decoration: BoxDecoration(
+              color: Colors.black,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: leftPad,       //28
+                    right: 20,      //20
+                  ),
+                  child: iconName == 'icon'
+                      ? Icon(Network.call, color: Colors.white, size: 20)
+                      : Image.asset(
+                          'assets/icons/$iconName.png',
+                          width: 24,
+                          height: 24,
+                        ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 0, right: 0),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                        fontSize: 18.sp, //18
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500),
+                  ),
+                )
+              ],
+            )),
+      );
 }

@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:network_app/auth/auth_succes_page.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/home_page.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class PhoneAuthPage extends StatefulWidget {
   const PhoneAuthPage({Key? key}) : super(key: key);
@@ -20,8 +22,6 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
   final node4 = FocusNode();
 
   bool showPasswordInput = false;
-  bool showEnterButton = false;
-  bool showSendButton = false;
 
   String strPhone = '';
   // var _phoneController = TextEditingController();
@@ -30,238 +30,368 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey.shade400,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        toolbarHeight: 65,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        // leading:
-        title: Container(
-          width: 55,
-          height: 55,
-          decoration: BoxDecoration(
-            color: Colors.white70,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Center(
-            child: IconButton(
-                onPressed: () {
+    return WillPopScope(
+      onWillPop: () async{
+        if (showPasswordInput) {
+          setState(() {
+            showPasswordInput = false;
+          });
+        } else {
+          Navigator.of(context).pop();
+        }
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: Colors.grey.shade400,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          toolbarHeight: 65,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          // leading:
+          title:
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: backButton(context, func: (){
                   if (showPasswordInput) {
                     setState(() {
                       showPasswordInput = false;
-                      showEnterButton = false;
                     });
                   } else {
                     Navigator.of(context).pop();
                     // Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const LoginSecondPage()));
                   }
-                },
-                icon: const Icon(
-                  Icons.arrow_back,
-                  color: Colors.black,
-                  size: 25,
-                )),
-          ),
+              }),
+            ),
+
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: 31),
+          child: showPasswordInput ? inputPass() : inputPhone(),
         ),
       ),
-      body: showPasswordInput ? inputPass() : inputPhone(),
     );
   }
 
   Widget inputPhone() => Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Padding(
+
+              Padding(
                 padding: EdgeInsets.only(bottom: 27),
                 child: Text(
                   'Введите ваш номер',
                   style: TextStyle(
                       color: Colors.black87,
-                      fontSize: 28,
+                      fontSize: 23.sp, //28
                       fontWeight: FontWeight.w400),
                 ),
               ),
+
+              // Form(
+              //   key: formstate,
+              //   child: IntlPhoneField(
+              //     autofocus: true,
+              //     style: const TextStyle(fontSize: 14),
+              //     keyboardType: TextInputType.number,
+              //     inputFormatters: <TextInputFormatter>[
+              //       FilteringTextInputFormatter.digitsOnly
+              //     ],
+              //     initialCountryCode: 'RU',
+              //     decoration: InputDecoration(
+              //       // isDense: false,
+              //       contentPadding: const EdgeInsets.only(top: 22, bottom: 23, left: 20),
+              //       focusedBorder: OutlineInputBorder(
+              //           borderSide:
+              //               const BorderSide(width: 1, color: Colors.white),
+              //           borderRadius: BorderRadius.circular(20)),
+              //       enabledBorder: OutlineInputBorder(
+              //           borderSide:
+              //               const BorderSide(width: 1, color: Colors.white),
+              //           borderRadius: BorderRadius.circular(20)),
+              //
+              //       filled: true,
+              //       fillColor: Colors.white,
+              //     ),
+              //     onChanged: (phone) {
+              //       strPhone = phone.completeNumber;
+              //
+              //       strPhone = '${strPhone.substring(0, 1)} ${strPhone.substring(1, 2)} ${strPhone.substring(2, 5)} ${strPhone.substring(5, 8)} ${strPhone.substring(8, 10)} ${strPhone.substring(10)}'; //33
+              //
+              //       var formdata = formstate.currentState;
+              //
+              //       if (formdata!.validate()) {
+              //         // print('valid');
+              //         setState(() {
+              //           showSendButton = true;
+              //         });
+              //       } else {
+              //         if (showSendButton) {
+              //           setState(() {
+              //             showSendButton = false;
+              //           });
+              //         }
+              //       }
+              //
+              //       // print('strPhone $strPhone');
+              //     },
+              //     onCountryChanged: (country) {
+              //       // print('Country changed to: ' + country.name);
+              //     },
+              //   ),
+              // ),
+              //
+
+
+
               Form(
                 key: formstate,
-                child: IntlPhoneField(
-                  autofocus: true,
-                  style: const TextStyle(fontSize: 14),
-                  keyboardType: TextInputType.number,
-                  inputFormatters: <TextInputFormatter>[
-                    FilteringTextInputFormatter.digitsOnly
+                child: Stack(
+                  alignment: Alignment.topCenter,
+                  children: [
+                    Container(
+                      height: 59,
+                      padding: EdgeInsets.only(left: 10),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 12, right: 12),
+                      child: IntlPhoneField(
+                        // textInputAction: TextInputAction.done,
+                        // disableLengthCheck: true,
+                        autofocus: true,
+                        style: const TextStyle(fontSize: 14),
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                        initialCountryCode: 'RU',
+
+                        decoration: InputDecoration(
+                          // isDense: false,
+                          contentPadding: const EdgeInsets.only(top: 25, bottom: 25),
+                          // errorText:'Неправильный номер',
+
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(width: 3, color: Colors.white),
+                              borderRadius: BorderRadius.circular(20)),
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(width: 3, color: Colors.white),
+                              borderRadius: BorderRadius.circular(20)),
+
+                          filled: true,
+                          fillColor: Colors.white,
+                        ),
+                        onChanged: (phone) {
+                          strPhone = phone.completeNumber;
+
+                          strPhone = '${strPhone.substring(0, 1)} ${strPhone.substring(1, 2)} ${strPhone.substring(2, 5)} ${strPhone.substring(5, 8)} ${strPhone.substring(8, 10)} ${strPhone.substring(10)}'; //33
+
+                          var formdata = formstate.currentState;
+
+                          if (formdata!.validate()) {
+                            // print('valid');
+                            // setState(() {
+                            //   showSendButton = true;
+                            // });
+
+                            FocusManager.instance.primaryFocus?.unfocus();
+
+                          }
+                          // else {
+                          //   if (showSendButton) {
+                          //     setState(() {
+                          //       showSendButton = false;
+                          //     });
+                          //   }
+                          // }
+                          // print('strPhone $strPhone');
+                        },
+                        // onCountryChanged: (country) {
+                        //   // print('Country changed to: ' + country.name);
+                        // },
+                      ),
+                    ),
                   ],
-                  initialCountryCode: 'RU',
-                  decoration: InputDecoration(
-                    // isDense: false,
-                    contentPadding: const EdgeInsets.only(top: 22, bottom: 23),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(width: 1, color: Colors.white),
-                        borderRadius: BorderRadius.circular(20)),
-                    enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(width: 1, color: Colors.white),
-                        borderRadius: BorderRadius.circular(20)),
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
-                  onChanged: (phone) {
-                    strPhone = phone.completeNumber;
-
-                    strPhone = '${strPhone.substring(0, 1)} ${strPhone.substring(1, 2)} ${strPhone.substring(2, 5)} ${strPhone.substring(5, 8)} ${strPhone.substring(8, 10)} ${strPhone.substring(10)}' //33
-
-                        ;
-
-                    var formdata = formstate.currentState;
-
-                    if (formdata!.validate()) {
-                      // print('valid');
-                      setState(() {
-                        showSendButton = true;
-                      });
-                    } else {
-                      if (showSendButton) {
-                        setState(() {
-                          showSendButton = false;
-                        });
-                      }
-                    }
-
-                    // print('strPhone $strPhone');
-                  },
-                  onCountryChanged: (country) {
-                    // print('Country changed to: ' + country.name);
-                  },
                 ),
               ),
-              const Padding(
+
+
+
+              Padding(
                 padding: EdgeInsets.only(top: 38, bottom: 52),
                 child: Center(
-                  child: SizedBox(
-                    // width: 350,
-                    child: Text(Constants.strLoremIpsum,
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                        )),
-                  ),
-                ),
-              ),
-              Center(
-                child: InkWell(
-                  onTap: (() {
-                    var formdata = formstate.currentState;
-
-                    if (formdata!.validate()) {
-                      // print('valid');
-                      setState(() {
-                        showPasswordInput = true;
-                      });
-                    }
-                    // else{
-                    //   showSimpleDialog(title: 'Недоступно', text: 'Некорректный номер', context: context);
-                    //   // print('not valid');
-                    // }
-                  }),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    padding: const EdgeInsets.only(
-                        left: 15, right: 15, top: 20, bottom: 20),
-                    decoration: BoxDecoration(
-                      // color: Colors.grey.shade800,
-                      color: showSendButton
-                          ? Colors.black87
-                          : Colors.grey.shade600,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: const Text(
-                      'Отправить код',
+                  child: Text(Constants.strLoremIpsum,
+                      maxLines: 5,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
+                        color: Colors.black,
+                        fontSize: 17.5.sp,   //16
+                        fontWeight: FontWeight.w400,
+                      )),
                 ),
               ),
+
+
+
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                    style: buttonStyleCustom(padH: 0, padV: 28, radius: 20),
+                    onPressed: () {
+
+                      var formdata = formstate.currentState;
+
+                      if (formdata!.validate()) {
+                        // print('valid');
+                        setState(() {
+                          showPasswordInput = true;
+                        });
+                      }
+
+                      // FocusManager.instance.primaryFocus?.unfocus();
+
+                    },
+                    child: Text(
+                      'Отправить код',
+                      style:
+                      TextStyle(
+                          fontSize: 18.5.sp,     //18
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white
+                      ),
+                    )),
+              ),
+
+              // Center(
+              //   child: InkWell(
+              //     onTap: (() {
+              //       var formdata = formstate.currentState;
+              //
+              //       if (formdata!.validate()) {
+              //         // print('valid');
+              //         setState(() {
+              //           showPasswordInput = true;
+              //         });
+              //       }
+              //       // else{
+              //       //   showSimpleDialog(title: 'Недоступно', text: 'Некорректный номер', context: context);
+              //       //   // print('not valid');
+              //       // }
+              //     }),
+              //     child: Container(
+              //       width: MediaQuery.of(context).size.width * 0.8,
+              //       padding: const EdgeInsets.only(
+              //           left: 15, right: 15, top: 20, bottom: 20),
+              //       decoration: BoxDecoration(
+              //         // color: Colors.grey.shade800,
+              //         color: showSendButton
+              //             ? Colors.black87
+              //             : Colors.grey.shade600,
+              //         borderRadius: BorderRadius.circular(20),
+              //       ),
+              //       child: const Text(
+              //         'Отправить код',
+              //         style: TextStyle(
+              //             fontSize: 18,
+              //             color: Colors.white,
+              //             fontWeight: FontWeight.w500),
+              //         textAlign: TextAlign.center,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              //
             ],
           ),
         ),
       );
 
-  Widget inputCell({required FocusNode focusNode, required int position}) =>
-      SizedBox(
-        height: 70,
-        width: 70,
-        child: TextFormField(
-          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
-          validator: (val) {
-            if (val!.isEmpty) {
-              return "Пусто";
-            }
+  Widget inputCell({required FocusNode focusNode, required int position}) {
 
-            return null;
-          },
-          onChanged: (value) {
-            if (position == 1) {
-              FocusScope.of(context).requestFocus(node2);
-            } else if (position == 2) {
-              FocusScope.of(context).requestFocus(node3);
-            } else if (position == 3) {
-              FocusScope.of(context).requestFocus(node4);
-            } else if (position == 4) {
+    final mediaWitdh = MediaQuery.of(context).size.width;
+
+    return SizedBox(
+      width: mediaWitdh*0.18666,    //70
+      child: TextFormField(
+        style: TextStyle(
+            fontSize: 20.sp,     //24
+            fontWeight: FontWeight.w500),
+
+        validator: (val) {
+          if (val!.isEmpty) {
+            return "Пусто";
+          }
+
+          return null;
+        },
+        onChanged: (value) {
+          if (position == 1) {
+            FocusScope.of(context).requestFocus(node2);
+          } else if (position == 2) {
+            FocusScope.of(context).requestFocus(node3);
+          } else if (position == 3) {
+            FocusScope.of(context).requestFocus(node4);
+          } else if (position == 4) {
+            FocusManager.instance.primaryFocus?.unfocus();
+            // FocusScope.of(context).requestFocus();
+          }
+
+          listCheck[position - 1] = true;
+
+          if (listCheck.contains(false) == false) {
+            var formdata = formstate.currentState;
+
+            if (formdata!.validate()) {
+              // print('valid - $listCheck');
               FocusManager.instance.primaryFocus?.unfocus();
-              // FocusScope.of(context).requestFocus();
+
+              // setState(() {
+              //   showEnterButton = true;
+              // });
             }
-
-            listCheck[position - 1] = true;
-
-            if (listCheck.contains(false) == false) {
-              var formdata = formstate.currentState;
-
-              if (formdata!.validate()) {
-                // print('valid - $listCheck');
-                FocusManager.instance.primaryFocus?.unfocus();
-
-                setState(() {
-                  showEnterButton = true;
-                });
-              }
-              else{
-                // showSimpleDialog(title: 'Недоступно', text: 'Некорректный номер', context: context);
-                // print('not valid - $listCheck');
-              }
+            else{
+              // showSimpleDialog(title: 'Недоступно', text: 'Некорректный номер', context: context);
+              // print('not valid - $listCheck');
             }
-          },
-          focusNode: focusNode,
-          textInputAction: TextInputAction.next,
-          textAlign: TextAlign.center,
-          maxLength: 1,
-          autofocus: true,
-          decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 27),
-            counterText: '',
-            focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(width: 0, color: Colors.white),
-                borderRadius: BorderRadius.circular(5)),
-            enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(width: 0, color: Colors.white),
-                borderRadius: BorderRadius.circular(5)),
-            filled: true,
-            fillColor: Colors.white,
+          }
+        },
+        focusNode: focusNode,
+        textInputAction: TextInputAction.next,
+        textAlign: TextAlign.center,
+        maxLength: 1,
+        autofocus: true,
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(
+              vertical: 25,
+              // horizontal: 20
           ),
+
+          counterText: '',
+          focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(width: 0, color: Colors.white),
+              borderRadius: BorderRadius.circular(5)),
+          enabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(width: 0, color: Colors.white),
+              borderRadius: BorderRadius.circular(5)),
+          filled: true,
+          fillColor: Colors.white,
         ),
-      );
+      ),
+    );
+
+  }
+
+
+
 
   Widget inputPass() => Padding(
         padding: const EdgeInsets.all(15),
@@ -323,40 +453,81 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                 ),
               ),
 
-              Center(
-                child:
-                    // ElevatedButton(onPres5sed: showSendButton==false? null: (){}, child: Text('Войти'),)
 
-                    InkWell(
-                  onTap: (() {
-                    FocusManager.instance.primaryFocus?.unfocus();
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                    style: buttonStyleCustom(padH: 0, padV: 28, radius: 20),
+                    onPressed: () {
 
-                    if (showEnterButton) {
-                      Navigator.of(context).push(MaterialPageRoute<void>(
-                          builder: (context) => const AuthSuccesPage()));
-                    }
-                  }),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    padding: const EdgeInsets.only(
-                        left: 15, right: 15, top: 20, bottom: 20),
-                    decoration: BoxDecoration(
-                      color: showEnterButton
-                          ? Colors.black87
-                          : Colors.grey.shade600,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: const Text(
+                      FocusManager.instance.primaryFocus?.unfocus();
+
+                      // if (showEnterButton) {
+                      //   Navigator.of(context).push(MaterialPageRoute<void>(
+                      //       builder: (context) => const AuthSuccesPage()));
+                      // }
+
+                      var formdata = formstate.currentState;
+
+                      if (formdata!.validate()) {
+                        Navigator.of(context).push(MaterialPageRoute<void>(
+                            builder: (context) => const AuthSuccesPage()));
+                      }
+
+                    },
+                    child: Text(
                       'Войти',
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
+                      style:
+                      TextStyle(
+                          fontSize: 18.5.sp,     //18
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white
+                      ),
+                    )),
               ),
+
+              // Center(
+              //   child:
+              //       // ElevatedButton(onPres5sed: showSendButton==false? null: (){}, child: Text('Войти'),)
+              //
+              //       InkWell(
+              //     onTap: (() {
+              //       FocusManager.instance.primaryFocus?.unfocus();
+              //
+              //       // if (showEnterButton) {
+              //       //   Navigator.of(context).push(MaterialPageRoute<void>(
+              //       //       builder: (context) => const AuthSuccesPage()));
+              //       // }
+              //
+              //       var formdata = formstate.currentState;
+              //
+              //       if (formdata!.validate()) {
+              //         Navigator.of(context).push(MaterialPageRoute<void>(
+              //             builder: (context) => const AuthSuccesPage()));
+              //       }
+              //
+              //     }),
+              //     child: Container(
+              //       width: MediaQuery.of(context).size.width * 0.8,
+              //       padding: const EdgeInsets.only(
+              //           left: 15, right: 15, top: 20, bottom: 20),
+              //       decoration: BoxDecoration(
+              //         color: showEnterButton
+              //             ? Colors.black87
+              //             : Colors.grey.shade600,
+              //         borderRadius: BorderRadius.circular(20),
+              //       ),
+              //       child: const Text(
+              //         'Войти',
+              //         style: TextStyle(
+              //             fontSize: 18,
+              //             color: Colors.white,
+              //             fontWeight: FontWeight.w500),
+              //         textAlign: TextAlign.center,
+              //       ),
+              //     ),
+              //   ),
+              // ),
 
               Center(
                 child: Padding(
@@ -365,7 +536,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                       onTap: (() {
                         setState(() {
                           showPasswordInput = false;
-                          showEnterButton = false;
+                          // showEnterButton = false;
                         });
                       }),
                       child:
