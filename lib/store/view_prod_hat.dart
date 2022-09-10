@@ -100,9 +100,9 @@ class _ViewProdHatPageState extends State<ViewProdHatPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    statContainer(title: '', subtitle: 'Базовый уровень'),
-                    statContainer(title: '+10', subtitle: 'баллов'),
-                    statContainer(title: '+0.2', subtitle: 'рейтинг'),
+                    // statContainer(title: '', subtitle: 'Базовый уровень'),
+                    // statContainer(title: '+10', subtitle: 'баллов'),
+                    // statContainer(title: '+0.2', subtitle: 'рейтинг'),
                   ],),
               ),
 

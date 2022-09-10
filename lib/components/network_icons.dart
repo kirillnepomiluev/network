@@ -12,6 +12,7 @@ class Network {
 
   static const String _fontFamily = 'Network';
 
+  static const IconData check_thin = IconData(0xe90e, fontFamily: _fontFamily);
   static const IconData check = IconData(0xe90c, fontFamily: _fontFamily);
   static const IconData check_circle_outlined = IconData(0xe90d, fontFamily: _fontFamily);
   static const IconData warning = IconData(0xe90b, fontFamily: _fontFamily);

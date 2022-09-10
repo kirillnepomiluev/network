@@ -5,6 +5,7 @@ import 'package:network_app/meetings/invitations_page.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/meetings/timer_page.dart';
 import 'package:network_app/profile/view_partner_profile_page.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingsPage extends StatefulWidget {
   const MeetingsPage({Key? key}) : super(key: key);
@@ -13,14 +14,18 @@ class MeetingsPage extends StatefulWidget {
   State<MeetingsPage> createState() => _MeetingsPageState();
 }
 
-
 class _MeetingsPageState extends State<MeetingsPage> {
   int _activeMeetingTab = 1;
 
   Widget miniContainer({
     required int position,
     required String text,
-  }) => Padding(
+  }) {
+
+    final mediaWidth = MediaQuery.of(context).size.width;
+    final double pad = 0.0373*mediaWidth;  //14
+
+    return Padding(
         padding: const EdgeInsets.only(right: 10),
         child: InkWell(
           onTap: (() {
@@ -43,11 +48,13 @@ class _MeetingsPageState extends State<MeetingsPage> {
               children: [
                 Padding(
                   padding: position==3?
-                  const EdgeInsets.only(left: 14, bottom: 14, top: 14, right: 0)
-                      : const EdgeInsets.all(14),
+                  EdgeInsets.only(left: pad, bottom: pad, top: pad, right: 0)
+                      : EdgeInsets.all(pad),
                   child: Text(
                     text,
-                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                        fontSize: 15.5.sp, //12
+                        fontWeight: FontWeight.w600),
                   ),
                 ),
                 position != 3
@@ -63,6 +70,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
           ),
         ),
       );
+  }
 
   final _controller = TextEditingController();
 
@@ -74,7 +82,12 @@ class _MeetingsPageState extends State<MeetingsPage> {
       mainBody();
   }
 
-  serchBody() => WillPopScope(
+  serchBody() {
+    final mediaTop = MediaQuery.of(context).viewPadding.top;
+    final mediaWidth = MediaQuery.of(context).size.width;
+    final mediaHeight = MediaQuery.of(context).size.height;
+
+    return WillPopScope(
     onWillPop: () async {
       setState(() {
         _activeMeetingTab=1;
@@ -82,18 +95,10 @@ class _MeetingsPageState extends State<MeetingsPage> {
       return false;
     },
     child: Scaffold(
-      // appBar: AppBar(
-      //   automaticallyImplyLeading: false,
-      //   leading: Padding(
-      //     padding: const EdgeInsets.all(8.0),
-      //     child: buttonBack(context),
-      //   ),
-      //   title: buttonBack(context),
-      // ),
       extendBody: true,
       backgroundColor: Colors.grey.shade400,
       body: Padding(
-        padding: const EdgeInsets.only(top: 25),
+        padding: EdgeInsets.only(top: mediaTop),
         child: GestureDetector(
           onTap: (){
             FocusManager.instance.primaryFocus?.unfocus();
@@ -106,7 +111,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  //Верхняя часть Для вас:
+                  //appBar
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child:
@@ -120,13 +125,15 @@ class _MeetingsPageState extends State<MeetingsPage> {
                         }),
                         Center(child: Text('Выберете интересы',
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black),
+                          style: TextStyle(
+                              fontSize: 18.5.sp,   //18
+                              fontWeight: FontWeight.w600, color: Colors.black),
                         ))
                       ],
                     ),
                   ),
 
-
+                  //Поиск
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20, top: 18),
                     child: Container(
@@ -152,6 +159,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
                     ),
                   ),
 
+
                   Wrap(
                     spacing: 14,
                     runSpacing: 14,
@@ -166,24 +174,51 @@ class _MeetingsPageState extends State<MeetingsPage> {
 
 
                   Padding(
-                    padding: const EdgeInsets.only(top: 45),
-                    child: ElevatedButton(
-                        style: ButtonStyle(
-                          padding: MaterialStateProperty.all(
-                              const EdgeInsets.symmetric(vertical: 18, horizontal: 64)),
-                          backgroundColor:
-                          MaterialStateProperty.all(Colors.black),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(17),
-                            ),
+                    padding: const EdgeInsets.only(top: 45, bottom: 100),
+                    child:
+
+                    SizedBox(
+                      width: 0.472*mediaWidth,  //177
+                      height: 0.076*mediaHeight,               //55
+                      child: ElevatedButton(
+                          style: buttonStyleCustom(
+                              padH: 0,
+                              padV: 0,
+                              radius: 17
                           ),
-                        ),
-                        onPressed: () {},
-                        child: Text(
-                          'Найти',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                        )),
+                          onPressed: () {},
+                          child: Text(
+                            'Найти',
+                            style:
+                            TextStyle(
+                                fontSize: 18.sp,     //16
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white
+                            ),
+                          )),
+                    ),
+
+
+                    // ElevatedButton(
+                    //     style: ButtonStyle(
+                    //       padding: MaterialStateProperty.all(
+                    //           const EdgeInsets.symmetric(vertical: 18, horizontal: 64)),
+                    //       backgroundColor:
+                    //       MaterialStateProperty.all(Colors.black),
+                    //       shape: MaterialStateProperty.all(
+                    //         RoundedRectangleBorder(
+                    //           borderRadius: BorderRadius.circular(17),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //     onPressed: () {},
+                    //     child: Text(
+                    //       'Найти',
+                    //       style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    //     )),
+
+
+
                   ),
 
 
@@ -196,11 +231,148 @@ class _MeetingsPageState extends State<MeetingsPage> {
     ),
   );
 
-  mainBody() => Scaffold(
+  }
+
+
+
+  Widget _iconsBar() {
+    final mediaWidth = MediaQuery.of(context).size.width;
+    final double contSize = 43;
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            Container(
+              width: contSize,
+              height: contSize,
+              decoration: BoxDecoration(
+                // color: Colors.black87,
+                color: Colors.white70,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Center(
+                child: IconButton(
+                  onPressed: () {
+                    // setState(() {
+                    // _activeProfileTab = 1;
+                    // });
+                  },
+                  icon: Icon(
+                    Network.person,
+                    size: 18.sp,   //18
+                  ),
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(left: 7),
+              child: Container(
+                width: contSize,
+                height: contSize,
+                decoration: BoxDecoration(
+                  // color: Colors.black87,
+                  color: Colors.white70,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Center(
+                  child: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _activeMeetingTab = 0;
+                      });
+                    },
+                    icon: Icon(
+                      Network.search,
+                      size: 17.sp,   //17
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+          ],
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: contSize,
+              height: contSize,
+              decoration: BoxDecoration(
+                // color: Colors.black87,
+                color: Colors.white70,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Center(
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                            builder: (context) =>
+                            const InvitationsPage()));
+                  },
+                  icon: Icon(
+                    Network.notification,
+                    size: 19.sp,   //18
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 7),
+              child: Container(
+                  width: mediaWidth*0.29,  //109
+                  height: contSize,
+                  // padding: const EdgeInsets.only(
+                  //     left: 17,
+                  //     right: 17,
+                  //     top: 10,
+                  //     bottom: 10
+                  // ),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '02:04:15',
+                        style: TextStyle(
+                            fontSize: 16.sp, //12
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 5),
+                        child: Icon(
+                          Icons.incomplete_circle,
+                          size: 18.5.sp,  //16
+                        ),
+                      )
+                    ],
+                  )),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
+  mainBody() {
+    final mediaTop = MediaQuery.of(context).viewPadding.top;
+    final mediaHeight = MediaQuery.of(context).size.height;
+    return Scaffold(
     extendBody: true,
     bottomNavigationBar: SafeArea(
       child: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15, bottom: 44),
+        padding: EdgeInsets.only(
+            left: 15,
+            right: 15,
+            // bottom: 44
+            bottom: mediaHeight>570? mediaHeight*0.0416 : 5  //30
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.end,
@@ -214,10 +386,10 @@ class _MeetingsPageState extends State<MeetingsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       Text('Джоли, 28',
                           style: TextStyle(
-                              fontSize: 26,
+                              fontSize: 22.5.sp,   //26
                               color: Colors.white,
                               fontWeight: FontWeight.bold)),
                       Padding(
@@ -225,17 +397,17 @@ class _MeetingsPageState extends State<MeetingsPage> {
                         child: Icon(
                           Icons.verified,
                           color: Colors.white,
-                          size: 16,
+                          size: 18.sp,   //16
                         ),
                       ),
                     ],
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: Text(
                       'Уровень "Базовый"',
                       style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 16.5.sp,   //14
                           color: ConstColor.grey,
                           fontWeight: FontWeight.w400),
                     ),
@@ -249,20 +421,21 @@ class _MeetingsPageState extends State<MeetingsPage> {
                         color: Colors.grey.shade400,
                         borderRadius: BorderRadius.circular(69),
                       ),
-                      child: const Text(
+                      child: Text(
                         'ищу партнера для бизнеса',
                         style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w400),
+                            fontSize: 15.5.sp, //12
+                            fontWeight: FontWeight.w400),
                       ),
                     ),
                   ),
 
-                  const Padding(
-                    padding: EdgeInsets.only(top: 10, bottom: 26),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: mediaHeight*0.036), //26
                     child: Text(
                       '+150 баллов',
                       style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 16.5.sp, //14
                           color: Colors.white,
                           fontWeight: FontWeight.w400),
                     ),
@@ -279,178 +452,181 @@ class _MeetingsPageState extends State<MeetingsPage> {
     ),
     backgroundColor: Colors.grey.shade400,
     body: Padding(
-      padding: const EdgeInsets.only(top: 25),
-      child: SingleChildScrollView(
-        child:
-        Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            //Верхняя часть Для вас:
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
+      padding: EdgeInsets.only(top: mediaTop), //25
+      child: Column(
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //Верхняя часть Для вас:
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Row(
+                //       children: [
+                //         Container(
+                //           width: 40,
+                //           height: 40,
+                //           decoration: BoxDecoration(
+                //             // color: Colors.black87,
+                //             color: Colors.white70,
+                //             borderRadius: BorderRadius.circular(15),
+                //           ),
+                //           child: Center(
+                //             child: IconButton(
+                //               onPressed: () {
+                //                 // setState(() {
+                //                 // _activeProfileTab = 1;
+                //                 // });
+                //               },
+                //               icon: const Icon(
+                //                 Network.person,
+                //                 size: 18,
+                //               ),
+                //             ),
+                //           ),
+                //         ),
+                //
+                //         Padding(
+                //           padding: const EdgeInsets.only(left: 7),
+                //           child: Container(
+                //             width: 40,
+                //             height: 40,
+                //             decoration: BoxDecoration(
+                //               // color: Colors.black87,
+                //               color: Colors.white70,
+                //               borderRadius: BorderRadius.circular(15),
+                //             ),
+                //             child: Center(
+                //               child: IconButton(
+                //                 onPressed: () {
+                //                   setState(() {
+                //                     _activeMeetingTab = 0;
+                //                   });
+                //                 },
+                //                 icon: const Icon(
+                //                   Network.search,
+                //                   size: 14,
+                //                 ),
+                //               ),
+                //             ),
+                //           ),
+                //         ),
+                //
+                //       ],
+                //     ),
+                //     Row(
+                //       crossAxisAlignment: CrossAxisAlignment.center,
+                //       children: [
+                //         Container(
+                //           width: 43,
+                //           height: 43,
+                //           decoration: BoxDecoration(
+                //             // color: Colors.black87,
+                //             color: Colors.white70,
+                //             borderRadius: BorderRadius.circular(15),
+                //           ),
+                //           child: Center(
+                //             child: IconButton(
+                //               onPressed: () {
+                //                 Navigator.of(context).push(
+                //                     MaterialPageRoute<void>(
+                //                         builder: (context) =>
+                //                         const InvitationsPage()));
+                //               },
+                //               icon: const Icon(
+                //                 Network.notification,
+                //                 size: 18,
+                //               ),
+                //             ),
+                //           ),
+                //         ),
+                //         Padding(
+                //           padding: const EdgeInsets.only(left: 7),
+                //           child: Container(
+                //               width: 110.57,
+                //               height: 39.57,
+                //               padding: const EdgeInsets.only(
+                //                   left: 17,
+                //                   right: 17,
+                //                   top: 10,
+                //                   bottom: 10
+                //               ),
+                //               decoration: BoxDecoration(
+                //                   borderRadius: BorderRadius.circular(15),
+                //                   color: Colors.white),
+                //               child: Row(
+                //                 mainAxisAlignment: MainAxisAlignment.center,
+                //                 children: const [
+                //                   Text(
+                //                     '02:04:15',
+                //                     style: TextStyle(
+                //                         fontSize: 12,
+                //                         fontWeight: FontWeight.bold),
+                //                   ),
+                //                   Padding(
+                //                     padding: EdgeInsets.only(left: 5),
+                //                     child: Icon(
+                //                       Icons.incomplete_circle,
+                //                       size: 16,
+                //                     ),
+                //                   )
+                //                 ],
+                //               )),
+                //         ),
+                //       ],
+                //     )
+                //   ],
+                // ),
+
+                //Верхние икнокм
+                _iconsBar(),
+
+                //Выбор интерфейса
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, bottom: 10),
+                  child: Center(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              // color: Colors.black87,
-                              color: Colors.white70,
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Center(
-                              child: IconButton(
-                                onPressed: () {
-                                  // setState(() {
-                                  // _activeProfileTab = 1;
-                                  // });
-                                },
-                                icon: const Icon(
-                                  Network.person,
-                                  size: 18,
-                                ),
-                              ),
-                            ),
+                          miniContainer(
+                            position: 1,
+                            text: 'Для вас',
                           ),
-
-                          Padding(
-                            padding: const EdgeInsets.only(left: 7),
-                            child: Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                // color: Colors.black87,
-                                color: Colors.white70,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Center(
-                                child: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _activeMeetingTab = 0;
-                                    });
-                                  },
-                                  icon: const Icon(
-                                    Network.search,
-                                    size: 14,
-                                  ),
-                                ),
-                              ),
-                            ),
+                          miniContainer(
+                            position: 2,
+                            text: 'По близости',
                           ),
-
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 43,
-                            height: 43,
-                            decoration: BoxDecoration(
-                              // color: Colors.black87,
-                              color: Colors.white70,
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Center(
-                              child: IconButton(
-                                onPressed: () {
-                                  Navigator.of(context).push(
-                                      MaterialPageRoute<void>(
-                                          builder: (context) =>
-                                          const InvitationsPage()));
-                                },
-                                icon: const Icon(
-                                  Network.notification,
-                                  size: 18,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 7),
-                            child: Container(
-                                width: 110.57,
-                                height: 39.57,
-                                padding: const EdgeInsets.only(
-                                    left: 17,
-                                    right: 17,
-                                    top: 10,
-                                    bottom: 10
-                                ),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: Colors.white),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Text(
-                                      '02:04:15',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 5),
-                                      child: Icon(
-                                        Icons.incomplete_circle,
-                                        size: 16,
-                                      ),
-                                    )
-                                  ],
-                                )),
+                          miniContainer(
+                            position: 3,
+                            text: 'Деловая встреча',
                           ),
                         ],
-                      )
-                    ],
-                  ),
-
-                  //Выбор интерфейса
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20, bottom: 10),
-                    child: Center(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            miniContainer(
-                              position: 1,
-                              text: 'Для вас',
-                            ),
-                            miniContainer(
-                              position: 2,
-                              text: 'По близости',
-                            ),
-                            miniContainer(
-                              position: 3,
-                              text: 'Деловая встреча',
-                            ),
-                          ],
-                        ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
+          ),
 
-            //Нижняя часть
-            InkWell(
+          //Нижняя часть
+          Expanded(
+            child: InkWell(
               onTap: (() {
                 Navigator.of(context).push(MaterialPageRoute<void>(
                     builder: (context) => const ViewPartnerProfilePage()));
               }),
               child: Container(
                 padding: const EdgeInsets.all(15),
-                height: MediaQuery.of(context).size.height,
+                // height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     color: Colors.grey.shade700,
@@ -463,18 +639,18 @@ class _MeetingsPageState extends State<MeetingsPage> {
                     Padding(
                       padding: const EdgeInsets.only(top: 10, left: 0),
                       child: Container(
-                        width: 91,
-                        height: 25,
+                        // width: 91,
+                        // height: 25,
                         decoration: BoxDecoration(
                             color: Colors.black,
-                            borderRadius: BorderRadius.circular(122)),
-                        // padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                            borderRadius: BorderRadius.circular(30)),
+                        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 17),
                         // alignment: Alignment.topLeft,
                         // width: 73,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.circle,
                               // color: Colors.greenAccent,
@@ -482,12 +658,13 @@ class _MeetingsPageState extends State<MeetingsPage> {
                               size: 8,
                             ),
                             Padding(
-                              padding: EdgeInsets.only(left: 4),
+                              padding: EdgeInsets.only(left: 5),
                               child: Text(
                                 'Онлайн',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 12, color: Colors.white),
+                                    fontSize: 15.5.sp, //12
+                                    color: Colors.white),
                               ),
                             )
                           ],
@@ -497,12 +674,13 @@ class _MeetingsPageState extends State<MeetingsPage> {
                   ],
                 ),
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     ),
   );
+  }
 
 
   Widget _textEditor() => SizedBox(
@@ -537,7 +715,15 @@ class _MeetingsPageState extends State<MeetingsPage> {
 
 }
 
-meetRow(BuildContext context) => Row(
+
+
+meetRow(BuildContext context) {
+  final mediaWitdh = MediaQuery.of(context).size.width;
+  final double contSize = mediaWitdh*0.128;   //48
+  final double iconSize = 21.sp;     //25
+  final double iconElSize = 18.5.sp;   //20
+
+  return Row(
   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
   children: [
 
@@ -547,15 +733,15 @@ meetRow(BuildContext context) => Row(
             borderRadius: BorderRadius.circular(15)
           // shape: BoxShape.circle
         ),
-        width: 48,
-        height: 48,
+        width: contSize,
+        height: contSize,
         child: IconButton(
           onPressed: () {},
           icon: const Icon(
             Icons.close_outlined,
             color: Colors.white,
           ),
-          iconSize: 25,
+          iconSize: iconSize,
         )),
 
     InkWell(
@@ -566,15 +752,15 @@ meetRow(BuildContext context) => Row(
                 const TimerPage()));
       },
       child: Container(
-        height: 54,
-        width: 209,
+        // height: 54,
+        // width: 209,
         padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(15)
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
                 decoration: BoxDecoration(
@@ -582,23 +768,31 @@ meetRow(BuildContext context) => Row(
                     borderRadius: BorderRadius.circular(15)
                   // shape: BoxShape.circle
                 ),
-                width: 48,
-                height: 48,
+                width: contSize,
+                height: contSize,
                 child: IconButton(
                   onPressed: () {},
                   icon: const Icon(
                     Network.electric,
                     color: Colors.white,
                   ),
-                  iconSize: 25,
+                  iconSize: iconElSize,
                 )),
 
-            const Text('Встретиться',
-                style: TextStyle(
-                    fontSize: 12, fontWeight: FontWeight.w500)),
-
             Padding(
-              padding: const EdgeInsets.only(right: 21),
+              padding: EdgeInsets.only(
+                  left: mediaWitdh*0.0453, //17
+                  right: 8
+              ),
+              child: Text('Встретиться',
+                  style: TextStyle(
+                      fontSize: 15.sp,     //12
+                      fontWeight: FontWeight.w500)),
+            ),
+
+            //иконка >>
+            Padding(
+              padding: EdgeInsets.only(right: mediaWitdh*0.056), //21
               child: SizedBox(
                 width: 20,
                 height: 20,
@@ -621,28 +815,35 @@ meetRow(BuildContext context) => Row(
                 ),
               ),
             ),
+
           ],
         ),
       ),
     ),
+
+
+
     Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: Colors.black,
           // shape: BoxShape.circle
         ),
-        width: 48,
-        height: 48,
+        width: contSize,
+        height: contSize,
         child: IconButton(
           onPressed: () {},
           icon: const Icon(
             Icons.star_border_outlined,
             color: Colors.white,
           ),
-          iconSize: 25,
+          iconSize: iconSize,
         )),
   ],
 );
+}
+
+
 
 class HobbySelected extends StatefulWidget {
   final title;
@@ -658,6 +859,9 @@ class _HobbySelectedState extends State<HobbySelected> {
 
   @override
   Widget build(BuildContext context) {
+
+    final mediaWitdh = MediaQuery.of(context).size.width;
+
     return InkWell(
       onTap: (() {
         setState(() {
@@ -665,20 +869,19 @@ class _HobbySelectedState extends State<HobbySelected> {
         });
       }),
       child: Container(
-        padding: EdgeInsets.all(14),
+        padding: EdgeInsets.all(mediaWitdh*0.0373), //14
         decoration: BoxDecoration(
           color: isSelected
               ? ConstColor.grey
               : Colors.white,
           borderRadius: BorderRadius.circular(12),
-          // border: isMeeting? null : Border.all(width: _activeProfileTab==position? 2 : 0)
         ),
-        // height: 35,
-        // width: 100,
         child:
         Text(
           widget.title,
-          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+          style: TextStyle(
+              fontSize: 15.5.sp, //12
+              fontWeight: FontWeight.w600),
         ),
       ),
     );

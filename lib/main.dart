@@ -55,13 +55,10 @@ class MyApp extends StatelessWidget {
             supportedLocales: const [
               Locale('ru', 'RU'), // English, no country code
             ],
-
             home: const
-                PhoneAuthPage()
-
 
             // FirstPage(),
-            // HomePage(initIndex: 0,),
+            HomePage(initIndex: 1,),
           );
         },
       );

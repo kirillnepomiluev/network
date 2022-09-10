@@ -8,6 +8,7 @@ import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/profile/profile_page.dart';
 import 'package:network_app/store/store_page.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HomePage extends StatefulWidget {
   final initIndex;
@@ -33,6 +34,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    // mediaHeight = MediaQuery.of(context).size.height;
+    final mediaWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       extendBody: true,
       // backgroundColor: Colors.green,
@@ -63,10 +68,14 @@ class _HomePageState extends State<HomePage> {
               borderRadius: BorderRadius.circular(18),
               // side:  BorderSide(width: 3),
             ),
-            // itemPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            // padding: EdgeInsets.symmetric(vertical: 0, horizontal: 1),
-            // itemPadding: const EdgeInsets.only(left: 15, right: 15, top: 13, bottom: 13),
-            // padding: const EdgeInsets.only(left: 3, right: 3, top: 0, bottom: 0),
+            padding: EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: mediaWidth*0.0266  //20
+            ),
+            itemPadding: EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: mediaWidth*0.0426  //16
+            ),
             backgroundColor: Colors.transparent,
             selectedIndex: _currentPage,
             onTap: (int index) {
@@ -86,135 +95,95 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  BottomBarItem barItem(
-          {required IconData icon,
-          double iconSize = 21,
-          required String text}) =>
-      BottomBarItem(
-          icon: Icon(
-            icon,
-            size: iconSize,
-            color: Colors.black,
+  BottomBarItem barItem({required IconData icon, required String text}) {
+    final mediaWitdh = MediaQuery.of(context).size.width;
+    final double iconSize = mediaWitdh<340? 15 : mediaWitdh<370 ? 18 : 20;  //21
+
+    return BottomBarItem(
+        icon: Icon(
+          icon,
+          size: iconSize,
+          color: Colors.black,
+        ),
+        title: Text(
+          text,
+          style: TextStyle(color: Colors.black,
+              fontSize: 15.sp   //12
           ),
-          title: Text(
-            text,
-            style: const TextStyle(color: Colors.black, fontSize: 12),
-          ),
-          activeColor: ConstColor.salad100,
-          inactiveIcon: Icon(
-            size: iconSize,
-            icon,
-            color: Colors.white,
-          ),
-          backgroundColorOpacity: 1);
+        ),
+        activeColor: ConstColor.salad100,
+        inactiveIcon: Icon(
+          size: iconSize,
+          icon,
+          color: Colors.white,
+        ),
+        backgroundColorOpacity: 1
+    );
+
+  }
 }
 
 Widget statContainer(
-        {required String title,
+        {
+          required BuildContext context,
+          required String title,
         required String subtitle,
         double width = 107,
         double height = 162,
-        double fontSize = 28}) =>
-    Padding(
-        padding: const EdgeInsets.only(right: 10),
-        child: BlurryContainer(
-          blur: 10,
-          height: height,
-          width: width,
-          // decoration: BoxDecoration(
-          color: ConstColor.halfWhite,
-          borderRadius: BorderRadius.circular(73),
-          // ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              title == ''
-                  ? Container()
-                  : Text(
-                      title,
-                      style: TextStyle(
-                          fontSize: fontSize,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white),
-                    ),
-              Padding(
-                padding: const EdgeInsets.only(top: 5),
-                child: Text(
-                  subtitle,
-                  style: TextStyle(
-                      fontSize: fontSize - 12,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-              )
-            ],
+        // double titleSize = 28,
+        // double subTitleSize = 28
+        }) {
+
+  final mediaHeight = MediaQuery.of(context).size.height;
+  final mediaWidth = MediaQuery.of(context).size.width;
+
+  final double contWidth =  mediaWidth*0.2853;
+  // final double contHeight =  mediaHeight*0.2853;
+
+  return BlurryContainer(
+    // padding: EdgeInsets.symmetric(vertical: 52, horizontal: 21),
+    blur: 10,
+    width: contWidth,   //107
+    height: contWidth*1.514,  //162
+    color: ConstColor.halfWhite,
+    borderRadius: BorderRadius.circular(73),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        title == ''
+            ? Container()
+            : Text(
+                title,
+                style: TextStyle(
+                    fontSize: 23.sp,    //28
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
+              ),
+        Padding(
+          padding: const EdgeInsets.only(top: 5),
+          child: Text(
+            subtitle,
+            style: TextStyle(
+                fontSize: 17.5.sp, //16
+                fontWeight: FontWeight.w500,
+                color: Colors.white),
+            textAlign: TextAlign.center,
           ),
         )
-
-        // Stack(
-        //   children: [
-        //     BackdropFilter(
-        //       filter: ui.ImageFilter.blur(
-        //         sigmaX: 0.1,
-        //         sigmaY: 0.1,
-        //       ),
-        //       child: Container(
-        //         height: 162,
-        //         width: 107,
-        //         decoration: BoxDecoration(
-        //             color: ConstColor.halfWhite,
-        //             borderRadius: BorderRadius.circular(50)),
-        //       ),
-        //     ),
-        //     Container(
-        //       // height: 140,
-        //       // width: 95,
-        //       height: 162,
-        //       width: 107,
-        //       decoration: BoxDecoration(
-        //           color: Colors.transparent,
-        //           borderRadius: BorderRadius.circular(73)),
-        //
-        //       child: Column(
-        //         mainAxisAlignment: MainAxisAlignment.center,
-        //         crossAxisAlignment: CrossAxisAlignment.center,
-        //         children: [
-        //           title == ''
-        //               ? Container()
-        //               : Text(
-        //                   title,
-        //                   style: const TextStyle(
-        //                       fontSize: 28,
-        //                       fontWeight: FontWeight.w500,
-        //                       color: Colors.white),
-        //                 ),
-        //           Padding(
-        //             padding: const EdgeInsets.only(top: 5),
-        //             child: Text(
-        //               subtitle,
-        //               style: const TextStyle(
-        //                   fontSize: 16,
-        //                   fontWeight: FontWeight.w500,
-        //                   color: Colors.white),
-        //               textAlign: TextAlign.center,
-        //             ),
-        //           )
-        //         ],
-        //       ),
-        //     ),
-        //   ],
-        // ),
-        //
-
-        );
+      ],
+    ),
+  );
+}
 
 Widget titleStatText(String text) => Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 10),
       child: Text(
         text,
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        style: TextStyle(fontWeight: FontWeight.bold,
+            fontSize: 19.sp  //20
+        ),
       ),
     );
 
@@ -223,24 +192,59 @@ Widget progressParametr(
         required String text2,
         bool isMeetingRow = false,
         double progress = 0,
-        required BuildContext context}) =>
-    Padding(
+        required BuildContext context}) {
+
+
+  final double fontSize = 17.5.sp;  //16
+
+  return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           InkWell(
             onTap: (() {
               opeinInfoSheet(title: text1, context: context);
             }),
-            child: Row(
-              mainAxisAlignment: isMeetingRow
-                  ? MainAxisAlignment.spaceBetween
-                  : MainAxisAlignment.start,
+            child:
+                isMeetingRow?
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      text1,
+                      style: TextStyle(
+                        fontSize: fontSize,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5),
+                      child: Text(
+                        text2,
+                        style: TextStyle(
+                          fontSize: fontSize,
+                          fontWeight:
+                          isMeetingRow ? FontWeight.normal : FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+                    :
+            Wrap(
+              direction: Axis.horizontal,
+              runAlignment: WrapAlignment.start,
+              alignment: WrapAlignment.start,
+              // mainAxisAlignment: isMeetingRow
+              //     ? MainAxisAlignment.spaceBetween
+              //     : MainAxisAlignment.start,
               children: [
                 Text(
                   text1,
-                  style: const TextStyle(
-                    fontSize: 16,
+                  style: TextStyle(
+                    fontSize: fontSize,
                     fontWeight: FontWeight.normal,
                   ),
                 ),
@@ -249,7 +253,7 @@ Widget progressParametr(
                   child: Text(
                     text2,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: fontSize,
                       fontWeight:
                           isMeetingRow ? FontWeight.normal : FontWeight.bold,
                     ),
@@ -258,12 +262,13 @@ Widget progressParametr(
               ],
             ),
           ),
+
           Padding(
             padding: const EdgeInsets.only(top: 15),
             child: LinearPercentIndicator(
               padding: EdgeInsets.zero,
               barRadius: const Radius.circular(15),
-              lineHeight: 25,
+              lineHeight: 22.sp,
               percent: progress,
               backgroundColor: Colors.grey.shade300,
               progressColor: Colors.grey.shade800,
@@ -272,6 +277,7 @@ Widget progressParametr(
         ],
       ),
     );
+}
 
 Widget hobbitsContainer(String text, {bool isDark = true}) => Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -280,14 +286,19 @@ Widget hobbitsContainer(String text, {bool isDark = true}) => Container(
           borderRadius: BorderRadius.circular(22)),
       child: Text(
         text,
-        style: const TextStyle(fontSize: 14),
+        style: TextStyle(
+            fontSize: 16.5.sp, //14
+        fontWeight: FontWeight.w400
+        ),
       ),
     );
 
 Widget textField(String hintText, {bool isEnable = true}) => TextFormField(
       enabled: isEnable,
       maxLines: null,
-      style: const TextStyle(color: Colors.black),
+      style: TextStyle(
+          fontSize: 17.sp,  //14
+          color: Colors.black),
       initialValue: hintText,
       autofocus: false,
       decoration: InputDecoration(
@@ -349,33 +360,36 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
           ));
 }
 
-Widget backButton(BuildContext context, {Function? func}) => Align(
+Widget backButton(BuildContext context, {Function? func}) {
+  final mediaWidth = MediaQuery.of(context).size.width;
+  final double contSize = 0.1466*mediaWidth; //55
+
+  return Align(
       alignment: Alignment.topLeft,
       child: Container(
-        // alignment: Alignment.topLeft,
-        width: 55,
-        height: 55,
+        // padding: EdgeInsets.all(6),
+        width: contSize,
+        height: contSize,
         decoration: BoxDecoration(
           color: Colors.grey.shade300,
           borderRadius: BorderRadius.circular(15),
         ),
-        child: Center(
-          child: IconButton(
-              onPressed: () {
-                if (func == null) {
-                  Navigator.of(context).pop();
-                } else {
-                  func();
-                }
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.black,
-                size: 25,
-              )),
-        ),
+        child: IconButton(
+            onPressed: () {
+              if (func == null) {
+                Navigator.of(context).pop();
+              } else {
+                func();
+              }
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+              size: 22.sp,   //25
+            )),
       ),
     );
+}
 
 ButtonStyle buttonStyleCustom({
   double padH = 61,
@@ -393,31 +407,3 @@ ButtonStyle buttonStyleCustom({
         ),
       ),
     );
-
-// Widget buttomCustom(
-//         {double padH = 61,
-//         double padV = 17,
-//         double radius = 52,
-//         required Function func,
-//         Color color = Colors.black,
-//         required String text,
-//         double textSize = 16,
-//           textColor = Colors.white
-//         }) =>
-//     ElevatedButton(
-//         style: ButtonStyle(
-//           padding: MaterialStateProperty.all(
-//               EdgeInsets.symmetric(vertical: padV, horizontal: padH)),
-//           backgroundColor: MaterialStateProperty.all(color),
-//           shape: MaterialStateProperty.all(
-//             RoundedRectangleBorder(
-//               borderRadius: BorderRadius.circular(52),
-//             ),
-//           ),
-//         ),
-//         onPressed: () {},
-//         child: Text(
-//           text,
-//           style: TextStyle(
-//               fontSize: textSize, fontWeight: FontWeight.w500, color: textColor),
-//         ));

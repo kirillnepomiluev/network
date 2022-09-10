@@ -4,6 +4,7 @@ import 'package:network_app/home_page.dart';
 import 'dart:ui' as ui;
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:network_app/components/network_icons.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -12,22 +13,21 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
-Widget blurContainer({double sigma = 10, double width=double.infinity, double height = double.infinity, required Widget child}) => SizedBox(
-  width: width,
-  height: height,
-  child: Stack(children: [
-    child,
-    BackdropFilter(
-      filter: ui.ImageFilter.blur(
-        sigmaX: sigma,
-        sigmaY: sigma,
-      ),
-      child: Container(
-      ),
-    ),
-  ],),
-);
-
+// Widget blurContainer({double sigma = 10, double width=double.infinity, double height = double.infinity, required Widget child}) => SizedBox(
+//   width: width,
+//   height: height,
+//   child: Stack(children: [
+//     child,
+//     BackdropFilter(
+//       filter: ui.ImageFilter.blur(
+//         sigmaX: sigma,
+//         sigmaY: sigma,
+//       ),
+//       child: Container(
+//       ),
+//     ),
+//   ],),
+// );
 
 
 Widget blurCircle({double sigma = 55, double radius = 271}) => SizedBox(
@@ -62,8 +62,12 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget miniContainer({
     required int position,
     required String text,
-  }) =>
-      Padding(
+  }) {
+
+    final mediaHeight = MediaQuery.of(context).size.height;
+    final mediaWidth = MediaQuery.of(context).size.width;
+
+    return Padding(
         padding: const EdgeInsets.only(right: 10),
         child: InkWell(
           onTap: (() {
@@ -75,34 +79,30 @@ class _ProfilePageState extends State<ProfilePage> {
             blur: 10,
             color: ConstColor.halfWhite,
             borderRadius: BorderRadius.circular(20),
-            // width: 140,
-            height: 56,
-            // padding: EdgeInsets.all(5),
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-            // decoration: BoxDecoration(
-            //     color: ConstColor.halfWhite,
-            //     borderRadius: BorderRadius.circular(20),
-            //     // border: Border.all(width: _activeProfileTab == position ? 2 : 0)
-            //   ),
-
+            // height: 56,
+            padding: EdgeInsets.symmetric(
+                vertical: mediaHeight*0.02635, //19
+                horizontal: 13
+            ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
 
                 _activeProfileTab==position?
-                    const Icon(Network.person, size: 20, color: Colors.white,)
+                    Icon(Network.person,
+                      size: 18.5.sp, //18
+                      color: Colors.white,)
                 : Container(),
 
                 Padding(
-                  padding: const EdgeInsets.only(left: 8),
+                  padding: const EdgeInsets.only(left: 13),
                   child: Text(
                     text,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
-                        fontSize: 14,
+                        fontSize: 16.5.sp,   //14
                       fontWeight: FontWeight.w500
-
                     ),
                   ),
                 ),
@@ -120,16 +120,19 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ),
       );
+  }
 
 
   @override
   Widget build(BuildContext context) {
     final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWitdh = MediaQuery.of(context).size.width;
-    // print('mediaWitdh - $mediaWitdh  mediaHeight - $mediaHeight');
+    final mediaWidth = MediaQuery.of(context).size.width;
+    final mediaTop = MediaQuery.of(context).viewPadding.top;
 
-    final double sheetHeight = mediaHeight * 0.15;  //147
+    // final double sheetHeight = mediaHeight * 0.15;  //147
+    final double sheetHeightMinus = -17;  //147
     final mediaRadius = MediaQuery.of(context).size.width*0.45;
+
 
     return Scaffold(
         extendBody: true,
@@ -141,6 +144,7 @@ class _ProfilePageState extends State<ProfilePage> {
             //   // color: Colors.black.withOpacity(0.9),
             // ),
 
+            //круг сверху
             Positioned(
             top: -mediaRadius*0.05,
             right: -mediaRadius*0.22,
@@ -151,6 +155,7 @@ class _ProfilePageState extends State<ProfilePage> {
               )
             ),
 
+            //круг внизу
             Positioned(
                 top: mediaHeight*0.43,
                 left: -mediaRadius*0.85,
@@ -164,26 +169,30 @@ class _ProfilePageState extends State<ProfilePage> {
 
             _activeProfileTab !=1? Container():
             Positioned(
-              top: 175,
-              // top: mediaHeight*0.2,
+              top: mediaHeight*0.21,
                 right: 0,
-                child: Image.asset('assets/images/2.png')
+                child: Image.asset('assets/images/2.png',
+                  height: 575,
+                )
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 25),
+              padding: EdgeInsets.only(top: mediaTop),
               child: SizedBox(
                 height: double.infinity,
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.all(10),
+                    // padding: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.only(left: 0, top: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _activeProfileTab != 2
                             ? Container()
                             : const Padding(
-                                padding: EdgeInsets.only(top: 8.0),
+                                padding: EdgeInsets.only(
+                                    left: 16,
+                                    top: 8.0),
                                 child: Text(
                                   'Профиль',
                                   style: TextStyle(
@@ -194,78 +203,77 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               ),
 
+
                         //Верхняя часть профиля
                         _activeProfileTab != 1
                             ? Container()
-                            : Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                            :
+                        Padding(
+                          padding: const EdgeInsets.only(left: 16),
+                          child: Row(
+                            crossAxisAlignment:
+                            CrossAxisAlignment.center,
+                            children: [
+
+                              Padding(
+                                padding:
+                                const EdgeInsets.only(right: 20),
+                                child: Container(
+                                  padding: const EdgeInsets.all(1),
+                                  width: 58,
+                                  height: 58,
+                                  decoration: BoxDecoration(
+                                    image: const DecorationImage(
+                                        image: AssetImage('assets/images/1.png')
+                                    ),
+                                    borderRadius:
+                                    BorderRadius.circular(15),
+                                  ),
+                                  // child: Image.asset('assets/images/1.png', fit: BoxFit.fill,),
+                                ),
+                              ),
+
+                              Column(
+                                crossAxisAlignment:
+                                CrossAxisAlignment.start,
                                 children: [
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 20),
-                                        child: Container(
-                                          padding: const EdgeInsets.all(1),
-                                          width: 58,
-                                          height: 58,
-                                          decoration: BoxDecoration(
-                                            image: const DecorationImage(
-                                              image: AssetImage('assets/images/1.png')
-                                            ),
-                                            // image: Image.asset('assets/images/1.png'),
-                                            // color: Colors.white70,
+                                  Text(
+                                    'Тимофей, 37',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.sp,   //18
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                  Padding(
+                                    padding:
+                                    const EdgeInsets.only(top: 7),
+                                    child: Container(
+                                        padding: EdgeInsets.symmetric(vertical: 3, horizontal: 9),
+                                        decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(15),
-                                          ),
-                                          // child: Image.asset('assets/images/1.png', fit: BoxFit.fill,),
-                                        ),
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          const Text(
-                                            'Тимофей, 37',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 7),
-                                            child: Container(
-                                                height: 21,
-                                                width: 157,
-                                                // padding: const EdgeInsets.only(left: 5, right: 5, top: 2, bottom: 2),
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            69),
-                                                    color: ConstColor
-                                                        .halfWhite),
-                                                child: const Center(
-                                                    child: Text(
-                                                  'я люблю веселиться 😁',
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w400,
-                                                      fontSize: 12,
-                                                      color: Colors.white),
-                                                ))),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                            BorderRadius.circular(
+                                                69),
+                                            color: ConstColor
+                                                .halfWhite),
+                                        child: Center(
+                                            child: Text(
+                                              'я люблю веселиться 😁',
+                                              style: TextStyle(
+                                                  fontSize: 15.5.sp,   //12
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.white
+                                              ),
+                                            ))),
                                   ),
                                 ],
                               ),
+                            ],
+                          ),
+                        ),
 
                         //Выбор интерфейса
                         Padding(
-                          padding: const EdgeInsets.only(top: 20, bottom: 20),
+                          padding: const EdgeInsets.only(left: 16, top: 20,),
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
@@ -283,36 +291,42 @@ class _ProfilePageState extends State<ProfilePage> {
                         _activeProfileTab != 1
                             ? Container()
                             : Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 5),
+                              padding: EdgeInsets.only(
+                                  top: 0.043*mediaHeight,  //31
+                                  left: 16),
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text(
+                                    Text(
                                       'Имя аватара',
                                       style: TextStyle(
                                         color: Colors.white,
-                                          fontSize: 26,
-                                          fontWeight: FontWeight.bold),
+                                          fontSize: 22.5.sp,   //26
+                                          fontWeight: FontWeight.w700),
                                     ),
-                                    const Padding(
-                                      padding: EdgeInsets.only(top: 12),
+
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 12),
                                       child: Text(
                                         'Базовый уровень',
                                         style: TextStyle(
                                           color: Colors.white,
-                                            fontSize: 14,
+                                            fontSize: 16.5.sp,     //14
                                             fontWeight: FontWeight.w400),
                                       ),
                                     ),
 
+                                    //Готов к встрече
                                     Padding(
-                                        padding: const EdgeInsets.only(top: 50),
+                                        padding: EdgeInsets.only(top: 0.05687*mediaHeight), //41
                                         child:
-
                                         Container(
-                                          width: 173,
-                                          height: 56,
-                                          // padding: EdgeInsets.all(5),
+                                          // width: 173,
+                                          // height: 56,
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: mediaHeight*0.02774  //20
+                                          ),
                                           // padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                                           decoration: BoxDecoration(
                                             color: ConstColor.salad90,
@@ -321,19 +335,26 @@ class _ProfilePageState extends State<ProfilePage> {
                                           ),
 
                                           child: Row(
+                                            mainAxisSize: MainAxisSize.min,
                                             crossAxisAlignment: CrossAxisAlignment.center,
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: const [
-
-                                              Icon(Icons.check, size: 22, color: Colors.black,),
+                                            // mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
 
                                               Padding(
-                                                padding: EdgeInsets.only(left: 5),
+                                                padding: const EdgeInsets.only(left: 14),
+                                                child: Icon(
+                                                  Network.check_thin,
+                                                  size: 16.5.sp,   //14
+                                                  color: Colors.black,),
+                                              ),
+
+                                              Padding(
+                                                padding: EdgeInsets.only(left: 12, right: 20),
                                                 child: Text(
                                                   'Готов к встрече',
                                                   style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 14,
+                                                      color: ConstColor.darkSalad,
+                                                      fontSize: 16.5.sp,   //14
                                                       fontWeight: FontWeight.w500
                                                   ),
                                                 ),
@@ -343,30 +364,36 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                     ),
 
+
                                     Padding(
-                                      padding: EdgeInsets.only(top: mediaHeight*0.075),  //100
+                                      padding: EdgeInsets.only(top: 0.0693*mediaHeight),  //50
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
+
                                           statContainer(
-                                            width: mediaWitdh*0.25, //107
-                                              height: mediaWitdh*0.25*1.5, //162
-                                              fontSize: mediaWitdh*0.25<100 ? 22 : 28, //28
+                                            context: context,
+                                            width: mediaWidth*0.25, //107
+                                              height: mediaWidth*0.25*1.5, //162
+                                              // titleSize: mediaWidth*0.25<100 ? 22 : 28, //28
                                               title: '9.4k',
                                               subtitle: 'баллов'
                                           ),
 
                                           statContainer(
-                                              width: mediaWitdh*0.25, //107
-                                              height: mediaWitdh*0.25*1.5, //162
-                                              fontSize: mediaWitdh*0.25<100 ? 22 : 28, //28
+                                              context: context,
+                                              width: mediaWidth*0.25, //107
+                                              height: mediaWidth*0.25*1.5, //162
+                                              // titleSize: mediaWidth*0.25<100 ? 22 : 28, //28
                                               title: '23', subtitle: 'встречи'),
+
                                           statContainer(
-                                              width: mediaWitdh*0.25, //107
-                                              height: mediaWitdh*0.25*1.5, //162
-                                              fontSize: mediaWitdh*0.25<100 ? 22 : 28, //28
+                                              context: context,
+                                              width: mediaWidth*0.25, //107
+                                              height: mediaWidth*0.25*1.5, //162
+                                              // titleSize: mediaWidth*0.25<100 ? 22 : 28, //28
                                               title: '4.5', subtitle: 'рейтинг'),
+
                                         ],
                                       ),
                                     ),
@@ -385,25 +412,27 @@ class _ProfilePageState extends State<ProfilePage> {
                                     // crossAxisAlignment: CrossAxisAlignment.center,
                                     // mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const Padding(
+                                      Padding(
                                         padding: EdgeInsets.only(bottom: 21),
                                         child: Text(
                                           'Шкаф пустой',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 22,
+                                              fontSize: 19.5.sp, //22
                                               fontWeight: FontWeight.w700),
                                         ),
                                       ),
-                                      const Text(
+
+                                      Text(
                                         'Посетите магазин, чтобы купить новые\nпредметы для своего персонажа',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 16,
+                                            fontSize: 17.sp, //16
                                             fontWeight: FontWeight.w400),
                                       ),
+
                                       Padding(
                                         padding: const EdgeInsets.only(top: 59),
                                         child: InkWell(
@@ -421,10 +450,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                               borderRadius:
                                                   BorderRadius.circular(52),
                                             ),
-                                            child: const Text(
+                                            child: Text(
                                               'Посетить магазин',
                                               style: TextStyle(
-                                                  fontSize: 16,
+                                                  fontSize: 17.sp, //16
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.w500),
                                               textAlign: TextAlign.center,
@@ -432,6 +461,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                           ),
                                         ),
                                       ),
+
+
                                     ],
                                   ),
                                 ),
@@ -447,97 +478,28 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
 
         bottomNavigationBar:
-
-        SizedBox(
-          height: sheetHeight,
+        _activeProfileTab !=1? Container():
+        Container(
+          height: mediaWidth*0.392,
+          alignment: Alignment.bottomCenter,
+          color: Colors.transparent,
           child:
-          _activeProfileTab !=1? Container():
           InkWell(
             onTap: (() {
               openBottomSheetProfile();
             }),
-            child: Container(
+            child: Stack(
               alignment: Alignment.bottomCenter,
-              color: Colors.transparent,
-              child:
-              CustomPaint(
-                size: Size(375, sheetHeight),
-                painter: RPSCustomPainter(),
-              ),
-
-                // CustomPaint(
-                //   size: Size(mediaWitdh, (mediaWitdh*0.392).toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-                //   painter: RPSCustomPainter(),
-                // )
-
-          //     Stack(
-          //       alignment: Alignment.center,
-          //       children: [
-          //
-          //         CustomPaint(
-          //           size: Size(375, sheetHeight),
-          //           painter: RPSCustomPainter(),
-          //         ),
-          //
-          //         Row(
-          //           children: [
-          //
-          //             Expanded(
-          //               child: Container(
-          //                 height: sheetHeight,
-          //                 decoration: BoxDecoration(
-          //                     color: ConstColor.halfWhite,
-          //                     borderRadius:
-          //                     const BorderRadius.only(
-          //                         topLeft: Radius.circular(30),
-          //                         // topRight: Radius.circular(25)
-          //                     )
-          //                 ),
-          //               ),
-          //             ),
-          //
-          //
-          //             Container(
-          //               // alignment: Alignment.bottomCenter,
-          //               width: 70,
-          //               height: sheetHeight,
-          //               decoration: BoxDecoration(
-          //                   color: ConstColor.halfWhite,
-          //                   // color: Colors.red,
-          //                   borderRadius:
-          //                   const BorderRadius.only(
-          //                     topRight: Radius.circular(45)
-          //                   )
-          //               ),
-          //             ),
-          //
-          //
-          //             Expanded(
-          //               child: Container(
-          //                 // width: MediaQuery.of(context).size.width,
-          //                 height: sheetHeight,
-          //                 decoration: BoxDecoration(
-          //                     color: ConstColor.halfWhite,
-          //                     //   color: Colors.red,
-          //                     borderRadius:
-          //                     // BorderRadius.vertical(top: Radius.circular(35))
-          //                     const BorderRadius.only(
-          //                         // topLeft: Radius.circular(25),
-          //                         topRight: Radius.circular(30)
-          //                     )
-          //                 ),
-          //               ),
-          //             ),
-          //
-          //
-          //           ],
-          //         ),
-          //
-          //
-          //
-          //       ],
-          //     ),
-
+              children: [
+                Positioned(
+                  bottom: sheetHeightMinus,
+                  child: CustomPaint(
+                    // size: Size(375, 147),
+                    size: Size(mediaWidth, mediaWidth*0.392),
+                    painter: RPSCustomPainter(),
+                  ),
+                ),
+              ],
             ),
           ),
         )
@@ -590,7 +552,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               text1: '5 встреч',
                               text2: 'Еще 25 встреч',
                               progress: 0.25,
-                              isMeetingRow: true),
+                              isMeetingRow: true
+                          ),
                           titleStatText('Статистика'),
                           progressParametr(
                               context: context,
@@ -635,6 +598,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       titleStatText('Сфера деятельности'),
                       textField(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget varius a id in amet.'),
+
+
                       titleStatText('Пол'),
                       const RadioList(
                         listOptions: ['Мужчина', 'Женщина'],
@@ -648,23 +613,32 @@ class _ProfilePageState extends State<ProfilePage> {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15)),
-                            child: const Text(
+                            child: Text(
                               '37 лет',
-                              style: TextStyle(fontSize: 14),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 17.sp),  //14
                             ),
                           ),
+
                           IconButton(
                             onPressed: () {
                               setState(() {});
                             },
                             icon: Icon(
-                              Icons.check_circle,
-                              color: Colors.grey.shade600,
+                              Network.check_circle_outlined,
+                              // Icons.check_circle,
+                              color: Colors.grey.shade800,
+                              size: 18.sp,  //18
                             ),
                           ),
-                          const Text(
+
+                          Text(
                             'Скрыть возраст',
-                            style: TextStyle(fontSize: 14),
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 17.sp), //14
                           ),
                         ],
                       ),
@@ -696,6 +670,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           'Нет',
                         ],
                       ),
+
                     ],
                   ),
                 ),
@@ -733,7 +708,7 @@ class _RadioListState extends State<RadioList> {
       offset: const Offset(-10, 0),
       child: ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
-          // padding: const EdgeInsets.only(left: 5, top: 25),
+          padding: const EdgeInsets.only(left: 5,),
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemCount: widget.listOptions.length,
@@ -746,7 +721,12 @@ class _RadioListState extends State<RadioList> {
                 dense: true,
                 title: Transform.translate(
                     offset: const Offset(-10, 0),
-                    child: Text(widget.listOptions[index])),
+                    child: Text(widget.listOptions[index],
+                    style: TextStyle(
+                      fontSize: 16.8.sp,   //14
+                      fontWeight: FontWeight.w400
+                    ),
+                    )),
                 value: widget.listOptions[index],
                 groupValue: groupValue,
                 onChanged: (value) {
