@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/home_page.dart';
+import 'package:network_app/profile/profile_page.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class ViewProdAvatarPage extends StatefulWidget {
@@ -14,33 +16,10 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final mediaWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
-    //   appBar: AppBar(
-    //     shape: const Border(
-    //     bottom: BorderSide(
-    //     color: Colors.white,
-    //     width: 0
-    // )),
-    //     toolbarHeight: 65,
-    //     backgroundColor: Colors.white,
-    //     elevation: 0,
-    //     automaticallyImplyLeading: false,
-    //     title: Container(
-    //       width: 55,
-    //       height: 55,
-    //       decoration: BoxDecoration(
-    //         color: Colors.grey.shade200,
-    //         borderRadius: BorderRadius.circular(20),
-    //       ),
-    //       child: Center(child:
-    //       IconButton(
-    //           onPressed: (){
-    //             Navigator.of(context).pop();
-    //           },
-    //           icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25,)),
-    //       ),
-    //     ),
-    //   ),
       backgroundColor: Colors.grey.shade400,
 
         bottomNavigationBar:
@@ -52,26 +31,36 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
               // borderRadius: BorderRadius.vertical(top: Radius.circular(35))
           ),
           child: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
+            padding: EdgeInsets.symmetric(horizontal: 0.04266*mediaWidth),    //16
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(right: 30),
-                  child: Text('1.6 SOL', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                Padding(
+                  padding: EdgeInsets.only(right: 0.08*mediaWidth),    //30
+                  child: Text('1.6 SOL', style: TextStyle(
+                      fontSize: 18.sp, //16
+                      fontWeight: FontWeight.w600),),
                 ),
-                Expanded(
+
+                SizedBox(
+                  width: 0.6533*mediaWidth,   //245
+                  height: 0.6533*mediaWidth*0.2245,   //55
                   child: ElevatedButton(
                       style: ButtonStyle(
-                        padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 15)),
+                        // padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 22)),
                         backgroundColor: MaterialStateProperty.all(Colors.black),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(17),
                           ),
                         ),
                       ),
-                      onPressed: (){}, child: const Text('Купить сейчас', style: TextStyle(fontSize: 16),)),
+                      onPressed: (){}, child: Text('Купить сейчас', style: TextStyle(
+                      fontSize: 18.sp,   //16
+                      color: Colors.white,
+                    fontWeight: FontWeight.w600
+
+                  ),)),
                 )
 
 
@@ -87,17 +76,13 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    viewProdAvatar(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  viewProdImage(context),
 
-                    _statColumn()
-
-                  ],
-                ),
+                  _statColumn()
+                ],
               ),
             ],
           ),
@@ -106,62 +91,6 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
     );
   }
 
-
-
-  Widget viewProdAvatar() => Container(
-    width: MediaQuery.of(context).size.width,
-    padding: const EdgeInsets.all(10),
-    // padding: EdgeInsets.symmetric(vertical: 0, horizontal: 100),
-    // padding: EdgeInsets.all(30),
-    decoration: BoxDecoration(
-      color: Colors.grey.shade100,
-      borderRadius: const BorderRadius.vertical(bottom: Radius.circular(50)),
-    ),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-
-        Padding(
-          padding: const EdgeInsets.only(bottom: 20),
-          child: backButton(context),
-        ),
-
-        Container(
-          width: 234,
-          height: 219,
-          decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.circular(10)
-          ),
-        ),
-
-        const Padding(
-          padding: EdgeInsets.only(top: 30),
-          child:
-          Text('Аватар', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),),
-        ),
-
-        const Padding(
-          padding: EdgeInsets.only(top: 10),
-          child:
-          Text('Имя аватара', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-        ),
-
-        Padding(
-          padding: const EdgeInsets.only(top: 10, bottom: 25),
-          child:
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade400,
-                borderRadius: BorderRadius.circular(15)
-              ),
-              child: const Text('Категория', style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),)),
-        ),
-
-      ],),
-  );
 
 
   Widget _statColumn() => Container(

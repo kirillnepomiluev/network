@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/chat/chat_page.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class QuestionsPage extends StatefulWidget {
@@ -49,11 +50,16 @@ class _QuestionsPageState extends State<QuestionsPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final mediaHeight = MediaQuery.of(context).size.height;
+    final mediaWidth = MediaQuery.of(context).size.width;
+
+    final imageWidth = 0.624*mediaWidth;
+
+
     return Scaffold(
-      // extendBody: true,
       backgroundColor: Colors.grey.shade400,
-      body: Padding(
-        padding: const EdgeInsets.only(top: 25),
+      body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -66,56 +72,53 @@ class _QuestionsPageState extends State<QuestionsPage> {
               showSuccessPage? SizedBox(height: 17,):
               //Прогресс
               Padding(
-                // padding: const EdgeInsets.only(bottom: 20, left: 16, right: 16),
                 padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
 
-                    Padding(
-                      padding: const EdgeInsets.only(right: 44),
-                      child: Container(
-                        width: 43,
-                        height: 43,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Center(
-                          child: Text('1', style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500
-                          ),)
-                        ),
+                    Container(
+                      width: 0.1146*mediaWidth,    //43
+                      height: 0.1146*mediaWidth,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade300,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Center(
+                        child: Text('1', style: TextStyle(
+                          fontSize: 16.5.sp,   //14
+                          fontWeight: FontWeight.w500
+                        ),)
                       ),
                     ),
 
                     Expanded(
-                      child: LinearProgressIndicator(
-                        backgroundColor: Colors.grey.shade100,
-                        color: Colors.black,
-                        minHeight: 4,
-                        value: _progress,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 0.1173*mediaWidth   //44
+                        ),
+                        child: LinearProgressIndicator(
+                          backgroundColor: Colors.grey.shade100,
+                          color: Colors.black,
+                          minHeight: 4,
+                          value: _progress,
+                        ),
                       ),
                     ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(left: 44),
-                      child: Container(
-                        // alignment: Alignment.topLeft,
-                        width: 43,
-                        height: 43,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Center(
-                            child: Text('$_questionCount', style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500
-                            ),)
-                        ),
+                    Container(
+                      width: 0.1146*mediaWidth,    //43
+                      height: 0.1146*mediaWidth,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade300,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Center(
+                          child: Text('3', style: TextStyle(
+                              fontSize: 16.5.sp,   //14
+                              fontWeight: FontWeight.w500
+                          ),)
                       ),
                     ),
 
@@ -127,9 +130,12 @@ class _QuestionsPageState extends State<QuestionsPage> {
               showSuccessPage?
               Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(vertical: 27, horizontal: 16),
-                height: MediaQuery.of(context).size.height-100,
-                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.symmetric(
+                    vertical: 27,
+                    horizontal: 16
+                ),
+                height: mediaHeight,
+                width: mediaWidth,
                 decoration: BoxDecoration(
                     color: Colors.grey.shade200,
                     borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
@@ -143,7 +149,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                       child: Text(
                         'Поздравляем, вы ответили\nна все вопросы',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 19.5.sp, //20
                           fontWeight: FontWeight.w700,
                         ),
                         textAlign: TextAlign.center,
@@ -151,8 +157,8 @@ class _QuestionsPageState extends State<QuestionsPage> {
                     ),
 
                     Container(
-                      width: 234,
-                      height: 219,
+                      width: imageWidth,     //234
+                      height: 0.9359*imageWidth,  //219
                       decoration: BoxDecoration(
                         color: Colors.red,
                       borderRadius: BorderRadius.circular(17)
@@ -166,7 +172,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                         child: Text(
                           'Теперь вы можете открыть чат и договориться о встрече. Конечно же здесь можно разместить и другую ценную информацию.',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 17.5.sp, //16
                             fontWeight: FontWeight.w400,
                           ),
                           textAlign: TextAlign.center,
@@ -175,42 +181,48 @@ class _QuestionsPageState extends State<QuestionsPage> {
                     ),
 
 
-                    ElevatedButton(
-                        style: ButtonStyle(
-                          padding: MaterialStateProperty.all(
-                              const EdgeInsets.symmetric(vertical: 15)),
-                          backgroundColor:
-                          MaterialStateProperty.all(Colors.black),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                    SizedBox(
+                      height: mediaWidth*0.1413,   //53
+                      child: ElevatedButton(
+                          style: ButtonStyle(
+                            padding: MaterialStateProperty.all(
+                                EdgeInsets.symmetric(
+                                    horizontal: 0.1626*mediaWidth  //61
+                                )),
+                            backgroundColor:
+                            MaterialStateProperty.all(Colors.black),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
                             ),
                           ),
-                        ),
-                        onPressed: () {
+                          onPressed: () {
 
-                          Navigator.of(context).push(MaterialPageRoute<void>(
-                              builder: (context) => const ChatPage()));
+                            Navigator.of(context).push(MaterialPageRoute<void>(
+                                builder: (context) => const ChatPage()));
 
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 35),
+                          },
                           child: Text(
-                            // 'Создать чат',
                             'Начать чат',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        )),
+                            style: TextStyle(
+                                fontSize: 18.5.sp, //18
+                              fontWeight: FontWeight.w500
+                            ),
+                          )),
+                    ),
 
                   ],
                 ),
               )
                   :
               Container(
-                // alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(vertical: 27, horizontal: 16),
-                height: MediaQuery.of(context).size.height-150,
-                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.symmetric(
+                    vertical: 27,
+                    horizontal: 16
+                ),
+                height: mediaHeight,
+                width: mediaWidth,
                 decoration: BoxDecoration(
                     color: Colors.grey.shade200,
                     borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
@@ -221,7 +233,6 @@ class _QuestionsPageState extends State<QuestionsPage> {
 
                     ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
-                        // padding: const EdgeInsets.only(left: 5, top: 41),
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
                         itemCount: _questionCount,
@@ -234,7 +245,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                 Text(
                                   'ВОПРОС ${index+1} ИЗ $_questionCount',
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 17.5.sp, //16
                                     color: ConstColor.grey,
                                     // color: Colors.black,
                                     fontWeight: FontWeight.w700,
@@ -243,7 +254,10 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                 ),
 
                                 Padding(
-                                  padding: EdgeInsets.only(top: 21, right: 32),
+                                  padding: EdgeInsets.only(
+                                      top: 21,
+                                      right: 32
+                                  ),
                                   child: SizedBox(
                                     // width: 300,
                                     child: Text(
@@ -251,7 +265,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                       'А ещё вопрос может быть длинным придлинным и на него тоже нужно ответить?'
                                       : 'Какой-нибудь вопрос №${index+1}',
                                       style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 19.5.sp,   //20
                                         fontWeight: FontWeight.w700,
                                       ),
                                       // textAlign: TextAlign.center,
@@ -265,9 +279,10 @@ class _QuestionsPageState extends State<QuestionsPage> {
 
                         }),
 
-
                     Padding(
-                      padding: const EdgeInsets.only(top: 30),
+                      padding: EdgeInsets.only(
+                          top: 30
+                      ),
                       child: Container(
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -279,7 +294,6 @@ class _QuestionsPageState extends State<QuestionsPage> {
                             Expanded(child: _textEditor()),
 
                             showSendButton==false?
-                            // IconButton(onPressed: (){}, icon: const Icon(Icons.tag_faces_sharp)):
                             Container(width: 20,):
                             IconButton(onPressed: (){
                               sendFunction();
@@ -301,7 +315,6 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                   },
                                   child: Container(
                                     height: 32,
-                                    // width: 200,
                                     padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 18),
                                     decoration: BoxDecoration(
                                       color: Colors.grey.shade500,
@@ -317,13 +330,17 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                             'Пропустить вопрос',
                                             style: TextStyle(
                                               fontWeight: FontWeight.w400,
-                                                color: Colors.white, fontSize: 12),
+                                                color: Colors.white,
+                                                fontSize: 15.5.sp  //12
+                                            ),
                                           ),
                                         ),
 
-                                        Padding(padding: EdgeInsets.only(left: 14,),
+                                        Padding(padding: EdgeInsets.only(left: 14, top: 1),
 
-                                        child: Icon(Icons.close_outlined, size: 16, color: Colors.white,),
+                                        child: Icon(Icons.close_outlined,
+                                          size: 17.5.sp, //15
+                                          color: Colors.white,),
                                         )
 
                                       ],
@@ -344,15 +361,17 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                     fontWeight: FontWeight.w500,
                                     // color: ConstColor.grey,
                                     color: Colors.grey.shade500,
-
-                                    fontSize: 10),
+                                    fontSize: 14.sp //10
+                                ),
                               ),
 
                               Text(
                                 '$_missedCount вопроса',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500,
-                                    color: Colors.black, fontSize: 10),
+                                    color: Colors.black,
+                                    fontSize: 14.sp //10
+                                ),
                               ),
 
                             ],
@@ -360,38 +379,6 @@ class _QuestionsPageState extends State<QuestionsPage> {
                         ),
                       ],
                     ),
-
-
-                    // Container(
-                    //   width: double.infinity,
-                    //   padding: const EdgeInsets.all(20),
-                    //   decoration: BoxDecoration(
-                    //       color: Colors.grey.shade300,
-                    //       borderRadius: BorderRadius.circular(31)),
-                    //   child: Column(
-                    //     crossAxisAlignment: CrossAxisAlignment.start,
-                    //     children: [
-                    //       Padding(
-                    //         padding: const EdgeInsets.only(bottom: 20),
-                    //         child: Container(
-                    //           width: 120,
-                    //           padding: const EdgeInsets.symmetric(
-                    //               vertical: 7, horizontal: 0),
-                    //           decoration: BoxDecoration(
-                    //             color: Colors.grey.shade500,
-                    //             borderRadius: BorderRadius.circular(20),
-                    //           ),
-                    //           child: const Center(
-                    //               child: Text(
-                    //                 'Деловая встреча',
-                    //                 style: TextStyle(
-                    //                     color: Colors.white, fontSize: 10),
-                    //               )),
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
 
 
                   ],
@@ -407,18 +394,8 @@ class _QuestionsPageState extends State<QuestionsPage> {
 
 
   Widget _textEditor() => SizedBox(
-    // height: 62,
     height: 80,
     child: TextField(
-      // validator: (val){
-      //
-      //   if (val!.isEmpty) {
-      //     return "Пусто";
-      //   }
-      //
-      //   return null;
-      //
-      // },
       onChanged: (value){
 
         if(value.isEmpty){
@@ -434,23 +411,10 @@ class _QuestionsPageState extends State<QuestionsPage> {
       },
       maxLines: 3,
       controller: _controller,
-      // textInputAction: TextInputAction.none,
-      // onSubmitted: (value){
-      //   if(value.isNotEmpty){
-      //     sendFunction();
-      //   }
-      // },
       style: TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
-      // onFieldSubmitted: (value){
-      //   print('submitted - $value');
-      //
-      //   // SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
-      //   FocusManager.instance.primaryFocus?.unfocus();
-      //
-      // },
+
       textAlign: TextAlign.start,
-      // maxLines: 2,
-      // maxLength: 1,
+
       autofocus: true,
       decoration: const InputDecoration(
         counterText: '',
@@ -459,7 +423,6 @@ class _QuestionsPageState extends State<QuestionsPage> {
             borderRadius: BorderRadius.only(topLeft: Radius.circular(15), bottomLeft: Radius.circular(15))
         ),
         enabledBorder:
-
         OutlineInputBorder(
             borderSide: BorderSide(width: 0, color: Colors.white),
             borderRadius: BorderRadius.only(topLeft: Radius.circular(15), bottomLeft: Radius.circular(15))

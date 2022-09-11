@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
-import 'dart:ui' as ui;
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -12,49 +12,6 @@ class ProfilePage extends StatefulWidget {
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
-
-// Widget blurContainer({double sigma = 10, double width=double.infinity, double height = double.infinity, required Widget child}) => SizedBox(
-//   width: width,
-//   height: height,
-//   child: Stack(children: [
-//     child,
-//     BackdropFilter(
-//       filter: ui.ImageFilter.blur(
-//         sigmaX: sigma,
-//         sigmaY: sigma,
-//       ),
-//       child: Container(
-//       ),
-//     ),
-//   ],),
-// );
-
-
-Widget blurCircle({double sigma = 55, double radius = 271}) => SizedBox(
-  width: radius,
-  height: radius,
-  child: Stack(children: [
-    Container(
-      decoration: const BoxDecoration(
-        color: ConstColor.salad100,
-        shape: BoxShape.circle,
-      ),
-      child: const Center(child: Text('фывфывф', style: TextStyle(color: Colors.black),)),
-    ),
-
-    BackdropFilter(
-      filter: ui.ImageFilter.blur(
-        sigmaX: sigma,
-        sigmaY: sigma,
-      ),
-      child: Container(
-      ),
-    ),
-
-  ],),
-);
-
-
 
 class _ProfilePageState extends State<ProfilePage> {
   int _activeProfileTab = 1;
@@ -65,7 +22,6 @@ class _ProfilePageState extends State<ProfilePage> {
   }) {
 
     final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWidth = MediaQuery.of(context).size.width;
 
     return Padding(
         padding: const EdgeInsets.only(right: 10),
@@ -131,8 +87,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     // final double sheetHeight = mediaHeight * 0.15;  //147
     final double sheetHeightMinus = -17;  //147
-    final mediaRadius = MediaQuery.of(context).size.width*0.45;
-
+    final mediaRadius = mediaWidth*0.45;
 
     return Scaffold(
         extendBody: true,
@@ -373,25 +328,16 @@ class _ProfilePageState extends State<ProfilePage> {
 
                                           statContainer(
                                             context: context,
-                                            width: mediaWidth*0.25, //107
-                                              height: mediaWidth*0.25*1.5, //162
-                                              // titleSize: mediaWidth*0.25<100 ? 22 : 28, //28
                                               title: '9.4k',
                                               subtitle: 'баллов'
                                           ),
 
                                           statContainer(
                                               context: context,
-                                              width: mediaWidth*0.25, //107
-                                              height: mediaWidth*0.25*1.5, //162
-                                              // titleSize: mediaWidth*0.25<100 ? 22 : 28, //28
                                               title: '23', subtitle: 'встречи'),
 
                                           statContainer(
                                               context: context,
-                                              width: mediaWidth*0.25, //107
-                                              height: mediaWidth*0.25*1.5, //162
-                                              // titleSize: mediaWidth*0.25<100 ? 22 : 28, //28
                                               title: '4.5', subtitle: 'рейтинг'),
 
                                         ],
@@ -681,8 +627,109 @@ class _ProfilePageState extends State<ProfilePage> {
 }
 
 
+Widget viewProdImage(BuildContext context, {isHat = false}) {
 
+  final mediaWidth = MediaQuery.of(context).size.width;
+  final imageWidth = 0.624*mediaWidth;
 
+  return Container(
+    width: mediaWidth,
+    padding: const EdgeInsets.all(10),
+    decoration: BoxDecoration(
+      color: Colors.grey.shade100,
+      borderRadius: const BorderRadius.vertical(bottom: Radius.circular(50)),
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+
+        Padding(
+          padding: const EdgeInsets.only(bottom: 45),
+          child: backButton(context),
+        ),
+
+        Container(
+          width: imageWidth,     //234
+          height: 0.9359*imageWidth,  //219
+          decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(17)
+          ),
+        ),
+
+        Padding(
+          padding: EdgeInsets.only(top: 30),
+          child:
+          Text(isHat? 'Головной убор' : 'Аватар', style: TextStyle(
+              fontSize: 15.sp, //12
+              fontWeight: FontWeight.w600),),
+        ),
+
+        Padding(
+          padding: EdgeInsets.only(top: 10),
+          child:
+          Text(isHat? '#0863246' : 'Имя аватара', style: TextStyle(
+              fontSize: 24.sp, //32
+              fontWeight: FontWeight.w600),),
+        ),
+
+        Padding(
+          padding: const EdgeInsets.only(top: 10, bottom: 38),
+          child:
+          Container(
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade400,
+                  borderRadius: BorderRadius.circular(15)
+              ),
+              child: Text('Категория', style: TextStyle(
+                  color: Colors.grey.shade600,
+                  fontSize: 16.sp,   //14
+                  fontWeight: FontWeight.w600),)),
+        ),
+
+      ],),
+  );
+}
+
+class RPSCustomPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+
+    Path path_0 = Path();
+    path_0.moveTo(size.width*0.3462320,size.height*0.1081347);
+    path_0.cubicTo(size.width*0.3149147,size.height*0.05157810,size.width*0.2799547,0,size.width*0.2415829,0);
+    path_0.lineTo(size.width*0.08000000,0);
+    path_0.cubicTo(size.width*0.03581733,0,0,size.height*0.09137075,0,size.height*0.2040816);
+    path_0.lineTo(0,size.height*4.578231);
+    path_0.cubicTo(0,size.height*4.690946,size.width*0.03581733,size.height*4.782313,size.width*0.08000000,size.height*4.782313);
+    path_0.lineTo(size.width*0.9200000,size.height*4.782313);
+    path_0.cubicTo(size.width*0.9641840,size.height*4.782313,size.width,size.height*4.690946,size.width,size.height*4.578231);
+    path_0.lineTo(size.width,size.height*0.2040816);
+    path_0.cubicTo(size.width,size.height*0.09137075,size.width*0.9641840,0,size.width*0.9200000,0);
+    path_0.lineTo(size.width*0.7557493,0);
+    path_0.cubicTo(size.width*0.7173787,0,size.width*0.6824187,size.height*0.05157810,size.width*0.6511013,size.height*0.1081347);
+    path_0.cubicTo(size.width*0.6111200,size.height*0.1803361,size.width*0.5575467,size.height*0.2244898,size.width*0.4986667,size.height*0.2244898);
+    path_0.cubicTo(size.width*0.4397867,size.height*0.2244898,size.width*0.3862133,size.height*0.1803361,size.width*0.3462320,size.height*0.1081347);
+    path_0.close();
+
+    Paint paint0Fill = Paint()..style=PaintingStyle.fill;
+    paint0Fill.color = ConstColor.halfWhite;
+    canvas.drawPath(path_0,paint0Fill);
+
+    Paint paint1Stroke = Paint()..style=PaintingStyle.stroke..strokeWidth=size.width*0.01333333;
+    paint1Stroke.color= ConstColor.halfWhite;
+    paint1Stroke.strokeCap = StrokeCap.round;
+    canvas.drawLine(Offset(size.width*0.4533333,size.height*0.01700680),Offset(size.width*0.5466987,size.height*0.01700680),paint1Stroke);
+
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+}
 
 
 class RadioList extends StatefulWidget {
@@ -740,41 +787,3 @@ class _RadioListState extends State<RadioList> {
 }
 
 
-
-class RPSCustomPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-
-    Path path_0 = Path();
-    path_0.moveTo(size.width*0.3462320,size.height*0.1081347);
-    path_0.cubicTo(size.width*0.3149147,size.height*0.05157810,size.width*0.2799547,0,size.width*0.2415829,0);
-    path_0.lineTo(size.width*0.08000000,0);
-    path_0.cubicTo(size.width*0.03581733,0,0,size.height*0.09137075,0,size.height*0.2040816);
-    path_0.lineTo(0,size.height*4.578231);
-    path_0.cubicTo(0,size.height*4.690946,size.width*0.03581733,size.height*4.782313,size.width*0.08000000,size.height*4.782313);
-    path_0.lineTo(size.width*0.9200000,size.height*4.782313);
-    path_0.cubicTo(size.width*0.9641840,size.height*4.782313,size.width,size.height*4.690946,size.width,size.height*4.578231);
-    path_0.lineTo(size.width,size.height*0.2040816);
-    path_0.cubicTo(size.width,size.height*0.09137075,size.width*0.9641840,0,size.width*0.9200000,0);
-    path_0.lineTo(size.width*0.7557493,0);
-    path_0.cubicTo(size.width*0.7173787,0,size.width*0.6824187,size.height*0.05157810,size.width*0.6511013,size.height*0.1081347);
-    path_0.cubicTo(size.width*0.6111200,size.height*0.1803361,size.width*0.5575467,size.height*0.2244898,size.width*0.4986667,size.height*0.2244898);
-    path_0.cubicTo(size.width*0.4397867,size.height*0.2244898,size.width*0.3862133,size.height*0.1803361,size.width*0.3462320,size.height*0.1081347);
-    path_0.close();
-
-    Paint paint0Fill = Paint()..style=PaintingStyle.fill;
-    paint0Fill.color = ConstColor.halfWhite;
-    canvas.drawPath(path_0,paint0Fill);
-
-    Paint paint1Stroke = Paint()..style=PaintingStyle.stroke..strokeWidth=size.width*0.01333333;
-    paint1Stroke.color= ConstColor.halfWhite;
-    paint1Stroke.strokeCap = StrokeCap.round;
-    canvas.drawLine(Offset(size.width*0.4533333,size.height*0.01700680),Offset(size.width*0.5466987,size.height*0.01700680),paint1Stroke);
-
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
-  }
-}

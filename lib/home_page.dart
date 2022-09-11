@@ -9,6 +9,9 @@ import 'package:network_app/profile/profile_page.dart';
 import 'package:network_app/store/store_page.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'dart:ui' as ui;
+
+
 
 class HomePage extends StatefulWidget {
   final initIndex;
@@ -95,6 +98,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+
   BottomBarItem barItem({required IconData icon, required String text}) {
     final mediaWitdh = MediaQuery.of(context).size.width;
     final double iconSize = mediaWitdh<340? 15 : mediaWitdh<370 ? 18 : 20;  //21
@@ -103,7 +107,7 @@ class _HomePageState extends State<HomePage> {
         icon: Icon(
           icon,
           size: iconSize,
-          color: Colors.black,
+          color: ConstColor.darkSalad,
         ),
         title: Text(
           text,
@@ -115,7 +119,7 @@ class _HomePageState extends State<HomePage> {
         inactiveIcon: Icon(
           size: iconSize,
           icon,
-          color: Colors.white,
+          color: ConstColor.salad100,
         ),
         backgroundColorOpacity: 1
     );
@@ -123,18 +127,40 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+
+Widget blurCircle({double sigma = 55, double radius = 271}) => SizedBox(
+  width: radius,
+  height: radius,
+  child: Stack(children: [
+    Container(
+      decoration: const BoxDecoration(
+        color: ConstColor.salad100,
+        shape: BoxShape.circle,
+      ),
+      child: const Center(child: Text('фывфывф', style: TextStyle(color: Colors.black),)),
+    ),
+
+    BackdropFilter(
+      filter: ui.ImageFilter.blur(
+        sigmaX: sigma,
+        sigmaY: sigma,
+      ),
+      child: Container(
+      ),
+    ),
+
+  ],),
+);
+
+
 Widget statContainer(
         {
           required BuildContext context,
           required String title,
         required String subtitle,
-        double width = 107,
-        double height = 162,
-        // double titleSize = 28,
-        // double subTitleSize = 28
         }) {
 
-  final mediaHeight = MediaQuery.of(context).size.height;
+  // final mediaHeight = MediaQuery.of(context).size.height;
   final mediaWidth = MediaQuery.of(context).size.width;
 
   final double contWidth =  mediaWidth*0.2853;
@@ -362,7 +388,8 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
 
 Widget backButton(BuildContext context, {Function? func}) {
   final mediaWidth = MediaQuery.of(context).size.width;
-  final double contSize = 0.1466*mediaWidth; //55
+  final double contSize = 0.11466*mediaWidth; //43
+  final double iconSize = 18.5.sp;   //25
 
   return Align(
       alignment: Alignment.topLeft,
@@ -385,7 +412,7 @@ Widget backButton(BuildContext context, {Function? func}) {
             icon: Icon(
               Icons.arrow_back,
               color: Colors.black,
-              size: 22.sp,   //25
+              size: iconSize
             )),
       ),
     );

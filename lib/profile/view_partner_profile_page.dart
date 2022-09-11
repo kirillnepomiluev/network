@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/meetings/meetings_page.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class ViewPartnerProfilePage extends StatefulWidget {
@@ -15,92 +16,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   shape: Border(
-      //       bottom: BorderSide(
-      //           color: Colors.grey.shade100,
-      //           width: 0
-      //       )),
-      //   toolbarHeight: 65,
-      //   backgroundColor: Colors.grey.shade100,
-      //   elevation: 0,
-      //   automaticallyImplyLeading: false,
-      //   title: Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //     children: [
-      //       Container(
-      //         width: 55,
-      //         height: 55,
-      //         decoration: BoxDecoration(
-      //           color: Colors.grey.shade300,
-      //           borderRadius: BorderRadius.circular(20),
-      //         ),
-      //         child: Center(child:
-      //         IconButton(
-      //             onPressed: (){
-      //               Navigator.of(context).pop();
-      //             },
-      //             icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25,)),
-      //         ),
-      //       ),
-      //
-      //
-      //       Container(
-      //         padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-      //         decoration: BoxDecoration(
-      //           color: Colors.grey.shade500,
-      //           borderRadius: BorderRadius.circular(20),
-      //         ),
-      //
-      //         child: Center(child:
-      //         Text('Деловая встреча', style: TextStyle(color: Colors.white, fontSize: 10),)
-      //         ),
-      //       ),
-      //
-      //     ],
-      //   ),
-      // ),
       backgroundColor: Colors.grey.shade400,
-
-      // bottomNavigationBar:
-      // Container(
-      //   width: MediaQuery.of(context).size.width,
-      //   height: 80,
-      //   decoration: BoxDecoration(
-      //     color: Colors.grey.shade300,
-      //     // borderRadius: BorderRadius.vertical(top: Radius.circular(35))
-      //   ),
-      //   child: Padding(
-      //     padding: const EdgeInsets.only(left: 20, right: 20),
-      //     child: Row(
-      //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //       children: [
-      //         const Padding(
-      //           padding: EdgeInsets.only(right: 30),
-      //           child: Text('1.6 SOL', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-      //         ),
-      //         Expanded(
-      //           child: ElevatedButton(
-      //               style: ButtonStyle(
-      //                 padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 15)),
-      //                 backgroundColor: MaterialStateProperty.all(Colors.black),
-      //                 shape: MaterialStateProperty.all(
-      //                   RoundedRectangleBorder(
-      //                     borderRadius: BorderRadius.circular(15),
-      //                   ),
-      //                 ),
-      //               ),
-      //               onPressed: (){}, child: const Text('Купить сейчас', style: TextStyle(fontSize: 16),)),
-      //         )
-      //
-      //
-      //       ],
-      //     ),
-      //   ),
-      //
-      // ),
-
-
       body:
       SafeArea(
         child: SingleChildScrollView(
@@ -121,10 +37,17 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
 
 
 
-  Widget viewAvatarContainer() => Padding(
+  Widget viewAvatarContainer() {
+
+    final mediaWidth = MediaQuery.of(context).size.width;
+
+    final imageWidth = 0.624*mediaWidth;
+
+
+    return Padding(
     padding: const EdgeInsets.only(bottom: 0),
     child: Container(
-      width: MediaQuery.of(context).size.width,
+      width: mediaWidth,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.grey.shade100,
@@ -138,32 +61,22 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                width: 55,
-                height: 55,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Center(child:
-                IconButton(
-                    onPressed: (){
-                      Navigator.of(context).pop();
-                    },
-                    icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25,)),
-                ),
-              ),
 
+              backButton(context),
 
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 18),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade500,
                   borderRadius: BorderRadius.circular(20),
                 ),
 
-                child: const Center(child:
-                Text('Деловая встреча', style: TextStyle(color: Colors.white, fontSize: 10),)
+                child: Center(child:
+                Text('Деловая встреча', style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15.5.sp, //12
+                  fontWeight: FontWeight.w400
+                ),)
                 ),
               ),
 
@@ -171,10 +84,10 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.only(top: 37),
             child: Container(
-              width: 200,
-              height: 200,
+              width: imageWidth,     //234
+              height: 0.9359*imageWidth,  //219
               decoration: BoxDecoration(
                   color: Colors.red,
                   borderRadius: BorderRadius.circular(10)
@@ -183,22 +96,25 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(top: 35),
+            padding: const EdgeInsets.only(top: 43),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
-              children: const [
+              children: [
 
                 Text('Джоли, 28',
                     style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 24.sp,  //32
                         color: Colors.black,
-                        fontWeight: FontWeight.bold
+                        fontWeight: FontWeight.w600
                     )
                 ),
 
                 Padding(
-                  padding: EdgeInsets.only(left: 8),
-                  child: Icon(Icons.verified, color: Colors.black, size: 16,),
+                  padding: EdgeInsets.only(left: 19),
+                  child: Icon(Icons.verified, color: Colors.black,
+                    size: 22.sp,   //26
+                  ),
                 ),
 
               ],
@@ -206,39 +122,48 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Text('Уровень "Базовый"', style: TextStyle(fontSize: 11, color: Colors.grey.shade500, fontWeight: FontWeight.bold),),
+            padding: const EdgeInsets.only(top: 10),
+            child: Text('Уровень "Базовый"', style: TextStyle(
+                fontSize: 16.5.sp, //14
+                color: Colors.grey.shade500, fontWeight: FontWeight.w400),),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Text('+150 баллов', style: TextStyle(
+                fontSize: 16.5.sp,   //14
+                color: Colors.black, fontWeight: FontWeight.w400),),
           ),
 
 
           Padding(
-            padding: const EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.only(top: 15),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
 
-                const Text('250 м в направлении',
+                Text('250 м в направлении',
                     style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 16.5.sp, //14
                         color: Colors.black,
-                        fontWeight: FontWeight.w500
+                        fontWeight: FontWeight.w400
                     )
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.only(left: 8),
+                  padding: const EdgeInsets.only(left: 12),
                   child:
-                  // Icon(Icons.arrow_circle_right, color: Colors.black, size: 20,),
-
                   Container(
                     decoration: const BoxDecoration(
                         color: Colors.black,
                         shape: BoxShape.circle
                     ),
-                    width: 17,
-                    height: 17,
+                    width: 0.048*mediaWidth,    //18
+                    height: 0.048*mediaWidth,
                     child:
-                    const Icon(Icons.call_received, size: 11, color: Colors.white,), //Icons.turn
+                    Icon(Icons.call_received,
+                      size: 15.sp,   //11
+                      color: Colors.white,), //Icons.turn
                   ),
 
                 ),
@@ -246,120 +171,31 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
             ),
           ),
 
-          // const Padding(
-          //   padding: EdgeInsets.only(top: 30),
-          //   child:
-          //   Text('Аватар', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),),
-          // ),
-
-
-          // const Padding(
-          //   padding: EdgeInsets.only(top: 10),
-          //   child:
-          //   Text('Имя аватара', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-          // ),
-
           Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 30),
+            padding: const EdgeInsets.only(top: 13, bottom: 19),
             child:
             Container(
-                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
+                padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 18),
                 decoration: BoxDecoration(
                     color: Colors.grey.shade400,
                     borderRadius: BorderRadius.circular(15)
                 ),
-                child: const Text('Открыть карту', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500),)),
+                child: Text('Открыть карту', style: TextStyle(
+                    fontSize: 16.5.sp, //14
+                    fontWeight: FontWeight.w400),)),
           ),
 
 
           Padding(
-            padding: const EdgeInsets.only(bottom: 20,),
+            padding: const EdgeInsets.only(bottom: 31,),
             child:
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //   children: [
-            //     Container(
-            //         decoration: const BoxDecoration(
-            //             color: Colors.black,
-            //             shape: BoxShape.circle
-            //         ),
-            //         width: 40,
-            //         height: 40,
-            //         child:
-            //         IconButton(onPressed: (){}, icon: const Icon(Icons.close_outlined, color: Colors.white,), iconSize: 18,)
-            //     ),
-            //
-            //
-            //     Container(
-            //       width: 175,
-            //       padding: const EdgeInsets.all(3),
-            //       decoration: BoxDecoration(
-            //
-            //           boxShadow: [
-            //             BoxShadow(
-            //               color: Colors.grey.withOpacity(0.5),
-            //               spreadRadius: 2,
-            //               blurRadius: 7,
-            //               offset: const Offset(0, 3), // changes position of shadow
-            //             ),
-            //           ],
-            //
-            //           color: Colors.white,
-            //           borderRadius: BorderRadius.circular(30)
-            //       ),
-            //
-            //       child:
-            //       Row(
-            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           Container(
-            //               decoration: const BoxDecoration(
-            //                   color: Colors.black,
-            //                   shape: BoxShape.circle
-            //               ),
-            //               width: 38,
-            //               height: 38,
-            //               child:
-            //               IconButton(onPressed: (){}, icon: const Icon(
-            //                 Network.electric,
-            //                 color: Colors.white,), iconSize: 18,)
-            //           ),
-            //
-            //           const Text('Встретиться', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500)),
-            //
-            //           // Icon(Icons.keyboard_arrow_right, size: 15, color: Colors.grey.shade500,),
-            //           // Icon(Icons.keyboard_arrow_right, size: 16, color: Colors.grey.shade800,),
-            //
-            //           Padding(
-            //             padding: const EdgeInsets.only(right: 12),
-            //             child: Icon(Icons.keyboard_double_arrow_right, size: 16, color: Colors.grey.shade800,),
-            //           ),
-            //
-            //         ],)
-            //       ,),
-            //
-            //
-            //     Container(
-            //         decoration: const BoxDecoration(
-            //             color: Colors.black,
-            //             shape: BoxShape.circle
-            //         ),
-            //         width: 40,
-            //         height: 40,
-            //         child:
-            //         IconButton(onPressed: (){}, icon: const Icon(Icons.star_border_outlined, color: Colors.white,), iconSize: 18,)
-            //     ),
-            //
-            //   ],
-            // ),
-
             meetRow(context),
-
           )
 
         ],),
     ),
   );
+  }
 
 
   Widget _statColumn() => Container(

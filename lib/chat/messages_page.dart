@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/chat/chat_page.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/components/network_icons.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MessagesPage extends StatefulWidget {
   const MessagesPage({Key? key}) : super(key: key);
@@ -13,250 +14,238 @@ class MessagesPage extends StatefulWidget {
 class _MessagesPageState extends State<MessagesPage> {
   @override
   Widget build(BuildContext context) {
+
+    // final mediaHeight = MediaQuery.of(context).size.height;
+    final mediaWidth = MediaQuery.of(context).size.width;
+    final mediaTop = MediaQuery.of(context).viewPadding.top;
+
+    final double contSize = 0.11466*mediaWidth; //43
+
+
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      // bottomNavigationBar: Padding(
-      //   padding: const EdgeInsets.only(bottom: 25),
-      //   child: Container(
-      //       decoration: const BoxDecoration(
-      //           color: Colors.black, shape: BoxShape.circle),
-      //       width: 65,
-      //       height: 65,
-      //       child: IconButton(
-      //         onPressed: () {},
-      //         icon: const Icon(
-      //           Icons.tune_outlined,
-      //           color: Colors.white,
-      //         ),
-      //         iconSize: 28,
-      //       )),
-      // ),
       backgroundColor: Colors.grey.shade400,
-
-      // appBar: AppBar(
-      //     toolbarHeight: 65,
-      //     backgroundColor: Colors.grey.shade400,
-      //     elevation: 0,
-      //   title: Row(
-      //     crossAxisAlignment: CrossAxisAlignment.center,
-      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //     children: [
-      //       buttonBack(context),
-      //
-      //       Text('Сообщения', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500),),
-      //
-      //       Container(
-      //         // alignment: Alignment.topLeft,
-      //         width: 55,
-      //         height: 55,
-      //         decoration: BoxDecoration(
-      //           color: Colors.grey.shade300,
-      //           borderRadius: BorderRadius.circular(20),
-      //         ),
-      //         child: Center(child:
-      //         IconButton(
-      //             onPressed: (){
-      //               Navigator.of(context).pop();
-      //             },
-      //             icon: const Icon(Icons.search, color: Colors.black, size: 25,)),
-      //         ),
-      //       ),
-      //
-      //     ],
-      //   ),
-      // ),
-
       body: Padding(
-        padding: const EdgeInsets.only(top: 20, bottom: 80),
+        padding: EdgeInsets.only(top: mediaTop, bottom: 80, left: 15, right: 15),
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+
                     backButton(context, func: (){}),
-                    const Text(
+
+                    Text(
                       'Сообщения',
                       style: TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500),
+                          fontSize: 19.5.sp,   //20
+                          fontWeight: FontWeight.w600),
                     ),
+
                     Container(
-                      // alignment: Alignment.topLeft,
-                      width: 55,
-                      height: 55,
+                      width: contSize,
+                      height: contSize,
                       decoration: BoxDecoration(
                         color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(15),
                       ),
                       child: Center(
                         child: IconButton(
                             onPressed: () {
                               // Navigator.of(context).pop();
                             },
-                            icon: const Icon(
+                            icon: Icon(
                               Network.search,
                               color: Colors.black,
-                              size: 25,
+                              size: 16.5.sp,   //18
                             )),
                       ),
                     ),
+
                   ],
                 ),
+              ),
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 20, bottom: 20),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    // padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20, bottom: 20),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
 
-                        const Padding(
-                          padding: EdgeInsets.only(left: 15, top: 15),
-                          child: Text(
-                            'Приглашения',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                                color: Colors.black,
-                                fontSize: 12
-                            ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 15, top: 15),
+                        child: Text(
+                          'Приглашения',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                              color: Colors.black,
+                              fontSize: 16.5.sp  //14
                           ),
                         ),
+                      ),
 
-                        Padding(
-                          padding: const EdgeInsets.only(top: 15, bottom: 20),
-                          child: SingleChildScrollView(
-                            // physics: BouncingScrollPhysics(),
-                            scrollDirection: Axis.horizontal,
-                            child: Row(children: [
-                            miniAvatar(),
-                            miniAvatar(),
-                            miniAvatar(),
-                            miniAvatar(),
-                            miniAvatar(),
-                            miniAvatar(),
-                            miniAvatar(),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 20),
-                              child: miniAvatar(),
-                            ),
-                          ],),),
-                        )
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
 
-                      ],
-                    ),
-                  ),
-                ),
+                            for (var i=0; i<8; i++)
+                              Padding(
+                                padding: EdgeInsets.only(right: i==7? 15 : 0),
+                                child: miniAvatar(),
+                              )
 
-                // const Padding(
-                //   padding: EdgeInsets.only(top: 20, bottom: 20),
-                //   child: Text('Приглашения', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-                // ),
+                        ],),),
+                      )
 
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      messageContainer(isOnline: true),
-                      messageContainer(isOnline: false),
                     ],
                   ),
                 ),
+              ),
 
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      messageContainer(isOnline: true),
-                      messageContainer(isOnline: false),
-                    ],
-                  ),
-                ),
+              // const Padding(
+              //   padding: EdgeInsets.only(top: 20, bottom: 20),
+              //   child: Text('Приглашения', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+              // ),
 
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      messageContainer(isOnline: true),
-                      messageContainer(isOnline: false),
-                    ],
-                  ),
-                ),
 
-              ],
-            ),
+              Wrap(
+                spacing: 0.04*mediaWidth, //15
+                runSpacing: 20,
+                alignment: WrapAlignment.center,
+                runAlignment: WrapAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+
+                  for (var i=0; i<6; i++)
+                    messageContainer(isOnline: i % 2==0? false : true),
+
+                ],
+              ),
+
+              // Padding(
+              //   padding: const EdgeInsets.only(bottom: 15),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //     children: [
+              //       messageContainer(isOnline: true),
+              //       messageContainer(isOnline: false),
+              //     ],
+              //   ),
+              // ),
+              //
+              // Padding(
+              //   padding: const EdgeInsets.only(bottom: 15),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //     children: [
+              //       messageContainer(isOnline: true),
+              //       messageContainer(isOnline: false),
+              //     ],
+              //   ),
+              // ),
+              //
+              // Padding(
+              //   padding: const EdgeInsets.only(bottom: 15),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //     children: [
+              //       messageContainer(isOnline: true),
+              //       messageContainer(isOnline: false),
+              //     ],
+              //   ),
+              // ),
+
+            ],
           ),
         ),
       ),
     );
   }
 
-  Widget miniAvatar() =>  Padding(
+  Widget miniAvatar() {
+
+    final mediaWidth = MediaQuery.of(context).size.width;
+    final contWidth = mediaWidth*0.1066;
+
+    return Padding(
     padding: const EdgeInsets.only(left: 15,),
     child: InkWell(
       onTap: ((){
         Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const ChatPage()));
       }),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
               decoration: const BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle),
-              width: 40,
-              height: 40,
+              width: contWidth,
+              height: contWidth,
               child: IconButton(
                 onPressed: () {},
                 icon: const Icon(
                   Network.person,
                   color: Colors.black,
                 ),
-                iconSize: 18,
+                iconSize: 17.sp,  //16
               )),
 
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(top: 5),
-            child: Text('Джоли', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500),),
+            child: Text('Джоли', style: TextStyle(
+                fontSize: 14.sp,   //10
+                color: Colors.black,
+                fontWeight: FontWeight.w500),),
           )
 
         ],
       ),
     ),
   );
+  }
 
-  Widget messageContainer({required bool isOnline}) => InkWell(
+  Widget messageContainer({required bool isOnline}) {
+
+    final mediaWidth = MediaQuery.of(context).size.width;
+    final double contSize = 0.1626*mediaWidth; //43
+
+    return InkWell(
     onTap: ((){
       Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const ChatPage()));
     }),
         // padding: const EdgeInsets.only(bottom: 0),
         child:
-
         Stack(
           alignment: Alignment.topCenter,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 20),
+              padding: const EdgeInsets.only(top: 30),
               child: Container(
-                width: 140,
-                height: 150,
+                width: mediaWidth*0.432,
+                // height: 170,
                 // width: MediaQuery.of(context).size.width*0.35,
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15),
@@ -267,43 +256,44 @@ class _MessagesPageState extends State<MessagesPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
 
-                    const Padding(
-                      padding: EdgeInsets.only(top: 25),
+                    Padding(
+                      padding: EdgeInsets.only(top: 38),
                       child:
                       Text('Джоли',
                           style: TextStyle(
-                              fontSize: 13,
+                              fontSize: 17.5.sp, //16
                               color: Colors.black,
-                              fontWeight: FontWeight.w500)
+                              fontWeight: FontWeight.w400)
                       ),
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.only(top: 3),
+                      padding: const EdgeInsets.only(top: 5),
                       child: Text(
                         'Запланированная встреча',
                         style: TextStyle(
-                            fontSize: 8,
+                            fontSize: 14.sp, //10
                             color: Colors.grey.shade400,
-                            fontWeight: FontWeight.bold),
+                            fontWeight: FontWeight.w500),
                       ),
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.only(top: 10, bottom: 0),
+                      padding: const EdgeInsets.only(top: 16,),
                       child: Row(
+                        mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
 
                           Padding(
-                            padding: const EdgeInsets.only(right: 2),
+                            padding: const EdgeInsets.only(right: 4),
                             child: Text(
                               '12:48',
                               style: TextStyle(
-                                  fontSize: 9,
+                                  fontSize: 14.sp, //10
                                   color: Colors.grey.shade500,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.w500),
                             ),
                           ),
 
@@ -326,9 +316,12 @@ class _MessagesPageState extends State<MessagesPage> {
                       ),
                     ),
 
-                    const Padding(
-                      padding: EdgeInsets.only(top: 10),
-                      child: Text('Я предлагаю встретиться в каком-нибудь красивом...', style: TextStyle(fontSize: 10),),
+                    Padding(
+                      padding: EdgeInsets.only(top: 6, bottom: 26),
+                      child: Text('Я предлагаю встретиться в каком-нибудь красивом...', style: TextStyle(
+                          fontSize: 15.5.sp,    //12,
+                        fontWeight: FontWeight.w400
+                      ),),
                     )
 
                   ],
@@ -338,8 +331,8 @@ class _MessagesPageState extends State<MessagesPage> {
 
 
             SizedBox(
-              height: 45,
-              width: 45,
+              height: contSize,
+              width: contSize,
               child: Stack(
                 alignment: Alignment.topCenter,
                 children: [
@@ -349,23 +342,25 @@ class _MessagesPageState extends State<MessagesPage> {
                         decoration: BoxDecoration(
                             color: Colors.grey.shade300,
                             shape: BoxShape.circle),
-                        width: 45,
-                        height: 45,
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Network.person,
-                            color: Colors.black,
-                          ),
-                          iconSize: 18,
-                        )),
+                        width: contSize,
+                        height: contSize,
+                        child: Icon(
+                          Network.person,
+                          color: Colors.black,
+                          size: 19.sp,
+                        ),
+                    ),
                   ),
 
                   Positioned(
-                    right: 1,
-                      bottom: 4,
-                      child: Icon(Icons.circle, size: 12, color: isOnline? Colors.black : Colors.grey.shade400,))
-
+                    right: 2,
+                      bottom: 5,
+                      child: Icon(
+                        Icons.circle,
+                        size: 16.5.sp,   //14
+                        color: isOnline? Colors.black : Colors.grey.shade400,
+                      )
+                  )
                 ],
               ),
             ),
@@ -374,4 +369,5 @@ class _MessagesPageState extends State<MessagesPage> {
           ],
         ),
       );
+  }
 }

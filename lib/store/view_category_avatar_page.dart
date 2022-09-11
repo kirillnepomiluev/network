@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/store/view_prod_avatar_page.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 // import 'dart:ui' as ui;
 
 class ViewCategoryAvatarPage extends StatefulWidget {
@@ -38,15 +39,15 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
                   padding: const EdgeInsets.only(left: 5, right: 3),
                   child: Text(
                     text,
-                    style: const TextStyle(
-                        fontSize: 14,
+                    style: TextStyle(
+                        fontSize: 16.5.sp,   //14
                         color: Colors.black,
-                        fontWeight: FontWeight.w500),
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
-                const Icon(
+                Icon(
                   Icons.keyboard_arrow_down_sharp,
-                  size: 14,
+                  size: 16.5.sp,   //14
                   color: Colors.black,
                 )
               ],
@@ -57,35 +58,9 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
-      // extendBodyBehindAppBar: true,
-      // extendBody: true,
-      // appBar: AppBar(
-      //   toolbarHeight: 65,
-      //   backgroundColor: Colors.transparent,
-      //   elevation: 0,
-      //   automaticallyImplyLeading: false,
-      //   title: Container(
-      //     width: 55,
-      //     height: 55,
-      //     decoration: BoxDecoration(
-      //       color: Colors.white70,
-      //       borderRadius: BorderRadius.circular(20),
-      //     ),
-      //     child: Center(
-      //       child: IconButton(
-      //           onPressed: () {
-      //             Navigator.of(context).pop();
-      //             // Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const HomePage()));
-      //           },
-      //           icon: const Icon(
-      //             Icons.arrow_back,
-      //             color: Colors.black,
-      //             size: 25,
-      //           )),
-      //     ),
-      //   ),
-      // ),
       backgroundColor: Colors.grey.shade400,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -96,15 +71,18 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
               children: [
 
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 34),
                   child: backButton(context),
                 ),
 
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(bottom: 13),
                   child: Text(
                     'Аватары',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                        fontSize: 24.sp,   //30
+                        fontWeight: FontWeight.w700
+                    ),
                     textAlign: TextAlign.start,
                   ),
                 ),
@@ -140,19 +118,11 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
                       avatarContainer(
                           context: context,
                           isView: true,
-                          contWidth: 342,
-                          contHeight: 453
-                          // contWidth: MediaQuery.of(context).size.width,
-                          // contHeight: MediaQuery.of(context).size.width*1.1
                       ),
 
                       avatarContainer(
                           context: context,
                           isView: true,
-                          contWidth: 342,
-                          contHeight: 453
-                        // contWidth: MediaQuery.of(context).size.width,
-                        // contHeight: MediaQuery.of(context).size.width*1.1
                       ),
 
                     ],
@@ -167,203 +137,209 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
   }
 }
 
-//          filter: ui.ImageFilter.blur(
-//               sigmaX: 0.1,
-//               sigmaY: 0.1,
-//             ),
+
 Widget avatarContainer(
-        {required BuildContext context,
-        double contWidth = 217.57,
-        double contHeight = 370,
-        bool isView = false,
-        bool isBoxes = false,
-        String strCategory = 'Обычный'
-        }) =>
-    Padding(
-      padding: EdgeInsets.only(right: isView ? 0 : 10, bottom: isView ? 20 : 0),
-      child: InkWell(
-        onTap: (() {
-          Navigator.of(context).push(MaterialPageRoute<void>(
-              builder: (context) => const ViewProdAvatarPage()));
-        }),
-        child: Container(
-          // height: isBoxes? 220 : null,
-          // padding: EdgeInsets.all(isView ? 30 : 15),
-          padding: isView? const EdgeInsets.all(35) :
-          const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 9),
+    {required BuildContext context,
+      bool isView = false,
+      bool isBoxes = false,
+      String strCategory = 'Обычный'
+    }) {
 
-          decoration: BoxDecoration(
-            color: isView? Colors.white : ConstColor.halfWhite,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          height: contHeight,
-          width: contWidth,
-          child: Column(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+  final mediaWidth = MediaQuery.of(context).size.width;
+  final double contWidth = isView? mediaWidth : 0.58*mediaWidth;   //217.57
+  final double imageHeight = isView? contWidth*0.65 : contWidth;
 
-              isBoxes
-                  ? Container()
-                  : Padding(
-                      padding: EdgeInsets.only(
-                        bottom: isView? 20 : 5,
-                      ),
-                      child: Text(
-                        strCategory,
-                        style: TextStyle(
-                          color: isView? Colors.black : Colors.white,
-                            fontSize: 14, fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
 
-              Padding(
-                padding: EdgeInsets.only(top: isBoxes? 20 : 0),
-                child: Container(
-                  // height: isView ? contWidth * 0.7 : contWidth - 35,
-                  // height: contHeight*0.46,
-                  height: isView? 254.4 : 220,
-                  decoration: BoxDecoration(
-                    // color: Colors.red,
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/${strCategory=='Обычный'? '4': '3'}.png')
-                    ),
-                      // color: Colors.red,
-                      borderRadius: BorderRadius.circular(10)),
-                ),
+  return Padding(
+    padding: EdgeInsets.only(right: isView ? 0 : 15, bottom: isView ? 20 : 0),
+    child: InkWell(
+      onTap: (() {
+        Navigator.of(context).push(MaterialPageRoute<void>(
+            builder: (context) => const ViewProdAvatarPage()));
+      }),
+      child: Container(
+        // height: isBoxes? 220 : null,
+        // padding: EdgeInsets.all(isView ? 30 : 15),
+        padding: isView? const EdgeInsets.all(35) :
+        const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 9),
+
+        decoration: BoxDecoration(
+          color: isView? Colors.white : ConstColor.halfWhite,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        // height: contHeight,
+        width: contWidth,
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+
+            isBoxes
+                ? Container()
+                : Padding(
+              padding: EdgeInsets.only(
+                bottom: isView? 20 : 5,
               ),
+              child: Text(
+                strCategory,
+                style: TextStyle(
+                    color: isView? Colors.black : Colors.white,
+                    fontSize: 16.5.sp,  //14
 
-              isBoxes
-                  ? Padding(
-                      padding: const EdgeInsets.only(top: 35),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Бокс для уровня ',
-                            style: TextStyle(
-                                fontSize: 11, color: Colors.grey.shade600),
-                          ),
-                          Text(
-                            'Базовый',
-                            style: TextStyle(
-                                fontSize: 11,
-                                color: Colors.grey.shade600,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    )
-                  : Padding(
-                    padding: EdgeInsets.only(top: isView? 27 : 12),
-                    child: Column(
+                    fontWeight: FontWeight.bold),
+                textAlign: TextAlign.start,
+              ),
+            ),
+
+            Padding(
+              padding: EdgeInsets.only(top: isBoxes? 20 : 0),
+              child: Container(
+                // height: isView? 254.4 : 220,
+                height: imageHeight,
+
+                decoration: BoxDecoration(
+                  // color: Colors.red,
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/${strCategory=='Обычный'? '4': '3'}.png')
+                    ),
+                    // color: Colors.red,
+                    borderRadius: BorderRadius.circular(10)),
+              ),
+            ),
+
+            isBoxes
+                ? Padding(
+              padding: const EdgeInsets.only(top: 35),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Бокс для уровня ',
+                    style: TextStyle(
+                        fontSize: 14.sp, //11
+                        color: Colors.grey.shade600),
+                  ),
+                  Text(
+                    'Базовый',
+                    style: TextStyle(
+                        fontSize: 14.sp, //11
+                        color: Colors.grey.shade600,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ],
+              ),
+            )
+                : Padding(
+              padding: EdgeInsets.only(top: isView? 27 : 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Имя аватара',
-                                        style: TextStyle(
-                                          color: isView? Colors.black : Colors.white,
-                                            fontSize: 14, fontWeight: FontWeight.w400),
-                                      ),
-                                      isView == false
-                                          ? Container()
-                                          : Padding(
-                                              padding: const EdgeInsets.only(left: 50),
-                                              child: Text(
-                                                '1.6 SOL',
-                                                style: TextStyle(
-                                                  color: isView? Colors.black : ConstColor.salad100,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold),
-                                              ),
-                                            ),
-                                    ],
-                                  ),
-
-                                  const Padding(
-                                    padding: EdgeInsets.only(top: 5),
-                                    child: Text(
-                                      '#0863246',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                          fontSize: 12, color: ConstColor.grey),
-                                    ),
-                                  ),
-
-                                ],
+                              Text(
+                                'Имя аватара',
+                                style: TextStyle(
+                                    color: isView? Colors.black : Colors.white,
+                                    fontSize: 16.5.sp, //14
+                                    fontWeight: FontWeight.w400),
                               ),
-
-                              isView? Container():
-                              Container(
-                                width: 38,
-                                height: 38,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(9),
-                                    color: ConstColor.halfWhite
+                              isView == false
+                                  ? Container()
+                                  : Padding(
+                                padding: EdgeInsets.only(left: mediaWidth*0.1466), //55
+                                child: Text(
+                                  '1.6 SOL',
+                                  style: TextStyle(
+                                      color: isView? Colors.black : ConstColor.salad100,
+                                      fontSize: 17.sp,   //16
+                                      fontWeight: FontWeight.bold),
                                 ),
-                                child: IconButton(onPressed: (){
-                                  Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const ViewProdAvatarPage()));
-                                },
-                                  icon: const Icon(Icons.keyboard_arrow_right,
-                                    size: 20,
-                                    color: Colors.white,),
-                                ),
-                              )
+                              ),
                             ],
                           ),
 
-                          isView
-                              ? Container()
-                              : Padding(
-                                  padding: const EdgeInsets.only(top: 10),
-                                  child: Text(
-                                    '1.6 SOL',
-                                    style: TextStyle(
-                                        color: isView? Colors.black : ConstColor.salad100,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 5),
-                            child: Wrap(
-                              spacing: isView ? 80 : 10,
-                              direction: Axis.horizontal,
-                              // alignment: WrapAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Уровень 6',
-                                  style: TextStyle(
-                                      // fontSize: isView ? 11 : 10,
-                                      fontSize: 12,
-                                      color: ConstColor.grey),
-                                ),
-                                Text(
-                                  isView ? '+150 баллов' : 'Баллы +150',
-                                  style: const TextStyle(
-                                      // fontSize: isView ? 11 : 10,
-                                    fontSize: 12,
-                                      color: ConstColor.grey),
-                                ),
-                              ],
+                            padding: EdgeInsets.only(top: 5),
+                            child: Text(
+                              '#0863246',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 15.sp, //12
+                                  color: ConstColor.grey),
                             ),
                           ),
+
                         ],
                       ),
+
+                      isView? Container():
+                      Container(
+                        width: 0.1013*mediaWidth,   //38
+                        height: 0.1013*mediaWidth,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(9),
+                            color: ConstColor.halfWhite
+                        ),
+                        child: IconButton(onPressed: (){
+                          Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const ViewProdAvatarPage()));
+                        },
+                          icon: Icon(Icons.keyboard_arrow_right,
+                            size: 18.sp,   //20
+                            color: Colors.white,),
+                        ),
+                      )
+                    ],
                   ),
-            ],
-          ),
+
+                  isView
+                      ? Container()
+                      : Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Text(
+                      '1.6 SOL',
+                      style: TextStyle(
+                          color: isView? Colors.black : ConstColor.salad100,
+                          fontSize: 17.5.sp,   //16
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Wrap(
+                      spacing: isView ? 0.2133*mediaWidth : 10, //80
+                      direction: Axis.horizontal,
+                      // alignment: WrapAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Уровень 6',
+                          style: TextStyle(
+                              fontSize: 15.5.sp, //12
+                              color: ConstColor.grey),
+                        ),
+                        Text(
+                          isView ? '+150 баллов' : 'Баллы +150',
+                          style: TextStyle(
+                              fontSize: 15.5.sp, //12
+                              color: ConstColor.grey),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
-    );
+    ),
+  );
+
+}

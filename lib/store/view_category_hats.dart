@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/store/view_prod_hat.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 // import 'dart:ui' as ui;
 
 class ViewCategoryHatsPage extends StatefulWidget {
@@ -57,6 +58,9 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final mediaWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       // extendBodyBehindAppBar: true,
       // extendBody: true,
@@ -90,37 +94,43 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.symmetric(vertical: 15),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
 
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(left: 15, bottom: 20),
                   child: backButton(context),
                 ),
 
                 const Padding(
-                  padding: EdgeInsets.only(bottom: 15),
-                  child: Text(
-                    'Головные уборы',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.start,
+                  padding: EdgeInsets.only(left: 15, bottom: 15),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Головные уборы',
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.start,
+                    ),
                   ),
                 ),
 
-                const Text(Constants.strLoremIpsum,
-                    maxLines: 3,
-                    overflow: TextOverflow.clip,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                    )),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: const Text(Constants.strLoremIpsum,
+                      maxLines: 3,
+                      overflow: TextOverflow.clip,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      )),
+                ),
 
                 //Выбор интерфейса
                 Padding(
-                  padding: const EdgeInsets.only(top: 24, bottom: 24),
+                  padding: const EdgeInsets.only(left: 15, top: 24, bottom: 24),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -134,67 +144,24 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
                   ),
                 ),
 
-                Center(
-                  child: Column(
-                    // direction: Axis.horizontal,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            hatContainer(
-                              isView: true,
-                                context: context,
-                                contWidth:
-                                    MediaQuery.of(context).size.width * 0.42),
-                            hatContainer(
-                                isView: true,
-                                context: context,
-                                contWidth:
-                                    MediaQuery.of(context).size.width * 0.42),
-                          ],
-                        ),
+                Wrap(
+                  spacing: 0.024*mediaWidth, //9
+                  runSpacing: 0.024*mediaWidth,
+                  alignment: WrapAlignment.center,
+                  runAlignment: WrapAlignment.center,
+                  direction: Axis.horizontal,
+                  children: [
+
+                    for (var i=0; i<6; i++)
+                      hatContainer(
+                        isView: true,
+                        context: context,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            hatContainer(
-                                isView: true,
-                                context: context,
-                                contWidth:
-                                    MediaQuery.of(context).size.width * 0.42),
-                            hatContainer(
-                                isView: true,
-                                context: context,
-                                contWidth:
-                                    MediaQuery.of(context).size.width * 0.42),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            hatContainer(
-                                isView: true,
-                                context: context,
-                                contWidth:
-                                    MediaQuery.of(context).size.width * 0.42),
-                            hatContainer(
-                                isView: true,
-                                context: context,
-                                contWidth:
-                                    MediaQuery.of(context).size.width * 0.42),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                )
+
+                  ],
+                ),
+
+
               ],
             ),
           ),
@@ -204,15 +171,24 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
   }
 }
 
+
+
 Widget hatContainer({
   bool isView = false,
   required BuildContext context,
-  double contWidth = 138.82,
-  double contHeight = 251.1,
   String strCategory = 'Обычный'
-}) =>
-    Padding(
-      padding: const EdgeInsets.only(right: 10),
+}) {
+
+  final mediaWidth = MediaQuery.of(context).size.width;
+  final double contWidth = isView
+      ? 0.445*mediaWidth          //167
+      : 0.37*mediaWidth;   //138.82
+  final double imageHeight = isView? contWidth*0.65 : contWidth;
+  // final double imageHeight = contWidth; //131
+
+
+  return Padding(
+      padding: EdgeInsets.only(right:  isView? 0 : 15),
       child: InkWell(
         onTap: (() {
           Navigator.of(context).push(MaterialPageRoute<void>(
@@ -224,47 +200,57 @@ Widget hatContainer({
             color: isView? Colors.white : ConstColor.halfWhite,
             borderRadius: BorderRadius.circular(12),
           ),
-          height: contHeight,
+          // height: contHeight,
           width: contWidth,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
               Padding(
                 padding: const EdgeInsets.only(
-                  bottom: 10,
+                  bottom: 27,
                 ),
                 child: Text(
                   strCategory,
                   style: TextStyle(
                     color: isView? Colors.black : Colors.white,
-                    fontSize: 14, fontWeight: FontWeight.bold),
+                    fontSize: 16.5.sp, //14
+                      fontWeight: FontWeight.w600
+                  ),
                 ),
               ),
+
               Container(
-                // height: contWidth * 0.7,
-                height: contHeight- 120.1,
+                height: imageHeight,  // contHeight- 120.1,
                 decoration: BoxDecoration(
+                  // color: Colors.red,
                     image: DecorationImage(
                         image: AssetImage('assets/images/${strCategory=='Обычный'? '4': '3'}.png')
                     ),
                     // color: Colors.red,
                     borderRadius: BorderRadius.circular(10)),
               ),
+
               Padding(
-                padding: const EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(top: 27),
                 child: Text(
                   '1.6 SOL',
                   style: TextStyle(
                       color: isView? Colors.black : ConstColor.salad100,
-                      fontSize: 16, fontWeight: FontWeight.bold),
+                      fontSize: 18.5.sp, //16
+                      fontWeight: FontWeight.w600
+                  ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 2, bottom: 10),
+              Padding(
+                padding: EdgeInsets.only(top: 5,),
                 child: Text(
                   '#0863246',
-                  style: TextStyle(fontSize: 12, color: ConstColor.grey),
+                  style: TextStyle(
+                      fontSize: 15.5.sp, //12
+                      fontWeight: FontWeight.w400,
+                      color: ConstColor.grey),
                 ),
               ),
             ],
@@ -272,3 +258,4 @@ Widget hatContainer({
         ),
       ),
     );
+}

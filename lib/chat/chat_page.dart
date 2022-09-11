@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/components/network_icons.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class ChatPage extends StatefulWidget {
@@ -48,7 +51,7 @@ class _ChatPageState extends State<ChatPage> {
   final _controller = TextEditingController();
   bool showSendButton = false;
 
-  final _scrollContr = ScrollController();
+  ScrollController _scrollController = ScrollController();
 
   void sendFunction(){
 
@@ -64,7 +67,9 @@ class _ChatPageState extends State<ChatPage> {
     FocusManager.instance.primaryFocus?.unfocus();
     _controller.clear();
 
-    _scrollContr.jumpTo(200);
+    WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+
+    // _scrollController.jumpTo(200);
 
     // _scrollContr.animateTo(
     //     // MediaQuery.of(context).size.height,
@@ -77,22 +82,38 @@ class _ChatPageState extends State<ChatPage> {
 
   }
 
-  @override
-  void initState() {
+  void _scrollToBottom() {
 
-    // _scrollContr.jumpTo(500);
+    print('scroolBottom');
 
-    // _scrollContr.animateTo(
-    //     100,
-    //     curve: Curves.easeOut,
-    //     duration: const Duration(seconds: 1)
-    // );
-
-    super.initState();
+    if (_scrollController.hasClients) {
+      _scrollController.animateTo(_scrollController.position.maxScrollExtent,
+          duration: Duration(milliseconds: 300), curve: Curves.elasticOut);
+    } else {
+      Timer(Duration(milliseconds: 400), () => _scrollToBottom());
+    }
   }
+
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  // }
+
+  bool checked = false;
 
   @override
   Widget build(BuildContext context) {
+
+    if(!checked){
+      WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+      checked = true;
+    }
+
+    final mediaHeight = MediaQuery.of(context).size.height;
+    final mediaWidth = MediaQuery.of(context).size.width;
+
+
     final keyboardSize = MediaQuery.of(context).viewInsets.bottom;
     return WillPopScope(
       onWillPop: () async {
@@ -105,9 +126,6 @@ class _ChatPageState extends State<ChatPage> {
       child: Scaffold(
         extendBody: true,
         extendBodyBehindAppBar: false,
-        // extendBody: true,
-        // extendBodyBehindAppBar: true,
-        // resizeToAvoidBottomInset: true,
         backgroundColor: Colors.grey.shade400,
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -121,50 +139,58 @@ class _ChatPageState extends State<ChatPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+
                 backButton(context, func: (){
                   Navigator.of(context).push(MaterialPageRoute<void>(
                       builder: (context) => const HomePage(initIndex: 3,)));
                 }),
-                const Text('Джоли',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: Text('Джоли',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20.sp, //20
+                        fontWeight: FontWeight.w600),
+                  ),
                 ),
 
                 Row(
                   children: [
 
                     Container(
-                      // alignment: Alignment.topLeft,
-                      width: 55,
-                      height: 55,
+                      width: 0.1146*mediaWidth,    //43
+                      height: 0.1146*mediaWidth,
                       decoration: BoxDecoration(
                         color: Colors.black,
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(15),
                       ),
-
+                      child:
+                      Icon(
+                        Network.electric,
+                        color: Colors.white,
+                        size: 17.sp, //17
+                      ),
                     ),
+
 
                     Padding(
                       padding: const EdgeInsets.only(left: 7),
                       child: Container(
-                        // alignment: Alignment.topLeft,
-                        width: 55,
-                        height: 55,
+                        width: 0.1146*mediaWidth,    //43
+                        height: 0.1146*mediaWidth,
                         decoration: BoxDecoration(
                           color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(15),
                         ),
                         child: Center(
                           child: IconButton(
                               onPressed: () {
                                 // Navigator.of(context).pop();
                               },
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.more_horiz,
                                 color: Colors.black,
-                                size: 25,
+                                size: 17.sp, //17
                               )),
                         ),
                       ),
@@ -193,12 +219,21 @@ class _ChatPageState extends State<ChatPage> {
               children: [
                 Expanded(child: _textEditor()),
 
-                showSendButton==false?
-                IconButton(onPressed: (){}, icon: const Icon(Icons.tag_faces_sharp)):
-                // Container():
+                Padding(padding: EdgeInsets.only(right: 10),
+
+                child:  showSendButton==false?
+                IconButton(onPressed: (){}, icon: Icon(
+                  Network.smile,
+                  size: 22.sp,   //26
+                  color: Colors.grey,
+                )):
                 IconButton(onPressed: (){
                   sendFunction();
-                }, icon: const Icon(Icons.send))
+                }, icon: Icon(
+                    Icons.send,
+                  size: 22.sp,   //26
+                )),
+                )
 
               ],
             ),
@@ -209,19 +244,18 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  Widget _body() =>  GestureDetector(
+  Widget _body() {
+
+    return GestureDetector(
     onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
     child: ListView.builder(
-        controller: _scrollContr,
-        // physics: NeverScrollableScrollPhysics(),
-      // reverse: true,
-        padding: const EdgeInsets.only(top: 10, bottom: 10),
+        controller: _scrollController,
+        padding: const EdgeInsets.only(top: 20, bottom: 10),
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         itemCount: messagesList.length,
         itemBuilder: (BuildContext context, int index) {
           return
-
             Column(
               children: [
 
@@ -230,9 +264,11 @@ class _ChatPageState extends State<ChatPage> {
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Column(children: [
 
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(bottom: 25),
-                      child: Text('Сегодня, 12:01', style: TextStyle(fontWeight: FontWeight.w500),),
+                      child: Text('Сегодня, 12:01', style: TextStyle(
+                          fontSize: 15.5.sp, //12
+                          fontWeight: FontWeight.w400),),
                     ),
 
                     Container(
@@ -285,7 +321,9 @@ class _ChatPageState extends State<ChatPage> {
                                           height: 16,
                                           child:
                                           const Icon(
-                                              Network.electric, size: 9, color: Colors.white,)
+                                              Network.electric,
+                                            size: 8,
+                                            color: Colors.white,)
                                       )
 
                                   )
@@ -295,8 +333,10 @@ class _ChatPageState extends State<ChatPage> {
                             ),
                           ),
 
-                          const Flexible(child: Text('У вас запланирована встреча с Джоли. Пообщайтесь и обговорите важные моменты.',
-                            style: TextStyle(fontWeight: FontWeight.w500),
+                          Flexible(child: Text('У вас запланирована встреча с Джоли. Пообщайтесь и обговорите важные моменты.',
+                            style: TextStyle(
+                                fontSize: 15.5.sp, //12
+                                fontWeight: FontWeight.w400),
                             maxLines: null,)),
                         ],
                       ),)
@@ -313,6 +353,7 @@ class _ChatPageState extends State<ChatPage> {
 
         }),
   );
+  }
 
 
   Widget messageCont(Map<String, dynamic> messageMap) {
@@ -330,7 +371,7 @@ class _ChatPageState extends State<ChatPage> {
 
           Container(
             constraints: BoxConstraints(
-              maxWidth: MediaQuery.of(context).size.width*0.6,
+              maxWidth: MediaQuery.of(context).size.width*0.67,
             ),
             // width: MediaQuery.of(context).size.width*0.6,
             decoration: BoxDecoration(
@@ -338,7 +379,10 @@ class _ChatPageState extends State<ChatPage> {
                 color: Colors.white
             ),
             padding: const EdgeInsets.all(15),
-            child: Text(strText, style: const TextStyle(fontSize: 14, color: Colors.black)),
+            child: Text(strText, style: TextStyle(
+                fontSize: 16.5.sp, //14
+                fontWeight: FontWeight.w400,
+                color: Colors.black)),
           ),
 
           intMin<2? Container() :
@@ -437,13 +481,12 @@ class _ChatPageState extends State<ChatPage> {
       decoration: const InputDecoration(
         counterText: '',
         focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(width: 0, color: Colors.white),
+            borderSide: BorderSide(width: 0, color: Colors.transparent),
             borderRadius: BorderRadius.only(topLeft: Radius.circular(15), bottomLeft: Radius.circular(15))
         ),
         enabledBorder:
-
         OutlineInputBorder(
-            borderSide: BorderSide(width: 0, color: Colors.white),
+            borderSide: BorderSide(width: 0, color: Colors.transparent),
             borderRadius: BorderRadius.only(topLeft: Radius.circular(15), bottomLeft: Radius.circular(15))
           // borderRadius: BorderRadius.circular(15)
         ),
