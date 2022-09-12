@@ -17,7 +17,11 @@ class _MatchingPageState extends State<MatchingPage> {
   @override
   Widget build(BuildContext context) {
 
+    final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
+    final _aspectRatio = mediaWidth/mediaHeight>=0.6;
+
+
 
     return Scaffold(
       extendBody: true,
@@ -28,7 +32,12 @@ class _MatchingPageState extends State<MatchingPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 10, top: 10, bottom: 25),
+                padding:
+                EdgeInsets.only(
+                    left: 10,
+                    top: 10,
+                    bottom: 25
+                ),
                 child: backButton(context),
               ),
 
@@ -63,7 +72,10 @@ class _MatchingPageState extends State<MatchingPage> {
               //Нижняя часть
               Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 16),
+                padding: EdgeInsets.symmetric(
+                    vertical: 15,
+                    horizontal: 16  //16
+                ),
                 // width: 400,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
@@ -155,13 +167,13 @@ class _MatchingPageState extends State<MatchingPage> {
 
                       Stack(
                         children: [
+
                           Positioned(
                               right: 30,
                               top: 0,
                               child: Image.asset('assets/images/lines.png',
-                              width: 0.656*mediaWidth,   //246
-                                // height: 0.656*mediaWidth*2.1504,            //529
-                                height: 0.656*mediaWidth*2.1504,            //529
+                              width: _aspectRatio? 70.sp : 0.656*mediaWidth,   //246
+                                height: _aspectRatio? 100.sp :  0.656*mediaWidth*2.1504,            //529
                               )),
 
                           Positioned(
@@ -309,9 +321,13 @@ class _MatchingPageState extends State<MatchingPage> {
 
   Widget questionContainer({required String text, required double align}) {
 
-    // final mediaHeight = MediaQuery.of(context).size.height;
+    final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
-    final contSize = mediaWidth*0.4026;  //151
+    // final contSize = mediaWidth*0.4026;  //151
+
+    final _aspectRatio = mediaWidth/mediaHeight>=0.6;
+
+    final contSize = _aspectRatio? mediaWidth*0.35 : mediaWidth*0.4026;  //151
 
     return Transform.rotate(
         angle: align,
@@ -326,8 +342,11 @@ class _MatchingPageState extends State<MatchingPage> {
             child: Text(
               text,
               style: TextStyle(
-                  fontSize: 15.5.sp, //12
-                  fontWeight: FontWeight.w500),
+                  fontSize:  _aspectRatio? 14.5.sp : 15.5.sp, //12
+                  fontWeight: FontWeight.w500,
+                overflow: TextOverflow.visible
+
+              ),
               textAlign: TextAlign.center,
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 
@@ -14,6 +15,10 @@ class RateFinalPage extends StatefulWidget {
 class _RateFinalPageState extends State<RateFinalPage> {
   @override
   Widget build(BuildContext context) {
+
+    final mediaHeight = MediaQuery.of(context).size.height;
+    final mediaWidth = MediaQuery.of(context).size.width;
+
     return WillPopScope(
       onWillPop: () async {
         // showInterruptDialog(context);
@@ -21,141 +26,146 @@ class _RateFinalPageState extends State<RateFinalPage> {
       },
       child: SafeArea(
         child: Scaffold(
-          // appBar: AppBar(
-          //   automaticallyImplyLeading: false,
-          //   toolbarHeight: 65,
-          //   backgroundColor: Colors.transparent,
-          //   elevation: 0,
-          //   title: Padding(
-          //     padding: const EdgeInsets.only(top: 10),
-          //     child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //       children: [
-          //         backButton(context,
-          //         //     func: (){
-          //         //   showInterruptDialog(context);
-          //         // }
-          //         ),
-          //         Container(
-          //           // alignment: Alignment.topLeft,
-          //           width: 55,
-          //           height: 55,
-          //           decoration: BoxDecoration(
-          //             color: Colors.grey.shade300,
-          //             borderRadius: BorderRadius.circular(15),
-          //           ),
-          //           child: Center(
-          //             child: IconButton(
-          //                 onPressed: () {
-          //                   showInterruptDialog(context);
-          //                 },
-          //                 icon: const Icon(
-          //                   Icons.close_outlined,
-          //                   color: Colors.black,
-          //                   size: 25,
-          //                 )),
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
           backgroundColor: Colors.grey.shade400,
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16,
             ),
             child: SingleChildScrollView(
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          backButton(context,
-                            //     func: (){
-                            //   showInterruptDialog(context);
-                            // }
-                          ),
-                          Container(
-                            // alignment: Alignment.topLeft,
-                            width: 55,
-                            height: 55,
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade300,
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Center(
-                              child: IconButton(
-                                  onPressed: () {
-                                    showInterruptDialog(context);
-                                  },
-                                  icon: const Icon(
-                                    Icons.close_outlined,
-                                    color: Colors.black,
-                                    size: 25,
-                                  )),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child:  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        backButton(context,
+                            func: (){
+                              showInterruptDialog(context);
+                            }),
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 44),
-                      child: Text(
-                        'Дайте оценку\nкаждой категории',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
+                        Container(
+                          // alignment: Alignment.topLeft,
+                          width: 0.11466*mediaWidth, //43
+                          height: 0.11466*mediaWidth, //43
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Center(
+                            child: IconButton(
+                                onPressed: (){
+                                  showInterruptDialog(context);
+                                },
+                                icon: Icon(
+                                  Icons.close_outlined,
+                                  color: Colors.black,
+                                  size: 18.5.sp, //18
+                                )),
+                          ),
                         ),
+                      ],
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: 0.061*mediaHeight     //44
+                    ),
+                    child: Text(
+                      'Дайте оценку\nкаждой категории',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 19.5.sp,   //20
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
+                  ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 59),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: 0.0818*mediaHeight   //59
+                    ),
+                    child:
+                      sliderContainer(title: 'Понравилось ли вам общение?')
+                  ),
+
+
+                  Padding(
+                      padding: const EdgeInsets.only(top: 20),
                       child:
-                        sliderContainer(title: 'Понравилось ли вам общение?')
+                      sliderContainer(title: 'Возникла ли симпатия?')
+                  ),
+
+                  Padding(
+                      padding: const EdgeInsets.only(top: 20, bottom: 27),
+                      child:
+                      sliderContainer(title: 'Интересна ли сфера деятельности?')
+                  ),
+
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 27, bottom: 36),
+                  //   child: ElevatedButton(
+                  //       style:
+                  //       buttonStyleCustom(padH: 100),
+                  //       onPressed: () {
+                  //         Navigator.of(context).push(MaterialPageRoute<void>(
+                  //             builder: (context) => const HomePage(initIndex: 0)));
+                  //       },
+                  //       child: Text(
+                  //         'Оценить',
+                  //         style:
+                  //         TextStyle(
+                  //             fontSize: 16,
+                  //             fontWeight: FontWeight.w500,
+                  //             color: Colors.white
+                  //         ),
+                  //       )),
+                  // ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 16,
+                        right: 16,
+                        top: 27,
+                        bottom: 36
                     ),
-
-
-                    Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child:
-                        sliderContainer(title: 'Возникла ли симпатия?')
-                    ),
-
-                    Padding(
-                        padding: const EdgeInsets.only(top: 20, bottom: 27),
-                        child:
-                        sliderContainer(title: 'Интересна ли сфера деятельности?')
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(top: 27, bottom: 36),
+                    child: SizedBox(
+                      width: double.infinity,
                       child: ElevatedButton(
-                          style:
-                          buttonStyleCustom(padH: 100),
+                          style: ButtonStyle(
+                            backgroundColor:
+                            MaterialStateProperty.all(Colors.black),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(52),
+                              ),
+                            ),
+                          ),
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute<void>(
-                                builder: (context) => const HomePage(initIndex: 0)));
+
+                                    Navigator.of(context).push(MaterialPageRoute<void>(
+                                        builder: (context) => const HomePage(initIndex: 0)));
                           },
-                          child: Text(
-                            'Оценить',
-                            style:
-                            TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 0.02358*mediaHeight    //17
+                            ),
+                            child: Text(
+                              'Оценить',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17.5.sp,   //16
+                                  fontWeight: FontWeight.w500
+
+                              ),
                             ),
                           )),
-                    )
-                  ],
-                ),
+                    ),
+                  ),
+
+                ],
               ),
             ),
           ),
@@ -180,7 +190,8 @@ Widget sliderContainer({required String title}) => Container(
           Text(
             title,
             style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black
+                fontSize: 17.5.sp, //16
+                fontWeight: FontWeight.w400, color: Colors.black
             ),
           ),
           Padding(
@@ -246,7 +257,7 @@ class _AddCommentRowState extends State<AddCommentRow> {
             transform: Matrix4.rotationY(3.1415),
             child: Icon(
               Icons.chat_bubble_outline,
-              size: 22,
+              size: 20.sp, //22
               color: widget.color,
             ),
           ),
@@ -255,7 +266,8 @@ class _AddCommentRowState extends State<AddCommentRow> {
             child: Text(
               'Добавить комментарий',
               style: TextStyle(
-                  fontSize: 14, fontWeight: FontWeight.w500, color: widget.color),
+                  fontSize: 16.5.sp, //14
+                  fontWeight: FontWeight.w500, color: widget.color),
             ),
           )
         ],
@@ -363,12 +375,21 @@ void showInterruptDialog(BuildContext context) {
 }
 
 Widget interruptDialog(BuildContext context) {
+
+  final mediaWidth = MediaQuery.of(context).size.width;
+  final padMain = 0.0746*mediaWidth; //28
+
   return Dialog(
-    insetPadding: EdgeInsets.symmetric(horizontal: 16),
+    insetPadding: EdgeInsets.symmetric(
+        horizontal: 0.04*mediaWidth  //30
+    ),
+    // insetPadding: EdgeInsets.symmetric(horizontal: 16),
     backgroundColor: Colors.transparent,
     child: Container(
-      width: 328,
-      // height: 236,
+      width: double.infinity,
+      padding: EdgeInsets.only(
+        bottom: padMain,
+      ),
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(15)),
       child: Column(
@@ -382,14 +403,16 @@ Widget interruptDialog(BuildContext context) {
               onPressed: Navigator.of(context).pop,
               icon: Icon(
                 Icons.close_outlined,
-                size: 21,
+                size: 18.sp,   //18
               ),
             ),
           ),
           Text(
             'Вы уверены, что хотите прервать\nоценку встречи?',
             style: TextStyle(
-                color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+                color: Colors.black,
+                fontSize: 17.5.sp,   //16
+                fontWeight: FontWeight.w600),
             textAlign: TextAlign.center,
           ),
           Padding(
@@ -398,22 +421,28 @@ Widget interruptDialog(BuildContext context) {
               'Вы сможете продолжить оценку позже,\nоткрыв историю встреч',
               style: TextStyle(
                   color: Colors.grey,
-                  fontSize: 14,
+                  fontSize: 16.5.sp,   //16
                   fontWeight: FontWeight.w400),
               textAlign: TextAlign.center,
             ),
           ),
+
           Padding(
-            padding: const EdgeInsets.only(top: 37, bottom: 25),
+            padding: EdgeInsets.only(
+                top: 0.0986*mediaWidth,  //37
+            ),
             child: Row(
+              // spacing:  10,    //24,
+              // runSpacing: 0.064*mediaWidth,    //24,
+              // alignment: WrapAlignment.spaceBetween,
+              // runAlignment: WrapAlignment.center,
+              // direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
                     style: ButtonStyle(
-                      padding: MaterialStateProperty.all(
-                          const EdgeInsets.symmetric(
-                              vertical: 9, horizontal: 21)),
-                      backgroundColor: MaterialStateProperty.all(Colors.black),
+                      backgroundColor:
+                      MaterialStateProperty.all(Colors.black),
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -423,34 +452,47 @@ Widget interruptDialog(BuildContext context) {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text(
-                      // 'Создать чат',
-                      'Продолжить',
-                      style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                    )),
-                Padding(
-                  padding: const EdgeInsets.only(left: 24),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute<void>(
-                          builder: (context) => const HomePage(initIndex: 0)));
+                    child: Padding(
+                      padding:
+                      EdgeInsets.symmetric(
+                          vertical: 0.056*mediaWidth*0.428,    //9
+                          horizontal: 0.0266*mediaWidth  //15
+                      ),
+                      child: Text(
+                        // 'Создать чат',
+                        'Продолжить',
+                        style: TextStyle(
+                            fontSize: 16.5.sp, //14
+                            fontWeight: FontWeight.w400
 
-                      // Navigator.of(context).pop();
-                      // Navigator.of(context).pop();
+                        ),
+                      ),
+                    )),
+
+
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: 0.064*mediaWidth  //24
+                  ),
+                  child: InkWell(
+                    onTap: (){
+
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pop();
+
                     },
-                    child: Text(
-                      'Прервать',
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey.shade500),
-                    ),
+                    child: Text('Прервать', style: TextStyle(
+                        fontSize: 16.5.sp,   //14
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey.shade500
+                    ),),
                   ),
                 )
-              ],
-            ),
+
+
+              ],),
           )
+
         ],
       ),
     ),
@@ -514,7 +556,8 @@ class _SliderCustomState extends State<SliderCustom> {
                 Text(
                   '0',
                   style: TextStyle(
-                      fontSize: sliderValue==0? 16 : 14,
+                      // fontSize: sliderValue==0? 16 : 14,
+                      fontSize: sliderValue==0? 17.5.sp : 16.5.sp,
                       fontWeight: sliderValue==0? FontWeight.w600 : FontWeight.w400,
                       color: sliderValue==0? Colors.black : ConstColor.grey
                   ),
@@ -523,7 +566,8 @@ class _SliderCustomState extends State<SliderCustom> {
                 Text(
                   '5',
                   style: TextStyle(
-                      fontSize: sliderValue==widget.max? 16 : 14,
+                      // fontSize: sliderValue==widget.max? 16 : 14,
+                      fontSize: sliderValue==0? 17.5.sp : 16.5.sp,
                       fontWeight: sliderValue==widget.max? FontWeight.w600 : FontWeight.w400,
                       color: sliderValue==widget.max? Colors.black : ConstColor.grey
                   ),
@@ -579,7 +623,7 @@ class _SliderCustomState extends State<SliderCustom> {
                     tooltipTextStyle:
                     TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 17.5.sp,   //16
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -603,89 +647,5 @@ class _SliderCustomState extends State<SliderCustom> {
           ),
         ],
       );
-
-    //   Column(
-    //   crossAxisAlignment: CrossAxisAlignment.start,
-    //   children: [
-    //
-    //     SfSliderTheme(
-    //       data: SfSliderThemeData(
-    //         overlayColor: Colors.black.withOpacity(0.1),
-    //         inactiveTrackColor: Colors.grey,
-    //         activeTrackColor: Colors.black,
-    //         thumbColor: Colors.black,
-    //         activeTrackHeight: 10,
-    //         inactiveTrackHeight: 10,
-    //         thumbRadius: 14,
-    //         overlayRadius: 0,
-    //         tooltipBackgroundColor: Colors.transparent,
-    //         tooltipTextStyle:
-    //         TextStyle(
-    //           color: Colors.black,
-    //           fontSize: 16,
-    //           fontWeight: FontWeight.w600,
-    //         ),
-    //       ),
-    //       child: SfSlider(
-    //         // tooltipShape: SfRectangularTooltipShape(),
-    //         // tooltipTextFormatterCallback:
-    //         //     (dynamic actualLabel, String formattedText) {
-    //         //   return sliderValue.toStringAsFixed(1);
-    //         // },
-    //         thumbIcon: Icon(
-    //           Icons.circle,
-    //           color: Colors.grey,
-    //           size: 13,
-    //         ),
-    //         min: widget.min,
-    //         max: widget.max,
-    //         value: sliderValue,
-    //         stepSize: widget.stepSize,
-    //         enableTooltip: widget.showLabel,
-    //         shouldAlwaysShowTooltip: widget.showLabel,
-    //         onChanged: (value) => setState(() => this.sliderValue = value),
-    //       ),
-    //     ),
-    //
-    //     SfSliderTheme(
-    //       data: SfSliderThemeData(
-    //         overlayColor: Colors.black.withOpacity(0.1),
-    //         inactiveTrackColor: Colors.grey,
-    //         activeTrackColor: Colors.black,
-    //         thumbColor: Colors.black,
-    //         activeTrackHeight: 10,
-    //         inactiveTrackHeight: 10,
-    //         thumbRadius: 14,
-    //         overlayRadius: 0,
-    //         tooltipBackgroundColor: Colors.transparent,
-    //         tooltipTextStyle:
-    //         TextStyle(
-    //           color: Colors.black,
-    //           fontSize: 16,
-    //           fontWeight: FontWeight.w600,
-    //         ),
-    //       ),
-    //       child: SfSlider(
-    //         // tooltipShape: SfRectangularTooltipShape(),
-    //         // tooltipTextFormatterCallback:
-    //         //     (dynamic actualLabel, String formattedText) {
-    //         //   return sliderValue.toStringAsFixed(1);
-    //         // },
-    //         thumbIcon: Icon(
-    //           Icons.circle,
-    //           color: Colors.grey,
-    //           size: 13,
-    //         ),
-    //         min: widget.min,
-    //         max: widget.max,
-    //         value: sliderValue,
-    //         stepSize: widget.stepSize,
-    //         enableTooltip: widget.showLabel,
-    //         shouldAlwaysShowTooltip: widget.showLabel,
-    //         onChanged: (value) => setState(() => this.sliderValue = value),
-    //       ),
-    //     ),
-    //   ],
-    // );
   }
 }

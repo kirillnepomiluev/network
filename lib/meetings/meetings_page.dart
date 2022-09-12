@@ -341,7 +341,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
                       Text(
                         '02:04:15',
                         style: TextStyle(
-                            fontSize: 16.sp, //12
+                            fontSize: 15.5.sp, //12
                             fontWeight: FontWeight.bold),
                       ),
                       Padding(
@@ -692,7 +692,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
       // },
       maxLines: 1,
       controller: _controller,
-      textInputAction: TextInputAction.send,
+      textInputAction: TextInputAction.done,
       textAlign: TextAlign.start,
       autofocus: false,
       decoration: const InputDecoration(

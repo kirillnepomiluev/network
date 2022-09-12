@@ -147,80 +147,84 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
               //
 
 
-
               Form(
                 key: formstate,
-                child: Stack(
-                  alignment: Alignment.topCenter,
-                  children: [
-                    Container(
-                      height: 59,
-                      padding: EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20)
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(left: 12, right: 12),
-                      child: IntlPhoneField(
-                        // textInputAction: TextInputAction.done,
-                        // disableLengthCheck: true,
-                        autofocus: true,
-                        style: const TextStyle(fontSize: 14),
-                        keyboardType: TextInputType.number,
-                        inputFormatters: <TextInputFormatter>[
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                        initialCountryCode: 'RU',
-
-                        decoration: InputDecoration(
-                          // isDense: false,
-                          contentPadding: const EdgeInsets.only(top: 25, bottom: 25),
-                          // errorText:'Неправильный номер',
-
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(width: 3, color: Colors.white),
-                              borderRadius: BorderRadius.circular(20)),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(width: 3, color: Colors.white),
-                              borderRadius: BorderRadius.circular(20)),
-
-                          filled: true,
-                          fillColor: Colors.white,
+                child: SizedBox(
+                  height: 80,
+                  child: Stack(
+                    alignment: Alignment.topCenter,
+                    children: [
+                      Container(
+                        height: 60,
+                        padding: EdgeInsets.only(left: 10),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)
                         ),
-                        onChanged: (phone) {
-                          strPhone = phone.completeNumber;
-
-                          strPhone = '${strPhone.substring(0, 1)} ${strPhone.substring(1, 2)} ${strPhone.substring(2, 5)} ${strPhone.substring(5, 8)} ${strPhone.substring(8, 10)} ${strPhone.substring(10)}'; //33
-
-                          var formdata = formstate.currentState;
-
-                          if (formdata!.validate()) {
-                            // print('valid');
-                            // setState(() {
-                            //   showSendButton = true;
-                            // });
-
-                            FocusManager.instance.primaryFocus?.unfocus();
-
-                          }
-                          // else {
-                          //   if (showSendButton) {
-                          //     setState(() {
-                          //       showSendButton = false;
-                          //     });
-                          //   }
-                          // }
-                          // print('strPhone $strPhone');
-                        },
-                        // onCountryChanged: (country) {
-                        //   // print('Country changed to: ' + country.name);
-                        // },
                       ),
-                    ),
-                  ],
+
+                      Padding(
+                        padding: const EdgeInsets.only(left: 12, right: 12),
+                        child: SizedBox(
+                          child: IntlPhoneField(
+                            // textInputAction: TextInputAction.done,
+                            // disableLengthCheck: true,
+                            autofocus: true,
+                            style: const TextStyle(fontSize: 14),
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
+                            initialCountryCode: 'RU',
+
+                            decoration: InputDecoration(
+                              // isDense: false,
+                              contentPadding: const EdgeInsets.only(top: 25, bottom: 24),
+                              // errorText:'Неправильный номер',
+
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(width: 3, color: Colors.white),
+                                  borderRadius: BorderRadius.circular(20)),
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(width: 3, color: Colors.white),
+                                  borderRadius: BorderRadius.circular(20)),
+
+                              filled: true,
+                              fillColor: Colors.white,
+                            ),
+                            onChanged: (phone) {
+                              strPhone = phone.completeNumber;
+
+                              strPhone = '${strPhone.substring(0, 1)} ${strPhone.substring(1, 2)} ${strPhone.substring(2, 5)} ${strPhone.substring(5, 8)} ${strPhone.substring(8, 10)} ${strPhone.substring(10)}'; //33
+
+                              var formdata = formstate.currentState;
+
+                              if (formdata!.validate()) {
+                                // print('valid');
+                                // setState(() {
+                                //   showSendButton = true;
+                                // });
+
+                                FocusManager.instance.primaryFocus?.unfocus();
+
+                              }
+                              // else {
+                              //   if (showSendButton) {
+                              //     setState(() {
+                              //       showSendButton = false;
+                              //     });
+                              //   }
+                              // }
+                              // print('strPhone $strPhone');
+                            },
+                            // onCountryChanged: (country) {
+                            //   // print('Country changed to: ' + country.name);
+                            // },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
 

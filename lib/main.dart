@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:network_app/auth/login_page.dart';
+import 'package:network_app/auth/login_second_page.dart';
 import 'package:network_app/chat/chat_page.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/meetings/complaint_page.dart';
+import 'package:network_app/meetings/matching_page.dart';
+import 'package:network_app/meetings/rate_final_page.dart';
+import 'package:network_app/meetings/rate_page.dart';
 import 'package:network_app/meetings/timer_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -55,10 +59,8 @@ class MyApp extends StatelessWidget {
               Locale('ru', 'RU'), // English, no country code
             ],
             home: const
-            // FirstPage(),
+            FirstPage()
             // HomePage(initIndex: 0,),
-
-            ComplaintPage()
 
           );
         },

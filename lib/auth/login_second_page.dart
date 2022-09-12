@@ -45,6 +45,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+
               Text(
                 Constants.strLoremIpsum,
                 textAlign: TextAlign.center,
@@ -53,6 +54,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                     fontWeight: FontWeight.w400,
                     color: Colors.black),
               ),
+
               Padding(
                 padding: const EdgeInsets.only(top: 57),
                 child: enterContainer(
@@ -61,6 +63,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                   leftPad: 30
                 ),
               ),
+
               Padding(
                 padding: const EdgeInsets.only(top: 21),
                 child: enterContainer(
@@ -69,6 +72,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                   leftPad: 28
                 ),
               ),
+
               Padding(
                 padding: const EdgeInsets.only(top: 21),
                 child: enterContainer(
@@ -77,6 +81,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                   leftPad: 28
                 ),
               ),
+
             ],
           ),
         ),
@@ -84,7 +89,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
     );
   }
 
-  Widget enterContainer({iconName, title, leftPad}) => InkWell(
+  Widget enterContainer({required String iconName, required String title, required double leftPad}) => InkWell(
         onTap: (() {
           Navigator.of(context).push(MaterialPageRoute<void>(
               builder: (context) => const PhoneAuthPage()));
@@ -95,7 +100,8 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
               color: Colors.black,
               borderRadius: BorderRadius.circular(15),
             ),
-            child: Row(
+            child:
+            Row(
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
@@ -111,17 +117,16 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                           height: 24,
                         ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 0, right: 0),
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                        fontSize: 18.sp, //18
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500),
-                  ),
+
+                Text(
+                  title,
+                  style: TextStyle(
+                      fontSize: 18.sp, //18
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500),
                 )
               ],
-            )),
+            )
+        ),
       );
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/meetings/rate_final_page.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class RatePage extends StatefulWidget {
@@ -16,6 +17,10 @@ class _RatePageState extends State<RatePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final mediaHeight = MediaQuery.of(context).size.height;
+    final mediaWidth = MediaQuery.of(context).size.width;
+
     return WillPopScope(
       onWillPop: () async {
         showInterruptDialog(context);
@@ -40,8 +45,8 @@ class _RatePageState extends State<RatePage> {
 
                 Container(
                   // alignment: Alignment.topLeft,
-                  width: 55,
-                  height: 55,
+                  width: 0.11466*mediaWidth, //43
+                  height: 0.11466*mediaWidth, //43
                   decoration: BoxDecoration(
                     color: Colors.grey.shade300,
                     borderRadius: BorderRadius.circular(15),
@@ -51,10 +56,10 @@ class _RatePageState extends State<RatePage> {
                         onPressed: (){
                           showInterruptDialog(context);
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.close_outlined,
                           color: Colors.black,
-                          size: 25,
+                          size: 18.5.sp, //18
                         )),
                   ),
                 ),
@@ -63,73 +68,97 @@ class _RatePageState extends State<RatePage> {
           ),
         ),
         backgroundColor: Colors.grey.shade400,
-        body: Padding(
-          padding: const EdgeInsets.only(top: 58,),
-          child: SingleChildScrollView(
-            child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
 
-
-                  Text('Как прошла встреча?',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                  ),),
-
-
-                  Padding(
-                    padding: const EdgeInsets.only(top: 122, bottom: 85),
-                    child: Image.asset('assets/icons/smile.png', width: 144, height: 144,),
-                  ),
-
-
-                  SliderCustom(
-                    min: 0,
-                    max: 100,
-                    showLabel: false,
-                    sLiderValue: 50,
-                    // stepSize: 5
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.only(left: 23, bottom: 80, top: 44),
-                    child: AddCommentRow(color: Colors.black,)
-                  ),
-
-                  // buttomCustom(
-                  //   padH: 100,
-                  //     text: 'Далее',
-                  //     func: (){
-                  //     print('ok');
-                  //       Navigator.of(context).push(MaterialPageRoute<void>(
-                  //           builder: (context) => const RateFinalPage()));
-                  //     }
-                  // ),
-
-              ElevatedButton(
-                  style:
-                  buttonStyleCustom(padH: 100),
-                  onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute<void>(
-                              builder: (context) => const RateFinalPage()));
-                  },
-                  child: Text(
-                    'Далее',
-                    style:
-                    TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white
-                    ),
-                  ))
-
-
-              ],
+              Padding(
+                // padding: EdgeInsets.only(top: 30),    //30
+                padding: EdgeInsets.only(top: 0.0416*mediaHeight),    //30
+                child: Text('Как прошла встреча?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                  fontSize: 19.5.sp,   //20
+                  fontWeight: FontWeight.w700,
+                ),),
               ),
-            ),
+
+
+              Padding(
+                padding: EdgeInsets.only(
+                    top: mediaHeight*0.1387,     //100
+                    bottom: mediaHeight*0.083    //60
+                ),
+                child: Image.asset('assets/icons/smile.png',
+                  width: 0.1997*mediaHeight,
+                  height: 0.1997*mediaHeight,    //144
+                ),
+              ),
+
+
+              SliderCustom(
+                min: 0,
+                max: 100,
+                showLabel: false,
+                sLiderValue: 50,
+                // stepSize: 5
+              ),
+
+              Padding(
+                  padding: EdgeInsets.only(
+                    left: 0.0613*mediaWidth,   //23
+                    top: 0.061*mediaHeight,    //44
+                    bottom: 0.083*mediaHeight, //60
+                  ),
+                child: AddCommentRow(color: Colors.black,)
+              ),
+
+
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 16,
+                    right: 16,
+                    bottom: 0
+                ),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                        MaterialStateProperty.all(Colors.black),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(52),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+
+                        Navigator.of(context).push(MaterialPageRoute<void>(
+                            builder: (context) => const RateFinalPage()));
+
+                        },
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 0.02358*mediaHeight    //17
+                        ),
+                        child: Text(
+                          'Далее',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17.5.sp,   //16
+                              fontWeight: FontWeight.w500
+
+                          ),
+                        ),
+                      )),
+                ),
+              ),
+
+
+
+          ],
           ),
         ),
       ),

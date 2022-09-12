@@ -38,8 +38,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
-    // mediaHeight = MediaQuery.of(context).size.height;
+    final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
+
+    print('mediaWidth $mediaWidth mediaHeight $mediaHeight');
 
     return Scaffold(
       extendBody: true,
@@ -154,23 +156,24 @@ Widget blurCircle({double sigma = 55, double radius = 271}) => SizedBox(
 
 
 Widget statContainer(
-        {
-          required BuildContext context,
-          required String title,
-        required String subtitle,
-        }) {
+    {
+      required BuildContext context,
+      required String title,
+      required String subtitle,
+    }) {
 
   // final mediaHeight = MediaQuery.of(context).size.height;
   final mediaWidth = MediaQuery.of(context).size.width;
 
-  final double contWidth =  mediaWidth*0.2853;
+  final double contWidth =  45.sp;  //107
   // final double contHeight =  mediaHeight*0.2853;
 
   return BlurryContainer(
     // padding: EdgeInsets.symmetric(vertical: 52, horizontal: 21),
     blur: 10,
     width: contWidth,   //107
-    height: contWidth*1.514,  //162
+    // height: contWidth*1.514,  //162
+    height: 55.sp,  //162
     color: ConstColor.halfWhite,
     borderRadius: BorderRadius.circular(73),
     child: Column(
@@ -181,12 +184,12 @@ Widget statContainer(
         title == ''
             ? Container()
             : Text(
-                title,
-                style: TextStyle(
-                    fontSize: 23.sp,    //28
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white),
-              ),
+          title,
+          style: TextStyle(
+              fontSize: 23.sp,    //28
+              fontWeight: FontWeight.w500,
+              color: Colors.white),
+        ),
         Padding(
           padding: const EdgeInsets.only(top: 5),
           child: Text(
@@ -202,6 +205,59 @@ Widget statContainer(
     ),
   );
 }
+
+
+// Widget statContainer(
+//         {
+//           required BuildContext context,
+//           required String title,
+//         required String subtitle,
+//         }) {
+//
+//   // final mediaHeight = MediaQuery.of(context).size.height;
+//   final mediaWidth = MediaQuery.of(context).size.width;
+//
+//   final double contWidth =  mediaWidth*0.2853;
+//   // final double contHeight =  mediaHeight*0.2853;
+//
+//   return BlurryContainer(
+//     // padding: EdgeInsets.symmetric(vertical: 52, horizontal: 21),
+//     blur: 10,
+//     width: contWidth,   //107
+//     height: contWidth*1.514,  //162
+//     color: ConstColor.halfWhite,
+//     borderRadius: BorderRadius.circular(73),
+//     child: Column(
+//       mainAxisSize: MainAxisSize.min,
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       crossAxisAlignment: CrossAxisAlignment.center,
+//       children: [
+//         title == ''
+//             ? Container()
+//             : Text(
+//                 title,
+//                 style: TextStyle(
+//                     fontSize: 23.sp,    //28
+//                     fontWeight: FontWeight.w500,
+//                     color: Colors.white),
+//               ),
+//         Padding(
+//           padding: const EdgeInsets.only(top: 5),
+//           child: Text(
+//             subtitle,
+//             style: TextStyle(
+//                 fontSize: 17.5.sp, //16
+//                 fontWeight: FontWeight.w500,
+//                 color: Colors.white),
+//             textAlign: TextAlign.center,
+//           ),
+//         )
+//       ],
+//     ),
+//   );
+// }
+
+
 
 Widget titleStatText(String text) => Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 10),
