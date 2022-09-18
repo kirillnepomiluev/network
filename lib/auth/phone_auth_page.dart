@@ -82,7 +82,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
             children: [
 
               Padding(
-                padding: EdgeInsets.only(bottom: 27),
+                padding: const EdgeInsets.only(bottom: 27),
                 child: Text(
                   'Введите ваш номер',
                   style: TextStyle(
@@ -156,7 +156,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                     children: [
                       Container(
                         height: 60,
-                        padding: EdgeInsets.only(left: 10),
+                        padding: const EdgeInsets.only(left: 10),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(20)
@@ -231,7 +231,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
 
 
               Padding(
-                padding: EdgeInsets.only(top: 38, bottom: 52),
+                padding: const EdgeInsets.only(top: 38, bottom: 52),
                 child: Center(
                   child: Text(Constants.strLoremIpsum,
                       maxLines: 5,

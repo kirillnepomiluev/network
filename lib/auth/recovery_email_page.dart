@@ -57,14 +57,14 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 62),
                 child: TextFormField(
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
                   textInputAction: TextInputAction.done,
                   autofocus: true,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 22, horizontal: 16),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 22, horizontal: 16),
                     // contentPadding: EdgeInsets.only(left: 15),
                     focusedBorder: OutlineInputBorder(
                         borderSide:
@@ -77,7 +77,7 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
                     filled: true,
                     fillColor: Colors.white,
                     hintText: 'Введите адрес электронной почты',
-                    hintStyle: TextStyle(
+                    hintStyle: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
                       color: Colors.grey

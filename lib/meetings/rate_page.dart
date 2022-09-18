@@ -97,7 +97,7 @@ class _RatePageState extends State<RatePage> {
               ),
 
 
-              SliderCustom(
+              const SliderCustom(
                 min: 0,
                 max: 100,
                 showLabel: false,
@@ -111,7 +111,7 @@ class _RatePageState extends State<RatePage> {
                     top: 0.061*mediaHeight,    //44
                     bottom: 0.083*mediaHeight, //60
                   ),
-                child: AddCommentRow(color: Colors.black,)
+                child: const AddCommentRow(color: Colors.black,)
               ),
 
 

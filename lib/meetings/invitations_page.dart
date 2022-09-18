@@ -19,7 +19,6 @@ class _InvitationsPageState extends State<InvitationsPage> {
     required int position,
     required String text,
   }) {
-    final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
 
     return Padding(
@@ -72,7 +71,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                 Network.tune,
                 color: Colors.white,
               ),
-              iconSize: 19.5.sp, //20
+              iconSize: 19.sp, //20
             )),
       ),
       backgroundColor: Colors.grey.shade400,
@@ -116,7 +115,6 @@ class _InvitationsPageState extends State<InvitationsPage> {
   }
 
   Widget viewInviteContainer({required String strType}) {
-    final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
 
     return Padding(
@@ -236,7 +234,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                                       fontSize: 15.5.sp, //12
                                       fontWeight: FontWeight.w600),
                                 ),
-                                Padding(
+                                const Padding(
                                   padding: EdgeInsets.only(left: 5),
                                   child: Icon(
                                     Icons.incomplete_circle,
@@ -258,7 +256,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                           color: Colors.black,
                           fontWeight: FontWeight.w600)),
                   Padding(
-                    padding: EdgeInsets.only(left: 5.75),
+                    padding: const EdgeInsets.only(left: 5.75),
                     child: Icon(
                       Icons.verified,
                       color: Colors.black,
@@ -313,7 +311,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                               Network.person,
                               color: Colors.black,
                             ),
-                            iconSize: 24.sp, //28
+                            iconSize: 23.sp, //28
                           )),
                       Padding(
                         padding: const EdgeInsets.only(left: 21),
@@ -332,7 +330,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                               ), //Icons.turn
                             ),
                             Padding(
-                              padding: EdgeInsets.only(top: 10),
+                              padding: const EdgeInsets.only(top: 10),
                               child: Text(
                                 '250 м',
                                 style: TextStyle(
@@ -346,6 +344,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                       )
                     ],
                   ),
+
                   Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
@@ -353,19 +352,16 @@ class _InvitationsPageState extends State<InvitationsPage> {
                       ),
                       width: mediaWidth * 0.176, //66
                       height: mediaWidth * 0.176 * 1.394, //92
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute<void>(
-                                builder: (context) => const MatchingPage()));
-                          },
-                          icon: const Icon(
-                            Network.arrow_right_long,
-                            color: Colors.black,
-                          ),
-                          iconSize: 16.5.sp, //14
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute<void>(
+                              builder: (context) => const MatchingPage()));
+                        },
+                        icon: const Icon(
+                          Network.arrow_right_long,
+                          color: Colors.black,
                         ),
+                        iconSize: 20.sp, //24
                       )),
                 ],
               ),

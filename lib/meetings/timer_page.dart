@@ -26,7 +26,7 @@ class _TimerPageState extends State<TimerPage> {
 
   void addTime(){
 
-    if (this.mounted) {
+    if (mounted) {
       const addSeconds =  -1 ;
 
       setState(() {
@@ -37,7 +37,6 @@ class _TimerPageState extends State<TimerPage> {
 
           openBottomSheetSuccess();
 
-          print('таймер кончился');
 
         } else {
           duration = Duration(seconds: seconds);
@@ -99,7 +98,7 @@ class _TimerPageState extends State<TimerPage> {
     final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
 
-    final contSize = 0.7493*mediaWidth; //281
+//281
 
     return WillPopScope(
       onWillPop: () async {
@@ -115,25 +114,6 @@ class _TimerPageState extends State<TimerPage> {
       },
       child: SafeArea(
         child: Scaffold(
-          // appBar: AppBar(
-          //   automaticallyImplyLeading: false,
-          //   toolbarHeight: 65,
-          //   backgroundColor: Colors.transparent,
-          //   elevation: 0,
-          //   title:
-          //   Padding(
-          //     padding: const EdgeInsets.only(top: 10),
-          //     child:  backButton(context, func: (){
-          //       if(currentSeconds==maxSeconds){
-          //         Navigator.of(context).pop();
-          //       }
-          //       else{
-          //         showPauseDialog();
-          //       }
-          //     }),
-          //   ),
-          // ),
-          // extendBody: true,
           backgroundColor: Colors.grey.shade400,
           body: SingleChildScrollView(
             child: Column(
@@ -168,7 +148,7 @@ class _TimerPageState extends State<TimerPage> {
                       progressStrokeWidth: 0.07466*mediaWidth,
                       size: 0.7493*mediaWidth,    //281
                       backColor: Colors.grey.shade100,
-                      progressColors: [Colors.black],
+                      progressColors: const [Colors.black],
                       // animationDuration: 0,
                       animationDuration: maxSeconds,
                       valueNotifier: valueNotifier,
@@ -282,7 +262,6 @@ class _TimerPageState extends State<TimerPage> {
 
   Widget pauseDialog() {
 
-    final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
     final padMain = 0.0746*mediaWidth; //28
 
@@ -296,56 +275,157 @@ class _TimerPageState extends State<TimerPage> {
       // scrollable: true,
       // content:
           child:
-      Container(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+      Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
 
-            Container(
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.only(
+                top: padMain*1.57,  //44
+                bottom: padMain,
+            ),
+          // width: mediaWidth*0.872,   //327
+          // height: 0.5627*mediaWidth*0.872,  //184
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15)
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+
+              Text('Вы уверены, что хотите\nпрервать встречу?',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 17.5.sp,   //16
+                    fontWeight: FontWeight.w600
+                ),
+                textAlign: TextAlign.center,
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(
+                    top: 0.0986*mediaWidth  //37
+                ),
+                child: Row(
+                  // spacing:  10,    //24,
+                  // runSpacing: 0.064*mediaWidth,    //24,
+                  // alignment: WrapAlignment.spaceBetween,
+                  // runAlignment: WrapAlignment.center,
+                  // direction: Axis.horizontal,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                        MaterialStateProperty.all(Colors.black),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        startTimer();
+                      },
+                      child: Padding(
+                        padding:
+                        EdgeInsets.symmetric(
+                                  vertical: 0.056*mediaWidth*0.428,    //9
+                                  horizontal: 0.0266*mediaWidth  //15
+                              ),
+                        child: Text(
+                          // 'Создать чат',
+                          'Продолжить',
+                          style: TextStyle(
+                              fontSize: 16.5.sp, //14
+                              fontWeight: FontWeight.w400
+
+                          ),
+                        ),
+                      )),
+
+
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 0.064*mediaWidth  //24
+                      ),
+                      child: InkWell(
+                        onTap: (){
+
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+
+                        },
+                        child: Text('Прервать', style: TextStyle(
+                          fontSize: 16.5.sp,   //14
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey.shade500
+                        ),),
+                      ),
+                    )
+
+
+                ],),
+              )
+
+            ],),
+        ),
+
+
+
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Container(
               width: double.infinity,
               padding: EdgeInsets.only(
-                  top: padMain*1.57,  //44
-                  bottom: padMain,
-              ),
-            // width: mediaWidth*0.872,   //327
-            // height: 0.5627*mediaWidth*0.872,  //184
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15)
+                  top: 0.128*mediaWidth*0.916,  //44
+                  bottom: padMain,        //28
+                  // left: 40,     //48
+                  // right:40
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+              // width: 327,
+              // height: 227,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15)
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
 
-                Text('Вы уверены, что хотите\nпрервать встречу?',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 17.5.sp,   //16
-                      fontWeight: FontWeight.w600
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 21),
+                    child: Icon(Network.warning,
+                      size: 21.sp, //23
+                    ),
                   ),
-                  textAlign: TextAlign.center,
-                ),
 
-                Padding(
-                  padding: EdgeInsets.only(
-                      top: 0.0986*mediaWidth  //37
+                  Text('Если у вас возникли проблемы\nвы можете оставить жалобу',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16.5.sp, //14
+                        fontWeight: FontWeight.w500
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  child: Row(
-                    // spacing:  10,    //24,
-                    // runSpacing: 0.064*mediaWidth,    //24,
-                    // alignment: WrapAlignment.spaceBetween,
-                    // runAlignment: WrapAlignment.center,
-                    // direction: Axis.horizontal,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+
+                  Padding(
+                    padding: const EdgeInsets.only(top: 37),
+                    child:
                     ElevatedButton(
                         style: ButtonStyle(
+                          // padding: MaterialStateProperty.all(
+                          //     const EdgeInsets.symmetric(vertical: 9, horizontal: 21)),
                           backgroundColor:
-                          MaterialStateProperty.all(Colors.black),
+                          MaterialStateProperty.all(ConstColor.grey),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -353,136 +433,34 @@ class _TimerPageState extends State<TimerPage> {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.of(context).pop();
-                          startTimer();
+                          Navigator.of(context).push(MaterialPageRoute<void>(
+                              builder: (context) => const ComplaintPage()));
                         },
+
                         child: Padding(
                           padding:
                           EdgeInsets.symmetric(
-                                    vertical: 0.056*mediaWidth*0.428,    //9
-                                    horizontal: 0.0266*mediaWidth  //15
-                                ),
-                          child: Text(
+                              vertical: 0.056*mediaWidth*0.428,    //9
+                              horizontal: 0.0266*mediaWidth  //15
+                          ),
+                      child: Text(
                             // 'Создать чат',
-                            'Продолжить',
+                            'Пожаловаться',
                             style: TextStyle(
-                                fontSize: 16.5.sp, //14
+                                fontSize: 16.5.sp,   //14
                                 fontWeight: FontWeight.w400
 
                             ),
                           ),
                         )),
+                  )
+
+                ],),
+            ),
+          )
 
 
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: 0.064*mediaWidth  //24
-                        ),
-                        child: InkWell(
-                          onTap: (){
-
-                            Navigator.of(context).pop();
-                            Navigator.of(context).pop();
-
-                          },
-                          child: Text('Прервать', style: TextStyle(
-                            fontSize: 16.5.sp,   //14
-                            fontWeight: FontWeight.w600,
-                            color: Colors.grey.shade500
-                          ),),
-                        ),
-                      )
-
-
-                  ],),
-                )
-
-              ],),
-          ),
-
-
-
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(
-                    top: 0.128*mediaWidth*0.916,  //44
-                    bottom: padMain,        //28
-                    // left: 40,     //48
-                    // right:40
-              ),
-                // width: 327,
-                // height: 227,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15)
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 21),
-                      child: Icon(Network.warning,
-                        size: 21.sp, //23
-                      ),
-                    ),
-
-                    Text('Если у вас возникли проблемы\nвы можете оставить жалобу',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16.5.sp, //14
-                          fontWeight: FontWeight.w500
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(top: 37),
-                      child:
-                      ElevatedButton(
-                          style: ButtonStyle(
-                            // padding: MaterialStateProperty.all(
-                            //     const EdgeInsets.symmetric(vertical: 9, horizontal: 21)),
-                            backgroundColor:
-                            MaterialStateProperty.all(ConstColor.grey),
-                            shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute<void>(
-                                builder: (context) => const ComplaintPage()));
-                          },
-
-                          child: Padding(
-                            padding:
-                            EdgeInsets.symmetric(
-                                vertical: 0.056*mediaWidth*0.428,    //9
-                                horizontal: 0.0266*mediaWidth  //15
-                            ),
-                        child: Text(
-                              // 'Создать чат',
-                              'Пожаловаться',
-                              style: TextStyle(
-                                  fontSize: 16.5.sp,   //14
-                                  fontWeight: FontWeight.w400
-
-                              ),
-                            ),
-                          )),
-                    )
-
-                  ],),
-              ),
-            )
-
-
-        ],),)
+      ],)
 
     );
 
@@ -499,7 +477,6 @@ class _TimerPageState extends State<TimerPage> {
         context: context,
         builder: (BuildContext context) {
 
-          final mediaHeight = MediaQuery.of(context).size.height;
           final mediaWidth = MediaQuery.of(context).size.width;
 
           final imageWidth = 0.624*mediaWidth;
@@ -590,7 +567,7 @@ class _TimerPageState extends State<TimerPage> {
                               shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(52),
-                                    side: BorderSide(width: 2, color: Colors.black)
+                                    side: const BorderSide(width: 2, color: Colors.black)
                                 ),
                               ),
                             ),

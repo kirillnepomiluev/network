@@ -13,7 +13,6 @@ class ViewProdHatPage extends StatefulWidget {
 class _ViewProdHatPageState extends State<ViewProdHatPage> {
   @override
   Widget build(BuildContext context) {
-    final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(

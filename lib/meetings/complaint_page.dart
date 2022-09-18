@@ -18,7 +18,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
   bool showSendButton = false;
   bool showSuccess = false;
 
-  sendFunction(){
+  void sendFunction(){
 
     FocusManager.instance.primaryFocus?.unfocus();
 
@@ -56,7 +56,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   width: mediaWidth,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
                   child:
@@ -74,7 +74,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                             padding: EdgeInsets.only(
                                 top: 0.087*mediaHeight   //63
                             ),
-                            child: Icon(Network.check_circle_outlined, size: 100,),
+                            child: const Icon(Network.check_circle_outlined, size: 100,),
                           ),
 
                           //Текстовое поле
@@ -211,7 +211,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                     // width: mediaWidth,
                     decoration: BoxDecoration(
                         color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(30))),
                     child:
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -221,7 +221,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                         Padding(
                           padding: const EdgeInsets.only(top: 32),
                           child: Container(
-                            padding: EdgeInsets.all(14),
+                            padding: const EdgeInsets.all(14),
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15)
@@ -235,7 +235,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                                   fontWeight: FontWeight.w500
                                 ),),
 
-                                Icon(Icons.arrow_drop_down, size: 20,)
+                                const Icon(Icons.arrow_drop_down, size: 20,)
 
                               ],
                             ),
@@ -348,7 +348,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
       //     sendFunction();
       //   }
       // },
-      style: TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+      style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
       // onFieldSubmitted: (value){
       //   print('submitted - $value');
       //

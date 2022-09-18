@@ -17,8 +17,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWitdh = MediaQuery.of(context).size.width;
 
     final contWidth = 70.sp;    //270
 

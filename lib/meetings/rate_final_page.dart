@@ -3,6 +3,7 @@ import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
+// ignore: depend_on_referenced_packages
 import 'package:syncfusion_flutter_core/theme.dart';
 
 class RateFinalPage extends StatefulWidget {
@@ -179,7 +180,7 @@ class _RateFinalPageState extends State<RateFinalPage> {
 Widget sliderContainer({required String title}) => Container(
       // width: 342,
       // height: 166,
-      padding: EdgeInsets.symmetric(vertical: 17, horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 20),
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(15)),
       child: Column(
@@ -197,7 +198,7 @@ Widget sliderContainer({required String title}) => Container(
           Padding(
             padding: const EdgeInsets.only(top: 20),
             child: Column(
-              children: [
+              children: const [
 
                 SliderCustom(
                   sLiderValue: 0,
@@ -208,7 +209,7 @@ Widget sliderContainer({required String title}) => Container(
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.only(top: 32),
+                  padding: EdgeInsets.only(top: 32),
                   child: AddCommentRow(color: ConstColor.grey),
                 )
 
@@ -222,7 +223,7 @@ Widget sliderContainer({required String title}) => Container(
 
 
 class AddCommentRow extends StatefulWidget {
-  final color;
+  final Color color;
   const AddCommentRow({Key? key, required this.color}) : super(key: key);
 
   @override
@@ -321,16 +322,16 @@ class _AddCommentRowState extends State<AddCommentRow> {
           // maxLength: 1,
           autofocus: false,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.only(left: 10),
+            contentPadding: const EdgeInsets.only(left: 10),
             counterText: '',
             focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(width: 1, color: Colors.black),
+                borderSide: const BorderSide(width: 1, color: Colors.black),
                 borderRadius: BorderRadius.circular(10)
             ),
             enabledBorder:
 
             OutlineInputBorder(
-                borderSide: BorderSide(width: 1, color: Colors.black),
+                borderSide: const BorderSide(width: 1, color: Colors.black),
                 // borderRadius: BorderRadius.only(topLeft: Radius.circular(15), bottomLeft: Radius.circular(15))
               borderRadius: BorderRadius.circular(10)
             ),
@@ -350,7 +351,7 @@ class _AddCommentRowState extends State<AddCommentRow> {
               FocusManager.instance.primaryFocus?.unfocus();
               _controller.clear();
             },
-            child: Text(
+            child: const Text(
               'Отправить',
               style:
               TextStyle(
@@ -593,7 +594,7 @@ class _SliderCustomState extends State<SliderCustom> {
                   overlayRadius: 0,
                 ),
                 child: SfSlider(
-                  thumbIcon: Icon(
+                  thumbIcon: const Icon(
                     Icons.circle,
                     color: Colors.grey,
                     size: 13,
@@ -602,13 +603,13 @@ class _SliderCustomState extends State<SliderCustom> {
                   max: widget.max,
                   value: sliderValue,
                   stepSize: widget.stepSize,
-                  onChanged: (value) => setState(() => this.sliderValue = value),
+                  onChanged: (dynamic value) => setState(() => sliderValue = value as double),
                 ),
               ),
 
               showLabel==false? Container():
               Padding(
-                padding: EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(top: 20),
                 child: SfSliderTheme(
                   data: SfSliderThemeData(
                     overlayColor: Colors.transparent,
@@ -639,7 +640,7 @@ class _SliderCustomState extends State<SliderCustom> {
                     stepSize: widget.stepSize,
                     enableTooltip: showLabel,
                     shouldAlwaysShowTooltip: showLabel,
-                    onChanged: (value) => setState(() => this.sliderValue = value),
+                    onChanged: (dynamic value) => setState(() => sliderValue = value as double),
                   ),
                 ),
               ),

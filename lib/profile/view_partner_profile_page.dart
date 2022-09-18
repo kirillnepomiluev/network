@@ -16,7 +16,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade400,
+      backgroundColor: Colors.grey.shade500,
       body:
       SafeArea(
         child: SingleChildScrollView(
@@ -68,7 +68,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                 padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 18),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade500,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(15),
                 ),
 
                 child: Center(child:
@@ -111,7 +111,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                 ),
 
                 Padding(
-                  padding: EdgeInsets.only(left: 19),
+                  padding: const EdgeInsets.only(left: 19),
                   child: Icon(Icons.verified, color: Colors.black,
                     size: 22.sp,   //26
                   ),

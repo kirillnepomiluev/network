@@ -51,7 +51,7 @@ class _ChatPageState extends State<ChatPage> {
   final _controller = TextEditingController();
   bool showSendButton = false;
 
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
   void sendFunction(){
 
@@ -84,13 +84,11 @@ class _ChatPageState extends State<ChatPage> {
 
   void _scrollToBottom() {
 
-    print('scroolBottom');
-
     if (_scrollController.hasClients) {
       _scrollController.animateTo(_scrollController.position.maxScrollExtent,
-          duration: Duration(milliseconds: 300), curve: Curves.elasticOut);
+          duration: const Duration(milliseconds: 300), curve: Curves.elasticOut);
     } else {
-      Timer(Duration(milliseconds: 400), () => _scrollToBottom());
+      Timer(const Duration(milliseconds: 400), () => _scrollToBottom());
     }
   }
 
@@ -110,7 +108,6 @@ class _ChatPageState extends State<ChatPage> {
       checked = true;
     }
 
-    final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
 
 
@@ -219,7 +216,7 @@ class _ChatPageState extends State<ChatPage> {
               children: [
                 Expanded(child: _textEditor()),
 
-                Padding(padding: EdgeInsets.only(right: 10),
+                Padding(padding: const EdgeInsets.only(right: 10),
 
                 child:  showSendButton==false?
                 IconButton(onPressed: (){}, icon: Icon(
@@ -265,7 +262,7 @@ class _ChatPageState extends State<ChatPage> {
                   child: Column(children: [
 
                     Padding(
-                      padding: EdgeInsets.only(bottom: 25),
+                      padding: const EdgeInsets.only(bottom: 25),
                       child: Text('Сегодня, 12:01', style: TextStyle(
                           fontSize: 15.5.sp, //12
                           fontWeight: FontWeight.w400),),
@@ -317,12 +314,12 @@ class _ChatPageState extends State<ChatPage> {
                                           decoration: const BoxDecoration(
                                               color: Colors.black,
                                               shape: BoxShape.circle),
-                                          width: 16,
-                                          height: 16,
+                                          width: 17,
+                                          height: 17,
                                           child:
                                           const Icon(
                                               Network.electric,
-                                            size: 8,
+                                            size: 7,
                                             color: Colors.white,)
                                       )
 
@@ -394,20 +391,23 @@ class _ChatPageState extends State<ChatPage> {
               children: [
 
                 isYou==false? Container():
-                SizedBox(
-                  width: 12,
-                  height: 9,
-                  child: Stack(
-                    children: const [
-                      Positioned(
-                          left: 4,
-                          child: Icon(Icons.check, size: 10, color: Colors.black)),
-                      Positioned(
-                          left: 0,
-                          child: Icon(Icons.check, size: 10, color: Colors.black,)),
-                    ],
-                  ),
-                ),
+                    Icon(Network.check_double,
+                    size: 15.5.sp,   //12
+                    ),
+                // SizedBox(
+                //   width: 12,
+                //   height: 9,
+                //   child: Stack(
+                //     children: const [
+                //       Positioned(
+                //           left: 4,
+                //           child: Icon(Icons.check, size: 10, color: Colors.black)),
+                //       Positioned(
+                //           left: 0,
+                //           child: Icon(Icons.check, size: 10, color: Colors.black,)),
+                //     ],
+                //   ),
+                // ),
 
                 Padding(
                   padding: const EdgeInsets.only(left: 5),
@@ -416,7 +416,7 @@ class _ChatPageState extends State<ChatPage> {
                     style: TextStyle(
                         fontSize: 12,
                         color: Colors.grey.shade600,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
 

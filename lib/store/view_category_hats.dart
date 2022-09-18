@@ -116,9 +116,9 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
                   ),
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: const Text(Constants.strLoremIpsum,
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Text(Constants.strLoremIpsum,
                       maxLines: 3,
                       overflow: TextOverflow.clip,
                       style: TextStyle(
@@ -244,7 +244,7 @@ Widget hatContainer({
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 5,),
+                padding: const EdgeInsets.only(top: 5,),
                 child: Text(
                   '#0863246',
                   style: TextStyle(

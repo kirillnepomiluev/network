@@ -76,7 +76,7 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
                 ),
 
                 Padding(
-                  padding: EdgeInsets.only(bottom: 13),
+                  padding: const EdgeInsets.only(bottom: 13),
                   child: Text(
                     'Аватары',
                     style: TextStyle(
@@ -267,7 +267,7 @@ Widget avatarContainer(
                           ),
 
                           Padding(
-                            padding: EdgeInsets.only(top: 5),
+                            padding: const EdgeInsets.only(top: 5),
                             child: Text(
                               '#0863246',
                               style: TextStyle(

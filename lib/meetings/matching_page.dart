@@ -19,7 +19,7 @@ class _MatchingPageState extends State<MatchingPage> {
 
     final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
-    final _aspectRatio = mediaWidth/mediaHeight>=0.6;
+    final aspectRatio = mediaWidth/mediaHeight>=0.6;
 
 
 
@@ -33,7 +33,7 @@ class _MatchingPageState extends State<MatchingPage> {
             children: [
               Padding(
                 padding:
-                EdgeInsets.only(
+                const EdgeInsets.only(
                     left: 10,
                     top: 10,
                     bottom: 25
@@ -57,7 +57,7 @@ class _MatchingPageState extends State<MatchingPage> {
                           height: 0.12*mediaWidth,
                           child: IconButton(
                             onPressed: () {},
-                            icon: Icon(
+                            icon: const Icon(
                               Network.electric,
                               color: Colors.white,
                             ),
@@ -72,7 +72,7 @@ class _MatchingPageState extends State<MatchingPage> {
               //Нижняя часть
               Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                     vertical: 15,
                     horizontal: 16  //16
                 ),
@@ -88,7 +88,7 @@ class _MatchingPageState extends State<MatchingPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 20, bottom: 20),
+                        padding: const EdgeInsets.only(top: 20, bottom: 20),
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
@@ -172,8 +172,8 @@ class _MatchingPageState extends State<MatchingPage> {
                               right: 30,
                               top: 0,
                               child: Image.asset('assets/images/lines.png',
-                              width: _aspectRatio? 70.sp : 0.656*mediaWidth,   //246
-                                height: _aspectRatio? 100.sp :  0.656*mediaWidth*2.1504,            //529
+                              width: aspectRatio? 70.sp : 0.656*mediaWidth,   //246
+                                height: aspectRatio? 100.sp :  0.656*mediaWidth*2.1504,            //529
                               )),
 
                           Positioned(
@@ -325,9 +325,9 @@ class _MatchingPageState extends State<MatchingPage> {
     final mediaWidth = MediaQuery.of(context).size.width;
     // final contSize = mediaWidth*0.4026;  //151
 
-    final _aspectRatio = mediaWidth/mediaHeight>=0.6;
+    final aspectRatio = mediaWidth/mediaHeight>=0.6;
 
-    final contSize = _aspectRatio? mediaWidth*0.35 : mediaWidth*0.4026;  //151
+    final contSize = aspectRatio? mediaWidth*0.35 : mediaWidth*0.4026;  //151
 
     return Transform.rotate(
         angle: align,
@@ -342,7 +342,7 @@ class _MatchingPageState extends State<MatchingPage> {
             child: Text(
               text,
               style: TextStyle(
-                  fontSize:  _aspectRatio? 14.5.sp : 15.5.sp, //12
+                  fontSize:  aspectRatio? 14.5.sp : 15.5.sp, //12
                   fontWeight: FontWeight.w500,
                 overflow: TextOverflow.visible
 
@@ -382,7 +382,7 @@ class _MatchingPageState extends State<MatchingPage> {
                         fontWeight: FontWeight.w400)),
 
                 Padding(
-                  padding: EdgeInsets.only(left: 6, bottom: 2),
+                  padding: const EdgeInsets.only(left: 6, bottom: 2),
                   child: Icon(
                     Icons.verified,
                     color: Colors.black,

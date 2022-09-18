@@ -18,14 +18,14 @@ class _QuestionsPageState extends State<QuestionsPage> {
 
   int _missedCount = 3;
 
-  int _questionCount = 3;
+  final int _questionCount = 3;
   int _questionIndex = 0;
   double _progress = 0.00;
   bool showSendButton = false;
 
   bool showSuccessPage = false;
 
-  sendFunction({bool isMissing = false}){
+  void sendFunction({bool isMissing = false}){
 
     if(isMissing && _missedCount>0){
       _missedCount--;
@@ -69,7 +69,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                 child: backButton(context),
               ),
 
-              showSuccessPage? SizedBox(height: 17,):
+              showSuccessPage? const SizedBox(height: 17,):
               //Прогресс
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
@@ -138,14 +138,14 @@ class _QuestionsPageState extends State<QuestionsPage> {
                 width: mediaWidth,
                 decoration: BoxDecoration(
                     color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+                    borderRadius: const BorderRadius.vertical(top: Radius.circular(30))),
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
 
                     Padding(
-                      padding: EdgeInsets.only(top: 19, bottom: 47),
+                      padding: const EdgeInsets.only(top: 19, bottom: 47),
                       child: Text(
                         'Поздравляем, вы ответили\nна все вопросы',
                         style: TextStyle(
@@ -166,7 +166,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
 
 
                     Padding(
-                      padding: EdgeInsets.only(top: 25, bottom: 56),
+                      padding: const EdgeInsets.only(top: 25, bottom: 56),
                       child: SizedBox(
                         width: 300,
                         child: Text(
@@ -225,7 +225,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                 width: mediaWidth,
                 decoration: BoxDecoration(
                     color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+                    borderRadius: const BorderRadius.vertical(top: Radius.circular(30))),
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -254,7 +254,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                 ),
 
                                 Padding(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                       top: 21,
                                       right: 32
                                   ),
@@ -280,7 +280,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                         }),
 
                     Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                           top: 30
                       ),
                       child: Container(
@@ -336,7 +336,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                           ),
                                         ),
 
-                                        Padding(padding: EdgeInsets.only(left: 14, top: 1),
+                                        Padding(padding: const EdgeInsets.only(left: 14, top: 1),
 
                                         child: Icon(Icons.close_outlined,
                                           size: 17.5.sp, //15
@@ -411,7 +411,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
       },
       maxLines: 3,
       controller: _controller,
-      style: TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+      style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
 
       textAlign: TextAlign.start,
 

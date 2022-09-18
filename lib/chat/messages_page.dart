@@ -89,7 +89,7 @@ class _MessagesPageState extends State<MessagesPage> {
                     children: [
 
                       Padding(
-                        padding: EdgeInsets.only(left: 15, top: 15),
+                        padding: const EdgeInsets.only(left: 15, top: 15),
                         child: Text(
                           'Приглашения',
                           style: TextStyle(
@@ -212,7 +212,7 @@ class _MessagesPageState extends State<MessagesPage> {
               )),
 
           Padding(
-            padding: EdgeInsets.only(top: 5),
+            padding: const EdgeInsets.only(top: 5),
             child: Text('Джоли', style: TextStyle(
                 fontSize: 14.sp,   //10
                 color: Colors.black,
@@ -257,7 +257,7 @@ class _MessagesPageState extends State<MessagesPage> {
                   children: [
 
                     Padding(
-                      padding: EdgeInsets.only(top: 38),
+                      padding: const EdgeInsets.only(top: 38),
                       child:
                       Text('Джоли',
                           style: TextStyle(
@@ -317,7 +317,7 @@ class _MessagesPageState extends State<MessagesPage> {
                     ),
 
                     Padding(
-                      padding: EdgeInsets.only(top: 6, bottom: 26),
+                      padding: const EdgeInsets.only(top: 6, bottom: 26),
                       child: Text('Я предлагаю встретиться в каком-нибудь красивом...', style: TextStyle(
                           fontSize: 15.5.sp,    //12,
                         fontWeight: FontWeight.w400

@@ -100,7 +100,7 @@ class _ProfilePageState extends State<ProfilePage> {
     final double padLeft = 17.5.sp;    //16
 
     // final _aspectRatio = mediaWidth>400 && mediaHeight<690;
-    final _aspectRatio = mediaWidth/mediaHeight>=0.6;
+    final aspectRatio = mediaWidth/mediaHeight>=0.6;
 
     return Scaffold(
         extendBody: true,
@@ -160,7 +160,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               left: padLeft,
                               top: 8.0
                           ),
-                          child: Text(
+                          child: const Text(
                             'Профиль',
                             style: TextStyle(
                                 color: Colors.white,
@@ -218,7 +218,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     padding:
                                     const EdgeInsets.only(top: 7),
                                     child: Container(
-                                        padding: EdgeInsets.symmetric(vertical: 3, horizontal: 9),
+                                        padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 9),
                                         decoration: BoxDecoration(
                                             borderRadius:
                                             BorderRadius.circular(69),
@@ -280,7 +280,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
 
                               Padding(
-                                padding: EdgeInsets.only(
+                                padding: const EdgeInsets.only(
                                     top: 12),
                                 child: Text(
                                   'Базовый уровень',
@@ -347,7 +347,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               Padding(
                                 padding: EdgeInsets.only(
                                     // top: 0.0693*mediaHeight
-                                    top: _aspectRatio? 15 : 30.sp
+                                    top: aspectRatio? 15 : 30.sp
                                 ),  //50
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -386,7 +386,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               // mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(bottom: 21),
+                                  padding: const EdgeInsets.only(bottom: 21),
                                   child: Text(
                                     'Шкаф пустой',
                                     textAlign: TextAlign.center,
@@ -1274,7 +1274,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
 
 
-Widget viewProdImage(BuildContext context, {isHat = false}) {
+Widget viewProdImage(BuildContext context, {bool isHat = false}) {
 
   final mediaWidth = MediaQuery.of(context).size.width;
   final imageWidth = 0.624*mediaWidth;
@@ -1306,7 +1306,7 @@ Widget viewProdImage(BuildContext context, {isHat = false}) {
         ),
 
         Padding(
-          padding: EdgeInsets.only(top: 30),
+          padding: const EdgeInsets.only(top: 30),
           child:
           Text(isHat? 'Головной убор' : 'Аватар', style: TextStyle(
               fontSize: 15.sp, //12
@@ -1314,7 +1314,7 @@ Widget viewProdImage(BuildContext context, {isHat = false}) {
         ),
 
         Padding(
-          padding: EdgeInsets.only(top: 10),
+          padding: const EdgeInsets.only(top: 10),
           child:
           Text(isHat? '#0863246' : 'Имя аватара', style: TextStyle(
               fontSize: 24.sp, //32

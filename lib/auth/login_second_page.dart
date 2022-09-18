@@ -26,7 +26,12 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade400,
       bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(bottom: 20, right: 20),
+          padding: EdgeInsets.only(
+            bottom: 17.sp,  //5
+            right: 17.sp,   //10
+              // bottom: 20,
+              // right: 20
+          ),
           child: troubleEnter(context)),
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -40,7 +45,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -56,11 +61,13 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
               ),
 
               Padding(
-                padding: const EdgeInsets.only(top: 57),
+                padding: EdgeInsets.only(
+                    top: 33.sp  //57
+                ),
                 child: enterContainer(
                   iconName: 'icon',
                   title: 'Войти по номеру телефона',
-                  leftPad: 30
+                  leftPad: 24.sp   //30
                 ),
               ),
 
@@ -69,7 +76,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                 child: enterContainer(
                   iconName: 'logo_google',
                   title: 'Войти через Google',
-                  leftPad: 28
+                  leftPad: 23.sp   //28
                 ),
               ),
 
@@ -78,7 +85,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                 child: enterContainer(
                   iconName: 'logo_facebook',
                   title: 'Войти через Facebook',
-                  leftPad: 28
+                  leftPad: 23.sp   //28
                 ),
               ),
 
@@ -95,7 +102,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
               builder: (context) => const PhoneAuthPage()));
         }),
         child: Container(
-            height: 60,
+            height: 34.sp,     //60
             decoration: BoxDecoration(
               color: Colors.black,
               borderRadius: BorderRadius.circular(15),
@@ -107,14 +114,14 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                 Padding(
                   padding: EdgeInsets.only(
                     left: leftPad,       //28
-                    right: 20,      //20
+                    right: 19.sp,      //20
                   ),
                   child: iconName == 'icon'
-                      ? Icon(Network.call, color: Colors.white, size: 20)
+                      ? const Icon(Network.call, color: Colors.white, size: 19)
                       : Image.asset(
                           'assets/icons/$iconName.png',
-                          width: 24,
-                          height: 24,
+                          width: 21.sp,    //24
+                          height: 21.sp,
                         ),
                 ),
 

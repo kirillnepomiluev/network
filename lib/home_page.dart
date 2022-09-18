@@ -14,7 +14,7 @@ import 'dart:ui' as ui;
 
 
 class HomePage extends StatefulWidget {
-  final initIndex;
+  final int initIndex;
   const HomePage({Key? key, required this.initIndex}) : super(key: key);
 
   @override
@@ -38,10 +38,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
-    final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
-
-    print('mediaWidth $mediaWidth mediaHeight $mediaHeight');
 
     return Scaffold(
       extendBody: true,
@@ -102,8 +99,7 @@ class _HomePageState extends State<HomePage> {
 
 
   BottomBarItem barItem({required IconData icon, required String text}) {
-    final mediaWitdh = MediaQuery.of(context).size.width;
-    final double iconSize = mediaWitdh<340? 15 : mediaWitdh<370 ? 18 : 20;  //21
+    final double iconSize =18.sp;  //21
 
     return BottomBarItem(
         icon: Icon(
@@ -162,8 +158,6 @@ Widget statContainer(
       required String subtitle,
     }) {
 
-  // final mediaHeight = MediaQuery.of(context).size.height;
-  final mediaWidth = MediaQuery.of(context).size.width;
 
   final double contWidth =  45.sp;  //107
   // final double contHeight =  mediaHeight*0.2853;
@@ -445,7 +439,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
 Widget backButton(BuildContext context, {Function? func}) {
   final mediaWidth = MediaQuery.of(context).size.width;
   final double contSize = 0.11466*mediaWidth; //43
-  final double iconSize = 18.5.sp;   //25
+  // final double iconSize = 17.sp;   //25
 
   return Align(
       alignment: Alignment.topLeft,
@@ -466,9 +460,9 @@ Widget backButton(BuildContext context, {Function? func}) {
               }
             },
             icon: Icon(
-              Icons.arrow_back,
+              Network.arrow_back,
               color: Colors.black,
-              size: iconSize
+              size: 15.sp  //13
             )),
       ),
     );

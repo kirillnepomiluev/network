@@ -2,14 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:network_app/auth/login_page.dart';
-import 'package:network_app/auth/login_second_page.dart';
-import 'package:network_app/chat/chat_page.dart';
+// ignore: unused_import
 import 'package:network_app/home_page.dart';
-import 'package:network_app/meetings/complaint_page.dart';
-import 'package:network_app/meetings/matching_page.dart';
-import 'package:network_app/meetings/rate_final_page.dart';
-import 'package:network_app/meetings/rate_page.dart';
-import 'package:network_app/meetings/timer_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() {
@@ -117,18 +111,19 @@ Widget newtworkRow({bool isAppBar = false}) => Row(
         //   size: 53,
         // ),
         Container(
-          width: 53,
-          height: 53,
+          width: 32.sp,    //53
+          height: 32.sp,
           decoration:
               const BoxDecoration(color: Colors.black, shape: BoxShape.circle),
         ),
 
-        const Padding(
-          padding: EdgeInsets.only(left: 15.0),
+        Padding(
+          padding: const EdgeInsets.only(left: 15.0),
           child: Text(
             'network',
             style: TextStyle(
-                fontSize: 34, color: Colors.black, fontWeight: FontWeight.w600),
+                fontSize: 26.sp,  //34
+                color: Colors.black, fontWeight: FontWeight.w600),
           ),
         )
       ],

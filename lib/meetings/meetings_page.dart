@@ -3,6 +3,7 @@ import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/meetings/invitations_page.dart';
 import 'package:network_app/components/network_icons.dart';
+import 'package:network_app/meetings/notifications_page.dart';
 import 'package:network_app/meetings/timer_page.dart';
 import 'package:network_app/profile/view_partner_profile_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -82,7 +83,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
       mainBody();
   }
 
-  serchBody() {
+  Widget serchBody() {
     final mediaTop = MediaQuery.of(context).viewPadding.top;
     final mediaWidth = MediaQuery.of(context).size.width;
     final mediaHeight = MediaQuery.of(context).size.height;
@@ -137,7 +138,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20, top: 18),
                     child: Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       height: 43,
                     decoration: BoxDecoration(
                           color: Colors.white70,
@@ -148,8 +149,8 @@ class _MeetingsPageState extends State<MeetingsPage> {
                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
 
-                          Padding(
-                            padding: const EdgeInsets.only(left: 5),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 5),
                             child: Icon(Network.search, size: 14, color: Colors.black,),
                           ),
 
@@ -237,7 +238,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
 
   Widget _iconsBar() {
     final mediaWidth = MediaQuery.of(context).size.width;
-    final double contSize = 43;
+    const double contSize = 43;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -252,17 +253,15 @@ class _MeetingsPageState extends State<MeetingsPage> {
                 color: Colors.white70,
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Center(
-                child: IconButton(
-                  onPressed: () {
-                    // setState(() {
-                    // _activeProfileTab = 1;
-                    // });
-                  },
-                  icon: Icon(
-                    Network.person,
-                    size: 18.sp,   //18
-                  ),
+              child: IconButton(
+                onPressed: () {
+                  // setState(() {
+                  // _activeProfileTab = 1;
+                  // });
+                },
+                icon: Icon(
+                  Network.person,
+                  size: 17.sp,   //18
                 ),
               ),
             ),
@@ -277,17 +276,15 @@ class _MeetingsPageState extends State<MeetingsPage> {
                   color: Colors.white70,
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Center(
-                  child: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _activeMeetingTab = 0;
-                      });
-                    },
-                    icon: Icon(
-                      Network.search,
-                      size: 17.sp,   //17
-                    ),
+                child: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      _activeMeetingTab = 0;
+                    });
+                  },
+                  icon: Icon(
+                    Network.search,
+                    size: 16.sp,   //17
                   ),
                 ),
               ),
@@ -306,53 +303,59 @@ class _MeetingsPageState extends State<MeetingsPage> {
                 color: Colors.white70,
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Center(
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute<void>(
-                            builder: (context) =>
-                            const InvitationsPage()));
-                  },
-                  icon: Icon(
-                    Network.notification,
-                    size: 19.sp,   //18
-                  ),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute<void>(
+                          builder: (context) =>
+                          const NotificationsPage()));
+                },
+                icon: Icon(
+                  Network.notification,
+                  size: 18.sp,   //18
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 7),
-              child: Container(
-                  width: mediaWidth*0.29,  //109
-                  height: contSize,
-                  // padding: const EdgeInsets.only(
-                  //     left: 17,
-                  //     right: 17,
-                  //     top: 10,
-                  //     bottom: 10
-                  // ),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '02:04:15',
-                        style: TextStyle(
-                            fontSize: 15.5.sp, //12
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 5),
-                        child: Icon(
-                          Icons.incomplete_circle,
-                          size: 18.5.sp,  //16
+              child: InkWell(
+                onTap: (){
+                  Navigator.of(context).push(
+                      MaterialPageRoute<void>(
+                          builder: (context) =>
+                          const InvitationsPage()));
+                },
+                child: Container(
+                    width: mediaWidth*0.29,  //109
+                    height: contSize,
+                    // padding: const EdgeInsets.only(
+                    //     left: 17,
+                    //     right: 17,
+                    //     top: 10,
+                    //     bottom: 10
+                    // ),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.white),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '02:04:15',
+                          style: TextStyle(
+                              fontSize: 15.5.sp, //12
+                              fontWeight: FontWeight.bold),
                         ),
-                      )
-                    ],
-                  )),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: Icon(
+                            Icons.incomplete_circle,
+                            size: 18.5.sp,  //16
+                          ),
+                        )
+                      ],
+                    )),
+              ),
             ),
           ],
         )
@@ -360,7 +363,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
     );
   }
 
-  mainBody() {
+  Widget mainBody() {
     final mediaTop = MediaQuery.of(context).viewPadding.top;
     final mediaHeight = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -393,7 +396,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
                               color: Colors.white,
                               fontWeight: FontWeight.bold)),
                       Padding(
-                        padding: EdgeInsets.only(left: 8),
+                        padding: const EdgeInsets.only(left: 8),
                         child: Icon(
                           Icons.verified,
                           color: Colors.white,
@@ -403,7 +406,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 10),
+                    padding: const EdgeInsets.only(top: 10),
                     child: Text(
                       'Уровень "Базовый"',
                       style: TextStyle(
@@ -651,14 +654,14 @@ class _MeetingsPageState extends State<MeetingsPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.circle,
                               // color: Colors.greenAccent,
                               color: Color(0xFF09D253),
                               size: 8,
                             ),
                             Padding(
-                              padding: EdgeInsets.only(left: 5),
+                              padding: const EdgeInsets.only(left: 5),
                               child: Text(
                                 'Онлайн',
                                 style: TextStyle(
@@ -717,10 +720,10 @@ class _MeetingsPageState extends State<MeetingsPage> {
 
 
 
-meetRow(BuildContext context) {
+Widget meetRow(BuildContext context) {
   final mediaWitdh = MediaQuery.of(context).size.width;
   final double contSize = mediaWitdh*0.128;   //48
-  final double iconSize = 21.sp;     //25
+  final double iconSize = 19.sp;     //25
   final double iconElSize = 18.5.sp;   //20
 
   return Row(
@@ -757,7 +760,17 @@ meetRow(BuildContext context) {
         padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(15)
+            borderRadius: BorderRadius.circular(15),
+
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 4,
+              offset: const Offset(0, 3), // changes position of shadow
+            ),
+          ],
+
         ),
         child: Row(
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -834,7 +847,8 @@ meetRow(BuildContext context) {
         child: IconButton(
           onPressed: () {},
           icon: const Icon(
-            Icons.star_border_outlined,
+            // Icons.star_border_outlined,
+            Network.star,
             color: Colors.white,
           ),
           iconSize: iconSize,
@@ -846,7 +860,7 @@ meetRow(BuildContext context) {
 
 
 class HobbySelected extends StatefulWidget {
-  final title;
+  final String title;
   const HobbySelected({Key? key, required this.title}) : super(key: key);
 
   @override
