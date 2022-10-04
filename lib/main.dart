@@ -53,8 +53,8 @@ class MyApp extends StatelessWidget {
               Locale('ru', 'RU'), // English, no country code
             ],
             home: const
-            FirstPage()
-            // HomePage(initIndex: 0,),
+            // FirstPage()
+            HomePage(initIndex: 0,),
 
           );
         },

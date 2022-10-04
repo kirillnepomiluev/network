@@ -5,8 +5,6 @@
 //    - family: Network
 //      fonts:
 //       - asset: fonts/Network.ttf
-// ignore_for_file: constant_identifier_names
-
 import 'package:flutter/widgets.dart';
 
 class Network {
@@ -14,6 +12,12 @@ class Network {
 
   static const String _fontFamily = 'Network';
 
+  static const IconData arrow_right_up = IconData(0xe913, fontFamily: _fontFamily);
+  static const IconData arrow_right_down = IconData(0xe914, fontFamily: _fontFamily);
+  static const IconData eth = IconData(0xe915, fontFamily: _fontFamily);
+  static const IconData dash = IconData(0xe916, fontFamily: _fontFamily);
+  static const IconData sol = IconData(0xe917, fontFamily: _fontFamily);
+  static const IconData bitcoin = IconData(0xe918, fontFamily: _fontFamily);
   static const IconData arrow_back = IconData(0xe912, fontFamily: _fontFamily);
   static const IconData arrow_right_long = IconData(0xe900, fontFamily: _fontFamily);
   static const IconData call = IconData(0xe901, fontFamily: _fontFamily);

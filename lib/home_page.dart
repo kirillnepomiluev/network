@@ -7,6 +7,7 @@ import 'package:network_app/meetings/meetings_page.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/profile/profile_page.dart';
 import 'package:network_app/store/store_page.dart';
+import 'package:network_app/wallet/walltet_page.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'dart:ui' as ui;
@@ -45,12 +46,12 @@ class _HomePageState extends State<HomePage> {
       // backgroundColor: Colors.green,
       body: PageView(
         controller: _pageController,
-        children: [
-          const MeetingsPage(),
-          const ProfilePage(),
-          Container(color: Colors.purple),
-          const MessagesPage(),
-          const StorePage(),
+        children: const[
+          MeetingsPage(),
+          ProfilePage(),
+          WalletPage(),
+          MessagesPage(),
+          StorePage(),
         ],
         onPageChanged: (index) {
           setState(() => _currentPage = index);
@@ -87,7 +88,7 @@ class _HomePageState extends State<HomePage> {
             items: <BottomBarItem>[
               barItem(icon: Network.people, text: 'Встречи'),
               barItem(icon: Network.person, text: 'Профиль'),
-              barItem(icon: Network.wallet, text: 'Инвентарь'),
+              barItem(icon: Network.wallet, text: 'Кошелек'),
               barItem(icon: Network.chat, text: 'Чат'),
               barItem(icon: Network.cart, text: 'Магазин'),
             ],
