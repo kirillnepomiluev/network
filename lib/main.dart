@@ -4,6 +4,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:network_app/auth/login_page.dart';
 // ignore: unused_import
 import 'package:network_app/home_page.dart';
+import 'package:network_app/wallet/exchange_page.dart';
+import 'package:network_app/wallet/walltet_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() {
@@ -53,14 +55,16 @@ class MyApp extends StatelessWidget {
               Locale('ru', 'RU'), // English, no country code
             ],
             home: const
+            WalletPage()
             // FirstPage()
-            HomePage(initIndex: 0,),
+            // HomePage(initIndex: 0,),
 
           );
         },
       );
   }
 }
+
 
 class FirstPage extends StatefulWidget {
   const FirstPage({Key? key}) : super(key: key);
@@ -128,3 +132,5 @@ Widget newtworkRow({bool isAppBar = false}) => Row(
         )
       ],
     );
+
+
