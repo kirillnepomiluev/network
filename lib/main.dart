@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:network_app/auth/login_page.dart';
+import 'package:network_app/constants.dart';
 // ignore: unused_import
 import 'package:network_app/home_page.dart';
-import 'package:network_app/wallet/exchange_page.dart';
-import 'package:network_app/wallet/walltet_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() {
@@ -14,21 +13,6 @@ void main() {
   runApp(const MyApp());
 }
 
-// Map<int, Color> color = {
-//   50: const Color.fromRGBO(255, 92, 87, .1),
-//   100: const Color.fromRGBO(255, 92, 87, .2),
-//   200: const Color.fromRGBO(255, 92, 87, .3),
-//   300: const Color.fromRGBO(255, 92, 87, .4),
-//   400: const Color.fromRGBO(255, 92, 87, .5),
-//   500: const Color.fromRGBO(255, 92, 87, .6),
-//   600: const Color.fromRGBO(255, 92, 87, .7),
-//   700: const Color.fromRGBO(255, 92, 87, .8),
-//   800: const Color.fromRGBO(255, 92, 87, .9),
-//   900: const Color.fromRGBO(255, 92, 87, 1),
-// };
-
-// MaterialColor colorCustom = MaterialColor(4290624957, color);
-// MaterialColor colorCustom = MaterialColor(4294967295, color);
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -55,8 +39,8 @@ class MyApp extends StatelessWidget {
               Locale('ru', 'RU'), // English, no country code
             ],
             home: const
-            WalletPage()
-            // FirstPage()
+            // WalletPage()
+            FirstPage()
             // HomePage(initIndex: 0,),
 
           );
@@ -84,53 +68,146 @@ class _FirstPageState extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade400,
+      backgroundColor: ConstColor.blackBack,
       body: Center(
         child: InkWell(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute<void>(
                 builder: (context) => const LoginPage()));
           },
-          child: newtworkRow(),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Image.asset('assets/images/circles/Ellipse 1.png'),
+              const NetworkRow(isRow: false, opacity: 0.3,),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-// class CustomTextStyle {
-//   static TextStyle display5(BuildContext context) {
-//     return Theme.of(context).textTheme.display4.copyWith(fontSize: 192.0);
-//   }
-// }
 
-Widget newtworkRow({bool isAppBar = false}) => Row(
-      mainAxisAlignment:
-          isAppBar ? MainAxisAlignment.start : MainAxisAlignment.center,
+class NetworkRow extends StatelessWidget {
+  final double opacity;
+  final bool isRow;
+  const NetworkRow({Key? key, required this.isRow, required this.opacity}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return isRow==false?
+    Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // Icon(
-        //   Icons.circle,
-        //   color: Colors.black,
-        //   size: 53,
-        // ),
-        Container(
-          width: 32.sp,    //53
-          height: 32.sp,
-          decoration:
-              const BoxDecoration(color: Colors.black, shape: BoxShape.circle),
-        ),
 
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0),
-          child: Text(
-            'network',
-            style: TextStyle(
-                fontSize: 26.sp,  //34
-                color: Colors.black, fontWeight: FontWeight.w600),
-          ),
-        )
+        _circle(),
+        _text(isColumn: true),
+        _social(opacity: opacity),
+
+      ],
+    )
+        :
+    Row(
+      mainAxisAlignment:
+      isRow ? MainAxisAlignment.start : MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+
+        _circle(),
+        _text(),
+
       ],
     );
+  }
+
+  Widget _circle() =>   Container(
+    width: 31.sp,    //57
+    height: 31.sp,
+    decoration:
+    const BoxDecoration(color: ConstColor.salad100, shape: BoxShape.circle),
+  );
+
+  Widget _text({bool isColumn = false}) => Padding(
+    padding: EdgeInsets.only(left: isColumn? 0 : 15.0, top: isColumn? 10 : 0),
+    child: Text(
+      'network',
+      style: TextStyle(
+          fontSize: 23.5.sp,  //34
+          color: Colors.white,
+          fontWeight: FontWeight.w500
+      ),
+    ),
+  );
+
+  Widget _social({double opacity = 0.05}) => Padding(
+    padding: const EdgeInsets.only(top: 10),
+    child: Container(
+      width: 105,
+      height: 37,
+      // blur: 10,
+  decoration: BoxDecoration(
+    // color: ConstColor.halfWhite,
+    color: Colors.white.withOpacity(opacity),
+    borderRadius: BorderRadius.circular(10),
+  ),
+      child: const Center(
+        child: Text('social', style: TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+            fontWeight: FontWeight.w400
+        ),),
+      ),
+    ),
+  );
+
+}
+
+
+class AuthBackScaffold extends StatelessWidget {
+  bool hasTroubleEnter = false;
+  final bool centerYellow;
+  final Widget childColumn;
+  AuthBackScaffold({Key? key, required this.childColumn, this.hasTroubleEnter=false, required this.centerYellow}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final mediaHeight = MediaQuery.of(context).size.height;
+
+    // top: mediaHeight*0.15,
+    return Scaffold(
+      backgroundColor: ConstColor.blackBack,
+      body:
+      SafeArea(
+        child: Stack(
+          children: [
+
+            Positioned(
+                right: 0,
+                child: Image.asset('assets/images/circles/Ellipse 3.png')
+            ),
+
+            Positioned(
+                top: centerYellow? mediaHeight*0.15 :  0,
+                left: 0,
+                child: Image.asset('assets/images/circles/Ellipse 2.png')
+            ),
+
+            hasTroubleEnter==false? Container():
+            Positioned(
+                bottom: 17.sp,  //5
+                right: 17.sp,   //10
+                child: troubleEnter(context)),
+
+            childColumn
+
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 
 

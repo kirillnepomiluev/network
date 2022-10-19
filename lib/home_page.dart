@@ -449,7 +449,7 @@ Widget backButton(BuildContext context, {Function? func}) {
         width: contSize,
         height: contSize,
         decoration: BoxDecoration(
-          color: Colors.grey.shade300,
+          color: Colors.white.withOpacity(0.05),
           borderRadius: BorderRadius.circular(15),
         ),
         child: IconButton(
@@ -462,7 +462,7 @@ Widget backButton(BuildContext context, {Function? func}) {
             },
             icon: Icon(
               Network.arrow_back,
-              color: Colors.black,
+              color: Colors.white,
               size: 15.sp  //13
             )),
       ),
@@ -473,7 +473,7 @@ ButtonStyle buttonStyleCustom({
   double padH = 61,
   double padV = 17,
   double radius = 52,
-  Color color = Colors.black,
+  Color color = Colors.white,
 }) =>
     ButtonStyle(
       padding: MaterialStateProperty.all(

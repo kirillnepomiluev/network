@@ -1,3 +1,4 @@
+import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/auth/login_page.dart';
 import 'package:network_app/auth/phone_auth_page.dart';
@@ -21,53 +22,34 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
   Widget build(BuildContext context) {
     mediaHeight = MediaQuery.of(context).size.height;
     mediaWitdh = MediaQuery.of(context).size.width;
-    // print('mediaWitdh - $mediaWitdh  mediaHeight - $mediaHeight');
-
-    return Scaffold(
-      backgroundColor: Colors.grey.shade400,
-      bottomNavigationBar: Padding(
-          padding: EdgeInsets.only(
-            bottom: 17.sp,  //5
-            right: 17.sp,   //10
-              // bottom: 20,
-              // right: 20
-          ),
-          child: troubleEnter(context)),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        toolbarHeight: 65,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 10),
-          child: newtworkRow(isAppBar: true),
-        ),
-      ),
-      body: Center(
-        child: Padding(
+    return AuthBackScaffold(
+      centerYellow: true,
+      hasTroubleEnter: true,
+      childColumn: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const Center(
+                  child: Padding(
+                padding: EdgeInsets.only(top: 65),
+                child: NetworkRow(isRow: true, opacity: 0.0),
+              )),
 
-              Text(
-                Constants.strLoremIpsum,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 17.5.sp, //16
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black),
+              // _enterInfo(),
+              const EnterInfoContainer(
+                padTop: 42,
+                text1: 'Выполните ',
+                text2: 'вход',
+                maxLines: 3,
               ),
 
               Padding(
-                padding: EdgeInsets.only(
-                    top: 33.sp  //57
-                ),
+                padding: EdgeInsets.only(top: 30.sp //57
+                    ),
                 child: enterContainer(
                   iconName: 'icon',
                   title: 'Войти по номеру телефона',
-                  leftPad: 24.sp   //30
+                  // leftPad: 24.sp   //30
                 ),
               ),
 
@@ -76,7 +58,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                 child: enterContainer(
                   iconName: 'logo_google',
                   title: 'Войти через Google',
-                  leftPad: 23.sp   //28
+                  // leftPad: 23.sp   //28
                 ),
               ),
 
@@ -85,55 +67,139 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                 child: enterContainer(
                   iconName: 'logo_facebook',
                   title: 'Войти через Facebook',
-                  leftPad: 23.sp   //28
+                  // leftPad: 23.sp   //28
                 ),
               ),
-
             ],
-          ),
-        ),
-      ),
+          )),
     );
+
   }
 
-  Widget enterContainer({required String iconName, required String title, required double leftPad}) => InkWell(
+  Widget enterContainer({
+    required String iconName,
+    required String title,
+  }) =>
+      InkWell(
         onTap: (() {
           Navigator.of(context).push(MaterialPageRoute<void>(
               builder: (context) => const PhoneAuthPage()));
         }),
         child: Container(
-            height: 34.sp,     //60
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: Colors.white.withOpacity(0.05),
               borderRadius: BorderRadius.circular(15),
             ),
-            child:
-            Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
+            child: Row(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(
-                    left: leftPad,       //28
-                    right: 19.sp,      //20
-                  ),
-                  child: iconName == 'icon'
-                      ? const Icon(Network.call, color: Colors.white, size: 19)
-                      : Image.asset(
-                          'assets/icons/$iconName.png',
-                          width: 21.sp,    //24
-                          height: 21.sp,
-                        ),
-                ),
-
+                    padding: const EdgeInsets.only(
+                      top: 4,
+                      bottom: 4,
+                      left: 4,
+                      right: 24, //24
+                    ),
+                    child: Container(
+                      width: 54,
+                      height: 54,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(13)),
+                      child: iconName == 'icon'
+                          ? const Icon(Network.call,
+                              color: Colors.black, size: 21)
+                          : Padding(
+                              padding: const EdgeInsets.all(17),
+                              child: Image.asset(
+                                'assets/icons/$iconName.png',
+                                width: 21.sp, //24
+                                height: 21.sp,
+                              ),
+                            ),
+                    )),
                 Text(
                   title,
                   style: TextStyle(
-                      fontSize: 18.sp, //18
+                      fontSize: getResSize(16), //16
                       color: Colors.white,
-                      fontWeight: FontWeight.w500),
+                      fontWeight: FontWeight.w400),
                 )
               ],
-            )
+            )),
+      );
+}
+
+class EnterInfoContainer extends StatelessWidget {
+  final double padTop;
+  final String text1;
+  final String text2;
+  final String? description;
+  final int? maxLines;
+  const EnterInfoContainer(
+      {Key? key,
+      required this.text1,
+      required this.text2,
+      this.maxLines,
+      this.description,
+        required this.padTop
+      })
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: padTop),
+      child: BlurryContainer(
+        width: double.infinity,
+        blur: 20,
+        color: Colors.black.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(10),
+        padding: const EdgeInsets.symmetric(vertical: 23, horizontal: 18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildRichText(text1: text1, text2: text2),
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Text(
+                description ?? Constants.strLoremIpsum,
+                maxLines: maxLines,
+                style: const TextStyle(
+                    fontSize: 14,
+                    color: ConstColor.greyText,
+                    fontWeight: FontWeight.w400),
+              ),
+            ),
+          ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildRichText({
+    String text1 = '',
+    String text2 = '',
+  }) =>
+      RichText(
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+        text: TextSpan(
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20.sp, //24
+            fontWeight: FontWeight.w500,
+          ),
+          children: <TextSpan>[
+            TextSpan(
+              text: text1,
+            ),
+            TextSpan(
+                text: text2,
+                style: const TextStyle(
+                  color: ConstColor.salad100,
+                )),
+          ],
+        ),
+        // minFontSize: 14,
       );
 }
