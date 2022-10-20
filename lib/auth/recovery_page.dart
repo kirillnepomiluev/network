@@ -66,12 +66,12 @@ class _RecoveryPageState extends State<RecoveryPage> {
     //
     //         Positioned(
     //             right: 0,
-    //             child: Image.asset('assets/images/circles/Ellipse 3.png')),
+    //             child: Image.asset('assets/images/circles/ellipse_3.png')),
     //
     //         Positioned(
     //             top: mediaHeight*0.15,
     //             left: 0,
-    //             child: Image.asset('assets/images/circles/Ellipse 2.png')),
+    //             child: Image.asset('assets/images/circles/ellipse_2.png')),
     //
     //         Padding(
     //             padding: const EdgeInsets.symmetric(horizontal: 16),

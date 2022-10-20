@@ -62,6 +62,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/circles/
+    - assets/images/avatars/
     - assets/icons/
   #   - images/a_dot_ham.jpeg
 

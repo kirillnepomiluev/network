@@ -25,11 +25,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Network',
-            theme: ThemeData(
-              fontFamily: 'Inter',
-              // primarySwatch: colorCustom,
-            ),
-
+            theme: ThemeData(fontFamily: 'Inter',),
             localizationsDelegates: const [
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
@@ -38,11 +34,7 @@ class MyApp extends StatelessWidget {
             supportedLocales: const [
               Locale('ru', 'RU'), // English, no country code
             ],
-            home: const
-            // WalletPage()
-            FirstPage()
-            // HomePage(initIndex: 0,),
-
+            home: const HomePage(initIndex: 0,),
           );
         },
       );
@@ -78,7 +70,7 @@ class _FirstPageState extends State<FirstPage> {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              Image.asset('assets/images/circles/Ellipse 1.png'),
+              Image.asset('assets/images/circles/ellipse_1.png'),
               const NetworkRow(isRow: false, opacity: 0.3,),
             ],
           ),
@@ -185,13 +177,13 @@ class AuthBackScaffold extends StatelessWidget {
 
             Positioned(
                 right: 0,
-                child: Image.asset('assets/images/circles/Ellipse 3.png')
+                child: Image.asset('assets/images/circles/ellipse_3.png')
             ),
 
             Positioned(
                 top: centerYellow? mediaHeight*0.15 :  0,
                 left: 0,
-                child: Image.asset('assets/images/circles/Ellipse 2.png')
+                child: Image.asset('assets/images/circles/ellipse_2.png')
             ),
 
             hasTroubleEnter==false? Container():

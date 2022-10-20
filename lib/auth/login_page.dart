@@ -129,12 +129,12 @@ class _LoginPageState extends State<LoginPage> {
     //
     //         Positioned(
     //             right: 0,
-    //             child: Image.asset('assets/images/circles/Ellipse 3.png')
+    //             child: Image.asset('assets/images/circles/ellipse_3.png')
     //         ),
     //
     //         Positioned(
     //           left: 0,
-    //             child: Image.asset('assets/images/circles/Ellipse 2.png')
+    //             child: Image.asset('assets/images/circles/ellipse_2.png')
     //         ),
     //
     //         Positioned(
