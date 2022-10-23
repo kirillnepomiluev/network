@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/chat/chat_page.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/home_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -66,7 +66,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 10, top: 10),
-                child: backButton(context),
+                child: BackButtonCustom(),
               ),
 
               showSuccessPage? const SizedBox(height: 17,):

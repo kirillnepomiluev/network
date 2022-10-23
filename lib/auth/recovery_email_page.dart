@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/auth/login_second_page.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
-import 'package:network_app/main.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class RecoveryEmailPage extends StatefulWidget {
@@ -27,7 +27,7 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 10),
-                child: backButton(context),
+                child: BackButtonCustom(),
               ),
               const EnterInfoContainer(
                 padTop: 32,

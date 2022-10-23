@@ -1,9 +1,8 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/auth/login_page.dart';
 import 'package:network_app/auth/phone_auth_page.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/main.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 

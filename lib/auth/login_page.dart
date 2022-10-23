@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/auth/login_second_page.dart';
 import 'package:network_app/auth/recovery_page.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/main.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 //width 375

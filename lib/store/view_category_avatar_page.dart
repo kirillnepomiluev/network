@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/home_page.dart';
 import 'package:network_app/store/view_prod_avatar_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 // import 'dart:ui' as ui;
@@ -72,7 +72,7 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
 
                 Padding(
                   padding: const EdgeInsets.only(bottom: 34),
-                  child: backButton(context),
+                  child: BackButtonCustom(),
                 ),
 
                 Padding(
@@ -164,7 +164,7 @@ Widget avatarContainer(
         const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 9),
 
         decoration: BoxDecoration(
-          color: isView? Colors.white : ConstColor.halfWhite,
+          color: isView? Colors.white : ConstColor.white15,
           borderRadius: BorderRadius.circular(15),
         ),
         // height: contHeight,
@@ -286,7 +286,7 @@ Widget avatarContainer(
                         height: 0.1013*mediaWidth,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(9),
-                            color: ConstColor.halfWhite
+                            color: ConstColor.white15
                         ),
                         child: IconButton(onPressed: (){
                           Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const ViewProdAvatarPage()));

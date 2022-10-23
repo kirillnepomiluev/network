@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/home_page.dart';
 import 'package:network_app/store/view_prod_hat.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 // import 'dart:ui' as ui;
@@ -101,7 +101,7 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
 
                 Padding(
                   padding: const EdgeInsets.only(left: 15, bottom: 20),
-                  child: backButton(context),
+                  child: BackButtonCustom(),
                 ),
 
                 const Padding(
@@ -197,7 +197,7 @@ Widget hatContainer({
         child: Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: isView? Colors.white : ConstColor.halfWhite,
+            color: isView? Colors.white : ConstColor.white15,
             borderRadius: BorderRadius.circular(12),
           ),
           // height: contHeight,

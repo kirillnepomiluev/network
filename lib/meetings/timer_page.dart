@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/home_page.dart';
 import 'package:network_app/meetings/complaint_page.dart';
 import 'package:network_app/meetings/rate_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -122,7 +122,7 @@ class _TimerPageState extends State<TimerPage> {
 
                 Padding(
                   padding: const EdgeInsets.only(left: 10, top: 10),
-                  child:  backButton(context, func: (){
+                  child:  BackButtonCustom( func: (){
                     if(currentSeconds==maxSeconds){
                       Navigator.of(context).pop();
                     }

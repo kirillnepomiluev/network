@@ -1,6 +1,7 @@
+import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/home_page.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -54,90 +55,115 @@ class _NotificationsPageState extends State<NotificationsPage> {
     final mediaWidth = MediaQuery.of(context).size.width;
     final double contSize = 0.11466 * mediaWidth; //43
 
-    return Scaffold(
-      backgroundColor: Colors.grey.shade400,
-      body: Padding(
-        padding: EdgeInsets.only(
-            top: mediaTop,
-            left: 17.sp, //16
-            right: 17.sp),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    backButton(context, func: () {}),
-                    Text(
-                      'Уведомления',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 19.5.sp, //20
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Container(
-                      width: contSize,
-                      height: contSize,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(15),
+    return BlurryContainer(
+      color: Colors.black.withOpacity(0.6),
+      padding: EdgeInsets.zero,
+      blur: 30,
+      child: Scaffold(
+        // backgroundColor: Colors.black.withOpacity(0.8),
+        backgroundColor: Colors.transparent,
+        body: Padding(
+          padding: EdgeInsets.only(
+              top: mediaTop,
+              left: 17.sp, //16
+              right: 17.sp),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // BackButtonCustom(),
+
+                      BackButtonCustom(),
+
+                      Text(
+                        'Уведомления',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 19.5.sp, //20
+                            fontWeight: FontWeight.w600
+                        ),
                       ),
-                      child: IconButton(
-                          onPressed: () {
-                            // Navigator.of(context).pop();
-                          },
-                          icon: Icon(
-                            Network.check_double,
-                            color: Colors.black,
-                            size: 18.5.sp, //19
-                          )),
-                    ),
-                  ],
+
+                      IconContainer(
+                          icon: Network.check_double,
+                          iconSize: 18.5.sp,
+                          // Icon(
+                          //           Network.check_double,
+                          //           color: Colors.white,
+                          //           size: 18.5.sp, //19
+                          //         ),
+
+                          func: (){}
+
+                      )
+
+                      // Container(
+                      //   width: contSize,
+                      //   height: contSize,
+                      //   decoration: BoxDecoration(
+                      //     color: Colors.grey.shade300,
+                      //     borderRadius: BorderRadius.circular(15),
+                      //   ),
+                      //   child: IconButton(
+                      //       onPressed: () {
+                      //         // Navigator.of(context).pop();
+                      //       },
+                      //       icon: Icon(
+                      //         Network.check_double,
+                      //         color: Colors.black,
+                      //         size: 18.5.sp, //19
+                      //       )),
+                      // ),
+
+                    ],
+                  ),
                 ),
-              ),
 
-              notificationCont(
-                  showOnline: true,
-                  title1: 'Джоли ',
-                  title2: 'пригласила вас на ',
-                  title3: 'встречу',
-                  strTime: '2 ч назад',
-                  iconType: 1
-              ),
+                notificationCont(
+                    showOnline: true,
+                    title1: 'Джоли ',
+                    title2: 'пригласила вас на ',
+                    title3: 'встречу',
+                    strTime: '5 мин назад',
+                    iconType: 1
+                ),
 
-              notificationCont(
-                  showOnline: true,
-                  title1: 'Джоли ',
-                  title2: 'добавила вас в ',
-                  title3: 'избранное',
-                  strTime: '2 ч назад',
-                  iconType: 2
-              ),
+                notificationCont(
+                    showOnline: true,
+                    title1: 'Джоли ',
+                    title2: 'добавила вас в ',
+                    title3: 'избранное',
+                    strTime: '15 мин назад',
+                    iconType: 2
+                ),
 
-              notificationCont(
-                  showOnline: false,
-                  title1: 'Джоли ',
-                  title2: 'хочет добавить вас в ',
-                  title3: 'друзья',
-                  strTime: '1 д назад',
-                  iconType: 2
-              ),
+                notificationCont(
+                    showOnline: false,
+                    title1: 'Джоли ',
+                    title2: 'хочет добавить вас в ',
+                    title3: 'друзья',
+                    strTime: '2 ч назад',
+                    iconType: 2
+                ),
 
-              notificationCont(
-                  showOnline: false,
-                  title1: '',
-                  title2: 'На вас подали ',
-                  title3: 'жалобу',
-                  strTime: '1 д назад',
-                  iconType: 0
-              ),
+                notificationCont(
+                    showOnline: false,
+                    title1: '',
+                    title2: 'На вас подали ',
+                    title3: 'жалобу',
+                    strTime: '1 д назад',
+                    iconType: 0
+                ),
 
 
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -158,8 +184,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
       padding: const EdgeInsets.only(top: 20),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
+          color: ConstColor.white05,
+          borderRadius: BorderRadius.circular(20),
         ),
         child: Stack(
           children: [
@@ -170,6 +196,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     top: 15.5.sp,
                     child: Icon(
                       Icons.circle,
+                      color: ConstColor.salad100,
                       size: 13.sp, //8
                     ),
                   ),
@@ -185,22 +212,37 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   Padding(
                     padding: EdgeInsets.only(right: 16.5.sp //15
                         ),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.grey.shade500,
-                            shape: BoxShape.circle),
-                        // width: mediaWidth * 0.12, //45
-                        width: 30.sp,
-                        height: 30.sp,
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            iconType==0? Network.warning:
-                            Network.person,
-                            color: Colors.black,
-                          ),
-                          iconSize: 17.sp, //15
-                        )),
+                    child:
+
+                    SizedBox(
+                      width: 60,
+                      height: 60,
+                      child: CircleAvatar(
+                        backgroundColor: showOnline? Colors.white : Colors.black,
+                        foregroundImage: AssetImage(
+                            'assets/images/avatars/avatar_${showOnline?'2' : '1'}.png'
+                        ),
+                      ),
+                    )
+
+                    // Container(
+                    //     decoration: BoxDecoration(
+                    //         color: Colors.white,
+                    //         shape: BoxShape.circle
+                    //     ),
+                    //     width: 30.sp,
+                    //     height: 30.sp,
+                    //     // child: IconButton(
+                    //     //   onPressed: () {},
+                    //     //   icon: Icon(
+                    //     //     iconType==0? Network.warning:
+                    //     //     Network.person,
+                    //     //     color: Colors.black,
+                    //     //   ),
+                    //     //   iconSize: 17.sp, //15
+                    //     // )
+                    // ),
+
                   ),
                   Expanded(
                     child: Column(
@@ -218,22 +260,24 @@ class _NotificationsPageState extends State<NotificationsPage> {
                             strTime,
                             style: TextStyle(
                                 fontSize: 14.sp, //10
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey.shade800),
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white
+                            ),
                           ),
                         )
                       ],
                     ),
                   ),
+
                   Padding(
                     padding: EdgeInsets.only(left: 16.5.sp),
                     child: Container(
                       width: 22.sp, //24
                       height: 22.sp,
                       decoration: BoxDecoration(
-                          color: iconType==0? Colors.transparent : Colors.black,
-                          shape: BoxShape.circle
-                          // borderRadius: BorderRadius.circular(15),
+                          color: iconType==0? Colors.transparent : ConstColor.salad100,
+                          // shape: BoxShape.circle
+                          borderRadius: BorderRadius.circular(7),
                           ),
                       child:
                       iconType==0? Container():
@@ -241,8 +285,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
                         iconType==1
                             ? Network.electric
                         : Network.star,
-                        color: Colors.white,
-                        size: 14.sp, //12
+                        color: Colors.black,
+                        size: 15.5.sp, //12
                       ),
                     ),
                   ),
@@ -260,20 +304,23 @@ class _NotificationsPageState extends State<NotificationsPage> {
         overflow: TextOverflow.ellipsis,
         text: TextSpan(
           style: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontSize: 15.5.sp, //12
-              // fontSize: MediaQuery.of(context).size.width < 300 ? 10 : 15,
-              fontFamily: 'Roboto'),
+          ),
           children: <TextSpan>[
             TextSpan(
                 text: text1,
-                style: const TextStyle(fontWeight: FontWeight.w600)),
+                style: const TextStyle(
+                    color: ConstColor.salad100,
+                    fontWeight: FontWeight.w600)),
             TextSpan(
                 text: text2,
                 style: const TextStyle(fontWeight: FontWeight.w400)),
             TextSpan(
                 text: text3,
-                style: const TextStyle(fontWeight: FontWeight.w600)),
+                style: const TextStyle(
+                    color: ConstColor.salad100,
+                    fontWeight: FontWeight.w600)),
           ],
         ),
         // minFontSize: 14,

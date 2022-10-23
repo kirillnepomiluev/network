@@ -1,12 +1,9 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/auth/login_second_page.dart';
-import 'package:network_app/auth/phone_auth_page.dart';
 import 'package:network_app/auth/recovery_email_page.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/home_page.dart';
-import 'package:network_app/main.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class RecoveryPage extends StatefulWidget {
@@ -34,7 +31,7 @@ class _RecoveryPageState extends State<RecoveryPage> {
 
               Padding(
                 padding: const EdgeInsets.only(top: 10),
-                child: backButton(context),
+                child: BackButtonCustom(),
               ),
 
               const EnterInfoContainer(
@@ -137,7 +134,9 @@ class _RecoveryPageState extends State<RecoveryPage> {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(13)),
-                        child: const Icon(Icons.email,
+                        child: const Icon(
+                            // Icons.email,
+                          Network.email_outlined,
                             color: Colors.black, size: 21))),
                 Text(
                   title,

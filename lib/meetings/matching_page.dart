@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/home_page.dart';
 import 'dart:math' as math;
 
@@ -38,7 +39,7 @@ class _MatchingPageState extends State<MatchingPage> {
                     top: 10,
                     bottom: 25
                 ),
-                child: backButton(context),
+                child: BackButtonCustom(),
               ),
 
               Padding(

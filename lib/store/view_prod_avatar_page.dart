@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/profile/profile_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -124,34 +125,43 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
                 text1: '5 встреч',
                 text2: 'Еще 25 встреч',
                 progress: 0.25,
-                isMeetingRow: true
+                isMeetingRow: true,
+                icon: Network.people
             ),
 
             titleStatText('Статистика'),
 
             progressParametr(context : context,
                 text1: 'Энергии на встречи',
-                text2: '3/5'
+                text2: '3/5',
+                icon: Network.electric
             ),
 
             progressParametr(context : context,
                 text1: 'Скорость восстановления',
-                text2: 'x1.5'
+                text2: 'x1.5',
+                icon: Network.speedometer
             ),
 
             progressParametr(context : context,
                 text1: 'Баллы за встречи',
-                text2: '150'
+                text2: '150',
+                icon: Network.rhombus
             ),
 
             progressParametr(context : context,
                 text1: 'Количество сообщений в день',
-                text2: '200'
+                text2: '200',
+                icon:
+                Network.email_outlined,
+              // Icons.email_outlined
+
             ),
 
             progressParametr(context : context,
                 text1: 'Количество лайков в день',
-                text2: '50'
+                text2: '50',
+                icon: Network.heart
             ),
           ],
         ),

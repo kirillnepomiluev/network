@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/meetings/meetings_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -48,7 +49,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                backButton(context),
+                BackButtonCustom(),
                 Container(
                   padding:
                       const EdgeInsets.symmetric(vertical: 14, horizontal: 18),

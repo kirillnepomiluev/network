@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/home_page.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/wallet/exchange_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -92,7 +92,7 @@ class _WalletPageState extends State<WalletPage> {
                 Stack(
                   alignment: Alignment.center,
                   children: [
-                    backButton(context, func: (){}),
+                    BackButtonCustom( func: (){}),
                     Center(child: Text('Кошелек',
                       textAlign: TextAlign.center,
                       style: TextStyle(

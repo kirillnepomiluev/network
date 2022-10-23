@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/home_page.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/meetings/rate_final_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -38,7 +38,7 @@ class _RatePageState extends State<RatePage> {
             child:  Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                backButton(context,
+                BackButtonCustom(
                 func: (){
                   showInterruptDialog(context);
                 }),

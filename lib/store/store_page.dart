@@ -33,7 +33,7 @@ class _StorePageState extends State<StorePage> {
         }),
         child: BlurryContainer(
           blur: 10,
-          color: ConstColor.halfWhite,
+          color: ConstColor.white15,
           borderRadius: BorderRadius.circular(20),
           // height: 56,
           padding: EdgeInsets.symmetric(

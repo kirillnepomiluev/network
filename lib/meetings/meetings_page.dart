@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/meetings/invitations_page.dart';
@@ -119,7 +120,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
                     Stack(
                       alignment: Alignment.center,
                       children: [
-                        backButton(context, func: (){
+                        BackButtonCustom(func: (){
                           setState(() {
                             _activeMeetingTab=1;
                           });

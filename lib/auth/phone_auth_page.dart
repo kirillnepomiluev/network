@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:network_app/auth/auth_succes_page.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:network_app/auth/login_second_page.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
-import 'package:network_app/main.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class PhoneAuthPage extends StatefulWidget {
@@ -74,7 +74,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 10),
-            child: backButton(context, func: backFunc),
+            child: BackButtonCustom( func: backFunc),
           ),
           const EnterInfoContainer(
             padTop: 32,
@@ -186,7 +186,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
 
           Padding(
             padding: const EdgeInsets.only(top: 10),
-            child: backButton(context, func: backFunc),
+            child: BackButtonCustom( func: backFunc),
           ),
 
           EnterInfoContainerPass(

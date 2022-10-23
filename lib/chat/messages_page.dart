@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/chat/chat_page.dart';
-import 'package:network_app/home_page.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -40,7 +40,7 @@ class _MessagesPageState extends State<MessagesPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
 
-                    backButton(context, func: (){}),
+                    BackButtonCustom( func: (){}),
 
                     Text(
                       'Сообщения',

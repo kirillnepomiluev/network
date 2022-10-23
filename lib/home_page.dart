@@ -12,8 +12,6 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'dart:ui' as ui;
 
-
-
 class HomePage extends StatefulWidget {
   final int initIndex;
   const HomePage({Key? key, required this.initIndex}) : super(key: key);
@@ -38,7 +36,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     final mediaWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -46,7 +43,7 @@ class _HomePageState extends State<HomePage> {
       // backgroundColor: Colors.green,
       body: PageView(
         controller: _pageController,
-        children: const[
+        children: const [
           MeetingsPage(),
           ProfilePage(),
           WalletPage(),
@@ -72,13 +69,11 @@ class _HomePageState extends State<HomePage> {
               // side:  BorderSide(width: 3),
             ),
             padding: EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: mediaWidth*0.0266  //20
-            ),
+                vertical: 10, horizontal: mediaWidth * 0.0266 //20
+                ),
             itemPadding: EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: mediaWidth*0.0426  //16
-            ),
+                vertical: 10, horizontal: mediaWidth * 0.0426 //16
+                ),
             backgroundColor: Colors.transparent,
             selectedIndex: _currentPage,
             onTap: (int index) {
@@ -98,9 +93,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-
   BottomBarItem barItem({required IconData icon, required String text}) {
-    final double iconSize =18.sp;  //21
+    final double iconSize = 18.sp; //21
 
     return BottomBarItem(
         icon: Icon(
@@ -110,9 +104,8 @@ class _HomePageState extends State<HomePage> {
         ),
         title: Text(
           text,
-          style: TextStyle(color: Colors.black,
-              fontSize: 15.sp   //12
-          ),
+          style: TextStyle(color: Colors.black, fontSize: 15.sp //12
+              ),
         ),
         activeColor: ConstColor.salad100,
         inactiveIcon: Icon(
@@ -120,57 +113,53 @@ class _HomePageState extends State<HomePage> {
           icon,
           color: ConstColor.salad100,
         ),
-        backgroundColorOpacity: 1
-    );
-
+        backgroundColorOpacity: 1);
   }
 }
 
-
 Widget blurCircle({double sigma = 55, double radius = 271}) => SizedBox(
-  width: radius,
-  height: radius,
-  child: Stack(children: [
-    Container(
-      decoration: const BoxDecoration(
-        color: ConstColor.salad100,
-        shape: BoxShape.circle,
+      width: radius,
+      height: radius,
+      child: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              color: ConstColor.salad100,
+              shape: BoxShape.circle,
+            ),
+            child: const Center(
+                child: Text(
+              'фывфывф',
+              style: TextStyle(color: Colors.black),
+            )),
+          ),
+          BackdropFilter(
+            filter: ui.ImageFilter.blur(
+              sigmaX: sigma,
+              sigmaY: sigma,
+            ),
+            child: Container(),
+          ),
+        ],
       ),
-      child: const Center(child: Text('фывфывф', style: TextStyle(color: Colors.black),)),
-    ),
+    );
 
-    BackdropFilter(
-      filter: ui.ImageFilter.blur(
-        sigmaX: sigma,
-        sigmaY: sigma,
-      ),
-      child: Container(
-      ),
-    ),
-
-  ],),
-);
-
-
-Widget statContainer(
-    {
-      required BuildContext context,
-      required String title,
-      required String subtitle,
-    }) {
-
-
-  final double contWidth =  45.sp;  //107
+Widget statContainer({
+  required BuildContext context,
+  required String title,
+  required String subtitle,
+}) {
+  final double contWidth = 45.sp; //107
   // final double contHeight =  mediaHeight*0.2853;
 
   return BlurryContainer(
     // padding: EdgeInsets.symmetric(vertical: 52, horizontal: 21),
-    blur: 10,
-    width: contWidth,   //107
+    blur: 20,
+    width: contWidth, //107
     // height: contWidth*1.514,  //162
-    height: 55.sp,  //162
-    color: ConstColor.halfWhite,
-    borderRadius: BorderRadius.circular(73),
+    height: 55.sp, //162
+    color: ConstColor.white05,
+    borderRadius: BorderRadius.circular(30),
     child: Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -179,12 +168,12 @@ Widget statContainer(
         title == ''
             ? Container()
             : Text(
-          title,
-          style: TextStyle(
-              fontSize: 23.sp,    //28
-              fontWeight: FontWeight.w500,
-              color: Colors.white),
-        ),
+                title,
+                style: TextStyle(
+                    fontSize: 23.sp, //28
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
+              ),
         Padding(
           padding: const EdgeInsets.only(top: 5),
           child: Text(
@@ -200,7 +189,6 @@ Widget statContainer(
     ),
   );
 }
-
 
 // Widget statContainer(
 //         {
@@ -252,147 +240,175 @@ Widget statContainer(
 //   );
 // }
 
-
-
 Widget titleStatText(String text) => Padding(
-      padding: const EdgeInsets.only(top: 20, bottom: 10),
+      padding: const EdgeInsets.only(
+        top: 20,
+      ),
       child: Text(
         text,
-        style: TextStyle(fontWeight: FontWeight.bold,
-            fontSize: 19.sp  //20
-        ),
+        style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 19.sp //20
+            ),
       ),
     );
 
 Widget progressParametr(
-        {required String text1,
-        required String text2,
-        bool isMeetingRow = false,
-        double progress = 0,
-        required BuildContext context}) {
-
-
-  final double fontSize = 17.5.sp;  //16
+    {required String text1,
+    required IconData icon,
+    required String text2,
+    bool isMeetingRow = false,
+    double progress = 0,
+    required BuildContext context}) {
+  final double fontSize = 16; //16
 
   return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          InkWell(
+    padding: const EdgeInsets.only(top: 22.5),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        InkWell(
             onTap: (() {
               opeinInfoSheet(title: text1, context: context);
             }),
-            child:
-                isMeetingRow?
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      text1,
-                      style: TextStyle(
-                        fontSize: fontSize,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: Text(
-                        text2,
+            child: isMeetingRow
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        text1,
                         style: TextStyle(
-                          fontSize: fontSize,
-                          fontWeight:
-                          isMeetingRow ? FontWeight.normal : FontWeight.bold,
+                          color: ConstColor.greyText,
+                          fontSize: getResSize(14),
                         ),
                       ),
-                    ),
-                  ],
-                )
-                    :
-            Wrap(
-              direction: Axis.horizontal,
-              runAlignment: WrapAlignment.start,
-              alignment: WrapAlignment.start,
-              // mainAxisAlignment: isMeetingRow
-              //     ? MainAxisAlignment.spaceBetween
-              //     : MainAxisAlignment.start,
-              children: [
-                Text(
-                  text1,
-                  style: TextStyle(
-                    fontSize: fontSize,
-                    fontWeight: FontWeight.normal,
+                      Text(
+                        text2,
+                        style: TextStyle(
+                          color: ConstColor.greyText,
+                          fontSize: getResSize(14),
+                        ),
+                      ),
+                    ],
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      BuildRichTextTwo(
+                        text1: text1,
+                        text2: text2,
+                        fontSize: fontSize,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 13),
+                        child: Icon(
+                          Network.info,
+                          color: Colors.white,
+                          size: 18,
+                        ),
+                      )
+                    ],
+                  )),
+        Padding(
+          padding: const EdgeInsets.only(top: 12),
+          child: Stack(
+            alignment: Alignment.centerRight,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(11),
+                    border: Border.all(width: 1, color: ConstColor.salad100)),
+                child: LinearPercentIndicator(
+                  padding: EdgeInsets.zero,
+                  barRadius: const Radius.circular(11),
+                  lineHeight: 40, //40
+                  percent: progress,
+                  backgroundColor: Colors.transparent,
+                  progressColor: ConstColor.salad100,
+                ),
+              ),
+              Positioned(
+                right: 10,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: ConstColor.salad100,
+                      borderRadius: BorderRadius.circular(7)),
+                  width: 24,
+                  height: 22,
+                  child: Icon(
+                    icon,
+                    size: 13,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 5),
-                  child: Text(
-                    text2,
-                    style: TextStyle(
-                      fontSize: fontSize,
-                      fontWeight:
-                          isMeetingRow ? FontWeight.normal : FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget hobbitsContainer(String text, {bool isDark = true}) => Container(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.1),
+          // color: isDark ? Colors.grey.shade300 : Colors.grey.shade200,
+          borderRadius: BorderRadius.circular(10)),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            text,
+            style: TextStyle(
+              color: Colors.white,
+                fontSize: 16.5.sp, //14
+                fontWeight: FontWeight.w400
             ),
           ),
 
           Padding(
-            padding: const EdgeInsets.only(top: 15),
-            child: LinearPercentIndicator(
-              padding: EdgeInsets.zero,
-              barRadius: const Radius.circular(15),
-              lineHeight: 22.sp,
-              percent: progress,
-              backgroundColor: Colors.grey.shade300,
-              progressColor: Colors.grey.shade800,
+            padding: const EdgeInsets.only(left: 8),
+            child: Icon(Icons.close_rounded,
+            size: 22,
+            color: ConstColor.salad100,
             ),
-          ),
+          )
+
         ],
       ),
     );
-}
 
-Widget hobbitsContainer(String text, {bool isDark = true}) => Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: BoxDecoration(
-          color: isDark ? Colors.grey.shade300 : Colors.grey.shade200,
-          borderRadius: BorderRadius.circular(22)),
-      child: Text(
-        text,
+Widget textField(String hintText, {bool isEnable = true}) => Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: TextFormField(
+        enabled: isEnable,
+        maxLines: null,
         style: TextStyle(
-            fontSize: 16.5.sp, //14
-        fontWeight: FontWeight.w400
+            fontSize: 18, //18
+            fontWeight: FontWeight.w400,
+            color: Colors.white
         ),
-      ),
-    );
-
-Widget textField(String hintText, {bool isEnable = true}) => TextFormField(
-      enabled: isEnable,
-      maxLines: null,
-      style: TextStyle(
-          fontSize: 17.sp,  //14
-          color: Colors.black),
-      initialValue: hintText,
-      autofocus: false,
-      decoration: InputDecoration(
-        isDense: true,
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-        focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 1, color: Colors.white),
-            borderRadius: BorderRadius.circular(15)),
-        enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 1, color: Colors.white),
-            borderRadius: BorderRadius.circular(15)),
-        disabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 1, color: Colors.white),
-            borderRadius: BorderRadius.circular(15)),
-        filled: true,
-        fillColor: Colors.white,
+        initialValue: hintText,
+        autofocus: false,
+        decoration: InputDecoration(
+          isDense: true,
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 19),
+          focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(width: 1, color: ConstColor.salad100),
+              borderRadius: BorderRadius.circular(20)),
+          enabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(width: 1, color: ConstColor.salad100),
+              borderRadius: BorderRadius.circular(20)),
+          disabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(width: 1, color: ConstColor.salad100),
+              borderRadius: BorderRadius.circular(20)),
+          // filled: true,
+          // fillColor: Colors.white,
+        ),
       ),
     );
 
@@ -437,38 +453,6 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
           ));
 }
 
-Widget backButton(BuildContext context, {Function? func}) {
-  final mediaWidth = MediaQuery.of(context).size.width;
-  final double contSize = 0.11466*mediaWidth; //43
-  // final double iconSize = 17.sp;   //25
-
-  return Align(
-      alignment: Alignment.topLeft,
-      child: Container(
-        // padding: EdgeInsets.all(6),
-        width: contSize,
-        height: contSize,
-        decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.05),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: IconButton(
-            onPressed: () {
-              if (func == null) {
-                Navigator.of(context).pop();
-              } else {
-                func();
-              }
-            },
-            icon: Icon(
-              Network.arrow_back,
-              color: Colors.white,
-              size: 15.sp  //13
-            )),
-      ),
-    );
-}
-
 ButtonStyle buttonStyleCustom({
   double padH = 61,
   double padV = 17,
@@ -485,3 +469,46 @@ ButtonStyle buttonStyleCustom({
         ),
       ),
     );
+
+class BuildRichTextTwo extends StatelessWidget {
+  final String text1;
+  final String text2;
+  final double fontSize;
+  FontWeight fontWeight1;
+  FontWeight fontWeight2;
+  BuildRichTextTwo({
+    Key? key,
+    required this.text1,
+    required this.text2,
+    required this.fontSize,
+    this.fontWeight1 = FontWeight.w400,
+    this.fontWeight2 = FontWeight.w700,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
+      text: TextSpan(
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: fontSize, // 20.sp, //24
+          fontWeight: fontWeight1,
+        ),
+        children: <TextSpan>[
+          TextSpan(
+            text: text1,
+          ),
+          TextSpan(
+              text: text2,
+              style: TextStyle(
+                fontWeight: fontWeight2,
+                color: ConstColor.salad100,
+              )),
+        ],
+      ),
+      // minFontSize: 14,
+    );
+  }
+}
