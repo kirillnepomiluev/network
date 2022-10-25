@@ -33,7 +33,7 @@ class _StorePageState extends State<StorePage> {
         }),
         child: BlurryContainer(
           blur: 10,
-          color: ConstColor.white15,
+          color: ConstColor.white10,
           borderRadius: BorderRadius.circular(20),
           // height: 56,
           padding: EdgeInsets.symmetric(
@@ -91,24 +91,7 @@ class _StorePageState extends State<StorePage> {
       backgroundColor: ConstColor.blackBack,
       body: Stack(
         children: [
-          //круг сверху
-          Positioned(
-              top: -mediaRadius * 0.05,
-              right: -mediaRadius * 0.22,
-              child: blurCircle(
-                radius: mediaRadius,
-                sigma: 0,
-              )),
 
-          //круг внизу
-          Positioned(
-              top: mediaHeight * 0.43,
-              left: -mediaRadius * 0.85,
-              child: blurCircle(
-                radius: mediaRadius,
-                sigma: mediaRadius * 0.33,
-                // sigma: 0,
-              )),
 
           Padding(
             padding: EdgeInsets.only(
@@ -120,35 +103,36 @@ class _StorePageState extends State<StorePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
-                  //Магазин
-                  const Padding(
-                    padding: EdgeInsets.only(top: 10),
-                    child: Text(
-                      'Магазин',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontWeight: FontWeight.w700),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
+                  // //Магазин
+                  // const Padding(
+                  //   padding: EdgeInsets.only(top: 10),
+                  //   child: Text(
+                  //     'Магазин',
+                  //     style: TextStyle(
+                  //         color: Colors.white,
+                  //         fontSize: 30,
+                  //         fontWeight: FontWeight.w700),
+                  //     textAlign: TextAlign.start,
+                  //   ),
+                  // ),
 
-                  //Выбор интерфейса
-                  Padding(
-                    padding: const EdgeInsets.only(top: 19),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        miniContainer(position: 1, text: 'Магазин'),
-                        miniContainer(position: 2, text: 'Лотерея'),
-                      ],
-                    ),
-                  ),
+                  // //Выбор интерфейса
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 19),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: [
+                  //       miniContainer(position: 1, text: 'Магазин'),
+                  //       miniContainer(position: 2, text: 'Лотерея'),
+                  //     ],
+                  //   ),
+                  // ),
 
                   //Аватары
                   Padding(
                     padding: const EdgeInsets.only(top: 10, bottom: 15, right: 15),
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
@@ -165,17 +149,11 @@ class _StorePageState extends State<StorePage> {
                                   MaterialPageRoute<void>(
                                       builder: (context) =>
                                       const ViewCategoryAvatarPage()));
-
-                              // _avatarScrollContr.animateTo(
-                              //     moveWidth,
-                              //     curve: Curves.easeOut,
-                              //     duration: const Duration(seconds: 1)
-                              // );
                             },
                             icon: const Icon(
                               Network.arrow_right_long,
                               color: Colors.white,
-                              size: 18,
+                              size: 25,
                             ))
                       ],
                     ),
@@ -228,7 +206,7 @@ class _StorePageState extends State<StorePage> {
                             icon: const Icon(
                               Network.arrow_right_long,
                               color: Colors.white,
-                              size: 18,
+                              size: 25,
                             ))
                       ],
                     ),

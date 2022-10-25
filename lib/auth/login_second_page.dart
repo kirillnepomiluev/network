@@ -151,7 +151,7 @@ class EnterInfoContainer extends StatelessWidget {
       child: BlurryContainer(
         width: double.infinity,
         blur: 20,
-        color: Colors.black.withOpacity(0.1),
+        color: Colors.white.withOpacity(0.1),
         borderRadius: BorderRadius.circular(10),
         padding: const EdgeInsets.symmetric(vertical: 23, horizontal: 18),
         child: Column(

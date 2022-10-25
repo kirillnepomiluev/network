@@ -184,7 +184,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
       padding: const EdgeInsets.only(top: 20),
       child: Container(
         decoration: BoxDecoration(
-          color: ConstColor.white05,
+          color: ConstColor.white10,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Stack(

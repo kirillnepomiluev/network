@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/components/general_widgets.dart';
+import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/profile/profile_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -16,7 +18,7 @@ class _ViewProdHatPageState extends State<ViewProdHatPage> {
     final mediaWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade400,
+      backgroundColor: ConstColor.blackBack,
       bottomNavigationBar: Container(
         width: MediaQuery.of(context).size.width,
         height: 80,
@@ -71,7 +73,7 @@ class _ViewProdHatPageState extends State<ViewProdHatPage> {
             children: [
               // viewAvatarContainer(),
 
-              viewProdImage(context, isHat: true),
+              // viewProdImage(context, isHat: true),
 
               const Padding(
                 padding: EdgeInsets.only(left: 20, top: 30),

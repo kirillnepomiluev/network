@@ -1,12 +1,16 @@
+import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/components/network_icons.dart';
+import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/profile/profile_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-
 class ViewProdAvatarPage extends StatefulWidget {
-  const ViewProdAvatarPage({Key? key}) : super(key: key);
+  final String title;
+  final String imageURL;
+  const ViewProdAvatarPage({Key? key, required this.title, required this.imageURL}) : super(key: key);
 
   @override
   State<ViewProdAvatarPage> createState() => _ViewProdAvatarPageState();
@@ -17,74 +21,86 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
 
   @override
   Widget build(BuildContext context) {
-
     final mediaWidth = MediaQuery.of(context).size.width;
+    final mediaTop = MediaQuery.of(context).viewPadding.top;
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade400,
+      extendBodyBehindAppBar: false,
+      extendBody: true,
+      backgroundColor: ConstColor.blackBack,
+      bottomNavigationBar: BlurryContainer(
+        blur: 30,
+        width: MediaQuery.of(context).size.width,
+        height: 105,
+        color: Colors.transparent,
+        // decoration: BoxDecoration(
+        //   color: Colors.grey.shade300,
+        // ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
 
-        bottomNavigationBar:
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: 80,
-          decoration: BoxDecoration(
-              color: Colors.grey.shade300,
-              // borderRadius: BorderRadius.vertical(top: Radius.circular(35))
-          ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 0.04266*mediaWidth),    //16
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(right: 0.08*mediaWidth),    //30
-                  child: Text('1.6 SOL', style: TextStyle(
-                      fontSize: 18.sp, //16
-                      fontWeight: FontWeight.w600),),
-                ),
-
-                SizedBox(
-                  width: 0.6533*mediaWidth,   //245
-                  height: 0.6533*mediaWidth*0.2245,   //55
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                        // padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 22)),
-                        backgroundColor: MaterialStateProperty.all(Colors.black),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(17),
-                          ),
-                        ),
-                      ),
-                      onPressed: (){}, child: Text('Купить сейчас', style: TextStyle(
-                      fontSize: 18.sp,   //16
-                      color: Colors.white,
-                    fontWeight: FontWeight.w600
-
-                  ),)),
-                )
-
-
-              ],
+            Padding(
+              padding: EdgeInsets.only(
+                left: 37,
+                  right: 0.08 * mediaWidth)
+              , //30
+              child: Text(
+                '1.6 SOL',
+                style: TextStyle(
+                    color: ConstColor.salad100,
+                    fontSize: 18.sp, //16
+                    fontWeight: FontWeight.w600),
+              ),
             ),
-          ),
 
+            Padding(
+              padding: const EdgeInsets.only(right: 15),
+              child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.white),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(17),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    openSuccessSheet(context: context);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 15
+                    ),
+                    child: Text(
+                      'Купить сейчас',
+                      style: TextStyle(
+                          fontSize: 18.sp, //16
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500
+                      ),
+                    ),
+                  )),
+            )
+
+          ],
         ),
-
-
-      body:
-      SafeArea(
+      ),
+      body: Padding(
+        padding: EdgeInsets.only(top: mediaTop),
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  viewProdImage(context),
+              viewProdImage(),
 
-                  _statColumn()
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16, vertical: 31),
+                child: const StatColumn(),
               ),
+
             ],
           ),
         ),
@@ -92,82 +108,186 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
     );
   }
 
+  Widget viewProdImage() {
+    final mediaWidth = MediaQuery.of(context).size.width;
+    // final imageWidth = 0.624 * mediaWidth;
 
+    return Container(
+      width: mediaWidth,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: ConstColor.white10,
+        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(50)),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
 
-  Widget _statColumn() => Container(
-    padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 15),
-    child:
-    Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 0, bottom: 0),
-          child: Center(
+          BackButtonCustom(),
+
+          Container(
+            height: 270,
+            child: Image.asset(
+        widget.imageURL,
+              fit: BoxFit.contain,
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.only(top: 28),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+
+                Text(
+            widget.title,
+            style: TextStyle(
+                      color: ConstColor.salad100,
+                      fontSize: 26, //14
+                      fontWeight: FontWeight.w600
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.only(top: 7),
+                  child: Text(
+                    '#0863246',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 24, //12
+                      color: ConstColor.whiteText,
+                    ),
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+
+          // Padding(
+          //   padding: const EdgeInsets.only(top: 30),
+          //   child: Text(
+          //     isHat ? 'Головной убор' : 'Аватар',
+          //     style: TextStyle(
+          //         fontSize: 15.sp, //12
+          //         fontWeight: FontWeight.w600),
+          //   ),
+          // ),
+          //
+          // Padding(
+          //   padding: const EdgeInsets.only(top: 10),
+          //   child: Text(
+          //     isHat ? '#0863246' : 'Имя аватара',
+          //     style: TextStyle(
+          //         fontSize: 24.sp, //32
+          //         fontWeight: FontWeight.w600),
+          //   ),
+          // ),
+
+          Padding(
+            padding: const EdgeInsets.only(top: 25, bottom: 20),
             child: Container(
-              // alignment: Alignment.center,
-              width: 35,
-              height: 4,
-              decoration: BoxDecoration(
-                  color: Colors.grey.shade400,
-                  borderRadius: BorderRadius.circular(15)
-              ),),
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                decoration: BoxDecoration(
+                    color: ConstColor.white10,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Text(
+                  'Редкий',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.sp, //14
+                      fontWeight: FontWeight.w400
+                  ),
+                )),
+          ),
+
+        ],
+      ),
+    );
+  }
+
+}
+
+
+
+
+
+void openSuccessSheet({required BuildContext context,}) {
+
+  final mediaTop = MediaQuery.of(context).viewPadding.top;
+  final mediaHeight = MediaQuery.of(context).size.height;
+  final mediaWidth = MediaQuery.of(context).size.width;
+  final _height = mediaHeight*0.9;
+
+  showModalBottomSheet<void>(
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
+      context: context,
+      builder: (BuildContext context) => BlurryContainer(
+        blur: 20,
+        color: Colors.black.withOpacity(0.5),
+        // height: _height,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+
+              Padding(
+                padding: const EdgeInsets.only(top: 70),
+                child: Icon(
+                  Network.check_circle_outlined,
+                  size: 100,
+                  color: ConstColor.salad100,
+                ),
+              ),
+
+
+              Padding(
+                padding: const EdgeInsets.only(top: 60),
+                child: BuildRichTextTwo(text1: 'Оплата прошла ', text2: 'успешно', fontSize: 20),
+              ),
+
+
+              const Padding(
+                padding: const EdgeInsets.only(top: 60),
+                child: Text('Новый головной убор вы можете\nнайти в своем шкафу',
+                textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(top: 150, bottom: 20),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                      style: buttonStyleCustom(
+                          color: Colors.white,
+                          padH: 0, padV: 22, radius: 20),
+                      onPressed: () {
+
+                      },
+                      child: Text(
+                        'Перейти в шкаф',
+                        style: TextStyle(
+                            fontSize: 18.5.sp, //18
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black
+                        ),
+                      )),
+                ),
+              ),
+
+
+            ],
           ),
         ),
-
-        titleStatText('Уровень Базовый'),
-
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            progressParametr(context : context,
-                text1: '5 встреч',
-                text2: 'Еще 25 встреч',
-                progress: 0.25,
-                isMeetingRow: true,
-                icon: Network.people
-            ),
-
-            titleStatText('Статистика'),
-
-            progressParametr(context : context,
-                text1: 'Энергии на встречи',
-                text2: '3/5',
-                icon: Network.electric
-            ),
-
-            progressParametr(context : context,
-                text1: 'Скорость восстановления',
-                text2: 'x1.5',
-                icon: Network.speedometer
-            ),
-
-            progressParametr(context : context,
-                text1: 'Баллы за встречи',
-                text2: '150',
-                icon: Network.rhombus
-            ),
-
-            progressParametr(context : context,
-                text1: 'Количество сообщений в день',
-                text2: '200',
-                icon:
-                Network.email_outlined,
-              // Icons.email_outlined
-
-            ),
-
-            progressParametr(context : context,
-                text1: 'Количество лайков в день',
-                text2: '50',
-                icon: Network.heart
-            ),
-          ],
-        ),
-
-      ],),
-
+      )
   );
-
 }
