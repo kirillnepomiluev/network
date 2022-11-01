@@ -165,7 +165,7 @@ class EnterInfoContainer extends StatelessWidget {
                 maxLines: maxLines,
                 style: const TextStyle(
                     fontSize: 14,
-                    color: ConstColor.greyText,
+                    color: ConstColor.textGray,
                     fontWeight: FontWeight.w400),
               ),
             ),

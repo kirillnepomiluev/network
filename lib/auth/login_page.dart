@@ -306,7 +306,7 @@ Widget troubleEnter(BuildContext context) {
             child: Text(
               'Проблемы со входом?',
               style: TextStyle(
-                  color: ConstColor.greyText,
+                  color: ConstColor.textGray,
                   fontSize: 16.5.sp, //14
                   fontWeight: FontWeight.w500),
             ),
@@ -318,7 +318,7 @@ Widget troubleEnter(BuildContext context) {
             child: Text(
               '_____________________________',
               style: TextStyle(
-                  color: ConstColor.greyText,
+                  color: ConstColor.textGray,
                   fontSize: 15.5.sp, //12
                   fontWeight: FontWeight.bold),
             ),

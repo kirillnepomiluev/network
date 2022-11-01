@@ -209,7 +209,14 @@ class _WalletPageState extends State<WalletPage> {
                             padding: EdgeInsets.only(
                                 top: 24.sp  //30
                             ),
-                            child: meetRow(context),
+                            child: MeetRow(
+                              func: (){
+                                Navigator.of(context).push(
+                                    MaterialPageRoute<void>(
+                                        builder: (context) =>
+                                        const ExchangePage()));
+                              },
+                            ),
                           ),
 
                         ],
@@ -438,97 +445,97 @@ class _WalletPageState extends State<WalletPage> {
     ),
   );
 
-  Widget meetRow(BuildContext context) {
-    final mediaWitdh = MediaQuery.of(context).size.width;
-    final double contSize = mediaWitdh*0.128;   //48
-    final double iconElSize = 18.5.sp;   //20
-
-    return InkWell(
-      onTap: (){
-        Navigator.of(context).push(
-            MaterialPageRoute<void>(
-                builder: (context) =>
-                const ExchangePage()));
-      },
-      child: Container(
-        padding: const EdgeInsets.all(3),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              spreadRadius: 2,
-              blurRadius: 4,
-              offset: const Offset(0, 3), // changes position of shadow
-            ),
-          ],
-
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-
-            Container(
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(15)
-                  // shape: BoxShape.circle
-                ),
-                width: contSize,
-                height: contSize,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Network.arrow_right_long,
-                    color: Colors.white,
-                  ),
-                  iconSize: iconElSize,
-                )),
-
-            Padding(
-              padding: EdgeInsets.only(
-                  left: mediaWitdh*0.0453, //17
-                  right: 8
-              ),
-              child: Text('Обменять',
-                  style: TextStyle(
-                      fontSize: 15.sp,     //12
-                      fontWeight: FontWeight.w500)),
-            ),
-
-            //иконка >>
-            Padding(
-              padding: EdgeInsets.only(right: mediaWitdh*0.056), //21
-              child: SizedBox(
-                width: 22,
-                height: 20,
-                child: Stack(
-                  children: const [
-                    Positioned(
-                        left: 0,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 22,
-                          color: ConstColor.grey,
-                        )),
-                    Positioned(
-                        left: 8,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 22,
-                        )),
-                  ],
-                ),
-              ),
-            ),
-
-          ],
-        ),
-      ),
-    );
-  }
+  // Widget meetRow(BuildContext context) {
+  //   final mediaWitdh = MediaQuery.of(context).size.width;
+  //   final double contSize = mediaWitdh*0.128;   //48
+  //   final double iconElSize = 18.5.sp;   //20
+  //
+  //   return InkWell(
+  //     onTap: (){
+  //       Navigator.of(context).push(
+  //           MaterialPageRoute<void>(
+  //               builder: (context) =>
+  //               const ExchangePage()));
+  //     },
+  //     child: Container(
+  //       padding: const EdgeInsets.all(3),
+  //       decoration: BoxDecoration(
+  //         color: Colors.white,
+  //         borderRadius: BorderRadius.circular(15),
+  //
+  //         boxShadow: [
+  //           BoxShadow(
+  //             color: Colors.black.withOpacity(0.2),
+  //             spreadRadius: 2,
+  //             blurRadius: 4,
+  //             offset: const Offset(0, 3), // changes position of shadow
+  //           ),
+  //         ],
+  //
+  //       ),
+  //       child: Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //         children: [
+  //
+  //           Container(
+  //               decoration: BoxDecoration(
+  //                   color: Colors.black,
+  //                   borderRadius: BorderRadius.circular(15)
+  //                 // shape: BoxShape.circle
+  //               ),
+  //               width: contSize,
+  //               height: contSize,
+  //               child: IconButton(
+  //                 onPressed: () {},
+  //                 icon: const Icon(
+  //                   Network.arrow_right_long,
+  //                   color: Colors.white,
+  //                 ),
+  //                 iconSize: iconElSize,
+  //               )),
+  //
+  //           Padding(
+  //             padding: EdgeInsets.only(
+  //                 left: mediaWitdh*0.0453, //17
+  //                 right: 8
+  //             ),
+  //             child: Text('Обменять',
+  //                 style: TextStyle(
+  //                     fontSize: 15.sp,     //12
+  //                     fontWeight: FontWeight.w500)),
+  //           ),
+  //
+  //           //иконка >>
+  //           Padding(
+  //             padding: EdgeInsets.only(right: mediaWitdh*0.056), //21
+  //             child: SizedBox(
+  //               width: 22,
+  //               height: 20,
+  //               child: Stack(
+  //                 children: const [
+  //                   Positioned(
+  //                       left: 0,
+  //                       child: Icon(
+  //                         Icons.keyboard_arrow_right,
+  //                         size: 22,
+  //                         color: ConstColor.grey,
+  //                       )),
+  //                   Positioned(
+  //                       left: 8,
+  //                       child: Icon(
+  //                         Icons.keyboard_arrow_right,
+  //                         size: 22,
+  //                       )),
+  //                 ],
+  //               ),
+  //             ),
+  //           ),
+  //
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
 }
 

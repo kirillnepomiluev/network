@@ -18,7 +18,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  int _activeProfileTab = 1;
+  int _activeTab = 1;
 
   Widget miniContainer({
     required int position,
@@ -29,7 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
       child: InkWell(
         onTap: (() {
           setState(() {
-            _activeProfileTab = position;
+            _activeTab = position;
           });
         }),
         child: BlurryContainer(
@@ -59,7 +59,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   text,
                   style: TextStyle(
                       color:
-                      _activeProfileTab == position
+                      _activeTab == position
                           ? ConstColor.salad100
                           : Colors.white,
 
@@ -70,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Padding(
                 padding: const EdgeInsets.only(left: 5, right: 16),
                 child:
-                _activeProfileTab == position
+                _activeTab == position
                 ?
                 Icon(
                   Icons.keyboard_arrow_down,
@@ -93,6 +93,11 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
 
+  void changeTab(int position){
+    setState(() {
+      _activeTab = position;
+    });
+  }
 
 
   @override
@@ -121,7 +126,7 @@ class _ProfilePageState extends State<ProfilePage> {
         backgroundColor: ConstColor.blackBack,
         body: Stack(
           children: [
-            _activeProfileTab != 1
+            _activeTab != 1
                 ? Container()
                 : Positioned(
                     // top: mediaHeight*0.21,
@@ -161,16 +166,41 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                miniContainer(position: 1, text: 'Профиль'),
-                                miniContainer(position: 2, text: 'Шкаф'),
-                                miniContainer(position: 3, text: 'Встречи'),
+
+                                ChangeTabContainer(
+                                    position: 1,
+                                    text: 'Профиль',
+                                    activeTabInit: _activeTab,
+                                  func: (){
+                                    changeTab(1);
+                                  },
+                                ),
+
+                                ChangeTabContainer(
+                                  position: 2,
+                                  text: 'Шкаф',
+                                  activeTabInit: _activeTab,
+                                  func: (){
+                                    changeTab(2);
+                                  },
+                                ),
+
+                                ChangeTabContainer(
+                                  position: 3,
+                                  text: 'Встречи',
+                                  activeTabInit: _activeTab,
+                                  func: (){
+                                    changeTab(3);
+                                  },
+                                ),
+
                               ],
                             ),
                           ),
                         ),
 
                         //Нижняя часть профиля
-                        _activeProfileTab != 1
+                        _activeTab != 1
                             ? Container()
                             : Padding(
                                 padding: EdgeInsets.only(
@@ -282,7 +312,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                         /////////////////////////////////////
 
-                        _activeProfileTab != 2
+                        _activeTab != 2
                             ? Container()
                             : Center(
                                 child: Padding(
@@ -777,12 +807,6 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
 }
-
-
-
-
-
-
 
 
 

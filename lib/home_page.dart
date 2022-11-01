@@ -47,8 +47,8 @@ class _HomePageState extends State<HomePage> {
           MeetingsPage(),
           ProfilePage(),
           WalletPage(),
-          MessagesPage(),
           StorePage(),
+          MessagesPage(),
         ],
         onPageChanged: (index) {
           setState(() => _currentPage = index);
@@ -56,23 +56,30 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: Container(
         color: Colors.transparent, //за рамками навигатора
-        padding: const EdgeInsets.all(8.0),
-        child: Card(
-          color: Colors.black, //цвет рамки c округлением
-          shape: RoundedRectangleBorder(
+        padding: const EdgeInsets.symmetric(
+            horizontal: 15,
+          vertical: 8
+            ),
+        // padding: const EdgeInsets.only(bottom: 5),
+        child: Container(
+          decoration: BoxDecoration(
+            color: ConstColor.white10, //цвет рамки c округлением
             borderRadius: BorderRadius.circular(15),
           ),
+          // color: ConstColor.white10, //цвет рамки c округлением
+          // shape: RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.circular(20),
+          // ),
           child: BottomBar(
-            height: 60,
+            // height: 54,
             border: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(20),
               // side:  BorderSide(width: 3),
             ),
-            padding: EdgeInsets.symmetric(
-                vertical: 10, horizontal: mediaWidth * 0.0266 //20
-                ),
+            padding: EdgeInsets.zero,
             itemPadding: EdgeInsets.symmetric(
-                vertical: 10, horizontal: mediaWidth * 0.0426 //16
+                vertical: 17,
+                horizontal: 20 //16
                 ),
             backgroundColor: Colors.transparent,
             selectedIndex: _currentPage,
@@ -84,8 +91,8 @@ class _HomePageState extends State<HomePage> {
               barItem(icon: Network.people, text: 'Встречи'),
               barItem(icon: Network.person, text: 'Профиль'),
               barItem(icon: Network.wallet, text: 'Кошелек'),
-              barItem(icon: Network.chat, text: 'Чат'),
               barItem(icon: Network.cart, text: 'Магазин'),
+              barItem(icon: Network.chat, text: 'Чат'),
             ],
           ),
         ),
@@ -104,16 +111,19 @@ class _HomePageState extends State<HomePage> {
         ),
         title: Text(
           text,
-          style: TextStyle(color: Colors.black, fontSize: 15.sp //12
+          style: TextStyle(
+              color: Colors.black,
+              fontSize: 15.sp, //12
+            fontWeight: FontWeight.w500
               ),
         ),
         activeColor: ConstColor.salad100,
         inactiveIcon: Icon(
           size: iconSize,
           icon,
-          color: ConstColor.salad100,
+          color: Colors.white,
         ),
-        backgroundColorOpacity: 1);
+        backgroundColorOpacity: 1
+    );
   }
 }
-

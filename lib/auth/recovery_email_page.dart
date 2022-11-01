@@ -61,7 +61,7 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
                       hintStyle: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: ConstColor.greyText)
+                          color: ConstColor.textGray)
                   ),
                 ),
               ),

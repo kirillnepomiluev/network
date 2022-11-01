@@ -248,7 +248,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: ConstColor.greyText
+                              color: ConstColor.textGray
                           ),
                         ),
                       ),
@@ -259,7 +259,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                           '_____________________________',
                           style: TextStyle(
                               fontSize: 10,
-                              color: ConstColor.greyText,
+                              color: ConstColor.textGray,
                               fontWeight: FontWeight.bold),
                         ),
                       )
@@ -323,7 +323,7 @@ class _EnterInfoContainerPassState extends State<EnterInfoContainerPass> {
                 'Отправленный на номер',
                 style: TextStyle(
                     fontSize: getResSize(14),
-                    color: ConstColor.greyText,
+                    color: ConstColor.textGray,
                     fontWeight: FontWeight.w400),
               ),
             ),

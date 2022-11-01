@@ -39,12 +39,14 @@ class ConstColor {
       const Color(0xFF3E4C14).withOpacity(0.4); //темно-салатовый
 
   // static Color white10 = Colors.white.withOpacity(0.1); //Полупрозрачный белый
+  static Color white05 = Colors.white.withOpacity(0.05); //Полупрозрачный белый
   static Color white10 = Colors.white.withOpacity(0.1); //Полупрозрачный белый
   static Color black15 = Colors.black.withOpacity(0.7); //Полупрозрачный чёрный
 
   static const Color grey = Color(0xFFA9A9A9); //серый
-  static const Color greyText = Color(0xFFBDBABA); //серый
-  static const Color whiteText = Colors.white; //серый
+  static const Color textGray = Color(0xFFBDBABA); //серый
+  static const Color textWhite = Colors.white; //серый
+  static const Color textBlack = Colors.black; //серый
   static const Color grey3 = Color(0xFF828282); //серый3
   // static const Color blackBack = Color(0xFF0F1511);
   static const Color blackBack = Colors.black;

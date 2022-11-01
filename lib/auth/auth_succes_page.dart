@@ -86,7 +86,7 @@ class _AuthSuccesPageState extends State<AuthSuccesPage> {
                                     Constants.strLoremIpsum,
                                     maxLines: 2,
                                     style: TextStyle(
-                                        color: ConstColor.greyText,
+                                        color: ConstColor.textGray,
                                         fontSize: 14,
                                         fontWeight: FontWeight.w400),
                                   ),

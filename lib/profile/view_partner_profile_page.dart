@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/components/general_widgets.dart';
+import 'package:network_app/components/network_icons.dart';
+import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/meetings/meetings_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -15,12 +17,16 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade500,
+      backgroundColor: ConstColor.blackBack,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [viewAvatarContainer(), _statColumn()],
+            children: [
+
+              viewAvatarContainer(),
+              _statColumn()
+            ],
           ),
         ),
       ),
@@ -32,142 +38,192 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
 
     final imageWidth = 0.624 * mediaWidth;
 
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 0),
-      child: Container(
-        width: mediaWidth,
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: Colors.grey.shade100,
-          borderRadius:
-              const BorderRadius.vertical(bottom: Radius.circular(50)),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
+    return Container(
+      // color: Colors.red,
+      height: 662,
+      width: mediaWidth,
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+
+          Container(
+            width: mediaWidth,
+            // height: 630,
+            child: Image.asset(
+              'assets/images/avatars/avatar_3.png',
+              fit: BoxFit.fitWidth,
+              alignment: Alignment.topCenter,
+            ),
+          ),
+
+          Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0.4, 1],
+                    colors: [
+                      Colors.transparent,
+                      Colors.black.withOpacity(0.88)
+                    ]
+                )
+            ),
+          ),
+
+          Container(
+            // width: mediaWidth,
+            padding: const EdgeInsets.all(10),
+            decoration: const BoxDecoration(
+              color: Colors.transparent,
+              borderRadius:
+                  BorderRadius.vertical(bottom: Radius.circular(50)),
+            ),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                BackButtonCustom(),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 14, horizontal: 18),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade500,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Center(
-                      child: Text(
-                    'Деловая встреча',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15.5.sp, //12
-                        fontWeight: FontWeight.w400),
-                  )),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+
+                    BackButtonCustom(contColor: ConstColor.black1A.withOpacity(0.65)),
+
+                    Container(
+                      padding:
+                          const EdgeInsets.symmetric(vertical: 14, horizontal: 18),
+                      decoration: BoxDecoration(
+                        color: ConstColor.salad100,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Center(
+                          child: Text(
+                        'Деловая встреча',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15.5.sp, //12
+                            fontWeight: FontWeight.w400),
+                      )),
+                    ),
+                  ],
                 ),
+
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 43),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text('Джоли, 28',
+                              style: TextStyle(
+                                  fontSize: 24.sp, //32
+                                  color: ConstColor.textWhite,
+                                  fontWeight: FontWeight.w600)),
+
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Icon(
+                              Icons.verified,
+                              color: ConstColor.salad100,
+                              size: 22.sp, //26
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(top: 11),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+
+                          Text(
+                            'Уровень "Базовый"',
+                            style: TextStyle(
+                                fontSize: 16.5.sp, //14
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400),
+                          ),
+
+                          rhombusText()
+
+                        ],
+                      ),
+                    ),
+
+
+                    Padding(
+                      padding: const EdgeInsets.only(top: 26),
+                      child:
+
+                      Text('250 м в направлении',
+                          style: TextStyle(
+                              fontSize: 16.5.sp, //14
+                              color: ConstColor.textWhite,
+                              fontWeight: FontWeight.w400
+                          )),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10,),
+                      child: Container(
+                          padding:
+                              const EdgeInsets.symmetric(vertical: 10, horizontal: 18),
+                          decoration: BoxDecoration(
+                              color: ConstColor.white10,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+
+                              Text(
+                                'Открыть карту',
+                                style: TextStyle(
+                                    color: ConstColor.textWhite,
+                                    fontSize: 16.5.sp, //14
+                                    fontWeight: FontWeight.w400
+                                ),
+                              ),
+
+                              Padding(
+                                padding: const EdgeInsets.only(left: 12),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      color: ConstColor.salad100,
+                                      shape: BoxShape.circle),
+                                  width: 0.048 * mediaWidth, //18
+                                  height: 0.048 * mediaWidth,
+                                  child: Icon(
+                                    Icons.call_received,
+                                    size: 15.sp, //11
+                                    color: Colors.black,
+                                  ), //Icons.turn
+                                ),
+                              ),
+                            ],
+                          )
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 30,
+                        bottom: 20,
+                      ),
+                      child: MeetRow(func: (){
+                        Navigator.of(context).push(MaterialPageRoute<void>(
+                            builder: (context) => const ViewPartnerProfilePage()));
+                      }),
+                    ),
+                  ],
+                )
+
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 37),
-              child: Container(
-                width: imageWidth, //234
-                height: 0.9359 * imageWidth, //219
-                decoration: BoxDecoration(
-                    color: Colors.red, borderRadius: BorderRadius.circular(10)),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 43),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text('Джоли, 28',
-                      style: TextStyle(
-                          fontSize: 24.sp, //32
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600)),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 19),
-                    child: Icon(
-                      Icons.verified, color: Colors.black,
-                      size: 22.sp, //26
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Text(
-                'Уровень "Базовый"',
-                style: TextStyle(
-                    fontSize: 16.5.sp, //14
-                    color: Colors.grey.shade500,
-                    fontWeight: FontWeight.w400),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Text(
-                '+150 баллов',
-                style: TextStyle(
-                    fontSize: 16.5.sp, //14
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text('250 м в направлении',
-                      style: TextStyle(
-                          fontSize: 16.5.sp, //14
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400)),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                          color: Colors.black, shape: BoxShape.circle),
-                      width: 0.048 * mediaWidth, //18
-                      height: 0.048 * mediaWidth,
-                      child: Icon(
-                        Icons.call_received,
-                        size: 15.sp, //11
-                        color: Colors.white,
-                      ), //Icons.turn
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 13, bottom: 19),
-              child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 7, horizontal: 18),
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade400,
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Text(
-                    'Открыть карту',
-                    style: TextStyle(
-                        fontSize: 16.5.sp, //14
-                        fontWeight: FontWeight.w400),
-                  )),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                bottom: 31,
-              ),
-              child: meetRow(context),
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -180,44 +236,33 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
+
+            titleStatText('Статус'),
+            textField('ищу партнеров для бизнеса', isEnable: false),
+
+            titleStatText('Базовые данные'),
+            textField('Женщина, 37 лет, свободна, цель встречи: деловая.', isEnable: false),
+            titleStatText('Интересы'),
+
             Padding(
-              padding: const EdgeInsets.only(top: 0, bottom: 0),
-              child: Center(
-                child: Container(
-                  // alignment: Alignment.center,
-                  width: 35,
-                  height: 4,
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade400,
-                      borderRadius: BorderRadius.circular(15)),
-                ),
+              padding: const EdgeInsets.only(top: 20),
+              child: Wrap(
+                spacing: 8,
+                runSpacing: 10,
+                direction: Axis.horizontal,
+                children: [
+                  hobbitsContainer('Большой теннис', hasEdit: false),
+                  hobbitsContainer('Бассейн', hasEdit: false),
+                  hobbitsContainer('Управление', hasEdit: false),
+                  hobbitsContainer('Маркетинг', hasEdit: false),
+                ],
               ),
             ),
-            titleStatText('Статус'),
-            textField('Sed aenean est eget sit eget at tellus sed.',
-                isEnable: false),
-            titleStatText('Базовые данные'),
-            textField('Женщина, 37 лет, свободна, цель встречи: деловая.',
-                isEnable: false),
-            titleStatText('Интересы'),
-            Wrap(
-              spacing: 8,
-              runSpacing: 10,
-              direction: Axis.horizontal,
-              children: [
-                hobbitsContainer('Большой теннис'),
-                hobbitsContainer('Маркетинг'),
-                hobbitsContainer('Управление'),
-                hobbitsContainer('Маркетинг'),
-                hobbitsContainer('Большой теннис'),
-              ],
-            ),
+
             titleStatText('Обо мне'),
-            textField(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices amet tellus.'),
+            textField('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices amet tellus.'),
             titleStatText('Сфера деятельности'),
-            textField(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget varius a id in amet.'),
+            textField('Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget varius a id in amet.'),
           ],
         ),
       );

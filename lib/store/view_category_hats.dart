@@ -41,7 +41,7 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
                     text,
                     style: TextStyle(
                         fontSize: 16.5.sp,   //14
-                        color: _active==position? ConstColor.salad100 : ConstColor.whiteText,
+                        color: _active==position? ConstColor.salad100 : ConstColor.textWhite,
                         fontWeight: FontWeight.w400
                     ),
                   ),
@@ -49,7 +49,7 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
                 Icon(
                   _active==position? Icons.keyboard_arrow_down_sharp: Icons.keyboard_arrow_right,
                   size: 20,   //14
-                  color: _active==position? ConstColor.salad100 : ConstColor.whiteText,
+                  color: _active==position? ConstColor.salad100 : ConstColor.textWhite,
                 )
               ],
             ),
@@ -84,7 +84,7 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
                         style: TextStyle(
                             fontSize: 18.5.sp,   //18
                             fontWeight: FontWeight.w600,
-                            color: ConstColor.whiteText
+                            color: ConstColor.textWhite
                         ),
                       ))
                     ],
@@ -106,7 +106,7 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
                         maxLines: 3,
                         overflow: TextOverflow.clip,
                         style: TextStyle(
-                          color: ConstColor.whiteText,
+                          color: ConstColor.textWhite,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                         )),
@@ -239,7 +239,7 @@ Widget hatContainer({
                   style: TextStyle(
                       fontSize: 15.5.sp, //12
                       fontWeight: FontWeight.w400,
-                      color: ConstColor.whiteText
+                      color: ConstColor.textWhite
                   ),
                 ),
               ),

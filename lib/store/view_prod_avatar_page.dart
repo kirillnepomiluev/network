@@ -156,7 +156,7 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 24, //12
-                      color: ConstColor.whiteText,
+                      color: ConstColor.textWhite,
                     ),
                   ),
                 ),
@@ -164,26 +164,6 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
               ],
             ),
           ),
-
-          // Padding(
-          //   padding: const EdgeInsets.only(top: 30),
-          //   child: Text(
-          //     isHat ? 'Головной убор' : 'Аватар',
-          //     style: TextStyle(
-          //         fontSize: 15.sp, //12
-          //         fontWeight: FontWeight.w600),
-          //   ),
-          // ),
-          //
-          // Padding(
-          //   padding: const EdgeInsets.only(top: 10),
-          //   child: Text(
-          //     isHat ? '#0863246' : 'Имя аватара',
-          //     style: TextStyle(
-          //         fontSize: 24.sp, //32
-          //         fontWeight: FontWeight.w600),
-          //   ),
-          // ),
 
           Padding(
             padding: const EdgeInsets.only(top: 25, bottom: 20),

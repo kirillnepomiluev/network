@@ -9,6 +9,34 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'dart:ui' as ui;
 
 
+
+
+
+Widget rhombusText() => Row(
+  children: [
+    Text(
+      '+150',
+      style: TextStyle(
+          fontSize: 16.5.sp, //14
+          color: ConstColor.salad100,
+          fontWeight: FontWeight.w400),
+    ),
+
+    Padding(
+      padding: const EdgeInsets.only(left: 5),
+      child: Icon(
+        Network.rhombus,
+        color: ConstColor.salad100,
+        size: 15,
+      ),
+    )
+
+  ],
+);
+
+
+
+
 class NotificationIcon extends StatelessWidget {
   const NotificationIcon({Key? key}) : super(key: key);
 
@@ -228,38 +256,44 @@ class AuthBackScaffold extends StatelessWidget {
 class IconContainer extends StatelessWidget {
   IconData icon;
   Color iconColor;
-  double iconSize;
+  Color? contColor;
+  double? iconSize;
+  double? contSize;
   Function? func;
   IconContainer(
       {Key? key,
       required this.icon,
-      required this.func,
+      this.func,
       this.iconColor = Colors.white,
-      this.iconSize = 43})
+      this.contColor,
+      this.iconSize,
+      this.contSize
+      })
       : super(key: key);
 
-  final double contSize = 43;
+  // final double contSize = 43;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: contSize,
-      height: contSize,
+      width: contSize??28.sp,    //43
+      height: contSize??28.sp,
       decoration: BoxDecoration(
-        color: ConstColor.white10,
+        color: contColor ?? ConstColor.white10,
         borderRadius: BorderRadius.circular(15),
       ),
       child: IconButton(
           onPressed: () {
-            if (func == null) {
-              Navigator.of(context).pop();
-            } else {
+            if (func != null) {
               func!();
             }
           },
           icon:
               // icon
-              Icon(icon, color: iconColor, size: iconSize
+              Icon(
+                  icon,
+                  color: iconColor,
+                  size: iconSize??20.sp //20
                   // size: 15.sp  //13
                   )),
     );
@@ -268,55 +302,48 @@ class IconContainer extends StatelessWidget {
 
 class BackButtonCustom extends StatelessWidget {
   Function? func;
-  BackButtonCustom({Key? key, this.func}) : super(key: key);
+  Color? contColor;
+  BackButtonCustom({Key? key, this.func, this.contColor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Align(
         alignment: Alignment.topLeft,
         child: IconContainer(
-          func: func,
+          func: func ?? Navigator.of(context).pop,
           icon: Network.arrow_back,
           iconSize: 14.sp,
-        )
-        );
+          contColor: contColor,
+        ));
   }
 }
 
-
-
-
-
-
-
-
-
 Widget blurCircle({double sigma = 55, double radius = 271}) => SizedBox(
-  width: radius,
-  height: radius,
-  child: Stack(
-    children: [
-      Container(
-        decoration: const BoxDecoration(
-          color: ConstColor.salad100,
-          shape: BoxShape.circle,
-        ),
-        child: const Center(
-            child: Text(
+      width: radius,
+      height: radius,
+      child: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              color: ConstColor.salad100,
+              shape: BoxShape.circle,
+            ),
+            child: const Center(
+                child: Text(
               'фывфывф',
               style: TextStyle(color: Colors.black),
             )),
+          ),
+          BackdropFilter(
+            filter: ui.ImageFilter.blur(
+              sigmaX: sigma,
+              sigmaY: sigma,
+            ),
+            child: Container(),
+          ),
+        ],
       ),
-      BackdropFilter(
-        filter: ui.ImageFilter.blur(
-          sigmaX: sigma,
-          sigmaY: sigma,
-        ),
-        child: Container(),
-      ),
-    ],
-  ),
-);
+    );
 
 Widget statContainer({
   required BuildContext context,
@@ -342,12 +369,12 @@ Widget statContainer({
         title == ''
             ? Container()
             : Text(
-          title,
-          style: TextStyle(
-              fontSize: 23.sp, //28
-              fontWeight: FontWeight.w500,
-              color: Colors.white),
-        ),
+                title,
+                style: TextStyle(
+                    fontSize: 23.sp, //28
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
+              ),
         Padding(
           padding: const EdgeInsets.only(top: 5),
           child: Text(
@@ -415,26 +442,26 @@ Widget statContainer({
 // }
 
 Widget titleStatText(String text) => Padding(
-  padding: const EdgeInsets.only(
-    top: 20,
-  ),
-  child: Text(
-    text,
-    style: TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-        fontSize: 19.sp //20
-    ),
-  ),
-);
+      padding: const EdgeInsets.only(
+        top: 20,
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 19.sp //20
+            ),
+      ),
+    );
 
 Widget progressParametr(
     {required String text1,
-      required IconData icon,
-      required String text2,
-      bool isMeetingRow = false,
-      double progress = 0,
-      required BuildContext context}) {
+    required IconData icon,
+    required String text2,
+    bool isMeetingRow = false,
+    double progress = 0,
+    required BuildContext context}) {
   final double fontSize = 16; //16
 
   return Padding(
@@ -449,44 +476,42 @@ Widget progressParametr(
             }),
             child: isMeetingRow
                 ? Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-
-                Text(
-                  text1,
-                  style: TextStyle(
-                    color: ConstColor.greyText,
-                    fontSize: getResSize(14),
-                  ),
-                ),
-
-                Text(
-                  text2,
-                  style: TextStyle(
-                    color: ConstColor.greyText,
-                    fontSize: getResSize(14),
-                  ),
-                ),
-              ],
-            )
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        text1,
+                        style: TextStyle(
+                          color: ConstColor.textGray,
+                          fontSize: getResSize(14),
+                        ),
+                      ),
+                      Text(
+                        text2,
+                        style: TextStyle(
+                          color: ConstColor.textGray,
+                          fontSize: getResSize(14),
+                        ),
+                      ),
+                    ],
+                  )
                 : Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                BuildRichTextTwo(
-                  text1: text1,
-                  text2: text2,
-                  fontSize: fontSize,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 13),
-                  child: Icon(
-                    Network.info,
-                    color: Colors.white,
-                    size: 18,
-                  ),
-                )
-              ],
-            )),
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      BuildRichTextTwo(
+                        text1: text1,
+                        text2: text2,
+                        fontSize: fontSize,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 13),
+                        child: Icon(
+                          Network.info,
+                          color: Colors.white,
+                          size: 18,
+                        ),
+                      )
+                    ],
+                  )),
         Padding(
           padding: const EdgeInsets.only(top: 12),
           child: Stack(
@@ -527,76 +552,73 @@ Widget progressParametr(
   );
 }
 
-Widget hobbitsContainer(String text, {bool isDark = true}) => Container(
-  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-  decoration: BoxDecoration(
-      color: Colors.white.withOpacity(0.1),
-      // color: isDark ? Colors.grey.shade300 : Colors.grey.shade200,
-      borderRadius: BorderRadius.circular(10)),
-  child: Row(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      Text(
-        text,
-        style: TextStyle(
-            color: Colors.white,
-            fontSize: 16.5.sp, //14
-            fontWeight: FontWeight.w400
-        ),
+Widget hobbitsContainer(String text, {bool hasEdit = true}) => Container(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.1),
+          // color: isDark ? Colors.grey.shade300 : Colors.grey.shade200,
+          borderRadius: BorderRadius.circular(10)),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            text,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.5.sp, //14
+                fontWeight: FontWeight.w400),
+          ),
+          hasEdit==false? Container():
+          Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: Icon(
+              Icons.close_rounded,
+              size: 22,
+              color: ConstColor.salad100,
+            ),
+          )
+        ],
       ),
-
-      Padding(
-        padding: const EdgeInsets.only(left: 8),
-        child: Icon(Icons.close_rounded,
-          size: 22,
-          color: ConstColor.salad100,
-        ),
-      )
-
-    ],
-  ),
-);
+    );
 
 Widget textField(String hintText, {bool isEnable = true}) => Padding(
-  padding: const EdgeInsets.only(top: 10),
-  child: TextFormField(
-    enabled: isEnable,
-    maxLines: null,
-    style: TextStyle(
-        fontSize: 18, //18
-        fontWeight: FontWeight.w400,
-        color: Colors.white
-    ),
-    initialValue: hintText,
-    autofocus: false,
-    decoration: InputDecoration(
-      isDense: true,
-      contentPadding:
-      const EdgeInsets.symmetric(horizontal: 16, vertical: 19),
-      focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(width: 1, color: ConstColor.salad100),
-          borderRadius: BorderRadius.circular(20)),
-      enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(width: 1, color: ConstColor.salad100),
-          borderRadius: BorderRadius.circular(20)),
-      disabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(width: 1, color: ConstColor.salad100),
-          borderRadius: BorderRadius.circular(20)),
-      // filled: true,
-      // fillColor: Colors.white,
-    ),
-  ),
-);
-
-
-
+      padding: const EdgeInsets.only(top: 10),
+      child: TextFormField(
+        enabled: isEnable,
+        maxLines: null,
+        style: TextStyle(
+            fontSize: 18, //18
+            fontWeight: FontWeight.w400,
+            color: Colors.white),
+        initialValue: hintText,
+        autofocus: false,
+        decoration: InputDecoration(
+          isDense: true,
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 19),
+          focusedBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 1, color: ConstColor.salad100),
+              borderRadius: BorderRadius.circular(20)),
+          enabledBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 1, color: ConstColor.salad100),
+              borderRadius: BorderRadius.circular(20)),
+          disabledBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 1, color: ConstColor.salad100),
+              borderRadius: BorderRadius.circular(20)),
+          // filled: true,
+          // fillColor: Colors.white,
+        ),
+      ),
+    );
 
 void opeinInfoSheet({required BuildContext context, required String title}) {
-
   final mediaTop = MediaQuery.of(context).viewPadding.top;
   final mediaHeight = MediaQuery.of(context).size.height;
   final mediaWidth = MediaQuery.of(context).size.width;
-  final _height = mediaHeight*0.9;
+  final _height = mediaHeight * 0.9;
 
   showModalBottomSheet<void>(
       backgroundColor: Colors.transparent,
@@ -605,89 +627,83 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
           borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
       context: context,
       builder: (BuildContext context) => Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          Container(
-            // blur: 30,
-            color: Colors.transparent,
-            // decoration: BoxDecoration(
-            //     color: Colors.red,
-            //     borderRadius:
-            //         const BorderRadius.vertical(top: Radius.circular(30))),
-            // padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 15),
-            height: _height,
-            child: SingleChildScrollView(
-              child: Column(
-                // physics: NeverScrollableScrollPhysics(),
-                children: [
-
-                  CustomPaint(
-                    size: Size(mediaWidth, (mediaWidth*0.07733333333333334).toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-                    painter: BottomSheetMinPaint(color: Colors.black.withOpacity(0.5),),
-                  ),
-
-                  BlurryContainer(
-                    borderRadius: BorderRadius.zero,
-                    height: _height-mediaWidth*0.07733333333333334,
-                    blur: 20,
-                    color: Colors.transparent,
-                    padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-
-                        Text('Энергия',
-                          style: TextStyle(
-                              fontSize: 32,
-                              fontWeight: FontWeight.w600,
-                              color: ConstColor.salad100
-                          ),
+            alignment: Alignment.topCenter,
+            children: [
+              Container(
+                // blur: 30,
+                color: Colors.transparent,
+                // decoration: BoxDecoration(
+                //     color: Colors.red,
+                //     borderRadius:
+                //         const BorderRadius.vertical(top: Radius.circular(30))),
+                // padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 15),
+                height: _height,
+                child: SingleChildScrollView(
+                  child: Column(
+                    // physics: NeverScrollableScrollPhysics(),
+                    children: [
+                      CustomPaint(
+                        size: Size(
+                            mediaWidth,
+                            (mediaWidth * 0.07733333333333334)
+                                .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                        painter: BottomSheetMinPaint(
+                          color: Colors.black.withOpacity(0.5),
                         ),
-
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Text(
-                            Constants.strLoremIpsum+Constants.strLoremIpsum+Constants.strLoremIpsum
-                            // + '\n' +
-                            // Constants.strLoremIpsum+Constants.strLoremIpsum+Constants.strLoremIpsum
-                            // + '\n' +
-                            // Constants.strLoremIpsum+Constants.strLoremIpsum+Constants.strLoremIpsum
-                            ,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400
+                      ),
+                      BlurryContainer(
+                        borderRadius: BorderRadius.zero,
+                        height: _height - mediaWidth * 0.07733333333333334,
+                        blur: 20,
+                        color: Colors.transparent,
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15, top: 15),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              'Энергия',
+                              style: TextStyle(
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.w600,
+                                  color: ConstColor.salad100),
                             ),
-                          ),
-                        )
-
-                      ],
-                    ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: Text(
+                                Constants.strLoremIpsum +
+                                    Constants.strLoremIpsum +
+                                    Constants.strLoremIpsum
+                                // + '\n' +
+                                // Constants.strLoremIpsum+Constants.strLoremIpsum+Constants.strLoremIpsum
+                                // + '\n' +
+                                // Constants.strLoremIpsum+Constants.strLoremIpsum+Constants.strLoremIpsum
+                                ,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-
-                ],
+                ),
               ),
-            ),
-          ),
-
-          CustomPaint(
-            size: Size(mediaWidth, (mediaWidth*0.07733333333333334).toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-            painter: BottomSheetMinPaint(color: Colors.transparent),
-          ),
-
-        ],
-      )
-  );
+              CustomPaint(
+                size: Size(
+                    mediaWidth,
+                    (mediaWidth * 0.07733333333333334)
+                        .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                painter: BottomSheetMinPaint(color: Colors.transparent),
+              ),
+            ],
+          ));
 }
-
-
-
-
-
-
-
 
 ButtonStyle buttonStyleCustom({
   double padH = 61,
@@ -707,28 +723,36 @@ ButtonStyle buttonStyleCustom({
     );
 
 class BuildRichTextTwo extends StatelessWidget {
-  final String text1;
-  final String text2;
+  String text1;
+  String text2;
   final double fontSize;
   FontWeight fontWeight1;
   FontWeight fontWeight2;
+  Color color1;
+  Color color2;
+  TextAlign textAlign;
+
   BuildRichTextTwo({
     Key? key,
-    required this.text1,
-    required this.text2,
+    this.text1='',
+    this.text2='',
     required this.fontSize,
     this.fontWeight1 = FontWeight.w400,
     this.fontWeight2 = FontWeight.w700,
+    this.color1 = ConstColor.textWhite,
+    this.color2 = ConstColor.salad100,
+    this.textAlign = TextAlign.start,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return RichText(
+      textAlign: textAlign,
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
       text: TextSpan(
         style: TextStyle(
-          color: Colors.white,
+          color: color1,
           fontSize: fontSize, // 20.sp, //24
           fontWeight: fontWeight1,
         ),
@@ -740,7 +764,7 @@ class BuildRichTextTwo extends StatelessWidget {
               text: text2,
               style: TextStyle(
                 fontWeight: fontWeight2,
-                color: ConstColor.salad100,
+                color: color2,
               )),
         ],
       ),
@@ -749,21 +773,12 @@ class BuildRichTextTwo extends StatelessWidget {
   }
 }
 
-
-
-
-
-
-
-
-
-
 class StatColumn extends StatelessWidget {
   const StatColumn({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return      Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // titleStatText('Уровень Базовый'),
@@ -771,7 +786,7 @@ class StatColumn extends StatelessWidget {
         BuildRichTextTwo(
           text1: 'Уровень ',
           text2: 'Базовый',
-          fontSize: 19.sp,  //20
+          fontSize: 19.sp, //20
           fontWeight1: FontWeight.w600,
           fontWeight2: FontWeight.w600,
         ),
@@ -782,85 +797,107 @@ class StatColumn extends StatelessWidget {
             text2: 'Еще 25 встреч',
             progress: 0.25,
             isMeetingRow: true,
-            icon: Network.people
-        ),
+            icon: Network.people),
 
         titleStatText('Статистика'),
         progressParametr(
             context: context,
             text1: 'Энергии на встречи  ',
             text2: '3/5',
-            icon: Network.electric
-        ),
+            icon: Network.electric),
 
         progressParametr(
             context: context,
             text1: 'Скорость восстановления  ',
             text2: 'x1.5',
-            icon: Network.speedometer
-        ),
+            icon: Network.speedometer),
         progressParametr(
             context: context,
             text1: 'Баллы за встречи  ',
             text2: '150',
-            icon: Network.rhombus
-        ),
+            icon: Network.rhombus),
         progressParametr(
           context: context,
           text1: 'Количество сообщений в день  ',
           text2: '200',
-          icon:
-          Network.email_outlined,
+          icon: Network.email_outlined,
           // Icons.email_outlined
         ),
         progressParametr(
             context: context,
             text1: 'Количество лайков в день  ',
             text2: '50',
-            icon: Network.heart
-        ),
+            icon: Network.heart),
       ],
     );
   }
 }
 
-
-
 class BottomSheetMinPaint extends CustomPainter {
-
   final Color? color;
 
   BottomSheetMinPaint({this.color});
 
   @override
   void paint(Canvas canvas, Size size) {
-
     Path path_0 = Path();
-    path_0.moveTo(size.width*0.3595147,size.height*0.2597538);
-    path_0.cubicTo(size.width*0.3422027,size.height*0.1122728,size.width*0.3226800,0,size.width*0.3019493,0);
-    path_0.lineTo(size.width*0.08000000,0);
-    path_0.cubicTo(size.width*0.03581733,0,0,size.height*0.4631552,0,size.height*1.034483);
-    path_0.lineTo(0,size.height*23.20690);
-    path_0.cubicTo(0,size.height*23.77824,size.width*0.03581733,size.height*24.24138,size.width*0.08000000,size.height*24.24138);
-    path_0.lineTo(size.width*0.9200000,size.height*24.24138);
-    path_0.cubicTo(size.width*0.9641840,size.height*24.24138,size.width,size.height*23.77824,size.width,size.height*23.20690);
-    path_0.lineTo(size.width,size.height*1.034483);
-    path_0.cubicTo(size.width,size.height*0.4631552,size.width*0.9641840,0,size.width*0.9200000,0);
-    path_0.lineTo(size.width*0.6953840,0);
-    path_0.cubicTo(size.width*0.6746533,0,size.width*0.6551307,size.height*0.1122728,size.width*0.6378187,size.height*0.2597534);
-    path_0.cubicTo(size.width*0.6015173,size.height*0.5690138,size.width*0.5525467,size.height*0.7586207,size.width*0.4986667,size.height*0.7586207);
-    path_0.cubicTo(size.width*0.4447867,size.height*0.7586207,size.width*0.3958160,size.height*0.5690138,size.width*0.3595147,size.height*0.2597538);
+    path_0.moveTo(size.width * 0.3595147, size.height * 0.2597538);
+    path_0.cubicTo(size.width * 0.3422027, size.height * 0.1122728,
+        size.width * 0.3226800, 0, size.width * 0.3019493, 0);
+    path_0.lineTo(size.width * 0.08000000, 0);
+    path_0.cubicTo(size.width * 0.03581733, 0, 0, size.height * 0.4631552, 0,
+        size.height * 1.034483);
+    path_0.lineTo(0, size.height * 23.20690);
+    path_0.cubicTo(
+        0,
+        size.height * 23.77824,
+        size.width * 0.03581733,
+        size.height * 24.24138,
+        size.width * 0.08000000,
+        size.height * 24.24138);
+    path_0.lineTo(size.width * 0.9200000, size.height * 24.24138);
+    path_0.cubicTo(size.width * 0.9641840, size.height * 24.24138, size.width,
+        size.height * 23.77824, size.width, size.height * 23.20690);
+    path_0.lineTo(size.width, size.height * 1.034483);
+    path_0.cubicTo(size.width, size.height * 0.4631552, size.width * 0.9641840,
+        0, size.width * 0.9200000, 0);
+    path_0.lineTo(size.width * 0.6953840, 0);
+    path_0.cubicTo(
+        size.width * 0.6746533,
+        0,
+        size.width * 0.6551307,
+        size.height * 0.1122728,
+        size.width * 0.6378187,
+        size.height * 0.2597534);
+    path_0.cubicTo(
+        size.width * 0.6015173,
+        size.height * 0.5690138,
+        size.width * 0.5525467,
+        size.height * 0.7586207,
+        size.width * 0.4986667,
+        size.height * 0.7586207);
+    path_0.cubicTo(
+        size.width * 0.4447867,
+        size.height * 0.7586207,
+        size.width * 0.3958160,
+        size.height * 0.5690138,
+        size.width * 0.3595147,
+        size.height * 0.2597538);
     path_0.close();
 
-    Paint paint_0_fill = Paint()..style=PaintingStyle.fill;
-    paint_0_fill.color = color??ConstColor.white10;
-    canvas.drawPath(path_0,paint_0_fill);
+    Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
+    paint_0_fill.color = color ?? ConstColor.white10;
+    canvas.drawPath(path_0, paint_0_fill);
 
-    Paint paint_1_stroke = Paint()..style=PaintingStyle.stroke..strokeWidth=size.width*0.01866667;
-    paint_1_stroke.color=Color(0xffE2FF2D).withOpacity(1.0);
+    Paint paint_1_stroke = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = size.width * 0.01866667;
+    paint_1_stroke.color = Color(0xffE2FF2D).withOpacity(1.0);
     paint_1_stroke.strokeCap = StrokeCap.round;
-    canvas.drawLine(Offset(size.width*0.4560000,size.height*0.1206897),Offset(size.width*0.5440320,size.height*0.1206897),paint_1_stroke);
-
+    canvas.drawLine(
+        Offset(size.width * 0.4560000, size.height * 0.1206897),
+        Offset(size.width * 0.5440320, size.height * 0.1206897),
+        paint_1_stroke);
   }
 
   @override
@@ -868,8 +905,6 @@ class BottomSheetMinPaint extends CustomPainter {
     return true;
   }
 }
-
-
 
 class RadioList extends StatefulWidget {
   final List<String> listOptions;
@@ -922,8 +957,7 @@ class _RadioListState extends State<RadioList> {
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 16.8.sp, //14
-                              fontWeight: FontWeight.w400
-                          ),
+                              fontWeight: FontWeight.w400),
                         )),
                     value: widget.listOptions[index],
                     groupValue: groupValue,
@@ -935,6 +969,254 @@ class _RadioListState extends State<RadioList> {
               );
             }),
       ),
+    );
+  }
+}
+
+class ChangeTabContainer extends StatelessWidget {
+  int activeTab = 1;
+  final int activeTabInit;
+  final int position;
+  final String text;
+  final Function func;
+
+  ChangeTabContainer({
+    Key? key,
+    required this.func,
+    required this.activeTabInit,
+    required this.position,
+    required this.text,
+  }) : super(key: key) {
+    activeTab = activeTabInit;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 10),
+      child: InkWell(
+        onTap: () {
+          func();
+        },
+        child: BlurryContainer(
+          blur: 20,
+          color: ConstColor.white10,
+          borderRadius: BorderRadius.circular(20),
+          padding: EdgeInsets.symmetric(
+            vertical: 18.5.sp, //19
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Text(
+                  text,
+                  style: TextStyle(
+                      color: activeTab == position
+                          ? ConstColor.salad100
+                          : Colors.white,
+                      fontSize: 16.5.sp, //14
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 5, right: 16),
+                child: activeTab == position
+                    ? Icon(
+                        Icons.keyboard_arrow_down,
+                        color: ConstColor.salad100,
+                        size: 19.sp, //20
+                      )
+                    : Icon(
+                        Icons.keyboard_arrow_right,
+                        color: Colors.white,
+                        size: 19.sp, //20
+                      ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class MeetRow extends StatelessWidget {
+  Function? func;
+  MeetRow({Key? key, this.func}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+
+    final mediaWitdh = MediaQuery.of(context).size.width;
+    final double contSize = mediaWitdh*0.128;   //48
+    final double iconSize = 19.sp;     //25
+    final double iconElSize = 18.5.sp;   //20
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+
+
+        IconContainer(
+          icon:  Icons.close_rounded,
+          iconSize: iconSize,
+          contSize: contSize,
+        ),
+
+        // Container(
+        //     decoration: BoxDecoration(
+        //         color: Colors.black,
+        //         borderRadius: BorderRadius.circular(15)
+        //       // shape: BoxShape.circle
+        //     ),
+        //     width: contSize,
+        //     height: contSize,
+        //     child: IconButton(
+        //       onPressed: () {},
+        //       icon: const Icon(
+        //         Icons.close_outlined,
+        //         color: Colors.white,
+        //       ),
+        //       iconSize: iconSize,
+        //     )),
+
+        InkWell(
+          onTap: (){
+
+            if(func!=null){
+              func!();
+            }
+
+          },
+          child: Container(
+            // height: 54,
+            // width: 209,
+            padding: const EdgeInsets.all(3),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  spreadRadius: 2,
+                  blurRadius: 4,
+                  offset: const Offset(0, 3), // changes position of shadow
+                ),
+              ],
+
+            ),
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+
+                IconContainer(
+                  icon: Network.electric,
+                  iconSize: iconSize,
+                  contSize: contSize,
+                  contColor: ConstColor.black1A,
+                  func: (){
+
+                    if(func!=null){
+                      func!();
+                    }
+                    // Navigator.of(context).push(
+                    //     MaterialPageRoute<void>(
+                    //         builder: (context) =>
+                    //         const TimerPage()));
+                  },
+                ),
+
+                // Container(
+                //     decoration: BoxDecoration(
+                //         color: Colors.black,
+                //         borderRadius: BorderRadius.circular(15)
+                //       // shape: BoxShape.circle
+                //     ),
+                //     width: contSize,
+                //     height: contSize,
+                //     child: IconButton(
+                //       onPressed: () {},
+                //       icon: const Icon(
+                //         Network.electric,
+                //         color: Colors.white,
+                //       ),
+                //       iconSize: iconElSize,
+                //     )),
+
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: mediaWitdh*0.0453, //17
+                      right: 8
+                  ),
+                  child: Text('Встретиться',
+                      style: TextStyle(
+                          fontSize: 15.sp,     //12
+                          fontWeight: FontWeight.w500)),
+                ),
+
+                //иконка >>
+                Padding(
+                  padding: EdgeInsets.only(right: mediaWitdh*0.056), //21
+                  child: SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: Stack(
+                      children: const [
+                        Positioned(
+                            left: 0,
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              size: 20,
+                              color: ConstColor.grey,
+                            )),
+                        Positioned(
+                            left: 6,
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              size: 20,
+                            )),
+                      ],
+                    ),
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+        ),
+
+
+        IconContainer(
+          icon:  Network.star,
+          iconSize: iconSize,
+          contSize: contSize,
+        ),
+
+
+        // Container(
+        //     decoration: BoxDecoration(
+        //       borderRadius: BorderRadius.circular(15),
+        //       color: Colors.black,
+        //       // shape: BoxShape.circle
+        //     ),
+        //     width: contSize,
+        //     height: contSize,
+        //     child: IconButton(
+        //       onPressed: () {},
+        //       icon: const Icon(
+        //         // Icons.star_border_outlined,
+        //         Network.star,
+        //         color: Colors.white,
+        //       ),
+        //       iconSize: iconSize,
+        //     )),
+
+      ],
     );
   }
 }
