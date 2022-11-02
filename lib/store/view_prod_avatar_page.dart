@@ -27,7 +27,7 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
     return Scaffold(
       extendBodyBehindAppBar: false,
       extendBody: true,
-      backgroundColor: ConstColor.blackBack,
+      // backgroundColor: ConstColor.blackBack,
       bottomNavigationBar: BlurryContainer(
         blur: 30,
         width: MediaQuery.of(context).size.width,
@@ -156,7 +156,7 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 24, //12
-                      color: ConstColor.textWhite,
+                      // color: ConstColor.textWhite,
                     ),
                   ),
                 ),

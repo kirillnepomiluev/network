@@ -196,7 +196,7 @@ class AuthBackScaffold extends StatelessWidget {
 
     // top: mediaHeight*0.15,
     return Scaffold(
-      backgroundColor: ConstColor.blackBack,
+      // backgroundColor: ConstColor.blackBack,
       body: SafeArea(
         child: Stack(
           children: [
@@ -1155,6 +1155,7 @@ class MeetRow extends StatelessWidget {
                   ),
                   child: Text('Встретиться',
                       style: TextStyle(
+                        color: ConstColor.textBlack,
                           fontSize: 15.sp,     //12
                           fontWeight: FontWeight.w500)),
                 ),

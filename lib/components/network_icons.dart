@@ -15,6 +15,8 @@ class Network {
 
   static const String _fontFamily = 'Network';
 
+  static const IconData smile_dead = IconData(0xe91f, fontFamily: _fontFamily);
+  static const IconData smile_wave = IconData(0xe920, fontFamily: _fontFamily);
   static const IconData pencil = IconData(0xe91e, fontFamily: _fontFamily);
   static const IconData email_outlined = IconData(0xe91d, fontFamily: _fontFamily);
   static const IconData heart = IconData(0xe91a, fontFamily: _fontFamily);

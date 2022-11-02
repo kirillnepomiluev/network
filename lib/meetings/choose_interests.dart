@@ -32,7 +32,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
     autofocus: false,
     style: TextStyle(
       fontSize: getResSize(14),
-      color: ConstColor.textWhite
+      // color: ConstColor.textWhite
     ),
     decoration: InputDecoration(
       counterText: '',
@@ -81,7 +81,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
               )),
         ),
       extendBody: true,
-      backgroundColor: ConstColor.blackBack,
+      // backgroundColor: ConstColor.blackBack,
       body: Padding(
         padding: EdgeInsets.only(top: mediaTop),
         child: GestureDetector(

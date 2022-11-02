@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/chat/chat_page.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/components/network_icons.dart';
+import 'package:network_app/constants.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MessagesPage extends StatefulWidget {
@@ -23,11 +24,11 @@ class _MessagesPageState extends State<MessagesPage> {
 
 
     return Scaffold(
-      extendBody: true,
-      extendBodyBehindAppBar: true,
-      backgroundColor: Colors.grey.shade400,
+      // extendBody: true,
+      // extendBodyBehindAppBar: true,
+      // bottomNavigationBar: Container(color: Colors.transparent,),
       body: Padding(
-        padding: EdgeInsets.only(top: mediaTop, bottom: 80, left: 15, right: 15),
+        padding: EdgeInsets.only(top: mediaTop, left: 15, right: 15),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,30 +46,35 @@ class _MessagesPageState extends State<MessagesPage> {
                     Text(
                       'Сообщения',
                       style: TextStyle(
-                          color: Colors.black,
+                          // color: Colors.black,
                           fontSize: 19.5.sp,   //20
                           fontWeight: FontWeight.w600),
                     ),
 
-                    Container(
-                      width: contSize,
-                      height: contSize,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Center(
-                        child: IconButton(
-                            onPressed: () {
-                              // Navigator.of(context).pop();
-                            },
-                            icon: Icon(
-                              Network.search,
-                              color: Colors.black,
-                              size: 16.5.sp,   //18
-                            )),
-                      ),
-                    ),
+                    IconContainer(
+                      icon:  Network.search,
+                      iconSize:  16.sp,   //17
+                    )
+
+                    // Container(
+                    //   width: contSize,
+                    //   height: contSize,
+                    //   decoration: BoxDecoration(
+                    //     color: Colors.grey.shade300,
+                    //     borderRadius: BorderRadius.circular(15),
+                    //   ),
+                    //   child: Center(
+                    //     child: IconButton(
+                    //         onPressed: () {
+                    //           // Navigator.of(context).pop();
+                    //         },
+                    //         icon: Icon(
+                    //           Network.search,
+                    //           color: Colors.black,
+                    //           size: 16.5.sp,   //18
+                    //         )),
+                    //   ),
+                    // ),
 
                   ],
                 ),
@@ -79,7 +85,7 @@ class _MessagesPageState extends State<MessagesPage> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
+                    color: ConstColor.white10,
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Column(
@@ -94,7 +100,6 @@ class _MessagesPageState extends State<MessagesPage> {
                           'Приглашения',
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
-                              color: Colors.black,
                               fontSize: 16.5.sp  //14
                           ),
                         ),
@@ -107,11 +112,10 @@ class _MessagesPageState extends State<MessagesPage> {
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-
-                            for (var i=0; i<8; i++)
+                            for (var i=0; i<photoList.length; i++)
                               Padding(
                                 padding: EdgeInsets.only(right: i==7? 15 : 0),
-                                child: miniAvatar(),
+                                child: miniAvatar(photoMap: photoList[i]),
                               )
 
                         ],),),
@@ -128,18 +132,20 @@ class _MessagesPageState extends State<MessagesPage> {
               // ),
 
 
-              Wrap(
-                spacing: 0.04*mediaWidth, //15
-                runSpacing: 20,
-                alignment: WrapAlignment.center,
-                runAlignment: WrapAlignment.center,
-                direction: Axis.horizontal,
-                children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 80),
+                child: Wrap(
+                  spacing: 0.04*mediaWidth, //15
+                  runSpacing: 20,
+                  alignment: WrapAlignment.center,
+                  runAlignment: WrapAlignment.center,
+                  direction: Axis.horizontal,
+                  children: [
 
-                  for (var i=0; i<6; i++)
-                    messageContainer(isOnline: i % 2==0? false : true),
-
-                ],
+                    for (var i=0; i<photoList.length; i++)
+                      messageContainer(photoMap: photoList[i]),
+                  ],
+                ),
               ),
 
               // Padding(
@@ -182,10 +188,56 @@ class _MessagesPageState extends State<MessagesPage> {
     );
   }
 
-  Widget miniAvatar() {
+
+  List<Map<String, dynamic>> photoList = [
+    <String, dynamic>{
+      'name' :   'Джоли',
+      'status' :   'Запланирована встреча',
+      'url' :   'assets/images/avatars/avatar_2.png',
+      'online' : false,
+    },
+
+    <String, dynamic>{
+      'name' : 'Станислав',
+      'status' : 'Встреча проведена',
+      'url' :  'assets/images/avatars/avatar_8.png',
+      'online' : true,
+    },
+
+    <String, dynamic>{
+      'name' : 'Меган',
+      'status' : 'Приглашение на встречу',
+      'url' :  'assets/images/avatars/avatar_9.png',
+      'online' : false,
+    },
+
+    <String, dynamic>{
+      'name' : 'Игорь',
+      'status' :  'Запланирована встреча',
+      'url' :  'assets/images/avatars/avatar_1.png',
+      'online' : true,
+    },
+
+    <String, dynamic>{
+      'name' :   'Джоли',
+      'status' :   'Запланирована встреча',
+      'url' :   'assets/images/avatars/avatar_2.png',
+      'online' : false,
+    },
+
+    <String, dynamic>{
+      'name' :   'Джоли',
+      'status' :   'Запланирована встреча',
+      'url' :   'assets/images/avatars/avatar_2.png',
+      'online' : false,
+    },
+
+  ];
+
+  Widget miniAvatar({required Map<String, dynamic> photoMap}) {
 
     final mediaWidth = MediaQuery.of(context).size.width;
-    final contWidth = mediaWidth*0.1066;
+    final contWidth = 45.00;
 
     return Padding(
     padding: const EdgeInsets.only(left: 15,),
@@ -196,27 +248,45 @@ class _MessagesPageState extends State<MessagesPage> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle),
-              width: contWidth,
-              height: contWidth,
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Network.person,
-                  color: Colors.black,
+
+          SizedBox(
+            width: contWidth,
+            height: contWidth,
+            child: Stack(
+              children: [
+
+                SizedBox(
+                  width: contWidth,
+                  height: contWidth,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    foregroundImage: AssetImage(
+                        photoMap['url'] as String
+                    ),
+                  ),
                 ),
-                iconSize: 17.sp,  //16
-              )),
+
+                photoMap['online']==false? Container():
+                const Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: Icon(
+                    Icons.circle,
+                    size: 12,
+                    color: ConstColor.salad100,),
+                )
+
+              ],
+            ),
+          ),
 
           Padding(
             padding: const EdgeInsets.only(top: 5),
-            child: Text('Джоли', style: TextStyle(
+            child: Text(photoMap['name'] as String, style: TextStyle(
                 fontSize: 14.sp,   //10
-                color: Colors.black,
-                fontWeight: FontWeight.w500),),
+                // color: Colors.black,
+                fontWeight: FontWeight.w400
+            ),),
           )
 
         ],
@@ -225,7 +295,8 @@ class _MessagesPageState extends State<MessagesPage> {
   );
   }
 
-  Widget messageContainer({required bool isOnline}) {
+
+  Widget messageContainer({required Map<String, dynamic> photoMap}) {
 
     final mediaWidth = MediaQuery.of(context).size.width;
     final double contSize = 0.1626*mediaWidth; //43
@@ -234,7 +305,6 @@ class _MessagesPageState extends State<MessagesPage> {
     onTap: ((){
       Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const ChatPage()));
     }),
-        // padding: const EdgeInsets.only(bottom: 0),
         child:
         Stack(
           alignment: Alignment.topCenter,
@@ -247,8 +317,8 @@ class _MessagesPageState extends State<MessagesPage> {
                 // width: MediaQuery.of(context).size.width*0.35,
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
+                  color: ConstColor.white10,
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -257,24 +327,26 @@ class _MessagesPageState extends State<MessagesPage> {
                   children: [
 
                     Padding(
-                      padding: const EdgeInsets.only(top: 38),
+                      padding: const EdgeInsets.only(top: 50),
                       child:
-                      Text('Джоли',
+                      Text(photoMap['name'] as String,
                           style: TextStyle(
                               fontSize: 17.5.sp, //16
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400)
+                              // color: Colors.black,
+                              fontWeight: FontWeight.w700
+                          )
                       ),
                     ),
 
                     Padding(
                       padding: const EdgeInsets.only(top: 5),
                       child: Text(
-                        'Запланированная встреча',
+                        photoMap['status'] as String,
                         style: TextStyle(
                             fontSize: 14.sp, //10
-                            color: Colors.grey.shade400,
-                            fontWeight: FontWeight.w500),
+                            color: ConstColor.textGray,
+                            fontWeight: FontWeight.w400
+                        ),
                       ),
                     ),
 
@@ -297,20 +369,27 @@ class _MessagesPageState extends State<MessagesPage> {
                             ),
                           ),
 
-                          SizedBox(
-                            width: 12,
-                            height: 9,
-                            child: Stack(
-                              children: const [
-                                Positioned(
-                                    left: 4,
-                                    child: Icon(Icons.check, size: 8,)),
-                                Positioned(
-                                    left: 0,
-                                    child: Icon(Icons.check, size: 8,)),
-                              ],
-                            ),
-                          ),
+                          Icon(
+                            Network.check_double,
+                            size: 12,
+                          color: ConstColor.textGray,
+                          )
+
+                          // SizedBox(
+                          //   width: 12,
+                          //   height: 9,
+                          //   child: Stack(
+                          //     children: const [
+                          //       Positioned(
+                          //           left: 4,
+                          //           child: Icon(Network.check_double, size: 8,)
+                          //       ),
+                          //       Positioned(
+                          //           left: 0,
+                          //           child: Icon(Icons.check, size: 8,)),
+                          //     ],
+                          //   ),
+                          // ),
 
                         ],
                       ),
@@ -338,27 +417,43 @@ class _MessagesPageState extends State<MessagesPage> {
                 children: [
                   Positioned(
                     top: 0,
-                    child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.grey.shade300,
-                            shape: BoxShape.circle),
-                        width: contSize,
-                        height: contSize,
-                        child: Icon(
-                          Network.person,
-                          color: Colors.black,
-                          size: 19.sp,
+                    child:
+
+                    SizedBox(
+                      width: contSize,
+                      height: contSize,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        foregroundImage: AssetImage(
+                            photoMap['url'] as String
                         ),
+                      ),
                     ),
+
+                    // Container(
+                    //     decoration: BoxDecoration(
+                    //         color: Colors.grey.shade300,
+                    //         shape: BoxShape.circle),
+                    //     width: contSize,
+                    //     height: contSize,
+                    //     child: Icon(
+                    //       Network.person,
+                    //       color: Colors.black,
+                    //       size: 19.sp,
+                    //     ),
+                    // ),
+
                   ),
 
-                  Positioned(
-                    right: 2,
-                      bottom: 5,
+
+                  photoMap['name'] == 'Станислав'? Container():
+                  const Positioned(
+                    right: 7,
+                      bottom: 0,
                       child: Icon(
                         Icons.circle,
-                        size: 16.5.sp,   //14
-                        color: isOnline? Colors.black : Colors.grey.shade400,
+                        size: 14,   //14
+                        color: ConstColor.salad100,
                       )
                   )
                 ],

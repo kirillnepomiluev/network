@@ -88,10 +88,9 @@ class _StorePageState extends State<StorePage> {
     final mediaRadius = mediaWidth * 0.45;
 
     return Scaffold(
-      backgroundColor: ConstColor.blackBack,
+      // backgroundColor: ConstColor.blackBack,
       body: Stack(
         children: [
-
 
           Padding(
             padding: EdgeInsets.only(

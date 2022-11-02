@@ -17,7 +17,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ConstColor.blackBack,
+      // backgroundColor: ConstColor.blackBack,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -61,7 +61,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                 gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    stops: [0.4, 1],
+                    stops: [0.3, 1],
                     colors: [
                       Colors.transparent,
                       Colors.black.withOpacity(0.88)
@@ -118,7 +118,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                           Text('Джоли, 28',
                               style: TextStyle(
                                   fontSize: 24.sp, //32
-                                  color: ConstColor.textWhite,
+                                  // color: ConstColor.textWhite,
                                   fontWeight: FontWeight.w600)),
 
                           Padding(
@@ -161,7 +161,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                       Text('250 м в направлении',
                           style: TextStyle(
                               fontSize: 16.5.sp, //14
-                              color: ConstColor.textWhite,
+                              // color: ConstColor.textWhite,
                               fontWeight: FontWeight.w400
                           )),
                     ),
@@ -181,7 +181,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                               Text(
                                 'Открыть карту',
                                 style: TextStyle(
-                                    color: ConstColor.textWhite,
+                                    // color: ConstColor.textWhite,
                                     fontSize: 16.5.sp, //14
                                     fontWeight: FontWeight.w400
                                 ),

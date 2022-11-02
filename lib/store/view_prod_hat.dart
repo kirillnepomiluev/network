@@ -18,7 +18,7 @@ class _ViewProdHatPageState extends State<ViewProdHatPage> {
     final mediaWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: ConstColor.blackBack,
+      // backgroundColor: ConstColor.blackBack,
       bottomNavigationBar: Container(
         width: MediaQuery.of(context).size.width,
         height: 80,

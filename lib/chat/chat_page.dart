@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:network_app/components/general_widgets.dart';
+import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -117,18 +118,16 @@ class _ChatPageState extends State<ChatPage> {
       onWillPop: () async {
 
         Navigator.of(context).push(MaterialPageRoute<void>(
-            builder: (context) => const HomePage(initIndex: 3,)));
+            builder: (context) => const HomePage(initIndex: 4,)));
 
         return false;
       },
       child: Scaffold(
         extendBody: true,
         extendBodyBehindAppBar: false,
-        backgroundColor: Colors.grey.shade400,
         appBar: AppBar(
           automaticallyImplyLeading: false,
             toolbarHeight: 70,
-            backgroundColor: Colors.grey.shade400,
             elevation: 0,
           title:
           GestureDetector(
@@ -140,61 +139,20 @@ class _ChatPageState extends State<ChatPage> {
 
                 BackButtonCustom( func: (){
                   Navigator.of(context).push(MaterialPageRoute<void>(
-                      builder: (context) => const HomePage(initIndex: 3,)));
+                      builder: (context) => const HomePage(initIndex: 4,)));
                 }),
+
                 Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: Text('Джоли',
                     style: TextStyle(
-                        color: Colors.black,
                         fontSize: 20.sp, //20
                         fontWeight: FontWeight.w600),
                   ),
                 ),
 
-                Row(
-                  children: [
+                IconContainer(icon: Icons.more_horiz_rounded),
 
-                    Container(
-                      width: 0.1146*mediaWidth,    //43
-                      height: 0.1146*mediaWidth,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child:
-                      Icon(
-                        Network.electric,
-                        color: Colors.white,
-                        size: 17.sp, //17
-                      ),
-                    ),
-
-
-                    Padding(
-                      padding: const EdgeInsets.only(left: 7),
-                      child: Container(
-                        width: 0.1146*mediaWidth,    //43
-                        height: 0.1146*mediaWidth,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Center(
-                          child: IconButton(
-                              onPressed: () {
-                                // Navigator.of(context).pop();
-                              },
-                              icon: Icon(
-                                Icons.more_horiz,
-                                color: Colors.black,
-                                size: 17.sp, //17
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
               ],
             ),
           ),
@@ -205,16 +163,16 @@ class _ChatPageState extends State<ChatPage> {
         bottomNavigationBar:
         Container(
           color: Colors.transparent,
-          // padding: EdgeInsets.all(20),
-          padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: keyboardSize+10),
+          padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: keyboardSize+10),
           child: Container(
             decoration: BoxDecoration(
-                color: Colors.white,
+                color: ConstColor.white10,
                 borderRadius: BorderRadius.circular(15)
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+
                 Expanded(child: _textEditor()),
 
                 Padding(padding: const EdgeInsets.only(right: 10),
@@ -266,6 +224,7 @@ class _ChatPageState extends State<ChatPage> {
                       padding: const EdgeInsets.only(bottom: 25),
                       child: Text('Сегодня, 12:01', style: TextStyle(
                           fontSize: 15.5.sp, //12
+                          color: ConstColor.textGray,
                           fontWeight: FontWeight.w400),),
                     ),
 
@@ -273,7 +232,8 @@ class _ChatPageState extends State<ChatPage> {
                       padding: const EdgeInsets.all(15),
                       width: MediaQuery.of(context).size.width * 0.9,
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
+                        color: ConstColor.white10,
+                        // color: Colors.grey.shade300,
                         borderRadius: BorderRadius.circular(15)
                       ),
                       child:
@@ -284,44 +244,57 @@ class _ChatPageState extends State<ChatPage> {
                             padding: const EdgeInsets.only(right: 20),
                             child: SizedBox(
                               height: 45,
-                              width: 45,
+                              width: 48,
                               child: Stack(
                                 alignment: Alignment.topCenter,
                                 children: [
-                                  Positioned(
+                                  const Positioned(
                                     top: 0,
-                                    child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Colors.grey.shade500,
-                                            shape: BoxShape.circle),
-                                        width: 45,
-                                        height: 45,
-                                        child: IconButton(
-                                          onPressed: () {},
-                                          icon: const Icon(
-                                            Network.person,
-                                            color: Colors.black,
-                                          ),
-                                          iconSize: 18,
-                                        )),
-                                  ),
+                                    child:
+                                    SizedBox(
+                                      width: 45,
+                                      height: 45,
+                                      child: CircleAvatar(
+                                        backgroundColor: Colors.white,
+                                        foregroundImage: AssetImage(
+                                            'assets/images/avatars/avatar_2.png',
+                                        ),
+                                      ),
+                                    )),
+
+                                  //   Container(
+                                  //       decoration: BoxDecoration(
+                                  //           color: Colors.white,
+                                  //           shape: BoxShape.circle,
+                                  //       ),
+                                  //       width: 45,
+                                  //       height: 45,
+                                  //       child: Image.asset(
+                                  //         'assets/images/avatars/avatar_3D.png',
+                                  //         alignment: Alignment.topCenter,
+                                  //         fit: BoxFit.fitHeight,
+                                  //       )
+                                  //   ),
+                                  // ),
+
 
                                   Positioned(
                                       right: 0,
                                       bottom: 0,
                                       child:
-
                                       Container(
                                           decoration: const BoxDecoration(
-                                              color: Colors.black,
-                                              shape: BoxShape.circle),
+                                              color: ConstColor.salad100,
+                                              shape: BoxShape.circle
+                                          ),
                                           width: 17,
                                           height: 17,
                                           child:
                                           const Icon(
                                               Network.electric,
                                             size: 7,
-                                            color: Colors.white,)
+                                            color: Colors.black,
+                                          )
                                       )
 
                                   )
@@ -331,11 +304,29 @@ class _ChatPageState extends State<ChatPage> {
                             ),
                           ),
 
-                          Flexible(child: Text('У вас запланирована встреча с Джоли. Пообщайтесь и обговорите важные моменты.',
-                            style: TextStyle(
-                                fontSize: 15.5.sp, //12
-                                fontWeight: FontWeight.w400),
-                            maxLines: null,)),
+                          Flexible(child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('У вас запланирована встреча с Джоли',
+                                style: TextStyle(
+                                  color: ConstColor.salad100,
+                                    fontSize: 15.5.sp, //12
+                                    fontWeight: FontWeight.w600
+                                ),
+                              ),
+
+                              Padding(
+                                padding: const EdgeInsets.only(top: 5),
+                                child: Text('Пообщайтесь и обговорите важные моменты.',
+                                  style: TextStyle(
+                                      fontSize: 15.5.sp, //12
+                                      fontWeight: FontWeight.w400
+                                  ),
+                                ),
+                              ),
+
+                            ],
+                          )),
                         ],
                       ),)
 
@@ -360,6 +351,8 @@ class _ChatPageState extends State<ChatPage> {
     String strText = messageMap['text'] as String;
     int intMin = messageMap['min'] as int;
 
+    final mediaWidth = MediaQuery.of(context).size.width;
+
     return Padding(
       padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: intMin<2? 0 : 10),
       child: Column(
@@ -369,18 +362,19 @@ class _ChatPageState extends State<ChatPage> {
 
           Container(
             constraints: BoxConstraints(
-              maxWidth: MediaQuery.of(context).size.width*0.67,
+              maxWidth: isYou? mediaWidth*0.67 : mediaWidth*0.8,
             ),
-            // width: MediaQuery.of(context).size.width*0.6,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: Colors.white
+                color: isYou? ConstColor.salad100 : ConstColor.white10
             ),
             padding: const EdgeInsets.all(15),
-            child: Text(strText, style: TextStyle(
-                fontSize: 16.5.sp, //14
+            child: Text(
+                strText, style: TextStyle(
+              color: isYou? ConstColor.textBlack : ConstColor.textWhite,
+              fontSize: 16.5.sp, //14
                 fontWeight: FontWeight.w400,
-                color: Colors.black)),
+            )),
           ),
 
           intMin<2? Container() :
@@ -393,25 +387,12 @@ class _ChatPageState extends State<ChatPage> {
 
                 isYou==false? Container():
                     Icon(Network.check_double,
-                    size: 15.5.sp,   //12
+                    color: ConstColor.salad100,
+                    size: getResSize(10),   //12
                     ),
-                // SizedBox(
-                //   width: 12,
-                //   height: 9,
-                //   child: Stack(
-                //     children: const [
-                //       Positioned(
-                //           left: 4,
-                //           child: Icon(Icons.check, size: 10, color: Colors.black)),
-                //       Positioned(
-                //           left: 0,
-                //           child: Icon(Icons.check, size: 10, color: Colors.black,)),
-                //     ],
-                //   ),
-                // ),
 
                 Padding(
-                  padding: const EdgeInsets.only(left: 5),
+                  padding: const EdgeInsets.only(left: 6.5),
                   child: Text(
                     '$intMin мин',
                     style: TextStyle(
@@ -431,19 +412,9 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   Widget _textEditor() => SizedBox(
-    height: 75,
-    // width: double.infinity,
+    // height: 75,
     child: TextField(
-
-      // validator: (val){
-      //
-      //   if (val!.isEmpty) {
-      //     return "Пусто";
-      //   }
-      //
-      //   return null;
-      //
-      // },
+      // style: TextStyle(),
       onChanged: (value){
 
         if(value.isEmpty){
@@ -457,42 +428,31 @@ class _ChatPageState extends State<ChatPage> {
         }
 
       },
-      maxLines: 3,
+      // maxLines: 3,
       controller: _controller,
-      // onSubmitted: (value){
-      //
-      //   if(value.isNotEmpty){
-      //     sendFunction();
-      //   }
-      //
-      // },
-      // textInputAction: TextInputAction.send,
-
-      // onFieldSubmitted: (value){
-      //   print('submitted - $value');
-      //
-      //   // SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
-      //   FocusManager.instance.primaryFocus?.unfocus();
-      //
-      // },
       textAlign: TextAlign.start,
-      // maxLines: 2,
-      // maxLength: 1,
       autofocus: false,
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+        hintText: 'Ваше сообщение...',
+        hintStyle: TextStyle(
+            color: ConstColor.textGray,
+          fontSize: getResSize(14),
+          fontWeight: FontWeight.w400
+        ),
         counterText: '',
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(width: 0, color: Colors.transparent),
             borderRadius: BorderRadius.only(topLeft: Radius.circular(15), bottomLeft: Radius.circular(15))
         ),
         enabledBorder:
-        OutlineInputBorder(
+        const OutlineInputBorder(
             borderSide: BorderSide(width: 0, color: Colors.transparent),
             borderRadius: BorderRadius.only(topLeft: Radius.circular(15), bottomLeft: Radius.circular(15))
           // borderRadius: BorderRadius.circular(15)
         ),
-        filled: true,
-        fillColor: Colors.white,
+        // filled: true,
+        // fillColor: ConstColor.white10,
       ),
     ),
   );

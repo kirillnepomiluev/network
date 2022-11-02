@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/components/network_icons.dart';
@@ -69,7 +70,6 @@ class _TimerPageState extends State<TimerPage> {
 
   }
 
-
   late ValueNotifier<double> valueNotifier;
 
   bool isPaused = true;
@@ -114,7 +114,7 @@ class _TimerPageState extends State<TimerPage> {
       },
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.grey.shade400,
+          // backgroundColor: Colors.grey.shade400,
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -141,29 +141,22 @@ class _TimerPageState extends State<TimerPage> {
                         top: 0.0416*mediaHeight   //30
                     ),
                     child: SimpleCircularProgressBar(
-                      // backStrokeWidth: 0.07466*mediaWidth,        //28
-                      // progressStrokeWidth: 0.07466*mediaWidth,
-                      // size: 0.3897*mediaHeight,    //281
                       backStrokeWidth: 0.07466*mediaWidth,        //28
                       progressStrokeWidth: 0.07466*mediaWidth,
                       size: 0.7493*mediaWidth,    //281
-                      backColor: Colors.grey.shade100,
-                      progressColors: const [Colors.black],
-                      // animationDuration: 0,
+                      backColor: ConstColor.white10,
+                      progressColors: const [ConstColor.salad100],
                       animationDuration: maxSeconds,
                       valueNotifier: valueNotifier,
                       mergeMode: true,
                       onGetText: (double value) {
-
                         return Text(
-                          // '${value.toInt()}',
                           '$minutes:$seconds',
                           style:
                           TextStyle(
                             fontSize: 27.sp,   //38
                             fontWeight: FontWeight.w700,
-                            // color: Colors.greenAccent.withOpacity(value * 0.01),
-                            color: Colors.black,
+                            // color: Colors.black,
                           ),
                         );
                       },
@@ -178,7 +171,6 @@ class _TimerPageState extends State<TimerPage> {
                   ),
                   child: Text(isPaused? 'начните встречу' : 'до конца встречи',
                     style: TextStyle(
-                      color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 21.sp    //23
                     ),
@@ -193,7 +185,6 @@ class _TimerPageState extends State<TimerPage> {
                   ),
                   child: Text('Минимальное время встречи\nдля начисления баллов 20 минут',
                     style: TextStyle(
-                      color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 17.5.sp  //16
                     ),
@@ -206,33 +197,35 @@ class _TimerPageState extends State<TimerPage> {
                   child: InkWell(
                     onTap: (){
 
-                      // openBottomSheetSuccess();
+                      openBottomSheetSuccess();
 
-                      if(isPaused){
-                        startTimer();
-                      }else{
-                        showPauseDialog();
-                      }
+                      // if(isPaused){
+                      //   startTimer();
+                      // }else{
+                      //   showPauseDialog();
+                      // }
 
                     },
                     child: Container(
-                      width: 0.1946*mediaWidth,    //73
-                      height: 0.1946*mediaWidth*1.26,   //92
+                      width: 66,    //66
+                      height: 92,   //92
                       decoration: BoxDecoration(
-                        color: isPaused? Colors.black : Colors.grey.shade100,
-                        borderRadius: BorderRadius.circular(36)
+                        color: isPaused? ConstColor.white10 : ConstColor.salad100,
+                        borderRadius: BorderRadius.circular(37)
                       ),
 
                     child: Center(
                       child:
                       isPaused?
                       Text('GO', style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 19.5.sp,   //20
                         fontWeight: FontWeight.w600
                       ),)
-                          : Icon(Icons.close_outlined, color: ConstColor.grey,
-                        size: 19.5.sp,   //20
+                          :
+                      Icon(Icons.close_rounded,
+                        color: Colors.black,
+                        size: 20.5.sp,   //20
                       )
                       ,
                     ),
@@ -266,166 +259,57 @@ class _TimerPageState extends State<TimerPage> {
     final padMain = 0.0746*mediaWidth; //28
 
     return
-      Dialog(
-          insetPadding: EdgeInsets.symmetric(
-              horizontal: 0.08*mediaWidth  //30
-          ),
-
-          backgroundColor: Colors.transparent,
-      // scrollable: true,
-      // content:
-          child:
-      Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.only(
-                top: padMain*1.57,  //44
-                bottom: padMain,
+      BlurryContainer(
+        blur: 20,
+        child: Dialog(
+            insetPadding: EdgeInsets.symmetric(
+                horizontal: 0.08*mediaWidth  //30
             ),
-          // width: mediaWidth*0.872,   //327
-          // height: 0.5627*mediaWidth*0.872,  //184
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15)
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
 
-              Text('Вы уверены, что хотите\nпрервать встречу?',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17.5.sp,   //16
-                    fontWeight: FontWeight.w600
-                ),
-                textAlign: TextAlign.center,
-              ),
+            backgroundColor: Colors.transparent,
+            // backgroundColor: ConstColor.white10,
+            child:
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
 
-              Padding(
-                padding: EdgeInsets.only(
-                    top: 0.0986*mediaWidth  //37
-                ),
-                child: Row(
-                  // spacing:  10,    //24,
-                  // runSpacing: 0.064*mediaWidth,    //24,
-                  // alignment: WrapAlignment.spaceBetween,
-                  // runAlignment: WrapAlignment.center,
-                  // direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                  ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                        MaterialStateProperty.all(Colors.black),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        startTimer();
-                      },
-                      child: Padding(
-                        padding:
-                        EdgeInsets.symmetric(
-                                  vertical: 0.056*mediaWidth*0.428,    //9
-                                  horizontal: 0.0266*mediaWidth  //15
-                              ),
-                        child: Text(
-                          // 'Создать чат',
-                          'Продолжить',
-                          style: TextStyle(
-                              fontSize: 16.5.sp, //14
-                              fontWeight: FontWeight.w400
-
-                          ),
-                        ),
-                      )),
-
-
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: 0.064*mediaWidth  //24
-                      ),
-                      child: InkWell(
-                        onTap: (){
-
-                          Navigator.of(context).pop();
-                          Navigator.of(context).pop();
-
-                        },
-                        child: Text('Прервать', style: TextStyle(
-                          fontSize: 16.5.sp,   //14
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey.shade500
-                        ),),
-                      ),
-                    )
-
-
-                ],),
-              )
-
-            ],),
-        ),
-
-
-
-          Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: Container(
+            BlurryContainer(
+              blur: 40,
               width: double.infinity,
               padding: EdgeInsets.only(
-                  top: 0.128*mediaWidth*0.916,  //44
-                  bottom: padMain,        //28
-                  // left: 40,     //48
-                  // right:40
-            ),
-              // width: 327,
-              // height: 227,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15)
+                  top: padMain*1.57,  //44
+                  bottom: padMain,
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+                color: ConstColor.white10,
+                borderRadius: BorderRadius.circular(15),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
 
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 21),
-                    child: Icon(Network.warning,
-                      size: 21.sp, //23
-                    ),
+                BuildRichTextTwo(
+                  text1: 'Вы уверены, что хотите\n',
+                  text2: 'прервать встречу',
+                  fontSize:  17.5.sp,
+                  fontWeight1: FontWeight.w500,
+                  fontWeight2: FontWeight.w500,
+                  textAlign: TextAlign.center,
+                ),
+
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: 0.0986*mediaWidth  //37
                   ),
-
-                  Text('Если у вас возникли проблемы\nвы можете оставить жалобу',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16.5.sp, //14
-                        fontWeight: FontWeight.w500
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.only(top: 37),
-                    child:
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
                     ElevatedButton(
                         style: ButtonStyle(
-                          // padding: MaterialStateProperty.all(
-                          //     const EdgeInsets.symmetric(vertical: 9, horizontal: 21)),
                           backgroundColor:
-                          MaterialStateProperty.all(ConstColor.grey),
+                          MaterialStateProperty.all(ConstColor.salad100),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -433,36 +317,139 @@ class _TimerPageState extends State<TimerPage> {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute<void>(
-                              builder: (context) => const ComplaintPage()));
+                          Navigator.of(context).pop();
+                          startTimer();
                         },
-
                         child: Padding(
                           padding:
                           EdgeInsets.symmetric(
-                              vertical: 0.056*mediaWidth*0.428,    //9
-                              horizontal: 0.0266*mediaWidth  //15
-                          ),
-                      child: Text(
-                            // 'Создать чат',
-                            'Пожаловаться',
+                                    vertical: 0.056*mediaWidth*0.428,    //9
+                                    horizontal: 0.0266*mediaWidth  //15
+                                ),
+                          child: Text(
+                            'Продолжить',
                             style: TextStyle(
-                                fontSize: 16.5.sp,   //14
+                              color: ConstColor.textBlack,
+                                fontSize: 16.5.sp, //14
                                 fontWeight: FontWeight.w400
-
                             ),
                           ),
                         )),
-                  )
-
-                ],),
-            ),
-          )
 
 
-      ],)
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: 0.064*mediaWidth  //24
+                        ),
+                        child: InkWell(
+                          onTap: (){
 
-    );
+                            Navigator.of(context).pop();
+                            Navigator.of(context).pop();
+
+                          },
+                          child: Text('Прервать', style: TextStyle(
+                            fontSize: 16.5.sp,   //14
+                            fontWeight: FontWeight.w400,
+                            color: ConstColor.textGray
+                          ),),
+                        ),
+                      )
+
+
+                  ],),
+                )
+
+              ],),
+          ),
+
+
+
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: BlurryContainer(
+                blur: 40,
+                width: double.infinity,
+                padding: EdgeInsets.only(
+                    top: 0.128*mediaWidth*0.916,  //44
+                    bottom: padMain,        //28
+                    // left: 40,     //48
+                    // right:40
+              ),
+                    color: ConstColor.white10,
+                    borderRadius: BorderRadius.circular(15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 21),
+                      child: Icon(
+                        Network.warning,
+                        size: 21.sp, //23
+                        color: ConstColor.salad100,
+                      ),
+                    ),
+
+
+                    BuildRichTextTwo(
+                      text1: 'Если у вас возникли проблемы\nвы можете ',
+                      text2: 'оставить жалобу',
+                      fontSize:  17.5.sp,
+                      fontWeight1: FontWeight.w500,
+                      fontWeight2: FontWeight.w500,
+                      textAlign: TextAlign.center,
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(top: 37),
+                      child:
+                      ElevatedButton(
+                          style: ButtonStyle(
+                            // padding: MaterialStateProperty.all(
+                            //     const EdgeInsets.symmetric(vertical: 9, horizontal: 21)),
+                            backgroundColor:
+                            MaterialStateProperty.all(Colors.white),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute<void>(
+                                builder: (context) => const ComplaintPage()));
+                          },
+
+                          child: Padding(
+                            padding:
+                            EdgeInsets.symmetric(
+                                vertical: 0.056*mediaWidth*0.428,    //9
+                                horizontal: 0.0266*mediaWidth  //15
+                            ),
+                        child: Text(
+                              // 'Создать чат',
+                              'Пожаловаться',
+                              style: TextStyle(
+                                color: ConstColor.textBlack,
+                                  fontSize: 16.5.sp,   //14
+                                  fontWeight: FontWeight.w400
+
+                              ),
+                            ),
+                          )),
+                    )
+
+                  ],),
+              ),
+            )
+
+
+        ],)
+
+    ),
+      );
 
   }
 

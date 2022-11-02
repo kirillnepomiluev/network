@@ -63,7 +63,7 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
     final mediaWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: ConstColor.blackBack,
+      // backgroundColor: ConstColor.blackBack,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -84,7 +84,7 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
                         style: TextStyle(
                             fontSize: 18.5.sp,   //18
                             fontWeight: FontWeight.w600,
-                            color: ConstColor.textWhite
+                            // color: ConstColor.textWhite
                         ),
                       ))
                     ],
@@ -106,7 +106,7 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
                         maxLines: 3,
                         overflow: TextOverflow.clip,
                         style: TextStyle(
-                          color: ConstColor.textWhite,
+                          // color: ConstColor.textWhite,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                         )),
@@ -239,7 +239,7 @@ Widget hatContainer({
                   style: TextStyle(
                       fontSize: 15.5.sp, //12
                       fontWeight: FontWeight.w400,
-                      color: ConstColor.textWhite
+                      // color: ConstColor.textWhite
                   ),
                 ),
               ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/components/network_icons.dart';
+import 'package:network_app/constants.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -41,7 +42,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
       },
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.grey.shade400,
+          // backgroundColor: Colors.grey.shade400,
           body:
           showSuccess == true?
           Column(
@@ -170,20 +171,21 @@ class _ComplaintPageState extends State<ComplaintPage> {
                 Container(
                   padding: const EdgeInsets.all(20),
                   width: mediaWidth*0.92,   //345
-                  // height: 0.92*mediaWidth*0.6695,  //231
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30)),
+                  // decoration: BoxDecoration(
+                  //     color: Colors.white,
+                  //     borderRadius: BorderRadius.circular(30)),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
 
-                      Image.asset('assets/icons/dissapointed_smile.png',
-                        width: 0.176*mediaWidth,  //66
-                        height: 0.176*mediaWidth,
-                      ),
+                      Icon(Network.smile_dead, size: 80, color: ConstColor.salad100,),
+
+                      // Image.asset('assets/icons/dissapointed_smile.png',
+                      //   width: 0.176*mediaWidth,  //66
+                      //   height: 0.176*mediaWidth,
+                      // ),
 
                       Padding(
                         padding: const EdgeInsets.only(top: 27.6),
@@ -205,13 +207,11 @@ class _ComplaintPageState extends State<ComplaintPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 16),
                   child: Container(
-                    // alignment: Alignment.center,
                     padding: const EdgeInsets.symmetric(horizontal: 16),
-                    // height: mediaHeight-120,
-                    // width: mediaWidth,
                     decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
-                        borderRadius: const BorderRadius.vertical(top: Radius.circular(30))),
+                        color: ConstColor.white10,
+                        borderRadius: const BorderRadius.vertical(
+                            top: Radius.circular(30))),
                     child:
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -223,7 +223,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                           child: Container(
                             padding: const EdgeInsets.all(14),
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: ConstColor.white10,
                                 borderRadius: BorderRadius.circular(15)
                             ),
                             child: Row(
@@ -231,11 +231,12 @@ class _ComplaintPageState extends State<ComplaintPage> {
                               children: [
 
                                 Text('Выберете тип жалобы', style: TextStyle(
-                                  fontSize: 17.5.sp,   //16
-                                  fontWeight: FontWeight.w500
+                                  // fontSize: 17.5.sp,   //16
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400
                                 ),),
 
-                                const Icon(Icons.arrow_drop_down, size: 20,)
+                                const Icon(Icons.keyboard_arrow_down, size: 22, color: ConstColor.salad100,)
 
                               ],
                             ),
@@ -247,7 +248,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                           padding: const EdgeInsets.only(top: 21, bottom: 48),
                           child: Container(
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: ConstColor.white10,
                                 borderRadius: BorderRadius.circular(15)
                             ),
                             child: Row(
@@ -275,10 +276,10 @@ class _ComplaintPageState extends State<ComplaintPage> {
                             child: ElevatedButton(
                                 style: ButtonStyle(
                                   backgroundColor:
-                                  MaterialStateProperty.all(Colors.black),
+                                  MaterialStateProperty.all(Colors.white),
                                   shape: MaterialStateProperty.all(
                                     RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(52),
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
                                   ),
                                 ),
@@ -286,11 +287,11 @@ class _ComplaintPageState extends State<ComplaintPage> {
                                     sendFunction();
                                 },
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 17),
+                                  padding: const EdgeInsets.symmetric(vertical: 22),
                                   child: Text(
                                     'Отправить',
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: ConstColor.textBlack,
                                         fontSize: 17.5.sp,   //16
                                         fontWeight: FontWeight.w500
 
@@ -315,18 +316,8 @@ class _ComplaintPageState extends State<ComplaintPage> {
 
 
   Widget _textEditor() => SizedBox(
-    // height: 62,
     height: 200,
     child: TextField(
-      // validator: (val){
-      //
-      //   if (val!.isEmpty) {
-      //     return "Пусто";
-      //   }
-      //
-      //   return null;
-      //
-      // },
       onChanged: (value){
 
         if(value.isEmpty){
@@ -342,39 +333,25 @@ class _ComplaintPageState extends State<ComplaintPage> {
       },
       maxLines: 3,
       controller: _controller,
-      // textInputAction: TextInputAction.none,
-      // onSubmitted: (value){
-      //   if(value.isNotEmpty){
-      //     sendFunction();
-      //   }
-      // },
       style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
-      // onFieldSubmitted: (value){
-      //   print('submitted - $value');
-      //
-      //   // SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
-      //   FocusManager.instance.primaryFocus?.unfocus();
-      //
-      // },
       textAlign: TextAlign.start,
-      // maxLines: 2,
-      // maxLength: 1,
       autofocus: false,
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
+        hintText: 'Опишите проблему...',
+        hintStyle: TextStyle(color: ConstColor.textGray, fontSize: getResSize(14)),
         counterText: '',
         focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(width: 0, color: Colors.white),
+            borderSide: BorderSide(width: 0, color: Colors.transparent),
             borderRadius: BorderRadius.only(topLeft: Radius.circular(15), bottomLeft: Radius.circular(15))
         ),
         enabledBorder:
-
         OutlineInputBorder(
-            borderSide: BorderSide(width: 0, color: Colors.white),
+            borderSide: BorderSide(width: 0, color: Colors.transparent),
             borderRadius: BorderRadius.only(topLeft: Radius.circular(15), bottomLeft: Radius.circular(15))
           // borderRadius: BorderRadius.circular(15)
         ),
-        filled: true,
-        fillColor: Colors.white,
+        // filled: true,
+        // fillColor: Colors.white,
       ),
     ),
   );

@@ -25,7 +25,7 @@ class _MatchingPageState extends State<MatchingPage> {
 
     return Scaffold(
       extendBody: true,
-      backgroundColor: ConstColor.blackBack,
+      // backgroundColor: ConstColor.blackBack,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -154,7 +154,7 @@ class _MatchingPageState extends State<MatchingPage> {
                                     'Токены за встречу',
                                     style: TextStyle(
                                         fontSize: 15.5.sp, //12
-                                        color: ConstColor.textWhite,
+                                        // color: ConstColor.textWhite,
                                         fontWeight: FontWeight.w400
                                     ),
                                   ),
@@ -370,7 +370,7 @@ class _MatchingPageState extends State<MatchingPage> {
                 Text('$strName, 28',
                     style: TextStyle(
                         fontSize: 17.5.sp, //16
-                        color: ConstColor.textWhite,
+                        // color: ConstColor.textWhite,
                         fontWeight: FontWeight.w400
                     )),
 
@@ -392,7 +392,7 @@ class _MatchingPageState extends State<MatchingPage> {
               'Уровень "Базовый"',
               style: TextStyle(
                   fontSize: 15.5.sp,
-                  color: ConstColor.textWhite,
+                  // color: ConstColor.textWhite,
                   fontWeight: FontWeight.w400
               ),
             ),

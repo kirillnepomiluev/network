@@ -61,7 +61,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      backgroundColor: ConstColor.blackBack,
+      // backgroundColor: ConstColor.blackBack,
       bottomNavigationBar: Padding(
         padding: EdgeInsets.only(bottom: 0.0666 * mediaWidth), //25
         child: Container(
@@ -154,7 +154,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                     child: Text(
                       strType,
                       style: TextStyle(
-                          color: ConstColor.textWhite,
+                          // color: ConstColor.textWhite,
                           fontSize: 15.5.sp, //12
                           fontWeight: FontWeight.w400
                       ),
@@ -188,7 +188,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                                   Text(
                                     'Готов к встрече',
                                     style: TextStyle(
-                                        color: ConstColor.textWhite,
+                                        // color: ConstColor.textWhite,
                                         fontSize: 15.5.sp, //12
                                         fontWeight: FontWeight.w600),
                                   ),
@@ -228,7 +228,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                   Text(strName,
                       style: TextStyle(
                           fontSize: 18.5.sp, //18
-                          color: ConstColor.textWhite,
+                          // color: ConstColor.textWhite,
                           fontWeight: FontWeight.w600)
                   ),
 
@@ -253,7 +253,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                     'Уровень "Базовый"',
                     style: TextStyle(
                         fontSize: 16.5.sp, //14
-                        color: ConstColor.textWhite,
+                        // color: ConstColor.textWhite,
                         fontWeight: FontWeight.w400),
                   ),
                   Text(

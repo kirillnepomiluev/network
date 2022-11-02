@@ -123,7 +123,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     return Scaffold(
         extendBody: true,
-        backgroundColor: ConstColor.blackBack,
+        // backgroundColor: ConstColor.blackBack,
         body: Stack(
           children: [
             _activeTab != 1

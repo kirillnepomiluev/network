@@ -26,7 +26,23 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Network',
-            theme: ThemeData(fontFamily: 'Inter',),   //Inter Gilroy
+            theme: ThemeData(
+              fontFamily: 'Inter',
+              buttonTheme: ButtonThemeData(
+
+              ),
+              appBarTheme: AppBarTheme(
+                backgroundColor: ConstColor.blackBack
+              ),
+              textTheme: TextTheme(
+                //          style: Theme.of(context).textTheme.headline6!.copyWith(color: Colors.black,
+                //                                             fontSize: 12,fontWeight: FontWeight.w300)),
+                bodyText2: TextStyle(
+                  color: ConstColor.textWhite
+                )
+              ),
+              scaffoldBackgroundColor: ConstColor.blackBack
+            ),   //Inter Gilroy
             localizationsDelegates: const [
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
@@ -54,14 +70,13 @@ class _FirstPageState extends State<FirstPage> {
   @override
   void initState() {
     SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
-    // FocusManager.instance.primaryFocus?.unfocus();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ConstColor.blackBack,
+      // backgroundColor: ConstColor.blackBack,
       body: Center(
         child: InkWell(
           onTap: () {

@@ -60,7 +60,7 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ConstColor.blackBack,
+      // backgroundColor: ConstColor.blackBack,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -81,7 +81,7 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
                         style: TextStyle(
                             fontSize: 18.5.sp,   //18
                             fontWeight: FontWeight.w600,
-                            color: ConstColor.textWhite
+                            // color: ConstColor.textWhite
                         ),
                       ))
                     ],
@@ -103,7 +103,7 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
                         maxLines: 3,
                         overflow: TextOverflow.clip,
                         style: TextStyle(
-                          color: ConstColor.textWhite,
+                          // color: ConstColor.textWhite,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                         )),
@@ -207,7 +207,7 @@ Widget avatarContainer(
                 child: Text(
                   strCategory,
                   style: TextStyle(
-                      color: ConstColor.textWhite,
+                      // color: ConstColor.textWhite,
                       fontSize: 16.5.sp,  //14
 
                       fontWeight: FontWeight.bold),
@@ -245,14 +245,14 @@ Widget avatarContainer(
                     'Бокс для уровня ',
                     style: TextStyle(
                         fontSize: 14.sp, //11
-                        color: ConstColor.textWhite,
+                        // color: ConstColor.textWhite,
                     ),
                   ),
                   Text(
                     'Базовый',
                     style: TextStyle(
                         fontSize: 14.sp, //11
-                        color: ConstColor.textWhite,
+                        // color: ConstColor.textWhite,
                         fontWeight: FontWeight.w500),
                   ),
                 ],
@@ -288,7 +288,7 @@ Widget avatarContainer(
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 15.sp, //12
-                                  color: ConstColor.textWhite,
+                                  // color: ConstColor.textWhite,
                               ),
                             ),
                           ),
@@ -324,7 +324,7 @@ Widget avatarContainer(
                           'Уровень 6  Баллы +150',
                           style: TextStyle(
                               fontSize: 15.5.sp, //12
-                              color: ConstColor.textWhite,
+                              // color: ConstColor.textWhite,
                             fontWeight: FontWeight.w400
                           ),
                         ),

@@ -151,7 +151,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
                         'Уровень "Базовый"',
                         style: TextStyle(
                             fontSize: 16.5.sp,   //14
-                            color: ConstColor.textWhite,
+                            // color: ConstColor.textWhite,
                             fontWeight: FontWeight.w400),
                       ),
                     ),
@@ -168,9 +168,9 @@ class _MeetingsPageState extends State<MeetingsPage> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
-                          'ищу партнера для бизнеса',
+                          'ищу партнера для бизнеса 🤝',
                           style: TextStyle(
-                              color: ConstColor.textWhite,
+                              // color: ConstColor.textWhite,
                               fontSize: 15.5.sp, //12
                               fontWeight: FontWeight.w400
                           ),
@@ -198,7 +198,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
           ),
         ),
       ),
-      backgroundColor: ConstColor.blackBack,
+      // backgroundColor: ConstColor.blackBack,
       body: Padding(
         padding: EdgeInsets.only(top: mediaTop), //25
         child: Column(
@@ -347,13 +347,14 @@ class _MeetingsPageState extends State<MeetingsPage> {
                       ),
 
                       Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                             gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
+                                stops: [0.3, 1],
                                 colors: [
                                   Colors.transparent,
-                                  ConstColor.blackBack
+                                  Colors.black.withOpacity(0.88)
                                 ]
                             )
                         ),

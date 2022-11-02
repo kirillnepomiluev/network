@@ -51,7 +51,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
     final double imageWidth = 161; //161
 
     return Scaffold(
-      backgroundColor: ConstColor.blackBack,
+      // backgroundColor: ConstColor.blackBack,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -86,7 +86,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                 child: Text(
                               '1',
                               style: TextStyle(
-                                  color: ConstColor.textWhite,
+                                  // color: ConstColor.textWhite,
                                   fontSize: 16.5.sp, //14
                                   fontWeight: FontWeight.w500),
                             )),
@@ -115,7 +115,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                 child: Text(
                               '3',
                               style: TextStyle(
-                                  color: ConstColor.textWhite,
+                                  // color: ConstColor.textWhite,
                                   fontSize: 16.5.sp, //14
                                   fontWeight: FontWeight.w500),
                             )),
@@ -157,7 +157,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                             child: Text(
                               'Джоли, 28',
                               style: TextStyle(
-                                color: ConstColor.textWhite,
+                                // color: ConstColor.textWhite,
                                 fontSize: 24,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -212,7 +212,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                 'Теперь вы можете открыть чат и договориться о встрече. Конечно же здесь можно разместить и другую ценную информацию.',
                                 style: TextStyle(
                                   height: 1.3,
-                                  color: ConstColor.textWhite,
+                                  // color: ConstColor.textWhite,
                                   fontSize: 16, //16
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -324,7 +324,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                                     ? 'А ещё вопрос может быть длинным придлинным и на него тоже нужно ответить?'
                                                     : 'Какой-нибудь вопрос №${index + 1}',
                                                 style: TextStyle(
-                                                  color: ConstColor.textWhite,
+                                                  // color: ConstColor.textWhite,
                                                   fontSize: 19.5.sp, //20
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -486,7 +486,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
           controller: _controller,
           style: TextStyle(
               fontSize: getResSize(18),
-              color: ConstColor.textWhite,
+              // color: ConstColor.textWhite,
               fontWeight: FontWeight.w400),
           textAlign: TextAlign.start,
           autofocus: true,
