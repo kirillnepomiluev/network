@@ -12,22 +12,31 @@ import 'dart:ui' as ui;
 
 
 
-Widget rhombusText() => Row(
+Widget rhombusText({
+  String text = '+150',
+  double iconSize = 15,
+  double fontSize = 14,
+  double padLeft = 5,
+  FontWeight fontWeight = FontWeight.w400
+}) => Row(
+
+  mainAxisSize: MainAxisSize.min,
   children: [
     Text(
-      '+150',
+      text,
       style: TextStyle(
-          fontSize: 16.5.sp, //14
+          fontSize: fontSize, //14
           color: ConstColor.salad100,
-          fontWeight: FontWeight.w400),
+          fontWeight: fontWeight
+      ),
     ),
 
     Padding(
-      padding: const EdgeInsets.only(left: 5),
+      padding: EdgeInsets.only(left: padLeft),
       child: Icon(
         Network.rhombus,
         color: ConstColor.salad100,
-        size: 15,
+        size: iconSize,
       ),
     )
 
@@ -501,6 +510,8 @@ Widget progressParametr(
                         text1: text1,
                         text2: text2,
                         fontSize: fontSize,
+                        fontWeight1: FontWeight.w400,
+                        fontWeight2: FontWeight.w700,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 13),
@@ -723,22 +734,26 @@ ButtonStyle buttonStyleCustom({
     );
 
 class BuildRichTextTwo extends StatelessWidget {
-  String text1;
-  String text2;
-  final double fontSize;
-  FontWeight fontWeight1;
-  FontWeight fontWeight2;
-  Color color1;
-  Color color2;
-  TextAlign textAlign;
+ final String text1;
+ final String text2;
+ final double fontSize;
+ final FontWeight fontWeight1;
+ final FontWeight fontWeight2;
+ final Color color1;
+ final Color color2;
+ final TextAlign textAlign;
 
   BuildRichTextTwo({
     Key? key,
     this.text1='',
     this.text2='',
-    required this.fontSize,
-    this.fontWeight1 = FontWeight.w400,
-    this.fontWeight2 = FontWeight.w700,
+    this.fontSize=20,
+    // this.fontWeight1 = FontWeight.w400,
+    // this.fontWeight2 = FontWeight.w700,
+
+    this.fontWeight1 = FontWeight.w600,
+    this.fontWeight2 = FontWeight.w600,
+
     this.color1 = ConstColor.textWhite,
     this.color2 = ConstColor.salad100,
     this.textAlign = TextAlign.start,
@@ -786,9 +801,9 @@ class StatColumn extends StatelessWidget {
         BuildRichTextTwo(
           text1: 'Уровень ',
           text2: 'Базовый',
-          fontSize: 19.sp, //20
-          fontWeight1: FontWeight.w600,
-          fontWeight2: FontWeight.w600,
+          // fontSize: 19.sp, //20
+          // fontWeight1: FontWeight.w600,
+          // fontWeight2: FontWeight.w600,
         ),
 
         progressParametr(
@@ -1046,7 +1061,8 @@ class ChangeTabContainer extends StatelessWidget {
 
 class MeetRow extends StatelessWidget {
   Function? func;
-  MeetRow({Key? key, this.func}) : super(key: key);
+  bool isExchange;
+  MeetRow({Key? key, this.func, this.isExchange = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -1056,7 +1072,97 @@ class MeetRow extends StatelessWidget {
     final double iconSize = 19.sp;     //25
     final double iconElSize = 18.5.sp;   //20
 
-    return Row(
+    return
+      isExchange?
+      InkWell(
+        onTap: (){
+
+          if(func!=null){
+            func!();
+          }
+
+        },
+        child: Container(
+          // height: 54,
+          // width: 209,
+          padding: const EdgeInsets.all(3),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
+
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: const Offset(0, 3), // changes position of shadow
+              ),
+            ],
+
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+
+              IconContainer(
+                icon: Network.arrow_right_long,
+                iconSize: iconSize,
+                contSize: contSize,
+                contColor: ConstColor.black1A,
+                func: (){
+
+                  if(func!=null){
+                    func!();
+                  }
+
+                },
+              ),
+
+
+              Padding(
+                padding: EdgeInsets.only(
+                    left: mediaWitdh*0.0453, //17
+                    right: 8
+                ),
+                child: Text('Обменять',
+                    style: TextStyle(
+                        color: ConstColor.textBlack,
+                        fontSize: 15.sp,     //12
+                        fontWeight: FontWeight.w500)),
+              ),
+
+              //иконка >>
+              Padding(
+                padding: EdgeInsets.only(right: mediaWitdh*0.056), //21
+                child: SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: Stack(
+                    children: const [
+                      Positioned(
+                          left: 0,
+                          child: Icon(
+                            Icons.keyboard_arrow_right,
+                            size: 20,
+                            color: ConstColor.grey,
+                          )),
+                      Positioned(
+                          left: 6,
+                          child: Icon(
+                            Icons.keyboard_arrow_right,
+                            size: 20,
+                          )),
+                    ],
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+        ),
+      )
+      :
+      Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
 
@@ -1066,23 +1172,6 @@ class MeetRow extends StatelessWidget {
           iconSize: iconSize,
           contSize: contSize,
         ),
-
-        // Container(
-        //     decoration: BoxDecoration(
-        //         color: Colors.black,
-        //         borderRadius: BorderRadius.circular(15)
-        //       // shape: BoxShape.circle
-        //     ),
-        //     width: contSize,
-        //     height: contSize,
-        //     child: IconButton(
-        //       onPressed: () {},
-        //       icon: const Icon(
-        //         Icons.close_outlined,
-        //         color: Colors.white,
-        //       ),
-        //       iconSize: iconSize,
-        //     )),
 
         InkWell(
           onTap: (){

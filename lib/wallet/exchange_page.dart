@@ -19,7 +19,7 @@ class _ExchangePageState extends State<ExchangePage> {
     final mediaWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade400,
+      // backgroundColor: Colors.grey.shade400,
       body: SafeArea(
         child: SingleChildScrollView(
           child: showSuccess
@@ -41,7 +41,8 @@ class _ExchangePageState extends State<ExchangePage> {
                               style: TextStyle(
                                   fontSize: 18.5.sp, //18
                                   fontWeight: FontWeight.w600,
-                                  color: Colors.black),
+                                  // color: Colors.black
+                              ),
                             ))
                           ],
                         ),
@@ -50,84 +51,109 @@ class _ExchangePageState extends State<ExchangePage> {
                         padding: EdgeInsets.only(
                             top: 30.sp     //47
                         ),
-                        child: Text(
-                          'Обмен\nуспешно выполнен',
+                        child:
+                        BuildRichTextTwo(
+                          text1: 'Обмен\n',
+                          text2: 'успешно выполнен',
+                          // color1: ConstColor.salad100,
+                          // color2: ConstColor.textWhite,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: getResSize(24), //24
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black),
-                        ),
+                        )
+
+                        // Text(
+                        //   'Обмен\nуспешно выполнен',
+                        //   textAlign: TextAlign.center,
+                        //   style: TextStyle(
+                        //       fontSize: getResSize(24), //24
+                        //       fontWeight: FontWeight.w600,
+                        //       color: Colors.black),
+                        // ),
                       ),
 
                       Padding(
                           padding: EdgeInsets.only(
                               top: 35.5.sp  //66
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                '+ 0.00045 ',
-                                style: TextStyle(
-                                    fontSize: 27.sp, //38
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                'BTC',
-                                style: TextStyle(
-                                    fontSize: getResSize(20),
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ],
-                          )),
+                          child:
+                          Text(
+                            '0.00045 BTC',
+                            style: TextStyle(
+                                color: ConstColor.salad100,
+                                fontSize: 27.sp, //38
+                                fontWeight: FontWeight.w600
+                            ),
+                          )
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.center,
+                          //   crossAxisAlignment: CrossAxisAlignment.center,
+                          //   children: [
+                          //     Text(
+                          //       '+ 0.00045 ',
+                          //       style: TextStyle(
+                          //           fontSize: 27.sp, //38
+                          //           fontWeight: FontWeight.w600),
+                          //     ),
+                          //     Text(
+                          //       'BTC',
+                          //       style: TextStyle(
+                          //           fontSize: getResSize(20),
+                          //           fontWeight: FontWeight.w600),
+                          //     ),
+                          //   ],
+                          // )
+                      ),
 
                       Padding(
-                        padding: EdgeInsets.only(top: 24.sp),    //29
+                        padding: EdgeInsets.only(top: 13),    //29
                         child: Text(
                           'на вашем счете',
                           style: TextStyle(
                               fontSize: getResSize(14), //14
                               fontWeight: FontWeight.w400,
-                              color: Colors.black),
+                              // color: Colors.black
+                          ),
                         ),
                       ),
+
                       Padding(
-                        padding: const EdgeInsets.only(top: 36),
+                        padding: const EdgeInsets.only(top: 50),
                         child: currencyCont(data: currencyList[0]),
                       ),
+
                       Padding(
                         padding: EdgeInsets.only(
-                          top: 35.sp,    //62
+                          top: 48
                         ),
                         child: SizedBox(
                           width: double.infinity, //168
-                          height: 32.sp, //53
+                          // height: 32.sp, //53
                           child: ElevatedButton(
                             onPressed: () {
                               // Navigator.of(context).push(MaterialPageRoute<void>(
                               //     builder: (context) => const LoginSecondPage()));
-
                               Navigator.of(context).pop();
                             },
                             style: ButtonStyle(
                                 backgroundColor:
-                                    MaterialStateProperty.all(Colors.black),
+                                    MaterialStateProperty.all(Colors.white),
                                 shape: MaterialStateProperty.all<
                                         RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(52),
+                                  borderRadius: BorderRadius.circular(20),
                                   // side: BorderSide(color: Colors.red)
                                 ))
                                 // backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
                                 ),
-                            child: Text(
-                              'Смотреть другие валюты',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: getResSize(16), //16
-                                  color: Colors.white),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 20),
+                              child: Text(
+                                'Смотреть другие валюты',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: getResSize(16), //16
+                                    color: ConstColor.textBlack
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -145,9 +171,10 @@ class _ExchangePageState extends State<ExchangePage> {
                           left: getResSize(16), //16
                           right: getResSize(16)),
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
+                        // color: ConstColor.white10,
+                        color: ConstColor.blackBack,
                         borderRadius: const BorderRadius.vertical(
-                            bottom: Radius.circular(50)),
+                            bottom: Radius.circular(30)),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -166,7 +193,8 @@ class _ExchangePageState extends State<ExchangePage> {
                                   style: TextStyle(
                                       fontSize: 18.5.sp, //18
                                       fontWeight: FontWeight.w600,
-                                      color: Colors.black),
+                                      // color: Colors.black
+                                  ),
                                 ))
                               ],
                             ),
@@ -183,7 +211,7 @@ class _ExchangePageState extends State<ExchangePage> {
                                   'Вы собираетесь обменять',
                                   style: TextStyle(
                                     fontSize: getResSize(24), //24
-                                    color: Colors.grey,
+                                    // color: Colors.grey,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -192,18 +220,25 @@ class _ExchangePageState extends State<ExchangePage> {
                                         // text: '300 баллов',
                                         style: TextStyle(
                                           fontSize: getResSize(24),
-                                          color: Colors.black,
+                                          // color: ConstColor.salad100,
                                           fontWeight: FontWeight.w500,
                                         ),
                                         children: <TextSpan>[
                                       TextSpan(
                                         text: '300 баллов ',
+                                        style: TextStyle(
+                                          color: ConstColor.salad100
+                                        )
                                       ),
                                       TextSpan(
                                           text: 'в ',
-                                          style: TextStyle(color: Colors.grey)),
+                                          // style: TextStyle(color: Colors.grey)
+                                          ),
                                       TextSpan(
                                         text: 'Bitcoin',
+                                          style: TextStyle(
+                                              color: ConstColor.salad100
+                                          )
                                       ),
                                     ])),
                               ],
@@ -214,7 +249,8 @@ class _ExchangePageState extends State<ExchangePage> {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
-                                  color: Colors.grey.shade300),
+                                  color: ConstColor.white10
+                              ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
@@ -231,26 +267,38 @@ class _ExchangePageState extends State<ExchangePage> {
                                   Padding(
                                       padding:
                                           EdgeInsets.only(top: getResSize(15)),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            '0.00045 ',
-                                            style: TextStyle(
-                                                fontSize: 27.sp, //38
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Text(
-                                            'BTC',
-                                            style: TextStyle(
-                                                fontSize: getResSize(20),
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                        ],
-                                      )),
+                                      child:
+                                      Text(
+                                        '0.00045 BTC',
+                                        style: TextStyle(
+                                            color: ConstColor.salad100,
+                                            fontSize: 27.sp, //38
+                                            fontWeight: FontWeight.w600
+                                        ),
+                                      )
+                                      // Row(
+                                      //   mainAxisAlignment:
+                                      //       MainAxisAlignment.center,
+                                      //   crossAxisAlignment:
+                                      //       CrossAxisAlignment.center,
+                                      //   children: [
+                                      //     Text(
+                                      //       '0.00045 BTC',
+                                      //       style: TextStyle(
+                                      //         color: ConstColor.salad100,
+                                      //           fontSize: 27.sp, //38
+                                      //           fontWeight: FontWeight.w600
+                                      //       ),
+                                      //     ),
+                                      //     Text(
+                                      //       'BTC',
+                                      //       style: TextStyle(
+                                      //           fontSize: getResSize(20),
+                                      //           fontWeight: FontWeight.w600),
+                                      //     ),
+                                      //   ],
+                                      // )
+                                  ),
                                   Padding(
                                       padding: EdgeInsets.only(
                                           left: 20.sp,   //22
@@ -290,6 +338,7 @@ class _ExchangePageState extends State<ExchangePage> {
                                 top: 35.sp     //68
                             ),
                             child: MeetRow(
+                              isExchange: true,
                               func: (){
                                 setState(() {
                                   showSuccess = true;
@@ -301,7 +350,6 @@ class _ExchangePageState extends State<ExchangePage> {
                         ],
                       ),
                     ),
-
                     //GO
                     Padding(
                       padding: EdgeInsets.only(
@@ -314,16 +362,15 @@ class _ExchangePageState extends State<ExchangePage> {
                         },
                         child: Center(
                           child: Container(
-                            width: 72,
+                            width: 66,
                             height: 92,
                             decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
-                                borderRadius: BorderRadius.circular(36)),
-                            child: Center(
-                              child: Icon(
-                                Icons.close_outlined, color: ConstColor.grey,
-                                size: 19.5.sp, //20
-                              ),
+                                color: ConstColor.salad100,
+                                borderRadius: BorderRadius.circular(37)),
+                            child: Icon(
+                              Icons.close_rounded,
+                              color: ConstColor.black1A,
+                              size: 22.sp, //20
                             ),
                           ),
                         ),
@@ -336,99 +383,11 @@ class _ExchangePageState extends State<ExchangePage> {
     );
   }
 
-//   Widget meetRow(BuildContext context) {
-//     final mediaWitdh = MediaQuery.of(context).size.width;
-//     final double contSize = mediaWitdh * 0.128; //48
-// //25
-//     final double iconElSize = 18.5.sp; //20
-//
-//     return InkWell(
-//       onTap: () {
-//         setState(() {
-//           showSuccess = true;
-//         });
-//
-//         // Navigator.of(context).push(
-//         //     MaterialPageRoute<void>(
-//         //         builder: (context) =>
-//         //         const TimerPage()));
-//       },
-//       child: Container(
-//         // height: 54,
-//         // width: 209,
-//         padding: const EdgeInsets.all(3),
-//         decoration: BoxDecoration(
-//           color: Colors.white,
-//           borderRadius: BorderRadius.circular(15),
-//           boxShadow: [
-//             BoxShadow(
-//               color: Colors.black.withOpacity(0.2),
-//               spreadRadius: 2,
-//               blurRadius: 4,
-//               offset: const Offset(0, 3), // changes position of shadow
-//             ),
-//           ],
-//         ),
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           children: [
-//             Container(
-//                 decoration: BoxDecoration(
-//                     color: Colors.black, borderRadius: BorderRadius.circular(15)
-//                     // shape: BoxShape.circle
-//                     ),
-//                 width: contSize,
-//                 height: contSize,
-//                 child: IconButton(
-//                   onPressed: () {},
-//                   icon: const Icon(
-//                     Network.arrow_right_long,
-//                     color: Colors.white,
-//                   ),
-//                   iconSize: iconElSize,
-//                 )),
-//
-//             Padding(
-//               padding: EdgeInsets.only(
-//                   left: mediaWitdh * 0.0453, //17
-//                   right: 8),
-//               child: Text('Обменять',
-//                   style: TextStyle(
-//                       fontSize: 15.5.sp, //12
-//                       fontWeight: FontWeight.w500)),
-//             ),
-//
-//             //иконка >>
-//             Padding(
-//               padding: EdgeInsets.only(right: mediaWitdh * 0.056), //21
-//               child: SizedBox(
-//                 width: 22,
-//                 height: 20,
-//                 child: Stack(
-//                   children: const [
-//                     Positioned(
-//                         left: 0,
-//                         child: Icon(
-//                           Icons.keyboard_arrow_right,
-//                           size: 22,
-//                           color: ConstColor.grey,
-//                         )),
-//                     Positioned(
-//                         left: 8,
-//                         child: Icon(
-//                           Icons.keyboard_arrow_right,
-//                           size: 22,
-//                         )),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
 }
+
+
+
+
 
 class CurrencyData {
   final String title;
@@ -457,7 +416,8 @@ Widget currencyCont({required CurrencyData data}) => Padding(
       child: Container(
         padding: EdgeInsets.all(22.5.sp), //27
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(15)),
+            color: ConstColor.white10,
+            borderRadius: BorderRadius.circular(15)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -465,17 +425,19 @@ Widget currencyCont({required CurrencyData data}) => Padding(
           children: [
             Row(
               children: [
-                Container(
-                  width: 27.sp, //37
-                  height: 27.sp, //37
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade400, shape: BoxShape.circle),
-                  child: Icon(
-                    data.icon,
-                    size: data.iconSize,
-                    color: Colors.black,
-                  ),
-                ),
+                cryptoCont(data: data, isDark: true),
+
+                // Container(
+                //   width: 27.sp, //37
+                //   height: 27.sp, //37
+                //   decoration: BoxDecoration(
+                //       color: Colors.grey.shade400, shape: BoxShape.circle),
+                //   child: Icon(
+                //     data.icon,
+                //     size: data.iconSize,
+                //     color: Colors.black,
+                //   ),
+                // ),
                 Padding(
                   padding: EdgeInsets.only(left: getResSize(18) //18
                       ),
@@ -487,7 +449,8 @@ Widget currencyCont({required CurrencyData data}) => Padding(
                         style: TextStyle(
                             fontSize: getResSize(16), //16
                             fontWeight: FontWeight.w400,
-                            color: Colors.black),
+                            // color: Colors.black
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 5),
@@ -512,7 +475,8 @@ Widget currencyCont({required CurrencyData data}) => Padding(
                   style: TextStyle(
                       fontSize: getResSize(14), //14
                       fontWeight: FontWeight.w400,
-                      color: Colors.black),
+                      // color: Colors.black
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 5),
@@ -521,14 +485,15 @@ Widget currencyCont({required CurrencyData data}) => Padding(
                       Icon(
                         Icons.attach_money_sharp,
                         size: getResSize(12), //12
-                        color: Colors.grey,
+                        color: ConstColor.salad100
                       ),
                       Text(
                         '20.13',
                         style: TextStyle(
                             fontSize: getResSize(12), //12
                             fontWeight: FontWeight.w400,
-                            color: Colors.grey),
+                            color: ConstColor.salad100
+                        ),
                       ),
                     ],
                   ),
@@ -539,3 +504,18 @@ Widget currencyCont({required CurrencyData data}) => Padding(
         ),
       ),
     );
+
+
+Widget cryptoCont({required CurrencyData data, bool isDark=false}) => Container(
+  width: 27.sp,    //37
+  height: 27.sp,   //37
+  decoration:  BoxDecoration(
+      color: isDark? ConstColor.salad100 : ConstColor.black1A,
+      borderRadius: BorderRadius.circular(15)
+  ),
+  child: Icon(
+      data.icon,
+      size: data.iconSize,
+      color: isDark? ConstColor.black1A : ConstColor.salad100
+  ),
+);

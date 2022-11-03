@@ -145,11 +145,11 @@ class _QuestionsPageState extends State<QuestionsPage> {
                               child: BuildRichTextTwo(
                                 text1: 'Поздравляем, ',
                                 color1: ConstColor.salad100,
-                                fontWeight1: FontWeight.w600,
+                                // fontWeight1: FontWeight.w600,
                                 text2: 'вы ответили\nна все вопросы',
                                 color2: ConstColor.textWhite,
-                                fontWeight2: FontWeight.w600,
-                                fontSize: 19.5.sp, //20
+                                // fontWeight2: FontWeight.w600,
+                                // fontSize: 19.5.sp, //20
                                 textAlign: TextAlign.center,
                               )),
                           Padding(

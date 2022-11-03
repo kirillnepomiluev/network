@@ -61,14 +61,12 @@ class _HomePageState extends State<HomePage> {
           vertical: 8
             ),
         // padding: const EdgeInsets.only(bottom: 5),
-        child: Container(
-          decoration: BoxDecoration(
-            color: ConstColor.white10, //цвет рамки c округлением
-            borderRadius: BorderRadius.circular(15),
-          ),
-          // color: ConstColor.white10, //цвет рамки c округлением
-          // shape: RoundedRectangleBorder(
-          //   borderRadius: BorderRadius.circular(20),
+        child: BlurryContainer(
+          padding: EdgeInsets.zero,
+          blur: 50,
+          // decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.15), //цвет рамки c округлением
+            borderRadius: BorderRadius.circular(20),
           // ),
           child: BottomBar(
             // height: 54,
@@ -78,7 +76,7 @@ class _HomePageState extends State<HomePage> {
             ),
             padding: EdgeInsets.zero,
             itemPadding: EdgeInsets.symmetric(
-                vertical: 17,
+                vertical: 20,
                 horizontal: 20 //16
                 ),
             backgroundColor: Colors.transparent,

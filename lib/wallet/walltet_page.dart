@@ -13,7 +13,7 @@ class WalletPage extends StatefulWidget {
 }
 
 class _WalletPageState extends State<WalletPage> {
-  int _activeWalletTab = 1;
+  int _activeTab = 1;
 
   Widget miniContainer({
     required int position,
@@ -24,17 +24,16 @@ class _WalletPageState extends State<WalletPage> {
     return InkWell(
       onTap: (() {
         setState(() {
-          _activeWalletTab = position;
+          _activeTab = position;
         });
       }),
       child: Container(
         width: mediaWitdh*0.43,  //161   55
         height: 40.sp,   //91   40
-        // padding: EdgeInsets.all(0.0373 * mediaWidth), //14
         decoration: BoxDecoration(
-          color: _activeWalletTab == position
-              ? ConstColor.grey
-              : Colors.grey.shade300,
+          color: _activeTab == position
+              ? ConstColor.salad100
+              : ConstColor.white10,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Row(
@@ -45,6 +44,9 @@ class _WalletPageState extends State<WalletPage> {
             Text(
               text,
               style: TextStyle(
+                  color: _activeTab == position
+                      ? ConstColor.textBlack
+                      : ConstColor.textWhite,
                   fontSize: 18.sp, //16
                   fontWeight: FontWeight.w400),
             ),
@@ -55,10 +57,17 @@ class _WalletPageState extends State<WalletPage> {
                   left: 13.sp //9
               ),
               child: Icon(
-                position==1
+                _activeTab == position
                     ? Network.arrow_right_down
-                    : Network.arrow_right_up,
-                size: 14.sp,   //10
+                    : Icons.arrow_forward_rounded,
+                size:
+                _activeTab == position
+                    ?14.sp   //10
+                : 18.sp,
+
+                color: _activeTab == position
+                    ? ConstColor.textBlack
+                    : ConstColor.textWhite,
               ),
             )
 
@@ -74,7 +83,7 @@ class _WalletPageState extends State<WalletPage> {
     final mediaTop = MediaQuery.of(context).viewPadding.top;
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade400,
+      // backgroundColor: Colors.grey.shade400,
       body: Padding(
         padding: EdgeInsets.only(
             top: mediaTop,
@@ -97,7 +106,9 @@ class _WalletPageState extends State<WalletPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 18.5.sp,   //18
-                          fontWeight: FontWeight.w600, color: Colors.black),
+                          fontWeight: FontWeight.w600,
+                          // color: Colors.black
+                      ),
                     ))
                   ],
                 ),
@@ -112,7 +123,7 @@ class _WalletPageState extends State<WalletPage> {
                   children: [
                     miniContainer(
                       position: 1,
-                      text: 'Баллы',
+                      text: 'Токены',
                     ),
                     miniContainer(
                       position: 2,
@@ -122,7 +133,7 @@ class _WalletPageState extends State<WalletPage> {
                 ),
               ),
 
-              _activeWalletTab==1?
+              _activeTab==1?
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -133,7 +144,9 @@ class _WalletPageState extends State<WalletPage> {
                     child: Text('Общее количество баллов',
                         style: TextStyle(
                         fontSize: 17.5.sp,   //16
-                        fontWeight: FontWeight.w400, color: Colors.black),
+                        fontWeight: FontWeight.w400,
+                            // color: Colors.black
+                        ),
                     ),
                   ),
 
@@ -143,7 +156,9 @@ class _WalletPageState extends State<WalletPage> {
                     child: Text('330',
                       style: TextStyle(
                           fontSize: 27.sp,   //38
-                          fontWeight: FontWeight.w700, color: Colors.black),
+                          fontWeight: FontWeight.w700,
+                          color: ConstColor.salad100
+                      ),
                     ),
                   ),
 
@@ -158,7 +173,7 @@ class _WalletPageState extends State<WalletPage> {
                         vertical: 24.sp     //32
                       ), //14
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
+                        color: ConstColor.white10,
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Column(
@@ -188,16 +203,19 @@ class _WalletPageState extends State<WalletPage> {
                                   maxLines: null,
                                   style: TextStyle(
                                       fontSize: 17.5.sp, //16
-                                      fontWeight: FontWeight.w400),
+                                      fontWeight: FontWeight.w400,
+                                    color: ConstColor.salad100
+                                  ),
                                 ),
 
                                 Text(
-                                  'баллов',
+                                  'токенов',
                                   maxLines: null,
                                   style: TextStyle(
                                     color: Colors.grey,
                                       fontSize: getResSize(12), //12
-                                      fontWeight: FontWeight.w400),
+                                      fontWeight: FontWeight.w400
+                                  ),
                                 ),
 
                               ],)
@@ -210,6 +228,7 @@ class _WalletPageState extends State<WalletPage> {
                                 top: 24.sp  //30
                             ),
                             child: MeetRow(
+                              isExchange: true,
                               func: (){
                                 Navigator.of(context).push(
                                     MaterialPageRoute<void>(
@@ -224,20 +243,10 @@ class _WalletPageState extends State<WalletPage> {
                     ),
                   ),
 
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: 24.sp  //32
-                    ),
-                    child: Text('Выберете валюту',
-                      style: TextStyle(
-                          fontSize: 16.5.sp,   //14
-                          fontWeight: FontWeight.w400, color: Colors.black),
-                    ),
-                  ),
 
                   Padding(
                       padding: EdgeInsets.only(
-                          top: 17.5.sp  //16
+                          top: 50
                       ),
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -261,29 +270,32 @@ class _WalletPageState extends State<WalletPage> {
                     ),
                     child: SizedBox(
                       width: double.infinity,  //168
-                      height: 32.sp,  //53
+                      // height: 32.sp,  //53
                       child: ElevatedButton(
                         onPressed: () {
                           // Navigator.of(context).push(MaterialPageRoute<void>(
                           //     builder: (context) => const LoginSecondPage()));
                         },
-                        style: ButtonStyle(
-                            backgroundColor:
-                            MaterialStateProperty.all(Colors.black),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(52),
-                              // side: BorderSide(color: Colors.red)
-                            ))
-                          // backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                          padding: EdgeInsets.symmetric(vertical: 22)
+                          // padding: ,
+                          //   backgroundColor:
+                          //   MaterialStateProperty.all(Colors.white),
+                          //   shape: MaterialStateProperty.all<
+                          //       RoundedRectangleBorder>(RoundedRectangleBorder(
+                          //     borderRadius: BorderRadius.circular(20),
+                          //   ))
                         ),
                         child:
                         Text(
                           'Смотреть историю пополнений',
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
-                              fontSize: getResSize(16), //16
-                              color: Colors.white),
+                              fontSize: 18, //16
+                              color: ConstColor.textBlack
+                          ),
                         ),
                       ),
                     ),
@@ -305,11 +317,19 @@ class _WalletPageState extends State<WalletPage> {
   }
 
 
-  Widget graphCont({required CurrencyData data}) => Padding(
+  Widget graphCont({required CurrencyData data}) {
+
+    final double contWidth = 165;
+    final double contHeight = contWidth*0.3333333333333333;
+
+    final bool isDark = data.title=='SOL';
+
+    return Padding(
     padding: EdgeInsets.only(
         right: 20.sp  //21
     ),
     child: Container(
+      height: 250,
       padding:
       EdgeInsets.only(
           top: getResSize(14),
@@ -318,225 +338,204 @@ class _WalletPageState extends State<WalletPage> {
       ),
       width: 55.sp, //161
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: isDark? ConstColor.white10 : ConstColor.salad100,
           borderRadius: BorderRadius.circular(15)
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
 
-          Padding(
-            padding: EdgeInsets.only(
-                left: getResSize(14) //14
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-
-                Text(data.title,
-                  style: TextStyle(
-                      fontSize: getResSize(16),   //16
-                      fontWeight: FontWeight.w400, color: Colors.black),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                    left: getResSize(14) //14
                 ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
 
-                Text('+5,76%',
-                  style: TextStyle(
-                      fontSize: getResSize(12),   //16
-                      fontWeight: FontWeight.w400, color: Colors.black),
-                ),
-
-              ],
-            ),
-          ),
-
-
-          Padding(
-            padding: EdgeInsets.only(
-                left: getResSize(14), //14
-                top: 5
-            ),
-            child: Text(data.subtitle,
-              style: TextStyle(
-                  fontSize: getResSize(14),   //14
-                  fontWeight: FontWeight.w400, color: Colors.grey),
-            ),
-          ),
-
-          Padding(
-            padding: EdgeInsets.only(
-                top: 22.sp  //28
-            ),
-            child:
-            Image.asset('assets/images/${data.title=='BTC'?'graph_btc.png':'graph_sol.png'}',),
-          ),
-
-          Padding(
-            padding:  EdgeInsets.only(top: getResSize(10)),
-            child:  Align(
-              alignment: Alignment.topRight,
-              child: Text('Вы получите',
-                style: TextStyle(
-                    fontSize: getResSize(10),   //10
-                    fontWeight: FontWeight.w500,
-                    color: Colors.grey
-                ),
-              ),
-            ),
-          ),
-
-          Padding(
-              padding: EdgeInsets.only(
-                  left: getResSize(14), //14
-                  top: getResSize(12)   //12
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 27.sp,    //37
-                    height: 27.sp,   //37
-                    decoration:  BoxDecoration(
-                        color: Colors.grey.shade400,
-                        shape: BoxShape.circle
-                      // borderRadius: BorderRadius.circular(15)
-                    ),
-                    child: Icon(data.icon, size: data.iconSize, color: Colors.black),
-                  ),
-
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-
-                    Text('0.00045',
+                    Text(data.title,
                       style: TextStyle(
-                          fontSize: getResSize(14),   //14
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black
+                          fontSize: getResSize(16),   //16
+                          fontWeight: FontWeight.w500,
+                          color: isDark? ConstColor.salad100 : ConstColor.textBlack
                       ),
                     ),
 
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.attach_money_sharp,
-                          size: getResSize(12),
-                          color: Colors.grey,),
-
-                        Text('20.13',
-                          style: TextStyle(
-                              fontSize: getResSize(12),   //12
-                              fontWeight: FontWeight.w400,
-                              color: Colors.grey
-                          ),
-                        ),
-                      ],
+                    Text('+5,76%',
+                      style: TextStyle(
+                          fontSize: getResSize(12),   //12
+                          fontWeight: FontWeight.w400,
+                          color: isDark? ConstColor.textWhite : ConstColor.textBlack
+                      ),
                     ),
 
-                  ],)
+                  ],
+                ),
+              ),
 
-                ],
-              )
+              Padding(
+                padding: EdgeInsets.only(
+                    left: getResSize(14), //14
+                    top: 5
+                ),
+                child: Text(data.subtitle,
+                  style: TextStyle(
+                      fontSize: getResSize(14),   //14
+                      fontWeight: FontWeight.w400,
+                      color: isDark? ConstColor.textGray : ConstColor.black1A
+                  ),
+                ),
+              ),
+            ],
           ),
 
+          Padding(
+            padding: EdgeInsets.only(top: isDark? 17 : 27),
+            child: Transform.scale(
+              scaleY: isDark? -1 : 1,
+              child: ClipRect(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  widthFactor: 0.8,
+                  heightFactor: 1.0,
+                  child:
+                  CustomPaint(
+                    size: Size(contWidth, contHeight), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                    painter: GraphOne(isDark: isDark),
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          Column(
+            children: [
+              Padding(
+                padding:  EdgeInsets.only(top: getResSize(10)),
+                child:  Align(
+                  alignment: Alignment.topRight,
+                  child: Text('Вы получите',
+                    style: TextStyle(
+                        fontSize: getResSize(10),   //10
+                        fontWeight: FontWeight.w500,
+                        color: isDark? ConstColor.textGray : ConstColor.textBlack
+                    ),
+                  ),
+                ),
+              ),
+
+              Padding(
+                  padding: EdgeInsets.only(
+                      left: getResSize(14), //14
+                      top: getResSize(12)   //12
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      cryptoCont(data: data, isDark: isDark),
+                      // Container(
+                      //   width: 27.sp,    //37
+                      //   height: 27.sp,   //37
+                      //   decoration:  BoxDecoration(
+                      //       color: isDark? ConstColor.salad100 : ConstColor.black1A,
+                      //     borderRadius: BorderRadius.circular(15)
+                      //   ),
+                      //   child: Icon(
+                      //       data.icon,
+                      //       size: data.iconSize,
+                      //       color: isDark? ConstColor.black1A : ConstColor.salad100
+                      //   ),
+                      // ),
+
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+
+                        Text('0.00045',
+                          style: TextStyle(
+                              fontSize: getResSize(14),   //14
+                              fontWeight: FontWeight.w400,
+                              color: isDark? ConstColor.textWhite : ConstColor.textBlack
+                          ),
+                        ),
+
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.attach_money_sharp,
+                              size: getResSize(12),
+                              color: ConstColor.textBlack
+                            ),
+
+                            Text('20.13',
+                              style: TextStyle(
+                                  fontSize: getResSize(12),   //12
+                                  fontWeight: FontWeight.w400,
+                                  color: isDark? ConstColor.salad100 : ConstColor.textBlack
+                              ),
+                            ),
+                          ],
+                        ),
+
+                      ],)
+
+                    ],
+                  )
+              ),
+            ],
+          ),
 
         ],),
     ),
   );
-
-  // Widget meetRow(BuildContext context) {
-  //   final mediaWitdh = MediaQuery.of(context).size.width;
-  //   final double contSize = mediaWitdh*0.128;   //48
-  //   final double iconElSize = 18.5.sp;   //20
-  //
-  //   return InkWell(
-  //     onTap: (){
-  //       Navigator.of(context).push(
-  //           MaterialPageRoute<void>(
-  //               builder: (context) =>
-  //               const ExchangePage()));
-  //     },
-  //     child: Container(
-  //       padding: const EdgeInsets.all(3),
-  //       decoration: BoxDecoration(
-  //         color: Colors.white,
-  //         borderRadius: BorderRadius.circular(15),
-  //
-  //         boxShadow: [
-  //           BoxShadow(
-  //             color: Colors.black.withOpacity(0.2),
-  //             spreadRadius: 2,
-  //             blurRadius: 4,
-  //             offset: const Offset(0, 3), // changes position of shadow
-  //           ),
-  //         ],
-  //
-  //       ),
-  //       child: Row(
-  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //         children: [
-  //
-  //           Container(
-  //               decoration: BoxDecoration(
-  //                   color: Colors.black,
-  //                   borderRadius: BorderRadius.circular(15)
-  //                 // shape: BoxShape.circle
-  //               ),
-  //               width: contSize,
-  //               height: contSize,
-  //               child: IconButton(
-  //                 onPressed: () {},
-  //                 icon: const Icon(
-  //                   Network.arrow_right_long,
-  //                   color: Colors.white,
-  //                 ),
-  //                 iconSize: iconElSize,
-  //               )),
-  //
-  //           Padding(
-  //             padding: EdgeInsets.only(
-  //                 left: mediaWitdh*0.0453, //17
-  //                 right: 8
-  //             ),
-  //             child: Text('Обменять',
-  //                 style: TextStyle(
-  //                     fontSize: 15.sp,     //12
-  //                     fontWeight: FontWeight.w500)),
-  //           ),
-  //
-  //           //иконка >>
-  //           Padding(
-  //             padding: EdgeInsets.only(right: mediaWitdh*0.056), //21
-  //             child: SizedBox(
-  //               width: 22,
-  //               height: 20,
-  //               child: Stack(
-  //                 children: const [
-  //                   Positioned(
-  //                       left: 0,
-  //                       child: Icon(
-  //                         Icons.keyboard_arrow_right,
-  //                         size: 22,
-  //                         color: ConstColor.grey,
-  //                       )),
-  //                   Positioned(
-  //                       left: 8,
-  //                       child: Icon(
-  //                         Icons.keyboard_arrow_right,
-  //                         size: 22,
-  //                       )),
-  //                 ],
-  //               ),
-  //             ),
-  //           ),
-  //
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
+  }
 
 }
 
 
+//Copy this CustomPainter code to the Bottom of the File
+class GraphOne extends CustomPainter {
+  final bool isDark;
+
+  GraphOne({this.isDark = false});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+
+    Path path_0 = Path();
+    path_0.moveTo(size.width*0.006060606,size.height*0.9000000);
+    path_0.cubicTo(size.width*0.01717170,size.height*0.9575764,size.width*0.05393939,size.height*1.038182,size.width*0.1121212,size.height*0.9000000);
+    path_0.cubicTo(size.width*0.1848485,size.height*0.7272727,size.width*0.2242424,size.height*0.5363636,size.width*0.3212121,size.height*0.9000000);
+    path_0.cubicTo(size.width*0.4181818,size.height*1.263636,size.width*0.3696970,size.height*0.3818218,size.width*0.4515152,size.height*0.2727309);
+    path_0.cubicTo(size.width*0.5333333,size.height*0.1636400,size.width*0.4939394,size.height*0.8000036,size.width*0.5787879,size.height*0.7363673);
+    path_0.cubicTo(size.width*0.6636364,size.height*0.6727309,size.width*0.6152121,size.height*0.3436545,size.width*0.7121212,size.height*0.3727273);
+    path_0.cubicTo(size.width*0.7727273,size.height*0.3909091,size.width*0.7424242,size.height*0.5454545,size.width*0.8151515,size.height*0.5909091);
+    path_0.cubicTo(size.width*0.8733333,size.height*0.6272727,size.width*0.9525273,size.height*0.2484855,size.width*0.9848485,size.height*0.05454545);
+
+    Paint paint_0_stroke = Paint()..style=PaintingStyle.stroke..strokeWidth=1;
+    paint_0_stroke.color= isDark? ConstColor.salad100 : ConstColor.black1A;
+    // paint_0_stroke.color= Colors.transparent;
+    canvas.drawPath(path_0,paint_0_stroke);
+
+    Paint paint_0_fill = Paint()..style=PaintingStyle.fill;
+    // paint_0_fill.color = Color(0xff000000).withOpacity(1.0);
+    paint_0_fill.color = Colors.transparent;
+    canvas.drawPath(path_0,paint_0_fill);
+
+    Paint paint_1_fill = Paint()..style=PaintingStyle.fill;
+    paint_1_fill.color = isDark? ConstColor.salad100 : ConstColor.black1A;
+    canvas.drawCircle(Offset(size.width*0.9878788,size.height*0.03636364),size.width*0.01212121,paint_1_fill);
+
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+}

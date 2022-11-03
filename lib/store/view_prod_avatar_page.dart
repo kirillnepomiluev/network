@@ -223,10 +223,15 @@ void openSuccessSheet({required BuildContext context,}) {
                 ),
               ),
 
-
               Padding(
                 padding: const EdgeInsets.only(top: 60),
-                child: BuildRichTextTwo(text1: 'Оплата прошла ', text2: 'успешно', fontSize: 20),
+                child: BuildRichTextTwo(
+                    text1: 'Оплата прошла ',
+                    text2: 'успешно',
+                    // fontSize: 20,
+                  fontWeight1: FontWeight.w400,
+                  fontWeight2: FontWeight.w700,
+                ),
               ),
 
 

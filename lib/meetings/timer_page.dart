@@ -199,11 +199,34 @@ class _TimerPageState extends State<TimerPage> {
 
                       openBottomSheetSuccess();
 
-                      // if(isPaused){
-                      //   startTimer();
-                      // }else{
-                      //   showPauseDialog();
-                      // }
+                      if(isPaused){
+                        startTimer();
+                      }else{
+                        // openBottomSheetComplain(
+                        //   icon: Network.check_circle_outlined,
+                        //   text1: 'Ваша ',
+                        //   text2: 'жалоба отправлена',
+                        //   text3: 'В ближайшее время мы свяжемся с вами,\nчтобы сообщать о предпринятых мерах',
+                        //   textButton: 'Закрыть',
+                        //   func: (){
+                        //     Navigator.of(context).pop();
+                        //   }
+                        // );
+
+                        // openBottomSheetComplain(
+                        //     icon: Network.smile_dead,
+                        //     text1: 'Вы получили ',
+                        //     text2: 'жалобу',
+                        //     text3: 'Ваш рейтинг понижен на ____.\nЕсли на вас поступят еще 2 жалобы, мы\nвынуждены будем вас заблокировать. ',
+                        //     textButton: 'Посмотреть',
+                        //     func: (){
+                        //       // Navigator.of(context).push(MaterialPageRoute<void>(
+                        //       //     builder: (context) => const RatePage()));
+                        //     }
+                        // );
+
+                        // showPauseDialog();
+                      }
 
                     },
                     child: Container(
@@ -456,7 +479,8 @@ class _TimerPageState extends State<TimerPage> {
 
   void openBottomSheetSuccess() {
     showModalBottomSheet<void>(
-      enableDrag: true,
+        backgroundColor: ConstColor.black1A.withOpacity(0.5),
+        enableDrag: true,
       isDismissible: true,
         isScrollControlled: true,
         shape: const RoundedRectangleBorder(
@@ -475,14 +499,17 @@ class _TimerPageState extends State<TimerPage> {
           },
           child: GestureDetector(
             onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
+            child: BlurryContainer(
+              blur: 30,
+              // decoration: BoxDecoration(
+                  color: Colors.transparent,
                   borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(30))),
+                  const BorderRadius.vertical(top: Radius.circular(30))
+            // )
+                ,
               // height: MediaQuery.of(context).size.height * 0.8,
               // padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 15),
-              padding: const EdgeInsets.symmetric(vertical: 60),
+              // padding: const EdgeInsets.symmetric(vertical: 60),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -490,34 +517,40 @@ class _TimerPageState extends State<TimerPage> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
 
-                    Text('Вы получили 150 баллов!', style: TextStyle(
-                      fontSize: 19.5.sp,  //20
-                      fontWeight: FontWeight.w700,
-                    ),),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 63),
+                      child: BuildRichTextTwo(
+                        // fontSize: 20,
+                        text1: 'Вы получили\n',
+                        text2: 'токены за встречу',
+                        // fontWeight1: FontWeight.w600,
+                        // fontWeight2: FontWeight.w600,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+
 
                     Padding(
-                      padding: const EdgeInsets.only(top: 60, bottom: 66),
-                      child: Container(
-                        width: imageWidth,     //234
-                        height: 0.9359*imageWidth,  //219
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(17)
-                        ),
+                      padding: const EdgeInsets.only(top: 101),
+                      child:  rhombusText(
+                        padLeft: 20,
+                        fontSize: 60,
+                        iconSize: 45,
+                        fontWeight: FontWeight.w600
                       ),
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 0),
+                      padding: const EdgeInsets.only(top: 104),
                       child: SizedBox(
-                        width: 0.69*mediaWidth,   //259
+                        width: double.infinity,   //259
                         child: ElevatedButton(
                             style: ButtonStyle(
                               backgroundColor:
-                              MaterialStateProperty.all(Colors.black),
+                              MaterialStateProperty.all(Colors.white),
                               shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(52),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
                             ),
@@ -527,13 +560,12 @@ class _TimerPageState extends State<TimerPage> {
                             },
                             child: Padding(
                               padding: EdgeInsets.symmetric(
-                                  vertical: 0.0453*mediaWidth    //17
+                                  vertical: 26
                               ),
                               child: Text(
-                                // 'Создать чат',
                                 'Оценить встречу',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: ConstColor.textBlack,
                                     fontSize: 17.5.sp,   //16
                                     fontWeight: FontWeight.w500
 
@@ -544,17 +576,17 @@ class _TimerPageState extends State<TimerPage> {
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.only(top: 31),
+                      padding: const EdgeInsets.only(top: 31, bottom: 20),
                       child: SizedBox(
-                        width: 0.69*mediaWidth,   //259
+                        width: double.infinity,   //259
                         child: ElevatedButton(
                             style: ButtonStyle(
                               backgroundColor:
-                              MaterialStateProperty.all(Colors.grey.shade100,),
+                              MaterialStateProperty.all(Colors.black,),
                               shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(52),
-                                    side: const BorderSide(width: 2, color: Colors.black)
+                                    borderRadius: BorderRadius.circular(20),
+                                    side: const BorderSide(width: 2, color: Colors.white)
                                 ),
                               ),
                             ),
@@ -564,12 +596,12 @@ class _TimerPageState extends State<TimerPage> {
                             },
                             child: Padding(
                               padding: EdgeInsets.symmetric(
-                                  vertical: 0.0453*mediaWidth    //17
+                                  vertical: 26
                               ),
                               child: Text(
                                 'Оценить позже',
                                 style: TextStyle(
-                                    color: Colors.black,
+                                    // color: ConstColor.textWhite,
                                     fontSize: 17.5.sp,   //16
                                     fontWeight: FontWeight.w500
 
@@ -587,6 +619,121 @@ class _TimerPageState extends State<TimerPage> {
             ),
           ),
         );
+        });
+  }
+
+
+  void openBottomSheetComplain({
+  required IconData icon,
+    required String text1,
+    required String text2,
+    required String text3,
+    required String textButton,
+    Function? func,
+}) {
+    showModalBottomSheet<void>(
+      backgroundColor: ConstColor.black1A.withOpacity(0.5),
+        enableDrag: true,
+        isDismissible: true,
+        isScrollControlled: true,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+        context: context,
+        builder: (BuildContext context) {
+
+          // final mediaWidth = MediaQuery.of(context).size.width;
+
+          return GestureDetector(
+            onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+            child: BlurryContainer(
+              blur: 30,
+              // decoration: BoxDecoration(
+              //     color: ConstColor.white10,
+                  color: Colors.transparent,
+                  borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(30))
+            // )
+            ,
+              // padding: const EdgeInsets.symmetric(vertical: 60),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+
+                    Padding(
+                      padding: EdgeInsets.only(top: 69),
+                      child: Icon(
+                        icon,
+                        // Network.check_circle_outlined,
+                        size: 100,
+                        color: ConstColor.salad100,
+                      ),
+                    ),
+
+                    Padding(padding: EdgeInsets.only(top: 69),
+                      child:
+                        BuildRichTextTwo(
+                          // fontSize: 20,
+                          text1: text1,
+                          text2: text2,
+                          // fontWeight1: FontWeight.w600,
+                          // fontWeight2: FontWeight.w600,
+                        )
+                    ),
+
+                    Padding(
+                      padding: EdgeInsets.only(top: 35),
+                      child: Text(
+                        // 'В ближайшее время мы свяжемся с вами,\nчтобы сообщать о предпринятых мерах',
+                        text3,
+                         textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400
+                        ),
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(top: 150, bottom: 35),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor:
+                              MaterialStateProperty.all(Colors.white),
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                            ),
+                            onPressed: (){
+                              if(func!=null){
+                                func();
+                              }
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 22),
+                              child: Text(
+                                textButton,
+                                style: TextStyle(
+                                    color: ConstColor.textBlack,
+                                    fontSize: 17.5.sp,   //16
+                                    fontWeight: FontWeight.w500
+                                ),
+                              ),
+                            )),
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+            ),
+          );
         });
   }
 

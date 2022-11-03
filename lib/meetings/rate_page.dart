@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/components/general_widgets.dart';
+import 'package:network_app/components/network_icons.dart';
+import 'package:network_app/constants.dart';
 import 'package:network_app/meetings/rate_final_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -21,6 +23,10 @@ class _RatePageState extends State<RatePage> {
     final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
 
+    // double feet = 0;
+    // String heightInFeet = "null";
+    // int height = 180;
+
     return WillPopScope(
       onWillPop: () async {
         showInterruptDialog(context);
@@ -32,42 +38,45 @@ class _RatePageState extends State<RatePage> {
           toolbarHeight: 65,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title:
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child:  Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                BackButtonCustom(
-                func: (){
-                  showInterruptDialog(context);
-                }),
-
-                Container(
-                  // alignment: Alignment.topLeft,
-                  width: 0.11466*mediaWidth, //43
-                  height: 0.11466*mediaWidth, //43
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Center(
-                    child: IconButton(
-                        onPressed: (){
-                          showInterruptDialog(context);
-                        },
-                        icon: Icon(
-                          Icons.close_outlined,
-                          color: Colors.black,
-                          size: 18.5.sp, //18
-                        )),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          title:    BackButtonCustom(
+              func: (){
+                showInterruptDialog(context);
+              }),
+          // Padding(
+          //   padding: const EdgeInsets.only(top: 10),
+          //   child:  Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       BackButtonCustom(
+          //       func: (){
+          //         showInterruptDialog(context);
+          //       }),
+          //
+          //       Container(
+          //         width: 0.11466*mediaWidth, //43
+          //         height: 0.11466*mediaWidth, //43
+          //         decoration: BoxDecoration(
+          //           color: Colors.grey.shade300,
+          //           borderRadius: BorderRadius.circular(15),
+          //         ),
+          //         child: Center(
+          //           child: IconButton(
+          //               onPressed: (){
+          //                 showInterruptDialog(context);
+          //               },
+          //               icon: Icon(
+          //                 Icons.close_outlined,
+          //                 color: Colors.black,
+          //                 size: 18.5.sp, //18
+          //               )),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
         ),
-        backgroundColor: Colors.grey.shade400,
+        // backgroundColor: Colors.grey.shade400,
+
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -75,41 +84,114 @@ class _RatePageState extends State<RatePage> {
 
               Padding(
                 // padding: EdgeInsets.only(top: 30),    //30
-                padding: EdgeInsets.only(top: 0.0416*mediaHeight),    //30
-                child: Text('Как прошла встреча?',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                  fontSize: 19.5.sp,   //20
-                  fontWeight: FontWeight.w700,
-                ),),
+                padding: EdgeInsets.only(top: 59),    //30
+                child:
+
+                  BuildRichTextTwo(
+                    text1: 'Как прошла ',
+                    text2: 'встреча?',
+                    color1: ConstColor.salad100,
+                    color2: ConstColor.textWhite,
+                    // fontSize: 20,
+                  )
+
+                // Text('Как прошла встреча?',
+                //   textAlign: TextAlign.center,
+                //   style: TextStyle(
+                //   fontSize: 19.5.sp,   //20
+                //   fontWeight: FontWeight.w700,
+                // ),),
+
               ),
 
 
               Padding(
-                padding: EdgeInsets.only(
-                    top: mediaHeight*0.1387,     //100
-                    bottom: mediaHeight*0.083    //60
-                ),
-                child: Image.asset('assets/icons/smile.png',
-                  width: 0.1997*mediaHeight,
-                  height: 0.1997*mediaHeight,    //144
+                padding: EdgeInsets.only(top: 131),
+                child: Icon(
+                  Network.smile_wave,
+                  size: 100,
+                  color: ConstColor.salad100,
                 ),
               ),
 
 
-              const SliderCustom(
-                min: 0,
-                max: 100,
-                showLabel: false,
-                sLiderValue: 50,
-                // stepSize: 5
+              // Padding(
+              //   padding: EdgeInsets.only(
+              //       top: mediaHeight*0.1387,     //100
+              //       bottom: mediaHeight*0.083    //60
+              //   ),
+              //   child: Image.asset('assets/icons/smile.png',
+              //     width: 0.1997*mediaHeight,
+              //     height: 0.1997*mediaHeight,    //144
+              //   ),
+              // ),
+
+
+              // SliderTheme(
+              //   data: SliderTheme.of(context).copyWith(
+              //     valueIndicatorColor: Colors.transparent, // This is what you are asking for
+              //     inactiveTrackColor: Color(0xFF8D8E98), // Custom Gray Color
+              //     activeTrackColor: Colors.white,
+              //     thumbColor: Colors.red,
+              //     overlayColor: Color(0x29EB1555),  // Custom Thumb overlay Color
+              //     thumbShape:
+              //     RoundSliderThumbShape(enabledThumbRadius: 12.0),
+              //     overlayShape:
+              //     RoundSliderOverlayShape(overlayRadius: 20.0),
+              //   ),
+              //   child: Slider(
+              //     divisions: 1,
+              //     label: sliderValue.toString(),
+              //         min: 0,
+              //         max: 100,
+              //         value: sliderValue,
+              //         onChanged: (dynamic value) => setState(() => sliderValue = value as double),
+              //   ),
+              // ),
+
+              // SfSliderTheme(
+              //   data: SliderTheme(
+              //     overlayColor: Colors.black.withOpacity(0.1),
+              //     inactiveTrackColor: Colors.grey,
+              //     activeTrackColor: Colors.black,
+              //     thumbColor: Colors.black,
+              //     activeTrackHeight: 10,
+              //     inactiveTrackHeight: 10,
+              //     thumbRadius: 14,
+              //     overlayRadius: 0,
+              //   ),
+              //   child:
+              //   Slider(
+              //     thumbIcon: const Icon(
+              //       Icons.circle,
+              //       color: Colors.grey,
+              //       size: 13,
+              //     ),
+              //     min: widget.min,
+              //     max: widget.max,
+              //     value: sliderValue,
+              //     stepSize: widget.stepSize,
+              //     onChanged: (dynamic value) => setState(() => sliderValue = value as double),
+              //   ),
+              // ),
+
+
+              Padding(
+                padding: const EdgeInsets.only(top: 93),
+                child: const SliderCustom(
+                  min: 0,
+                  max: 100,
+                  showLabel: true,
+                  sLiderValue: 50,
+                  // stepSize: 5
+                ),
               ),
 
               Padding(
                   padding: EdgeInsets.only(
                     left: 0.0613*mediaWidth,   //23
-                    top: 0.061*mediaHeight,    //44
-                    bottom: 0.083*mediaHeight, //60
+                    top: 65,    //44
+                    // bottom: 0.083*mediaHeight, //60
                   ),
                 child: const AddCommentRow(color: Colors.black,)
               ),
@@ -117,6 +199,7 @@ class _RatePageState extends State<RatePage> {
 
               Padding(
                 padding: const EdgeInsets.only(
+                  top: 100,
                     left: 16,
                     right: 16,
                     bottom: 0
@@ -126,10 +209,10 @@ class _RatePageState extends State<RatePage> {
                   child: ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor:
-                        MaterialStateProperty.all(Colors.black),
+                        MaterialStateProperty.all(Colors.white),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(52),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                         ),
                       ),
@@ -146,7 +229,7 @@ class _RatePageState extends State<RatePage> {
                         child: Text(
                           'Далее',
                           style: TextStyle(
-                              color: Colors.white,
+                              color: ConstColor.textBlack,
                               fontSize: 17.5.sp,   //16
                               fontWeight: FontWeight.w500
 
