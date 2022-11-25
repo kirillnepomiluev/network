@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:network_app/auth/auth_succes_page.dart';
 import 'package:network_app/auth/login_page.dart';
+import 'package:network_app/auth_profile_info/choose_sex.dart';
+import 'package:network_app/auth_profile_info/input_name.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 // ignore: unused_import
@@ -32,14 +35,19 @@ class MyApp extends StatelessWidget {
 
               ),
               appBarTheme: AppBarTheme(
-                backgroundColor: ConstColor.blackBack
+                // backgroundColor: ConstColor.blackBack
+                backgroundColor: Colors.black
               ),
               textTheme: TextTheme(
                 //          style: Theme.of(context).textTheme.headline6!.copyWith(color: Colors.black,
                 //                                             fontSize: 12,fontWeight: FontWeight.w300)),
+
                 bodyText2: TextStyle(
+                  fontSize: getResSize(14),
+                  fontWeight: FontWeight.w400,
                   color: ConstColor.textWhite
-                )
+                ),
+
               ),
               scaffoldBackgroundColor: ConstColor.blackBack
             ),   //Inter Gilroy
@@ -51,7 +59,8 @@ class MyApp extends StatelessWidget {
             supportedLocales: const [
               Locale('ru', 'RU'), // English, no country code
             ],
-            home: const HomePage(initIndex: 1,),
+            // home: const HomePage(initIndex: 1,),
+            home: const ChooseSexPage(),
           );
         },
       );
@@ -83,13 +92,7 @@ class _FirstPageState extends State<FirstPage> {
             Navigator.of(context).push(MaterialPageRoute<void>(
                 builder: (context) => const LoginPage()));
           },
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Image.asset('assets/images/circles/ellipse_1.png'),
-              const NetworkRow(isRow: false, opacity: 0.3,),
-            ],
-          ),
+          child: const NetworkRow(isRow: false, opacity: 0.3,),
         ),
       ),
     );

@@ -121,7 +121,7 @@ class _ExchangePageState extends State<ExchangePage> {
                       ),
 
                       Padding(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           top: 48
                         ),
                         child: SizedBox(

@@ -41,6 +41,7 @@ class ConstColor {
   // static Color white10 = Colors.white.withOpacity(0.1); //Полупрозрачный белый
   static Color white05 = Colors.white.withOpacity(0.05); //Полупрозрачный белый
   static Color white10 = Colors.white.withOpacity(0.1); //Полупрозрачный белый
+  static Color white15 = Colors.white.withOpacity(0.15); //Полупрозрачный белый
   static Color black15 = Colors.black.withOpacity(0.7); //Полупрозрачный чёрный
 
   static const Color grey = Color(0xFFA9A9A9); //серый

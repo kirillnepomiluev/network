@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/auth/login_second_page.dart';
+import 'package:network_app/auth_profile_info/input_date.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class RecoveryEmailPage extends StatefulWidget {
-  const RecoveryEmailPage({Key? key}) : super(key: key);
+class InputNamePage extends StatefulWidget {
+  const InputNamePage({Key? key}) : super(key: key);
 
   @override
-  State<RecoveryEmailPage> createState() => _RecoveryEmailPageState();
+  State<InputNamePage> createState() => _InputNamePageState();
 }
 
-class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
+class _InputNamePageState extends State<InputNamePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,9 +30,9 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
                 ),
                 const EnterInfoContainer(
                   padTop: 32,
-                  text1: 'Введите адрес\n',
-                  text2: 'электронной почты',
-                  description: 'Чтобы восстановить доступ\nк своему аккаунту',
+                  text1: 'Введите ',
+                  text2: 'ваше имя',
+                  description: 'Так оно будет отображаться в Network',
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 36, bottom: 62),
@@ -71,10 +72,10 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
                         FocusManager.instance.primaryFocus?.unfocus();
 
                         Navigator.of(context).push(MaterialPageRoute<void>(
-                            builder: (context) => const LoginSecondPage()));
+                            builder: (context) => const InputBirthPage()));
                       },
                       child: Text(
-                        'Восстановить доступ',
+                        'Продолжить',
                         style: TextStyle(
                             fontSize: 18.5.sp, //18
                             fontWeight: FontWeight.w500,

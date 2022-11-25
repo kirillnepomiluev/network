@@ -1,6 +1,8 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/auth/login_page.dart';
+import 'package:network_app/auth/phone_auth_page.dart';
+import 'package:network_app/auth/recovery_page.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/meetings/notifications_page.dart';
@@ -8,43 +10,32 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'dart:ui' as ui;
 
-
-
-
-
-Widget rhombusText({
-  String text = '+150',
-  double iconSize = 15,
-  double fontSize = 14,
-  double padLeft = 5,
-  FontWeight fontWeight = FontWeight.w400
-}) => Row(
-
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    Text(
-      text,
-      style: TextStyle(
-          fontSize: fontSize, //14
-          color: ConstColor.salad100,
-          fontWeight: fontWeight
-      ),
-    ),
-
-    Padding(
-      padding: EdgeInsets.only(left: padLeft),
-      child: Icon(
-        Network.rhombus,
-        color: ConstColor.salad100,
-        size: iconSize,
-      ),
-    )
-
-  ],
-);
-
-
-
+Widget rhombusText(
+        {String text = '+150',
+        double iconSize = 15,
+        double fontSize = 14,
+        double padLeft = 5,
+        FontWeight fontWeight = FontWeight.w400}) =>
+    Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          text,
+          style: TextStyle(
+              fontSize: fontSize, //14
+              color: ConstColor.salad100,
+              fontWeight: fontWeight),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: padLeft),
+          child: Icon(
+            Network.rhombus,
+            color: ConstColor.salad100,
+            size: iconSize,
+          ),
+        )
+      ],
+    );
 
 class NotificationIcon extends StatelessWidget {
   const NotificationIcon({Key? key}) : super(key: key);
@@ -73,17 +64,6 @@ class NotificationIcon extends StatelessWidget {
                     return const NotificationsPage();
                   },
                 );
-
-                // Navigator.of(context).push(new MaterialPageRoute<Null>(
-                //     builder: (BuildContext context) {
-                //       return new NotificationsPage();
-                //     },
-                //     fullscreenDialog: true));
-
-                // Navigator.of(context).push(
-                //     MaterialPageRoute<void>(
-                //         builder: (context) =>
-                //         const NotificationsPage()));
               },
               icon: const Icon(
                 Network.notification,
@@ -95,16 +75,7 @@ class NotificationIcon extends StatelessWidget {
           const Positioned(
             right: 0,
             top: 0,
-            child:
-                // Container(
-                //   width: 11,
-                //   height: 11,
-                //   decoration: BoxDecoration(
-                //     shape: BoxShape.circle,
-                //     color: ConstColor.salad100
-                //   ),
-                // )
-                Icon(
+            child: Icon(
               Icons.circle,
               size: 12,
               color: ConstColor.salad100,
@@ -112,6 +83,146 @@ class NotificationIcon extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class EnterInfoContainer extends StatelessWidget {
+  final double padTop;
+  final String text1;
+  final String text2;
+  final String? description;
+  final int? maxLines;
+  const EnterInfoContainer(
+      {Key? key,
+        required this.text1,
+        required this.text2,
+        this.maxLines,
+        this.description,
+        required this.padTop
+      })
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: padTop),
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: ConstColor.white10,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 23, horizontal: 18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            BuildRichTextTwo(text1: text1, text2: text2, fontSize: 20.sp, fontWeight1: FontWeight.w500, fontWeight2: FontWeight.w500,),
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Text(
+                description ?? Constants.strLoremIpsum,
+                maxLines: maxLines,
+                style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // Widget _buildRichText({
+  //   String text1 = '',
+  //   String text2 = '',
+  // }) =>
+  //     RichText(
+  //       maxLines: 2,
+  //       overflow: TextOverflow.ellipsis,
+  //       text: TextSpan(
+  //         style: TextStyle(
+  //           color: Colors.white,
+  //           fontSize: 20.sp, //24
+  //           fontWeight: FontWeight.w500,
+  //         ),
+  //         children: <TextSpan>[
+  //           TextSpan(
+  //             text: text1,
+  //           ),
+  //           TextSpan(
+  //               text: text2,
+  //               style: const TextStyle(
+  //                 color: ConstColor.salad100,
+  //               )),
+  //         ],
+  //       ),
+  //       // minFontSize: 14,
+  //     );
+}
+
+
+class EnterRowContainer extends StatelessWidget {
+  Function? func;
+  IconData? icon;
+  String iconName;
+  final String title;
+  EnterRowContainer({Key? key, this.icon, this.iconName='', required this.title, this.func}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return  InkWell(
+      onTap: (() {
+        if(func==null){
+          Navigator.of(context).push(MaterialPageRoute<void>(
+              builder: (context) => const PhoneAuthPage()));
+        }
+        else{
+          func!();
+        }
+      }),
+      child: Container(
+          decoration: BoxDecoration(
+            color: ConstColor.white10,
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Row(
+            children: [
+              Padding(
+                  padding: const EdgeInsets.only(
+                    top: 4,
+                    bottom: 4,
+                    left: 4,
+                    right: 24, //24
+                  ),
+                  child: Container(
+                    width: 54,
+                    height: 54,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(13)),
+                    child: icon != null
+                        ? Icon(icon,
+                        color: Colors.black, size: 21)
+                        : Padding(
+                      padding: const EdgeInsets.all(17),
+                      child: Image.asset(
+                        'assets/icons/$iconName.png',
+                        width: 21.sp, //24
+                        height: 21.sp,
+                      ),
+                    ),
+                  )),
+              Text(
+                title,
+                style: TextStyle(
+                    fontSize: getResSize(16), //16
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400),
+              )
+            ],
+          )),
     );
   }
 }
@@ -129,9 +240,12 @@ class NetworkRow extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _circle(),
+              Image.asset('assets/icons/handshake.png',
+              width: 118,
+              height: 118,
+              ),
               _text(isColumn: true),
-              _social(opacity: opacity),
+              // _social(opacity: opacity),
             ],
           )
         : Row(
@@ -139,18 +253,16 @@ class NetworkRow extends StatelessWidget {
                 isRow ? MainAxisAlignment.start : MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _circle(),
+              Image.asset('assets/icons/handshake.png',
+                width: 46,
+                height: 46,
+              ),
               _text(),
             ],
           );
   }
 
-  Widget _circle() => Container(
-        width: 31.sp, //57
-        height: 31.sp,
-        decoration: const BoxDecoration(
-            color: ConstColor.salad100, shape: BoxShape.circle),
-      );
+  Widget _circle() => Image.asset('assets/icons/handshake.png');
 
   Widget _text({bool isColumn = false}) => Padding(
         padding:
@@ -160,7 +272,7 @@ class NetworkRow extends StatelessWidget {
           style: TextStyle(
               fontSize: 23.5.sp, //34
               color: Colors.white,
-              fontWeight: FontWeight.w500),
+              fontWeight: FontWeight.w600),
         ),
       );
 
@@ -230,37 +342,46 @@ class AuthBackScaffold extends StatelessWidget {
   }
 }
 
-// Widget BackButtonCustom(BuildContext context, {Function? func}) {
-//   final mediaWidth = MediaQuery.of(context).size.width;
-//   final double contSize = 0.11466*mediaWidth; //43
-//   // final double iconSize = 17.sp;   //25
-//
-//   return Align(
-//     alignment: Alignment.topLeft,
-//     child: Container(
-//       // padding: EdgeInsets.all(6),
-//       width: contSize,
-//       height: contSize,
-//       decoration: BoxDecoration(
-//         color: Colors.white.withOpacity(0.05),
-//         borderRadius: BorderRadius.circular(15),
-//       ),
-//       child: IconButton(
-//           onPressed: () {
-//             if (func == null) {
-//               Navigator.of(context).pop();
-//             } else {
-//               func();
-//             }
-//           },
-//           icon: Icon(
-//               Network.arrow_back,
-//               color: Colors.white,
-//               size: 15.sp  //13
-//           )),
-//     ),
-//   );
-// }
+Widget troubleEnter(BuildContext context) {
+  return InkWell(
+    onTap: (() {
+      Navigator.of(context).push(
+          MaterialPageRoute<void>(builder: (context) => const RecoveryPage()));
+    }),
+    child: SizedBox(
+      height: 23.sp, //30
+      width: 55.5.sp, //160
+      child: Stack(
+        alignment: Alignment.bottomRight,
+        children: [
+          Positioned(
+            right: 0,
+            bottom: 10,
+            child: Text(
+              'Проблемы со входом?',
+              style: TextStyle(
+                  color: ConstColor.textGray,
+                  fontSize: 16.5.sp, //14
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          Positioned(
+            right: 0,
+            bottom: 0,
+            // padding: EdgeInsets.only(top: 8),
+            child: Text(
+              '_____________________________',
+              style: TextStyle(
+                  color: ConstColor.textGray,
+                  fontSize: 15.5.sp, //12
+                  fontWeight: FontWeight.bold),
+            ),
+          )
+        ],
+      ),
+    ),
+  );
+}
 
 class IconContainer extends StatelessWidget {
   IconData icon;
@@ -276,17 +397,14 @@ class IconContainer extends StatelessWidget {
       this.iconColor = Colors.white,
       this.contColor,
       this.iconSize,
-      this.contSize
-      })
+      this.contSize})
       : super(key: key);
-
-  // final double contSize = 43;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: contSize??28.sp,    //43
-      height: contSize??28.sp,
+      width: contSize ?? 28.sp, //43
+      height: contSize ?? 28.sp,
       decoration: BoxDecoration(
         color: contColor ?? ConstColor.white10,
         borderRadius: BorderRadius.circular(15),
@@ -299,10 +417,7 @@ class IconContainer extends StatelessWidget {
           },
           icon:
               // icon
-              Icon(
-                  icon,
-                  color: iconColor,
-                  size: iconSize??20.sp //20
+              Icon(icon, color: iconColor, size: iconSize ?? 20.sp //20
                   // size: 15.sp  //13
                   )),
     );
@@ -400,55 +515,6 @@ Widget statContainer({
   );
 }
 
-// Widget statContainer(
-//         {
-//           required BuildContext context,
-//           required String title,
-//         required String subtitle,
-//         }) {
-//
-//   // final mediaHeight = MediaQuery.of(context).size.height;
-//   final mediaWidth = MediaQuery.of(context).size.width;
-//
-//   final double contWidth =  mediaWidth*0.2853;
-//   // final double contHeight =  mediaHeight*0.2853;
-//
-//   return BlurryContainer(
-//     // padding: EdgeInsets.symmetric(vertical: 52, horizontal: 21),
-//     blur: 10,
-//     width: contWidth,   //107
-//     height: contWidth*1.514,  //162
-//     color: ConstColor.halfWhite,
-//     borderRadius: BorderRadius.circular(73),
-//     child: Column(
-//       mainAxisSize: MainAxisSize.min,
-//       mainAxisAlignment: MainAxisAlignment.center,
-//       crossAxisAlignment: CrossAxisAlignment.center,
-//       children: [
-//         title == ''
-//             ? Container()
-//             : Text(
-//                 title,
-//                 style: TextStyle(
-//                     fontSize: 23.sp,    //28
-//                     fontWeight: FontWeight.w500,
-//                     color: Colors.white),
-//               ),
-//         Padding(
-//           padding: const EdgeInsets.only(top: 5),
-//           child: Text(
-//             subtitle,
-//             style: TextStyle(
-//                 fontSize: 17.5.sp, //16
-//                 fontWeight: FontWeight.w500,
-//                 color: Colors.white),
-//             textAlign: TextAlign.center,
-//           ),
-//         )
-//       ],
-//     ),
-//   );
-// }
 
 Widget titleStatText(String text) => Padding(
       padding: const EdgeInsets.only(
@@ -579,15 +645,16 @@ Widget hobbitsContainer(String text, {bool hasEdit = true}) => Container(
                 fontSize: 16.5.sp, //14
                 fontWeight: FontWeight.w400),
           ),
-          hasEdit==false? Container():
-          Padding(
-            padding: const EdgeInsets.only(left: 8),
-            child: Icon(
-              Icons.close_rounded,
-              size: 22,
-              color: ConstColor.salad100,
-            ),
-          )
+          hasEdit == false
+              ? Container()
+              : Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Icon(
+                    Icons.close_rounded,
+                    size: 22,
+                    color: ConstColor.salad100,
+                  ),
+                )
         ],
       ),
     );
@@ -734,26 +801,25 @@ ButtonStyle buttonStyleCustom({
     );
 
 class BuildRichTextTwo extends StatelessWidget {
- final String text1;
- final String text2;
- final double fontSize;
- final FontWeight fontWeight1;
- final FontWeight fontWeight2;
- final Color color1;
- final Color color2;
- final TextAlign textAlign;
+  final String text1;
+  final String text2;
+  final double fontSize;
+  final FontWeight fontWeight1;
+  final FontWeight fontWeight2;
+  final Color color1;
+  final Color color2;
+  final TextAlign textAlign;
 
   BuildRichTextTwo({
     Key? key,
-    this.text1='',
-    this.text2='',
-    this.fontSize=20,
+    this.text1 = '',
+    this.text2 = '',
+    this.fontSize = 20,
     // this.fontWeight1 = FontWeight.w400,
     // this.fontWeight2 = FontWeight.w700,
 
     this.fontWeight1 = FontWeight.w600,
     this.fontWeight2 = FontWeight.w600,
-
     this.color1 = ConstColor.textWhite,
     this.color2 = ConstColor.salad100,
     this.textAlign = TextAlign.start,
@@ -1058,7 +1124,6 @@ class ChangeTabContainer extends StatelessWidget {
   }
 }
 
-
 class MeetRow extends StatelessWidget {
   Function? func;
   bool isExchange;
@@ -1066,247 +1131,223 @@ class MeetRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final mediaWitdh = MediaQuery.of(context).size.width;
-    final double contSize = mediaWitdh*0.128;   //48
-    final double iconSize = 19.sp;     //25
-    final double iconElSize = 18.5.sp;   //20
+    final double contSize = mediaWitdh * 0.128; //48
+    final double iconSize = 19.sp; //25
+    final double iconElSize = 18.5.sp; //20
 
-    return
-      isExchange?
-      InkWell(
-        onTap: (){
-
-          if(func!=null){
-            func!();
-          }
-
-        },
-        child: Container(
-          // height: 54,
-          // width: 209,
-          padding: const EdgeInsets.all(3),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(15),
-
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.2),
-                spreadRadius: 2,
-                blurRadius: 4,
-                offset: const Offset(0, 3), // changes position of shadow
+    return isExchange
+        ? InkWell(
+            onTap: () {
+              if (func != null) {
+                func!();
+              }
+            },
+            child: Container(
+              // height: 54,
+              // width: 209,
+              padding: const EdgeInsets.all(3),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    spreadRadius: 2,
+                    blurRadius: 4,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
               ),
-            ],
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconContainer(
+                    icon: Network.arrow_right_long,
+                    iconSize: iconSize,
+                    contSize: contSize,
+                    contColor: ConstColor.black1A,
+                    func: () {
+                      if (func != null) {
+                        func!();
+                      }
+                    },
+                  ),
 
-          ),
-          child: Row(
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: mediaWitdh * 0.0453, //17
+                        right: 8),
+                    child: Text('Обменять',
+                        style: TextStyle(
+                            color: ConstColor.textBlack,
+                            fontSize: 15.sp, //12
+                            fontWeight: FontWeight.w500)),
+                  ),
+
+                  //иконка >>
+                  Padding(
+                    padding: EdgeInsets.only(right: mediaWitdh * 0.056), //21
+                    child: SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: Stack(
+                        children: const [
+                          Positioned(
+                              left: 0,
+                              child: Icon(
+                                Icons.keyboard_arrow_right,
+                                size: 20,
+                                color: ConstColor.grey,
+                              )),
+                          Positioned(
+                              left: 6,
+                              child: Icon(
+                                Icons.keyboard_arrow_right,
+                                size: 20,
+                              )),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+        : Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-
               IconContainer(
-                icon: Network.arrow_right_long,
+                icon: Icons.close_rounded,
                 iconSize: iconSize,
                 contSize: contSize,
-                contColor: ConstColor.black1A,
-                func: (){
+              ),
 
-                  if(func!=null){
+              InkWell(
+                onTap: () {
+                  if (func != null) {
                     func!();
                   }
-
                 },
-              ),
+                child: Container(
+                  // height: 54,
+                  // width: 209,
+                  padding: const EdgeInsets.all(3),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        spreadRadius: 2,
+                        blurRadius: 4,
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconContainer(
+                        icon: Network.electric,
+                        iconSize: iconSize,
+                        contSize: contSize,
+                        contColor: ConstColor.black1A,
+                        func: () {
+                          if (func != null) {
+                            func!();
+                          }
+                          // Navigator.of(context).push(
+                          //     MaterialPageRoute<void>(
+                          //         builder: (context) =>
+                          //         const TimerPage()));
+                        },
+                      ),
 
+                      // Container(
+                      //     decoration: BoxDecoration(
+                      //         color: Colors.black,
+                      //         borderRadius: BorderRadius.circular(15)
+                      //       // shape: BoxShape.circle
+                      //     ),
+                      //     width: contSize,
+                      //     height: contSize,
+                      //     child: IconButton(
+                      //       onPressed: () {},
+                      //       icon: const Icon(
+                      //         Network.electric,
+                      //         color: Colors.white,
+                      //       ),
+                      //       iconSize: iconElSize,
+                      //     )),
 
-              Padding(
-                padding: EdgeInsets.only(
-                    left: mediaWitdh*0.0453, //17
-                    right: 8
-                ),
-                child: Text('Обменять',
-                    style: TextStyle(
-                        color: ConstColor.textBlack,
-                        fontSize: 15.sp,     //12
-                        fontWeight: FontWeight.w500)),
-              ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: mediaWitdh * 0.0453, //17
+                            right: 8),
+                        child: Text('Встретиться',
+                            style: TextStyle(
+                                color: ConstColor.textBlack,
+                                fontSize: 15.sp, //12
+                                fontWeight: FontWeight.w500)),
+                      ),
 
-              //иконка >>
-              Padding(
-                padding: EdgeInsets.only(right: mediaWitdh*0.056), //21
-                child: SizedBox(
-                  width: 20,
-                  height: 20,
-                  child: Stack(
-                    children: const [
-                      Positioned(
-                          left: 0,
-                          child: Icon(
-                            Icons.keyboard_arrow_right,
-                            size: 20,
-                            color: ConstColor.grey,
-                          )),
-                      Positioned(
-                          left: 6,
-                          child: Icon(
-                            Icons.keyboard_arrow_right,
-                            size: 20,
-                          )),
+                      //иконка >>
+                      Padding(
+                        padding:
+                            EdgeInsets.only(right: mediaWitdh * 0.056), //21
+                        child: SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: Stack(
+                            children: const [
+                              Positioned(
+                                  left: 0,
+                                  child: Icon(
+                                    Icons.keyboard_arrow_right,
+                                    size: 20,
+                                    color: ConstColor.grey,
+                                  )),
+                              Positioned(
+                                  left: 6,
+                                  child: Icon(
+                                    Icons.keyboard_arrow_right,
+                                    size: 20,
+                                  )),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
 
+              IconContainer(
+                icon: Network.star,
+                iconSize: iconSize,
+                contSize: contSize,
+              ),
+
+              // Container(
+              //     decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(15),
+              //       color: Colors.black,
+              //       // shape: BoxShape.circle
+              //     ),
+              //     width: contSize,
+              //     height: contSize,
+              //     child: IconButton(
+              //       onPressed: () {},
+              //       icon: const Icon(
+              //         // Icons.star_border_outlined,
+              //         Network.star,
+              //         color: Colors.white,
+              //       ),
+              //       iconSize: iconSize,
+              //     )),
             ],
-          ),
-        ),
-      )
-      :
-      Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-
-
-        IconContainer(
-          icon:  Icons.close_rounded,
-          iconSize: iconSize,
-          contSize: contSize,
-        ),
-
-        InkWell(
-          onTap: (){
-
-            if(func!=null){
-              func!();
-            }
-
-          },
-          child: Container(
-            // height: 54,
-            // width: 209,
-            padding: const EdgeInsets.all(3),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
-
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  spreadRadius: 2,
-                  blurRadius: 4,
-                  offset: const Offset(0, 3), // changes position of shadow
-                ),
-              ],
-
-            ),
-            child: Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-
-                IconContainer(
-                  icon: Network.electric,
-                  iconSize: iconSize,
-                  contSize: contSize,
-                  contColor: ConstColor.black1A,
-                  func: (){
-
-                    if(func!=null){
-                      func!();
-                    }
-                    // Navigator.of(context).push(
-                    //     MaterialPageRoute<void>(
-                    //         builder: (context) =>
-                    //         const TimerPage()));
-                  },
-                ),
-
-                // Container(
-                //     decoration: BoxDecoration(
-                //         color: Colors.black,
-                //         borderRadius: BorderRadius.circular(15)
-                //       // shape: BoxShape.circle
-                //     ),
-                //     width: contSize,
-                //     height: contSize,
-                //     child: IconButton(
-                //       onPressed: () {},
-                //       icon: const Icon(
-                //         Network.electric,
-                //         color: Colors.white,
-                //       ),
-                //       iconSize: iconElSize,
-                //     )),
-
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: mediaWitdh*0.0453, //17
-                      right: 8
-                  ),
-                  child: Text('Встретиться',
-                      style: TextStyle(
-                        color: ConstColor.textBlack,
-                          fontSize: 15.sp,     //12
-                          fontWeight: FontWeight.w500)),
-                ),
-
-                //иконка >>
-                Padding(
-                  padding: EdgeInsets.only(right: mediaWitdh*0.056), //21
-                  child: SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: Stack(
-                      children: const [
-                        Positioned(
-                            left: 0,
-                            child: Icon(
-                              Icons.keyboard_arrow_right,
-                              size: 20,
-                              color: ConstColor.grey,
-                            )),
-                        Positioned(
-                            left: 6,
-                            child: Icon(
-                              Icons.keyboard_arrow_right,
-                              size: 20,
-                            )),
-                      ],
-                    ),
-                  ),
-                ),
-
-              ],
-            ),
-          ),
-        ),
-
-
-        IconContainer(
-          icon:  Network.star,
-          iconSize: iconSize,
-          contSize: contSize,
-        ),
-
-
-        // Container(
-        //     decoration: BoxDecoration(
-        //       borderRadius: BorderRadius.circular(15),
-        //       color: Colors.black,
-        //       // shape: BoxShape.circle
-        //     ),
-        //     width: contSize,
-        //     height: contSize,
-        //     child: IconButton(
-        //       onPressed: () {},
-        //       icon: const Icon(
-        //         // Icons.star_border_outlined,
-        //         Network.star,
-        //         color: Colors.white,
-        //       ),
-        //       iconSize: iconSize,
-        //     )),
-
-      ],
-    );
+          );
   }
 }
