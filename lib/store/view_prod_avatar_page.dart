@@ -26,16 +26,13 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
 
     return Scaffold(
       extendBodyBehindAppBar: false,
-      extendBody: true,
+      extendBody: false,
       // backgroundColor: ConstColor.blackBack,
       bottomNavigationBar: BlurryContainer(
-        blur: 30,
+        blur: 50,
         width: MediaQuery.of(context).size.width,
         height: 105,
-        color: Colors.transparent,
-        // decoration: BoxDecoration(
-        //   color: Colors.grey.shade300,
-        // ),
+        color: ConstColor.black1A.withOpacity(0.5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -98,7 +95,7 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 16, vertical: 31),
-                child: const StatColumn(),
+                child: const StatColumn(ifProfileSheet: false),
               ),
 
             ],
@@ -201,19 +198,18 @@ void openSuccessSheet({required BuildContext context,}) {
   final _height = mediaHeight*0.9;
 
   showModalBottomSheet<void>(
+    barrierColor: Colors.transparent,
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
       context: context,
       builder: (BuildContext context) => BlurryContainer(
-        blur: 20,
+        blur: 60,
         color: Colors.black.withOpacity(0.5),
-        // height: _height,
         child: SingleChildScrollView(
           child: Column(
             children: [
-
               Padding(
                 padding: const EdgeInsets.only(top: 70),
                 child: Icon(
@@ -256,7 +252,8 @@ void openSuccessSheet({required BuildContext context,}) {
                           color: Colors.white,
                           padH: 0, padV: 22, radius: 20),
                       onPressed: () {
-
+                        Navigator.of(context).pushReplacement(MaterialPageRoute<void>(
+                            builder: (context) => const HomePage(initIndex: 1, isCupboard: true,)));
                       },
                       child: Text(
                         'Перейти в шкаф',

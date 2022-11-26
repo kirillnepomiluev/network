@@ -10,7 +10,7 @@ import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 // ignore: unused_import
 import 'package:network_app/home_page.dart';
-import 'package:network_app/meetings/choose_interests.dart';
+import 'package:network_app/components/choose_interests.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() {
@@ -41,9 +41,13 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'Inter',
                 elevatedButtonTheme: ElevatedButtonThemeData(
                   style: ElevatedButton.styleFrom(
+                    // padding: EdgeInsets.symmetric(
+                    //   vertical: 10,
+                    //   horizontal: 20
+                    // ),
                     backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)
+                      borderRadius: BorderRadius.circular(13)
                     )
                   )
                 ),
@@ -62,7 +66,7 @@ class MyApp extends StatelessWidget {
             supportedLocales: const [
               Locale('ru', 'RU'), // English, no country code
             ],
-            home: const HomePage(initIndex: 1,),
+            home: const HomePage(initIndex: 0,),
             // home: const ChooseDatePage(),
           );
         },

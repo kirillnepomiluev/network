@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/auth/login_second_page.dart';
+import 'package:network_app/components/choose_status.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:network_app/components/network_icons.dart';
+import 'package:network_app/components/choose_interests.dart';
 import 'package:network_app/store/store_page.dart';
+import 'package:network_app/store/view_category_avatar_page.dart';
+import 'package:network_app/store/view_category_hats.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'dart:ui' as ui;
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  final bool isCupboard;
+  const ProfilePage({Key? key, this.isCupboard= false}) : super(key: key);
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -18,6 +23,18 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   int _activeTab = 1;
+
+  @override
+  void initState() {
+
+    if(widget.isCupboard){
+      _activeTab = 2;
+    }
+
+    print('isCupboard ${widget.isCupboard} _activeTab $_activeTab');
+
+    super.initState();
+  }
 
   Widget miniContainer({
     required int position,
@@ -90,6 +107,9 @@ class _ProfilePageState extends State<ProfilePage> {
       _activeTab = position;
     });
   }
+
+  final _avatarScrollContr = ScrollController();
+  final _hatScrollContr = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -174,7 +194,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                                 ChangeTabContainer(
                                   position: 3,
-                                  text: 'Встречи',
+                                  text: 'Друзья',
                                   activeTabInit: _activeTab,
                                   func: () {
                                     changeTab(3);
@@ -304,9 +324,142 @@ class _ProfilePageState extends State<ProfilePage> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                       top: 10, left: 16, right: 16),
-                                  child: Column(
-                                    // crossAxisAlignment: CrossAxisAlignment.center,
-                                    // mainAxisAlignment: MainAxisAlignment.center,
+                                  child:
+    widget.isCupboard?
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+
+        // //Магазин
+        // const Padding(
+        //   padding: EdgeInsets.only(top: 10),
+        //   child: Text(
+        //     'Магазин',
+        //     style: TextStyle(
+        //         color: Colors.white,
+        //         fontSize: 30,
+        //         fontWeight: FontWeight.w700),
+        //     textAlign: TextAlign.start,
+        //   ),
+        // ),
+
+        // //Выбор интерфейса
+        // Padding(
+        //   padding: const EdgeInsets.only(top: 19),
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.start,
+        //     children: [
+        //       miniContainer(position: 1, text: 'Магазин'),
+        //       miniContainer(position: 2, text: 'Лотерея'),
+        //     ],
+        //   ),
+        // ),
+
+        //Аватары
+        Padding(
+          padding: const EdgeInsets.only(top: 10, bottom: 15, right: 15),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+           'Аватары',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.5.sp,   //22
+                    fontWeight: FontWeight.w600),
+                textAlign: TextAlign.start,
+              ),
+              IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                            builder: (context) =>
+                            const ViewCategoryAvatarPage()));
+                  },
+                  icon: const Icon(
+                    Network.arrow_right_long,
+                    color: Colors.white,
+                    size: 25,
+                  ))
+            ],
+          ),
+        ),
+
+        //Карусель аватаров
+        SingleChildScrollView(
+          controller: _avatarScrollContr,
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+
+              for(var i=0; i<6; i ++)
+                avatarContainer(
+                  strCategory: i%2==0? 'Редкий' : 'Обычный',
+                  context: context,
+                  isBoxes: _activeTab == 2,
+                ),
+
+            ],
+          ),
+        ),
+
+        //Головные уборы
+        Padding(
+          padding: const EdgeInsets.only(top: 20, bottom: 15, right: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+             'Головные уборы',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.5.sp,   //22
+                    fontWeight: FontWeight.w600
+                ),
+                textAlign: TextAlign.start,
+              ),
+              IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                            builder: (context) =>
+                            const ViewCategoryHatsPage()));
+                  },
+                  icon: const Icon(
+                    Network.arrow_right_long,
+                    color: Colors.white,
+                    size: 25,
+                  ))
+            ],
+          ),
+        ),
+
+        //Карусель головных уборов
+        Padding(
+          padding: const EdgeInsets.only(bottom: 85),
+          child: SingleChildScrollView(
+            controller: _hatScrollContr,
+            physics: const BouncingScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                for(var i=0; i<6; i ++)
+                  hatContainer(
+                    strCategory: i%2==0? 'Обычный' : 'Редкий',
+                    context: context,
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    )
+        :
+                                  Column(
                                     children: [
                                       const EnterInfoContainer(
                                           padTop: 42,
@@ -514,13 +667,13 @@ class BottomSheetMain extends StatefulWidget {
 }
 
 class _BottomSheetMainState extends State<BottomSheetMain> {
-  bool isEditStatus = false;
+  // bool isEditStatus = false;
 
   @override
   Widget build(BuildContext context) {
-    final mediaTop = MediaQuery.of(context).viewPadding.top;
     final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
+    // final mediaTop = MediaQuery.of(context).viewPadding.top;
     // final _height = mediaHeight - mediaTop;
     final _height = mediaHeight*0.95;
 
@@ -537,7 +690,7 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
               child: Column(
                 // physics: NeverScrollableScrollPhysics(),
                 children: [
-                  
+
                   CustomPaint(
                     size: Size(
                         mediaWidth,
@@ -559,50 +712,62 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
 
-                        const StatColumn(),
+                        const StatColumn(ifProfileSheet: true,),
 
                         titleStatText('Статус'),
-                        isEditStatus?
-                        textField('Sed aenean est eget sit eget at tellus sed.')
-                        :
+                        // isEditStatus?
+                        // textField('Sed aenean est eget sit eget at tellus sed.')
+                        // :
                         Padding(
                           padding: const EdgeInsets.only(top: 20, bottom: 10),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                            decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.1),
-                                // color: isDark ? Colors.grey.shade300 : Colors.grey.shade200,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  'Я люблю веселиться',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16.5.sp, //14
-                                      fontWeight: FontWeight.w400),
-                                ),
+                          child: InkWell(
+                            onTap: (){
+                              Navigator.of(context).push(MaterialPageRoute<void>(
+                                  builder: (context) => const ChooseStatusPage()));
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                              decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.1),
+                                  // color: isDark ? Colors.grey.shade300 : Colors.grey.shade200,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    'Я люблю веселиться',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16.5.sp, //14
+                                        fontWeight: FontWeight.w400),
+                                  ),
 
-                               Padding(
-                                 padding: const EdgeInsets.only(left: 8.0),
-                                 child: IconButton(
-                                     padding: EdgeInsets.zero,
-                                     constraints: BoxConstraints(),
-                                     onPressed: (){
-                                   setState(() {
-                                     isEditStatus = !isEditStatus;
-                                   });
-                                 }, icon: Icon(
-                                   Icons.mode_edit_outlined,
-                                   size: 22,
-                                   color: ConstColor.salad100,
+                                  const Padding(
+                                   padding:  EdgeInsets.only(left: 8.0),
+                                   child:
+                                   Icon(
+                                     Icons.mode_edit_outlined,
+                                     size: 22,
+                                     color: ConstColor.salad100,
+                                   )
+                                   // IconButton(
+                                   //     padding: EdgeInsets.zero,
+                                   //     constraints: BoxConstraints(),
+                                   //     onPressed: (){
+                                   //   setState(() {
+                                   //     isEditStatus = !isEditStatus;
+                                   //   });
+                                   // }, icon: Icon(
+                                   //   Icons.mode_edit_outlined,
+                                   //   size: 22,
+                                   //   color: ConstColor.salad100,
+                                   // )
+                                   // ),
                                  )
-                                 ),
-                               )
 
 
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -629,7 +794,10 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                                 child: IconButton(
                                   padding: EdgeInsets.zero,
                                   constraints: BoxConstraints(),
-                                  onPressed: (){},
+                                  onPressed: (){
+                                    Navigator.of(context).push(MaterialPageRoute<void>(
+                                        builder: (context) => const ChooseInterestsPage()));
+                                  },
                                   icon: Icon(Icons.add),
                                 )
                               ),

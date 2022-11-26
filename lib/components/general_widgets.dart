@@ -764,13 +764,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
             alignment: Alignment.topCenter,
             children: [
               Container(
-                // blur: 30,
                 color: Colors.transparent,
-                // decoration: BoxDecoration(
-                //     color: Colors.red,
-                //     borderRadius:
-                //         const BorderRadius.vertical(top: Radius.circular(30))),
-                // padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 15),
                 height: _height,
                 child: SingleChildScrollView(
                   child: Column(
@@ -796,7 +790,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           mainAxisSize: MainAxisSize.max,
-                          children: [
+                          children: const [
                             Text(
                               'Энергия',
                               style: TextStyle(
@@ -807,13 +801,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
                             Padding(
                               padding: const EdgeInsets.only(top: 20),
                               child: Text(
-                                Constants.strLoremIpsum +
-                                    Constants.strLoremIpsum +
-                                    Constants.strLoremIpsum
-                                // + '\n' +
-                                // Constants.strLoremIpsum+Constants.strLoremIpsum+Constants.strLoremIpsum
-                                // + '\n' +
-                                // Constants.strLoremIpsum+Constants.strLoremIpsum+Constants.strLoremIpsum
+                                Constants.strLongLoremIpsum
                                 ,
                                 style: TextStyle(
                                     color: Colors.white,
@@ -911,7 +899,8 @@ class BuildRichTextTwo extends StatelessWidget {
 }
 
 class StatColumn extends StatelessWidget {
-  const StatColumn({Key? key}) : super(key: key);
+  final bool ifProfileSheet;
+  const StatColumn({Key? key, this.ifProfileSheet = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -953,18 +942,19 @@ class StatColumn extends StatelessWidget {
             icon: Network.rhombus
         ),
 
-        Padding(
-          padding: const EdgeInsets.only(top: 15),
-          child: BuildRichTextTwo(
+        const SizedBox(height: 15,),
+
+        if(ifProfileSheet)
+          BuildRichTextTwo(
             text1: 'До следущего уровня осталось\nнабрать ',
             text2: '1500 токенов',
             fontSize: 14,
             fontWeight1: FontWeight.w500,
             fontWeight2: FontWeight.w500,
           ),
-        ),
 
-        Padding(
+        if(ifProfileSheet)
+          Padding(
           padding: const EdgeInsets.only(top: 25, bottom: 7),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -987,6 +977,7 @@ class StatColumn extends StatelessWidget {
         ),
 
 
+        if(ifProfileSheet)
         progressParametr(
             context: context,
             text1: '5 встреч',
@@ -1377,136 +1368,105 @@ class MeetRow extends StatelessWidget {
         : Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconContainer(
-                icon: Icons.close_rounded,
-                iconSize: iconSize,
-                contSize: contSize,
-              ),
+              // IconContainer(
+              //   icon: Icons.close_rounded,
+              //   iconSize: iconSize,
+              //   contSize: contSize,
+              // ),
 
-              InkWell(
-                onTap: () {
-                  if (func != null) {
-                    func!();
-                  }
-                },
-                child: Container(
-                  // height: 54,
-                  // width: 209,
-                  padding: const EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        spreadRadius: 2,
-                        blurRadius: 4,
-                        offset:
-                            const Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconContainer(
-                        icon: Network.electric,
-                        iconSize: iconSize,
-                        contSize: contSize,
-                        contColor: ConstColor.black1A,
-                        func: () {
-                          if (func != null) {
-                            func!();
-                          }
-                          // Navigator.of(context).push(
-                          //     MaterialPageRoute<void>(
-                          //         builder: (context) =>
-                          //         const TimerPage()));
-                        },
-                      ),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    if (func != null) {
+                      func!();
+                    }
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          spreadRadius: 2,
+                          blurRadius: 4,
+                          offset:
+                              const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconContainer(
+                          icon: Network.electric,
+                          iconSize: iconSize,
+                          contSize: contSize,
+                          contColor: ConstColor.black1A,
+                          func: () {
+                            if (func != null) {
+                              func!();
+                            }
+                            // Navigator.of(context).push(
+                            //     MaterialPageRoute<void>(
+                            //         builder: (context) =>
+                            //         const TimerPage()));
+                          },
+                        ),
 
-                      // Container(
-                      //     decoration: BoxDecoration(
-                      //         color: Colors.black,
-                      //         borderRadius: BorderRadius.circular(15)
-                      //       // shape: BoxShape.circle
-                      //     ),
-                      //     width: contSize,
-                      //     height: contSize,
-                      //     child: IconButton(
-                      //       onPressed: () {},
-                      //       icon: const Icon(
-                      //         Network.electric,
-                      //         color: Colors.white,
-                      //       ),
-                      //       iconSize: iconElSize,
-                      //     )),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              left: mediaWitdh * 0.0453, //17
+                              right: 8),
+                          child: Text('Встретиться',
+                              style: TextStyle(
+                                  color: ConstColor.textBlack,
+                                  fontSize: getResSize(14),
+                                  fontWeight: FontWeight.w500)),
+                        ),
 
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: mediaWitdh * 0.0453, //17
-                            right: 8),
-                        child: Text('Встретиться',
-                            style: TextStyle(
-                                color: ConstColor.textBlack,
-                                fontSize: 15.sp, //12
-                                fontWeight: FontWeight.w500)),
-                      ),
-
-                      //иконка >>
-                      Padding(
-                        padding:
-                            EdgeInsets.only(right: mediaWitdh * 0.056), //21
-                        child: SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: Stack(
-                            children: const [
-                              Positioned(
-                                  left: 0,
-                                  child: Icon(
-                                    Icons.keyboard_arrow_right,
-                                    size: 20,
-                                    color: ConstColor.grey,
-                                  )),
-                              Positioned(
-                                  left: 6,
-                                  child: Icon(
-                                    Icons.keyboard_arrow_right,
-                                    size: 20,
-                                  )),
-                            ],
+                        //иконка >>
+                        Padding(
+                          padding:
+                              EdgeInsets.only(right: mediaWitdh * 0.056), //21
+                          child: SizedBox(
+                            width: 25,
+                            height: 25,
+                            child: Stack(
+                              children: const [
+                                Positioned(
+                                    left: 0,
+                                    child: Icon(
+                                      Icons.keyboard_arrow_right,
+                                      size: 25,
+                                      color: ConstColor.grey,
+                                    )),
+                                Positioned(
+                                    left: 10,
+                                    child: Icon(
+                                      Icons.keyboard_arrow_right,
+                                      size: 25,
+                                    )),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
 
-              IconContainer(
-                icon: Network.star,
-                iconSize: iconSize,
-                contSize: contSize,
+              Padding(
+                padding: const EdgeInsets.only(left: 18),
+                child: IconContainer(
+                  icon: Network.star,
+                  iconSize: iconSize,
+                  contSize: contSize,
+                ),
               ),
 
-              // Container(
-              //     decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(15),
-              //       color: Colors.black,
-              //       // shape: BoxShape.circle
-              //     ),
-              //     width: contSize,
-              //     height: contSize,
-              //     child: IconButton(
-              //       onPressed: () {},
-              //       icon: const Icon(
-              //         // Icons.star_border_outlined,
-              //         Network.star,
-              //         color: Colors.white,
-              //       ),
-              //       iconSize: iconSize,
-              //     )),
             ],
           );
   }

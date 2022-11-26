@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
-import 'package:network_app/meetings/choose_interests.dart';
+import 'package:network_app/components/choose_interests.dart';
 import 'package:network_app/meetings/invitations_page.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/meetings/notifications_page.dart';
@@ -39,53 +39,25 @@ class _MeetingsPageState extends State<MeetingsPage> {
             _activeTab = position;
           });
         }),
-        child: BlurryContainer(
-          blur: 20,
-          color: ConstColor.white10,
-          borderRadius: BorderRadius.circular(20),
-          // height: 56,
-          padding: EdgeInsets.symmetric(
-            // vertical: mediaHeight*0.02635, //19
-            vertical: 18.5.sp, //19
-            // horizontal: 12 //18
+        child: Container(
+          decoration: BoxDecoration(
+            color:   _activeTab == position?  ConstColor.salad100 : ConstColor.white10,
+            borderRadius: BorderRadius.circular(15),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Text(
-                  text,
-                  style: TextStyle(
-                      color:
-                      _activeTab == position
-                          ? ConstColor.salad100
-                          : Colors.white,
-
-                      fontSize: 16.5.sp, //14
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-
-              Padding(
-                  padding: const EdgeInsets.only(left: 5, right: 16),
-                  child:
-                  position==3
-                      ?
-                  Icon(
-                    Icons.keyboard_arrow_down,
-                    color: _activeTab == position? ConstColor.salad100 : Colors.white,
-                    size: 19.sp, //20
-                  )
-                      :
-                  Container()
-
-
-              )
-
-            ],
+          padding: EdgeInsets.symmetric(
+            vertical: 16, //19
+              horizontal: 20
+          ),
+          child:
+          Text(
+            text,
+            style: TextStyle(
+                color:
+                _activeTab == position
+                    ? ConstColor.textBlack
+                    : ConstColor.textWhite,
+                fontSize: getResSize(12), //12
+                fontWeight: FontWeight.w500),
           ),
         ),
       ),
@@ -217,59 +189,42 @@ class _MeetingsPageState extends State<MeetingsPage> {
                   //Выбор интерфейса
                   Padding(
                     padding: const EdgeInsets.only(top: 20, bottom: 10),
-                    child: Center(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        // ChangeTabContainer(
+                        //   position: 2,
+                        //   text: 'По близости',
+                        //   activeTabInit: _activeTab,
+                        //   func: (){
+                        //     changeTab(2);
+                        //   },
+                        // ),
 
-                            // ChangeTabContainer(
-                            //   position: 1,
-                            //   text: 'Для вас',
-                            //   activeTabInit: _activeTab,
-                            //   func: (){
-                            //     changeTab(1);
-                            //   },
-                            // ),
-                            //
-                            // ChangeTabContainer(
-                            //   position: 2,
-                            //   text: 'По близости',
-                            //   activeTabInit: _activeTab,
-                            //   func: (){
-                            //     changeTab(2);
-                            //   },
-                            // ),
-                            //
-                            // ChangeTabContainer(
-                            //   position: 3,
-                            //   text: 'Деловая встреча',
-                            //   activeTabInit: _activeTab,
-                            //   func: (){
-                            //     changeTab(3);
-                            //   },
-                            // ),
-
-                            miniContainer(
-                              position: 1,
-                              text: 'Для вас',
-                            ),
-
-                            miniContainer(
-                              position: 2,
-                              text: 'По близости',
-                            ),
-
-                            miniContainer(
-                              position: 3,
-                              text: 'Деловая встреча',
-                            ),
-
-
-                          ],
+                        miniContainer(
+                          position: 1,
+                          text: 'Для вас',
                         ),
-                      ),
+
+                        miniContainer(
+                          position: 2,
+                          text: 'По близости',
+                        ),
+
+                        Expanded(
+                          child: ElevatedButton(
+                              onPressed: (){
+
+                          }, child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            child: const Text('Личные запросы', style: TextStyle(
+                              color: ConstColor.textBlack,
+                            ),),
+                          )),
+                        )
+
+                      ],
                     ),
                   ),
                 ],
@@ -454,7 +409,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
                     height: contSize,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: ConstColor.salad100
+                        color: ConstColor.white10
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -470,8 +425,9 @@ class _MeetingsPageState extends State<MeetingsPage> {
                         Padding(
                           padding: const EdgeInsets.only(left: 5),
                           child: Icon(
-                            Icons.incomplete_circle,
-                            size: 18.5.sp,  //16
+                            Icons.timer_outlined,
+                            color: Colors.white,
+                            size: 16,  //16
                           ),
                         )
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/auth_profile_info/choose_status.dart';
+import 'package:network_app/components/choose_status.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/components/network_icons.dart';
@@ -55,28 +55,30 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
     final mediaWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      // floatingActionButton:
-      // SizedBox(
-      //   width: 0.472*mediaWidth,  //177
-      //   height: 0.076*mediaHeight,               //55
-      //   child: ElevatedButton(
-      //       style: buttonStyleCustom(
-      //           padH: 0,
-      //           padV: 0,
-      //           radius: 17
-      //       ),
-      //       onPressed: () {},
-      //       child: Text(
-      //         'Найти',
-      //         style:
-      //         TextStyle(
-      //             fontSize: 18.sp,     //16
-      //             fontWeight: FontWeight.w600,
-      //             color: Colors.black
-      //         ),
-      //       )),
-      // ),
+      floatingActionButton:
+      widget.isAuth? null :
+      SizedBox(
+        width: 0.472*mediaWidth,  //177
+        height: 0.076*mediaHeight,               //55
+        child: ElevatedButton(
+            style: buttonStyleCustom(
+                padH: 0,
+                padV: 0,
+                radius: 17
+            ),
+            onPressed: () {},
+            child: Text(
+              'Добавить',
+              style:
+              TextStyle(
+                  fontSize: 18.sp,     //16
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black
+              ),
+            )),
+      ),
       bottomNavigationBar:
+      widget.isAuth==false? null :
       Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, bottom: 23),
         child: SizedBox(
@@ -114,6 +116,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
+                  widget.isAuth?
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -132,26 +135,28 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                           Icon(Icons.close_rounded, color: ConstColor.salad100,)
                         ],)
                       ),
-                  ],),
+                  ],)
+                  :
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child:
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        BackButtonCustom(),
+                        Center(child: Text('Выберете интересы',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 18.5.sp,   //18
+                              fontWeight: FontWeight.w600,
+                          ),
+                        ))
+                      ],
+                    ),
+                  ),
 
-                  // Padding(
-                  //   padding: const EdgeInsets.only(top: 10),
-                  //   child:
-                  //   Stack(
-                  //     alignment: Alignment.center,
-                  //     children: [
-                  //       BackButtonCustom(),
-                  //       Center(child: Text('Выберете интересы',
-                  //         textAlign: TextAlign.center,
-                  //         style: TextStyle(
-                  //             fontSize: 18.5.sp,   //18
-                  //             fontWeight: FontWeight.w600, color: Colors.black),
-                  //       ))
-                  //     ],
-                  //   ),
-                  // ),
 
-
+                  if(widget.isAuth)
                   Padding(
                     padding: const EdgeInsets.only(top: 40),
                     child: Container(

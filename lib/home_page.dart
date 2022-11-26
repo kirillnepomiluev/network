@@ -13,8 +13,9 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'dart:ui' as ui;
 
 class HomePage extends StatefulWidget {
+  final bool isCupboard;
   final int initIndex;
-  const HomePage({Key? key, required this.initIndex}) : super(key: key);
+  const HomePage({Key? key, required this.initIndex, this.isCupboard = false}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -43,12 +44,12 @@ class _HomePageState extends State<HomePage> {
       // backgroundColor: Colors.green,
       body: PageView(
         controller: _pageController,
-        children: const [
-          MeetingsPage(),
-          ProfilePage(),
-          WalletPage(),
-          StorePage(),
-          MessagesPage(),
+        children: [
+          const MeetingsPage(),
+          ProfilePage(isCupboard: widget.isCupboard),
+          const WalletPage(),
+          const StorePage(),
+          const MessagesPage(),
         ],
         onPageChanged: (index) {
           setState(() => _currentPage = index);
@@ -63,7 +64,7 @@ class _HomePageState extends State<HomePage> {
         // padding: const EdgeInsets.only(bottom: 5),
         child: BlurryContainer(
           padding: EdgeInsets.zero,
-          blur: 50,
+          blur: 20,
           // decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.15), //цвет рамки c округлением
             borderRadius: BorderRadius.circular(20),

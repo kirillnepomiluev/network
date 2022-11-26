@@ -9,7 +9,8 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class ChooseStatusPage extends StatefulWidget {
-  const ChooseStatusPage({Key? key,}) : super(key: key);
+  final bool isAuth;
+  const ChooseStatusPage({Key? key, this.isAuth = false}) : super(key: key);
 
   @override
   State<ChooseStatusPage> createState() => _ChooseStatusPageState();
@@ -40,7 +41,29 @@ class _ChooseStatusPageState extends State<ChooseStatusPage> {
     final mediaWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      bottomNavigationBar:
+      floatingActionButton:
+      widget.isAuth? null :
+      SizedBox(
+        width: 0.472*mediaWidth,  //177
+        height: 0.076*mediaHeight,               //55
+        child: ElevatedButton(
+            style: buttonStyleCustom(
+                padH: 0,
+                padV: 0,
+                radius: 17
+            ),
+            onPressed: () {},
+            child: Text(
+              'Добавить',
+              style:
+              TextStyle(
+                  fontSize: 18.sp,     //16
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black
+              ),
+            )),
+      ),
+      bottomNavigationBar: widget.isAuth==false? null:
       Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, bottom: 23),
         child: SizedBox(
@@ -78,6 +101,7 @@ class _ChooseStatusPageState extends State<ChooseStatusPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
+                  widget.isAuth?
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -99,14 +123,32 @@ class _ChooseStatusPageState extends State<ChooseStatusPage> {
                             ],
                           )
                       ),
-                    ],),
+                    ],)
+                      :
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child:
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        BackButtonCustom(),
+                        Center(child: Text('Выберете статус',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 18.5.sp,   //18
+                              fontWeight: FontWeight.w600,
+                          ),
+                        ))
+                      ],
+                    ),
+                  ),
 
-
+                  if(widget.isAuth)
                   const EnterInfoContainer(
                     text1: 'Выберете ',
                     text2: 'статус',
                     description: 'Статус будет отображаться в вашем профиле',
-                    padTop: 40,
+                    padTop: 30,
                   ),
 
 

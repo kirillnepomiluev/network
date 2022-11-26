@@ -15,7 +15,7 @@ class StorePage extends StatefulWidget {
 }
 
 class _StorePageState extends State<StorePage> {
-  int _activeStoreTab = 1;
+  int _activeTab = 1;
 
   Widget miniContainer({
     required int position,
@@ -28,7 +28,7 @@ class _StorePageState extends State<StorePage> {
       child: InkWell(
         onTap: (() {
           setState(() {
-            _activeStoreTab = position;
+            _activeTab = position;
           });
         }),
         child: BlurryContainer(
@@ -43,7 +43,7 @@ class _StorePageState extends State<StorePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              _activeStoreTab == position
+              _activeTab == position
                   ? Icon(
                 Network.person,
                 size: 18.5.sp, //18
@@ -63,7 +63,7 @@ class _StorePageState extends State<StorePage> {
               Padding(
                 padding: const EdgeInsets.only(left: 3),
                 child: Icon(
-                  _activeStoreTab == position
+                  _activeTab == position
                       ? Icons.keyboard_arrow_down
                       : Icons.keyboard_arrow_right,
                   color: Colors.white,
@@ -135,7 +135,7 @@ class _StorePageState extends State<StorePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          _activeStoreTab == 1 ? 'Аватары' : 'Боксы аватаров',
+                          _activeTab == 1 ? 'Аватары' : 'Боксы аватаров',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20.5.sp,   //22
@@ -171,7 +171,7 @@ class _StorePageState extends State<StorePage> {
                           avatarContainer(
                             strCategory: i%2==0? 'Редкий' : 'Обычный',
                             context: context,
-                            isBoxes: _activeStoreTab == 2,
+                            isBoxes: _activeTab == 2,
                           ),
 
                       ],
@@ -185,7 +185,7 @@ class _StorePageState extends State<StorePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          _activeStoreTab == 1
+                          _activeTab == 1
                               ? 'Головные уборы'
                               : 'Боксы одежды',
                           style: TextStyle(
