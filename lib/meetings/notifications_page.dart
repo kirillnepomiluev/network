@@ -78,7 +78,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // BackButtonCustom(),
-
                       BackButtonCustom(),
 
                       Text(
@@ -93,34 +92,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
                       IconContainer(
                           icon: Network.check_double,
                           iconSize: 18.5.sp,
-                          // Icon(
-                          //           Network.check_double,
-                          //           color: Colors.white,
-                          //           size: 18.5.sp, //19
-                          //         ),
-
                           func: (){}
-
                       )
-
-                      // Container(
-                      //   width: contSize,
-                      //   height: contSize,
-                      //   decoration: BoxDecoration(
-                      //     color: Colors.grey.shade300,
-                      //     borderRadius: BorderRadius.circular(15),
-                      //   ),
-                      //   child: IconButton(
-                      //       onPressed: () {
-                      //         // Navigator.of(context).pop();
-                      //       },
-                      //       icon: Icon(
-                      //         Network.check_double,
-                      //         color: Colors.black,
-                      //         size: 18.5.sp, //19
-                      //       )),
-                      // ),
-
                     ],
                   ),
                 ),
@@ -131,25 +104,25 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     title2: 'пригласила вас на ',
                     title3: 'встречу',
                     strTime: '5 мин назад',
-                    iconType: 1
+                    icon: Network.electric
                 ),
 
                 notificationCont(
                     showOnline: true,
-                    title1: 'Джоли ',
-                    title2: 'добавила вас в ',
+                    title1: 'Питер ',
+                    title2: 'добавил вас в ',
                     title3: 'избранное',
                     strTime: '15 мин назад',
-                    iconType: 2
+                    icon: Network.star
                 ),
 
                 notificationCont(
                     showOnline: false,
-                    title1: 'Джоли ',
+                    title1: 'Меган ',
                     title2: 'хочет добавить вас в ',
                     title3: 'друзья',
                     strTime: '2 ч назад',
-                    iconType: 2
+                    icon: Network.people
                 ),
 
                 notificationCont(
@@ -157,8 +130,17 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     title1: '',
                     title2: 'На вас подали ',
                     title3: 'жалобу',
-                    strTime: '1 д назад',
-                    iconType: 0
+                    strTime: '2 ч назад',
+                    icon: Network.info
+                ),
+
+                notificationCont(
+                    showOnline: false,
+                    title1: '',
+                    title2: 'Появился ',
+                    title3: 'новый запрос',
+                    strTime: '2 ч назад',
+                    icon: Network.electric
                 ),
 
 
@@ -176,7 +158,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
     required String title2,
     required String title3,
     required String strTime,
-    required int iconType,
+    required IconData icon
   }) {
     // final mediaWidth = MediaQuery.of(context).size.width;
 
@@ -209,53 +191,31 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 16.5.sp //15
-                        ),
-                    child:
 
+                  if(title1!='')
                     SizedBox(
                       width: 60,
                       height: 60,
                       child: CircleAvatar(
                         backgroundColor: showOnline? Colors.white : Colors.black,
                         foregroundImage: AssetImage(
-                            'assets/images/avatars/avatar_${showOnline?'2' : '1'}.png'
+                            'assets/images/avatars/avatar_${showOnline?'0' : '1'}.png'
                         ),
                       ),
-                    )
+                    ),
 
-                    // Container(
-                    //     decoration: BoxDecoration(
-                    //         color: Colors.white,
-                    //         shape: BoxShape.circle
-                    //     ),
-                    //     width: 30.sp,
-                    //     height: 30.sp,
-                    //     // child: IconButton(
-                    //     //   onPressed: () {},
-                    //     //   icon: Icon(
-                    //     //     iconType==0? Network.warning:
-                    //     //     Network.person,
-                    //     //     color: Colors.black,
-                    //     //   ),
-                    //     //   iconSize: 17.sp, //15
-                    //     // )
-                    // ),
+                  SizedBox(width: 13.sp,),
 
-                  ),
                   Expanded(
                     child: Column(
                       // direction: Axis.vertical,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         buildRichText(
-                            // 'Джоли ', 'пригласила вас на ', 'встречу'
                           title1, title2, title3
                         ),
                         Padding(
-                          padding: EdgeInsets.only(top: 10.sp //5
-                              ),
+                          padding: EdgeInsets.only(top: 10.sp),
                           child: Text(
                             strTime,
                             style: TextStyle(
@@ -270,21 +230,16 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   ),
 
                   Padding(
-                    padding: EdgeInsets.only(left: 16.5.sp),
+                    padding: EdgeInsets.only(left: 13.sp),
                     child: Container(
                       width: 22.sp, //24
                       height: 22.sp,
                       decoration: BoxDecoration(
-                          color: iconType==0? Colors.transparent : ConstColor.salad100,
-                          // shape: BoxShape.circle
+                          color: ConstColor.salad100,
                           borderRadius: BorderRadius.circular(7),
                           ),
                       child:
-                      iconType==0? Container():
-                      Icon(
-                        iconType==1
-                            ? Network.electric
-                        : Network.star,
+                      Icon(icon,
                         color: Colors.black,
                         size: 15.5.sp, //12
                       ),

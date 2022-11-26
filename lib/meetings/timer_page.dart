@@ -629,7 +629,7 @@ class _TimerPageState extends State<TimerPage> {
     required String text2,
     required String text3,
     required String textButton,
-    Function? func,
+    final Function? func,
 }) {
     showModalBottomSheet<void>(
       backgroundColor: ConstColor.black1A.withOpacity(0.5),

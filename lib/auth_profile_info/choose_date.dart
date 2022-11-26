@@ -5,14 +5,14 @@ import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class InputBirthPage extends StatefulWidget {
-  const InputBirthPage({Key? key}) : super(key: key);
+class ChooseDatePage extends StatefulWidget {
+  const ChooseDatePage({Key? key}) : super(key: key);
 
   @override
-  State<InputBirthPage> createState() => _InputBirthPageState();
+  State<ChooseDatePage> createState() => _ChooseDatePageState();
 }
 
-class _InputBirthPageState extends State<InputBirthPage> {
+class _ChooseDatePageState extends State<ChooseDatePage> {
 
   bool value = false;
 
@@ -99,41 +99,12 @@ class _InputBirthPageState extends State<InputBirthPage> {
                 ),
 
 
-                // Center(
-                //   child: CheckboxListTile(
-                //     dense: true,
-                //     controlAffinity: ListTileControlAffinity.leading,
-                //     value: value,
-                //     onChanged: (newValue){
-                //         setState(() {
-                //           value = newValue!;
-                //         });
-                //   },
-                //         side: BorderSide(color: ConstColor.salad100, width: 2),
-                //     title: Text('Скрыть возраст', style: TextStyle(color: Colors.white),),
-                //   ),
-                // )
-
-                Padding(
-                  padding: const EdgeInsets.only(top: 43),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                    Checkbox(
-                      side: BorderSide(color: ConstColor.salad100, width: 2),
-                        value: value,
-                        onChanged: (newValue){
-                      setState(() {
-                        value = newValue!;
-                      });
-                    }),
-
-                    Text('Скрыть возраст', style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400
-                    ),)
-
-                  ],),
+                const Padding(
+                  padding: EdgeInsets.only(top: 30),
+                  child:
+                  SizedBox(
+                      width: 185,
+                      child: CustomCheckListTile(title: 'Скрыть возраст',))
                 )
 
               ],

@@ -9,7 +9,6 @@ import 'package:network_app/store/store_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'dart:ui' as ui;
 
-
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -38,10 +37,10 @@ class _ProfilePageState extends State<ProfilePage> {
           borderRadius: BorderRadius.circular(20),
           // height: 56,
           padding: EdgeInsets.symmetric(
-              // vertical: mediaHeight*0.02635, //19
-              vertical: 18.5.sp, //19
-              // horizontal: 12 //18
-              ),
+            // vertical: mediaHeight*0.02635, //19
+            vertical: 18.5.sp, //19
+            // horizontal: 12 //18
+          ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -58,32 +57,26 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Text(
                   text,
                   style: TextStyle(
-                      color:
-                      _activeTab == position
+                      color: _activeTab == position
                           ? ConstColor.salad100
                           : Colors.white,
-
                       fontSize: 16.5.sp, //14
                       fontWeight: FontWeight.w500),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 5, right: 16),
-                child:
-                _activeTab == position
-                ?
-                Icon(
-                  Icons.keyboard_arrow_down,
-                  color: ConstColor.salad100,
-                  size: 19.sp, //20
-                )
-                :     Icon(
-                  Icons.keyboard_arrow_right,
-                  color: Colors.white,
-                  size: 19.sp, //20
-                ),
-
-
+                child: _activeTab == position
+                    ? Icon(
+                        Icons.keyboard_arrow_down,
+                        color: ConstColor.salad100,
+                        size: 19.sp, //20
+                      )
+                    : Icon(
+                        Icons.keyboard_arrow_right,
+                        color: Colors.white,
+                        size: 19.sp, //20
+                      ),
               )
             ],
           ),
@@ -92,13 +85,11 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-
-  void changeTab(int position){
+  void changeTab(int position) {
     setState(() {
       _activeTab = position;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -148,12 +139,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         //Верхняя часть профиля
                         Padding(
-                                padding: EdgeInsets.only(top: 10, left: padLeft),
-                                child: profileAvatarRow(),
-                              ),
+                          padding: EdgeInsets.only(top: 10, left: padLeft),
+                          child: profileAvatarRow(),
+                        ),
 
                         //Выбор интерфейса
                         Padding(
@@ -166,34 +156,30 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-
                                 ChangeTabContainer(
-                                    position: 1,
-                                    text: 'Профиль',
-                                    activeTabInit: _activeTab,
-                                  func: (){
+                                  position: 1,
+                                  text: 'Профиль',
+                                  activeTabInit: _activeTab,
+                                  func: () {
                                     changeTab(1);
                                   },
                                 ),
-
                                 ChangeTabContainer(
                                   position: 2,
                                   text: 'Шкаф',
                                   activeTabInit: _activeTab,
-                                  func: (){
+                                  func: () {
                                     changeTab(2);
                                   },
                                 ),
-
                                 ChangeTabContainer(
                                   position: 3,
                                   text: 'Встречи',
                                   activeTabInit: _activeTab,
-                                  func: (){
+                                  func: () {
                                     changeTab(3);
                                   },
                                 ),
-
                               ],
                             ),
                           ),
@@ -317,52 +303,41 @@ class _ProfilePageState extends State<ProfilePage> {
                             : Center(
                                 child: Padding(
                                   padding: const EdgeInsets.only(
-                                    top: 10,
-                                    left: 16,
-                                    right: 16
-                                  ),
+                                      top: 10, left: 16, right: 16),
                                   child: Column(
                                     // crossAxisAlignment: CrossAxisAlignment.center,
                                     // mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-
-
                                       const EnterInfoContainer(
-                                        padTop: 42,
-                                        text1: 'Шкаф ',
-                                        text2: 'пустой',
-                                        description:  'Посетите магазин, чтобы купить новые\nпредметы для своего персонажа'
-                                      ),
-
-
+                                          padTop: 42,
+                                          text1: 'Шкаф ',
+                                          text2: 'пустой',
+                                          description:
+                                              'Посетите магазин, чтобы купить новые\nпредметы для своего персонажа'),
 
                                       Padding(
                                         padding: const EdgeInsets.only(top: 59),
-                                        child:
-                                        SizedBox(
+                                        child: SizedBox(
                                           width: double.infinity,
                                           child: ElevatedButton(
                                               style: buttonStyleCustom(
                                                   padH: 0,
                                                   padV: 22,
-                                                  radius: 20
-                                              ),
+                                                  radius: 20),
                                               onPressed: () {
-
-                                                  Navigator.of(context).push(MaterialPageRoute<void>(
-                                                      builder: (context) => const StorePage()));
-
+                                                Navigator.of(context).push(
+                                                    MaterialPageRoute<void>(
+                                                        builder: (context) =>
+                                                            const StorePage()));
                                               },
                                               child: Text(
                                                 'Посетить магазин',
                                                 style: TextStyle(
                                                     fontSize: 18, //18
                                                     fontWeight: FontWeight.w500,
-                                                    color: Colors.black
-                                                ),
+                                                    color: Colors.black),
                                               )),
                                         ),
-
                                       ),
 
                                       // Padding(
@@ -391,8 +366,6 @@ class _ProfilePageState extends State<ProfilePage> {
                                       //     ),
                                       //   ),
                                       // ),
-
-
                                     ],
                                   ),
                                 ),
@@ -405,408 +378,443 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ],
         ),
-
-        bottomNavigationBar:
-        Container(
-                height: contHeight,
-                alignment: Alignment.bottomCenter,
-                color: Colors.transparent,
-                child: GestureDetector(
-                  onTap: () {
-                    openBottomSheetProfile();
-                  },
-                  onVerticalDragUpdate: (details) {
-                    int sensitivity = 8;
-                      if(details.delta.dy < -sensitivity){
-                      openBottomSheetProfile();
-                    }
-                  },
-                  child:
-
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      CustomPaint(
-                        size: Size(mediaWidth, (mediaWidth*0.07733333333333334).toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-                        painter: BottomSheetMinPaint(),
-                      ),
-                      BlurryContainer(
-                        blur: 20,
-                        width: mediaWidth,
-                        height: 75,
-                        child: Container(),
-                      )
-                    ],
+        bottomNavigationBar: Container(
+          height: contHeight,
+          alignment: Alignment.bottomCenter,
+          color: Colors.transparent,
+          child: GestureDetector(
+              onTap: () {
+                openBottomSheetProfile();
+              },
+              onVerticalDragUpdate: (details) {
+                int sensitivity = 8;
+                if (details.delta.dy < -sensitivity) {
+                  openBottomSheetProfile();
+                }
+              },
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CustomPaint(
+                    size: Size(
+                        mediaWidth,
+                        (mediaWidth * 0.07733333333333334)
+                            .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                    painter: BottomSheetMinPaint(),
+                  ),
+                  BlurryContainer(
+                    blur: 20,
+                    width: mediaWidth,
+                    height: 75,
+                    child: Container(),
                   )
-
-                  // CustomPaint(
-                  //   size: Size(375, 120),
-                  //   painter: RPSCustomPainter(),
-                  // )
-
-
-                  // Stack(
-                  //   alignment: Alignment.bottomCenter,
-                  //   children: [
-                  //
-                  //     Positioned(
-                  //       bottom: sheetHeightMinus,
-                  //       child: CustomPaint(
-                  //         size: Size(contWidth, contHeight),
-                  //         painter: RPSCustomPainter(),
-                  //       ),
-                  //     ),
-                  //
-                  //   ],
-                  // ),
-
-                ),
+                ],
               )
 
+              // CustomPaint(
+              //   size: Size(375, 120),
+              //   painter: RPSCustomPainter(),
+              // )
 
+              // Stack(
+              //   alignment: Alignment.bottomCenter,
+              //   children: [
+              //
+              //     Positioned(
+              //       bottom: sheetHeightMinus,
+              //       child: CustomPaint(
+              //         size: Size(contWidth, contHeight),
+              //         painter: RPSCustomPainter(),
+              //       ),
+              //     ),
+              //
+              //   ],
+              // ),
 
-    );
-
-
+              ),
+        ));
   }
 
   Widget profileAvatarRow() => Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-
-      //ава
-      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-              padding: EdgeInsets.only(right: 20),
-              child:
-
-              SizedBox(
-                width: 60,
-                height: 60,
-                child: CircleAvatar(
-                  backgroundColor: ConstColor.salad100,
-                  foregroundImage: AssetImage(
-                      'assets/images/avatars/avatar_0.png'
-                  ),
-                ),
-              )
-          ),
-
-          Column(
-            crossAxisAlignment:
-            CrossAxisAlignment.start,
+          //ава
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Тимофей, 37',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.sp, //18
-                    fontWeight: FontWeight.w700),
-              ),
-              Padding(
-                padding:
-                const EdgeInsets.only(top: 7),
-                child: Container(
-                    padding:
-                    const EdgeInsets.symmetric(
-                        vertical: 6,
-                        horizontal: 9),
-                    decoration: BoxDecoration(
-                        borderRadius:
-                        BorderRadius.circular(10),
-                        color: ConstColor.white10),
-                    child: Center(
-                        child: Text(
+              const Padding(
+                  padding: EdgeInsets.only(right: 20),
+                  child: SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: CircleAvatar(
+                      backgroundColor: ConstColor.salad100,
+                      foregroundImage:
+                          AssetImage('assets/images/avatars/avatar_0.png'),
+                    ),
+                  )),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Тимофей, 37',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.sp, //18
+                        fontWeight: FontWeight.w700),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 7),
+                    child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 6, horizontal: 9),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: ConstColor.white10),
+                        child: Center(
+                            child: Text(
                           'я люблю веселиться 😁',
                           style: TextStyle(
                               fontSize: 15.5.sp, //12
                               fontWeight: FontWeight.w400,
                               color: Colors.white),
                         ))),
+                  ),
+                ],
               ),
             ],
           ),
 
+          const Padding(
+            padding: EdgeInsets.only(right: 16),
+            child: NotificationIcon(),
+          ),
         ],
-      ),
-
-
-      const Padding(
-        padding:  EdgeInsets.only(right: 16),
-        child: NotificationIcon(),
-      ),
-
-    ],
-  );
-
-
+      );
 
   void openBottomSheetProfile() {
 
-    final mediaTop = MediaQuery.of(context).viewPadding.top;
-    final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWidth = MediaQuery.of(context).size.width;
-    // final _height = mediaHeight*0.8;
-    final _height = mediaHeight-mediaTop;
-
     showModalBottomSheet<void>(
-      backgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
         isScrollControlled: true,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
         context: context,
-        builder: (BuildContext context) => GestureDetector(
-              onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-              child:
+        builder: (BuildContext context) => BottomSheetMain());
+  }
+}
 
-              Stack(
-                alignment: Alignment.topCenter,
+
+class BottomSheetMain extends StatefulWidget {
+  const BottomSheetMain({Key? key}) : super(key: key);
+
+  @override
+  State<BottomSheetMain> createState() => _BottomSheetMainState();
+}
+
+class _BottomSheetMainState extends State<BottomSheetMain> {
+  bool isEditStatus = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final mediaTop = MediaQuery.of(context).viewPadding.top;
+    final mediaHeight = MediaQuery.of(context).size.height;
+    final mediaWidth = MediaQuery.of(context).size.width;
+    // final _height = mediaHeight - mediaTop;
+    final _height = mediaHeight*0.95;
+
+
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Container(
+            color: Colors.transparent,
+            height: _height,
+            child: SingleChildScrollView(
+              child: Column(
+                // physics: NeverScrollableScrollPhysics(),
                 children: [
-                  Container(
-                    // blur: 30,
+                  
+                  CustomPaint(
+                    size: Size(
+                        mediaWidth,
+                        (mediaWidth * 0.07733333333333334)
+                            .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                    painter: BottomSheetMinPaint(color: Colors.black.withOpacity(0.5)),
+                  ),
+
+
+                  BlurryContainer(
+                    borderRadius: BorderRadius.zero,
+                    blur: 50,
                     color: Colors.transparent,
-                    // decoration: BoxDecoration(
-                    //     color: Colors.red,
-                    //     borderRadius:
-                    //         const BorderRadius.vertical(top: Radius.circular(30))),
-                    // padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 15),
-                    height: _height,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        // physics: NeverScrollableScrollPhysics(),
-                        children: [
+                    padding: const EdgeInsets.only(
+                        left: 15, right: 15, bottom: 15, top: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
 
-                          CustomPaint(
-                            size: Size(mediaWidth, (mediaWidth*0.07733333333333334).toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-                            painter: BottomSheetMinPaint(),
-                          ),
+                        const StatColumn(),
 
-                          BlurryContainer(
-                            borderRadius: BorderRadius.zero,
-                            blur: 30,
-                            // decoration: BoxDecoration(
-                                color: ConstColor.white10,
-                                // borderRadius: const BorderRadius.vertical(top: Radius.circular(30))
-                              // ),
-                            padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 15),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
+                        titleStatText('Статус'),
+                        isEditStatus?
+                        textField('Sed aenean est eget sit eget at tellus sed.')
+                        :
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20, bottom: 10),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                            decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.1),
+                                // color: isDark ? Colors.grey.shade300 : Colors.grey.shade200,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-
-                                // Padding(
-                                //   padding: const EdgeInsets.only(top: 0, bottom: 0),
-                                //   child: Center(
-                                //     child: Container(
-                                //       // alignment: Alignment.center,
-                                //       width: 35,
-                                //       height: 4,
-                                //       decoration: BoxDecoration(
-                                //           color: Colors.grey.shade400,
-                                //           borderRadius: BorderRadius.circular(15)),
-                                //     ),
-                                //   ),
-                                // ),
-
-                                const StatColumn(),
-
-
-                                titleStatText('Статус'),
-                                textField('Sed aenean est eget sit eget at tellus sed.'),
-
-                                titleStatText('Интересы'),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 20),
-                                  child: Wrap(
-                                    spacing: 8,
-                                    runSpacing: 10,
-                                    direction: Axis.horizontal,
-                                    children: [
-                                      hobbitsContainer('Большой теннис'),
-                                      hobbitsContainer('Маркетинг'),
-                                      hobbitsContainer('Управление'),
-                                      hobbitsContainer('Маркетинг'),
-                                      hobbitsContainer('Большой теннис'),
-                                    ],
-                                  ),
-                                ),
-                                titleStatText('Обо мне'),
-                                textField('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices amet tellus.'),
-
-                                titleStatText('Сфера деятельности'),
-                                textField('Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget varius a id in amet.'),
-
-                                titleStatText('Пол'),
-                                const RadioList(
-                                  listOptions: ['Мужчина', 'Женщина'],
+                                Text(
+                                  'Я люблю веселиться',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.5.sp, //14
+                                      fontWeight: FontWeight.w400),
                                 ),
 
-                                titleStatText('Возраст'),
+                               Padding(
+                                 padding: const EdgeInsets.only(left: 8.0),
+                                 child: IconButton(
+                                     padding: EdgeInsets.zero,
+                                     constraints: BoxConstraints(),
+                                     onPressed: (){
+                                   setState(() {
+                                     isEditStatus = !isEditStatus;
+                                   });
+                                 }, icon: Icon(
+                                   Icons.mode_edit_outlined,
+                                   size: 22,
+                                   color: ConstColor.salad100,
+                                 )
+                                 ),
+                               )
 
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 20),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 15, vertical: 10),
-                                        decoration: BoxDecoration(
-                                            color: ConstColor.salad100,
-                                            borderRadius: BorderRadius.circular(15)),
-                                        child: Row(
-                                          children: [
-                                            Text(
-                                              '37 лет',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 17.sp), //14
-                                            ),
-
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 17,
-                                              right: 3
-                                              ),
-                                              child: Icon(
-                                                Network.pencil,
-                                                size: 16,
-                                              ),
-                                            )
-
-                                          ],
-                                        ),
-                                      ),
-
-
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 20),
-                                        child: Text(
-                                          'Скрыть возраст',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 17.sp), //14
-                                        ),
-                                      ),
-
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 1),
-                                        child: IconButton(
-                                          onPressed: () {
-                                            setState(() {});
-                                          },
-                                          icon: Icon(
-                                            Network.check_circle_outlined,
-                                            // Icons.check_circle,
-                                            color: ConstColor.salad100,
-                                            size: 18.sp, //18
-                                          ),
-                                          // iconSize: 18.sp, //18
-                                        ),
-                                      ),
-
-                                    ],
-                                  ),
-                                ),
-                                titleStatText('Семейное положение'),
-                                const RadioList(
-                                  listOptions: [
-                                    'Женат',
-                                    'Свободен',
-                                    'В поиске'
-                                  ],
-                                ),
-                                titleStatText('Цель встречи'),
-                                const RadioList(
-                                  listOptions: [
-                                    'Деловая',
-                                    'Общение',
-                                    'Свидание'
-                                  ],
-                                ),
-                                titleStatText(
-                                    'Готов ли знакомиться с противоположным полом'),
-                                const RadioList(
-                                  listOptions: [
-                                    'Да',
-                                    'Нет',
-                                  ],
-                                ),
-                                // titleStatText('Какие критерии?'),
-                                // const RadioList(
-                                //   listOptions: [
-                                //     'Да',
-                                //     'Нет',
-                                //   ],
-                                // ),
-
-                                Padding(
-                                  padding: EdgeInsets.only(top: 30, bottom: 30),
-                                  child: SizedBox(
-                                    width: double.infinity,
-                                    child: ElevatedButton(
-                                        style:
-                                        buttonStyleCustom(
-                                            color: Colors.white,
-                                            padH: 0,
-                                            padV: 0,
-                                            radius: 20
-                                        ),
-                                        // ButtonStyle(
-                                        //
-                                        //   backgroundColor:
-                                        //   MaterialStateProperty.all(Colors.white),
-                                        //   shape: MaterialStateProperty.all(
-                                        //     RoundedRectangleBorder(
-                                        //       borderRadius: BorderRadius.circular(20),
-                                        //     ),
-                                        //   ),
-                                        // ),
-
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: const Padding(
-                                          padding: EdgeInsets.symmetric(vertical: 22),
-                                          child: Text(
-                                            'Сохранить',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 18,   //16
-                                                fontWeight: FontWeight.w500
-                                            ),
-                                          ),
-                                        )
-                                    ),
-                                  ),
-                                ),
 
                               ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+
+                        titleStatText('Интересы'),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Wrap(
+                            spacing: 8,
+                            runSpacing: 10,
+                            direction: Axis.horizontal,
+                            children: [
+                              hobbitsContainer('Большой теннис'),
+                              hobbitsContainer('Бассейн'),
+                              hobbitsContainer('Управление'),
+                              hobbitsContainer('Маркетинг'),
+
+                              Container(
+                                width: 36,
+                                height: 36,
+                                decoration: BoxDecoration(
+                                    color: ConstColor.salad100,
+                                    borderRadius: BorderRadius.circular(7)),
+                                child: IconButton(
+                                  padding: EdgeInsets.zero,
+                                  constraints: BoxConstraints(),
+                                  onPressed: (){},
+                                  icon: Icon(Icons.add),
+                                )
+                              ),
+
+                            ],
+                          ),
+                        ),
+                        titleStatText('Обо мне'),
+                        textField(
+                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices amet tellus.'),
+
+                        titleStatText('Сфера деятельности'),
+                        // textField('Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget varius a id in amet.'),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Wrap(
+                            spacing: 8,
+                            runSpacing: 10,
+                            direction: Axis.horizontal,
+                            children: [
+                              hobbitsContainer('Маркетинг'),
+                              hobbitsContainer('IT-сфера'),
+                              hobbitsContainer('Финансы'),
+
+                              Container(
+                                  width: 36,
+                                  height: 36,
+                                  decoration: BoxDecoration(
+                                      color: ConstColor.salad100,
+                                      borderRadius: BorderRadius.circular(7)),
+                                  child: IconButton(
+                                    padding: EdgeInsets.zero,
+                                    constraints: BoxConstraints(),
+                                    onPressed: (){},
+                                    icon: Icon(Icons.add),
+                                  )
+                              ),
+
+                            ],
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: BuildRichTextTwo(
+                            text1: 'Вы можете указать ',
+                            text2: '3 сферы деятельности',
+                            fontSize: 10,
+                            fontWeight1: FontWeight.w400,
+                            fontWeight2: FontWeight.w400,
+                          ),
+                        ),
+
+                        titleStatText('Пол'),
+                        const RadioList(
+                          listOptions: ['Мужчина', 'Женщина'],
+                        ),
+
+                        const Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child:
+                            CustomCheckListTile(title: 'Скрыть пол',)
+                        ),
+
+                        titleStatText('Возраст'),
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 10),
+                            decoration: BoxDecoration(
+                                color: ConstColor.salad100,
+                                borderRadius:
+                                BorderRadius.circular(15)),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  '37 лет',
+                                  style: TextStyle(
+                                      color: ConstColor.textBlack,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 17.sp), //14
+                                ),
+                                const Padding(
+                                  padding:  EdgeInsets.only(
+                                      left: 17, right: 3),
+                                  child: Icon(
+                                    Network.pencil,
+                                    size: 16,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        const Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child:
+                            CustomCheckListTile(title: 'Скрыть возраст',)
+                        ),
+
+                        titleStatText('Семейное положение'),
+                        const RadioList(
+                          listOptions: [
+                            'Женат',
+                            'Свободен',
+                            'В поиске'
+                          ],
+                        ),
+
+                        CustomCheckListTile(title: 'Скрыть семейное положение',),
+
+                        titleStatText('Цель встречи'),
+                        const RadioList(
+                          listOptions: [
+                            'Деловая',
+                            'Общение',
+                            'Свидание'
+                          ],
+                        ),
+
+                        const CustomCheckListTile(title: 'Скрыть цель встречи',),
+
+                        titleStatText(
+                            'Готов ли знакомиться с противоположным полом'),
+                        const RadioList(
+                          listOptions: [
+                            'Да',
+                            'Нет',
+                          ],
+                        ),
+
+                        CustomCheckListTile(title: 'Скрыть',),
+
+                        SizedBox(height: 80,)
+
+                      ],
                     ),
                   ),
-
-                  CustomPaint(
-                    size: Size(mediaWidth, (mediaWidth*0.07733333333333334).toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-                    painter: BottomSheetMinPaint(color: Colors.transparent),
-                  ),
-
                 ],
               ),
-            )
+            ),
+          ),
+
+          // Positioned(
+          //   bottom: 0,
+          //   child: Container(
+          //     padding: EdgeInsets.only(left: 10, right: 10, bottom: 20),
+          //     width: mediaWidth,
+          //     child: ElevatedButton(
+          //         style: buttonStyleCustom(
+          //             color: Colors.white,
+          //             padH: 0,
+          //             padV: 0,
+          //             radius: 20),
+          //
+          //         onPressed: () {
+          //           Navigator.of(context).pop();
+          //         },
+          //         child: const Padding(
+          //           padding: EdgeInsets.symmetric(
+          //               vertical: 22),
+          //           child: Text(
+          //             'Сохранить',
+          //             style: TextStyle(
+          //                 color: Colors.black,
+          //                 fontSize: 18, //16
+          //                 fontWeight: FontWeight.w500),
+          //           ),
+          //         )),
+          //   ),
+          // ),
+
+          CustomPaint(
+            size: Size(
+                mediaWidth,
+                (mediaWidth * 0.07733333333333334)
+                    .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+            painter: BottomSheetMinPaint(color: Colors.transparent),
+          ),
+        ],
+      ),
     );
   }
-
 }
-
-
-

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/auth/login_second_page.dart';
+import 'package:network_app/auth_profile_info/choose_level.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -59,6 +60,7 @@ class _ChooseSexPageState extends State<ChooseSexPage> {
                           onPressed: () {
                             setState(() {
                               strSex = 'female';
+                              value = false;
                             });
                           },
                           child: Text(
@@ -87,6 +89,7 @@ class _ChooseSexPageState extends State<ChooseSexPage> {
                           onPressed: () {
                             setState(() {
                               strSex = 'male';
+                              value = false;
                             });
                           },
                           child: Text(
@@ -103,42 +106,35 @@ class _ChooseSexPageState extends State<ChooseSexPage> {
                   ],),
                 ),
 
-                // Center(
-                //   child: CheckboxListTile(
-                //     dense: true,
-                //     controlAffinity: ListTileControlAffinity.leading,
-                //     value: value,
-                //     onChanged: (newValue){
-                //         setState(() {
-                //           value = newValue!;
-                //         });
-                //   },
-                //         side: BorderSide(color: ConstColor.salad100, width: 2),
-                //     title: Text('Скрыть возраст', style: TextStyle(color: Colors.white),),
-                //   ),
-                // )
-
                 Padding(
                   padding: const EdgeInsets.only(top: 25, bottom: 25),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Checkbox(
-                          side: BorderSide(color: ConstColor.salad100, width: 2),
-                          value: value,
-                          onChanged: (newValue){
-                            strSex = '';
-                            setState(() {
-                              value = newValue!;
-                            });
-                          }),
+                  child:
+                  SizedBox(
+                      width: 185,
+                      child:
 
-                      Text('Скрыть пол', style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400
-                      ),)
+                      CheckboxListTile(
+                        checkColor: Colors.black,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        value: value,
+                        onChanged: (newValue){
+                          setState(() {
+                            strSex='';
+                            value = newValue!;
+                          });
+                        },
+                        activeColor: ConstColor.salad100,
+                        title: Transform.translate(
+                          offset: Offset(-10, 0),
+                          child: Text('Скрыть пол', style: TextStyle(
+                              color: Colors.white
+                          ),),
+                        ),
+                      )
 
-                    ],),
+
+                  )
+
                 ),
 
 
@@ -151,7 +147,7 @@ class _ChooseSexPageState extends State<ChooseSexPage> {
                       onPressed: () {
 
                         Navigator.of(context).push(MaterialPageRoute<void>(
-                            builder: (context) => const LoginSecondPage()));
+                            builder: (context) => const ChooseLevelPage()));
                       },
                       child: Text(
                         'Продолжить',

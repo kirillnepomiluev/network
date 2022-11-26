@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/auth_profile_info/choose_status.dart';
+import 'package:network_app/auth_profile_info/input_status.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/components/network_icons.dart';
@@ -8,15 +8,14 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 
-class ChooseInterestsPage extends StatefulWidget {
-  final bool isAuth;
-  const ChooseInterestsPage({Key? key, this.isAuth=false}) : super(key: key);
+class ChooseStatusPage extends StatefulWidget {
+  const ChooseStatusPage({Key? key,}) : super(key: key);
 
   @override
-  State<ChooseInterestsPage> createState() => _ChooseInterestsPageState();
+  State<ChooseStatusPage> createState() => _ChooseStatusPageState();
 }
 
-class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
+class _ChooseStatusPageState extends State<ChooseStatusPage> {
 
   final _controller = TextEditingController();
 
@@ -28,23 +27,9 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
     autofocus: false,
     style: TextStyle(
       fontSize: getResSize(14),
-      // color: ConstColor.textWhite
     ),
     decoration: const InputDecoration(
       counterText: '',
-      // focusedBorder: OutlineInputBorder(
-      //     borderSide: BorderSide(width: 0, color: Colors.white70),
-      //     borderRadius: BorderRadius.only(topRight: Radius.circular(15), bottomRight: Radius.circular(15))
-      // ),
-      // enabledBorder:
-
-      // OutlineInputBorder(
-      //     borderSide: BorderSide(width: 0, color: Colors.white70),
-      //     borderRadius: BorderRadius.only(topRight: Radius.circular(15), bottomRight: Radius.circular(15))
-      //   // borderRadius: BorderRadius.circular(15)
-      // ),
-      // filled: true,
-      // fillColor: Colors.red,
     ),
   );
 
@@ -55,27 +40,6 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
     final mediaWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      // floatingActionButton:
-      // SizedBox(
-      //   width: 0.472*mediaWidth,  //177
-      //   height: 0.076*mediaHeight,               //55
-      //   child: ElevatedButton(
-      //       style: buttonStyleCustom(
-      //           padH: 0,
-      //           padV: 0,
-      //           radius: 17
-      //       ),
-      //       onPressed: () {},
-      //       child: Text(
-      //         'Найти',
-      //         style:
-      //         TextStyle(
-      //             fontSize: 18.sp,     //16
-      //             fontWeight: FontWeight.w600,
-      //             color: Colors.black
-      //         ),
-      //       )),
-      // ),
       bottomNavigationBar:
       Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, bottom: 23),
@@ -87,7 +51,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                   padH: 0, padV: 22, radius: 20),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute<void>(
-                    builder: (context) => const ChooseStatusPage()));
+                    builder: (context) => const InputStatusPage()));
               },
               child: Text(
                 'Продолжить',
@@ -119,50 +83,53 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                     children: [
                       BackButtonCustom(),
                       Container(
-                        decoration: BoxDecoration(
-                          color: ConstColor.white10,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 12,
-                            horizontal: 18
-                        ),
-                        child:Row(children: [
-                          Text('Пропустить'),
-                          Icon(Icons.close_rounded, color: ConstColor.salad100,)
-                        ],)
+                          decoration: BoxDecoration(
+                            color: ConstColor.white10,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 12,
+                              horizontal: 18
+                          ),
+                          child:
+                          Row(
+                            children: const [
+                              Text('Пропустить'),
+                              Icon(Icons.close_rounded, color: ConstColor.salad100,)
+                            ],
+                          )
                       ),
-                  ],),
+                    ],),
 
-                  // Padding(
-                  //   padding: const EdgeInsets.only(top: 10),
-                  //   child:
-                  //   Stack(
-                  //     alignment: Alignment.center,
-                  //     children: [
-                  //       BackButtonCustom(),
-                  //       Center(child: Text('Выберете интересы',
-                  //         textAlign: TextAlign.center,
-                  //         style: TextStyle(
-                  //             fontSize: 18.5.sp,   //18
-                  //             fontWeight: FontWeight.w600, color: Colors.black),
-                  //       ))
-                  //     ],
-                  //   ),
-                  // ),
+
+                  const EnterInfoContainer(
+                    text1: 'Выберете ',
+                    text2: 'статус',
+                    description: 'Статус будет отображаться в вашем профиле',
+                    padTop: 40,
+                  ),
 
 
                   Padding(
-                    padding: const EdgeInsets.only(top: 40),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: ConstColor.white10,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 26, horizontal: 18),
-                      child:
-                      BuildRichTextTwo(text1: 'Выберете ', text2: 'интересы', fontSize: 20.sp, fontWeight1: FontWeight.w500, fontWeight2: FontWeight.w500,),
+                    padding: const EdgeInsets.only(top: 20),
+                    child: SizedBox(
+                      // width: double.infinity,
+                      child: ElevatedButton(
+                          style: buttonStyleCustom(
+                              color: Colors.white,
+                              padH: 31, padV: 16, radius: 13),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute<void>(
+                                builder: (context) => const InputStatusPage()));
+                          },
+                          child: Text(
+                            'Ввести свой статус',
+                            style: TextStyle(
+                                fontSize: 12, //12
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black
+                            ),
+                          )),
                     ),
                   ),
 
@@ -225,7 +192,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                   //             padH: 0, padV: 22, radius: 20),
                   //         onPressed: () {
                   //           Navigator.of(context).push(MaterialPageRoute<void>(
-                  //               builder: (context) => const ChooseStatusPage()));
+                  //               builder: (context) => const ChooseStatusPage(isAuth: true,)));
                   //         },
                   //         child: Text(
                   //           'Продолжить',
@@ -237,7 +204,6 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                   //         )),
                   //   ),
                   // ),
-
 
 
                 ],

@@ -1,5 +1,6 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/auth_profile_info/input_name.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
@@ -110,9 +111,12 @@ class _AuthSuccesPageState extends State<AuthSuccesPage> {
                         onPressed: () {
                           Navigator.of(context)
                               .push(MaterialPageRoute<void>(
-                              builder: (context) => const HomePage(
-                                initIndex: 0,
-                              )));
+                              builder: (context) =>
+                                  const InputNamePage()
+                              // const HomePage(
+                              //   initIndex: 0,
+                              // )
+                          ));
                         },
                         child: Text(
                           'Принять',

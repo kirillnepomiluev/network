@@ -87,6 +87,61 @@ class NotificationIcon extends StatelessWidget {
   }
 }
 
+class HobbySelected extends StatefulWidget {
+  final String title;
+  final Function? func;
+  const HobbySelected({Key? key, required this.title, this.func}) : super(key: key);
+
+  @override
+  State<HobbySelected> createState() => _HobbySelectedState();
+}
+
+class _HobbySelectedState extends State<HobbySelected> {
+
+  bool isSelected = false;
+
+  @override
+  Widget build(BuildContext context) {
+
+    final mediaWitdh = MediaQuery.of(context).size.width;
+
+    return InkWell(
+      onTap: (() {
+
+        if(widget.func!=null){
+          widget.func!();
+        }
+
+        setState(() {
+          isSelected = !isSelected;
+        });
+      }),
+      child: Container(
+        padding: EdgeInsets.all(mediaWitdh*0.0373), //14
+        decoration: BoxDecoration(
+          color: isSelected
+              ? ConstColor.salad100
+              : ConstColor.white10,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child:
+        Text(
+          widget.title,
+          style: TextStyle(
+              color:
+              isSelected
+                  ? Colors.black
+                  : ConstColor.textWhite,
+              fontSize: 15.5.sp, //12
+              fontWeight: FontWeight.w400
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
 class EnterInfoContainer extends StatelessWidget {
   final double padTop;
   final String text1;
@@ -123,8 +178,8 @@ class EnterInfoContainer extends StatelessWidget {
               child: Text(
                 description ?? Constants.strLoremIpsum,
                 maxLines: maxLines,
-                style: const TextStyle(
-                    fontSize: 14,
+                style: TextStyle(
+                    fontSize: getResSize(14),
                     fontWeight: FontWeight.w400),
               ),
             ),
@@ -164,9 +219,9 @@ class EnterInfoContainer extends StatelessWidget {
 
 
 class EnterRowContainer extends StatelessWidget {
-  Function? func;
-  IconData? icon;
-  String iconName;
+  final Function? func;
+  final IconData? icon;
+  final String iconName;
   final String title;
   EnterRowContainer({Key? key, this.icon, this.iconName='', required this.title, this.func}) : super(key: key);
 
@@ -384,12 +439,12 @@ Widget troubleEnter(BuildContext context) {
 }
 
 class IconContainer extends StatelessWidget {
-  IconData icon;
-  Color iconColor;
-  Color? contColor;
-  double? iconSize;
-  double? contSize;
-  Function? func;
+  final IconData icon;
+  final Color iconColor;
+  final Color? contColor;
+  final double? iconSize;
+  final double? contSize;
+  final Function? func;
   IconContainer(
       {Key? key,
       required this.icon,
@@ -425,8 +480,8 @@ class IconContainer extends StatelessWidget {
 }
 
 class BackButtonCustom extends StatelessWidget {
-  Function? func;
-  Color? contColor;
+  final Function? func;
+  final Color? contColor;
   BackButtonCustom({Key? key, this.func, this.contColor}) : super(key: key);
 
   @override
@@ -589,6 +644,7 @@ Widget progressParametr(
                       )
                     ],
                   )),
+
         Padding(
           padding: const EdgeInsets.only(top: 12),
           child: Stack(
@@ -604,7 +660,7 @@ Widget progressParametr(
                   lineHeight: 40, //40
                   percent: progress,
                   backgroundColor: Colors.transparent,
-                  progressColor: ConstColor.salad100,
+                  progressColor: ConstColor.salad100.withOpacity(0.2),
                 ),
               ),
               Positioned(
@@ -864,13 +920,72 @@ class StatColumn extends StatelessWidget {
       children: [
         // titleStatText('Уровень Базовый'),
 
-        BuildRichTextTwo(
-          text1: 'Уровень ',
-          text2: 'Базовый',
-          // fontSize: 19.sp, //20
-          // fontWeight1: FontWeight.w600,
-          // fontWeight2: FontWeight.w600,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            BuildRichTextTwo(
+              text1: 'Уровень ',
+              text2: 'Базовый',
+            ),
+
+            Container(
+              decoration: BoxDecoration(
+                  color: ConstColor.salad100,
+                  borderRadius: BorderRadius.circular(7)),
+              width: 24,
+              height: 22,
+              child: Icon(
+                Icons.mode_edit_outline_outlined,
+                size: 13,
+              ),
+            ),
+
+          ],
         ),
+
+        const SizedBox(height: 5,),
+
+        progressParametr(
+            progress: 0.3,
+            context: context,
+            text1: 'Токены за встречи  ',
+            text2: '150',
+            icon: Network.rhombus
+        ),
+
+        Padding(
+          padding: const EdgeInsets.only(top: 15),
+          child: BuildRichTextTwo(
+            text1: 'До следущего уровня осталось\nнабрать ',
+            text2: '1500 токенов',
+            fontSize: 14,
+            fontWeight1: FontWeight.w500,
+            fontWeight2: FontWeight.w500,
+          ),
+        ),
+
+        Padding(
+          padding: const EdgeInsets.only(top: 25, bottom: 7),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.symmetric(
+                vertical: 12,
+                horizontal: 20
+              ),
+              backgroundColor: ConstColor.salad100,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(13)
+              )
+            ),
+              onPressed: (){},
+              child: Text("Докупить токены",
+              style: TextStyle(
+                color: ConstColor.textBlack
+              ),
+              )
+          ),
+        ),
+
 
         progressParametr(
             context: context,
@@ -913,6 +1028,51 @@ class StatColumn extends StatelessWidget {
     );
   }
 }
+
+class CustomCheckListTile extends StatefulWidget {
+  final Function? func;
+  final String title;
+  const CustomCheckListTile({Key? key, required this.title, this.func}) : super(key: key);
+
+  @override
+  State<CustomCheckListTile> createState() => _CustomCheckListTileState();
+}
+
+class _CustomCheckListTileState extends State<CustomCheckListTile> {
+  bool value = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Transform.translate(
+      offset: const Offset(-4, 0),
+      child: CheckboxListTile(
+        contentPadding: EdgeInsets.zero,
+        checkColor: Colors.black,
+        controlAffinity: ListTileControlAffinity.leading,
+        value: value,
+        onChanged: (newValue){
+
+          if(widget.func!=null){
+            widget.func!();
+          }
+
+          setState(() {
+            value = newValue!;
+          });
+        },
+        activeColor: ConstColor.salad100,
+        title: Transform.translate(
+          offset: const Offset(-17, 0),
+          child: Text(widget.title, style: const TextStyle(
+            color: Colors.white
+          ),),
+        ),
+      ),
+    );
+  }
+}
+
+
 
 class BottomSheetMinPaint extends CustomPainter {
   final Color? color;
@@ -1125,8 +1285,8 @@ class ChangeTabContainer extends StatelessWidget {
 }
 
 class MeetRow extends StatelessWidget {
-  Function? func;
-  bool isExchange;
+  final Function? func;
+  final bool isExchange;
   MeetRow({Key? key, this.func, this.isExchange = false}) : super(key: key);
 
   @override
