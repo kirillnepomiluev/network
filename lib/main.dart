@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:network_app/auth/auth_succes_page.dart';
 import 'package:network_app/auth/login_page.dart';
-import 'package:network_app/auth_profile_info/choose_date.dart';
-import 'package:network_app/auth_profile_info/choose_sex.dart';
-import 'package:network_app/auth_profile_info/input_name.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 // ignore: unused_import
 import 'package:network_app/home_page.dart';
-import 'package:network_app/components/choose_interests.dart';
+import 'package:network_app/meetings/choose_meeting_data.dart';
+import 'package:network_app/meetings/creqte_request/meeting_occupation.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() {
@@ -66,8 +63,8 @@ class MyApp extends StatelessWidget {
             supportedLocales: const [
               Locale('ru', 'RU'), // English, no country code
             ],
-            home: const HomePage(initIndex: 0,),
-            // home: const ChooseDatePage(),
+            // home: const HomePage(initIndex: 0,),
+            home: const ChooseMeetingDate(),
           );
         },
       );

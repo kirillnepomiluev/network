@@ -7,6 +7,8 @@ import 'package:network_app/components/choose_interests.dart';
 import 'package:network_app/meetings/invitations_page.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/meetings/notifications_page.dart';
+import 'package:network_app/meetings/creqte_request/personal_requests.dart';
+import 'package:network_app/meetings/search_page.dart';
 import 'package:network_app/meetings/timer_page.dart';
 import 'package:network_app/profile/view_partner_profile_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -215,6 +217,8 @@ class _MeetingsPageState extends State<MeetingsPage> {
                         Expanded(
                           child: ElevatedButton(
                               onPressed: (){
+                                Navigator.of(context).push(MaterialPageRoute<void>(
+                                    builder: (context) => const PersonalRequestsPage()));
 
                           }, child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 15),
@@ -345,7 +349,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
                 Navigator.of(context).push(
                     MaterialPageRoute<void>(
                         builder: (context) =>
-                        const ChooseInterestsPage()));
+                        const SearchPage()));
 
                 // setState(() {
                 //   _activeTab = 0;
@@ -422,8 +426,8 @@ class _MeetingsPageState extends State<MeetingsPage> {
                               fontWeight: FontWeight.bold),
                         ),
 
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
+                        const Padding(
+                          padding:  EdgeInsets.only(left: 5),
                           child: Icon(
                             Icons.timer_outlined,
                             color: Colors.white,

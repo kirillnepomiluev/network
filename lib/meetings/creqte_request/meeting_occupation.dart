@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/auth_profile_info/input_occupation.dart';
-import 'package:network_app/auth_profile_info/input_status.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/components/network_icons.dart';
-import 'package:network_app/meetings/meetings_page.dart';
+import 'package:network_app/meetings/creqte_request/meeting_interest.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 
-class ChooseOccupationPage extends StatefulWidget {
-  const ChooseOccupationPage({Key? key,}) : super(key: key);
+class ChooseMeetingOccupation extends StatefulWidget {
+  const ChooseMeetingOccupation({Key? key,}) : super(key: key);
 
   @override
-  State<ChooseOccupationPage> createState() => _ChooseOccupationPageState();
+  State<ChooseMeetingOccupation> createState() => _ChooseMeetingOccupationState();
 }
 
-class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
+class _ChooseMeetingOccupationState extends State<ChooseMeetingOccupation> {
 
   final _controller = TextEditingController();
 
@@ -58,7 +56,7 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
                   padH: 0, padV: 22, radius: 20),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute<void>(
-                    builder: (context) => const InputOccupationPage()));
+                    builder: (context) => const MeetInterestsChoose()));
               },
               child: Text(
                 'Продолжить',
@@ -85,29 +83,23 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      BackButtonCustom(),
-                      Container(
-                          decoration: BoxDecoration(
-                            color: ConstColor.white10,
-                            borderRadius: BorderRadius.circular(10),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child:
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        BackButtonCustom(),
+                        Center(child: Text('Создание личного запроса',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18.5.sp,   //18
+                            fontWeight: FontWeight.w600,
                           ),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 12,
-                              horizontal: 18
-                          ),
-                          child:
-                          Row(
-                            children: const [
-                              Text('Пропустить'),
-                              Icon(Icons.close_rounded, color: ConstColor.salad100,)
-                            ],
-                          )
-                      ),
-                    ],),
-
+                        ))
+                      ],
+                    ),
+                  ),
 
                   const EnterInfoContainer(
                     text1: 'Выберете ',
@@ -151,47 +143,47 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
 
 
                   if(choosedOptions.isNotEmpty)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Wrap(
-                      spacing: 14,
-                      runSpacing: 14,
-                      direction: Axis.horizontal,
-                      children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Wrap(
+                        spacing: 14,
+                        runSpacing: 14,
+                        direction: Axis.horizontal,
+                        children: [
 
-                        for (final item in choosedOptions)
-                          Container(
-                            padding: EdgeInsets.all(14), //14
-                            decoration: BoxDecoration(
-                              color: ConstColor.white10,
-                              borderRadius: BorderRadius.circular(12),
+                          for (final item in choosedOptions)
+                            Container(
+                                padding: EdgeInsets.all(14), //14
+                                decoration: BoxDecoration(
+                                  color: ConstColor.white10,
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child:
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      item,
+                                    ),
+
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 5),
+                                      child: IconButton(onPressed: (){
+                                        setState(() {
+                                          choosedOptions.remove(item);
+                                        });
+                                      },
+                                          padding: EdgeInsets.zero,
+                                          constraints: BoxConstraints(),
+                                          iconSize: 20,
+                                          icon: Icon(Icons.close_rounded, color: ConstColor.salad100,)),
+                                    )
+                                  ],)
                             ),
-                            child:
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                            Text(
-                              item,
-                            ),
 
-                            Padding(
-                              padding: EdgeInsets.only(left: 5),
-                              child: IconButton(onPressed: (){
-                                setState(() {
-                                  choosedOptions.remove(item);
-                                });
-                              },
-                                  padding: EdgeInsets.zero,
-                                  constraints: BoxConstraints(),
-                                  iconSize: 20,
-                                  icon: Icon(Icons.close_rounded, color: ConstColor.salad100,)),
-                            )
-                          ],)
-                          ),
-
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
 
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
@@ -202,8 +194,8 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
                               color: Colors.white,
                               padH: 31, padV: 16, radius: 13),
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute<void>(
-                                builder: (context) => const InputOccupationPage()));
+                            // Navigator.of(context).push(MaterialPageRoute<void>(
+                            //     builder: (context) => const MeetInterestsChoose()));
                           },
                           child: Text(
                             'Ввести свой вариант',
@@ -259,14 +251,14 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
 
                       for (final item in Constants.hobbiesList)
                         HobbySelected(title: item,
-                        func: (){
-                          if(choosedOptions.length<3){
-                            setState(() {
-                              choosedOptions.add(item);
-                            });
-                          }
+                          func: (){
+                            if(choosedOptions.length<3){
+                              setState(() {
+                                choosedOptions.add(item);
+                              });
+                            }
 
-                        },
+                          },
                         ),
 
                     ],
@@ -274,28 +266,6 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
 
                   SizedBox(height: 100,)
 
-                  // Padding(
-                  //   padding: const EdgeInsets.only(top: 20),
-                  //   child: SizedBox(
-                  //     width: double.infinity,
-                  //     child: ElevatedButton(
-                  //         style: buttonStyleCustom(
-                  //             color: Colors.white,
-                  //             padH: 0, padV: 22, radius: 20),
-                  //         onPressed: () {
-                  //           Navigator.of(context).push(MaterialPageRoute<void>(
-                  //               builder: (context) => const ChooseStatusPage(isAuth: true,)));
-                  //         },
-                  //         child: Text(
-                  //           'Продолжить',
-                  //           style: TextStyle(
-                  //               fontSize: 18.5.sp, //18
-                  //               fontWeight: FontWeight.w500,
-                  //               color: Colors.black
-                  //           ),
-                  //         )),
-                  //   ),
-                  // ),
 
 
                 ],

@@ -189,32 +189,6 @@ class EnterInfoContainer extends StatelessWidget {
     );
   }
 
-  // Widget _buildRichText({
-  //   String text1 = '',
-  //   String text2 = '',
-  // }) =>
-  //     RichText(
-  //       maxLines: 2,
-  //       overflow: TextOverflow.ellipsis,
-  //       text: TextSpan(
-  //         style: TextStyle(
-  //           color: Colors.white,
-  //           fontSize: 20.sp, //24
-  //           fontWeight: FontWeight.w500,
-  //         ),
-  //         children: <TextSpan>[
-  //           TextSpan(
-  //             text: text1,
-  //           ),
-  //           TextSpan(
-  //               text: text2,
-  //               style: const TextStyle(
-  //                 color: ConstColor.salad100,
-  //               )),
-  //         ],
-  //       ),
-  //       // minFontSize: 14,
-  //     );
 }
 
 
