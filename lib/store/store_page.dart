@@ -1,14 +1,15 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/components/network_icons.dart';
-import 'package:network_app/home_page.dart';
 import 'package:network_app/store/view_category_avatar_page.dart';
 import 'package:network_app/store/view_category_hats.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class StorePage extends StatefulWidget {
-  const StorePage({Key? key}) : super(key: key);
+  final bool isPartnerCupboard;
+  const StorePage({Key? key, this.isPartnerCupboard = false}) : super(key: key);
 
   @override
   State<StorePage> createState() => _StorePageState();
@@ -45,7 +46,7 @@ class _StorePageState extends State<StorePage> {
             children: [
               _activeTab == position
                   ? Icon(
-                Network.person,
+                NetworkIcons.person,
                 size: 18.5.sp, //18
                 color: Colors.white,
               )
@@ -82,10 +83,7 @@ class _StorePageState extends State<StorePage> {
 
   @override
   Widget build(BuildContext context) {
-    final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWidth = MediaQuery.of(context).size.width;
     final mediaTop = MediaQuery.of(context).viewPadding.top;
-    final mediaRadius = mediaWidth * 0.45;
 
     return Scaffold(
       // backgroundColor: ConstColor.blackBack,
@@ -101,6 +99,31 @@ class _StorePageState extends State<StorePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+
+                  if(widget.isPartnerCupboard)
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: const [
+                              BackButtonCustom(),
+                              Padding(
+                                padding: EdgeInsets.only(right: 16),
+                                child: NotificationIcon(),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20, bottom: 10),
+                          child: profileAvatarRow(title: 'Джоли, 28', showNotifications: false),
+                        ),
+
+                      ],
+                    ),
 
                   // //Магазин
                   // const Padding(
@@ -150,7 +173,7 @@ class _StorePageState extends State<StorePage> {
                                       const ViewCategoryAvatarPage()));
                             },
                             icon: const Icon(
-                              Network.arrow_right_long,
+                              NetworkIcons.arrow_long_right,
                               color: Colors.white,
                               size: 25,
                             ))
@@ -203,7 +226,7 @@ class _StorePageState extends State<StorePage> {
                                       const ViewCategoryHatsPage()));
                             },
                             icon: const Icon(
-                              Network.arrow_right_long,
+                              NetworkIcons.arrow_long_right,
                               color: Colors.white,
                               size: 25,
                             ))

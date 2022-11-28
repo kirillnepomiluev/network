@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/auth/login_second_page.dart';
-import 'package:network_app/auth_profile_info/choose_date.dart';
 import 'package:network_app/meetings/creqte_request/choose_meeting_category.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
@@ -32,7 +30,7 @@ class _PersonalRequestsPageState extends State<PersonalRequestsPage> {
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                      BackButtonCustom(),
+                      const BackButtonCustom(),
                       Center(child: Text('Список личных запросов',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -52,7 +50,6 @@ class _PersonalRequestsPageState extends State<PersonalRequestsPage> {
                         style: buttonStyleCustom(
                             color: Colors.white, padH: 0, padV: 22, radius: 20),
                         onPressed: () {
-                          print('to ChooseMeetingCategory');
                           Navigator.of(context).push(MaterialPageRoute<void>(
                               builder: (context) => const ChooseMeetingCategory()));
                         },
@@ -66,8 +63,8 @@ class _PersonalRequestsPageState extends State<PersonalRequestsPage> {
                   ),
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 40),
+                const Padding(
+                  padding: EdgeInsets.only(top: 40),
                   child: Text('Созданные раннее',
                     style: TextStyle(
                       fontSize: 20,
@@ -101,7 +98,7 @@ class RequestContainerInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(top: 20),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -147,8 +144,8 @@ class RequestContainerInfo extends StatelessWidget {
 
             ),
 
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
+            const Padding(
+              padding: EdgeInsets.only(top: 20),
               child: Text('Здесь будет небольшое описание встречи, которое будет видно на 2 строчки...',
                 style: TextStyle(
                   fontSize: 14,

@@ -3,7 +3,6 @@ import 'package:network_app/auth_profile_info/input_status.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/components/network_icons.dart';
-import 'package:network_app/meetings/meetings_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -105,7 +104,7 @@ class _ChooseStatusPageState extends State<ChooseStatusPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      BackButtonCustom(),
+                      const BackButtonCustom(),
                       Container(
                           decoration: BoxDecoration(
                             color: ConstColor.white10,
@@ -131,7 +130,7 @@ class _ChooseStatusPageState extends State<ChooseStatusPage> {
                     Stack(
                       alignment: Alignment.center,
                       children: [
-                        BackButtonCustom(),
+                        const BackButtonCustom(),
                         Center(child: Text('Выберете статус',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -164,7 +163,7 @@ class _ChooseStatusPageState extends State<ChooseStatusPage> {
                             Navigator.of(context).push(MaterialPageRoute<void>(
                                 builder: (context) => const InputStatusPage()));
                           },
-                          child: Text(
+                          child: const Text(
                             'Ввести свой статус',
                             style: TextStyle(
                                 fontSize: 12, //12
@@ -197,7 +196,7 @@ class _ChooseStatusPageState extends State<ChooseStatusPage> {
                             ),
                             child:
                             Icon(
-                              Network.search,
+                              NetworkIcons.search,
                               size: getResSize(14),
                               color: Colors.white,
                             ),
@@ -222,7 +221,7 @@ class _ChooseStatusPageState extends State<ChooseStatusPage> {
                     ],
                   ),
 
-                  SizedBox(height: 100,)
+                  const SizedBox(height: 100,)
 
                   // Padding(
                   //   padding: const EdgeInsets.only(top: 20),

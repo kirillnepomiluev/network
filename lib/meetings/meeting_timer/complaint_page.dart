@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/meetings/meeting_timer/timer_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -12,12 +13,18 @@ class ComplaintPage extends StatefulWidget {
   State<ComplaintPage> createState() => _ComplaintPageState();
 }
 
+
+
+
+
 class _ComplaintPageState extends State<ComplaintPage> {
+
 
   final _controller = TextEditingController();
 
   bool showSendButton = false;
   bool showSuccess = false;
+
 
   void sendFunction(){
 
@@ -25,9 +32,24 @@ class _ComplaintPageState extends State<ComplaintPage> {
 
     _controller.clear();
 
-    setState(() {
-      showSuccess = true;
-    });
+    Navigator.of(context).pop();
+    Navigator.of(context).pop();
+    openBottomSheetComplain(
+    context: context,
+      icon: NetworkIcons.check_circle_outlined,
+      text1: 'Ваша ',
+      text2: 'жалоба отправлена',
+      text3: 'В ближайшее время мы свяжемся с вами,\nчтобы сообщать о предпринятых мерах',
+      textButton: 'Закрыть',
+      func: (){
+        Navigator.of(context).pop();
+      }
+    );
+
+    // setState(() {
+    //   showSuccess = true;
+    // });
+
   }
 
   @override
@@ -48,8 +70,8 @@ class _ComplaintPageState extends State<ComplaintPage> {
           Column(
             children: [
 
-              Padding(
-                padding: const EdgeInsets.only(left: 16, top: 10, bottom: 20),
+              const Padding(
+                padding: EdgeInsets.only(left: 16, top: 10, bottom: 20),
                 child:  BackButtonCustom(),
               ),
 
@@ -75,7 +97,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                             padding: EdgeInsets.only(
                                 top: 0.087*mediaHeight   //63
                             ),
-                            child: const Icon(Network.check_circle_outlined, size: 100,),
+                            child: const Icon(NetworkIcons.check_circle_outlined, size: 100,),
                           ),
 
                           //Текстовое поле
@@ -161,8 +183,8 @@ class _ComplaintPageState extends State<ComplaintPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
 
-                Padding(
-                  padding: const EdgeInsets.only(left: 16, top: 10, bottom: 20),
+                const Padding(
+                  padding: EdgeInsets.only(left: 16, top: 10, bottom: 20),
                   child:  BackButtonCustom(),
                 ),
 
@@ -180,7 +202,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
 
-                      Icon(Network.smile_dead, size: 80, color: ConstColor.salad100,),
+                      const Icon(NetworkIcons.smile_dead, size: 80, color: ConstColor.salad100,),
 
                       // Image.asset('assets/icons/dissapointed_smile.png',
                       //   width: 0.176*mediaWidth,  //66
@@ -228,7 +250,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
+                              children: const [
 
                                 Text('Выберете тип жалобы', style: TextStyle(
                                   // fontSize: 17.5.sp,   //16
@@ -236,7 +258,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                                   fontWeight: FontWeight.w400
                                 ),),
 
-                                const Icon(Icons.keyboard_arrow_down, size: 22, color: ConstColor.salad100,)
+                                Icon(Icons.keyboard_arrow_down, size: 22, color: ConstColor.salad100,)
 
                               ],
                             ),
@@ -340,12 +362,12 @@ class _ComplaintPageState extends State<ComplaintPage> {
         hintText: 'Опишите проблему...',
         hintStyle: TextStyle(color: ConstColor.textGray, fontSize: getResSize(14)),
         counterText: '',
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(width: 0, color: Colors.transparent),
             borderRadius: BorderRadius.only(topLeft: Radius.circular(15), bottomLeft: Radius.circular(15))
         ),
         enabledBorder:
-        OutlineInputBorder(
+        const OutlineInputBorder(
             borderSide: BorderSide(width: 0, color: Colors.transparent),
             borderRadius: BorderRadius.only(topLeft: Radius.circular(15), bottomLeft: Radius.circular(15))
           // borderRadius: BorderRadius.circular(15)

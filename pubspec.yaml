@@ -79,9 +79,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Network
+    - family: NetworkIcons
       fonts:
-        - asset: assets/icons/Network.ttf
+        - asset: assets/fonts/icons/NetworkIcons.ttf
     - family: Inter
       fonts:
         - asset: assets/fonts/inter/Inter-Regular.otf

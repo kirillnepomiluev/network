@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/store/view_prod_avatar_page.dart';
-import 'package:network_app/store/view_prod_hat.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 // import 'dart:ui' as ui;
 
@@ -78,7 +77,7 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                      BackButtonCustom(),
+                      const BackButtonCustom(),
                       Center(child: Text('Головные уборы',
                         textAlign: TextAlign.center,
                         style: TextStyle(

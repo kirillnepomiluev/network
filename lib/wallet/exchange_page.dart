@@ -24,7 +24,7 @@ class _ExchangePageState extends State<ExchangePage> {
         child: SingleChildScrollView(
           child: showSuccess
               ? Container(
-                  padding: EdgeInsets.only(left: 16, right: 16),
+                  padding: const EdgeInsets.only(left: 16, right: 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -52,7 +52,7 @@ class _ExchangePageState extends State<ExchangePage> {
                             top: 30.sp     //47
                         ),
                         child:
-                        BuildRichTextTwo(
+                        const BuildRichTextTwo(
                           text1: 'Обмен\n',
                           text2: 'успешно выполнен',
                           // color1: ConstColor.salad100,
@@ -104,7 +104,7 @@ class _ExchangePageState extends State<ExchangePage> {
                       ),
 
                       Padding(
-                        padding: EdgeInsets.only(top: 13),    //29
+                        padding: const EdgeInsets.only(top: 13),    //29
                         child: Text(
                           'на вашем счете',
                           style: TextStyle(
@@ -170,10 +170,10 @@ class _ExchangePageState extends State<ExchangePage> {
                       padding: EdgeInsets.only(
                           left: getResSize(16), //16
                           right: getResSize(16)),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         // color: ConstColor.white10,
                         color: ConstColor.blackBack,
-                        borderRadius: const BorderRadius.vertical(
+                        borderRadius: BorderRadius.vertical(
                             bottom: Radius.circular(30)),
                       ),
                       child: Column(
@@ -181,7 +181,7 @@ class _ExchangePageState extends State<ExchangePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(top: 10),
+                            padding: const EdgeInsets.only(top: 10),
                             child: Stack(
                               alignment: Alignment.center,
                               children: [
@@ -223,7 +223,7 @@ class _ExchangePageState extends State<ExchangePage> {
                                           // color: ConstColor.salad100,
                                           fontWeight: FontWeight.w500,
                                         ),
-                                        children: <TextSpan>[
+                                        children: const <TextSpan>[
                                       TextSpan(
                                         text: '300 баллов ',
                                         style: TextStyle(
@@ -352,7 +352,7 @@ class _ExchangePageState extends State<ExchangePage> {
                     ),
                     //GO
                     Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                           top: 45,      //45
                           bottom: 50    //50
                       ),
@@ -402,12 +402,12 @@ List<CurrencyData> currencyList = [
   CurrencyData(
     'BTC',
     'Bitcoin',
-    Network.bitcoin,
+    NetworkIcons.bitcoin,
     getResSize(20),
   ), //20
-  CurrencyData('SOL', 'Solana', Network.sol, getResSize(14)), //14
-  CurrencyData('DASH', 'Dash', Network.dash, getResSize(15)), //15
-  CurrencyData('ETH', 'Ethereum', Network.eth, getResSize(20)), //20
+  CurrencyData('SOL', 'Solana', NetworkIcons.sol, getResSize(14)), //14
+  CurrencyData('DASH', 'Dash', NetworkIcons.dash, getResSize(15)), //15
+  CurrencyData('ETH', 'Ethereum', NetworkIcons.eth, getResSize(20)), //20
 ];
 
 Widget currencyCont({required CurrencyData data}) => Padding(

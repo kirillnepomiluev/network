@@ -1,9 +1,7 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/auth_profile_info/input_name.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/home_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AuthSuccesPage extends StatefulWidget {
@@ -24,14 +22,14 @@ class _AuthSuccesPageState extends State<AuthSuccesPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
+                const Padding(
+                  padding: EdgeInsets.only(top: 10),
                   child: BackButtonCustom(),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 31),
                   child: Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: ConstColor.white05

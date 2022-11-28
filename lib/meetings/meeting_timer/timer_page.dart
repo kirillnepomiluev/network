@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/meetings/complaint_page.dart';
-import 'package:network_app/meetings/rate_page.dart';
+import 'package:network_app/meetings/meeting_timer/all_questions.dart';
+import 'package:network_app/meetings/meeting_timer/complaint_page.dart';
+import 'package:network_app/meetings/meeting_timer/rate_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 
 class TimerPage extends StatefulWidget {
-  const TimerPage({Key? key}) : super(key: key);
+  final bool isTimer;
+  const TimerPage({Key? key, this.isTimer = false}) : super(key: key);
 
   @override
   State<TimerPage> createState() => _TimerPageState();
@@ -36,7 +38,23 @@ class _TimerPageState extends State<TimerPage> {
         if (seconds < 0) {
           timer?.cancel();
 
-          openBottomSheetSuccess();
+
+          openBottomSheetComplain(
+              context: context,
+              icon: NetworkIcons.smile_dead,
+              text1: 'Вы получили ',
+              text2: 'жалобу',
+              text3: 'Ваш рейтинг понижен на ____.\nЕсли на вас поступят еще 2 жалобы, мы\nвынуждены будем вас заблокировать. ',
+              textButton: 'Посмотреть',
+              func: (){
+                Navigator.of(context).pop();
+
+                openBottomSheetSuccess();
+
+                // Navigator.of(context).push(MaterialPageRoute<void>(
+                //     builder: (context) => const RatePage()));
+              }
+          );
 
 
         } else {
@@ -96,9 +114,6 @@ class _TimerPageState extends State<TimerPage> {
 
 
     final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWidth = MediaQuery.of(context).size.width;
-
-//281
 
     return WillPopScope(
       onWillPop: () async {
@@ -141,9 +156,9 @@ class _TimerPageState extends State<TimerPage> {
                         top: 0.0416*mediaHeight   //30
                     ),
                     child: SimpleCircularProgressBar(
-                      backStrokeWidth: 0.07466*mediaWidth,        //28
-                      progressStrokeWidth: 0.07466*mediaWidth,
-                      size: 0.7493*mediaWidth,    //281
+                      backStrokeWidth: 28,        //28
+                      progressStrokeWidth: 28,
+                      size: 281,    //281
                       backColor: ConstColor.white10,
                       progressColors: const [ConstColor.salad100],
                       animationDuration: maxSeconds,
@@ -166,10 +181,10 @@ class _TimerPageState extends State<TimerPage> {
                 ),
 
                 Padding(
-                  padding: EdgeInsets.only(
-                      top: 0.0832*mediaHeight   //60
+                  padding: const EdgeInsets.only(
+                      top: 50   //60
                   ),
-                  child: Text(isPaused? 'начните встречу' : 'до конца встречи',
+                  child: Text(isPaused? 'Начните встречу' : 'до конца встречи',
                     style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 21.sp    //23
@@ -178,32 +193,34 @@ class _TimerPageState extends State<TimerPage> {
                   ),
                 ),
 
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(
-                      top: 0.0485*mediaHeight,    //35
-                      bottom: 0.0832*mediaHeight   //60
+                      top: 24,    //35
+                      bottom: 91
                   ),
                   child: Text('Минимальное время встречи\nдля начисления баллов 20 минут',
                     style: TextStyle(
                         fontWeight: FontWeight.w400,
-                        fontSize: 17.5.sp  //16
+                        fontSize: 16  //16
                     ),
                     textAlign: TextAlign.center,
                   ),
                 ),
 
+                widget.isTimer?
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: InkWell(
                     onTap: (){
 
-                      openBottomSheetSuccess();
+                      // openBottomSheetSuccess();
 
                       if(isPaused){
                         startTimer();
                       }else{
+
                         // openBottomSheetComplain(
-                        //   icon: Network.check_circle_outlined,
+                        //   icon: NetworkIcons.check_circle_outlined,
                         //   text1: 'Ваша ',
                         //   text2: 'жалоба отправлена',
                         //   text3: 'В ближайшее время мы свяжемся с вами,\nчтобы сообщать о предпринятых мерах',
@@ -225,7 +242,7 @@ class _TimerPageState extends State<TimerPage> {
                         //     }
                         // );
 
-                        // showPauseDialog();
+                        showPauseDialog();
                       }
 
                     },
@@ -241,7 +258,7 @@ class _TimerPageState extends State<TimerPage> {
                       child:
                       isPaused?
                       Text('GO', style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 19.5.sp,   //20
                         fontWeight: FontWeight.w600
                       ),)
@@ -255,6 +272,45 @@ class _TimerPageState extends State<TimerPage> {
                     ),
                   ),
                 )
+                :
+                Column(
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                          style: buttonStyleCustom(
+                              color: Colors.white, padH: 0, padV: 22, radius: 20),
+                          onPressed: () {
+
+                            Navigator.of(context).push(MaterialPageRoute<void>(
+                                builder: (context) => const AllQuestionsPage()));
+                          },
+                          child: Text(
+                            'Показать вопросы',
+                            style: TextStyle(
+                                fontSize: 18.5.sp, //18
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black),
+                          )),
+                    ),
+
+                    const Padding(
+                      padding: EdgeInsets.only(
+                          top: 26   //60
+                      ),
+                      child: Text('Чтобы получить больше токенов,\nответеть на вопросы',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16 //23
+                        ),
+
+                      ),
+                    ),
+                  ],
+                ),
+
+
 
               ],
             ),
@@ -299,13 +355,14 @@ class _TimerPageState extends State<TimerPage> {
           children: [
 
             BlurryContainer(
-              blur: 40,
+              blur: 20,
               width: double.infinity,
               padding: EdgeInsets.only(
                   top: padMain*1.57,  //44
                   bottom: padMain,
               ),
                 color: ConstColor.white10,
+                // color: Colors.transparent,
                 borderRadius: BorderRadius.circular(15),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -409,7 +466,7 @@ class _TimerPageState extends State<TimerPage> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 21),
                       child: Icon(
-                        Network.warning,
+                        NetworkIcons.warning,
                         size: 21.sp, //23
                         color: ConstColor.salad100,
                       ),
@@ -488,11 +545,6 @@ class _TimerPageState extends State<TimerPage> {
         context: context,
         builder: (BuildContext context) {
 
-          final mediaWidth = MediaQuery.of(context).size.width;
-
-          final imageWidth = 0.624*mediaWidth;
-
-
           return WillPopScope(
           onWillPop: () async {
             return true;
@@ -501,15 +553,9 @@ class _TimerPageState extends State<TimerPage> {
             onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
             child: BlurryContainer(
               blur: 30,
-              // decoration: BoxDecoration(
                   color: Colors.transparent,
                   borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(30))
-            // )
-                ,
-              // height: MediaQuery.of(context).size.height * 0.8,
-              // padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 15),
-              // padding: const EdgeInsets.symmetric(vertical: 60),
+                  const BorderRadius.vertical(top: Radius.circular(30)),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -517,8 +563,8 @@ class _TimerPageState extends State<TimerPage> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 63),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 63),
                       child: BuildRichTextTwo(
                         // fontSize: 20,
                         text1: 'Вы получили\n',
@@ -555,11 +601,13 @@ class _TimerPageState extends State<TimerPage> {
                               ),
                             ),
                             onPressed: () {
+                              Navigator.of(context).pop();
+
                               Navigator.of(context).push(MaterialPageRoute<void>(
                                   builder: (context) => const RatePage()));
                             },
                             child: Padding(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   vertical: 26
                               ),
                               child: Text(
@@ -595,7 +643,7 @@ class _TimerPageState extends State<TimerPage> {
                               Navigator.of(context).pop();
                             },
                             child: Padding(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   vertical: 26
                               ),
                               child: Text(
@@ -623,119 +671,126 @@ class _TimerPageState extends State<TimerPage> {
   }
 
 
-  void openBottomSheetComplain({
+
+
+}
+
+
+
+
+
+
+void openBottomSheetComplain({
+  required BuildContext context,
   required IconData icon,
-    required String text1,
-    required String text2,
-    required String text3,
-    required String textButton,
-    final Function? func,
+  required String text1,
+  required String text2,
+  required String text3,
+  required String textButton,
+  final Function? func,
 }) {
-    showModalBottomSheet<void>(
+  showModalBottomSheet<void>(
       backgroundColor: ConstColor.black1A.withOpacity(0.5),
-        enableDrag: true,
-        isDismissible: true,
-        isScrollControlled: true,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
-        context: context,
-        builder: (BuildContext context) {
+      enableDrag: true,
+      isDismissible: true,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+      context: context,
+      builder: (BuildContext context) {
 
-          // final mediaWidth = MediaQuery.of(context).size.width;
+        // final mediaWidth = MediaQuery.of(context).size.width;
 
-          return GestureDetector(
-            onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-            child: BlurryContainer(
-              blur: 30,
-              // decoration: BoxDecoration(
-              //     color: ConstColor.white10,
-                  color: Colors.transparent,
-                  borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(30))
+        return GestureDetector(
+          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+          child: BlurryContainer(
+            blur: 30,
+            // decoration: BoxDecoration(
+            //     color: ConstColor.white10,
+            color: Colors.transparent,
+            borderRadius:
+            const BorderRadius.vertical(top: Radius.circular(30))
             // )
             ,
-              // padding: const EdgeInsets.symmetric(vertical: 60),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
+            // padding: const EdgeInsets.symmetric(vertical: 60),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
 
-                    Padding(
-                      padding: EdgeInsets.only(top: 69),
-                      child: Icon(
-                        icon,
-                        // Network.check_circle_outlined,
-                        size: 100,
-                        color: ConstColor.salad100,
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 69),
+                    child: Icon(
+                      icon,
+                      // Network.check_circle_outlined,
+                      size: 100,
+                      color: ConstColor.salad100,
                     ),
+                  ),
 
-                    Padding(padding: EdgeInsets.only(top: 69),
+                  Padding(padding: const EdgeInsets.only(top: 69),
                       child:
-                        BuildRichTextTwo(
-                          // fontSize: 20,
-                          text1: text1,
-                          text2: text2,
-                          // fontWeight1: FontWeight.w600,
-                          // fontWeight2: FontWeight.w600,
-                        )
-                    ),
+                      BuildRichTextTwo(
+                        // fontSize: 20,
+                        text1: text1,
+                        text2: text2,
+                        // fontWeight1: FontWeight.w600,
+                        // fontWeight2: FontWeight.w600,
+                      )
+                  ),
 
-                    Padding(
-                      padding: EdgeInsets.only(top: 35),
-                      child: Text(
-                        // 'В ближайшее время мы свяжемся с вами,\nчтобы сообщать о предпринятых мерах',
-                        text3,
-                         textAlign: TextAlign.center,
-                        style: const TextStyle(
+                  Padding(
+                    padding: const EdgeInsets.only(top: 35),
+                    child: Text(
+                      // 'В ближайшее время мы свяжемся с вами,\nчтобы сообщать о предпринятых мерах',
+                      text3,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400
-                        ),
                       ),
                     ),
+                  ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 150, bottom: 35),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 150, bottom: 35),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor:
+                            MaterialStateProperty.all(Colors.white),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
                               ),
                             ),
-                            onPressed: (){
-                              if(func!=null){
-                                func();
-                              }
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 22),
-                              child: Text(
-                                textButton,
-                                style: TextStyle(
-                                    color: ConstColor.textBlack,
-                                    fontSize: 17.5.sp,   //16
-                                    fontWeight: FontWeight.w500
-                                ),
+                          ),
+                          onPressed: (){
+                            if(func!=null){
+                              func();
+                            }
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 22),
+                            child: Text(
+                              textButton,
+                              style: TextStyle(
+                                  color: ConstColor.textBlack,
+                                  fontSize: 17.5.sp,   //16
+                                  fontWeight: FontWeight.w500
                               ),
-                            )),
-                      ),
+                            ),
+                          )),
                     ),
+                  ),
 
-                  ],
-                ),
+                ],
               ),
             ),
-          );
-        });
-  }
-
-
+          ),
+        );
+      });
 }

@@ -52,8 +52,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
   Widget build(BuildContext context) {
     final mediaTop = MediaQuery.of(context).viewPadding.top;
 
-    final mediaWidth = MediaQuery.of(context).size.width;
-    final double contSize = 0.11466 * mediaWidth; //43
 
     return BlurryContainer(
       color: Colors.black.withOpacity(0.6),
@@ -78,7 +76,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // BackButtonCustom(),
-                      BackButtonCustom(),
+                      const BackButtonCustom(),
 
                       Text(
                         'Уведомления',
@@ -90,7 +88,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                       ),
 
                       IconContainer(
-                          icon: Network.check_double,
+                          icon: NetworkIcons.check_double,
                           iconSize: 18.5.sp,
                           func: (){}
                       )
@@ -104,7 +102,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     title2: 'пригласила вас на ',
                     title3: 'встречу',
                     strTime: '5 мин назад',
-                    icon: Network.electric
+                    icon: NetworkIcons.electric
                 ),
 
                 notificationCont(
@@ -113,7 +111,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     title2: 'добавил вас в ',
                     title3: 'избранное',
                     strTime: '15 мин назад',
-                    icon: Network.star
+                    icon: NetworkIcons.star
                 ),
 
                 notificationCont(
@@ -122,7 +120,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     title2: 'хочет добавить вас в ',
                     title3: 'друзья',
                     strTime: '2 ч назад',
-                    icon: Network.people
+                    icon: NetworkIcons.people
                 ),
 
                 notificationCont(
@@ -131,7 +129,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     title2: 'На вас подали ',
                     title3: 'жалобу',
                     strTime: '2 ч назад',
-                    icon: Network.info
+                    icon: NetworkIcons.info
                 ),
 
                 notificationCont(
@@ -140,7 +138,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     title2: 'Появился ',
                     title3: 'новый запрос',
                     strTime: '2 ч назад',
-                    icon: Network.electric
+                    icon: NetworkIcons.electric
                 ),
 
 

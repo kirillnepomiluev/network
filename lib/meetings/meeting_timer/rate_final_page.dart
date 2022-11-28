@@ -4,9 +4,7 @@ import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:syncfusion_flutter_sliders/sliders.dart';
 // ignore: depend_on_referenced_packages
-import 'package:syncfusion_flutter_core/theme.dart';
 
 class RateFinalPage extends StatefulWidget {
   const RateFinalPage({Key? key}) : super(key: key);
@@ -20,7 +18,6 @@ class _RateFinalPageState extends State<RateFinalPage> {
   Widget build(BuildContext context) {
 
     final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWidth = MediaQuery.of(context).size.width;
 
     return WillPopScope(
       onWillPop: () async {
@@ -84,9 +81,11 @@ class _RateFinalPageState extends State<RateFinalPage> {
                     ),
                     child:
 
-                    BuildRichTextTwo(
+                    const BuildRichTextTwo(
                       text1: 'Дайте оценку\n',
                       text2: 'каждой категории',
+                      fontWeight1: FontWeight.w500,
+                      fontWeight2: FontWeight.w500,
                       color1: ConstColor.salad100,
                       color2: ConstColor.textWhite,
                       textAlign: TextAlign.center,
@@ -108,7 +107,7 @@ class _RateFinalPageState extends State<RateFinalPage> {
                         top: 0.0818*mediaHeight   //59
                     ),
                     child:
-                      sliderContainer(title: 'Понравилось ли вам общение?')
+                      sliderContainer(title: 'Понравилось ли вам общение?', )
                   ),
 
 
@@ -168,7 +167,7 @@ class _RateFinalPageState extends State<RateFinalPage> {
                                         builder: (context) => const HomePage(initIndex: 0)));
                           },
                           child: Padding(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 22   //17
                             ),
                             child: Text(
@@ -224,7 +223,7 @@ Widget sliderContainer({required String title}) => Container(
                   sLiderValue: 0,
                   min: 0,
                   max: 5,
-                  showLabel: true,
+                  showLabelsRow: true,
                   stepSize: 50,
                 ),
 
@@ -405,7 +404,7 @@ Widget interruptDialog(BuildContext context) {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
 
-            BuildRichTextTwo(
+            const BuildRichTextTwo(
               text1: 'Вы уверены, что хотите\n',
               text2: 'прервать встречу',
               fontSize: 16,
@@ -763,14 +762,14 @@ class SliderCustom extends StatefulWidget {
   final double min;
   final double max;
   final int? stepSize;
-  final bool showLabel;
+  final bool showLabelsRow;
   const SliderCustom({
     Key? key,
     required this.sLiderValue,
     required this.min,
     required this.max,
     this.stepSize,
-    required this.showLabel,
+    required this.showLabelsRow,
   }) : super(key: key);
 
   @override
@@ -785,25 +784,19 @@ class _SliderCustomState extends State<SliderCustom> {
   @override
   void initState() {
     sliderValue = widget.sLiderValue;
-
-    showLabel = widget.showLabel;
-
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-
-    if(widget.showLabel){
-      showLabel = sliderValue==0 || sliderValue==widget.max? false: true;
+    if(widget.showLabelsRow){
+      showLabel = sliderValue==widget.min || sliderValue==widget.max? false: true;
     }
-
     return
-
       Column(
         children: [
 
+          if(widget.showLabelsRow)
           Padding(
             padding: EdgeInsets.only(
                 left: sliderValue==0? 8 : 16,
@@ -837,7 +830,7 @@ class _SliderCustomState extends State<SliderCustom> {
 
           SliderTheme(
             data: SliderTheme.of(context).copyWith(
-              valueIndicatorTextStyle: TextStyle(
+              valueIndicatorTextStyle: const TextStyle(
                   color: ConstColor.salad100,
                 fontWeight: FontWeight.w700,
                 fontSize: 16
@@ -849,7 +842,7 @@ class _SliderCustomState extends State<SliderCustom> {
               thumbColor: ConstColor.salad100,
               overlayColor: Colors.black.withOpacity(0.1),
               // overlayColor: Color(0x29EB1555),  // Custom Thumb overlay Color
-              thumbShape:   RoundSliderThumbShape(enabledThumbRadius: 14.0),
+              thumbShape:   const RoundSliderThumbShape(enabledThumbRadius: 14.0),
               // overlayShape: RoundSliderOverlayShape(overlayRadius: 22.0),
                 overlayShape: SliderComponentShape.noThumb
             ),

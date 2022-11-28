@@ -23,13 +23,13 @@ class _RecoveryEmailPageState extends State<RecoveryEmailPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
+                const Padding(
+                  padding: EdgeInsets.only(top: 10),
                   child: BackButtonCustom(),
                 ),
                 const EnterInfoContainer(
                   padTop: 32,
-                  text1: 'Введите адрес\n',
+                  text1: 'Введите адрес ',
                   text2: 'электронной почты',
                   description: 'Чтобы восстановить доступ\nк своему аккаунту',
                 ),

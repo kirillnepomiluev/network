@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/auth/login_second_page.dart';
 import 'package:network_app/auth_profile_info/choose_level.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
@@ -29,8 +28,8 @@ class _ChooseSexPageState extends State<ChooseSexPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
+                const Padding(
+                  padding: EdgeInsets.only(top: 10),
                   child: BackButtonCustom(),
                 ),
 
@@ -50,10 +49,10 @@ class _ChooseSexPageState extends State<ChooseSexPage> {
                       width: double.infinity,
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(vertical: 23),
+                            padding: const EdgeInsets.symmetric(vertical: 23),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
-                                side: BorderSide(color: Colors.white, width: 1,)
+                                side: const BorderSide(color: Colors.white, width: 1,)
                             ),
                             backgroundColor: strSex == 'female'? Colors.white : Colors.transparent,
                           ),
@@ -79,10 +78,10 @@ class _ChooseSexPageState extends State<ChooseSexPage> {
                       width: double.infinity,
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(vertical: 23),
+                            padding: const EdgeInsets.symmetric(vertical: 23),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
-                                side: BorderSide(color: Colors.white, width: 1,)
+                                side: const BorderSide(color: Colors.white, width: 1,)
                             ),
                             backgroundColor: strSex == 'male'? Colors.white : Colors.transparent,
                           ),
@@ -125,8 +124,8 @@ class _ChooseSexPageState extends State<ChooseSexPage> {
                         },
                         activeColor: ConstColor.salad100,
                         title: Transform.translate(
-                          offset: Offset(-10, 0),
-                          child: Text('Скрыть пол', style: TextStyle(
+                          offset: const Offset(-10, 0),
+                          child: const Text('Скрыть пол', style: TextStyle(
                               color: Colors.white
                           ),),
                         ),

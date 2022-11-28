@@ -1,12 +1,9 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:network_app/auth/auth_succes_page.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:network_app/auth/login_second_page.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/home_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class PhoneAuthPage extends StatefulWidget {
@@ -87,7 +84,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
           // ),
 
           Padding(
-            padding: EdgeInsets.only(top: 32),
+            padding: const EdgeInsets.only(top: 32),
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -98,7 +95,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  BuildRichTextTwo(text1: 'Введите ', text2: 'ваш номер', fontSize: 24),
+                  const BuildRichTextTwo(text1: 'Введите ', text2: 'ваш номер', fontSize: 24),
 
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
@@ -319,7 +316,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
-          BuildRichTextTwo(text1: 'Введите ', text2: 'код', fontSize: 24,),
+          const BuildRichTextTwo(text1: 'Введите ', text2: 'код', fontSize: 24,),
 
           Padding(
             padding: const EdgeInsets.only(top: 30),
@@ -396,14 +393,11 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
             var formdata = formstate.currentState;
 
             if (formdata!.validate()) {
-              print('valid - $listCheck');
               FocusManager.instance.primaryFocus?.unfocus();
 
               setState(() {
                 _enterButtonValid = true;
               });
-
-              print('_enterButtonValid - $_enterButtonValid');
 
               setState(() {
               });

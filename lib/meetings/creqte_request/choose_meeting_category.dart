@@ -36,8 +36,6 @@ class _ChooseMeetingCategoryState extends State<ChooseMeetingCategory> {
   @override
   Widget build(BuildContext context) {
     final mediaTop = MediaQuery.of(context).viewPadding.top;
-    final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       bottomNavigationBar:
@@ -50,7 +48,6 @@ class _ChooseMeetingCategoryState extends State<ChooseMeetingCategory> {
                   color: Colors.white,
                   padH: 0, padV: 22, radius: 20),
               onPressed: () {
-                print('to InputDescribeMeeting');
                 Navigator.of(context).push(MaterialPageRoute<void>(
                     builder: (context) => const InputDescribeMeeting()));
               },
@@ -85,7 +82,7 @@ class _ChooseMeetingCategoryState extends State<ChooseMeetingCategory> {
                     Stack(
                       alignment: Alignment.center,
                       children: [
-                        BackButtonCustom(),
+                        const BackButtonCustom(),
                         Center(child: Text('Создание личного запроса',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -97,20 +94,28 @@ class _ChooseMeetingCategoryState extends State<ChooseMeetingCategory> {
                     ),
                   ),
 
+                  const EnterInfoContainer(
+                    text1: 'Выберете ',
+                    text2: 'категорию встречи',
+                    padTop: 40,
+                    showDescription: false,
+                    fontSize: 24,
+                  ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: ConstColor.white10,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 26, horizontal: 18),
-                        child:
-                        BuildRichTextTwo(text1: 'Выберете ', text2: 'категорию\nвстречи', fontSize: 20.sp, fontWeight1: FontWeight.w500, fontWeight2: FontWeight.w500,),
-                      ),
-                    ),
+
+                  // Padding(
+                    //   padding: const EdgeInsets.only(top: 40),
+                    //   child: Container(
+                    //     width: double.infinity,
+                    //     decoration: BoxDecoration(
+                    //       color: ConstColor.white10,
+                    //       borderRadius: BorderRadius.circular(20),
+                    //     ),
+                    //     padding: const EdgeInsets.symmetric(vertical: 26, horizontal: 18),
+                    //     child:
+                    //     BuildRichTextTwo(text1: 'Выберете ', text2: 'категорию\nвстречи', fontSize: 20.sp, fontWeight1: FontWeight.w500, fontWeight2: FontWeight.w500,),
+                    //   ),
+                    // ),
 
                   //Поиск
                   Padding(
@@ -134,7 +139,7 @@ class _ChooseMeetingCategoryState extends State<ChooseMeetingCategory> {
                             ),
                             child:
                             Icon(
-                              Network.search,
+                              NetworkIcons.search,
                               size: getResSize(14),
                               color: Colors.white,
                             ),
@@ -159,7 +164,7 @@ class _ChooseMeetingCategoryState extends State<ChooseMeetingCategory> {
                     ],
                   ),
 
-                  SizedBox(height: 100,)
+                  const SizedBox(height: 100,)
 
 
                 ],

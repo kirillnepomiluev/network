@@ -4,7 +4,6 @@ import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/home_page.dart';
-import 'package:network_app/profile/profile_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ViewProdAvatarPage extends StatefulWidget {
@@ -92,10 +91,10 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
             children: [
               viewProdImage(),
 
-              Padding(
-                padding: const EdgeInsets.symmetric(
+              const Padding(
+                padding: EdgeInsets.symmetric(
                     horizontal: 16, vertical: 31),
-                child: const StatColumn(ifProfileSheet: false),
+                child: StatColumn(ifProfileSheet: false),
               ),
 
             ],
@@ -121,9 +120,9 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
 
-          BackButtonCustom(),
+          const BackButtonCustom(),
 
-          Container(
+          SizedBox(
             height: 270,
             child: Image.asset(
         widget.imageURL,
@@ -139,15 +138,15 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
 
                 Text(
             widget.title,
-            style: TextStyle(
+            style: const TextStyle(
                       color: ConstColor.salad100,
                       fontSize: 26, //14
                       fontWeight: FontWeight.w600
                   ),
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 7),
+                const Padding(
+                  padding: EdgeInsets.only(top: 7),
                   child: Text(
                     '#0863246',
                     style: TextStyle(
@@ -192,11 +191,6 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
 
 void openSuccessSheet({required BuildContext context,}) {
 
-  final mediaTop = MediaQuery.of(context).viewPadding.top;
-  final mediaHeight = MediaQuery.of(context).size.height;
-  final mediaWidth = MediaQuery.of(context).size.width;
-  final _height = mediaHeight*0.9;
-
   showModalBottomSheet<void>(
     barrierColor: Colors.transparent,
       backgroundColor: Colors.transparent,
@@ -210,17 +204,17 @@ void openSuccessSheet({required BuildContext context,}) {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 70),
+              const Padding(
+                padding: EdgeInsets.only(top: 70),
                 child: Icon(
-                  Network.check_circle_outlined,
+                  NetworkIcons.check_circle_outlined,
                   size: 100,
                   color: ConstColor.salad100,
                 ),
               ),
 
-              Padding(
-                padding: const EdgeInsets.only(top: 60),
+              const Padding(
+                padding: EdgeInsets.only(top: 60),
                 child: BuildRichTextTwo(
                     text1: 'Оплата прошла ',
                     text2: 'успешно',
@@ -232,7 +226,7 @@ void openSuccessSheet({required BuildContext context,}) {
 
 
               const Padding(
-                padding: const EdgeInsets.only(top: 60),
+                padding: EdgeInsets.only(top: 60),
                 child: Text('Новый головной убор вы можете\nнайти в своем шкафу',
                 textAlign: TextAlign.center,
                   style: TextStyle(

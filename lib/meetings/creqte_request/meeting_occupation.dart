@@ -32,7 +32,7 @@ class _ChooseMeetingOccupationState extends State<ChooseMeetingOccupation> {
     ),
   );
 
-  int _missedCount = 3;
+  final int _missedCount = 3;
 
   List<String> choosedOptions = [];
 
@@ -41,8 +41,6 @@ class _ChooseMeetingOccupationState extends State<ChooseMeetingOccupation> {
 
 
     final mediaTop = MediaQuery.of(context).viewPadding.top;
-    final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       bottomNavigationBar:
@@ -89,7 +87,7 @@ class _ChooseMeetingOccupationState extends State<ChooseMeetingOccupation> {
                     Stack(
                       alignment: Alignment.center,
                       children: [
-                        BackButtonCustom(),
+                        const BackButtonCustom(),
                         Center(child: Text('Создание личного запроса',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -103,7 +101,7 @@ class _ChooseMeetingOccupationState extends State<ChooseMeetingOccupation> {
 
                   const EnterInfoContainer(
                     text1: 'Выберете ',
-                    text2: 'сферу\nдеятельности',
+                    text2: 'сферу деятельности',
                     description: 'Сфера деятельности будет отображаться в вашем профиле',
                     padTop: 40,
                   ),
@@ -153,7 +151,7 @@ class _ChooseMeetingOccupationState extends State<ChooseMeetingOccupation> {
 
                           for (final item in choosedOptions)
                             Container(
-                                padding: EdgeInsets.all(14), //14
+                                padding: const EdgeInsets.all(14), //14
                                 decoration: BoxDecoration(
                                   color: ConstColor.white10,
                                   borderRadius: BorderRadius.circular(12),
@@ -167,16 +165,16 @@ class _ChooseMeetingOccupationState extends State<ChooseMeetingOccupation> {
                                     ),
 
                                     Padding(
-                                      padding: EdgeInsets.only(left: 5),
+                                      padding: const EdgeInsets.only(left: 5),
                                       child: IconButton(onPressed: (){
                                         setState(() {
                                           choosedOptions.remove(item);
                                         });
                                       },
                                           padding: EdgeInsets.zero,
-                                          constraints: BoxConstraints(),
+                                          constraints: const BoxConstraints(),
                                           iconSize: 20,
-                                          icon: Icon(Icons.close_rounded, color: ConstColor.salad100,)),
+                                          icon: const Icon(Icons.close_rounded, color: ConstColor.salad100,)),
                                     )
                                   ],)
                             ),
@@ -197,7 +195,7 @@ class _ChooseMeetingOccupationState extends State<ChooseMeetingOccupation> {
                             // Navigator.of(context).push(MaterialPageRoute<void>(
                             //     builder: (context) => const MeetInterestsChoose()));
                           },
-                          child: Text(
+                          child: const Text(
                             'Ввести свой вариант',
                             style: TextStyle(
                                 fontSize: 12, //12
@@ -230,7 +228,7 @@ class _ChooseMeetingOccupationState extends State<ChooseMeetingOccupation> {
                             ),
                             child:
                             Icon(
-                              Network.search,
+                              NetworkIcons.search,
                               size: getResSize(14),
                               color: Colors.white,
                             ),
@@ -264,7 +262,7 @@ class _ChooseMeetingOccupationState extends State<ChooseMeetingOccupation> {
                     ],
                   ),
 
-                  SizedBox(height: 100,)
+                  const SizedBox(height: 100,)
 
 
 

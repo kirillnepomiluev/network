@@ -30,7 +30,7 @@ class _InputDescribeMeetingState extends State<InputDescribeMeeting> {
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                      BackButtonCustom(),
+                      const BackButtonCustom(),
                       Center(child: Text('Создание личного запроса',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -45,7 +45,7 @@ class _InputDescribeMeetingState extends State<InputDescribeMeeting> {
                 const EnterInfoContainer(
                   padTop: 32,
                   text1: 'Кратко опишите ',
-                  text2: 'какую\nвстречу вы планируете',
+                  text2: 'какую встречу вы планируете',
                   description: 'Здесь будет небольшое описание, что именно здесь нужно указать',
                 ),
                 Padding(
@@ -84,8 +84,6 @@ class _InputDescribeMeetingState extends State<InputDescribeMeeting> {
                           color: Colors.white, padH: 0, padV: 22, radius: 20),
                       onPressed: () {
                         FocusManager.instance.primaryFocus?.unfocus();
-
-                        print('to ChooseMeetingOccupation');
 
                         Navigator.of(context).push(MaterialPageRoute<void>(
                             builder: (context) => const ChooseMeetingOccupation()));

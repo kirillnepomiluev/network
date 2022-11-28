@@ -19,14 +19,10 @@ class _MessagesPageState extends State<MessagesPage> {
     // final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
     final mediaTop = MediaQuery.of(context).viewPadding.top;
-
-    final double contSize = 0.11466*mediaWidth; //43
+//43
 
 
     return Scaffold(
-      // extendBody: true,
-      // extendBodyBehindAppBar: true,
-      // bottomNavigationBar: Container(color: Colors.transparent,),
       body: Padding(
         padding: EdgeInsets.only(top: mediaTop, left: 15, right: 15),
         child: SingleChildScrollView(
@@ -52,7 +48,7 @@ class _MessagesPageState extends State<MessagesPage> {
                     ),
 
                     IconContainer(
-                      icon:  Network.search,
+                      icon:  NetworkIcons.search,
                       iconSize:  16.sp,   //17
                     )
 
@@ -193,42 +189,42 @@ class _MessagesPageState extends State<MessagesPage> {
     <String, dynamic>{
       'name' :   'Джоли',
       'status' :   'Запланирована встреча',
-      'url' :   'assets/images/avatars/avatar_2.png',
+      'url' :   'assets/images/avatars/avatar_0.png',
       'online' : false,
     },
 
     <String, dynamic>{
       'name' : 'Станислав',
       'status' : 'Встреча проведена',
-      'url' :  'assets/images/avatars/avatar_8.png',
+      'url' :  'assets/images/avatars/avatar_2.png',
       'online' : true,
     },
 
     <String, dynamic>{
       'name' : 'Меган',
       'status' : 'Приглашение на встречу',
-      'url' :  'assets/images/avatars/avatar_9.png',
+      'url' :  'assets/images/avatars/avatar_1.png',
       'online' : false,
     },
 
     <String, dynamic>{
       'name' : 'Игорь',
       'status' :  'Запланирована встреча',
-      'url' :  'assets/images/avatars/avatar_1.png',
+      'url' :  'assets/images/avatars/avatar_2.png',
       'online' : true,
     },
 
     <String, dynamic>{
       'name' :   'Джоли',
       'status' :   'Запланирована встреча',
-      'url' :   'assets/images/avatars/avatar_2.png',
+      'url' :   'assets/images/avatars/avatar_0.png',
       'online' : false,
     },
 
     <String, dynamic>{
       'name' :   'Джоли',
       'status' :   'Запланирована встреча',
-      'url' :   'assets/images/avatars/avatar_2.png',
+      'url' :   'assets/images/avatars/avatar_1.png',
       'online' : false,
     },
 
@@ -236,8 +232,7 @@ class _MessagesPageState extends State<MessagesPage> {
 
   Widget miniAvatar({required Map<String, dynamic> photoMap}) {
 
-    final mediaWidth = MediaQuery.of(context).size.width;
-    final contWidth = 45.00;
+    const contWidth = 45.00;
 
     return Padding(
     padding: const EdgeInsets.only(left: 15,),
@@ -255,16 +250,21 @@ class _MessagesPageState extends State<MessagesPage> {
             child: Stack(
               children: [
 
-                SizedBox(
-                  width: contWidth,
-                  height: contWidth,
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    foregroundImage: AssetImage(
-                        photoMap['url'] as String
-                    ),
-                  ),
+                CustromCircleAvatar(
+                  imageUrl: photoMap['url'] as String,
+                  contSize: contWidth,
                 ),
+
+                // SizedBox(
+                //   width: contWidth,
+                //   height: contWidth,
+                //   child: CircleAvatar(
+                //     backgroundColor: Colors.white,
+                //     foregroundImage: AssetImage(
+                //         photoMap['url'] as String
+                //     ),
+                //   ),
+                // ),
 
                 photoMap['online']==false? Container():
                 const Positioned(
@@ -369,8 +369,8 @@ class _MessagesPageState extends State<MessagesPage> {
                             ),
                           ),
 
-                          Icon(
-                            Network.check_double,
+                          const Icon(
+                            NetworkIcons.check_double,
                             size: 12,
                           color: ConstColor.textGray,
                           )
@@ -418,17 +418,20 @@ class _MessagesPageState extends State<MessagesPage> {
                   Positioned(
                     top: 0,
                     child:
-
-                    SizedBox(
-                      width: contSize,
-                      height: contSize,
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        foregroundImage: AssetImage(
-                            photoMap['url'] as String
-                        ),
-                      ),
-                    ),
+                      CustromCircleAvatar(
+                        imageUrl: photoMap['url'] as String,
+                        contSize: contSize,
+                      )
+                    // SizedBox(
+                    //   width: contSize,
+                    //   height: contSize,
+                    //   child: CircleAvatar(
+                    //     backgroundColor: Colors.white,
+                    //     foregroundImage: AssetImage(
+                    //         photoMap['url'] as String
+                    //     ),
+                    //   ),
+                    // ),
 
                     // Container(
                     //     decoration: BoxDecoration(

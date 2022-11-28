@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/components/general_widgets.dart';
-import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/home_page.dart';
-import 'package:network_app/meetings/meetings_page.dart';
+import 'package:network_app/store/store_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ViewPartnerProfilePage extends StatefulWidget {
@@ -36,9 +34,8 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
   Widget viewAvatarContainer() {
     final mediaWidth = MediaQuery.of(context).size.width;
 
-    final imageWidth = 0.624 * mediaWidth;
 
-    return Container(
+    return SizedBox(
       // color: Colors.red,
       height: 662,
       width: mediaWidth,
@@ -46,13 +43,16 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
         alignment: Alignment.bottomCenter,
         children: [
 
-          Container(
-            width: mediaWidth,
-            // height: 630,
-            child: Image.asset(
-              'assets/images/avatars/avatar_3.png',
-              fit: BoxFit.fitWidth,
-              alignment: Alignment.topCenter,
+          Positioned(
+            top: 50,
+            child: SizedBox(
+              width: mediaWidth,
+              // height: 630,
+              child: Image.asset(
+                'assets/images/avatars/avatar_3D.png',
+                // fit: BoxFit.fitWidth,
+                alignment: Alignment.topCenter,
+              ),
             ),
           ),
 
@@ -61,10 +61,12 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                 gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    stops: [0.3, 1],
+                    stops: const [0.2, 0.8, 1],
                     colors: [
                       Colors.transparent,
-                      Colors.black.withOpacity(0.88)
+                      Colors.black.withOpacity(0.88),
+                      Colors.black.withOpacity(0.88),
+                      // Colors.black
                     ]
                 )
             ),
@@ -210,7 +212,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                     Padding(
                       padding: const EdgeInsets.only(
                         top: 30,
-                        bottom: 20,
+                        bottom: 32,
                       ),
                       child: MeetRow(func: (){
                         Navigator.of(context).push(MaterialPageRoute<void>(
@@ -230,12 +232,40 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
 
   Widget _statColumn() => Container(
         padding:
-            const EdgeInsets.only(left: 15, right: 15, bottom: 50, top: 15),
+            const EdgeInsets.only(left: 15, right: 15, bottom: 50, top: 27),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
+
+            Padding(
+              padding: const EdgeInsets.only(bottom: 5),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 12,
+                          horizontal: 20
+                      ),
+                      backgroundColor: ConstColor.salad100,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(13)
+                      )
+                  ),
+                  onPressed: (){
+
+                    Navigator.of(context).push(MaterialPageRoute<void>(
+                        builder: (context) => const StorePage(isPartnerCupboard: true,)));
+
+                  },
+                  child: const Text("Перейти в список вещей",
+                    style: TextStyle(
+                        color: ConstColor.textBlack
+                    ),
+                  )
+              ),
+            ),
+
 
             titleStatText('Статус'),
             textField('ищу партнеров для бизнеса', isEnable: false),

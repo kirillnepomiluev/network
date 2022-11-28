@@ -110,7 +110,6 @@ class _ChatPageState extends State<ChatPage> {
       checked = true;
     }
 
-    final mediaWidth = MediaQuery.of(context).size.width;
 
 
     final keyboardSize = MediaQuery.of(context).viewInsets.bottom;
@@ -151,7 +150,7 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                 ),
 
-                IconContainer(icon: Icons.more_horiz_rounded),
+                const IconContainer(icon: Icons.more_horiz_rounded),
 
               ],
             ),
@@ -179,7 +178,7 @@ class _ChatPageState extends State<ChatPage> {
 
                 child:  showSendButton==false?
                 IconButton(onPressed: (){}, icon: Icon(
-                  Network.smile,
+                  NetworkIcons.smile,
                   size: 22.sp,   //26
                   color: Colors.grey,
                 )):
@@ -251,16 +250,21 @@ class _ChatPageState extends State<ChatPage> {
                                   const Positioned(
                                     top: 0,
                                     child:
-                                    SizedBox(
-                                      width: 45,
-                                      height: 45,
-                                      child: CircleAvatar(
-                                        backgroundColor: Colors.white,
-                                        foregroundImage: AssetImage(
-                                            'assets/images/avatars/avatar_2.png',
-                                        ),
-                                      ),
-                                    )),
+                                      CustromCircleAvatar(
+                                          imageUrl:  'assets/images/avatars/avatar_0.png',
+                                          contSize: 45
+                                      )
+                                    // SizedBox(
+                                    //   width: 45,
+                                    //   height: 45,
+                                    //   child: CircleAvatar(
+                                    //     backgroundColor: Colors.white,
+                                    //     foregroundImage: AssetImage(
+                                    //         'assets/images/avatars/avatar_2.png',
+                                    //     ),
+                                    //   ),
+                                    // )
+                                  ),
 
                                   //   Container(
                                   //       decoration: BoxDecoration(
@@ -291,7 +295,7 @@ class _ChatPageState extends State<ChatPage> {
                                           height: 17,
                                           child:
                                           const Icon(
-                                              Network.electric,
+                                              NetworkIcons.electric,
                                             size: 7,
                                             color: Colors.black,
                                           )
@@ -386,7 +390,7 @@ class _ChatPageState extends State<ChatPage> {
               children: [
 
                 isYou==false? Container():
-                    Icon(Network.check_double,
+                    Icon(NetworkIcons.check_double,
                     color: ConstColor.salad100,
                     size: getResSize(10),   //12
                     ),
@@ -433,7 +437,7 @@ class _ChatPageState extends State<ChatPage> {
       textAlign: TextAlign.start,
       autofocus: false,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
         hintText: 'Ваше сообщение...',
         hintStyle: TextStyle(
             color: ConstColor.textGray,

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/auth/login_second_page.dart';
-import 'package:network_app/auth_profile_info/choose_occupation.dart';
 import 'package:network_app/auth_profile_info/geolocation.dart';
-import 'package:network_app/auth_profile_info/choose_date.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -29,7 +26,7 @@ class _InputAboutYouPageState extends State<InputAboutYouPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    BackButtonCustom(),
+                    const BackButtonCustom(),
                     Container(
                         decoration: BoxDecoration(
                           color: ConstColor.white10,
@@ -39,7 +36,7 @@ class _InputAboutYouPageState extends State<InputAboutYouPage> {
                             vertical: 12,
                             horizontal: 18
                         ),
-                        child:Row(children: [
+                        child:Row(children: const [
                           Text('Пропустить'),
                           Icon(Icons.close_rounded, color: ConstColor.salad100,)
                         ],)

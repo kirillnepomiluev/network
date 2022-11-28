@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/components/choose_status.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/components/network_icons.dart';
-import 'package:network_app/meetings/choose_meeting_data.dart';
-import 'package:network_app/meetings/meetings_page.dart';
+import 'package:network_app/meetings/creqte_request/choose_meeting_data.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -38,8 +36,6 @@ class _MeetInterestsChooseState extends State<MeetInterestsChoose> {
   @override
   Widget build(BuildContext context) {
     final mediaTop = MediaQuery.of(context).viewPadding.top;
-    final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       bottomNavigationBar:
@@ -86,7 +82,7 @@ class _MeetInterestsChooseState extends State<MeetInterestsChoose> {
                     Stack(
                       alignment: Alignment.center,
                       children: [
-                        BackButtonCustom(),
+                        const BackButtonCustom(),
                         Center(child: Text('Создание личного запроса',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -135,7 +131,7 @@ class _MeetInterestsChooseState extends State<MeetInterestsChoose> {
                             ),
                             child:
                             Icon(
-                              Network.search,
+                              NetworkIcons.search,
                               size: getResSize(14),
                               color: Colors.white,
                             ),
@@ -160,7 +156,7 @@ class _MeetInterestsChooseState extends State<MeetInterestsChoose> {
                     ],
                   ),
 
-                  SizedBox(height: 100,)
+                  const SizedBox(height: 100,)
 
                   // Padding(
                   //   padding: const EdgeInsets.only(top: 20),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/auth/login_second_page.dart';
-import 'package:network_app/auth/recovery_page.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -89,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                                 child: InkWell(
                                   onTap: (() {}),
                                   child: Container(
-                                    padding: EdgeInsets.all(24),
+                                    padding: const EdgeInsets.all(24),
                                     // padding: const EdgeInsets.all(22),
                                     width: 35.sp, //66
                                     height: 35.sp, //64
@@ -106,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                               Padding(
                                 padding: EdgeInsets.only(left: 14.sp), // 10
                                 child: Container(
-                                  padding: EdgeInsets.all(24),
+                                  padding: const EdgeInsets.all(24),
                                   width: 35.sp, //64
                                   height: 35.sp, //64
                                   decoration: BoxDecoration(

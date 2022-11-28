@@ -1,6 +1,5 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/auth/login_page.dart';
 import 'package:network_app/auth/phone_auth_page.dart';
 import 'package:network_app/auth/recovery_page.dart';
 import 'package:network_app/components/network_icons.dart';
@@ -9,6 +8,94 @@ import 'package:network_app/meetings/notifications_page.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'dart:ui' as ui;
+
+
+Widget profileAvatarRow({String title = 'Тимофей, 37', bool showNotifications = true}) => Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    //ава
+    Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+            padding: EdgeInsets.only(right: 20),
+            child: SizedBox(
+              width: 60,
+              height: 60,
+              child: CircleAvatar(
+                backgroundColor: ConstColor.salad100,
+                foregroundImage:
+                AssetImage('assets/images/avatars/avatar_0.png'),
+              ),
+            )),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.sp, //18
+                  fontWeight: FontWeight.w700),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 7),
+              child: Container(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 6, horizontal: 9),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: ConstColor.white10),
+                  child: Center(
+                      child: Text(
+                        'я люблю веселиться 😁',
+                        style: TextStyle(
+                            fontSize: 15.5.sp, //12
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white),
+                      ))),
+            ),
+          ],
+        ),
+      ],
+    ),
+
+    if(showNotifications)
+    const Padding(
+      padding: EdgeInsets.only(right: 16),
+      child: NotificationIcon(),
+    ),
+  ],
+);
+
+
+class CustromCircleAvatar extends StatelessWidget {
+  final String imageUrl;
+  final double contSize;
+  const CustromCircleAvatar({Key? key, required this.imageUrl, required this.contSize}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+        image: DecorationImage(
+          image: AssetImage(
+              imageUrl
+            // 'assets/images/avatars/avatar_$avatarNumb.png',
+          ),
+          fit: BoxFit.fitHeight,
+          // alignment: Alignment.bottomCenter
+        ),
+      ),
+      width: contSize, //120
+      height: contSize,
+    );
+  }
+}
+
 
 Widget rhombusText(
         {String text = '+150',
@@ -29,7 +116,7 @@ Widget rhombusText(
         Padding(
           padding: EdgeInsets.only(left: padLeft),
           child: Icon(
-            Network.rhombus,
+            NetworkIcons.rhombus,
             color: ConstColor.salad100,
             size: iconSize,
           ),
@@ -66,7 +153,7 @@ class NotificationIcon extends StatelessWidget {
                 );
               },
               icon: const Icon(
-                Network.notification,
+                NetworkIcons.notification,
                 size: 15, //15
                 color: Colors.white,
               ),
@@ -148,13 +235,19 @@ class EnterInfoContainer extends StatelessWidget {
   final String text2;
   final String? description;
   final int? maxLines;
+  final bool showDescription;
+  final double? fontSize;
+  final FontWeight fontWeight;
   const EnterInfoContainer(
       {Key? key,
         required this.text1,
         required this.text2,
         this.maxLines,
         this.description,
-        required this.padTop
+        this.showDescription = true,
+        required this.padTop,
+        this.fontSize,
+        this.fontWeight = FontWeight.w500
       })
       : super(key: key);
 
@@ -172,7 +265,15 @@ class EnterInfoContainer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            BuildRichTextTwo(text1: text1, text2: text2, fontSize: 20.sp, fontWeight1: FontWeight.w500, fontWeight2: FontWeight.w500,),
+            BuildRichTextTwo(
+              text1: text1,
+              text2: text2,
+              fontSize: fontSize?? 20.sp,
+              fontWeight1: fontWeight,
+              fontWeight2: fontWeight,
+            ),
+
+            if(showDescription)
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Text(
@@ -180,7 +281,8 @@ class EnterInfoContainer extends StatelessWidget {
                 maxLines: maxLines,
                 style: TextStyle(
                     fontSize: getResSize(14),
-                    fontWeight: FontWeight.w400),
+                    fontWeight: FontWeight.w400
+                ),
               ),
             ),
           ],
@@ -197,7 +299,7 @@ class EnterRowContainer extends StatelessWidget {
   final IconData? icon;
   final String iconName;
   final String title;
-  EnterRowContainer({Key? key, this.icon, this.iconName='', required this.title, this.func}) : super(key: key);
+  const EnterRowContainer({Key? key, this.icon, this.iconName='', required this.title, this.func}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -291,7 +393,7 @@ class NetworkRow extends StatelessWidget {
           );
   }
 
-  Widget _circle() => Image.asset('assets/icons/handshake.png');
+
 
   Widget _text({bool isColumn = false}) => Padding(
         padding:
@@ -305,71 +407,8 @@ class NetworkRow extends StatelessWidget {
         ),
       );
 
-  Widget _social({double opacity = 0.05}) => Padding(
-        padding: const EdgeInsets.only(top: 10),
-        child: Container(
-          width: 105,
-          height: 37,
-          // blur: 10,
-          decoration: BoxDecoration(
-            // color: ConstColor.halfWhite,
-            color: Colors.white.withOpacity(opacity),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: const Center(
-            child: Text(
-              'social',
-              style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400),
-            ),
-          ),
-        ),
-      );
 }
 
-class AuthBackScaffold extends StatelessWidget {
-  bool hasTroubleEnter = false;
-  final bool centerYellow;
-  final Widget childColumn;
-  AuthBackScaffold(
-      {Key? key,
-      required this.childColumn,
-      this.hasTroubleEnter = false,
-      required this.centerYellow})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final mediaHeight = MediaQuery.of(context).size.height;
-
-    // top: mediaHeight*0.15,
-    return Scaffold(
-      // backgroundColor: ConstColor.blackBack,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Positioned(
-                right: 0,
-                child: Image.asset('assets/images/circles/ellipse_3.png')),
-            Positioned(
-                top: centerYellow ? mediaHeight * 0.15 : 0,
-                left: 0,
-                child: Image.asset('assets/images/circles/ellipse_2.png')),
-            hasTroubleEnter == false
-                ? Container()
-                : Positioned(
-                    bottom: 17.sp, //5
-                    right: 17.sp, //10
-                    child: troubleEnter(context)),
-            childColumn
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 Widget troubleEnter(BuildContext context) {
   return InkWell(
@@ -419,7 +458,7 @@ class IconContainer extends StatelessWidget {
   final double? iconSize;
   final double? contSize;
   final Function? func;
-  IconContainer(
+  const IconContainer(
       {Key? key,
       required this.icon,
       this.func,
@@ -456,7 +495,7 @@ class IconContainer extends StatelessWidget {
 class BackButtonCustom extends StatelessWidget {
   final Function? func;
   final Color? contColor;
-  BackButtonCustom({Key? key, this.func, this.contColor}) : super(key: key);
+  const BackButtonCustom({Key? key, this.func, this.contColor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -464,7 +503,7 @@ class BackButtonCustom extends StatelessWidget {
         alignment: Alignment.topLeft,
         child: IconContainer(
           func: func ?? Navigator.of(context).pop,
-          icon: Network.arrow_back,
+          icon: NetworkIcons.arrow_back,
           iconSize: 14.sp,
           contColor: contColor,
         ));
@@ -553,7 +592,7 @@ Widget titleStatText(String text) => Padding(
         text,
         style: TextStyle(
             color: Colors.white,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
             fontSize: 19.sp //20
             ),
       ),
@@ -566,7 +605,7 @@ Widget progressParametr(
     bool isMeetingRow = false,
     double progress = 0,
     required BuildContext context}) {
-  final double fontSize = 16; //16
+  const double fontSize = 16; //16
 
   return Padding(
     padding: const EdgeInsets.only(top: 22.5),
@@ -608,10 +647,10 @@ Widget progressParametr(
                         fontWeight1: FontWeight.w400,
                         fontWeight2: FontWeight.w700,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 13),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 13),
                         child: Icon(
-                          Network.info,
+                          NetworkIcons.info,
                           color: Colors.white,
                           size: 18,
                         ),
@@ -677,8 +716,8 @@ Widget hobbitsContainer(String text, {bool hasEdit = true}) => Container(
           ),
           hasEdit == false
               ? Container()
-              : Padding(
-                  padding: const EdgeInsets.only(left: 8),
+              : const Padding(
+                  padding: EdgeInsets.only(left: 8),
                   child: Icon(
                     Icons.close_rounded,
                     size: 22,
@@ -694,7 +733,7 @@ Widget textField(String hintText, {bool isEnable = true}) => Padding(
       child: TextFormField(
         enabled: isEnable,
         maxLines: null,
-        style: TextStyle(
+        style: const TextStyle(
             fontSize: 18, //18
             fontWeight: FontWeight.w400,
             color: Colors.white),
@@ -723,10 +762,9 @@ Widget textField(String hintText, {bool isEnable = true}) => Padding(
     );
 
 void opeinInfoSheet({required BuildContext context, required String title}) {
-  final mediaTop = MediaQuery.of(context).viewPadding.top;
   final mediaHeight = MediaQuery.of(context).size.height;
   final mediaWidth = MediaQuery.of(context).size.width;
-  final _height = mediaHeight * 0.9;
+  final height = mediaHeight * 0.9;
 
   showModalBottomSheet<void>(
       backgroundColor: Colors.transparent,
@@ -739,7 +777,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
             children: [
               Container(
                 color: Colors.transparent,
-                height: _height,
+                height: height,
                 child: SingleChildScrollView(
                   child: Column(
                     // physics: NeverScrollableScrollPhysics(),
@@ -755,7 +793,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
                       ),
                       BlurryContainer(
                         borderRadius: BorderRadius.zero,
-                        height: _height - mediaWidth * 0.07733333333333334,
+                        height: height - mediaWidth * 0.07733333333333334,
                         blur: 20,
                         color: Colors.transparent,
                         padding: const EdgeInsets.only(
@@ -773,7 +811,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
                                   color: ConstColor.salad100),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 20),
+                              padding: EdgeInsets.only(top: 20),
                               child: Text(
                                 Constants.strLongLoremIpsum
                                 ,
@@ -828,7 +866,7 @@ class BuildRichTextTwo extends StatelessWidget {
   final Color color2;
   final TextAlign textAlign;
 
-  BuildRichTextTwo({
+  const BuildRichTextTwo({
     Key? key,
     this.text1 = '',
     this.text2 = '',
@@ -886,7 +924,7 @@ class StatColumn extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            BuildRichTextTwo(
+            const BuildRichTextTwo(
               text1: 'Уровень ',
               text2: 'Базовый',
             ),
@@ -897,7 +935,7 @@ class StatColumn extends StatelessWidget {
                   borderRadius: BorderRadius.circular(7)),
               width: 24,
               height: 22,
-              child: Icon(
+              child: const Icon(
                 Icons.mode_edit_outline_outlined,
                 size: 13,
               ),
@@ -913,13 +951,13 @@ class StatColumn extends StatelessWidget {
             context: context,
             text1: 'Токены за встречи  ',
             text2: '150',
-            icon: Network.rhombus
+            icon: NetworkIcons.rhombus
         ),
 
         const SizedBox(height: 15,),
 
         if(ifProfileSheet)
-          BuildRichTextTwo(
+          const BuildRichTextTwo(
             text1: 'До следущего уровня осталось\nнабрать ',
             text2: '1500 токенов',
             fontSize: 14,
@@ -932,7 +970,7 @@ class StatColumn extends StatelessWidget {
           padding: const EdgeInsets.only(top: 25, bottom: 7),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 vertical: 12,
                 horizontal: 20
               ),
@@ -942,7 +980,7 @@ class StatColumn extends StatelessWidget {
               )
             ),
               onPressed: (){},
-              child: Text("Докупить токены",
+              child: const Text("Докупить токены",
               style: TextStyle(
                 color: ConstColor.textBlack
               ),
@@ -958,37 +996,37 @@ class StatColumn extends StatelessWidget {
             text2: 'Еще 25 встреч',
             progress: 0.25,
             isMeetingRow: true,
-            icon: Network.people),
+            icon: NetworkIcons.people),
 
         titleStatText('Статистика'),
         progressParametr(
             context: context,
             text1: 'Энергии на встречи  ',
             text2: '3/5',
-            icon: Network.electric),
+            icon: NetworkIcons.electric),
 
         progressParametr(
             context: context,
             text1: 'Скорость восстановления  ',
             text2: 'x1.5',
-            icon: Network.speedometer),
+            icon: NetworkIcons.speedometer),
         progressParametr(
             context: context,
             text1: 'Баллы за встречи  ',
             text2: '150',
-            icon: Network.rhombus),
+            icon: NetworkIcons.rhombus),
         progressParametr(
           context: context,
           text1: 'Количество сообщений в день  ',
           text2: '200',
-          icon: Network.email_outlined,
+          icon: NetworkIcons.email_outlined,
           // Icons.email_outlined
         ),
         progressParametr(
             context: context,
             text1: 'Количество лайков в день  ',
             text2: '50',
-            icon: Network.heart),
+            icon: NetworkIcons.heart),
       ],
     );
   }
@@ -1091,19 +1129,19 @@ class BottomSheetMinPaint extends CustomPainter {
         size.height * 0.2597538);
     path_0.close();
 
-    Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
-    paint_0_fill.color = color ?? ConstColor.white10;
-    canvas.drawPath(path_0, paint_0_fill);
+    Paint paint0Fill = Paint()..style = PaintingStyle.fill;
+    paint0Fill.color = color ?? ConstColor.white10;
+    canvas.drawPath(path_0, paint0Fill);
 
-    Paint paint_1_stroke = Paint()
+    Paint paint1Stroke = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = size.width * 0.01866667;
-    paint_1_stroke.color = Color(0xffE2FF2D).withOpacity(1.0);
-    paint_1_stroke.strokeCap = StrokeCap.round;
+    paint1Stroke.color = const Color(0xffE2FF2D).withOpacity(1.0);
+    paint1Stroke.strokeCap = StrokeCap.round;
     canvas.drawLine(
         Offset(size.width * 0.4560000, size.height * 0.1206897),
         Offset(size.width * 0.5440320, size.height * 0.1206897),
-        paint_1_stroke);
+        paint1Stroke);
   }
 
   @override
@@ -1179,87 +1217,87 @@ class _RadioListState extends State<RadioList> {
   }
 }
 
-class ChangeTabContainer extends StatelessWidget {
-  int activeTab = 1;
-  final int activeTabInit;
-  final int position;
-  final String text;
-  final Function func;
-
-  ChangeTabContainer({
-    Key? key,
-    required this.func,
-    required this.activeTabInit,
-    required this.position,
-    required this.text,
-  }) : super(key: key) {
-    activeTab = activeTabInit;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: InkWell(
-        onTap: () {
-          func();
-        },
-        child: BlurryContainer(
-          blur: 20,
-          color: ConstColor.white10,
-          borderRadius: BorderRadius.circular(20),
-          padding: EdgeInsets.symmetric(
-            vertical: 18.5.sp, //19
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Text(
-                  text,
-                  style: TextStyle(
-                      color: activeTab == position
-                          ? ConstColor.salad100
-                          : Colors.white,
-                      fontSize: 16.5.sp, //14
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 5, right: 16),
-                child: activeTab == position
-                    ? Icon(
-                        Icons.keyboard_arrow_down,
-                        color: ConstColor.salad100,
-                        size: 19.sp, //20
-                      )
-                    : Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Colors.white,
-                        size: 19.sp, //20
-                      ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+// class ChangeTabContainer extends StatelessWidget {
+//   int activeTab = 1;
+//   final int activeTabInit;
+//   final int position;
+//   final String text;
+//   final Function func;
+//
+//   ChangeTabContainer({
+//     Key? key,
+//     required this.func,
+//     required this.activeTabInit,
+//     required this.position,
+//     required this.text,
+//   }) : super(key: key) {
+//     activeTab = activeTabInit;
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.only(right: 10),
+//       child: InkWell(
+//         onTap: () {
+//           func();
+//         },
+//         child: BlurryContainer(
+//           blur: 20,
+//           color: ConstColor.white10,
+//           borderRadius: BorderRadius.circular(20),
+//           padding: EdgeInsets.symmetric(
+//             vertical: 18.5.sp, //19
+//           ),
+//           child: Row(
+//             crossAxisAlignment: CrossAxisAlignment.center,
+//             mainAxisAlignment: MainAxisAlignment.start,
+//             children: [
+//               Padding(
+//                 padding: const EdgeInsets.only(left: 20),
+//                 child: Text(
+//                   text,
+//                   style: TextStyle(
+//                       color: activeTab == position
+//                           ? ConstColor.salad100
+//                           : Colors.white,
+//                       fontSize: 16.5.sp, //14
+//                       fontWeight: FontWeight.w500),
+//                 ),
+//               ),
+//               Padding(
+//                 padding: const EdgeInsets.only(left: 5, right: 16),
+//                 child: activeTab == position
+//                     ? Icon(
+//                         Icons.keyboard_arrow_down,
+//                         color: ConstColor.salad100,
+//                         size: 19.sp, //20
+//                       )
+//                     : Icon(
+//                         Icons.keyboard_arrow_right,
+//                         color: Colors.white,
+//                         size: 19.sp, //20
+//                       ),
+//               )
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class MeetRow extends StatelessWidget {
   final Function? func;
   final bool isExchange;
-  MeetRow({Key? key, this.func, this.isExchange = false}) : super(key: key);
+  const MeetRow({Key? key, this.func, this.isExchange = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final mediaWitdh = MediaQuery.of(context).size.width;
     final double contSize = mediaWitdh * 0.128; //48
     final double iconSize = 19.sp; //25
-    final double iconElSize = 18.5.sp; //20
+//20
 
     return isExchange
         ? InkWell(
@@ -1288,7 +1326,7 @@ class MeetRow extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconContainer(
-                    icon: Network.arrow_right_long,
+                    icon: NetworkIcons.arrow_long_right,
                     iconSize: iconSize,
                     contSize: contSize,
                     contColor: ConstColor.black1A,
@@ -1374,7 +1412,7 @@ class MeetRow extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconContainer(
-                          icon: Network.electric,
+                          icon: NetworkIcons.electric,
                           iconSize: iconSize,
                           contSize: contSize,
                           contColor: ConstColor.black1A,
@@ -1435,7 +1473,7 @@ class MeetRow extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 18),
                 child: IconContainer(
-                  icon: Network.star,
+                  icon: NetworkIcons.star,
                   iconSize: iconSize,
                   contSize: contSize,
                 ),

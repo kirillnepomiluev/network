@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/components/choose_status.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/components/network_icons.dart';
-import 'package:network_app/meetings/meetings_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -37,7 +35,7 @@ class _SearchPageState extends State<SearchPage> {
             color:   _activeTab == position?  ConstColor.salad100 : ConstColor.white10,
             borderRadius: BorderRadius.circular(15),
           ),
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
               vertical: 16, //19
               horizontal: 20
           ),
@@ -122,7 +120,7 @@ class _SearchPageState extends State<SearchPage> {
                     Stack(
                       alignment: Alignment.center,
                       children: [
-                        BackButtonCustom(),
+                        const BackButtonCustom(),
                         Center(child: Text('Поиск',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -193,7 +191,7 @@ class _SearchPageState extends State<SearchPage> {
                             ),
                             child:
                             Icon(
-                              Network.search,
+                              NetworkIcons.search,
                               size: getResSize(14),
                               color: Colors.white,
                             ),
@@ -218,7 +216,7 @@ class _SearchPageState extends State<SearchPage> {
                     ],
                   ),
 
-                  SizedBox(height: 100,)
+                  const SizedBox(height: 100,)
 
                   // Padding(
                   //   padding: const EdgeInsets.only(top: 20),

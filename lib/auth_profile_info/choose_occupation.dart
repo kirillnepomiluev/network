@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/auth_profile_info/input_occupation.dart';
-import 'package:network_app/auth_profile_info/input_status.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/components/network_icons.dart';
-import 'package:network_app/meetings/meetings_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -34,7 +32,7 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
     ),
   );
 
-  int _missedCount = 3;
+  final int _missedCount = 3;
 
   List<String> choosedOptions = [];
 
@@ -43,8 +41,6 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
 
 
     final mediaTop = MediaQuery.of(context).viewPadding.top;
-    final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       bottomNavigationBar:
@@ -88,7 +84,7 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      BackButtonCustom(),
+                      const BackButtonCustom(),
                       Container(
                           decoration: BoxDecoration(
                             color: ConstColor.white10,
@@ -111,7 +107,7 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
 
                   const EnterInfoContainer(
                     text1: 'Выберете ',
-                    text2: 'сферу\nдеятельности',
+                    text2: 'сферу деятельности',
                     description: 'Сфера деятельности будет отображаться в вашем профиле',
                     padTop: 40,
                   ),
@@ -161,7 +157,7 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
 
                         for (final item in choosedOptions)
                           Container(
-                            padding: EdgeInsets.all(14), //14
+                            padding: const EdgeInsets.all(14), //14
                             decoration: BoxDecoration(
                               color: ConstColor.white10,
                               borderRadius: BorderRadius.circular(12),
@@ -175,16 +171,16 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
                             ),
 
                             Padding(
-                              padding: EdgeInsets.only(left: 5),
+                              padding: const EdgeInsets.only(left: 5),
                               child: IconButton(onPressed: (){
                                 setState(() {
                                   choosedOptions.remove(item);
                                 });
                               },
                                   padding: EdgeInsets.zero,
-                                  constraints: BoxConstraints(),
+                                  constraints: const BoxConstraints(),
                                   iconSize: 20,
-                                  icon: Icon(Icons.close_rounded, color: ConstColor.salad100,)),
+                                  icon: const Icon(Icons.close_rounded, color: ConstColor.salad100,)),
                             )
                           ],)
                           ),
@@ -205,7 +201,7 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
                             Navigator.of(context).push(MaterialPageRoute<void>(
                                 builder: (context) => const InputOccupationPage()));
                           },
-                          child: Text(
+                          child: const Text(
                             'Ввести свой вариант',
                             style: TextStyle(
                                 fontSize: 12, //12
@@ -238,7 +234,7 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
                             ),
                             child:
                             Icon(
-                              Network.search,
+                              NetworkIcons.search,
                               size: getResSize(14),
                               color: Colors.white,
                             ),
@@ -272,7 +268,7 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
                     ],
                   ),
 
-                  SizedBox(height: 100,)
+                  const SizedBox(height: 100,)
 
                   // Padding(
                   //   padding: const EdgeInsets.only(top: 20),

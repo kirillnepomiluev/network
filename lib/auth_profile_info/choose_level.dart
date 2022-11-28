@@ -1,6 +1,5 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/auth/login_second_page.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/constants.dart';
@@ -32,8 +31,8 @@ class _ChooseLevelPageState extends State<ChooseLevelPage> {
               Column(
                 children: [
 
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10),
                     child: BackButtonCustom(),
                   ),
 
@@ -92,7 +91,7 @@ class _ChooseLevelPageState extends State<ChooseLevelPage> {
             child: RadioListTile(
               activeColor: ConstColor.salad100,
                 value: title,
-                title: Text(title, style: TextStyle(
+                title: Text(title, style: const TextStyle(
                   color: ConstColor.salad100,
                   fontSize: 18,
                   fontWeight: FontWeight.w600
@@ -110,7 +109,7 @@ class _ChooseLevelPageState extends State<ChooseLevelPage> {
 
           IconButton(onPressed: (){
             openBottomSheetProfile();
-          }, icon: Icon(Network.info, color: Colors.white,))
+          }, icon: const Icon(NetworkIcons.info, color: Colors.white,))
 
         ],
       ),),
@@ -120,11 +119,9 @@ class _ChooseLevelPageState extends State<ChooseLevelPage> {
 
   void openBottomSheetProfile() {
 
-    final mediaTop = MediaQuery.of(context).viewPadding.top;
     final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
-    // final _height = mediaHeight-mediaTop;
-    final _height = mediaHeight*0.9;
+    final height = mediaHeight*0.9;
 
     showModalBottomSheet<void>(
         backgroundColor: Colors.transparent,
@@ -142,7 +139,7 @@ class _ChooseLevelPageState extends State<ChooseLevelPage> {
 
               Container(
                 color: Colors.transparent,
-                height: _height,
+                height: height,
                 child: SingleChildScrollView(
                   child: Column(
                     // physics: NeverScrollableScrollPhysics(),
@@ -172,7 +169,7 @@ class _ChooseLevelPageState extends State<ChooseLevelPage> {
 
                             Padding(
                               padding: EdgeInsets.only(top: 20),
-                              child: Text(Constants.strLongLoremIpsum + '\n\n' + Constants.strLongLoremIpsum, style: TextStyle(
+                              child: Text('${Constants.strLongLoremIpsum}\n\n${Constants.strLongLoremIpsum}', style: TextStyle(
                                 fontSize: 16,
                               ),),
                             ),

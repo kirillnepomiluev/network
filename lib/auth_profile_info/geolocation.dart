@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/auth/login_second_page.dart';
-import 'package:network_app/auth_profile_info/choose_occupation.dart';
-import 'package:network_app/auth_profile_info/input_about_you.dart';
-import 'package:network_app/auth_profile_info/choose_date.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/home_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class TurnOnLocationPage extends StatefulWidget {
@@ -29,7 +26,7 @@ class _TurnOnLocationPageState extends State<TurnOnLocationPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    BackButtonCustom(),
+                    const BackButtonCustom(),
                     Container(
                         decoration: BoxDecoration(
                           color: ConstColor.white10,
@@ -66,10 +63,10 @@ class _TurnOnLocationPageState extends State<TurnOnLocationPage> {
                         style: buttonStyleCustom(
                             color: Colors.white, padH: 0, padV: 22, radius: 20),
                         onPressed: () {
-                          FocusManager.instance.primaryFocus?.unfocus();
 
-                          Navigator.of(context).push(MaterialPageRoute<void>(
-                              builder: (context) => const InputAboutYouPage()));
+                          Route route = MaterialPageRoute<void>(builder: (context) => const HomePage(initIndex: 0));
+                          Navigator.pushAndRemoveUntil<void>(context, route, (route) => false);
+
                         },
                         child: Text(
                           'Включить геолокацию',

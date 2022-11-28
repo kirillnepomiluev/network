@@ -1,15 +1,12 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/home_page.dart';
-import 'package:network_app/components/choose_interests.dart';
 import 'package:network_app/meetings/invitations_page.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/meetings/notifications_page.dart';
 import 'package:network_app/meetings/creqte_request/personal_requests.dart';
-import 'package:network_app/meetings/search_page.dart';
-import 'package:network_app/meetings/timer_page.dart';
+import 'package:network_app/meetings/creqte_request/search_page.dart';
+import 'package:network_app/meetings/meeting_timer/timer_page.dart';
 import 'package:network_app/profile/view_partner_profile_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -46,7 +43,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
             color:   _activeTab == position?  ConstColor.salad100 : ConstColor.white10,
             borderRadius: BorderRadius.circular(15),
           ),
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             vertical: 16, //19
               horizontal: 20
           ),
@@ -71,13 +68,12 @@ class _MeetingsPageState extends State<MeetingsPage> {
   Widget build(BuildContext context) {
     final mediaTop = MediaQuery.of(context).viewPadding.top;
     final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWidth = MediaQuery.of(context).size.width;
 
     return  Scaffold(
       extendBody: true,
       bottomNavigationBar: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
               left: 15,
               right: 15,
               bottom: 28
@@ -220,9 +216,9 @@ class _MeetingsPageState extends State<MeetingsPage> {
                                 Navigator.of(context).push(MaterialPageRoute<void>(
                                     builder: (context) => const PersonalRequestsPage()));
 
-                          }, child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 15),
-                            child: const Text('Личные запросы', style: TextStyle(
+                          }, child: const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 15),
+                            child: Text('Личные запросы', style: TextStyle(
                               color: ConstColor.textBlack,
                             ),),
                           )),
@@ -245,7 +241,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
                 child: Container(
                   padding: const EdgeInsets.all(0),
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.transparent,
                     // borderRadius: const BorderRadius.vertical(top: Radius.circular(30))
                   ),
@@ -310,7 +306,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
                             gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
-                                stops: [0.3, 1],
+                                stops: const [0.3, 1],
                                 colors: [
                                   Colors.transparent,
                                   Colors.black.withOpacity(0.88)
@@ -343,7 +339,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
             padding: const EdgeInsets.only(left: 7),
             child:
             IconContainer(
-              icon:  Network.search,
+              icon:  NetworkIcons.search,
               func: (){
 
                 Navigator.of(context).push(
@@ -365,7 +361,7 @@ class _MeetingsPageState extends State<MeetingsPage> {
           children: [
 
             IconContainer(
-              icon:  Network.notification,
+              icon:  NetworkIcons.notification,
               func: (){
                       Navigator.of(context).push(
                           MaterialPageRoute<void>(

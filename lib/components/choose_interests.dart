@@ -3,7 +3,6 @@ import 'package:network_app/components/choose_status.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/components/network_icons.dart';
-import 'package:network_app/meetings/meetings_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -120,7 +119,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      BackButtonCustom(),
+                      const BackButtonCustom(),
                       Container(
                         decoration: BoxDecoration(
                           color: ConstColor.white10,
@@ -130,7 +129,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                             vertical: 12,
                             horizontal: 18
                         ),
-                        child:Row(children: [
+                        child:Row(children: const [
                           Text('Пропустить'),
                           Icon(Icons.close_rounded, color: ConstColor.salad100,)
                         ],)
@@ -143,7 +142,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                     Stack(
                       alignment: Alignment.center,
                       children: [
-                        BackButtonCustom(),
+                        const BackButtonCustom(),
                         Center(child: Text('Выберете интересы',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -157,19 +156,31 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
 
 
                   if(widget.isAuth)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 40),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: ConstColor.white10,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 26, horizontal: 18),
-                      child:
-                      BuildRichTextTwo(text1: 'Выберете ', text2: 'интересы', fontSize: 20.sp, fontWeight1: FontWeight.w500, fontWeight2: FontWeight.w500,),
+                    const EnterInfoContainer(
+                      text1: 'Выберете ',
+                      text2: 'интересы',
+                      padTop: 40,
+                      showDescription: false,
+                      fontSize: 24,
                     ),
-                  ),
+
+
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 40),
+                  //   child: Container(
+                  //     width: double.infinity,
+                  //     decoration: BoxDecoration(
+                  //       color: ConstColor.white10,
+                  //       borderRadius: BorderRadius.circular(20),
+                  //     ),
+                  //     padding: const EdgeInsets.symmetric(vertical: 26, horizontal: 18),
+                  //     child:
+                  //     BuildRichTextTwo(text1: 'Выберете ', text2: 'интересы',
+                  //     fontSize: 20.sp,
+                  //     fontWeight1: FontWeight.w500,
+                  //     fontWeight2: FontWeight.w500,),
+                  //   ),
+                  // ),
 
                   //Поиск
                   Padding(
@@ -193,7 +204,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                             ),
                             child:
                             Icon(
-                              Network.search,
+                              NetworkIcons.search,
                               size: getResSize(14),
                               color: Colors.white,
                             ),
@@ -218,7 +229,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                     ],
                   ),
 
-                  SizedBox(height: 100,)
+                  const SizedBox(height: 100,)
 
                   // Padding(
                   //   padding: const EdgeInsets.only(top: 20),

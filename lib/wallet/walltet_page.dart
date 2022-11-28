@@ -58,7 +58,7 @@ class _WalletPageState extends State<WalletPage> {
               ),
               child: Icon(
                 _activeTab == position
-                    ? Network.arrow_right_down
+                    ? NetworkIcons.arrow_right_down
                     : Icons.arrow_forward_rounded,
                 size:
                 _activeTab == position
@@ -96,7 +96,7 @@ class _WalletPageState extends State<WalletPage> {
             children: [
 
               Padding(
-                padding: EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 10),
                 child:
                 Stack(
                   alignment: Alignment.center,
@@ -152,7 +152,7 @@ class _WalletPageState extends State<WalletPage> {
 
 
                   Padding(
-                    padding: EdgeInsets.only(top: 9),
+                    padding: const EdgeInsets.only(top: 9),
                     child: Text('330',
                       style: TextStyle(
                           fontSize: 27.sp,   //38
@@ -245,7 +245,7 @@ class _WalletPageState extends State<WalletPage> {
 
 
                   Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                           top: 50
                       ),
                       child: SingleChildScrollView(
@@ -279,7 +279,7 @@ class _WalletPageState extends State<WalletPage> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                          padding: EdgeInsets.symmetric(vertical: 22)
+                          padding: const EdgeInsets.symmetric(vertical: 22)
                           // padding: ,
                           //   backgroundColor:
                           //   MaterialStateProperty.all(Colors.white),
@@ -289,7 +289,7 @@ class _WalletPageState extends State<WalletPage> {
                           //   ))
                         ),
                         child:
-                        Text(
+                        const Text(
                           'Смотреть историю пополнений',
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
@@ -319,8 +319,8 @@ class _WalletPageState extends State<WalletPage> {
 
   Widget graphCont({required CurrencyData data}) {
 
-    final double contWidth = 165;
-    final double contHeight = contWidth*0.3333333333333333;
+    const double contWidth = 165;
+    const double contHeight = contWidth*0.3333333333333333;
 
     final bool isDark = data.title=='SOL';
 
@@ -406,7 +406,7 @@ class _WalletPageState extends State<WalletPage> {
                   heightFactor: 1.0,
                   child:
                   CustomPaint(
-                    size: Size(contWidth, contHeight), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                    size: const Size(contWidth, contHeight), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
                     painter: GraphOne(isDark: isDark),
                   ),
                 ),
@@ -518,19 +518,19 @@ class GraphOne extends CustomPainter {
     path_0.cubicTo(size.width*0.7727273,size.height*0.3909091,size.width*0.7424242,size.height*0.5454545,size.width*0.8151515,size.height*0.5909091);
     path_0.cubicTo(size.width*0.8733333,size.height*0.6272727,size.width*0.9525273,size.height*0.2484855,size.width*0.9848485,size.height*0.05454545);
 
-    Paint paint_0_stroke = Paint()..style=PaintingStyle.stroke..strokeWidth=1;
-    paint_0_stroke.color= isDark? ConstColor.salad100 : ConstColor.black1A;
+    Paint paint0Stroke = Paint()..style=PaintingStyle.stroke..strokeWidth=1;
+    paint0Stroke.color= isDark? ConstColor.salad100 : ConstColor.black1A;
     // paint_0_stroke.color= Colors.transparent;
-    canvas.drawPath(path_0,paint_0_stroke);
+    canvas.drawPath(path_0,paint0Stroke);
 
-    Paint paint_0_fill = Paint()..style=PaintingStyle.fill;
+    Paint paint0Fill = Paint()..style=PaintingStyle.fill;
     // paint_0_fill.color = Color(0xff000000).withOpacity(1.0);
-    paint_0_fill.color = Colors.transparent;
-    canvas.drawPath(path_0,paint_0_fill);
+    paint0Fill.color = Colors.transparent;
+    canvas.drawPath(path_0,paint0Fill);
 
-    Paint paint_1_fill = Paint()..style=PaintingStyle.fill;
-    paint_1_fill.color = isDark? ConstColor.salad100 : ConstColor.black1A;
-    canvas.drawCircle(Offset(size.width*0.9878788,size.height*0.03636364),size.width*0.01212121,paint_1_fill);
+    Paint paint1Fill = Paint()..style=PaintingStyle.fill;
+    paint1Fill.color = isDark? ConstColor.salad100 : ConstColor.black1A;
+    canvas.drawCircle(Offset(size.width*0.9878788,size.height*0.03636364),size.width*0.01212121,paint1Fill);
 
   }
 

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/auth/login_second_page.dart';
 import 'package:network_app/components/choose_status.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/home_page.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/components/choose_interests.dart';
@@ -11,7 +9,6 @@ import 'package:network_app/store/store_page.dart';
 import 'package:network_app/store/view_category_avatar_page.dart';
 import 'package:network_app/store/view_category_hats.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'dart:ui' as ui;
 
 class ProfilePage extends StatefulWidget {
   final bool isCupboard;
@@ -30,8 +27,6 @@ class _ProfilePageState extends State<ProfilePage> {
     if(widget.isCupboard){
       _activeTab = 2;
     }
-
-    print('isCupboard ${widget.isCupboard} _activeTab $_activeTab');
 
     super.initState();
   }
@@ -119,13 +114,11 @@ class _ProfilePageState extends State<ProfilePage> {
 
     // final double sheetHeight = mediaHeight * 0.15;  //147
     // final mediaRadius = mediaWidth*0.45;
-    final mediaRadius = 60.sp;
 
     final double contWidth = mediaWidth; //375
     // final double contWidth = 84.sp;   //375
     final double contHeight = contWidth * 0.392;
 
-    final double sheetHeightMinus = -contHeight * 0.1156; //-17
 
     final double padLeft = 17.5.sp; //16
 
@@ -176,30 +169,45 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                ChangeTabContainer(
-                                  position: 1,
+                                miniContainer(
                                   text: 'Профиль',
-                                  activeTabInit: _activeTab,
-                                  func: () {
-                                    changeTab(1);
-                                  },
+                                  position: 1
                                 ),
-                                ChangeTabContainer(
-                                  position: 2,
+
+                                miniContainer(
                                   text: 'Шкаф',
-                                  activeTabInit: _activeTab,
-                                  func: () {
-                                    changeTab(2);
-                                  },
+                                  position: 2
                                 ),
-                                ChangeTabContainer(
-                                  position: 3,
+
+                                miniContainer(
                                   text: 'Друзья',
-                                  activeTabInit: _activeTab,
-                                  func: () {
-                                    changeTab(3);
-                                  },
+                                  position: 3
                                 ),
+
+                                // ChangeTabContainer(
+                                //   position: 1,
+                                //   text: 'Профиль',
+                                //   activeTabInit: _activeTab,
+                                //   func: () {
+                                //     changeTab(1);
+                                //   },
+                                // ),
+                                // ChangeTabContainer(
+                                //   position: 2,
+                                //   text: 'Шкаф',
+                                //   activeTabInit: _activeTab,
+                                //   func: () {
+                                //     changeTab(2);
+                                //   },
+                                // ),
+                                // ChangeTabContainer(
+                                //   position: 3,
+                                //   text: 'Друзья',
+                                //   activeTabInit: _activeTab,
+                                //   func: () {
+                                //     changeTab(3);
+                                //   },
+                                // ),
                               ],
                             ),
                           ),
@@ -265,7 +273,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   left: 16.5.sp //14
                                                   ),
                                               child: Icon(
-                                                Network.check_thin,
+                                                NetworkIcons.check_thin,
                                                 size: 16.5.sp, //14
                                                 color: Colors.black,
                                               ),
@@ -378,7 +386,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             const ViewCategoryAvatarPage()));
                   },
                   icon: const Icon(
-                    Network.arrow_right_long,
+                    NetworkIcons.arrow_long_right,
                     color: Colors.white,
                     size: 25,
                   ))
@@ -429,7 +437,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             const ViewCategoryHatsPage()));
                   },
                   icon: const Icon(
-                    Network.arrow_right_long,
+                    NetworkIcons.arrow_long_right,
                     color: Colors.white,
                     size: 25,
                   ))
@@ -483,7 +491,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                         builder: (context) =>
                                                             const StorePage()));
                                               },
-                                              child: Text(
+                                              child: const Text(
                                                 'Посетить магазин',
                                                 style: TextStyle(
                                                     fontSize: 18, //18
@@ -588,63 +596,6 @@ class _ProfilePageState extends State<ProfilePage> {
         ));
   }
 
-  Widget profileAvatarRow() => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          //ава
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                  padding: EdgeInsets.only(right: 20),
-                  child: SizedBox(
-                    width: 60,
-                    height: 60,
-                    child: CircleAvatar(
-                      backgroundColor: ConstColor.salad100,
-                      foregroundImage:
-                          AssetImage('assets/images/avatars/avatar_0.png'),
-                    ),
-                  )),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Тимофей, 37',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.sp, //18
-                        fontWeight: FontWeight.w700),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 7),
-                    child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 6, horizontal: 9),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: ConstColor.white10),
-                        child: Center(
-                            child: Text(
-                          'я люблю веселиться 😁',
-                          style: TextStyle(
-                              fontSize: 15.5.sp, //12
-                              fontWeight: FontWeight.w400,
-                              color: Colors.white),
-                        ))),
-                  ),
-                ],
-              ),
-            ],
-          ),
-
-          const Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: NotificationIcon(),
-          ),
-        ],
-      );
 
   void openBottomSheetProfile() {
 
@@ -654,7 +605,7 @@ class _ProfilePageState extends State<ProfilePage> {
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
         context: context,
-        builder: (BuildContext context) => BottomSheetMain());
+        builder: (BuildContext context) => const BottomSheetMain());
   }
 }
 
@@ -675,7 +626,7 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
     final mediaWidth = MediaQuery.of(context).size.width;
     // final mediaTop = MediaQuery.of(context).viewPadding.top;
     // final _height = mediaHeight - mediaTop;
-    final _height = mediaHeight*0.95;
+    final height = mediaHeight*0.95;
 
 
     return GestureDetector(
@@ -685,7 +636,7 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
         children: [
           Container(
             color: Colors.transparent,
-            height: _height,
+            height: height,
             child: SingleChildScrollView(
               child: Column(
                 // physics: NeverScrollableScrollPhysics(),
@@ -715,9 +666,7 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                         const StatColumn(ifProfileSheet: true,),
 
                         titleStatText('Статус'),
-                        // isEditStatus?
-                        // textField('Sed aenean est eget sit eget at tellus sed.')
-                        // :
+
                         Padding(
                           padding: const EdgeInsets.only(top: 20, bottom: 10),
                           child: InkWell(
@@ -746,25 +695,11 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                                    padding:  EdgeInsets.only(left: 8.0),
                                    child:
                                    Icon(
-                                     Icons.mode_edit_outlined,
+                                     NetworkIcons.edit,
                                      size: 22,
                                      color: ConstColor.salad100,
                                    )
-                                   // IconButton(
-                                   //     padding: EdgeInsets.zero,
-                                   //     constraints: BoxConstraints(),
-                                   //     onPressed: (){
-                                   //   setState(() {
-                                   //     isEditStatus = !isEditStatus;
-                                   //   });
-                                   // }, icon: Icon(
-                                   //   Icons.mode_edit_outlined,
-                                   //   size: 22,
-                                   //   color: ConstColor.salad100,
-                                   // )
-                                   // ),
                                  )
-
 
                                 ],
                               ),
@@ -793,12 +728,12 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                                     borderRadius: BorderRadius.circular(7)),
                                 child: IconButton(
                                   padding: EdgeInsets.zero,
-                                  constraints: BoxConstraints(),
+                                  constraints: const BoxConstraints(),
                                   onPressed: (){
                                     Navigator.of(context).push(MaterialPageRoute<void>(
                                         builder: (context) => const ChooseInterestsPage()));
                                   },
-                                  icon: Icon(Icons.add),
+                                  icon: const Icon(Icons.add),
                                 )
                               ),
 
@@ -806,8 +741,7 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                           ),
                         ),
                         titleStatText('Обо мне'),
-                        textField(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices amet tellus.'),
+                        textField('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices amet tellus.'),
 
                         titleStatText('Сфера деятельности'),
                         // textField('Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget varius a id in amet.'),
@@ -830,9 +764,9 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                                       borderRadius: BorderRadius.circular(7)),
                                   child: IconButton(
                                     padding: EdgeInsets.zero,
-                                    constraints: BoxConstraints(),
+                                    constraints: const BoxConstraints(),
                                     onPressed: (){},
-                                    icon: Icon(Icons.add),
+                                    icon: const Icon(Icons.add),
                                   )
                               ),
 
@@ -840,8 +774,8 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                           ),
                         ),
 
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 20),
                           child: BuildRichTextTwo(
                             text1: 'Вы можете указать ',
                             text2: '3 сферы деятельности',
@@ -887,7 +821,7 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                                   padding:  EdgeInsets.only(
                                       left: 17, right: 3),
                                   child: Icon(
-                                    Network.pencil,
+                                    NetworkIcons.pencil,
                                     size: 16,
                                   ),
                                 )
@@ -911,7 +845,7 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                           ],
                         ),
 
-                        CustomCheckListTile(title: 'Скрыть семейное положение',),
+                        const CustomCheckListTile(title: 'Скрыть семейное положение',),
 
                         titleStatText('Цель встречи'),
                         const RadioList(
@@ -933,9 +867,9 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                           ],
                         ),
 
-                        CustomCheckListTile(title: 'Скрыть',),
+                        const CustomCheckListTile(title: 'Скрыть',),
 
-                        SizedBox(height: 80,)
+                        const SizedBox(height: 80,)
 
                       ],
                     ),

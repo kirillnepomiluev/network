@@ -1,8 +1,5 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/auth/phone_auth_page.dart';
 import 'package:network_app/components/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/components/network_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -54,14 +51,14 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                 Padding(
                   padding: EdgeInsets.only(top: 30.sp //57
                   ),
-                  child: EnterRowContainer(
-                    icon: Network.call,
+                  child: const EnterRowContainer(
+                    icon: NetworkIcons.call,
                     title: 'Войти по номеру телефона',
                     // leftPad: 24.sp   //30
                   ),
                 ),
 
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(top: 21 //57
                   ),
                   child: EnterRowContainer(
@@ -71,8 +68,8 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                   ),
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 21),
+                const Padding(
+                  padding: EdgeInsets.only(top: 21),
                   child: EnterRowContainer(
                     iconName: 'logo_google',
                     title: 'Войти через Google',
@@ -80,8 +77,8 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                   ),
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 21),
+                const Padding(
+                  padding: EdgeInsets.only(top: 21),
                   child: EnterRowContainer(
                     iconName: 'logo_facebook',
                     title: 'Войти через Facebook',

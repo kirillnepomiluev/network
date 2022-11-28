@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/auth/login_second_page.dart';
 import 'package:network_app/auth_profile_info/choose_sex.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
@@ -27,8 +26,8 @@ class _ChooseDatePageState extends State<ChooseDatePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
+                const Padding(
+                  padding: EdgeInsets.only(top: 10),
                   child: BackButtonCustom(),
                 ),
                 const EnterInfoContainer(

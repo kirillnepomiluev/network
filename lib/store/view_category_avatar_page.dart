@@ -75,7 +75,7 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                      BackButtonCustom(),
+                      const BackButtonCustom(),
                       Center(child: Text('Аватары',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -199,7 +199,7 @@ Widget avatarContainer(
             isBoxes
                 ? Container()
                 : Padding(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 bottom: 5,
               ),
               child: Align(
@@ -220,10 +220,6 @@ Widget avatarContainer(
               padding: EdgeInsets.only(top: isBoxes? 20 : 0),
               child: Container(
                 height: imageHeight,
-                child: Image.asset(
-                  'assets/images/${strCategory=='Обычный'? '4': '3'}.png',
-                  fit: BoxFit.contain,
-                ),
                 decoration: BoxDecoration(
                     color: Colors.transparent,
                     // image: DecorationImage(
@@ -232,6 +228,10 @@ Widget avatarContainer(
                     //     )
                     // ),
                     borderRadius: BorderRadius.circular(10)),
+                child: Image.asset(
+                  'assets/images/${strCategory=='Обычный'? '4': '3'}.png',
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
 
@@ -259,7 +259,7 @@ Widget avatarContainer(
               ),
             )
                 : Padding(
-              padding: EdgeInsets.only(top: 12),
+              padding: const EdgeInsets.only(top: 12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -330,7 +330,7 @@ Widget avatarContainer(
                         ),
 
                         const Icon(
-                          Network.rhombus,
+                          NetworkIcons.rhombus,
                           color: ConstColor.salad100,
                           size: 15,
                         ),

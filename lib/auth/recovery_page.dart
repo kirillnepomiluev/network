@@ -25,14 +25,14 @@ class _RecoveryPageState extends State<RecoveryPage> {
           child: Column(
             children: [
 
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
+              const Padding(
+                padding: EdgeInsets.only(top: 10),
                 child: BackButtonCustom(),
               ),
 
               const EnterInfoContainer(
                 padTop: 32,
-                text1: 'Восстановление\n',
+                text1: 'Восстановление ',
                 text2: 'аккаунта',
                 // maxLines: 3,
               ),

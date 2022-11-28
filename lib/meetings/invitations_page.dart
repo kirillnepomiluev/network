@@ -74,7 +74,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
             child: IconButton(
               onPressed: () {},
               icon: const Icon(
-                Network.tune,
+                NetworkIcons.tune,
                 color: Colors.black,
               ),
               iconSize: 19.sp, //20
@@ -86,8 +86,8 @@ class _InvitationsPageState extends State<InvitationsPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
+              const Padding(
+                padding: EdgeInsets.only(top: 10),
                 child: BackButtonCustom(),
               ),
 
@@ -109,8 +109,9 @@ class _InvitationsPageState extends State<InvitationsPage> {
                 ),
               ),
 
-              viewInviteContainer(strType: 'Деловая встреча', strName: 'Джоли 28'),
-              viewInviteContainer(strType: 'Деловая встреча', strName: 'Игорь, 34', avatarNumb: 5),
+              viewInviteContainer(strName: 'Джоли 28'),
+              viewInviteContainer(strName: 'Игорь, 34', avatarNumb: 1, showVerified: false),
+              viewInviteContainer(strName: 'Джоли 28'),
             ],
           ),
         ),
@@ -118,7 +119,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
     );
   }
 
-  Widget viewInviteContainer({required String strType, String strName='', int avatarNumb = 4, bool showVerified = false}) {
+  Widget viewInviteContainer({String strName='', int avatarNumb = 0, bool showVerified = true}) {
     final mediaWidth = MediaQuery.of(context).size.width;
 
     return Padding(
@@ -152,7 +153,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                   ),
                   child: Center(
                     child: Text(
-                      strType,
+                      'Деловая встреча',
                       style: TextStyle(
                           // color: ConstColor.textWhite,
                           fontSize: 15.5.sp, //12
@@ -168,19 +169,83 @@ class _InvitationsPageState extends State<InvitationsPage> {
                         style: TextStyle(
                           fontSize: 16.5.sp, //14
                           fontWeight: FontWeight.w400,
-                          color: ConstColor.textGray,
+                          color: ConstColor.grey3,
                         ),
                       )
                     :
                 Flexible(
-                            child: Container(
-                              width: 0.408 * mediaWidth, //153
-                              height: mediaWidth * 0.1013, //38,
+                            child:
+                                // showVerified?
+                                // Container(
+                                //     width: mediaWidth*0.29,  //109
+                                //     height: contSize,
+                                //     decoration: BoxDecoration(
+                                //         borderRadius: BorderRadius.circular(15),
+                                //         color: ConstColor.white10
+                                //     ),
+                                //     child: Row(
+                                //       mainAxisAlignment: MainAxisAlignment.center,
+                                //       children: [
+                                //
+                                //         Text(
+                                //           '02:04:15',
+                                //           style: TextStyle(
+                                //               fontSize: 15.5.sp, //12
+                                //               fontWeight: FontWeight.bold),
+                                //         ),
+                                //
+                                //         const Padding(
+                                //           padding:  EdgeInsets.only(left: 5),
+                                //           child: Icon(
+                                //             Icons.timer_outlined,
+                                //             color: Colors.white,
+                                //             size: 16,  //16
+                                //           ),
+                                //         )
+                                //
+                                //       ],
+                                //     )
+                                // )
+                                // :
+
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 13,
+                                horizontal: showVerified? 17 : 13
+                              ),
                               decoration: BoxDecoration(
-                                color: ConstColor.salad100,
+                                color: showVerified? ConstColor.white10 : ConstColor.salad100,
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              child: Row(
+                              child:
+
+                                  showVerified?
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    // mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+
+                                      Text(
+                                        '02:04:15',
+                                        style: TextStyle(
+                                            fontSize: 15.5.sp, //12
+                                            fontWeight: FontWeight.bold),
+                                      ),
+
+                                      const Padding(
+                                        padding:  EdgeInsets.only(left: 5),
+                                        child: Icon(
+                                          Icons.timer_outlined,
+                                          color: Colors.white,
+                                          size: 16,  //16
+                                        ),
+                                      )
+
+                                    ],
+                                  )
+                                  :
+
+                              Row(
                                 mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -188,34 +253,43 @@ class _InvitationsPageState extends State<InvitationsPage> {
                                   Text(
                                     'Готов к встрече',
                                     style: TextStyle(
-                                        // color: ConstColor.textWhite,
+                                        color: ConstColor.textBlack,
                                         fontSize: 15.5.sp, //12
-                                        fontWeight: FontWeight.w600),
+                                        fontWeight: FontWeight.w600
+                                    ),
                                   ),
 
                                   Padding(
                                     padding: const EdgeInsets.only(left: 5.75),
-                                    child: Container(
-                                      decoration: const BoxDecoration(
-                                          color: Colors.black,
-                                          shape: BoxShape.circle
-                                      ),
-                                      width: 0.046 * mediaWidth, //17.25
-                                      height: 0.046 * mediaWidth,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(top: 1.5),
-                                        child: Icon(
-                                          Network.check,
-                                          size: 11.sp, //11
-                                          color: ConstColor.salad100,
-                                        ),
-                                      ), //Icons.turn
+                                    child:
+                                    Icon(
+                                      NetworkIcons.check,
+                                      size: 15.sp, //11
+                                      // color: ConstColor.salad100,
                                     ),
+                                    // Container(
+                                    //   decoration: const BoxDecoration(
+                                    //       color: Colors.black,
+                                    //       shape: BoxShape.circle
+                                    //   ),
+                                    //   width: 0.046 * mediaWidth, //17.25
+                                    //   height: 0.046 * mediaWidth,
+                                    //   child: Padding(
+                                    //     padding: const EdgeInsets.only(top: 1.5),
+                                    //     child: Icon(
+                                    //       NetworkIcons.check,
+                                    //       size: 11.sp, //11
+                                    //       color: ConstColor.salad100,
+                                    //     ),
+                                    //   ), //Icons.turn
+                                    // ),
+
                                   ),
 
                                 ],
                               ),
                             ),
+
                           )
               ],
             ),
@@ -257,7 +331,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                         fontWeight: FontWeight.w400),
                   ),
                   Text(
-                    '+150 баллов',
+                    '+150 токенов',
                     style: TextStyle(
                         fontSize: 16.5.sp, //14
                         color: ConstColor.salad100,
@@ -277,17 +351,35 @@ class _InvitationsPageState extends State<InvitationsPage> {
                 children: [
                   Row(
                     children: [
-
-                      SizedBox(
-                        width: mediaWidth * 0.2213, //83
-                        height: mediaWidth * 0.2213, //83
-                        child: CircleAvatar(
-                          // backgroundColor: showOnline? Colors.white : Colors.black,
-                          foregroundImage: AssetImage(
-                              'assets/images/avatars/avatar_$avatarNumb.png'
-                          ),
-                        ),
+                      CustromCircleAvatar(
+                        imageUrl: 'assets/images/avatars/avatar_$avatarNumb.png',
+                        contSize: 83,
                       ),
+
+                      // Container(
+                      //   decoration: BoxDecoration(
+                      //     color: Colors.white,
+                      //     shape: BoxShape.circle,
+                      //     image: DecorationImage(
+                      //       image: AssetImage(
+                      //         'assets/images/avatars/avatar_$avatarNumb.png',
+                      //       ),
+                      //       fit: BoxFit.fitHeight,
+                      //       // alignment: Alignment.bottomCenter
+                      //     ),
+                      //   ),
+                      //   width: 83,
+                      //   height: 83,
+                      // ),
+
+                      // CircleAvatar(
+                      //   backgroundColor: Colors.white,
+                      //   foregroundImage:
+                      //   AssetImage(
+                      //       'assets/images/avatars/avatar_$avatarNumb.png',
+                      //   ),
+                      //   radius: 42,
+                      // ),
 
                       Padding(
                         padding: const EdgeInsets.only(left: 21),
@@ -323,25 +415,41 @@ class _InvitationsPageState extends State<InvitationsPage> {
                       )
                     ],
                   ),
-                  Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(37),
-                        color: Colors.transparent,
-                        border: Border.all(color: ConstColor.salad100)
-                      ),
-                      width: mediaWidth * 0.176, //66
-                      height: mediaWidth * 0.176 * 1.394, //92
-                      child: IconButton(
-                        onPressed: () {
+                  InkWell(
+                    onTap: (){
                           Navigator.of(context).push(MaterialPageRoute<void>(
                               builder: (context) => const MatchingPage()));
-                        },
-                        icon: const Icon(
-                          Network.arrow_right_long,
-                          color: ConstColor.salad100,
+                    },
+                    child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(37),
+                          color: Colors.transparent,
+                          border: Border.all(color: ConstColor.salad100)
                         ),
-                        iconSize: 20.sp, //24
-                      )),
+                        width: mediaWidth * 0.176, //66
+                        height: mediaWidth * 0.176 * 1.394, //92
+                        child:
+                        Icon(
+                          NetworkIcons.arrow_long_right,
+                          color: ConstColor.salad100,
+                          size: 16.sp,
+                        ),
+
+                        // IconButton(
+                        //   padding: EdgeInsets.zero,
+                        //   constraints: BoxConstraints(),
+                        //   onPressed: () {
+                        //     Navigator.of(context).push(MaterialPageRoute<void>(
+                        //         builder: (context) => const MatchingPage()));
+                        //   },
+                        //   icon: const Icon(
+                        //     NetworkIcons.arrow_long_right,
+                        //     color: ConstColor.salad100,
+                        //   ),
+                        //   iconSize: 16.sp, //24
+                        // )
+                    ),
+                  ),
                 ],
               ),
             )

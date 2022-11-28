@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/chat/chat_page.dart';
 import 'package:network_app/components/general_widgets.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/home_page.dart';
-import 'dart:math' as math;
 
 import 'package:network_app/components/network_icons.dart';
-import 'package:network_app/meetings/questions_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MatchingPage extends StatefulWidget {
@@ -19,246 +17,325 @@ class _MatchingPageState extends State<MatchingPage> {
   @override
   Widget build(BuildContext context) {
 
-    final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWidth = MediaQuery.of(context).size.width;
-    final aspectRatio = mediaWidth/mediaHeight>=0.6;
-
     return Scaffold(
       extendBody: true,
-      // backgroundColor: ConstColor.blackBack,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
 
-              Padding(
-                padding:
-                const EdgeInsets.only(
-                    left: 10,
-                    top: 10,
-                ),
-                child: BackButtonCustom(),
-              ),
-
-              //полупрозрачный слой
-              Padding(
-                padding: const EdgeInsets.only(top: 25),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    profileMini(strName: 'Джоли', avatarNumb: 6),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 35),
-                      child:
-                      IconContainer(
-                        icon: Network.electric,
-                        contColor: ConstColor.salad100,
-                        iconSize: 18.sp,
-                        contSize: 48,
-                        iconColor: Colors.black,
-                      )
-
-                      // Container(
-                      //     decoration: const BoxDecoration(
-                      //         color: ConstColor.salad100,
-                      //         shape: BoxShape.circle
-                      //     ),
-                      //     width: 0.12*mediaWidth,    //12
-                      //     height: 0.12*mediaWidth,
-                      //     child: IconButton(
-                      //       onPressed: () {},
-                      //       icon: const Icon(
-                      //         Network.electric,
-                      //         color: Colors.black,
-                      //       ),
-                      //       iconSize: 18.sp, //17
-                      //     )),
-                    ),
-                    profileMini(strName: 'Тимофей', avatarNumb: 7),
-                  ],
-                ),
-              ),
-
-              //Нижняя часть
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 33,
-                      horizontal: 16  //16
+                const Padding(
+                  padding:
+                  EdgeInsets.only(
+                      top: 10,
                   ),
-                  // width: 400,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      color: ConstColor.white10,
-                      borderRadius: BorderRadius.circular(30)
-                  ),
-                  child: Column(
+                  child: BackButtonCustom(),
+                ),
+
+                //полупрозрачный слой
+                Padding(
+                  padding: const EdgeInsets.only(top: 25),
+                  child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      profileMini(strName: 'Джоли', ),
 
                       Padding(
-                        padding: const EdgeInsets.only(top: 0, bottom: 20),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            '92% совпадений',
-                            style: TextStyle(
-                              color: ConstColor.salad100,
-                              fontSize: 21.5.sp, //24
-                              fontWeight: FontWeight.w600,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
+                        padding: const EdgeInsets.only(top: 35),
+                        child:
+                        IconContainer(
+                          icon: NetworkIcons.electric,
+                          contColor: ConstColor.salad100,
+                          iconSize: 18.sp,
+                          contSize: 48,
+                          iconColor: Colors.black,
+                        )
                       ),
 
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 23,
-                          horizontal: 17
-                        ),
-                        decoration: BoxDecoration(
-                            color: ConstColor.white05,
-                            borderRadius: BorderRadius.circular(31)),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 13, horizontal: 13),
-                              decoration: BoxDecoration(
-                                color: ConstColor.salad100,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Text(
-                                'Деловая встреча',
-                                style: TextStyle(
-                              fontSize: 15.5.sp, //12
-                                color: ConstColor.textBlack,
-                              fontWeight: FontWeight.w400
-                                ),
-                              ),
-                            ),
-
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 28),
-                              child: Row(
-                                children: [
-
-                                  Text(
-                                    'Токены за встречу',
-                                    style: TextStyle(
-                                        fontSize: 15.5.sp, //12
-                                        // color: ConstColor.textWhite,
-                                        fontWeight: FontWeight.w400
-                                    ),
-                                  ),
-
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 7),
-                                    child: rhombusText(),
-                                  )
-
-                                ],
-                              ),
-                            ),
-
-                            Wrap(
-                              spacing: 10,
-                              runSpacing: 10,
-                              direction: Axis.horizontal,
-                              children: [
-                                hobbitsContainer('Большой теннис', hasEdit: false),
-                                hobbitsContainer('Бассейн', hasEdit: false),
-                                hobbitsContainer('Управление', hasEdit: false),
-                                hobbitsContainer('Маркетинг', hasEdit: false),
-                              ],
-                            ),
-
-                          ],
-                        ),
-                      ),
-
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 23,
-                        ),
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                              style:
-                              buttonStyleCustom(
-                                  radius: 20,
-                                  padV: 26
-                              ),
-                              onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const QuestionsPage()));
-                                },
-                              child: Text(
-                                'Начать чат',
-                                style: TextStyle(
-                                    color: ConstColor.textBlack,
-                                    fontSize: 17.5.sp, //16
-                                    fontWeight: FontWeight.w500
-                                ),
-                              )),
-                        ),
-                      ),
-
-                      Padding(
-                        padding: const EdgeInsets.only(top: 34),
-                        child: Wrap(
-                          // runAlignment: WrapAlignment.spaceBetween,
-                          // alignment: WrapAlignment.spaceBetween,
-                          spacing: mediaWidth*0.08,
-                          runSpacing: 22,
-                          children: [
-
-                          for(final item in questionsList)
-                            questionContainer(
-                              text: item,
-                            ),
-
-                        ],),
-                      )
-
+                      profileMini(strName: 'Тимофей', avatarNumb: 1),
                     ],
                   ),
                 ),
-              ),
 
-              //Начать с 1-го вопроса
-              Padding(
-                padding: const EdgeInsets.only(top: 40, bottom: 23),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      style: buttonStyleCustom(
-                        radius: 20,
-                        padV: 26
-                      ),
+                //Нижняя часть
+                Padding(
+                  padding: const EdgeInsets.only(top: 70),
+                  child:
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 23,
+                        horizontal: 17
+                    ),
+                    decoration: BoxDecoration(
+                        color: ConstColor.white10,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
 
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute<void>(
-                            builder: (context) => const QuestionsPage()));
-                      },
-                      child: Text(
-                        'Начать с 1-го вопроса',
-                        style: TextStyle(
-                          color: ConstColor.textBlack,
-                            fontSize: 17.5.sp, //16
-                          fontWeight: FontWeight.w500
+                        Text(
+                          '92% совпадений',
+                          style: TextStyle(
+                            color: ConstColor.salad100,
+                            fontSize: 21.5.sp, //24
+                            fontWeight: FontWeight.w600,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                      )),
-                ),
-              ),
 
-            ],
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 13, horizontal: 15),
+                            decoration: BoxDecoration(
+                              color: ConstColor.salad100,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Text(
+                              'Деловая встреча',
+                              style: TextStyle(
+                                  fontSize: 15.5.sp, //12
+                                  color: ConstColor.textBlack,
+                                  fontWeight: FontWeight.w400
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 28),
+                          child: Row(
+                            children: [
+
+                              Text(
+                                'Токены за встречу',
+                                style: TextStyle(
+                                    fontSize: 15.5.sp, //12
+                                    // color: ConstColor.textWhite,
+                                    fontWeight: FontWeight.w400
+                                ),
+                              ),
+
+                              Padding(
+                                padding: const EdgeInsets.only(left: 7),
+                                child: rhombusText(fontSize: 18, fontWeight: FontWeight.w500, ),
+                              )
+
+                            ],
+                          ),
+                        ),
+
+                        Wrap(
+                          spacing: 10,
+                          runSpacing: 10,
+                          direction: Axis.horizontal,
+                          children: [
+                            hobbitsContainer('Большой теннис', hasEdit: false),
+                            hobbitsContainer('Бассейн', hasEdit: false),
+                            hobbitsContainer('Управление', hasEdit: false),
+                            hobbitsContainer('Маркетинг', hasEdit: false),
+                          ],
+                        ),
+
+                      ],
+                    ),
+                  ),
+
+                  // Container(
+                  //   alignment: Alignment.center,
+                  //   padding: const EdgeInsets.symmetric(
+                  //       vertical: 33,
+                  //       horizontal: 16  //16
+                  //   ),
+                  //   // width: 400,
+                  //   width: MediaQuery.of(context).size.width,
+                  //   decoration: BoxDecoration(
+                  //       color: ConstColor.white10,
+                  //       borderRadius: BorderRadius.circular(30)
+                  //   ),
+                  //   child: Column(
+                  //     crossAxisAlignment: CrossAxisAlignment.start,
+                  //     children: [
+                  //
+                  //       Padding(
+                  //         padding: const EdgeInsets.only(top: 0, bottom: 20),
+                  //         child: Align(
+                  //           alignment: Alignment.center,
+                  //           child: Text(
+                  //             '92% совпадений',
+                  //             style: TextStyle(
+                  //               color: ConstColor.salad100,
+                  //               fontSize: 21.5.sp, //24
+                  //               fontWeight: FontWeight.w600,
+                  //             ),
+                  //             textAlign: TextAlign.center,
+                  //           ),
+                  //         ),
+                  //       ),
+                  //
+                  //       Container(
+                  //         padding: const EdgeInsets.symmetric(
+                  //             vertical: 23,
+                  //           horizontal: 17
+                  //         ),
+                  //         decoration: BoxDecoration(
+                  //             color: ConstColor.white05,
+                  //             borderRadius: BorderRadius.circular(31)),
+                  //         child: Column(
+                  //           crossAxisAlignment: CrossAxisAlignment.start,
+                  //           children: [
+                  //
+                  //             Text(
+                  //               '92% совпадений',
+                  //               style: TextStyle(
+                  //                 color: ConstColor.salad100,
+                  //                 fontSize: 21.5.sp, //24
+                  //                 fontWeight: FontWeight.w600,
+                  //               ),
+                  //               textAlign: TextAlign.center,
+                  //             ),
+                  //
+                  //             Padding(
+                  //               padding: const EdgeInsets.only(top: 20),
+                  //               child: Container(
+                  //                 padding: const EdgeInsets.symmetric(
+                  //                     vertical: 13, horizontal: 13),
+                  //                 decoration: BoxDecoration(
+                  //                   color: ConstColor.salad100,
+                  //                   borderRadius: BorderRadius.circular(10),
+                  //                 ),
+                  //                 child: Text(
+                  //                   'Деловая встреча',
+                  //                   style: TextStyle(
+                  //                 fontSize: 15.5.sp, //12
+                  //                   color: ConstColor.textBlack,
+                  //                 fontWeight: FontWeight.w400
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //
+                  //             Padding(
+                  //               padding: const EdgeInsets.symmetric(vertical: 28),
+                  //               child: Row(
+                  //                 children: [
+                  //
+                  //                   Text(
+                  //                     'Токены за встречу',
+                  //                     style: TextStyle(
+                  //                         fontSize: 15.5.sp, //12
+                  //                         // color: ConstColor.textWhite,
+                  //                         fontWeight: FontWeight.w400
+                  //                     ),
+                  //                   ),
+                  //
+                  //                   Padding(
+                  //                     padding: const EdgeInsets.only(left: 7),
+                  //                     child: rhombusText(fontSize: 18, fontWeight: FontWeight.w500, ),
+                  //                   )
+                  //
+                  //                 ],
+                  //               ),
+                  //             ),
+                  //
+                  //             Wrap(
+                  //               spacing: 10,
+                  //               runSpacing: 10,
+                  //               direction: Axis.horizontal,
+                  //               children: [
+                  //                 hobbitsContainer('Большой теннис', hasEdit: false),
+                  //                 hobbitsContainer('Бассейн', hasEdit: false),
+                  //                 hobbitsContainer('Управление', hasEdit: false),
+                  //                 hobbitsContainer('Маркетинг', hasEdit: false),
+                  //               ],
+                  //             ),
+                  //
+                  //           ],
+                  //         ),
+                  //       ),
+                  //
+                  //       Padding(
+                  //         padding: const EdgeInsets.only(
+                  //             top: 23,
+                  //         ),
+                  //         child: SizedBox(
+                  //           width: double.infinity,
+                  //           child: ElevatedButton(
+                  //               style:
+                  //               buttonStyleCustom(
+                  //                   radius: 20,
+                  //                   padV: 26
+                  //               ),
+                  //               onPressed: () {
+                  //                 Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => const QuestionsPage()));
+                  //                 },
+                  //               child: Text(
+                  //                 'Начать чат',
+                  //                 style: TextStyle(
+                  //                     color: ConstColor.textBlack,
+                  //                     fontSize: 17.5.sp, //16
+                  //                     fontWeight: FontWeight.w500
+                  //                 ),
+                  //               )),
+                  //         ),
+                  //       ),
+                  //
+                  //       Padding(
+                  //         padding: const EdgeInsets.only(top: 34),
+                  //         child: Wrap(
+                  //           // runAlignment: WrapAlignment.spaceBetween,
+                  //           // alignment: WrapAlignment.spaceBetween,
+                  //           spacing: mediaWidth*0.08,
+                  //           runSpacing: 22,
+                  //           children: [
+                  //
+                  //           for(final item in questionsList)
+                  //             questionContainer(
+                  //               text: item,
+                  //             ),
+                  //
+                  //         ],),
+                  //       )
+                  //
+                  //     ],
+                  //   ),
+                  // ),
+                ),
+
+                //Начать с 1-го вопроса
+                Padding(
+                  padding: const EdgeInsets.only(top: 40, bottom: 23),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                        style: buttonStyleCustom(
+                          radius: 20,
+                          padV: 26
+                        ),
+
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute<void>(
+                              // builder: (context) => const QuestionsPage()));
+                              builder: (context) => const ChatPage()));
+                        },
+                        child: Text(
+                          'Начать чат',
+                          style: TextStyle(
+                            color: ConstColor.textBlack,
+                              fontSize: 17.5.sp, //16
+                            fontWeight: FontWeight.w500
+                          ),
+                        )),
+                  ),
+                ),
+
+              ],
+            ),
           ),
         ),
       ),
@@ -340,27 +417,44 @@ class _MatchingPageState extends State<MatchingPage> {
 
 
 
-  Widget profileMini({required String strName, int avatarNumb = 6}) {
-
-    final mediaWidth = MediaQuery.of(context).size.width;
-
-    final contWidth = mediaWidth*0.328; //123
+  Widget profileMini({required String strName, int avatarNumb = 0}) {
 
     return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
 
-          Container(
-            width: contWidth,
-            height: contWidth*0.935,  //115
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(17)
-            ),
-            child: Image.asset(
-                'assets/images/avatars/avatar_$avatarNumb.png',
-                fit: BoxFit.fill,
-            ),
+          CustromCircleAvatar(
+            imageUrl: 'assets/images/avatars/avatar_$avatarNumb.png',
+            contSize: 120,
           ),
+
+          // Container(
+          //   decoration: BoxDecoration(
+          //     color: Colors.white,
+          //     shape: BoxShape.circle,
+          //     image: DecorationImage(
+          //       image: AssetImage(
+          //         'assets/images/avatars/avatar_$avatarNumb.png',
+          //       ),
+          //       fit: BoxFit.fitHeight,
+          //       // alignment: Alignment.bottomCenter
+          //     ),
+          //   ),
+          //   width: 120,
+          //   height: 120,
+          // ),
+
+          // Container(
+          //   width: contWidth,
+          //   height: contWidth*0.935,  //115
+          //   decoration: BoxDecoration(
+          //       borderRadius: BorderRadius.circular(17)
+          //   ),
+          //   child: Image.asset(
+          //       'assets/images/avatars/avatar_$avatarNumb.png',
+          //       fit: BoxFit.fill,
+          //   ),
+          // ),
 
           Padding(
             padding: const EdgeInsets.only(top: 20),

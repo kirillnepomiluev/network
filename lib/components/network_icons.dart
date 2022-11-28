@@ -1,20 +1,22 @@
-// Place fonts/Network.ttf in your fonts/ directory and
+// Place fonts/NetworkIcons.ttf in your fonts/ directory and
 // add the following to your pubspec.yaml
 // flutter:
 //   fonts:
-//    - family: Network
+//    - family: NetworkIcons
 //      fonts:
-//       - asset: fonts/Network.ttf
+//       - asset: fonts/NetworkIcons.ttf
 // ignore_for_file: constant_identifier_names
-
 
 import 'package:flutter/widgets.dart';
 
-class Network {
-  Network._();
+class NetworkIcons {
+  NetworkIcons._();
 
-  static const String _fontFamily = 'Network';
+  static const String _fontFamily = 'NetworkIcons';
 
+  static const IconData arrow_long_left = IconData(0xe900, fontFamily: _fontFamily);
+  static const IconData arrow_long_right = IconData(0xe922, fontFamily: _fontFamily);
+  static const IconData edit = IconData(0xe921, fontFamily: _fontFamily);
   static const IconData smile_dead = IconData(0xe91f, fontFamily: _fontFamily);
   static const IconData smile_wave = IconData(0xe920, fontFamily: _fontFamily);
   static const IconData pencil = IconData(0xe91e, fontFamily: _fontFamily);
@@ -30,7 +32,6 @@ class Network {
   static const IconData sol = IconData(0xe917, fontFamily: _fontFamily);
   static const IconData bitcoin = IconData(0xe918, fontFamily: _fontFamily);
   static const IconData arrow_back = IconData(0xe912, fontFamily: _fontFamily);
-  static const IconData arrow_right_long = IconData(0xe900, fontFamily: _fontFamily);
   static const IconData call = IconData(0xe901, fontFamily: _fontFamily);
   static const IconData cart = IconData(0xe902, fontFamily: _fontFamily);
   static const IconData chat = IconData(0xe903, fontFamily: _fontFamily);

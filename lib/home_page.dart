@@ -8,9 +8,7 @@ import 'package:network_app/components/network_icons.dart';
 import 'package:network_app/profile/profile_page.dart';
 import 'package:network_app/store/store_page.dart';
 import 'package:network_app/wallet/walltet_page.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'dart:ui' as ui;
 
 class HomePage extends StatefulWidget {
   final bool isCupboard;
@@ -37,7 +35,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final mediaWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       extendBody: true,
@@ -76,7 +73,7 @@ class _HomePageState extends State<HomePage> {
               // side:  BorderSide(width: 3),
             ),
             padding: EdgeInsets.zero,
-            itemPadding: EdgeInsets.symmetric(
+            itemPadding: const EdgeInsets.symmetric(
                 vertical: 20,
                 horizontal: 20 //16
                 ),
@@ -87,11 +84,11 @@ class _HomePageState extends State<HomePage> {
               setState(() => _currentPage = index);
             },
             items: <BottomBarItem>[
-              barItem(icon: Network.people, text: 'Встречи'),
-              barItem(icon: Network.person, text: 'Профиль'),
-              barItem(icon: Network.wallet, text: 'Кошелек'),
-              barItem(icon: Network.cart, text: 'Магазин'),
-              barItem(icon: Network.chat, text: 'Чат'),
+              barItem(icon: NetworkIcons.people, text: 'Встречи'),
+              barItem(icon: NetworkIcons.person, text: 'Профиль'),
+              barItem(icon: NetworkIcons.wallet, text: 'Кошелек'),
+              barItem(icon: NetworkIcons.cart, text: 'Магазин'),
+              barItem(icon: NetworkIcons.chat, text: 'Чат'),
             ],
           ),
         ),
