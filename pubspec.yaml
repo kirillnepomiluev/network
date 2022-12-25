@@ -32,10 +32,11 @@ dependencies:
 
   flutter_localizations:
     sdk: flutter
+  intl:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
+  cupertino_icons:
   intl_phone_field:
   bottom_bar:
   percent_indicator:
@@ -43,14 +44,30 @@ dependencies:
   responsive_sizer:
   simple_circular_progress_bar:
   syncfusion_flutter_sliders:
-  table_calendar: ^3.0.8
+  table_calendar:
+  google_fonts:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  build_runner:
+  flutter_gen_runner:
 
+flutter_gen:
+  output: lib/generated/
+  style: camel-case
+  integrations:
+    flutter_svg: true
+
+flutter_intl:
+  enabled: true
+  main_locale: en
+  class_name: AppString
+  arb-dir: lib/l10n
+  template-arb-file: app_en.arb
+  output_dir: lib/generated
 
 flutter:
 
@@ -62,9 +79,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    - assets/images/circles/
     - assets/images/avatars/
-    - assets/icons/
+    - assets/images/hats/
+    - assets/images/icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -80,29 +97,29 @@ flutter:
   # example:
   fonts:
     - family: NetworkIcons
-      fonts:
-        - asset: assets/fonts/icons/NetworkIcons.ttf
-    - family: Inter
-      fonts:
-        - asset: assets/fonts/inter/Inter-Regular.otf
-        - asset: assets/fonts/inter/Inter-Black.otf
-        - asset: assets/fonts/inter/Inter-Bold.otf
-        - asset: assets/fonts/inter/Inter-BlackItalic.otf
-        - asset: assets/fonts/inter/Inter-BoldItalic.otf
-        - asset: assets/fonts/inter/Inter-ExtraBold.otf
-        - asset: assets/fonts/inter/Inter-ExtraBoldItalic.otf
-        - asset: assets/fonts/inter/Inter-ExtraLight.otf
-        - asset: assets/fonts/inter/Inter-ExtraLightItalic.otf
-        - asset: assets/fonts/inter/Inter-Italic.otf
-        - asset: assets/fonts/inter/Inter-Light.otf
-        - asset: assets/fonts/inter/Inter-LightItalic.otf
-        - asset: assets/fonts/inter/Inter-Medium.otf
-        - asset: assets/fonts/inter/Inter-MediumItalic.otf
-        - asset: assets/fonts/inter/Inter-SemiBold.otf
-        - asset: assets/fonts/inter/Inter-SemiBoldItalic.otf
-        - asset: assets/fonts/inter/Inter-Thin.otf
-        - asset: assets/fonts/inter/Inter-ThinItalic.otf
-        - asset: assets/fonts/inter/Inter-V.ttf
+#      fonts:
+#        - asset: assets/fonts/icons/NetworkIcons.ttf
+#    - family: Inter
+#      fonts:
+#        - asset: assets/fonts/inter/Inter-Regular.otf
+#        - asset: assets/fonts/inter/Inter-Black.otf
+#        - asset: assets/fonts/inter/Inter-Bold.otf
+#        - asset: assets/fonts/inter/Inter-BlackItalic.otf
+#        - asset: assets/fonts/inter/Inter-BoldItalic.otf
+#        - asset: assets/fonts/inter/Inter-ExtraBold.otf
+#        - asset: assets/fonts/inter/Inter-ExtraBoldItalic.otf
+#        - asset: assets/fonts/inter/Inter-ExtraLight.otf
+#        - asset: assets/fonts/inter/Inter-ExtraLightItalic.otf
+#        - asset: assets/fonts/inter/Inter-Italic.otf
+#        - asset: assets/fonts/inter/Inter-Light.otf
+#        - asset: assets/fonts/inter/Inter-LightItalic.otf
+#        - asset: assets/fonts/inter/Inter-Medium.otf
+#        - asset: assets/fonts/inter/Inter-MediumItalic.otf
+#        - asset: assets/fonts/inter/Inter-SemiBold.otf
+#        - asset: assets/fonts/inter/Inter-SemiBoldItalic.otf
+#        - asset: assets/fonts/inter/Inter-Thin.otf
+#        - asset: assets/fonts/inter/Inter-ThinItalic.otf
+#        - asset: assets/fonts/inter/Inter-V.ttf
 
     - family: Gilroy
       fonts:
