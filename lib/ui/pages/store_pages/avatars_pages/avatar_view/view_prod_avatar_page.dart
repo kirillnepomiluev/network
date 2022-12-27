@@ -4,6 +4,7 @@ import 'package:network_app/ui/pages/home/home_page.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ViewProdAvatarPage extends StatefulWidget {
@@ -219,7 +220,7 @@ void openSuccessSheet({required BuildContext context,}) {
 
               const Padding(
                 padding: EdgeInsets.only(top: 60),
-                child: BuildRichTextTwo(
+                child: RichTextTwo(
                     text1: 'Оплата прошла ',
                     text2: 'успешно',
                     // fontSize: 20,

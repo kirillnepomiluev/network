@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/home/home_page.dart';
+import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
+import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -139,7 +141,7 @@ class _MeetingParametersState extends State<MeetingParameters> {
 
                   const Padding(
                     padding: EdgeInsets.only(top: 20, bottom: 20),
-                    child: BuildRichTextTwo(
+                    child: RichTextTwo(
                       text1: 'Вы можете указать ',
                       text2: '3 сферы деятельности',
                       fontSize: 10,
@@ -184,7 +186,7 @@ class _MeetingParametersState extends State<MeetingParameters> {
 
                   const Padding(
                     padding: EdgeInsets.only(top: 20, bottom: 20),
-                    child: BuildRichTextTwo(
+                    child: RichTextTwo(
                       text1: 'Вы можете указать ',
                       text2: 'до 10 интересов',
                       fontSize: 10,

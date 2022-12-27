@@ -1,3 +1,5 @@
 {
-  "signIn": "Войти"
+  "signIn": "Войти",
+  "mainThingInRelationsIs": "Главное в связах\n - это",
+  "relations": "связи"
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
+import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -144,7 +145,7 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                         padding: const EdgeInsets.symmetric(vertical: 26, horizontal: 18),
                         child:
-                        BuildRichTextTwo(text1: 'Выберете ', text2: 'интересы', fontSize: 20.sp, fontWeight1: FontWeight.w500, fontWeight2: FontWeight.w500,),
+                        RichTextTwo(text1: 'Выберете ', text2: 'интересы', fontSize: 20.sp, fontWeight1: FontWeight.w500, fontWeight2: FontWeight.w500,),
                       ),
                     ),
 

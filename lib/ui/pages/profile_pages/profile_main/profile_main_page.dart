@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/pages/store_pages/avatars_pages/avatar_category/view_category_avatar_page.dart';
+import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/choose_status.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
@@ -9,6 +10,7 @@ import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/widgets/choose_interests.dart';
 import 'package:network_app/ui/pages/store_pages/store_main/store_main_page.dart';
 import 'package:network_app/ui/pages/store_pages/hat_pages/hat_category/view_category_hats.dart';
+import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ProfileMainPage extends StatefulWidget {
@@ -780,7 +782,7 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
 
                         const Padding(
                           padding: EdgeInsets.only(top: 20),
-                          child: BuildRichTextTwo(
+                          child: RichTextTwo(
                             text1: 'Вы можете указать ',
                             text2: '3 сферы деятельности',
                             fontSize: 10,

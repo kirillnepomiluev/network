@@ -76,10 +76,6 @@ void showSimpleDialog(
 Widget simpleDialog(
     String title, String text, BuildContext context, bool barrier) {
   return AlertDialog(
-    // shape: RoundedRectangleBorder(
-    //   borderRadius: BorderRadius.circular(5),
-    //   side: const BorderSide(color: locusYellow, width: 3),
-    // ),
     actionsPadding: const EdgeInsets.only(right: 20, bottom: 10),
     title: Text(title,
         textAlign: TextAlign.center,
@@ -147,6 +143,11 @@ double getResSize(num value) {
     case 32:
       responSize = 24.sp;
       break;
+    case 57:
+      responSize = 30.sp;
+      break;
+
+
   }
 
   return responSize;

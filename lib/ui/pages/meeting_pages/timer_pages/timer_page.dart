@@ -7,6 +7,7 @@ import 'package:network_app/ui/pages/meeting_pages/timer_pages/rate_page.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
@@ -370,7 +371,7 @@ class _TimerPageState extends State<TimerPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
 
-                BuildRichTextTwo(
+                RichTextTwo(
                   text1: 'Вы уверены, что хотите\n',
                   text2: 'прервать встречу',
                   fontSize:  17.5.sp,
@@ -473,7 +474,7 @@ class _TimerPageState extends State<TimerPage> {
                     ),
 
 
-                    BuildRichTextTwo(
+                    RichTextTwo(
                       text1: 'Если у вас возникли проблемы\nвы можете ',
                       text2: 'оставить жалобу',
                       fontSize:  17.5.sp,
@@ -565,7 +566,7 @@ class _TimerPageState extends State<TimerPage> {
 
                     const Padding(
                       padding: EdgeInsets.only(top: 63),
-                      child: BuildRichTextTwo(
+                      child: RichTextTwo(
                         // fontSize: 20,
                         text1: 'Вы получили\n',
                         text2: 'токены за встречу',
@@ -732,7 +733,7 @@ void openBottomSheetComplain({
 
                   Padding(padding: const EdgeInsets.only(top: 69),
                       child:
-                      BuildRichTextTwo(
+                      RichTextTwo(
                         // fontSize: 20,
                         text1: text1,
                         text2: text2,

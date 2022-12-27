@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
+import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ExchangePage extends StatefulWidget {
@@ -52,7 +53,7 @@ class _ExchangePageState extends State<ExchangePage> {
                             top: 30.sp     //47
                         ),
                         child:
-                        const BuildRichTextTwo(
+                        const RichTextTwo(
                           text1: 'Обмен\n',
                           text2: 'успешно выполнен',
                           // color1: ConstColor.salad100,

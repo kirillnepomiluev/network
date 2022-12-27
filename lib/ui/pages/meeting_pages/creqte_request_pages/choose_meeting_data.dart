@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/constants.dart';

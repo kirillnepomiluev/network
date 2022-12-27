@@ -46,6 +46,7 @@ dependencies:
   syncfusion_flutter_sliders:
   table_calendar:
   google_fonts:
+  pinput:
 
 dev_dependencies:
   flutter_test:
@@ -97,8 +98,8 @@ flutter:
   # example:
   fonts:
     - family: NetworkIcons
-#      fonts:
-#        - asset: assets/fonts/icons/NetworkIcons.ttf
+      fonts:
+        - asset: assets/fonts/icons/NetworkIcons.ttf
 #    - family: Inter
 #      fonts:
 #        - asset: assets/fonts/inter/Inter-Regular.otf

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/timer_page.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class QuestionsPage extends StatefulWidget {
@@ -145,7 +146,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                         children: [
                           const Padding(
                               padding: EdgeInsets.only(top: 49),
-                              child: BuildRichTextTwo(
+                              child: RichTextTwo(
                                 text1: 'Поздравляем, ',
                                 color1: ConstColor.salad100,
                                 // fontWeight1: FontWeight.w600,

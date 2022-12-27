@@ -3,6 +3,7 @@ import 'package:network_app/ui/pages/meeting_pages/timer_pages/rate_final_page.d
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -44,7 +45,7 @@ class _RatePageState extends State<RatePage> {
                   padding: EdgeInsets.only(top: 59),    //30
                   child:
 
-                    BuildRichTextTwo(
+                    RichTextTwo(
                       text1: 'Как прошла ',
                       text2: 'встреча?',
                       color1: ConstColor.salad100,

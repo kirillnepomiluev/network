@@ -1,10 +1,9 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/generated/assets.gen.dart';
-import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/phone_auth_page.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/pages/meeting_pages/notifications/notifications_page.dart';
+import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'dart:ui' as ui;
@@ -228,144 +227,65 @@ class _HobbySelectedState extends State<HobbySelected> {
 }
 
 
-class EnterInfoContainer extends StatelessWidget {
-  final double padTop;
-  final String text1;
-  final String text2;
-  final String? description;
-  final int? maxLines;
-  final bool showDescription;
-  final double? fontSize;
-  final FontWeight fontWeight;
-  const EnterInfoContainer(
-      {Key? key,
-        required this.text1,
-        required this.text2,
-        this.maxLines,
-        this.description,
-        this.showDescription = true,
-        required this.padTop,
-        this.fontSize,
-        this.fontWeight = FontWeight.w500
-      })
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: padTop),
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: ConstColor.white10,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        padding: const EdgeInsets.symmetric(vertical: 23, horizontal: 18),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            BuildRichTextTwo(
-              text1: text1,
-              text2: text2,
-              fontSize: fontSize?? 20.sp,
-              fontWeight1: fontWeight,
-              fontWeight2: fontWeight,
-            ),
-
-            if(showDescription)
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Text(
-                description ?? Constants.strLoremIpsum,
-                maxLines: maxLines,
-                style: TextStyle(
-                    fontSize: getResSize(14),
-                    fontWeight: FontWeight.w400
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-}
 
 
-class EnterRowContainer extends StatelessWidget {
-  final Function? func;
-  final IconData? icon;
-  final String iconName;
-  final String title;
-  const EnterRowContainer({Key? key, this.icon, this.iconName='', required this.title, this.func}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return  InkWell(
-      onTap: (() {
-        if(func==null){
-          Navigator.of(context).push(MaterialPageRoute<void>(
-              builder: (context) => const PhoneAuthPage()));
-        }
-        else{
-          func!();
-        }
-      }),
-      child: Container(
-          decoration: BoxDecoration(
-            color: ConstColor.white10,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Row(
-            children: [
-              Padding(
-                  padding: const EdgeInsets.only(
-                    top: 4,
-                    bottom: 4,
-                    left: 4,
-                    right: 24, //24
-                  ),
-                  child: Container(
-                    width: 54,
-                    height: 54,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(13)),
-                    child: icon != null
-                        ? Icon(icon,
-                        color: Colors.black, size: 21)
-                        : Padding(
-                      padding: const EdgeInsets.all(17),
-                      child:
-                      // iconName=='logo_facebook'
-                      //     ? Assets.images.icons.logoFacebook.image(
-                      //     width: 21.sp, //24
-                      //     height: 21.sp,)
-                      //     : Assets.images.icons.logoGoogle.image(
-                      //     width: 21.sp, //24
-                      //     height: 21.sp,
-                      // )
-                      Image.asset(
-                      iconName=='logo_facebook'? Assets.images.icons.logoFacebook.keyName :Assets.images.icons.logoGoogle.keyName,
-                        width: 21.sp, //24
-                        height: 21.sp,
-                      ),
-
-                    ),
-                  )),
-              Text(
-                title,
-                style: TextStyle(
-                    fontSize: getResSize(16), //16
-                    color: Colors.white,
-                    fontWeight: FontWeight.w400),
-              )
-            ],
-          )),
-    );
-  }
-}
+// class EnterRowContainer extends StatelessWidget {
+//   final VoidCallback onTap;
+//   final IconData? icon;
+//   final String iconName;
+//   final String title;
+//   const EnterRowContainer({Key? key, this.icon, this.iconName='', required this.title, required this.onTap}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return  InkWell(
+//       onTap: onTap,
+//       child: Container(
+//           decoration: BoxDecoration(
+//             color: ConstColor.white10,
+//             borderRadius: BorderRadius.circular(15),
+//           ),
+//           child: Row(
+//             children: [
+//               Padding(
+//                   padding: const EdgeInsets.only(
+//                     top: 4,
+//                     bottom: 4,
+//                     left: 4,
+//                     right: 24, //24
+//                   ),
+//                   child: Container(
+//                     width: 54,
+//                     height: 54,
+//                     decoration: BoxDecoration(
+//                         color: Colors.white,
+//                         borderRadius: BorderRadius.circular(13)),
+//                     child: icon != null
+//                         ? Icon(icon,
+//                         color: Colors.black, size: 21)
+//                         : Padding(
+//                       padding: const EdgeInsets.all(17),
+//                       child:
+//                       Image.asset(
+//                       iconName=='logo_facebook'? Assets.images.icons.logoFacebook.keyName :Assets.images.icons.logoGoogle.keyName,
+//                         width: 21.sp, //24
+//                         height: 21.sp,
+//                       ),
+//
+//                     ),
+//                   )),
+//               Text(
+//                 title,
+//                 style: TextStyle(
+//                     fontSize: getResSize(16), //16
+//                     color: Colors.white,
+//                     fontWeight: FontWeight.w400),
+//               )
+//             ],
+//           )),
+//     );
+//   }
+// }
 
 
 
@@ -411,7 +331,7 @@ class IconContainer extends StatelessWidget {
 }
 
 class BackButtonCustom extends StatelessWidget {
-  final Function? func;
+  final VoidCallback? func;
   final Color? contColor;
   const BackButtonCustom({Key? key, this.func, this.contColor}) : super(key: key);
 
@@ -558,7 +478,7 @@ Widget progressParametr(
                 : Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      BuildRichTextTwo(
+                      RichTextTwo(
                         text1: text1,
                         text2: text2,
                         fontSize: fontSize,
@@ -774,59 +694,6 @@ ButtonStyle buttonStyleCustom({
       ),
     );
 
-class BuildRichTextTwo extends StatelessWidget {
-  final String text1;
-  final String text2;
-  final double fontSize;
-  final FontWeight fontWeight1;
-  final FontWeight fontWeight2;
-  final Color color1;
-  final Color color2;
-  final TextAlign textAlign;
-
-  const BuildRichTextTwo({
-    Key? key,
-    this.text1 = '',
-    this.text2 = '',
-    this.fontSize = 20,
-    // this.fontWeight1 = FontWeight.w400,
-    // this.fontWeight2 = FontWeight.w700,
-
-    this.fontWeight1 = FontWeight.w600,
-    this.fontWeight2 = FontWeight.w600,
-    this.color1 = ConstColor.textWhite,
-    this.color2 = ConstColor.salad100,
-    this.textAlign = TextAlign.start,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return RichText(
-      textAlign: textAlign,
-      maxLines: 2,
-      overflow: TextOverflow.ellipsis,
-      text: TextSpan(
-        style: TextStyle(
-          color: color1,
-          fontSize: fontSize, // 20.sp, //24
-          fontWeight: fontWeight1,
-        ),
-        children: <TextSpan>[
-          TextSpan(
-            text: text1,
-          ),
-          TextSpan(
-              text: text2,
-              style: TextStyle(
-                fontWeight: fontWeight2,
-                color: color2,
-              )),
-        ],
-      ),
-      // minFontSize: 14,
-    );
-  }
-}
 
 class StatColumn extends StatelessWidget {
   final bool ifProfileSheet;
@@ -842,7 +709,7 @@ class StatColumn extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const BuildRichTextTwo(
+            const RichTextTwo(
               text1: 'Уровень ',
               text2: 'Базовый',
             ),
@@ -875,7 +742,7 @@ class StatColumn extends StatelessWidget {
         const SizedBox(height: 15,),
 
         if(ifProfileSheet)
-          const BuildRichTextTwo(
+          const RichTextTwo(
             text1: 'До следущего уровня осталось\nнабрать ',
             text2: '1500 токенов',
             fontSize: 14,

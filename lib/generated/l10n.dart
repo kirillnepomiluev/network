@@ -59,6 +59,26 @@ class AppString {
       args: [],
     );
   }
+
+  /// `Главное в связах\n - это`
+  String get mainThingInRelationsIs {
+    return Intl.message(
+      'Главное в связах\n - это',
+      name: 'mainThingInRelationsIs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `связи`
+  String get relations {
+    return Intl.message(
+      'связи',
+      name: 'relations',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppString> {

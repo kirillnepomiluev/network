@@ -3,8 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/pages/auth_pages/start/start_page.dart';
-// ignore: unused_import
+import 'package:network_app/ui/pages/auth_pages/start/start_view.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -27,12 +26,8 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: AppString.delegate.supportedLocales,
-            // supportedLocales: const [
-            //   Locale('ru', 'RU'), // English, no country code
-            //   Locale('en', 'EN'), // English, no country code
-            // ],
             // home: const HomePage(initIndex: 1,),
-            home: const StartPage(),
+            home: const StartView(),
           );
         },
       );
@@ -58,7 +53,8 @@ final _themeData = ThemeData(
     appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
     textTheme: TextTheme(
       //          style: Theme.of(context).textTheme.headline6!.copyWith(color: Colors.black,fontSize: 12,fontWeight: FontWeight.w300)),
-        bodyText2: _defaultTextStyle
+        bodyText1: _defaultTextStyle,
+        bodyText2: _defaultTextStyle,
     ),
     scaffoldBackgroundColor: ConstColor.blackBack
 );

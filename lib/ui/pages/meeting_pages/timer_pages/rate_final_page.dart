@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/home/home_page.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 // ignore: depend_on_referenced_packages
 
@@ -81,7 +82,7 @@ class _RateFinalPageState extends State<RateFinalPage> {
                     ),
                     child:
 
-                    const BuildRichTextTwo(
+                    const RichTextTwo(
                       text1: 'Дайте оценку\n',
                       text2: 'каждой категории',
                       fontWeight1: FontWeight.w500,
@@ -404,7 +405,7 @@ Widget interruptDialog(BuildContext context) {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
 
-            const BuildRichTextTwo(
+            const RichTextTwo(
               text1: 'Вы уверены, что хотите\n',
               text2: 'прервать встречу',
               fontSize: 16,

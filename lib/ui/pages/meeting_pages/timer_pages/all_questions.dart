@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/questions_page.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AllQuestionsPage extends StatefulWidget {
@@ -37,7 +38,7 @@ class _AllQuestionsPageState extends State<AllQuestionsPage> {
 
                 const Padding(
                   padding: EdgeInsets.only(top: 35),
-                  child: BuildRichTextTwo(
+                  child: RichTextTwo(
                     text1: 'Вам необходимо ответить\nна ',
                     text2: '10 вопросов',
                   ),
