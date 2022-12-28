@@ -25,8 +25,7 @@ class LoginView extends StatelessWidget {
                   Positioned(
                       bottom: 17.sp,
                       right: 17.sp,
-                      child: TroubleLoginTextLink(
-                          onTroubleEnterTap: model.onTroubleLoginTap)),
+                      child: TroubleLoginTextLink(onTroubleEnterTap: model.onTroubleLoginTap)),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

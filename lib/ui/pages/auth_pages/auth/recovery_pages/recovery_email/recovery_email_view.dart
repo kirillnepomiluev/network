@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/recovery_pages/recovery_email/recovery_email_vm.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/recovery_pages/recovery_email/widgets/email_field.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
@@ -26,11 +27,11 @@ class RecoveryEmailView extends StatelessWidget {
                     const SizedBox(height: 10,),
                     const BackButtonCustom(),
 
-                    const EnterInfoContainer(
+                    EnterInfoContainer(
                       padTop: 32,
-                      text1: 'Введите адрес ',
-                      text2: 'электронной почты',
-                      description: 'Чтобы восстановить доступ\nк своему аккаунту',
+                      text1: '${AppString.of(context).inputAddress} ',
+                      text2: AppString.of(context).ofEmail,
+                      description: AppString.of(context).toRecoveryAccess,
                     ),
 
                     const SizedBox(height: 36,),
@@ -39,7 +40,7 @@ class RecoveryEmailView extends StatelessWidget {
 
                     AppButton(
                         onPressed: model.onSendTap,
-                        text: 'Восстановить доступ'
+                        text: AppString.of(context).recoveryAccess
                     ),
 
                   ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/pages/meeting_pages/matching/matching_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -33,16 +33,16 @@ class _InvitationsPageState extends State<InvitationsPage> {
           padding: EdgeInsets.all(0.0373 * mediaWidth), //14
           decoration: BoxDecoration(
             color: _activeTab == position
-                ? ConstColor.salad100
-                : ConstColor.white10,
+                ? AppColors.salad100
+                : AppColors.white10,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Text(
             text,
             style: TextStyle(
                 color: _activeTab == position
-                    ? ConstColor.textBlack
-                    : ConstColor.textWhite,
+                    ? AppColors.textBlack
+                    : AppColors.textWhite,
                 fontSize: 15.5.sp, //12
                 fontWeight: FontWeight.w600),
           ),
@@ -130,7 +130,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
             vertical: 0.056 * mediaWidth * 1.238 //26
             ),
         decoration: BoxDecoration(
-          color: ConstColor.white10,
+          color: AppColors.white10,
           borderRadius: BorderRadius.circular(30),
         ),
         child: Column(
@@ -148,7 +148,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                       EdgeInsets.symmetric(horizontal: 0.0453 * mediaWidth //17
                           ),
                   decoration: BoxDecoration(
-                    color: ConstColor.white10,
+                    color: AppColors.white10,
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Center(
@@ -169,7 +169,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                         style: TextStyle(
                           fontSize: 16.5.sp, //14
                           fontWeight: FontWeight.w400,
-                          color: ConstColor.grey3,
+                          color: AppColors.grey3,
                         ),
                       )
                     :
@@ -214,7 +214,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                                 horizontal: showVerified? 17 : 13
                               ),
                               decoration: BoxDecoration(
-                                color: showVerified? ConstColor.white10 : ConstColor.salad100,
+                                color: showVerified? AppColors.white10 : AppColors.salad100,
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child:
@@ -253,7 +253,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                                   Text(
                                     'Готов к встрече',
                                     style: TextStyle(
-                                        color: ConstColor.textBlack,
+                                        color: AppColors.textBlack,
                                         fontSize: 15.5.sp, //12
                                         fontWeight: FontWeight.w600
                                     ),
@@ -311,7 +311,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                     padding: const EdgeInsets.only(left: 5.75),
                     child: Icon(
                       Icons.verified,
-                      color: ConstColor.salad100,
+                      color: AppColors.salad100,
                       size: 18.sp, //17
                     ),
                   ),
@@ -334,7 +334,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                     '+150 токенов',
                     style: TextStyle(
                         fontSize: 16.5.sp, //14
-                        color: ConstColor.salad100,
+                        color: AppColors.salad100,
                         fontWeight: FontWeight.w400),
                   ),
                 ],
@@ -363,7 +363,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                           children: [
                             Container(
                               decoration: const BoxDecoration(
-                                  color: ConstColor.salad100,
+                                  color: AppColors.salad100,
                                   shape: BoxShape.circle
                               ),
                               width: 0.048 * mediaWidth, //18
@@ -379,7 +379,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                               child: Text(
                                 '250 м',
                                 style: TextStyle(
-                                  color: ConstColor.salad100,
+                                  color: AppColors.salad100,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 19.5.sp //20
                                     ),
@@ -399,14 +399,14 @@ class _InvitationsPageState extends State<InvitationsPage> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(37),
                           color: Colors.transparent,
-                          border: Border.all(color: ConstColor.salad100)
+                          border: Border.all(color: AppColors.salad100)
                         ),
                         width: mediaWidth * 0.176, //66
                         height: mediaWidth * 0.176 * 1.394, //92
                         child:
                         Icon(
                           NetworkIcons.arrow_long_right,
-                          color: ConstColor.salad100,
+                          color: AppColors.salad100,
                           size: 16.sp,
                         ),
 

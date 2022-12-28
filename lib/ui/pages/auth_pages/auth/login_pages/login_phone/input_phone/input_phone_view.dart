@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_phone/input_phone_vm.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_phone/widgets/input_phone_field.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
@@ -7,6 +8,7 @@ import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
+import 'package:network_app/utils/responsive_utils.dart';
 
 
 class InputPhoneView extends StatelessWidget {
@@ -26,14 +28,14 @@ class InputPhoneView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: getResSize(10),
+                      const SizedBox(
+                        height: 10,
                       ),
                       BackButtonCustom(
                         func: model.goBack,
                       ),
                       SizedBox(
-                        height: getResSize(32),
+                        height: ResponsiveUtils.getResSize(32),
                       ),
 
                       AppContainer(
@@ -42,11 +44,12 @@ class InputPhoneView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             RichTextTwo(
-                                text1: 'Введите ',
-                                text2: 'ваш номер',
-                                fontSize: getResSize(21)), //24
+                                // text1: 'Введите ',
+                                text1: '${AppString.of(context).input} ',
+                                text2: AppString.of(context).yourPhoneNumber,
+                                fontSize: ResponsiveUtils.getResSize(21)), //24
                             SizedBox(
-                              height: getResSize(20),
+                              height: ResponsiveUtils.getResSize(20),
                             ),
                             InputPhoneField(
                               formstate: model.formstate,
@@ -64,7 +67,7 @@ class InputPhoneView extends StatelessWidget {
                         height: 45,
                       ),
 
-                      AppButton(onPressed: model.getOTP, text: 'Отправить код')
+                      AppButton(onPressed: model.getOTP, text: AppString.of(context).sendCode)
 
                     ],
                   ),

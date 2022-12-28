@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/constants.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class TroubleLoginTextLink extends StatelessWidget {
-  final VoidCallback onTroubleEnterTap;
+  final Function(BuildContext context) onTroubleEnterTap;
   const TroubleLoginTextLink({Key? key, required this.onTroubleEnterTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTroubleEnterTap,
+      onTap: (){
+        onTroubleEnterTap(context);
+      },
       child: SizedBox(
         height: 23.sp, //30
         width: 55.5.sp, //160
@@ -22,11 +24,7 @@ class TroubleLoginTextLink extends StatelessWidget {
               bottom: 10,
               child: Text(
                 'Проблемы со входом?',
-                style: TextStyle(
-                    color: ConstColor.textGray,
-                    fontSize: 16.5.sp, //14
-                    fontWeight: FontWeight.w500
-                ),
+                style: AppTextStyles.grayPrimary500,
               ),
             ),
             Positioned(
@@ -34,11 +32,7 @@ class TroubleLoginTextLink extends StatelessWidget {
               bottom: 0,
               child: Text(
                 '_____________________________',
-                style: TextStyle(
-                    color: ConstColor.textGray,
-                    fontSize: 15.5.sp, //12
-                    fontWeight: FontWeight.bold
-                ),
+                style: AppTextStyles.gray12b,
               ),
             )
           ],

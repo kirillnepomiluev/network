@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/chat_pages/chat/chat_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -48,7 +48,7 @@ class _MatchingPageState extends State<MatchingPage> {
                         child:
                         IconContainer(
                           icon: NetworkIcons.electric,
-                          contColor: ConstColor.salad100,
+                          contColor: AppColors.salad100,
                           iconSize: 18.sp,
                           contSize: 48,
                           iconColor: Colors.black,
@@ -70,7 +70,7 @@ class _MatchingPageState extends State<MatchingPage> {
                         horizontal: 17
                     ),
                     decoration: BoxDecoration(
-                        color: ConstColor.white10,
+                        color: AppColors.white10,
                         borderRadius: BorderRadius.circular(20)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,7 +79,7 @@ class _MatchingPageState extends State<MatchingPage> {
                         Text(
                           '92% совпадений',
                           style: TextStyle(
-                            color: ConstColor.salad100,
+                            color: AppColors.salad100,
                             fontSize: 21.5.sp, //24
                             fontWeight: FontWeight.w600,
                           ),
@@ -92,14 +92,14 @@ class _MatchingPageState extends State<MatchingPage> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 13, horizontal: 15),
                             decoration: BoxDecoration(
-                              color: ConstColor.salad100,
+                              color: AppColors.salad100,
                               borderRadius: BorderRadius.circular(15),
                             ),
                             child: Text(
                               'Деловая встреча',
                               style: TextStyle(
                                   fontSize: 15.5.sp, //12
-                                  color: ConstColor.textBlack,
+                                  color: AppColors.textBlack,
                                   fontWeight: FontWeight.w400
                               ),
                             ),
@@ -325,7 +325,7 @@ class _MatchingPageState extends State<MatchingPage> {
                         child: Text(
                           'Начать чат',
                           style: TextStyle(
-                            color: ConstColor.textBlack,
+                            color: AppColors.textBlack,
                               fontSize: 17.5.sp, //16
                             fontWeight: FontWeight.w500
                           ),
@@ -359,7 +359,7 @@ class _MatchingPageState extends State<MatchingPage> {
       width: contSize,
       height: contSize*0.74,      //112
       decoration: BoxDecoration(
-          color: ConstColor.salad100,
+          color: AppColors.salad100,
           borderRadius: BorderRadius.circular(22)),
       child: Center(
         child: Text(
@@ -443,7 +443,7 @@ class _MatchingPageState extends State<MatchingPage> {
                   padding: const EdgeInsets.only(left: 6, bottom: 2),
                   child: Icon(
                     Icons.verified,
-                    color: ConstColor.salad100,
+                    color: AppColors.salad100,
                     size: 17.sp, //14
                   ),
                 ),

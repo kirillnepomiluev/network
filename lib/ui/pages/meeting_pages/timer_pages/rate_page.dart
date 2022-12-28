@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/rate_final_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -48,8 +48,8 @@ class _RatePageState extends State<RatePage> {
                     RichTextTwo(
                       text1: 'Как прошла ',
                       text2: 'встреча?',
-                      color1: ConstColor.salad100,
-                      color2: ConstColor.textWhite,
+                      color1: AppColors.salad100,
+                      color2: AppColors.textWhite,
                       // fontSize: 20,
                     )
                 ),
@@ -60,7 +60,7 @@ class _RatePageState extends State<RatePage> {
                   child: Icon(
                     NetworkIcons.smile_wave,
                     size: 100,
-                    color: ConstColor.salad100,
+                    color: AppColors.salad100,
                   ),
                 ),
 
@@ -114,7 +114,7 @@ class _RatePageState extends State<RatePage> {
                           child: Text(
                             'Далее',
                             style: TextStyle(
-                                color: ConstColor.textBlack,
+                                color: AppColors.textBlack,
                                 fontSize: 17.5.sp,   //16
                                 fontWeight: FontWeight.w500
 

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/assets.gen.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/store_pages/avatars_pages/avatar_category/view_category_avatar_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/choose_status.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/widgets/choose_interests.dart';
@@ -48,7 +49,7 @@ class _ProfileMainPageState extends State<ProfileMainPage> {
         }),
         child: BlurryContainer(
           blur: 20,
-          color: ConstColor.white10,
+          color: AppColors.white10,
           borderRadius: BorderRadius.circular(20),
           // height: 56,
           padding: EdgeInsets.symmetric(
@@ -73,7 +74,7 @@ class _ProfileMainPageState extends State<ProfileMainPage> {
                   text,
                   style: TextStyle(
                       color: _activeTab == position
-                          ? ConstColor.salad100
+                          ? AppColors.salad100
                           : Colors.white,
                       fontSize: 16.5.sp, //14
                       fontWeight: FontWeight.w500),
@@ -84,7 +85,7 @@ class _ProfileMainPageState extends State<ProfileMainPage> {
                 child: _activeTab == position
                     ? Icon(
                         Icons.keyboard_arrow_down,
-                        color: ConstColor.salad100,
+                        color: AppColors.salad100,
                         size: 19.sp, //20
                       )
                     : Icon(
@@ -262,7 +263,7 @@ class _ProfileMainPageState extends State<ProfileMainPage> {
                                             ),
                                         // padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                                         decoration: BoxDecoration(
-                                          color: ConstColor.salad100,
+                                          color: AppColors.salad100,
                                           borderRadius:
                                               BorderRadius.circular(15),
                                           // border: Border.all(width: _activeProfileTab == position ? 2 : 0)
@@ -292,7 +293,7 @@ class _ProfileMainPageState extends State<ProfileMainPage> {
                                               child: Text(
                                                 'Готов к встрече',
                                                 style: TextStyle(
-                                                    color: ConstColor.darkSalad,
+                                                    color: AppColors.darkSalad,
                                                     fontSize: 16.5.sp, //14
                                                     fontWeight:
                                                         FontWeight.w500),
@@ -703,7 +704,7 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                                    Icon(
                                      NetworkIcons.edit,
                                      size: 22,
-                                     color: ConstColor.salad100,
+                                     color: AppColors.salad100,
                                    )
                                  )
 
@@ -730,7 +731,7 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                                 width: 36,
                                 height: 36,
                                 decoration: BoxDecoration(
-                                    color: ConstColor.salad100,
+                                    color: AppColors.salad100,
                                     borderRadius: BorderRadius.circular(7)),
                                 child: IconButton(
                                   padding: EdgeInsets.zero,
@@ -766,7 +767,7 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                                   width: 36,
                                   height: 36,
                                   decoration: BoxDecoration(
-                                      color: ConstColor.salad100,
+                                      color: AppColors.salad100,
                                       borderRadius: BorderRadius.circular(7)),
                                   child: IconButton(
                                     padding: EdgeInsets.zero,
@@ -796,10 +797,10 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                           listOptions: ['Мужчина', 'Женщина'],
                         ),
 
-                        const Padding(
+                        Padding(
                             padding: EdgeInsets.only(top: 10),
                             child:
-                            CustomCheckListTile(title: 'Скрыть пол',)
+                            CustomCheckListTile(title: AppString.of(context).hideSex,)
                         ),
 
                         titleStatText('Возраст'),
@@ -810,7 +811,7 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 10),
                             decoration: BoxDecoration(
-                                color: ConstColor.salad100,
+                                color: AppColors.salad100,
                                 borderRadius:
                                 BorderRadius.circular(15)),
                             child: Row(
@@ -819,7 +820,7 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                                 Text(
                                   '37 лет',
                                   style: TextStyle(
-                                      color: ConstColor.textBlack,
+                                      color: AppColors.textBlack,
                                       fontWeight: FontWeight.w400,
                                       fontSize: 17.sp), //14
                                 ),

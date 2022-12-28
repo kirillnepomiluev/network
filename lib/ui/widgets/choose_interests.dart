@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/choose_status.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
+import 'package:network_app/utils/responsive_utils.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -27,7 +29,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
     textAlign: TextAlign.start,
     autofocus: false,
     style: TextStyle(
-      fontSize: getResSize(14),
+      fontSize: ResponsiveUtils.getResSize(14),
       // color: ConstColor.textWhite
     ),
     decoration: const InputDecoration(
@@ -123,7 +125,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                       const BackButtonCustom(),
                       Container(
                         decoration: BoxDecoration(
-                          color: ConstColor.white10,
+                          color: AppColors.white10,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         padding: const EdgeInsets.symmetric(
@@ -132,7 +134,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                         ),
                         child:Row(children: const [
                           Text('Пропустить'),
-                          Icon(Icons.close_rounded, color: ConstColor.salad100,)
+                          Icon(Icons.close_rounded, color: AppColors.salad100,)
                         ],)
                       ),
                   ],)
@@ -190,7 +192,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                       padding: const EdgeInsets.all(10),
                       height: 43,
                       decoration: BoxDecoration(
-                          color: ConstColor.white10,
+                          color: AppColors.white10,
                           borderRadius: BorderRadius.circular(15)
                       ),
                       child: Row(
@@ -206,7 +208,7 @@ class _ChooseInterestsPageState extends State<ChooseInterestsPage> {
                             child:
                             Icon(
                               NetworkIcons.search,
-                              size: getResSize(14),
+                              size: ResponsiveUtils.getResSize(14),
                               color: Colors.white,
                             ),
                           ),

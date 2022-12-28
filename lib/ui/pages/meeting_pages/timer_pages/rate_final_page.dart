@@ -1,8 +1,8 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/home/home_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 // ignore: depend_on_referenced_packages
@@ -87,8 +87,8 @@ class _RateFinalPageState extends State<RateFinalPage> {
                       text2: 'каждой категории',
                       fontWeight1: FontWeight.w500,
                       fontWeight2: FontWeight.w500,
-                      color1: ConstColor.salad100,
-                      color2: ConstColor.textWhite,
+                      color1: AppColors.salad100,
+                      color2: AppColors.textWhite,
                       textAlign: TextAlign.center,
                     )
 
@@ -174,7 +174,7 @@ class _RateFinalPageState extends State<RateFinalPage> {
                             child: Text(
                               'Оценить',
                               style: TextStyle(
-                                  color: ConstColor.textBlack,
+                                  color: AppColors.textBlack,
                                   fontSize: 17.5.sp,   //16
                                   fontWeight: FontWeight.w500
 
@@ -200,7 +200,7 @@ Widget sliderContainer({required String title}) => Container(
       // height: 166,
       padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 20),
       decoration: BoxDecoration(
-          color: ConstColor.white10,
+          color: AppColors.white10,
           borderRadius: BorderRadius.circular(15)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -238,7 +238,7 @@ Widget sliderContainer({required String title}) => Container(
 
                 Padding(
                   padding: EdgeInsets.only(top: 32),
-                  child: AddCommentRow(color: ConstColor.grey),
+                  child: AddCommentRow(color: AppColors.grey),
                 )
 
               ],
@@ -288,7 +288,7 @@ class _AddCommentRowState extends State<AddCommentRow> {
             child: Icon(
               Icons.chat_bubble_outline,
               size: 20.sp, //22
-              color: ConstColor.salad100,
+              color: AppColors.salad100,
             ),
           ),
 
@@ -332,7 +332,7 @@ class _AddCommentRowState extends State<AddCommentRow> {
             ),
             enabledBorder:
             OutlineInputBorder(
-                borderSide: const BorderSide(width: 1, color: ConstColor.salad100),
+                borderSide: const BorderSide(width: 1, color: AppColors.salad100),
                 // borderRadius: BorderRadius.only(topLeft: Radius.circular(15), bottomLeft: Radius.circular(15))
               borderRadius: BorderRadius.circular(20)
             ),
@@ -346,7 +346,7 @@ class _AddCommentRowState extends State<AddCommentRow> {
         padding: const EdgeInsets.only(top: 20),
         child: ElevatedButton(
             style:
-            buttonStyleCustom(padH: 60, padV: 22, radius: 20, color: ConstColor.salad100),
+            buttonStyleCustom(padH: 60, padV: 22, radius: 20, color: AppColors.salad100),
             onPressed: () {
               FocusManager.instance.primaryFocus?.unfocus();
               _controller.clear();
@@ -357,7 +357,7 @@ class _AddCommentRowState extends State<AddCommentRow> {
               TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: ConstColor.textBlack
+                  color: AppColors.textBlack
               ),
             )),
       )
@@ -397,7 +397,7 @@ Widget interruptDialog(BuildContext context) {
           top: 31,
           bottom: padMain,
         ),
-        color: ConstColor.white10,
+        color: AppColors.white10,
         borderRadius: BorderRadius.circular(15),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -419,7 +419,7 @@ Widget interruptDialog(BuildContext context) {
               child: Text(
                 'Вы сможете продолжить оценку позже,\nоткрыв историю встреч',
                 style: TextStyle(
-                    color: ConstColor.textGray,
+                    color: AppColors.textGray,
                     fontSize: 14,   //16
                     fontWeight: FontWeight.w400),
                 textAlign: TextAlign.center,
@@ -436,7 +436,7 @@ Widget interruptDialog(BuildContext context) {
                   ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor:
-                        MaterialStateProperty.all(ConstColor.salad100),
+                        MaterialStateProperty.all(AppColors.salad100),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
@@ -455,7 +455,7 @@ Widget interruptDialog(BuildContext context) {
                         child: Text(
                           'Продолжить',
                           style: TextStyle(
-                              color: ConstColor.textBlack,
+                              color: AppColors.textBlack,
                               fontSize: 16.5.sp, //14
                               fontWeight: FontWeight.w400
                           ),
@@ -477,7 +477,7 @@ Widget interruptDialog(BuildContext context) {
                       child: Text('Прервать', style: TextStyle(
                           fontSize: 16.5.sp,   //14
                           fontWeight: FontWeight.w400,
-                          color: ConstColor.textGray
+                          color: AppColors.textGray
                       ),),
                     ),
                   )
@@ -812,7 +812,7 @@ class _SliderCustomState extends State<SliderCustom> {
                   style: TextStyle(
                       fontSize: sliderValue==0? 17.5.sp : 16.5.sp,
                       fontWeight: sliderValue==0? FontWeight.w700 : FontWeight.w400,
-                      color: sliderValue==0? ConstColor.salad100 : ConstColor.textGray
+                      color: sliderValue==0? AppColors.salad100 : AppColors.textGray
                   ),
                 ),
 
@@ -821,7 +821,7 @@ class _SliderCustomState extends State<SliderCustom> {
                   style: TextStyle(
                       fontSize: sliderValue==0? 17.5.sp : 16.5.sp,
                       fontWeight: sliderValue==widget.max? FontWeight.w700 : FontWeight.w400,
-                      color: sliderValue==widget.max? ConstColor.salad100 : ConstColor.textGray
+                      color: sliderValue==widget.max? AppColors.salad100 : AppColors.textGray
                   ),
                 ),
 
@@ -832,15 +832,15 @@ class _SliderCustomState extends State<SliderCustom> {
           SliderTheme(
             data: SliderTheme.of(context).copyWith(
               valueIndicatorTextStyle: const TextStyle(
-                  color: ConstColor.salad100,
+                  color: AppColors.salad100,
                 fontWeight: FontWeight.w700,
                 fontSize: 16
               ),
               trackHeight: 10,
               valueIndicatorColor: Colors.transparent, // This is what you are asking for
-              inactiveTrackColor: ConstColor.white10, // Custom Gray Color
-              activeTrackColor: ConstColor.salad100,
-              thumbColor: ConstColor.salad100,
+              inactiveTrackColor: AppColors.white10, // Custom Gray Color
+              activeTrackColor: AppColors.salad100,
+              thumbColor: AppColors.salad100,
               overlayColor: Colors.black.withOpacity(0.1),
               // overlayColor: Color(0x29EB1555),  // Custom Thumb overlay Color
               thumbShape:   const RoundSliderThumbShape(enabledThumbRadius: 14.0),

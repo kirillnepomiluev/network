@@ -33,6 +33,7 @@ class EnterInfoContainer extends StatelessWidget {
       child: AppContainer(
         padV: 23,
         padH: 18,
+        width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -50,10 +51,10 @@ class EnterInfoContainer extends StatelessWidget {
                 child: Text(
                   description ?? Constants.strLoremIpsum,
                   maxLines: maxLines,
-                  style: TextStyle(
-                      fontSize: getResSize(14),
-                      fontWeight: FontWeight.w400
-                  ),
+                  // style: TextStyle(
+                  //     fontSize: ResponsiveUtils.getResSize(14),
+                  //     fontWeight: FontWeight.w400
+                  // ),
                 ),
               ),
           ],

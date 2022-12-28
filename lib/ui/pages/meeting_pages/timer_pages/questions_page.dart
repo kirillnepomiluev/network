@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/timer_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
+import 'package:network_app/utils/responsive_utils.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class QuestionsPage extends StatefulWidget {
@@ -83,7 +84,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                             width: 0.1146 * mediaWidth, //43
                             height: 0.1146 * mediaWidth,
                             decoration: BoxDecoration(
-                              color: ConstColor.white10,
+                              color: AppColors.white10,
                               borderRadius: BorderRadius.circular(15),
                             ),
                             child: Center(
@@ -101,8 +102,8 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                   horizontal: 0.1173 * mediaWidth //44
                                   ),
                               child: LinearProgressIndicator(
-                                backgroundColor: ConstColor.white10,
-                                color: ConstColor.salad100,
+                                backgroundColor: AppColors.white10,
+                                color: AppColors.salad100,
                                 minHeight: 4,
                                 value: _progress,
                               ),
@@ -112,7 +113,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                             width: 0.1146 * mediaWidth, //43
                             height: 0.1146 * mediaWidth,
                             decoration: BoxDecoration(
-                              color: ConstColor.white10,
+                              color: AppColors.white10,
                               borderRadius: BorderRadius.circular(15),
                             ),
                             child: Center(
@@ -138,7 +139,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                       height: mediaHeight,
                       width: mediaWidth,
                       decoration: BoxDecoration(
-                          color: ConstColor.white10,
+                          color: AppColors.white10,
                           borderRadius: const BorderRadius.vertical(
                               top: Radius.circular(30))),
                       child: Column(
@@ -148,10 +149,10 @@ class _QuestionsPageState extends State<QuestionsPage> {
                               padding: EdgeInsets.only(top: 49),
                               child: RichTextTwo(
                                 text1: 'Поздравляем, ',
-                                color1: ConstColor.salad100,
+                                color1: AppColors.salad100,
                                 // fontWeight1: FontWeight.w600,
                                 text2: 'вы ответили\nна все вопросы',
-                                color2: ConstColor.textWhite,
+                                color2: AppColors.textWhite,
                                 // fontWeight2: FontWeight.w600,
                                 // fontSize: 19.5.sp, //20
                                 textAlign: TextAlign.center,
@@ -204,7 +205,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                   child: Text(
                                     'Начать чат',
                                     style: TextStyle(
-                                        color: ConstColor.textBlack,
+                                        color: AppColors.textBlack,
                                         fontSize: 17.5.sp, //16
                                         fontWeight: FontWeight.w500
                                     ),
@@ -254,7 +255,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                       height: mediaHeight,
                       width: mediaWidth,
                       decoration: BoxDecoration(
-                          color: ConstColor.white10,
+                          color: AppColors.white10,
                           borderRadius: const BorderRadius.vertical(
                               top: Radius.circular(30))),
                       child: Column(
@@ -276,7 +277,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                             'Вопрос ${index + 1} из $_questionCount',
                                             style: TextStyle(
                                               fontSize: 17.5.sp, //16
-                                              color: ConstColor.salad100,
+                                              color: AppColors.salad100,
                                               fontWeight: FontWeight.w700,
                                             ),
                                           ),
@@ -329,7 +330,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                           padding: const EdgeInsets.symmetric(
                                               vertical: 3, horizontal: 18),
                                           decoration: BoxDecoration(
-                                            color: ConstColor.white10,
+                                            color: AppColors.white10,
                                             borderRadius:
                                                 BorderRadius.circular(15),
                                           ),
@@ -360,11 +361,11 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                                   height: 21,
                                                   decoration: const BoxDecoration(
                                                       color:
-                                                          ConstColor.salad100,
+                                                          AppColors.salad100,
                                                       shape: BoxShape.circle),
                                                   child: Icon(
                                                     Icons.close_rounded,
-                                                    size: getResSize(12), //15
+                                                    size: ResponsiveUtils.getResSize(12), //15
                                                     color: Colors.black,
                                                   ),
                                                 ),
@@ -395,7 +396,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                             '$_missedCount вопроса',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w400,
-                                                color: ConstColor.salad100,
+                                                color: AppColors.salad100,
                                                 fontSize: 14.sp //10
                                                 ),
                                           ),
@@ -425,7 +426,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                   child: Text(
                                     'Следующий вопрос',
                                     style: TextStyle(
-                                        color: ConstColor.textBlack,
+                                        color: AppColors.textBlack,
                                         fontSize: 17.5.sp, //16
                                         fontWeight: FontWeight.w500
                                     ),
@@ -455,11 +456,11 @@ class _QuestionsPageState extends State<QuestionsPage> {
 
         // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       contentPadding: EdgeInsets.zero,
-        activeColor: ConstColor.salad100,
+        activeColor: AppColors.salad100,
         value: title,
         title: Text(title,
           style: const TextStyle(
-            color: ConstColor.textWhite,
+            color: AppColors.textWhite,
             fontSize: 14,
             fontWeight: FontWeight.w400
         ),

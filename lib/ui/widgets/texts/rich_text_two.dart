@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/constants.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 
 class RichTextTwo extends StatelessWidget {
   final String text1;
@@ -18,8 +18,8 @@ class RichTextTwo extends StatelessWidget {
     this.fontSize = 20,
     this.fontWeight1 = FontWeight.w600,
     this.fontWeight2 = FontWeight.w600,
-    this.color1 = ConstColor.textWhite,
-    this.color2 = ConstColor.salad100,
+    this.color1 = AppColors.textWhite,
+    this.color2 = AppColors.salad100,
     this.textAlign = TextAlign.start,
   }) : super(key: key);
 

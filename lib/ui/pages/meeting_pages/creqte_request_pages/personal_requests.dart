@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/pages/meeting_pages/creqte_request_pages/choose_meeting_category.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -68,7 +68,7 @@ class _PersonalRequestsPageState extends State<PersonalRequestsPage> {
                   child: Text('Созданные раннее',
                     style: TextStyle(
                       fontSize: 20,
-                      color: ConstColor.salad100,
+                      color: AppColors.salad100,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -102,7 +102,7 @@ class RequestContainerInfo extends StatelessWidget {
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: ConstColor.white10,
+          color: AppColors.white10,
           borderRadius: BorderRadius.circular(20),
         ),
         padding: const EdgeInsets.symmetric(vertical: 27, horizontal: 18),
@@ -123,7 +123,7 @@ class RequestContainerInfo extends StatelessWidget {
 
                 Text('#256893',
                   style: TextStyle(
-                    color: ConstColor.salad100,
+                    color: AppColors.salad100,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
@@ -136,7 +136,7 @@ class RequestContainerInfo extends StatelessWidget {
               child:
               Text('от 25.11.2022',
                 style: TextStyle(
-                  color: ConstColor.textGray,
+                  color: AppColors.textGray,
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
                 ),

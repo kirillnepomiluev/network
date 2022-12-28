@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/wallet_pages/exchange/exchange_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
+import 'package:network_app/utils/responsive_utils.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+
+
 
 class WalletMainPage extends StatefulWidget {
   const WalletMainPage({Key? key}) : super(key: key);
@@ -32,8 +35,8 @@ class _WalletMainPageState extends State<WalletMainPage> {
         height: 40.sp,   //91   40
         decoration: BoxDecoration(
           color: _activeTab == position
-              ? ConstColor.salad100
-              : ConstColor.white10,
+              ? AppColors.salad100
+              : AppColors.white10,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Row(
@@ -45,8 +48,8 @@ class _WalletMainPageState extends State<WalletMainPage> {
               text,
               style: TextStyle(
                   color: _activeTab == position
-                      ? ConstColor.textBlack
-                      : ConstColor.textWhite,
+                      ? AppColors.textBlack
+                      : AppColors.textWhite,
                   fontSize: 18.sp, //16
                   fontWeight: FontWeight.w400),
             ),
@@ -66,8 +69,8 @@ class _WalletMainPageState extends State<WalletMainPage> {
                 : 18.sp,
 
                 color: _activeTab == position
-                    ? ConstColor.textBlack
-                    : ConstColor.textWhite,
+                    ? AppColors.textBlack
+                    : AppColors.textWhite,
               ),
             )
 
@@ -157,7 +160,7 @@ class _WalletMainPageState extends State<WalletMainPage> {
                       style: TextStyle(
                           fontSize: 27.sp,   //38
                           fontWeight: FontWeight.w700,
-                          color: ConstColor.salad100
+                          color: AppColors.salad100
                       ),
                     ),
                   ),
@@ -173,7 +176,7 @@ class _WalletMainPageState extends State<WalletMainPage> {
                         vertical: 24.sp     //32
                       ), //14
                       decoration: BoxDecoration(
-                        color: ConstColor.white10,
+                        color: AppColors.white10,
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Column(
@@ -204,7 +207,7 @@ class _WalletMainPageState extends State<WalletMainPage> {
                                   style: TextStyle(
                                       fontSize: 17.5.sp, //16
                                       fontWeight: FontWeight.w400,
-                                    color: ConstColor.salad100
+                                    color: AppColors.salad100
                                   ),
                                 ),
 
@@ -213,7 +216,7 @@ class _WalletMainPageState extends State<WalletMainPage> {
                                   maxLines: null,
                                   style: TextStyle(
                                     color: Colors.grey,
-                                      fontSize: getResSize(12), //12
+                                      fontSize: ResponsiveUtils.getResSize(12), //12
                                       fontWeight: FontWeight.w400
                                   ),
                                 ),
@@ -294,7 +297,7 @@ class _WalletMainPageState extends State<WalletMainPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 18, //16
-                              color: ConstColor.textBlack
+                              color: AppColors.textBlack
                           ),
                         ),
                       ),
@@ -332,13 +335,13 @@ class _WalletMainPageState extends State<WalletMainPage> {
       height: 250,
       padding:
       EdgeInsets.only(
-          top: getResSize(14),
-          right: getResSize(14),
-          bottom: getResSize(14)
+          top: ResponsiveUtils.getResSize(14),
+          right: ResponsiveUtils.getResSize(14),
+          bottom: ResponsiveUtils.getResSize(14)
       ),
       width: 55.sp, //161
       decoration: BoxDecoration(
-          color: isDark? ConstColor.white10 : ConstColor.salad100,
+          color: isDark? AppColors.white10 : AppColors.salad100,
           borderRadius: BorderRadius.circular(15)
       ),
       child: Column(
@@ -352,7 +355,7 @@ class _WalletMainPageState extends State<WalletMainPage> {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                    left: getResSize(14) //14
+                    left: ResponsiveUtils.getResSize(14) //14
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -361,17 +364,17 @@ class _WalletMainPageState extends State<WalletMainPage> {
 
                     Text(data.title,
                       style: TextStyle(
-                          fontSize: getResSize(16),   //16
+                          fontSize: ResponsiveUtils.getResSize(16),   //16
                           fontWeight: FontWeight.w500,
-                          color: isDark? ConstColor.salad100 : ConstColor.textBlack
+                          color: isDark? AppColors.salad100 : AppColors.textBlack
                       ),
                     ),
 
                     Text('+5,76%',
                       style: TextStyle(
-                          fontSize: getResSize(12),   //12
+                          fontSize: ResponsiveUtils.getResSize(12),   //12
                           fontWeight: FontWeight.w400,
-                          color: isDark? ConstColor.textWhite : ConstColor.textBlack
+                          color: isDark? AppColors.textWhite : AppColors.textBlack
                       ),
                     ),
 
@@ -381,14 +384,14 @@ class _WalletMainPageState extends State<WalletMainPage> {
 
               Padding(
                 padding: EdgeInsets.only(
-                    left: getResSize(14), //14
+                    left: ResponsiveUtils.getResSize(14), //14
                     top: 5
                 ),
                 child: Text(data.subtitle,
                   style: TextStyle(
-                      fontSize: getResSize(14),   //14
+                      fontSize: ResponsiveUtils.getResSize(14),   //14
                       fontWeight: FontWeight.w400,
-                      color: isDark? ConstColor.textGray : ConstColor.black1A
+                      color: isDark? AppColors.textGray : AppColors.black1A
                   ),
                 ),
               ),
@@ -417,14 +420,14 @@ class _WalletMainPageState extends State<WalletMainPage> {
           Column(
             children: [
               Padding(
-                padding:  EdgeInsets.only(top: getResSize(10)),
+                padding:  EdgeInsets.only(top: ResponsiveUtils.getResSize(10)),
                 child:  Align(
                   alignment: Alignment.topRight,
                   child: Text('Вы получите',
                     style: TextStyle(
-                        fontSize: getResSize(10),   //10
+                        fontSize: ResponsiveUtils.getResSize(10),   //10
                         fontWeight: FontWeight.w500,
-                        color: isDark? ConstColor.textGray : ConstColor.textBlack
+                        color: isDark? AppColors.textGray : AppColors.textBlack
                     ),
                   ),
                 ),
@@ -432,8 +435,8 @@ class _WalletMainPageState extends State<WalletMainPage> {
 
               Padding(
                   padding: EdgeInsets.only(
-                      left: getResSize(14), //14
-                      top: getResSize(12)   //12
+                      left: ResponsiveUtils.getResSize(14), //14
+                      top: ResponsiveUtils.getResSize(12)   //12
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -459,9 +462,9 @@ class _WalletMainPageState extends State<WalletMainPage> {
 
                         Text('0.00045',
                           style: TextStyle(
-                              fontSize: getResSize(14),   //14
+                              fontSize: ResponsiveUtils.getResSize(14),   //14
                               fontWeight: FontWeight.w400,
-                              color: isDark? ConstColor.textWhite : ConstColor.textBlack
+                              color: isDark? AppColors.textWhite : AppColors.textBlack
                           ),
                         ),
 
@@ -469,15 +472,15 @@ class _WalletMainPageState extends State<WalletMainPage> {
                           children: [
                             Icon(
                               Icons.attach_money_sharp,
-                              size: getResSize(12),
-                              color: ConstColor.textBlack
+                              size: ResponsiveUtils.getResSize(12),
+                              color: AppColors.textBlack
                             ),
 
                             Text('20.13',
                               style: TextStyle(
-                                  fontSize: getResSize(12),   //12
+                                  fontSize: ResponsiveUtils.getResSize(12),   //12
                                   fontWeight: FontWeight.w400,
-                                  color: isDark? ConstColor.salad100 : ConstColor.textBlack
+                                  color: isDark? AppColors.salad100 : AppColors.textBlack
                               ),
                             ),
                           ],
@@ -519,7 +522,7 @@ class GraphOne extends CustomPainter {
     path_0.cubicTo(size.width*0.8733333,size.height*0.6272727,size.width*0.9525273,size.height*0.2484855,size.width*0.9848485,size.height*0.05454545);
 
     Paint paint0Stroke = Paint()..style=PaintingStyle.stroke..strokeWidth=1;
-    paint0Stroke.color= isDark? ConstColor.salad100 : ConstColor.black1A;
+    paint0Stroke.color= isDark? AppColors.salad100 : AppColors.black1A;
     // paint_0_stroke.color= Colors.transparent;
     canvas.drawPath(path_0,paint0Stroke);
 
@@ -529,7 +532,7 @@ class GraphOne extends CustomPainter {
     canvas.drawPath(path_0,paint0Fill);
 
     Paint paint1Fill = Paint()..style=PaintingStyle.fill;
-    paint1Fill.color = isDark? ConstColor.salad100 : ConstColor.black1A;
+    paint1Fill.color = isDark? AppColors.salad100 : AppColors.black1A;
     canvas.drawCircle(Offset(size.width*0.9878788,size.height*0.03636364),size.width*0.01212121,paint1Fill);
 
   }

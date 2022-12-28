@@ -1,7 +1,7 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -33,7 +33,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
           padding: EdgeInsets.all(0.0373 * mediaWidth), //14
           decoration: BoxDecoration(
             color: _activeInvitationTab == position
-                ? ConstColor.grey
+                ? AppColors.grey
                 : Colors.white,
             borderRadius: BorderRadius.circular(12),
           ),
@@ -164,7 +164,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
       padding: const EdgeInsets.only(top: 20),
       child: Container(
         decoration: BoxDecoration(
-          color: ConstColor.white10,
+          color: AppColors.white10,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Stack(
@@ -176,7 +176,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     top: 15.5.sp,
                     child: Icon(
                       Icons.circle,
-                      color: ConstColor.salad100,
+                      color: AppColors.salad100,
                       size: 13.sp, //8
                     ),
                   ),
@@ -223,7 +223,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                       width: 22.sp, //24
                       height: 22.sp,
                       decoration: BoxDecoration(
-                          color: ConstColor.salad100,
+                          color: AppColors.salad100,
                           borderRadius: BorderRadius.circular(7),
                           ),
                       child:
@@ -254,7 +254,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
             TextSpan(
                 text: text1,
                 style: const TextStyle(
-                    color: ConstColor.salad100,
+                    color: AppColors.salad100,
                     fontWeight: FontWeight.w600)),
             TextSpan(
                 text: text2,
@@ -262,7 +262,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
             TextSpan(
                 text: text3,
                 style: const TextStyle(
-                    color: ConstColor.salad100,
+                    color: AppColors.salad100,
                     fontWeight: FontWeight.w600)),
           ],
         ),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_date/choose_date_rich_text.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_sex/choose_sex.dart';
+import 'package:network_app/ui/pages/auth_pages/widgets/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ChooseDatePage extends StatefulWidget {
   const ChooseDatePage({Key? key}) : super(key: key);
@@ -13,7 +14,6 @@ class ChooseDatePage extends StatefulWidget {
 }
 
 class _ChooseDatePageState extends State<ChooseDatePage> {
-
   bool value = false;
 
   @override
@@ -27,86 +27,42 @@ class _ChooseDatePageState extends State<ChooseDatePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: BackButtonCustom(),
+                const SizedBox(
+                  height: 10,
                 ),
-                const EnterInfoContainer(
+                const BackButtonCustom(),
+
+                EnterInfoContainer(
                   padTop: 32,
-                  text1: 'Введите ',
-                  text2: 'дату рождения',
-                  description: 'Вы можете скрыть свой возраст',
+                  text1: '${AppString.of(context).input} ',
+                  text2: AppString.of(context).ofBirthDay,
+                  description: AppString.of(context).youCanHideYourAge,
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 40, bottom: 45),
-                  child: RichText(
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    text: const TextSpan(
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20, //20
-                        fontWeight: FontWeight.w500,
-                      ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'ММ',
-                        ),
-                         TextSpan(
-                            text: '  /  ',
-                            style:  TextStyle(
-                              color: ConstColor.salad100,
-                            )),
+                const SizedBox(
+                  height: 40,
+                ),
 
+                const ChooseDateRichText(),
 
-                        TextSpan(
-                          text: 'DD',
-                        ),
-                         TextSpan(
-                            text: '  /  ',
-                            style:  TextStyle(
-                              color: ConstColor.salad100,
-                            )),
+                const SizedBox(
+                  height: 45,
+                ),
 
-                        TextSpan(
-                          text: 'YYYY',
-                        ),
+                ButtonContinue(onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute<void>(
+                      builder: (context) => const ChooseSexPage()));
+                }),
 
-                      ],
-                    ),
-                    // minFontSize: 14,
-                  )
+                const SizedBox(
+                  height: 30,
                 ),
 
                 SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      style: buttonStyleCustom(
-                          color: Colors.white, padH: 0, padV: 22, radius: 20),
-                      onPressed: () {
-
-                        Navigator.of(context).push(MaterialPageRoute<void>(
-                            builder: (context) => const ChooseSexPage()));
-                      },
-                      child: Text(
-                        'Продолжить',
-                        style: TextStyle(
-                            fontSize: 18.5.sp, //18
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black),
-                      )),
-                ),
-
-
-                const Padding(
-                  padding: EdgeInsets.only(top: 30),
-                  child:
-                  SizedBox(
-                      width: 185,
-                      child: CustomCheckListTile(title: 'Скрыть возраст',))
-                )
-
+                    width: 190,
+                    child: CustomCheckListTile(
+                      title: AppString.of(context).hideAge,
+                    ))
               ],
             ),
           ),

@@ -1,9 +1,11 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/pages/meeting_pages/notifications/notifications_page.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
+import 'package:network_app/utils/responsive_utils.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'dart:ui' as ui;
@@ -23,7 +25,7 @@ Widget profileAvatarRow({String title = 'Тимофей, 37', bool showNotificat
               width: 60,
               height: 60,
               child: CircleAvatar(
-                backgroundColor: ConstColor.salad100,
+                backgroundColor: AppColors.salad100,
                 foregroundImage:
                 AssetImage('assets/images/avatars/avatar_0.png'),
               ),
@@ -45,7 +47,7 @@ Widget profileAvatarRow({String title = 'Тимофей, 37', bool showNotificat
                       vertical: 6, horizontal: 9),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: ConstColor.white10),
+                      color: AppColors.white10),
                   child: Center(
                       child: Text(
                         'я люблю веселиться 😁',
@@ -108,14 +110,14 @@ Widget rhombusText(
           text,
           style: TextStyle(
               fontSize: fontSize, //14
-              color: ConstColor.salad100,
+              color: AppColors.salad100,
               fontWeight: fontWeight),
         ),
         Padding(
           padding: EdgeInsets.only(left: padLeft),
           child: Icon(
             NetworkIcons.rhombus,
-            color: ConstColor.salad100,
+            color: AppColors.salad100,
             size: iconSize,
           ),
         )
@@ -137,7 +139,7 @@ class NotificationIcon extends StatelessWidget {
             width: 43,
             height: 43,
             decoration: BoxDecoration(
-              color: ConstColor.white10,
+              color: AppColors.white10,
               borderRadius: BorderRadius.circular(15),
             ),
             child: IconButton(
@@ -163,7 +165,7 @@ class NotificationIcon extends StatelessWidget {
             child: Icon(
               Icons.circle,
               size: 12,
-              color: ConstColor.salad100,
+              color: AppColors.salad100,
             ),
           )
         ],
@@ -205,8 +207,8 @@ class _HobbySelectedState extends State<HobbySelected> {
         padding: EdgeInsets.all(mediaWitdh*0.0373), //14
         decoration: BoxDecoration(
           color: isSelected
-              ? ConstColor.salad100
-              : ConstColor.white10,
+              ? AppColors.salad100
+              : AppColors.white10,
           borderRadius: BorderRadius.circular(12),
         ),
         child:
@@ -216,7 +218,7 @@ class _HobbySelectedState extends State<HobbySelected> {
               color:
               isSelected
                   ? Colors.black
-                  : ConstColor.textWhite,
+                  : AppColors.textWhite,
               fontSize: 15.5.sp, //12
               fontWeight: FontWeight.w400
           ),
@@ -277,7 +279,7 @@ class _HobbySelectedState extends State<HobbySelected> {
 //               Text(
 //                 title,
 //                 style: TextStyle(
-//                     fontSize: getResSize(16), //16
+//                     fontSize: ResponsiveUtils.getResSize(16), //16
 //                     color: Colors.white,
 //                     fontWeight: FontWeight.w400),
 //               )
@@ -312,7 +314,7 @@ class IconContainer extends StatelessWidget {
       width: contSize ?? 28.sp, //43
       height: contSize ?? 28.sp,
       decoration: BoxDecoration(
-        color: contColor ?? ConstColor.white10,
+        color: contColor ?? AppColors.white10,
         borderRadius: BorderRadius.circular(15),
       ),
       child: IconButton(
@@ -355,7 +357,7 @@ Widget blurCircle({double sigma = 55, double radius = 271}) => SizedBox(
         children: [
           Container(
             decoration: const BoxDecoration(
-              color: ConstColor.salad100,
+              color: AppColors.salad100,
               shape: BoxShape.circle,
             ),
             child: const Center(
@@ -389,7 +391,7 @@ Widget statContainer({
     width: contWidth, //107
     // height: contWidth*1.514,  //162
     height: 55.sp, //162
-    color: ConstColor.white10,
+    color: AppColors.white10,
     borderRadius: BorderRadius.circular(30),
     child: Column(
       mainAxisSize: MainAxisSize.min,
@@ -462,15 +464,15 @@ Widget progressParametr(
                       Text(
                         text1,
                         style: TextStyle(
-                          color: ConstColor.textGray,
-                          fontSize: getResSize(14),
+                          color: AppColors.textGray,
+                          fontSize: ResponsiveUtils.getResSize(14),
                         ),
                       ),
                       Text(
                         text2,
                         style: TextStyle(
-                          color: ConstColor.textGray,
-                          fontSize: getResSize(14),
+                          color: AppColors.textGray,
+                          fontSize: ResponsiveUtils.getResSize(14),
                         ),
                       ),
                     ],
@@ -504,21 +506,21 @@ Widget progressParametr(
               Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(11),
-                    border: Border.all(width: 1, color: ConstColor.salad100)),
+                    border: Border.all(width: 1, color: AppColors.salad100)),
                 child: LinearPercentIndicator(
                   padding: EdgeInsets.zero,
                   barRadius: const Radius.circular(11),
                   lineHeight: 40, //40
                   percent: progress,
                   backgroundColor: Colors.transparent,
-                  progressColor: ConstColor.salad100.withOpacity(0.2),
+                  progressColor: AppColors.salad100.withOpacity(0.2),
                 ),
               ),
               Positioned(
                 right: 10,
                 child: Container(
                   decoration: BoxDecoration(
-                      color: ConstColor.salad100,
+                      color: AppColors.salad100,
                       borderRadius: BorderRadius.circular(7)),
                   width: 24,
                   height: 22,
@@ -559,7 +561,7 @@ Widget hobbitsContainer(String text, {bool hasEdit = true}) => Container(
                   child: Icon(
                     Icons.close_rounded,
                     size: 22,
-                    color: ConstColor.salad100,
+                    color: AppColors.salad100,
                   ),
                 )
         ],
@@ -583,15 +585,15 @@ Widget textField(String hintText, {bool isEnable = true}) => Padding(
               const EdgeInsets.symmetric(horizontal: 16, vertical: 19),
           focusedBorder: OutlineInputBorder(
               borderSide:
-                  const BorderSide(width: 1, color: ConstColor.salad100),
+                  const BorderSide(width: 1, color: AppColors.salad100),
               borderRadius: BorderRadius.circular(20)),
           enabledBorder: OutlineInputBorder(
               borderSide:
-                  const BorderSide(width: 1, color: ConstColor.salad100),
+                  const BorderSide(width: 1, color: AppColors.salad100),
               borderRadius: BorderRadius.circular(20)),
           disabledBorder: OutlineInputBorder(
               borderSide:
-                  const BorderSide(width: 1, color: ConstColor.salad100),
+                  const BorderSide(width: 1, color: AppColors.salad100),
               borderRadius: BorderRadius.circular(20)),
           // filled: true,
           // fillColor: Colors.white,
@@ -646,7 +648,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
                               style: TextStyle(
                                   fontSize: 32,
                                   fontWeight: FontWeight.w600,
-                                  color: ConstColor.salad100),
+                                  color: AppColors.salad100),
                             ),
                             Padding(
                               padding: EdgeInsets.only(top: 20),
@@ -716,7 +718,7 @@ class StatColumn extends StatelessWidget {
 
             Container(
               decoration: BoxDecoration(
-                  color: ConstColor.salad100,
+                  color: AppColors.salad100,
                   borderRadius: BorderRadius.circular(7)),
               width: 24,
               height: 22,
@@ -759,7 +761,7 @@ class StatColumn extends StatelessWidget {
                 vertical: 12,
                 horizontal: 20
               ),
-              backgroundColor: ConstColor.salad100,
+              backgroundColor: AppColors.salad100,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(13)
               )
@@ -767,7 +769,7 @@ class StatColumn extends StatelessWidget {
               onPressed: (){},
               child: const Text("Докупить токены",
               style: TextStyle(
-                color: ConstColor.textBlack
+                color: AppColors.textBlack
               ),
               )
           ),
@@ -848,7 +850,7 @@ class _CustomCheckListTileState extends State<CustomCheckListTile> {
             value = newValue!;
           });
         },
-        activeColor: ConstColor.salad100,
+        activeColor: AppColors.salad100,
         title: Transform.translate(
           offset: const Offset(-17, 0),
           child: Text(widget.title, style: const TextStyle(
@@ -915,7 +917,7 @@ class BottomSheetMinPaint extends CustomPainter {
     path_0.close();
 
     Paint paint0Fill = Paint()..style = PaintingStyle.fill;
-    paint0Fill.color = color ?? ConstColor.white10;
+    paint0Fill.color = color ?? AppColors.white10;
     canvas.drawPath(path_0, paint0Fill);
 
     Paint paint1Stroke = Paint()
@@ -969,13 +971,13 @@ class _RadioListState extends State<RadioList> {
             itemBuilder: (BuildContext context, int index) {
               return Theme(
                 data: Theme.of(context).copyWith(
-                  unselectedWidgetColor: ConstColor.salad100,
-                  disabledColor: ConstColor.salad100,
+                  unselectedWidgetColor: AppColors.salad100,
+                  disabledColor: AppColors.salad100,
                 ),
                 child: RadioListTile(
                     visualDensity: const VisualDensity(
                         horizontal: VisualDensity.minimumDensity, vertical: -4),
-                    activeColor: ConstColor.salad100,
+                    activeColor: AppColors.salad100,
                     contentPadding: EdgeInsets.zero,
                     dense: true,
                     // selectedTileColor: ConstColor.salad100,
@@ -1114,7 +1116,7 @@ class MeetRow extends StatelessWidget {
                     icon: NetworkIcons.arrow_long_right,
                     iconSize: iconSize,
                     contSize: contSize,
-                    contColor: ConstColor.black1A,
+                    contColor: AppColors.black1A,
                     func: () {
                       if (func != null) {
                         func!();
@@ -1128,7 +1130,7 @@ class MeetRow extends StatelessWidget {
                         right: 8),
                     child: Text('Обменять',
                         style: TextStyle(
-                            color: ConstColor.textBlack,
+                            color: AppColors.textBlack,
                             fontSize: 15.sp, //12
                             fontWeight: FontWeight.w500)),
                   ),
@@ -1146,7 +1148,7 @@ class MeetRow extends StatelessWidget {
                               child: Icon(
                                 Icons.keyboard_arrow_right,
                                 size: 20,
-                                color: ConstColor.grey,
+                                color: AppColors.grey,
                               )),
                           Positioned(
                               left: 6,
@@ -1200,7 +1202,7 @@ class MeetRow extends StatelessWidget {
                           icon: NetworkIcons.electric,
                           iconSize: iconSize,
                           contSize: contSize,
-                          contColor: ConstColor.black1A,
+                          contColor: AppColors.black1A,
                           func: () {
                             if (func != null) {
                               func!();
@@ -1218,8 +1220,8 @@ class MeetRow extends StatelessWidget {
                               right: 8),
                           child: Text('Встретиться',
                               style: TextStyle(
-                                  color: ConstColor.textBlack,
-                                  fontSize: getResSize(14),
+                                  color: AppColors.textBlack,
+                                  fontSize: ResponsiveUtils.getResSize(14),
                                   fontWeight: FontWeight.w500)),
                         ),
 
@@ -1237,7 +1239,7 @@ class MeetRow extends StatelessWidget {
                                     child: Icon(
                                       Icons.keyboard_arrow_right,
                                       size: 25,
-                                      color: ConstColor.grey,
+                                      color: AppColors.grey,
                                     )),
                                 Positioned(
                                     left: 10,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/pages/auth_pages/start/start_view.dart';
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_level/choose_level.dart';
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_sex/choose_sex.dart';
+import 'package:network_app/ui/theme/app_theme.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Network',
-            theme:  _themeData,
+            theme:  AppTheme.mainTheme,
             localizationsDelegates: const [
               AppString.delegate,
               GlobalMaterialLocalizations.delegate,
@@ -26,49 +26,9 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: AppString.delegate.supportedLocales,
-            // home: const HomePage(initIndex: 1,),
-            home: const StartView(),
+            home: const ChooseLevelPage(),
           );
         },
       );
   }
 }
-
-
-final _themeData = ThemeData(
-    unselectedWidgetColor: ConstColor.salad100,
-    fontFamily: 'Inter',
-    elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          // padding: EdgeInsets.symmetric(
-          //   vertical: 10,
-          //   horizontal: 20
-          // ),
-            backgroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(13)
-            )
-        )
-    ),
-    appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
-    textTheme: TextTheme(
-      //          style: Theme.of(context).textTheme.headline6!.copyWith(color: Colors.black,fontSize: 12,fontWeight: FontWeight.w300)),
-        bodyText1: _defaultTextStyle,
-        bodyText2: _defaultTextStyle,
-    ),
-    scaffoldBackgroundColor: ConstColor.blackBack
-);
-
-final _defaultTextStyle =
-GoogleFonts.inter(
-      fontSize: getResSize(14),
-    fontWeight: FontWeight.w400,
-    color: ConstColor.textWhite
-);
-// TextStyle(
-//   fontFamily: 'Inter',
-//     fontSize: getResSize(14),
-//     fontWeight: FontWeight.w400,
-//     color: ConstColor.textWhite
-// );
-

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/home/home_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class TurnOnLocationPage extends StatefulWidget {
@@ -30,7 +30,7 @@ class _TurnOnLocationPageState extends State<TurnOnLocationPage> {
                     const BackButtonCustom(),
                     Container(
                         decoration: BoxDecoration(
-                          color: ConstColor.white10,
+                          color: AppColors.white10,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         padding: const EdgeInsets.symmetric(
@@ -40,7 +40,7 @@ class _TurnOnLocationPageState extends State<TurnOnLocationPage> {
                             Text('Пропустить'),
                             Icon(
                               Icons.close_rounded,
-                              color: ConstColor.salad100,
+                              color: AppColors.salad100,
                             )
                           ],
                         )),

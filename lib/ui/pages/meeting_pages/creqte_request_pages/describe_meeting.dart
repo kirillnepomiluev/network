@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/pages/meeting_pages/creqte_request_pages/meeting_occupation.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -65,17 +65,17 @@ class _InputDescribeMeetingState extends State<InputDescribeMeeting> {
                             vertical: 22, horizontal: 16),
                         focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                                width: 1, color: ConstColor.salad100),
+                                width: 1, color: AppColors.salad100),
                             borderRadius: BorderRadius.circular(20)),
                         enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                                width: 1, color: ConstColor.salad100),
+                                width: 1, color: AppColors.salad100),
                             borderRadius: BorderRadius.circular(20)),
                         // hintText: 'Введите адрес электронной почты',
                         hintStyle: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            color: ConstColor.textGray)),
+                            color: AppColors.textGray)),
                   ),
                 ),
                 SizedBox(

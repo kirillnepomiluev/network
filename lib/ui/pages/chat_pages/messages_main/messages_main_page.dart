@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/chat_pages/chat/chat_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
-import 'package:network_app/constants.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MessagesMainPage extends StatefulWidget {
@@ -81,7 +81,7 @@ class _MessagesMainPageState extends State<MessagesMainPage> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    color: ConstColor.white10,
+                    color: AppColors.white10,
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Column(
@@ -273,7 +273,7 @@ class _MessagesMainPageState extends State<MessagesMainPage> {
                   child: Icon(
                     Icons.circle,
                     size: 12,
-                    color: ConstColor.salad100,),
+                    color: AppColors.salad100,),
                 )
 
               ],
@@ -317,7 +317,7 @@ class _MessagesMainPageState extends State<MessagesMainPage> {
                 // width: MediaQuery.of(context).size.width*0.35,
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                  color: ConstColor.white10,
+                  color: AppColors.white10,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
@@ -344,7 +344,7 @@ class _MessagesMainPageState extends State<MessagesMainPage> {
                         photoMap['status'] as String,
                         style: TextStyle(
                             fontSize: 14.sp, //10
-                            color: ConstColor.textGray,
+                            color: AppColors.textGray,
                             fontWeight: FontWeight.w400
                         ),
                       ),
@@ -372,7 +372,7 @@ class _MessagesMainPageState extends State<MessagesMainPage> {
                           const Icon(
                             NetworkIcons.check_double,
                             size: 12,
-                          color: ConstColor.textGray,
+                          color: AppColors.textGray,
                           )
 
                           // SizedBox(
@@ -456,7 +456,7 @@ class _MessagesMainPageState extends State<MessagesMainPage> {
                       child: Icon(
                         Icons.circle,
                         size: 14,   //14
-                        color: ConstColor.salad100,
+                        color: AppColors.salad100,
                       )
                   )
                 ],

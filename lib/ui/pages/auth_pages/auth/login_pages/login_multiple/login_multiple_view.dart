@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/constants.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_multiple/login_multiple_vm.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/widgets/enter_row_container.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/button_trouble_enter.dart';
@@ -7,6 +7,7 @@ import 'package:network_app/ui/pages/auth_pages/widgets/network_row.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
+import 'package:network_app/utils/responsive_utils.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class LoginMultipleView extends StatelessWidget {
@@ -37,45 +38,46 @@ class LoginMultipleView extends StatelessWidget {
                           SizedBox(height: 30.sp,), //60
                           const NetworkRow(isRow: true,),
 
-                          const EnterInfoContainer(
+                          EnterInfoContainer(
                             padTop: 42,
-                            text1: 'Выполните ',
-                            text2: 'вход',
+                            // text1: 'Выполните ',
+                            text1: AppString.of(context).execute,
+                            text2: AppString.of(context).enter,
                             maxLines: 3,
                           ),
 
                           SizedBox(height: 30.sp,), //57
-
+                          
                           EnterRowContainer(
                             onTap: model.loginPhoneTap,
                             icon: NetworkIcons.call,
-                            title: 'Войти по номеру телефона',
+                            title: AppString.of(context).signInByPhone,
                           ),
 
-                          SizedBox(height: getResSize(21),), //21
+                          SizedBox(height: ResponsiveUtils.getResSize(21),), //21
 
                           EnterRowContainer(
                             onTap: model.loginEmailTap,
                             icon: Icons.email,
-                            title: 'Войти с помошью почты',
+                            title: AppString.of(context).signInByEmail,
                             // leftPad: 24.sp   //30
                           ),
 
-                          SizedBox(height: getResSize(21),), //21
+                          SizedBox(height: ResponsiveUtils.getResSize(21),), //21
 
                           EnterRowContainer(
                             onTap: model.loginGoogleTap,
                             iconName: 'logo_google',
-                            title: 'Войти через Google',
+                            title: AppString.of(context).signInByGoogle,
                             // leftPad: 23.sp   //28
                           ),
 
-                          SizedBox(height: getResSize(21),), //21
+                          SizedBox(height: ResponsiveUtils.getResSize(21),), //21
 
                           EnterRowContainer(
                             onTap: model.loginFacebookTap,
                             iconName: 'logo_facebook',
-                            title: 'Войти через Facebook',
+                            title: AppString.of(context).signInByFacebook,
                             // leftPad: 23.sp   //28
                           ),
                         ],

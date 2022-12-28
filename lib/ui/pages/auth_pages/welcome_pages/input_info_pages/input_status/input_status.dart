@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_occupation/choose_occupation.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class InputStatusPage extends StatefulWidget {
@@ -30,7 +30,7 @@ class _InputStatusPageState extends State<InputStatusPage> {
                     const BackButtonCustom(),
                     Container(
                         decoration: BoxDecoration(
-                          color: ConstColor.white10,
+                          color: AppColors.white10,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         padding: const EdgeInsets.symmetric(
@@ -39,7 +39,7 @@ class _InputStatusPageState extends State<InputStatusPage> {
                         ),
                         child:Row(children: const [
                           Text('Пропустить'),
-                          Icon(Icons.close_rounded, color: ConstColor.salad100,)
+                          Icon(Icons.close_rounded, color: AppColors.salad100,)
                         ],)
                     ),
                   ],),
@@ -65,16 +65,16 @@ class _InputStatusPageState extends State<InputStatusPage> {
                             vertical: 22, horizontal: 16),
                         focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                                width: 1, color: ConstColor.salad100),
+                                width: 1, color: AppColors.salad100),
                             borderRadius: BorderRadius.circular(20)),
                         enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                                width: 1, color: ConstColor.salad100),
+                                width: 1, color: AppColors.salad100),
                             borderRadius: BorderRadius.circular(20)),
                         hintStyle: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            color: ConstColor.textGray)),
+                            color: AppColors.textGray)),
                   ),
                 ),
                 SizedBox(

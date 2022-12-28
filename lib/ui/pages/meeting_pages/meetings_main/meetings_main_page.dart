@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/assets.gen.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/pages/profile_pages/partner/view_partner_profile_page.dart';
 import 'package:network_app/ui/pages/meeting_pages/creqte_request_pages/personal_requests.dart';
 import 'package:network_app/ui/pages/meeting_pages/creqte_request_pages/search_page.dart';
 import 'package:network_app/ui/pages/meeting_pages/invitations/invitations_page.dart';
 import 'package:network_app/ui/pages/meeting_pages/notifications/notifications_page.dart';
+import 'package:network_app/utils/responsive_utils.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/timer_page.dart';
 
@@ -41,7 +42,7 @@ class _MeetingsMainPageState extends State<MeetingsMainPage> {
         }),
         child: Container(
           decoration: BoxDecoration(
-            color:   _activeTab == position?  ConstColor.salad100 : ConstColor.white10,
+            color:   _activeTab == position?  AppColors.salad100 : AppColors.white10,
             borderRadius: BorderRadius.circular(15),
           ),
           padding: const EdgeInsets.symmetric(
@@ -54,9 +55,9 @@ class _MeetingsMainPageState extends State<MeetingsMainPage> {
             style: TextStyle(
                 color:
                 _activeTab == position
-                    ? ConstColor.textBlack
-                    : ConstColor.textWhite,
-                fontSize: getResSize(12), //12
+                    ? AppColors.textBlack
+                    : AppColors.textWhite,
+                fontSize: ResponsiveUtils.getResSize(12), //12
                 fontWeight: FontWeight.w500),
           ),
         ),
@@ -135,7 +136,7 @@ class _MeetingsMainPageState extends State<MeetingsMainPage> {
                             horizontal: 13
                         ),
                         decoration: BoxDecoration(
-                          color: ConstColor.white10,
+                          color: AppColors.white10,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
@@ -220,7 +221,7 @@ class _MeetingsMainPageState extends State<MeetingsMainPage> {
                           }, child: const Padding(
                             padding: EdgeInsets.symmetric(vertical: 15),
                             child: Text('Личные запросы', style: TextStyle(
-                              color: ConstColor.textBlack,
+                              color: AppColors.textBlack,
                             ),),
                           )),
                         )
@@ -284,7 +285,7 @@ class _MeetingsMainPageState extends State<MeetingsMainPage> {
 
                                   const Icon(
                                     Icons.circle,
-                                    color: ConstColor.salad100,
+                                    color: AppColors.salad100,
                                     size: 10,
                                   ),
 
@@ -415,7 +416,7 @@ class _MeetingsMainPageState extends State<MeetingsMainPage> {
                     height: contSize,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: ConstColor.white10
+                        color: AppColors.white10
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

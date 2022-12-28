@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
-import 'package:network_app/constants.dart';
+import 'package:network_app/utils/responsive_utils.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/timer_page.dart';
 
@@ -202,7 +203,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
 
-                      const Icon(NetworkIcons.smile_dead, size: 80, color: ConstColor.salad100,),
+                      const Icon(NetworkIcons.smile_dead, size: 80, color: AppColors.salad100,),
 
 
                       Padding(
@@ -227,7 +228,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     decoration: BoxDecoration(
-                        color: ConstColor.white10,
+                        color: AppColors.white10,
                         borderRadius: const BorderRadius.vertical(
                             top: Radius.circular(30))),
                     child:
@@ -241,7 +242,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                           child: Container(
                             padding: const EdgeInsets.all(14),
                             decoration: BoxDecoration(
-                                color: ConstColor.white10,
+                                color: AppColors.white10,
                                 borderRadius: BorderRadius.circular(15)
                             ),
                             child: Row(
@@ -254,7 +255,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                                   fontWeight: FontWeight.w400
                                 ),),
 
-                                Icon(Icons.keyboard_arrow_down, size: 22, color: ConstColor.salad100,)
+                                Icon(Icons.keyboard_arrow_down, size: 22, color: AppColors.salad100,)
 
                               ],
                             ),
@@ -266,7 +267,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                           padding: const EdgeInsets.only(top: 21, bottom: 48),
                           child: Container(
                             decoration: BoxDecoration(
-                                color: ConstColor.white10,
+                                color: AppColors.white10,
                                 borderRadius: BorderRadius.circular(15)
                             ),
                             child: Row(
@@ -309,7 +310,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                                   child: Text(
                                     'Отправить',
                                     style: TextStyle(
-                                      color: ConstColor.textBlack,
+                                      color: AppColors.textBlack,
                                         fontSize: 17.5.sp,   //16
                                         fontWeight: FontWeight.w500
 
@@ -356,7 +357,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
       autofocus: false,
       decoration: InputDecoration(
         hintText: 'Опишите проблему...',
-        hintStyle: TextStyle(color: ConstColor.textGray, fontSize: getResSize(14)),
+        hintStyle: TextStyle(color: AppColors.textGray, fontSize: ResponsiveUtils.getResSize(14)),
         counterText: '',
         focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(width: 0, color: Colors.transparent),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/pages/store_pages/avatars_pages/avatar_view/view_prod_avatar_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/constants.dart';
@@ -29,7 +30,7 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
             decoration: BoxDecoration(
-                color: ConstColor.white10,
+                color: AppColors.white10,
                 borderRadius: BorderRadius.circular(20),
                 // border: Border.all(width: 1.5, color: Colors.grey.shade500)
             ),
@@ -42,7 +43,7 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
                     text,
                     style: TextStyle(
                         fontSize: 16.5.sp,   //14
-                        color: _active==position? ConstColor.salad100 : ConstColor.textWhite,
+                        color: _active==position? AppColors.salad100 : AppColors.textWhite,
                         fontWeight: FontWeight.w400
                     ),
                   ),
@@ -50,7 +51,7 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
                 Icon(
                   _active==position? Icons.keyboard_arrow_down_sharp: Icons.keyboard_arrow_right,
                   size: 20,   //14
-                  color: _active==position? ConstColor.salad100 : ConstColor.textWhite,
+                  color: _active==position? AppColors.salad100 : AppColors.textWhite,
                 )
               ],
             ),
@@ -97,7 +98,7 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
                       horizontal: 18
                     ),
                     decoration: BoxDecoration(
-                      color: ConstColor.white10,
+                      color: AppColors.white10,
                       borderRadius: BorderRadius.circular(20)
                     ),
                     child: const Text(Constants.strLoremIpsum,
@@ -190,7 +191,7 @@ Widget avatarContainer(
         const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 9),
 
         decoration: BoxDecoration(
-          color: ConstColor.white10,
+          color: AppColors.white10,
           borderRadius: BorderRadius.circular(15),
         ),
         width: contWidth,
@@ -284,7 +285,7 @@ Widget avatarContainer(
                           Text(
                             'Костюм "Выходной"',
                             style: TextStyle(
-                                color: ConstColor.salad100,
+                                color: AppColors.salad100,
                                 fontSize: 16.5.sp, //14
                                 fontWeight: FontWeight.w600
                             ),
@@ -315,7 +316,7 @@ Widget avatarContainer(
                     child: Text(
                       '1.6 SOL',
                       style: TextStyle(
-                          color: ConstColor.salad100,
+                          color: AppColors.salad100,
                           fontSize: 17.5.sp,   //16
                           fontWeight: FontWeight.w600
                       ),
@@ -340,7 +341,7 @@ Widget avatarContainer(
 
                         const Icon(
                           NetworkIcons.rhombus,
-                          color: ConstColor.salad100,
+                          color: AppColors.salad100,
                           size: 15,
                         ),
 
@@ -351,7 +352,7 @@ Widget avatarContainer(
                           child: Text(
                             '1.6 SOL',
                             style: TextStyle(
-                                color: ConstColor.salad100,
+                                color: AppColors.salad100,
                                 fontSize: 17.sp,   //16
                                 fontWeight: FontWeight.w600
                             ),

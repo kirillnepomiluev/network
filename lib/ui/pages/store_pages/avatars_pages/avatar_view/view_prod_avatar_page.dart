@@ -1,9 +1,9 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/home/home_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -32,7 +32,7 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
         blur: 50,
         width: MediaQuery.of(context).size.width,
         height: 105,
-        color: ConstColor.black1A.withOpacity(0.5),
+        color: AppColors.black1A.withOpacity(0.5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -45,7 +45,7 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
               child: Text(
                 '1.6 SOL',
                 style: TextStyle(
-                    color: ConstColor.salad100,
+                    color: AppColors.salad100,
                     fontSize: 18.sp, //16
                     fontWeight: FontWeight.w600),
               ),
@@ -113,7 +113,7 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
       width: mediaWidth,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: ConstColor.white10,
+        color: AppColors.white10,
         borderRadius: const BorderRadius.vertical(bottom: Radius.circular(50)),
       ),
       child: Column(
@@ -144,7 +144,7 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
                 Text(
             widget.title,
             style: const TextStyle(
-                      color: ConstColor.salad100,
+                      color: AppColors.salad100,
                       fontSize: 26, //14
                       fontWeight: FontWeight.w600
                   ),
@@ -171,7 +171,7 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
             child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 decoration: BoxDecoration(
-                    color: ConstColor.white10,
+                    color: AppColors.white10,
                     borderRadius: BorderRadius.circular(10)),
                 child: Text(
                   'Редкий',
@@ -214,7 +214,7 @@ void openSuccessSheet({required BuildContext context,}) {
                 child: Icon(
                   NetworkIcons.check_circle_outlined,
                   size: 100,
-                  color: ConstColor.salad100,
+                  color: AppColors.salad100,
                 ),
               ),
 

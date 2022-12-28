@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/all_questions.dart';
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/complaint_page.dart';
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/rate_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
@@ -160,8 +160,8 @@ class _TimerPageState extends State<TimerPage> {
                       backStrokeWidth: 28,        //28
                       progressStrokeWidth: 28,
                       size: 281,    //281
-                      backColor: ConstColor.white10,
-                      progressColors: const [ConstColor.salad100],
+                      backColor: AppColors.white10,
+                      progressColors: const [AppColors.salad100],
                       animationDuration: maxSeconds,
                       valueNotifier: valueNotifier,
                       mergeMode: true,
@@ -251,7 +251,7 @@ class _TimerPageState extends State<TimerPage> {
                       width: 66,    //66
                       height: 92,   //92
                       decoration: BoxDecoration(
-                        color: isPaused? ConstColor.white10 : ConstColor.salad100,
+                        color: isPaused? AppColors.white10 : AppColors.salad100,
                         borderRadius: BorderRadius.circular(37)
                       ),
 
@@ -362,7 +362,7 @@ class _TimerPageState extends State<TimerPage> {
                   top: padMain*1.57,  //44
                   bottom: padMain,
               ),
-                color: ConstColor.white10,
+                color: AppColors.white10,
                 // color: Colors.transparent,
                 borderRadius: BorderRadius.circular(15),
             child: Column(
@@ -390,7 +390,7 @@ class _TimerPageState extends State<TimerPage> {
                     ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor:
-                          MaterialStateProperty.all(ConstColor.salad100),
+                          MaterialStateProperty.all(AppColors.salad100),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -410,7 +410,7 @@ class _TimerPageState extends State<TimerPage> {
                           child: Text(
                             'Продолжить',
                             style: TextStyle(
-                              color: ConstColor.textBlack,
+                              color: AppColors.textBlack,
                                 fontSize: 16.5.sp, //14
                                 fontWeight: FontWeight.w400
                             ),
@@ -432,7 +432,7 @@ class _TimerPageState extends State<TimerPage> {
                           child: Text('Прервать', style: TextStyle(
                             fontSize: 16.5.sp,   //14
                             fontWeight: FontWeight.w400,
-                            color: ConstColor.textGray
+                            color: AppColors.textGray
                           ),),
                         ),
                       )
@@ -457,7 +457,7 @@ class _TimerPageState extends State<TimerPage> {
                     // left: 40,     //48
                     // right:40
               ),
-                    color: ConstColor.white10,
+                    color: AppColors.white10,
                     borderRadius: BorderRadius.circular(15),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -469,7 +469,7 @@ class _TimerPageState extends State<TimerPage> {
                       child: Icon(
                         NetworkIcons.warning,
                         size: 21.sp, //23
-                        color: ConstColor.salad100,
+                        color: AppColors.salad100,
                       ),
                     ),
 
@@ -513,7 +513,7 @@ class _TimerPageState extends State<TimerPage> {
                               // 'Создать чат',
                               'Пожаловаться',
                               style: TextStyle(
-                                color: ConstColor.textBlack,
+                                color: AppColors.textBlack,
                                   fontSize: 16.5.sp,   //14
                                   fontWeight: FontWeight.w400
 
@@ -537,7 +537,7 @@ class _TimerPageState extends State<TimerPage> {
 
   void openBottomSheetSuccess() {
     showModalBottomSheet<void>(
-        backgroundColor: ConstColor.black1A.withOpacity(0.5),
+        backgroundColor: AppColors.black1A.withOpacity(0.5),
         enableDrag: true,
       isDismissible: true,
         isScrollControlled: true,
@@ -614,7 +614,7 @@ class _TimerPageState extends State<TimerPage> {
                               child: Text(
                                 'Оценить встречу',
                                 style: TextStyle(
-                                    color: ConstColor.textBlack,
+                                    color: AppColors.textBlack,
                                     fontSize: 17.5.sp,   //16
                                     fontWeight: FontWeight.w500
 
@@ -691,7 +691,7 @@ void openBottomSheetComplain({
   final Function? func,
 }) {
   showModalBottomSheet<void>(
-      backgroundColor: ConstColor.black1A.withOpacity(0.5),
+      backgroundColor: AppColors.black1A.withOpacity(0.5),
       enableDrag: true,
       isDismissible: true,
       isScrollControlled: true,
@@ -727,7 +727,7 @@ void openBottomSheetComplain({
                       icon,
                       // Network.check_circle_outlined,
                       size: 100,
-                      color: ConstColor.salad100,
+                      color: AppColors.salad100,
                     ),
                   ),
 
@@ -779,7 +779,7 @@ void openBottomSheetComplain({
                             child: Text(
                               textButton,
                               style: TextStyle(
-                                  color: ConstColor.textBlack,
+                                  color: AppColors.textBlack,
                                   fontSize: 17.5.sp,   //16
                                   fontWeight: FontWeight.w500
                               ),

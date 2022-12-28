@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/widgets/input_pass_fields.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 
@@ -22,35 +22,21 @@ class OtpSentContainer extends StatelessWidget {
       width: double.infinity,
       padH: 18,
       padV: 23,
-      // decoration: BoxDecoration(
-      //   color: ConstColor.white10,
-      //   borderRadius: BorderRadius.circular(20),
-      // ),
-      // padding: const EdgeInsets.symmetric(vertical: 23, horizontal: 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const RichTextTwo(
-            text1: 'Введите ',
-            text2: 'код',
+          RichTextTwo(
+            // text1: 'Введите ',
+            text1: '${AppString.of(context).input} ',
+            text2: AppString.of(context).code,
             fontSize: 24,
           ),
           const SizedBox(height: 30,),
-          const Text(
-            'Отправленный на номер',
-            // style: TextStyle(
-            //     fontSize: getResSize(14), fontWeight: FontWeight.w400
-            // ),
+          Text(
+            AppString.of(context).sentToPhoneNumber,
           ),
           const SizedBox(height: 15,),
-          Text(
-            strPhone,
-            // style: TextStyle(
-            //     fontSize: getResSize(14),
-            //     color: Colors.white,
-            //     fontWeight: FontWeight.w400
-            // ),
-          ),
+          Text(strPhone,),
           const SizedBox(height: 40,),
           InputPassFields(
             onValdation: onValdation,

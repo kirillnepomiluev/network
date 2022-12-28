@@ -1,8 +1,8 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/store_pages/avatars_pages/avatar_category/view_category_avatar_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/pages/store_pages/hat_pages/hat_category/view_category_hats.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -34,7 +34,7 @@ class _StorePageState extends State<StorePage> {
         }),
         child: BlurryContainer(
           blur: 10,
-          color: ConstColor.white10,
+          color: AppColors.white10,
           borderRadius: BorderRadius.circular(20),
           // height: 56,
           padding: EdgeInsets.symmetric(

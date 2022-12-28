@@ -1,10 +1,10 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/home/home_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
+import 'package:network_app/utils/responsive_utils.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -165,7 +165,7 @@ class _ChatPageState extends State<ChatPage> {
           padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: keyboardSize+10),
           child: Container(
             decoration: BoxDecoration(
-                color: ConstColor.white10,
+                color: AppColors.white10,
                 borderRadius: BorderRadius.circular(15)
             ),
             child: Row(
@@ -223,7 +223,7 @@ class _ChatPageState extends State<ChatPage> {
                       padding: const EdgeInsets.only(bottom: 25),
                       child: Text('Сегодня, 12:01', style: TextStyle(
                           fontSize: 15.5.sp, //12
-                          color: ConstColor.textGray,
+                          color: AppColors.textGray,
                           fontWeight: FontWeight.w400),),
                     ),
 
@@ -231,7 +231,7 @@ class _ChatPageState extends State<ChatPage> {
                       padding: const EdgeInsets.all(15),
                       width: MediaQuery.of(context).size.width * 0.9,
                       decoration: BoxDecoration(
-                        color: ConstColor.white10,
+                        color: AppColors.white10,
                         // color: Colors.grey.shade300,
                         borderRadius: BorderRadius.circular(15)
                       ),
@@ -263,7 +263,7 @@ class _ChatPageState extends State<ChatPage> {
                                       child:
                                       Container(
                                           decoration: const BoxDecoration(
-                                              color: ConstColor.salad100,
+                                              color: AppColors.salad100,
                                               shape: BoxShape.circle
                                           ),
                                           width: 17,
@@ -288,7 +288,7 @@ class _ChatPageState extends State<ChatPage> {
                             children: [
                               Text('У вас запланирована встреча с Джоли',
                                 style: TextStyle(
-                                  color: ConstColor.salad100,
+                                  color: AppColors.salad100,
                                     fontSize: 15.5.sp, //12
                                     fontWeight: FontWeight.w600
                                 ),
@@ -345,12 +345,12 @@ class _ChatPageState extends State<ChatPage> {
             ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: isYou? ConstColor.salad100 : ConstColor.white10
+                color: isYou? AppColors.salad100 : AppColors.white10
             ),
             padding: const EdgeInsets.all(15),
             child: Text(
                 strText, style: TextStyle(
-              color: isYou? ConstColor.textBlack : ConstColor.textWhite,
+              color: isYou? AppColors.textBlack : AppColors.textWhite,
               fontSize: 16.5.sp, //14
                 fontWeight: FontWeight.w400,
             )),
@@ -366,8 +366,8 @@ class _ChatPageState extends State<ChatPage> {
 
                 isYou==false? Container():
                     Icon(NetworkIcons.check_double,
-                    color: ConstColor.salad100,
-                    size: getResSize(10),   //12
+                    color: AppColors.salad100,
+                    size: ResponsiveUtils.getResSize(10),   //12
                     ),
 
                 Padding(
@@ -415,8 +415,8 @@ class _ChatPageState extends State<ChatPage> {
         contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
         hintText: 'Ваше сообщение...',
         hintStyle: TextStyle(
-            color: ConstColor.textGray,
-          fontSize: getResSize(14),
+            color: AppColors.textGray,
+          fontSize: ResponsiveUtils.getResSize(14),
           fontWeight: FontWeight.w400
         ),
         counterText: '',

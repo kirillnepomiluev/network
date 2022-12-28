@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/input_name/input_name.dart';
+import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/reg_success/reg_success_vm.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:network_app/ui/widgets/buttons/app_button.dart';
+import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
+
 
 class RegSuccessView extends StatefulWidget {
   const RegSuccessView({Key? key}) : super(key: key);
@@ -14,106 +20,83 @@ class RegSuccessView extends StatefulWidget {
 class _RegSuccessViewState extends State<RegSuccessView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 10,),
-                const BackButtonCustom(),
-                const SizedBox(height: 31,),
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: ConstColor.white05),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 0),
-                        child: Text(
-                          'Поздравляем!',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: ConstColor.salad100,
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 29),
-                        child: Text(
-                          'Вы успешно зарегистрировались\nв нашем приложении!!',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ),
-                      ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          padding: const EdgeInsets.only(left: 0, top: 35),
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          itemCount: 4,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: const EdgeInsets.only(bottom: 20),
-                              child: ListTile(
-                                title: Text(
-                                  'Правило ${index + 1}',
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white),
-                                ),
-                                contentPadding: EdgeInsets.zero,
-                                subtitle: const Padding(
-                                  padding: EdgeInsets.only(top: 15),
-                                  child: Text(
-                                    Constants.strLoremIpsum,
-                                    maxLines: 2,
-                                    style: TextStyle(
-                                        color: ConstColor.textWhite,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400),
+  return ViewModelBuilder<RegSuccessViewModel>(
+      createModelDataEx: () => RegSuccessViewModel(context),
+      builder: (context, model) {
+        return Scaffold(
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 10,),
+                    const BackButtonCustom(),
+                    const SizedBox(height: 31,),
+
+                    AppContainer(
+                      padV: 20,
+                      padH: 20,
+                      color: AppColors.white05,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            AppString.of(context).weCongratulate,
+                            textAlign: TextAlign.center,
+                            style:
+                            AppTextStyles.salad24,
+                          ),
+
+                          const SizedBox(height: 29,),
+                          Text(
+                              AppString.of(context).youSuccessfullySignedUp,
+                              style: AppTextStyles.primary16
+                          ),
+
+                          const SizedBox(height: 35,),
+
+                          ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount: 4,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 20),
+                                  child: ListTile(
+                                    title: Text(
+                                        '${AppString.of(context).rule} ${index + 1}',
+                                        style: AppTextStyles.primary18w5
+                                    ),
+                                    contentPadding: EdgeInsets.zero,
+                                    subtitle: const Padding(
+                                      padding: EdgeInsets.only(top: 15),
+                                      child: Text(
+                                        Constants.strLoremIpsum,
+                                        maxLines: 2,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                            );
-                          }),
-                    ],
-                  ),
+                                );
+                              }),
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(height: 42,),
+
+                    AppButton(onPressed: model.onTap, text: AppString.of(context).accept,)
+
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 42),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                        style: buttonStyleCustom(padH: 0, padV: 22, radius: 20),
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute<void>(
-                              builder: (context) => const InputNamePage()));
-                        },
-                        child: Text(
-                          'Принять',
-                          style: TextStyle(
-                              fontSize: 18.5.sp, //18
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
-                        )),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
-    );
-  }
+        );
+      });
+}
+
 }

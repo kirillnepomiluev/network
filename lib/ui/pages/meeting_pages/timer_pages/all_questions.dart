@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/questions_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -61,7 +61,7 @@ class _AllQuestionsPageState extends State<AllQuestionsPage> {
                         child: Text(
                           'Начать с 1-го вопроса',
                           style: TextStyle(
-                              color: ConstColor.textBlack,
+                              color: AppColors.textBlack,
                               fontSize: 17.5.sp, //16
                               fontWeight: FontWeight.w500
                           ),
@@ -120,7 +120,7 @@ class _AllQuestionsPageState extends State<AllQuestionsPage> {
       width: contSize,
       height: contSize*0.74,      //112
       decoration: BoxDecoration(
-          color: ConstColor.white10,
+          color: AppColors.white10,
           borderRadius: BorderRadius.circular(22)),
       child: Center(
         child: Text(

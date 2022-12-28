@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/assets.gen.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/pages/store_pages/store_main/store_main_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -95,13 +95,13 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
 
-                    BackButtonCustom(contColor: ConstColor.black1A.withOpacity(0.65)),
+                    BackButtonCustom(contColor: AppColors.black1A.withOpacity(0.65)),
 
                     Container(
                       padding:
                           const EdgeInsets.symmetric(vertical: 14, horizontal: 18),
                       decoration: BoxDecoration(
-                        color: ConstColor.salad100,
+                        color: AppColors.salad100,
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Center(
@@ -134,7 +134,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                             padding: const EdgeInsets.only(left: 10),
                             child: Icon(
                               Icons.verified,
-                              color: ConstColor.salad100,
+                              color: AppColors.salad100,
                               size: 22.sp, //26
                             ),
                           ),
@@ -181,7 +181,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                           padding:
                               const EdgeInsets.symmetric(vertical: 10, horizontal: 18),
                           decoration: BoxDecoration(
-                              color: ConstColor.white10,
+                              color: AppColors.white10,
                               borderRadius: BorderRadius.circular(10)),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -200,7 +200,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                                 padding: const EdgeInsets.only(left: 12),
                                 child: Container(
                                   decoration: const BoxDecoration(
-                                      color: ConstColor.salad100,
+                                      color: AppColors.salad100,
                                       shape: BoxShape.circle),
                                   width: 0.048 * mediaWidth, //18
                                   height: 0.048 * mediaWidth,
@@ -254,7 +254,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                           vertical: 12,
                           horizontal: 20
                       ),
-                      backgroundColor: ConstColor.salad100,
+                      backgroundColor: AppColors.salad100,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(13)
                       )
@@ -267,7 +267,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                   },
                   child: const Text("Перейти в список вещей",
                     style: TextStyle(
-                        color: ConstColor.textBlack
+                        color: AppColors.textBlack
                     ),
                   )
               ),

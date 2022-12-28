@@ -1,9 +1,9 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/pages/chat_pages/messages_main/messages_main_page.dart';
 import 'package:network_app/ui/pages/wallet_pages/wallet_main/walltet_main_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/pages/profile_pages/profile_main/profile_main_page.dart';
 import 'package:network_app/ui/pages/store_pages/store_main/store_main_page.dart';
@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
         icon: Icon(
           icon,
           size: iconSize,
-          color: ConstColor.darkSalad,
+          color: AppColors.darkSalad,
         ),
         title: Text(
           text,
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
             fontWeight: FontWeight.w500
               ),
         ),
-        activeColor: ConstColor.salad100,
+        activeColor: AppColors.salad100,
         inactiveIcon: Icon(
           size: iconSize,
           icon,

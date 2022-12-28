@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/constants.dart';
-import 'package:network_app/ui/widgets/border_radius/app_border_radius.dart';
+import 'package:network_app/ui/theme/app_border_radius.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 
 class AppContainer extends StatelessWidget {
   final Color? color;
@@ -28,10 +28,10 @@ class AppContainer extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: color ?? ConstColor.white10,
+        color: color ?? AppColors.white10,
         borderRadius: BorderRadius.circular(radius),
       ),
-      padding: EdgeInsets.symmetric(vertical: padH, horizontal: padV),
+      padding: EdgeInsets.symmetric(vertical: padV, horizontal: padH),
       child: child,
     );
   }

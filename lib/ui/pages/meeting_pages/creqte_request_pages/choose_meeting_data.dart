@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/pages/meeting_pages/creqte_request_pages/meeting_parameters.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -157,7 +157,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-          color: ConstColor.white10,
+          color: AppColors.white10,
           borderRadius: BorderRadius.circular(12)
       ),
       child: TableCalendar<dynamic>(
@@ -174,7 +174,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
           // ),
           selectedDecoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: ConstColor.salad100
+              color: AppColors.salad100
           ),
           selectedTextStyle: TextStyle(color: Colors.black),
         ),

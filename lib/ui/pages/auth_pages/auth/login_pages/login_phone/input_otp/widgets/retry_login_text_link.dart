@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/constants.dart';
+import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 
 class RetryLoginTextLink extends StatelessWidget {
   final VoidCallback onRetryTap;
@@ -17,25 +18,19 @@ class RetryLoginTextLink extends StatelessWidget {
         height: 30,
         child: Stack(
           alignment: Alignment.center,
-          children: const [
+          children: [
             Positioned(
               bottom: 10,
               child: Text(
-                'Повторить попытку',
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: ConstColor.textGray),
+                AppString.of(context).retry,
+                style: AppTextStyles.grayPrimary500,
               ),
             ),
             Positioned(
               bottom: 0,
               child: Text(
                 '_____________________________',
-                style: TextStyle(
-                    fontSize: 10,
-                    color: ConstColor.textGray,
-                    fontWeight: FontWeight.bold),
+                style: AppTextStyles.gray10b
               ),
             )
           ],

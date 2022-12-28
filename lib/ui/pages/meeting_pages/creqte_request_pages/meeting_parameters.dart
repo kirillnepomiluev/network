@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/home/home_page.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -95,7 +95,7 @@ class _MeetingParametersState extends State<MeetingParameters> {
                                 Icon(
                                   NetworkIcons.edit,
                                   size: 15,
-                                  color: ConstColor.salad100,
+                                  color: AppColors.salad100,
                                 )
                             )
 
@@ -125,7 +125,7 @@ class _MeetingParametersState extends State<MeetingParameters> {
                             width: 36,
                             height: 36,
                             decoration: BoxDecoration(
-                                color: ConstColor.salad100,
+                                color: AppColors.salad100,
                                 borderRadius: BorderRadius.circular(7)),
                             child: IconButton(
                               padding: EdgeInsets.zero,
@@ -167,7 +167,7 @@ class _MeetingParametersState extends State<MeetingParameters> {
                             width: 36,
                             height: 36,
                             decoration: BoxDecoration(
-                                color: ConstColor.salad100,
+                                color: AppColors.salad100,
                                 borderRadius: BorderRadius.circular(7)),
                             child: IconButton(
                               padding: EdgeInsets.zero,

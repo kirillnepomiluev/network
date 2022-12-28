@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/pages/meeting_pages/creqte_request_pages/choose_meeting_data.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
+import 'package:network_app/utils/responsive_utils.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -26,7 +28,7 @@ class _MeetInterestsChooseState extends State<MeetInterestsChoose> {
     textAlign: TextAlign.start,
     autofocus: false,
     style: TextStyle(
-      fontSize: getResSize(14),
+      fontSize: ResponsiveUtils.getResSize(14),
       // color: ConstColor.textWhite
     ),
     decoration: const InputDecoration(
@@ -101,7 +103,7 @@ class _MeetInterestsChooseState extends State<MeetInterestsChoose> {
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: ConstColor.white10,
+                          color: AppColors.white10,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         padding: const EdgeInsets.symmetric(vertical: 26, horizontal: 18),
@@ -117,7 +119,7 @@ class _MeetInterestsChooseState extends State<MeetInterestsChoose> {
                       padding: const EdgeInsets.all(10),
                       height: 43,
                       decoration: BoxDecoration(
-                          color: ConstColor.white10,
+                          color: AppColors.white10,
                           borderRadius: BorderRadius.circular(15)
                       ),
                       child: Row(
@@ -133,7 +135,7 @@ class _MeetInterestsChooseState extends State<MeetInterestsChoose> {
                             child:
                             Icon(
                               NetworkIcons.search,
-                              size: getResSize(14),
+                              size: ResponsiveUtils.getResSize(14),
                               color: Colors.white,
                             ),
                           ),

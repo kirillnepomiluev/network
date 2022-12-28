@@ -9,7 +9,6 @@ class StartViewModel extends ViewModel {
     SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
   }
 
-
   void onTap() {
     Navigator.of(context).push(MaterialPageRoute<void>(
         builder: (context) => const LoginView()));

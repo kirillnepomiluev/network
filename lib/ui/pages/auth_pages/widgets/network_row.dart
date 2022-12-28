@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/assets.gen.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 
 
 class NetworkRow extends StatelessWidget {
@@ -36,8 +36,6 @@ class NetworkRow extends StatelessWidget {
             ],
           );
   }
-
-
 }
 
 class _Text extends StatelessWidget {
@@ -52,10 +50,7 @@ class _Text extends StatelessWidget {
           padding: EdgeInsets.only(left: isColumn ? 0 : 15.0, top: isColumn ? 10 : 0),
           child: Text(
             'network',
-            style: TextStyle(
-                fontSize: 23.5.sp, //34
-                color: Colors.white,
-                fontWeight: FontWeight.w600),
+            style: AppTextStyles.white32w6,
           ),
         );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/constants.dart';
+import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 
 class EmailField extends StatelessWidget {
   const EmailField({
@@ -9,11 +11,7 @@ class EmailField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: const TextStyle(
-        color: Colors.white,
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-      ),
+      style: AppTextStyles.primary16,
       textInputAction: TextInputAction.done,
       cursorColor: Colors.white,
       autofocus: true,
@@ -22,17 +20,17 @@ class EmailField extends StatelessWidget {
               vertical: 22, horizontal: 16),
           focusedBorder: OutlineInputBorder(
               borderSide: const BorderSide(
-                  width: 1, color: ConstColor.salad100),
+                  width: 1, color: AppColors.salad100),
               borderRadius: BorderRadius.circular(20)),
           enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(
-                  width: 1, color: ConstColor.salad100),
+                  width: 1, color: AppColors.salad100),
               borderRadius: BorderRadius.circular(20)),
-          hintText: 'Введите адрес электронной почты',
+          hintText: AppString.of(context).inputEmailAddress,
           hintStyle: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w400,
-              color: ConstColor.textGray)),
+              color: AppColors.textGray)),
     );
   }
 }
