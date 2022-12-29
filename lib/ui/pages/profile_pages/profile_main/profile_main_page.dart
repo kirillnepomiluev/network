@@ -4,11 +4,11 @@ import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/store_pages/avatars_pages/avatar_category/view_category_avatar_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
-import 'package:network_app/ui/widgets/choose_status.dart';
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_status/choose_status.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
-import 'package:network_app/ui/widgets/choose_interests.dart';
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_interests/choose_interests.dart';
 import 'package:network_app/ui/pages/store_pages/store_main/store_main_page.dart';
 import 'package:network_app/ui/pages/store_pages/hat_pages/hat_category/view_category_hats.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
@@ -798,7 +798,7 @@ class _BottomSheetMainState extends State<BottomSheetMain> {
                         ),
 
                         Padding(
-                            padding: EdgeInsets.only(top: 10),
+                            padding: const EdgeInsets.only(top: 10),
                             child:
                             CustomCheckListTile(title: AppString.of(context).hideSex,)
                         ),

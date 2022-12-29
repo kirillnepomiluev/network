@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_level/choose_level.dart';
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_level/choose_level_view.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/button_continue.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
@@ -110,7 +110,7 @@ class _ChooseSexPageState extends State<ChooseSexPage> {
                         offset: const Offset(-10, 0),
                         child: Text(
                           AppString.of(context).hideSex,
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         ),
                       ),
                     )),
@@ -119,7 +119,7 @@ class _ChooseSexPageState extends State<ChooseSexPage> {
                 ),
                 ButtonContinue(onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute<void>(
-                      builder: (context) => const ChooseLevelPage()));
+                      builder: (context) => const ChooseLevelView()));
                 }),
               ],
             ),

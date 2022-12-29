@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/input_about_you/input_about_you.dart';
-import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:network_app/ui/pages/auth_pages/widgets/input_info_column.dart';
 
 class InputOccupationPage extends StatefulWidget {
   const InputOccupationPage({Key? key}) : super(key: key);
@@ -20,84 +18,15 @@ class _InputOccupationPageState extends State<InputOccupationPage> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const BackButtonCustom(),
-                    Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.white10,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 12,
-                            horizontal: 18
-                        ),
-                        child:Row(children: const [
-                          Text('Пропустить'),
-                          Icon(Icons.close_rounded, color: AppColors.salad100,)
-                        ],)
-                    ),
-                  ],),
-                const EnterInfoContainer(
-                  padTop: 32,
-                  text1: 'Введите ',
-                  text2: 'свой вариант',
-                  description: 'Сфера деятельности будет отображаться в вашем профиле',
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 36, bottom: 36),
-                  child: TextFormField(
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    textInputAction: TextInputAction.done,
-                    cursorColor: Colors.white,
-                    autofocus: true,
-                    decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 22, horizontal: 16),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                width: 1, color: AppColors.salad100),
-                            borderRadius: BorderRadius.circular(20)),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                width: 1, color: AppColors.salad100),
-                            borderRadius: BorderRadius.circular(20)),
-                        // hintText: 'Введите адрес электронной почты',
-                        hintStyle: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.textGray)),
-                  ),
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      style: buttonStyleCustom(
-                          color: Colors.white, padH: 0, padV: 22, radius: 20),
-                      onPressed: () {
-                        FocusManager.instance.primaryFocus?.unfocus();
-
-                        Navigator.of(context).push(MaterialPageRoute<void>(
-                            builder: (context) => const InputAboutYouPage()));
-                      },
-                      child: Text(
-                        'Продолжить',
-                        style: TextStyle(
-                            fontSize: 18.5.sp, //18
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black),
-                      )),
-                ),
-              ],
+            child: InputInfoColumn(
+              text1: '${AppString.of(context).input} ',
+              text2: AppString.of(context).ownOption,
+              description: AppString.of(context).occupationsWillBeShowedInProfile,
+              onContinue: (){
+                FocusManager.instance.primaryFocus?.unfocus();
+                Navigator.of(context).push(MaterialPageRoute<void>(
+                    builder: (context) => const InputAboutYouPage()));
+              },
             ),
           ),
         ),

@@ -8,7 +8,7 @@ import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
-import 'package:network_app/utils/responsive_utils.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 
 class InputPhoneView extends StatelessWidget {
@@ -35,7 +35,7 @@ class InputPhoneView extends StatelessWidget {
                         func: model.goBack,
                       ),
                       SizedBox(
-                        height: ResponsiveUtils.getResSize(32),
+                        height: UtilsResponsive.getResSize(32),
                       ),
 
                       AppContainer(
@@ -47,9 +47,9 @@ class InputPhoneView extends StatelessWidget {
                                 // text1: 'Введите ',
                                 text1: '${AppString.of(context).input} ',
                                 text2: AppString.of(context).yourPhoneNumber,
-                                fontSize: ResponsiveUtils.getResSize(21)), //24
+                                fontSize: UtilsResponsive.getResSize(21)), //24
                             SizedBox(
-                              height: ResponsiveUtils.getResSize(20),
+                              height: UtilsResponsive.getResSize(20),
                             ),
                             InputPhoneField(
                               formstate: model.formstate,

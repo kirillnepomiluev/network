@@ -9,10 +9,11 @@ class AppButton extends StatelessWidget {
   final Color textColor;
   final Color borderColor;
   final String text;
-  final double width;
+  final double? width;
   final double? height;
   final double borderRadius;
   final VoidCallback? onPressed;
+  final TextStyle? textStyle;
 
   const AppButton(
       {Key? key,
@@ -23,7 +24,8 @@ class AppButton extends StatelessWidget {
         this.buttonColor = Colors.white,
         this.textColor = AppColors.textBlack,
         this.borderColor = Colors.white,
-        this.borderRadius = AppBorderRadius.r20
+        this.borderRadius = AppBorderRadius.r20,
+        this.textStyle
       })
       : super(key: key);
 
@@ -43,7 +45,9 @@ class AppButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: AppTextStyles.primary18w5.copyWith(color: textColor),
+          style:
+          textStyle??
+          AppTextStyles.primary18w5.copyWith(color: textColor),
           // style: TextStyle(
           //     fontWeight: FontWeight.w500,
           //     fontSize: ResponsiveUtils.getResSize(18), //18

@@ -4,7 +4,7 @@ import 'package:network_app/ui/pages/home/home_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
-import 'package:network_app/utils/responsive_utils.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -367,7 +367,7 @@ class _ChatPageState extends State<ChatPage> {
                 isYou==false? Container():
                     Icon(NetworkIcons.check_double,
                     color: AppColors.salad100,
-                    size: ResponsiveUtils.getResSize(10),   //12
+                    size: UtilsResponsive.getResSize(10),   //12
                     ),
 
                 Padding(
@@ -416,7 +416,7 @@ class _ChatPageState extends State<ChatPage> {
         hintText: 'Ваше сообщение...',
         hintStyle: TextStyle(
             color: AppColors.textGray,
-          fontSize: ResponsiveUtils.getResSize(14),
+          fontSize: UtilsResponsive.getResSize(14),
           fontWeight: FontWeight.w400
         ),
         counterText: '',

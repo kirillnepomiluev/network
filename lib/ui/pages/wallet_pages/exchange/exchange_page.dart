@@ -3,7 +3,7 @@ import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
-import 'package:network_app/utils/responsive_utils.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ExchangePage extends StatefulWidget {
@@ -110,7 +110,7 @@ class _ExchangePageState extends State<ExchangePage> {
                         child: Text(
                           'на вашем счете',
                           style: TextStyle(
-                              fontSize: ResponsiveUtils.getResSize(14), //14
+                              fontSize: UtilsResponsive.getResSize(14), //14
                               fontWeight: FontWeight.w400,
                               // color: Colors.black
                           ),
@@ -152,7 +152,7 @@ class _ExchangePageState extends State<ExchangePage> {
                                 'Смотреть другие валюты',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500,
-                                    fontSize: ResponsiveUtils.getResSize(16), //16
+                                    fontSize: UtilsResponsive.getResSize(16), //16
                                     color: AppColors.textBlack
                                 ),
                               ),
@@ -170,8 +170,8 @@ class _ExchangePageState extends State<ExchangePage> {
                       width: mediaWidth,
                       // padding: const EdgeInsets.all(14),
                       padding: EdgeInsets.only(
-                          left: ResponsiveUtils.getResSize(16), //16
-                          right: ResponsiveUtils.getResSize(16)),
+                          left: UtilsResponsive.getResSize(16), //16
+                          right: UtilsResponsive.getResSize(16)),
                       decoration: const BoxDecoration(
                         // color: ConstColor.white10,
                         color: AppColors.blackBack,
@@ -212,7 +212,7 @@ class _ExchangePageState extends State<ExchangePage> {
                                 Text(
                                   'Вы собираетесь обменять',
                                   style: TextStyle(
-                                    fontSize: ResponsiveUtils.getResSize(24), //24
+                                    fontSize: UtilsResponsive.getResSize(24), //24
                                     // color: Colors.grey,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -221,7 +221,7 @@ class _ExchangePageState extends State<ExchangePage> {
                                     text: TextSpan(
                                         // text: '300 баллов',
                                         style: TextStyle(
-                                          fontSize: ResponsiveUtils.getResSize(24),
+                                          fontSize: UtilsResponsive.getResSize(24),
                                           // color: ConstColor.salad100,
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -262,13 +262,13 @@ class _ExchangePageState extends State<ExchangePage> {
                                     child: Text(
                                       'Вы получите',
                                       style: TextStyle(
-                                          fontSize: ResponsiveUtils.getResSize(14), //14
+                                          fontSize: UtilsResponsive.getResSize(14), //14
                                           fontWeight: FontWeight.w400),
                                     ),
                                   ),
                                   Padding(
                                       padding:
-                                          EdgeInsets.only(top: ResponsiveUtils.getResSize(15)),
+                                          EdgeInsets.only(top: UtilsResponsive.getResSize(15)),
                                       child:
                                       Text(
                                         '0.00045 BTC',
@@ -317,13 +317,13 @@ class _ExchangePageState extends State<ExchangePage> {
                                           Text(
                                             'Комиссия (2%)',
                                             style: TextStyle(
-                                                fontSize: ResponsiveUtils.getResSize(14),
+                                                fontSize: UtilsResponsive.getResSize(14),
                                                 fontWeight: FontWeight.w400),
                                           ),
                                           Text(
                                             '0.00015',
                                             style: TextStyle(
-                                                fontSize: ResponsiveUtils.getResSize(18),
+                                                fontSize: UtilsResponsive.getResSize(18),
                                                 fontWeight: FontWeight.w400),
                                           ),
                                         ],
@@ -335,8 +335,8 @@ class _ExchangePageState extends State<ExchangePage> {
                           Padding(
                             padding: EdgeInsets.only(
                                 bottom: 35.sp,  //70
-                                left: ResponsiveUtils.getResSize(12),
-                                right: ResponsiveUtils.getResSize(12),
+                                left: UtilsResponsive.getResSize(12),
+                                right: UtilsResponsive.getResSize(12),
                                 top: 35.sp     //68
                             ),
                             child: MeetRow(
@@ -405,11 +405,11 @@ List<CurrencyData> currencyList = [
     'BTC',
     'Bitcoin',
     NetworkIcons.bitcoin,
-    ResponsiveUtils.getResSize(20),
+    UtilsResponsive.getResSize(20),
   ), //20
-  CurrencyData('SOL', 'Solana', NetworkIcons.sol, ResponsiveUtils.getResSize(14)), //14
-  CurrencyData('DASH', 'Dash', NetworkIcons.dash, ResponsiveUtils.getResSize(15)), //15
-  CurrencyData('ETH', 'Ethereum', NetworkIcons.eth, ResponsiveUtils.getResSize(20)), //20
+  CurrencyData('SOL', 'Solana', NetworkIcons.sol, UtilsResponsive.getResSize(14)), //14
+  CurrencyData('DASH', 'Dash', NetworkIcons.dash, UtilsResponsive.getResSize(15)), //15
+  CurrencyData('ETH', 'Ethereum', NetworkIcons.eth, UtilsResponsive.getResSize(20)), //20
 ];
 
 Widget currencyCont({required CurrencyData data}) => Padding(
@@ -441,7 +441,7 @@ Widget currencyCont({required CurrencyData data}) => Padding(
                 //   ),
                 // ),
                 Padding(
-                  padding: EdgeInsets.only(left: ResponsiveUtils.getResSize(18) //18
+                  padding: EdgeInsets.only(left: UtilsResponsive.getResSize(18) //18
                       ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -449,7 +449,7 @@ Widget currencyCont({required CurrencyData data}) => Padding(
                       Text(
                         data.title,
                         style: TextStyle(
-                            fontSize: ResponsiveUtils.getResSize(16), //16
+                            fontSize: UtilsResponsive.getResSize(16), //16
                             fontWeight: FontWeight.w400,
                             // color: Colors.black
                         ),
@@ -459,7 +459,7 @@ Widget currencyCont({required CurrencyData data}) => Padding(
                         child: Text(
                           data.subtitle,
                           style: TextStyle(
-                              fontSize: ResponsiveUtils.getResSize(14), //14
+                              fontSize: UtilsResponsive.getResSize(14), //14
                               fontWeight: FontWeight.w400,
                               color: Colors.grey),
                         ),
@@ -475,7 +475,7 @@ Widget currencyCont({required CurrencyData data}) => Padding(
                 Text(
                   '0.00045',
                   style: TextStyle(
-                      fontSize: ResponsiveUtils.getResSize(14), //14
+                      fontSize: UtilsResponsive.getResSize(14), //14
                       fontWeight: FontWeight.w400,
                       // color: Colors.black
                   ),
@@ -486,13 +486,13 @@ Widget currencyCont({required CurrencyData data}) => Padding(
                     children: [
                       Icon(
                         Icons.attach_money_sharp,
-                        size: ResponsiveUtils.getResSize(12), //12
+                        size: UtilsResponsive.getResSize(12), //12
                         color: AppColors.salad100
                       ),
                       Text(
                         '20.13',
                         style: TextStyle(
-                            fontSize: ResponsiveUtils.getResSize(12), //12
+                            fontSize: UtilsResponsive.getResSize(12), //12
                             fontWeight: FontWeight.w400,
                             color: AppColors.salad100
                         ),

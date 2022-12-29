@@ -3,7 +3,7 @@ import 'package:network_app/ui/pages/wallet_pages/exchange/exchange_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
-import 'package:network_app/utils/responsive_utils.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -216,7 +216,7 @@ class _WalletMainPageState extends State<WalletMainPage> {
                                   maxLines: null,
                                   style: TextStyle(
                                     color: Colors.grey,
-                                      fontSize: ResponsiveUtils.getResSize(12), //12
+                                      fontSize: UtilsResponsive.getResSize(12), //12
                                       fontWeight: FontWeight.w400
                                   ),
                                 ),
@@ -335,9 +335,9 @@ class _WalletMainPageState extends State<WalletMainPage> {
       height: 250,
       padding:
       EdgeInsets.only(
-          top: ResponsiveUtils.getResSize(14),
-          right: ResponsiveUtils.getResSize(14),
-          bottom: ResponsiveUtils.getResSize(14)
+          top: UtilsResponsive.getResSize(14),
+          right: UtilsResponsive.getResSize(14),
+          bottom: UtilsResponsive.getResSize(14)
       ),
       width: 55.sp, //161
       decoration: BoxDecoration(
@@ -355,7 +355,7 @@ class _WalletMainPageState extends State<WalletMainPage> {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                    left: ResponsiveUtils.getResSize(14) //14
+                    left: UtilsResponsive.getResSize(14) //14
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -364,7 +364,7 @@ class _WalletMainPageState extends State<WalletMainPage> {
 
                     Text(data.title,
                       style: TextStyle(
-                          fontSize: ResponsiveUtils.getResSize(16),   //16
+                          fontSize: UtilsResponsive.getResSize(16),   //16
                           fontWeight: FontWeight.w500,
                           color: isDark? AppColors.salad100 : AppColors.textBlack
                       ),
@@ -372,7 +372,7 @@ class _WalletMainPageState extends State<WalletMainPage> {
 
                     Text('+5,76%',
                       style: TextStyle(
-                          fontSize: ResponsiveUtils.getResSize(12),   //12
+                          fontSize: UtilsResponsive.getResSize(12),   //12
                           fontWeight: FontWeight.w400,
                           color: isDark? AppColors.textWhite : AppColors.textBlack
                       ),
@@ -384,12 +384,12 @@ class _WalletMainPageState extends State<WalletMainPage> {
 
               Padding(
                 padding: EdgeInsets.only(
-                    left: ResponsiveUtils.getResSize(14), //14
+                    left: UtilsResponsive.getResSize(14), //14
                     top: 5
                 ),
                 child: Text(data.subtitle,
                   style: TextStyle(
-                      fontSize: ResponsiveUtils.getResSize(14),   //14
+                      fontSize: UtilsResponsive.getResSize(14),   //14
                       fontWeight: FontWeight.w400,
                       color: isDark? AppColors.textGray : AppColors.black1A
                   ),
@@ -420,12 +420,12 @@ class _WalletMainPageState extends State<WalletMainPage> {
           Column(
             children: [
               Padding(
-                padding:  EdgeInsets.only(top: ResponsiveUtils.getResSize(10)),
+                padding:  EdgeInsets.only(top: UtilsResponsive.getResSize(10)),
                 child:  Align(
                   alignment: Alignment.topRight,
                   child: Text('Вы получите',
                     style: TextStyle(
-                        fontSize: ResponsiveUtils.getResSize(10),   //10
+                        fontSize: UtilsResponsive.getResSize(10),   //10
                         fontWeight: FontWeight.w500,
                         color: isDark? AppColors.textGray : AppColors.textBlack
                     ),
@@ -435,8 +435,8 @@ class _WalletMainPageState extends State<WalletMainPage> {
 
               Padding(
                   padding: EdgeInsets.only(
-                      left: ResponsiveUtils.getResSize(14), //14
-                      top: ResponsiveUtils.getResSize(12)   //12
+                      left: UtilsResponsive.getResSize(14), //14
+                      top: UtilsResponsive.getResSize(12)   //12
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -462,7 +462,7 @@ class _WalletMainPageState extends State<WalletMainPage> {
 
                         Text('0.00045',
                           style: TextStyle(
-                              fontSize: ResponsiveUtils.getResSize(14),   //14
+                              fontSize: UtilsResponsive.getResSize(14),   //14
                               fontWeight: FontWeight.w400,
                               color: isDark? AppColors.textWhite : AppColors.textBlack
                           ),
@@ -472,13 +472,13 @@ class _WalletMainPageState extends State<WalletMainPage> {
                           children: [
                             Icon(
                               Icons.attach_money_sharp,
-                              size: ResponsiveUtils.getResSize(12),
+                              size: UtilsResponsive.getResSize(12),
                               color: AppColors.textBlack
                             ),
 
                             Text('20.13',
                               style: TextStyle(
-                                  fontSize: ResponsiveUtils.getResSize(12),   //12
+                                  fontSize: UtilsResponsive.getResSize(12),   //12
                                   fontWeight: FontWeight.w400,
                                   color: isDark? AppColors.salad100 : AppColors.textBlack
                               ),

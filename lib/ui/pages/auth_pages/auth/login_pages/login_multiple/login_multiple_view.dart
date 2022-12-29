@@ -7,7 +7,7 @@ import 'package:network_app/ui/pages/auth_pages/widgets/network_row.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
-import 'package:network_app/utils/responsive_utils.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class LoginMultipleView extends StatelessWidget {
@@ -54,7 +54,7 @@ class LoginMultipleView extends StatelessWidget {
                             title: AppString.of(context).signInByPhone,
                           ),
 
-                          SizedBox(height: ResponsiveUtils.getResSize(21),), //21
+                          SizedBox(height: UtilsResponsive.getResSize(21),), //21
 
                           EnterRowContainer(
                             onTap: model.loginEmailTap,
@@ -63,7 +63,7 @@ class LoginMultipleView extends StatelessWidget {
                             // leftPad: 24.sp   //30
                           ),
 
-                          SizedBox(height: ResponsiveUtils.getResSize(21),), //21
+                          SizedBox(height: UtilsResponsive.getResSize(21),), //21
 
                           EnterRowContainer(
                             onTap: model.loginGoogleTap,
@@ -72,7 +72,7 @@ class LoginMultipleView extends StatelessWidget {
                             // leftPad: 23.sp   //28
                           ),
 
-                          SizedBox(height: ResponsiveUtils.getResSize(21),), //21
+                          SizedBox(height: UtilsResponsive.getResSize(21),), //21
 
                           EnterRowContainer(
                             onTap: model.loginFacebookTap,

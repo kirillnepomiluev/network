@@ -8,7 +8,7 @@ import 'package:network_app/ui/pages/meeting_pages/creqte_request_pages/personal
 import 'package:network_app/ui/pages/meeting_pages/creqte_request_pages/search_page.dart';
 import 'package:network_app/ui/pages/meeting_pages/invitations/invitations_page.dart';
 import 'package:network_app/ui/pages/meeting_pages/notifications/notifications_page.dart';
-import 'package:network_app/utils/responsive_utils.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/timer_page.dart';
 
@@ -57,7 +57,7 @@ class _MeetingsMainPageState extends State<MeetingsMainPage> {
                 _activeTab == position
                     ? AppColors.textBlack
                     : AppColors.textWhite,
-                fontSize: ResponsiveUtils.getResSize(12), //12
+                fontSize: UtilsResponsive.getResSize(12), //12
                 fontWeight: FontWeight.w500),
           ),
         ),

@@ -5,7 +5,7 @@ import 'package:network_app/ui/pages/auth_pages/auth/widgets/enter_row_container
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
-import 'package:network_app/utils/responsive_utils.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 
 class RecoveryView extends StatelessWidget {
@@ -32,7 +32,7 @@ class RecoveryView extends StatelessWidget {
                         text2: AppString.of(context).ofAccount,
                       ),
 
-                      SizedBox(height: ResponsiveUtils.getResSize(57),),
+                      SizedBox(height: UtilsResponsive.getResSize(57),),
 
                       EnterRowContainer(
                         onTap: model.onLoginEmailTap,

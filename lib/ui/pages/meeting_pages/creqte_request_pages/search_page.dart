@@ -4,7 +4,7 @@ import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
-import 'package:network_app/utils/responsive_utils.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -50,7 +50,7 @@ class _SearchPageState extends State<SearchPage> {
                 _activeTab == position
                     ? AppColors.textBlack
                     : AppColors.textWhite,
-                fontSize: ResponsiveUtils.getResSize(12), //12
+                fontSize: UtilsResponsive.getResSize(12), //12
                 fontWeight: FontWeight.w500),
           ),
         ),
@@ -67,7 +67,7 @@ class _SearchPageState extends State<SearchPage> {
     textAlign: TextAlign.start,
     autofocus: false,
     style: TextStyle(
-      fontSize: ResponsiveUtils.getResSize(14),
+      fontSize: UtilsResponsive.getResSize(14),
       // color: ConstColor.textWhite
     ),
     decoration: const InputDecoration(
@@ -195,7 +195,7 @@ class _SearchPageState extends State<SearchPage> {
                             child:
                             Icon(
                               NetworkIcons.search,
-                              size: ResponsiveUtils.getResSize(14),
+                              size: UtilsResponsive.getResSize(14),
                               color: Colors.white,
                             ),
                           ),

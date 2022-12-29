@@ -5,7 +5,7 @@ import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/pages/meeting_pages/notifications/notifications_page.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
-import 'package:network_app/utils/responsive_utils.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'dart:ui' as ui;
@@ -465,14 +465,14 @@ Widget progressParametr(
                         text1,
                         style: TextStyle(
                           color: AppColors.textGray,
-                          fontSize: ResponsiveUtils.getResSize(14),
+                          fontSize: UtilsResponsive.getResSize(14),
                         ),
                       ),
                       Text(
                         text2,
                         style: TextStyle(
                           color: AppColors.textGray,
-                          fontSize: ResponsiveUtils.getResSize(14),
+                          fontSize: UtilsResponsive.getResSize(14),
                         ),
                       ),
                     ],
@@ -1221,7 +1221,7 @@ class MeetRow extends StatelessWidget {
                           child: Text('Встретиться',
                               style: TextStyle(
                                   color: AppColors.textBlack,
-                                  fontSize: ResponsiveUtils.getResSize(14),
+                                  fontSize: UtilsResponsive.getResSize(14),
                                   fontWeight: FontWeight.w500)),
                         ),
 

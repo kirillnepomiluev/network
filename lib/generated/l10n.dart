@@ -469,6 +469,226 @@ class AppString {
       args: [],
     );
   }
+
+  /// `Выберете интересы`
+  String get chooseInterests {
+    return Intl.message(
+      'Выберете интересы',
+      name: 'chooseInterests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `интересы`
+  String get interests {
+    return Intl.message(
+      'интересы',
+      name: 'interests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пропустить`
+  String get skip {
+    return Intl.message(
+      'Пропустить',
+      name: 'skip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Добавить`
+  String get toAdd {
+    return Intl.message(
+      'Добавить',
+      name: 'toAdd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выберете статус`
+  String get chooseStatus {
+    return Intl.message(
+      'Выберете статус',
+      name: 'chooseStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `статус`
+  String get status {
+    return Intl.message(
+      'статус',
+      name: 'status',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Статус будет отображаться в вашем профиле`
+  String get statusWillShowenInYourProfile {
+    return Intl.message(
+      'Статус будет отображаться в вашем профиле',
+      name: 'statusWillShowenInYourProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ввести свой статус`
+  String get inputOwnStatus {
+    return Intl.message(
+      'Ввести свой статус',
+      name: 'inputOwnStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Введите свой`
+  String get inputOwn {
+    return Intl.message(
+      'Введите свой',
+      name: 'inputOwn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `сферу деятельности`
+  String get ofOccupation {
+    return Intl.message(
+      'сферу деятельности',
+      name: 'ofOccupation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сфера деятельности будет отображаться в вашем профиле`
+  String get occupationsWillBeShowedInProfile {
+    return Intl.message(
+      'Сфера деятельности будет отображаться в вашем профиле',
+      name: 'occupationsWillBeShowedInProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Вы можете выбрать`
+  String get youCanChoose {
+    return Intl.message(
+      'Вы можете выбрать',
+      name: 'youCanChoose',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `варианта`
+  String get ofOptions {
+    return Intl.message(
+      'варианта',
+      name: 'ofOptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ввести свой вариант`
+  String get inputOwnOption {
+    return Intl.message(
+      'Ввести свой вариант',
+      name: 'inputOwnOption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `свой вариант`
+  String get ownOption {
+    return Intl.message(
+      'свой вариант',
+      name: 'ownOption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Расскажите`
+  String get tell {
+    return Intl.message(
+      'Расскажите',
+      name: 'tell',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `о вас`
+  String get aboutYou {
+    return Intl.message(
+      'о вас',
+      name: 'aboutYou',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Это информация будет отображаться в вашем профиле`
+  String get thisInfoWillBeShowedInProfile {
+    return Intl.message(
+      'Это информация будет отображаться в вашем профиле',
+      name: 'thisInfoWillBeShowedInProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Включите`
+  String get turnOn {
+    return Intl.message(
+      'Включите',
+      name: 'turnOn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `геолокацию`
+  String get ofGeolocation {
+    return Intl.message(
+      'геолокацию',
+      name: 'ofGeolocation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Знакомьтесь и встречайтесь\nс людьми рядом с вами`
+  String get metPeopleNear {
+    return Intl.message(
+      'Знакомьтесь и встречайтесь\nс людьми рядом с вами',
+      name: 'metPeopleNear',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваше местоположение будет использовано для показа потенциальных партнеров для встреч`
+  String get yourLocationWillBeUsed {
+    return Intl.message(
+      'Ваше местоположение будет использовано для показа потенциальных партнеров для встреч',
+      name: 'yourLocationWillBeUsed',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppString> {

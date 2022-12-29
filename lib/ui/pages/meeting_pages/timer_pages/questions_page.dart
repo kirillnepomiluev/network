@@ -3,7 +3,7 @@ import 'package:network_app/ui/pages/meeting_pages/timer_pages/timer_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
-import 'package:network_app/utils/responsive_utils.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class QuestionsPage extends StatefulWidget {
@@ -365,7 +365,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                                       shape: BoxShape.circle),
                                                   child: Icon(
                                                     Icons.close_rounded,
-                                                    size: ResponsiveUtils.getResSize(12), //15
+                                                    size: UtilsResponsive.getResSize(12), //15
                                                     color: Colors.black,
                                                   ),
                                                 ),

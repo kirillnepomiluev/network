@@ -1,6 +1,6 @@
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class ResponsiveUtils{
+class UtilsResponsive{
   static double getResSize(num value) {
     double responSize = 30;
 

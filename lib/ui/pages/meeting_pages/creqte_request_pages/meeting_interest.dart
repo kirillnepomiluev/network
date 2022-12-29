@@ -5,7 +5,7 @@ import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/pages/meeting_pages/creqte_request_pages/choose_meeting_data.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
-import 'package:network_app/utils/responsive_utils.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -28,7 +28,7 @@ class _MeetInterestsChooseState extends State<MeetInterestsChoose> {
     textAlign: TextAlign.start,
     autofocus: false,
     style: TextStyle(
-      fontSize: ResponsiveUtils.getResSize(14),
+      fontSize: UtilsResponsive.getResSize(14),
       // color: ConstColor.textWhite
     ),
     decoration: const InputDecoration(
@@ -135,7 +135,7 @@ class _MeetInterestsChooseState extends State<MeetInterestsChoose> {
                             child:
                             Icon(
                               NetworkIcons.search,
-                              size: ResponsiveUtils.getResSize(14),
+                              size: UtilsResponsive.getResSize(14),
                               color: Colors.white,
                             ),
                           ),
