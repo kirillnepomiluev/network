@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/geolocation/geolocation.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/input_info_column.dart';
-import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class InputAboutYouPage extends StatelessWidget {
   const InputAboutYouPage({Key? key}) : super(key: key);

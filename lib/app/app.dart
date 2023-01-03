@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_interests/choose_interests.dart';
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_level/choose_level_view.dart';
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/geolocation/geolocation.dart';
+import 'package:network_app/ui/pages/home/home_page.dart';
 import 'package:network_app/ui/theme/app_theme.dart';
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_status/choose_status.dart';
+
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -28,7 +26,7 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: AppString.delegate.supportedLocales,
-            home: const TurnOnLocationPage(),
+            home: const HomePage(initIndex: 1, isCupboard: false),
           );
         },
       );

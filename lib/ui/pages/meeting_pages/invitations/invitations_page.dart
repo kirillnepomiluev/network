@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/pages/meeting_pages/matching/matching_page.dart';
@@ -351,7 +352,7 @@ class _InvitationsPageState extends State<InvitationsPage> {
                 children: [
                   Row(
                     children: [
-                      CustomCircleAvatar(
+                      AppCircleAvatar(
                         imageUrl: 'assets/images/avatars/avatar_$avatarNumb.png',
                         contSize: 83,
                       ),

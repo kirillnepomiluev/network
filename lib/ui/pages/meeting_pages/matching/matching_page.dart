@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/chat_pages/chat/chat_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -422,7 +423,7 @@ class _MatchingPageState extends State<MatchingPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
 
-          CustomCircleAvatar(
+          AppCircleAvatar(
             imageUrl: 'assets/images/avatars/avatar_$avatarNumb.png',
             contSize: 120,
           ),

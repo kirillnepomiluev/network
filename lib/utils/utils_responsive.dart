@@ -1,6 +1,6 @@
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class UtilsResponsive{
+class UtilsResponsive {
   static double getResSize(num value) {
     double responSize = 30;
 
@@ -29,8 +29,14 @@ class UtilsResponsive{
       case 21:
         responSize = 20.sp;
         break;
+      case 22:
+        responSize = 20.5.sp;
+        break;
       case 24:
         responSize = 21.5.sp;
+        break;
+      case 26:
+        responSize = 22.5.sp;
         break;
       case 32:
         responSize = 24.sp;

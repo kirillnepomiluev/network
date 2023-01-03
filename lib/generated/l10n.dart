@@ -441,30 +441,30 @@ class AppString {
   }
 
   /// `Базовый`
-  String get baseLevel {
+  String get base {
     return Intl.message(
       'Базовый',
-      name: 'baseLevel',
+      name: 'base',
       desc: '',
       args: [],
     );
   }
 
   /// `Стандартный`
-  String get standartLevel {
+  String get standart {
     return Intl.message(
       'Стандартный',
-      name: 'standartLevel',
+      name: 'standart',
       desc: '',
       args: [],
     );
   }
 
   /// `Премиум`
-  String get premiumLevel {
+  String get premium {
     return Intl.message(
       'Премиум',
-      name: 'premiumLevel',
+      name: 'premium',
       desc: '',
       args: [],
     );
@@ -685,6 +685,156 @@ class AppString {
     return Intl.message(
       'Ваше местоположение будет использовано для показа потенциальных партнеров для встреч',
       name: 'yourLocationWillBeUsed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Профиль`
+  String get profile {
+    return Intl.message(
+      'Профиль',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Шкаф`
+  String get cupboard {
+    return Intl.message(
+      'Шкаф',
+      name: 'cupboard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Друзья`
+  String get friends {
+    return Intl.message(
+      'Друзья',
+      name: 'friends',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Готов к встрече`
+  String get readyToMeet {
+    return Intl.message(
+      'Готов к встрече',
+      name: 'readyToMeet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `рейтинг`
+  String get rating {
+    return Intl.message(
+      'рейтинг',
+      name: 'rating',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Базовый уровень`
+  String get baseLevel {
+    return Intl.message(
+      'Базовый уровень',
+      name: 'baseLevel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `баллов`
+  String get ofPoints {
+    return Intl.message(
+      'баллов',
+      name: 'ofPoints',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `встречи`
+  String get meets {
+    return Intl.message(
+      'встречи',
+      name: 'meets',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Аватары`
+  String get avatars {
+    return Intl.message(
+      'Аватары',
+      name: 'avatars',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Редкий`
+  String get rare {
+    return Intl.message(
+      'Редкий',
+      name: 'rare',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Обычный`
+  String get usual {
+    return Intl.message(
+      'Обычный',
+      name: 'usual',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Головные уборы`
+  String get headwears {
+    return Intl.message(
+      'Головные уборы',
+      name: 'headwears',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `пустой`
+  String get empty {
+    return Intl.message(
+      'пустой',
+      name: 'empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Посетите магазин, чтобы купить новые\nпредметы для своего персонажа`
+  String get visitStoreToBuyThingsForYourCharacter {
+    return Intl.message(
+      'Посетите магазин, чтобы купить новые\nпредметы для своего персонажа',
+      name: 'visitStoreToBuyThingsForYourCharacter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Посетить магазин`
+  String get visitStore {
+    return Intl.message(
+      'Посетить магазин',
+      name: 'visitStore',
       desc: '',
       args: [],
     );

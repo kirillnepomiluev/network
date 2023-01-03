@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
+import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/widgets/stat_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ViewProdHatPage extends StatefulWidget {
@@ -85,9 +86,9 @@ class _ViewProdHatPageState extends State<ViewProdHatPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    statContainer(context: context, title: '', subtitle: 'Базовый уровень'),
-                    statContainer(context: context, title: '+10', subtitle: 'баллов'),
-                    statContainer(context: context, title: '+0.2', subtitle: 'рейтинг'),
+                    StatContainer(title: '', subtitle: AppString.of(context).baseLevel),
+                    StatContainer(title: '+10', subtitle: AppString.of(context).ofPoints),
+                    StatContainer(title: '+0.2', subtitle: AppString.of(context).rating),
                   ],
                 ),
               ),

@@ -1,8 +1,10 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/ui/pages/profile_pages/profile_main/widgets/profile_avatar_row.dart';
 import 'package:network_app/ui/pages/store_pages/avatars_pages/avatar_category/view_category_avatar_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
+import 'package:network_app/ui/widgets/common/notification_icon.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/pages/store_pages/hat_pages/hat_category/view_category_hats.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -81,12 +83,13 @@ class _StorePageState extends State<StorePage> {
   final _avatarScrollContr = ScrollController();
   final _hatScrollContr = ScrollController();
 
+  void onNotificationIconTap(){}
+
   @override
   Widget build(BuildContext context) {
     final mediaTop = MediaQuery.of(context).viewPadding.top;
 
     return Scaffold(
-      // backgroundColor: ConstColor.blackBack,
       body: Stack(
         children: [
 
@@ -107,48 +110,23 @@ class _StorePageState extends State<StorePage> {
                           padding: const EdgeInsets.only(top: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
-                              BackButtonCustom(),
+                            children: [
+                              const BackButtonCustom(),
                               Padding(
-                                padding: EdgeInsets.only(right: 16),
-                                child: NotificationIcon(),
+                                padding: const EdgeInsets.only(right: 16),
+                                child: NotificationIcon(onTap: onNotificationIconTap,),
                               ),
                             ],
                           ),
                         ),
 
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20, bottom: 10),
-                          child: profileAvatarRow(title: 'Джоли, 28', showNotifications: false),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 20, bottom: 10),
+                          child: ProfileAvatarRow(title: 'Джоли, 28', showNotifications: false),
                         ),
 
                       ],
                     ),
-
-                  // //Магазин
-                  // const Padding(
-                  //   padding: EdgeInsets.only(top: 10),
-                  //   child: Text(
-                  //     'Магазин',
-                  //     style: TextStyle(
-                  //         color: Colors.white,
-                  //         fontSize: 30,
-                  //         fontWeight: FontWeight.w700),
-                  //     textAlign: TextAlign.start,
-                  //   ),
-                  // ),
-
-                  // //Выбор интерфейса
-                  // Padding(
-                  //   padding: const EdgeInsets.only(top: 19),
-                  //   child: Row(
-                  //     mainAxisAlignment: MainAxisAlignment.start,
-                  //     children: [
-                  //       miniContainer(position: 1, text: 'Магазин'),
-                  //       miniContainer(position: 2, text: 'Лотерея'),
-                  //     ],
-                  //   ),
-                  // ),
 
                   //Аватары
                   Padding(

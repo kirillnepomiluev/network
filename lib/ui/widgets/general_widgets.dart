@@ -1,101 +1,13 @@
+import 'dart:ui' as ui;
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/constants.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
-import 'package:network_app/constants.dart';
-import 'package:network_app/ui/pages/meeting_pages/notifications/notifications_page.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'dart:ui' as ui;
-
-
-Widget profileAvatarRow({String title = 'Тимофей, 37', bool showNotifications = true}) => Row(
-  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    //ава
-    Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-            padding: EdgeInsets.only(right: 20),
-            child: SizedBox(
-              width: 60,
-              height: 60,
-              child: CircleAvatar(
-                backgroundColor: AppColors.salad100,
-                foregroundImage:
-                AssetImage('assets/images/avatars/avatar_0.png'),
-              ),
-            )),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.sp, //18
-                  fontWeight: FontWeight.w700),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 7),
-              child: Container(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 6, horizontal: 9),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColors.white10),
-                  child: Center(
-                      child: Text(
-                        'я люблю веселиться 😁',
-                        style: TextStyle(
-                            fontSize: 15.5.sp, //12
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white),
-                      ))),
-            ),
-          ],
-        ),
-      ],
-    ),
-
-    if(showNotifications)
-    const Padding(
-      padding: EdgeInsets.only(right: 16),
-      child: NotificationIcon(),
-    ),
-  ],
-);
-
-
-class CustomCircleAvatar extends StatelessWidget {
-  final String imageUrl;
-  final double contSize;
-  const CustomCircleAvatar({Key? key, required this.imageUrl, required this.contSize}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        shape: BoxShape.circle,
-        image: DecorationImage(
-          image: AssetImage(
-              imageUrl
-          ),
-          fit: BoxFit.fitHeight,
-          // alignment: Alignment.bottomCenter
-        ),
-      ),
-      width: contSize, //120
-      height: contSize,
-    );
-  }
-}
-
 
 Widget rhombusText(
         {String text = '+150',
@@ -124,78 +36,26 @@ Widget rhombusText(
       ],
     );
 
-class NotificationIcon extends StatelessWidget {
-  const NotificationIcon({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 43,
-      height: 44,
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          Container(
-            width: 43,
-            height: 43,
-            decoration: BoxDecoration(
-              color: AppColors.white10,
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: IconButton(
-              onPressed: () {
-                showDialog<void>(
-                  context: context,
-                  useSafeArea: false,
-                  builder: (BuildContext context) {
-                    return const NotificationsPage();
-                  },
-                );
-              },
-              icon: const Icon(
-                NetworkIcons.notification,
-                size: 15, //15
-                color: Colors.white,
-              ),
-            ),
-          ),
-          const Positioned(
-            right: 0,
-            top: 0,
-            child: Icon(
-              Icons.circle,
-              size: 12,
-              color: AppColors.salad100,
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
 class HobbySelected extends StatefulWidget {
   final String title;
   final Function? func;
-  const HobbySelected({Key? key, required this.title, this.func}) : super(key: key);
+  const HobbySelected({Key? key, required this.title, this.func})
+      : super(key: key);
 
   @override
   State<HobbySelected> createState() => _HobbySelectedState();
 }
 
 class _HobbySelectedState extends State<HobbySelected> {
-
   bool isSelected = false;
 
   @override
   Widget build(BuildContext context) {
-
     final mediaWitdh = MediaQuery.of(context).size.width;
 
     return InkWell(
       onTap: (() {
-
-        if(widget.func!=null){
+        if (widget.func != null) {
           widget.func!();
         }
 
@@ -204,32 +64,22 @@ class _HobbySelectedState extends State<HobbySelected> {
         });
       }),
       child: Container(
-        padding: EdgeInsets.all(mediaWitdh*0.0373), //14
+        padding: EdgeInsets.all(mediaWitdh * 0.0373), //14
         decoration: BoxDecoration(
-          color: isSelected
-              ? AppColors.salad100
-              : AppColors.white10,
+          color: isSelected ? AppColors.salad100 : AppColors.white10,
           borderRadius: BorderRadius.circular(12),
         ),
-        child:
-        Text(
+        child: Text(
           widget.title,
           style: TextStyle(
-              color:
-              isSelected
-                  ? Colors.black
-                  : AppColors.textWhite,
+              color: isSelected ? Colors.black : AppColors.textWhite,
               fontSize: 15.5.sp, //12
-              fontWeight: FontWeight.w400
-          ),
+              fontWeight: FontWeight.w400),
         ),
       ),
     );
   }
 }
-
-
-
 
 // class EnterRowContainer extends StatelessWidget {
 //   final VoidCallback onTap;
@@ -289,8 +139,6 @@ class _HobbySelectedState extends State<HobbySelected> {
 //   }
 // }
 
-
-
 class IconContainer extends StatelessWidget {
   final IconData icon;
   final Color iconColor;
@@ -335,7 +183,8 @@ class IconContainer extends StatelessWidget {
 class BackButtonCustom extends StatelessWidget {
   final VoidCallback? func;
   final Color? contColor;
-  const BackButtonCustom({Key? key, this.func, this.contColor}) : super(key: key);
+  const BackButtonCustom({Key? key, this.func, this.contColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -376,52 +225,6 @@ Widget blurCircle({double sigma = 55, double radius = 271}) => SizedBox(
         ],
       ),
     );
-
-Widget statContainer({
-  required BuildContext context,
-  required String title,
-  required String subtitle,
-}) {
-  final double contWidth = 45.sp; //107
-  // final double contHeight =  mediaHeight*0.2853;
-
-  return BlurryContainer(
-    // padding: EdgeInsets.symmetric(vertical: 52, horizontal: 21),
-    blur: 20,
-    width: contWidth, //107
-    // height: contWidth*1.514,  //162
-    height: 55.sp, //162
-    color: AppColors.white10,
-    borderRadius: BorderRadius.circular(30),
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        title == ''
-            ? Container()
-            : Text(
-                title,
-                style: TextStyle(
-                    fontSize: 23.sp, //28
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white),
-              ),
-        Padding(
-          padding: const EdgeInsets.only(top: 5),
-          child: Text(
-            subtitle,
-            style: TextStyle(
-                fontSize: 17.5.sp, //16
-                fontWeight: FontWeight.w500,
-                color: Colors.white),
-            textAlign: TextAlign.center,
-          ),
-        )
-      ],
-    ),
-  );
-}
 
 
 Widget titleStatText(String text) => Padding(
@@ -497,7 +300,6 @@ Widget progressParametr(
                       )
                     ],
                   )),
-
         Padding(
           padding: const EdgeInsets.only(top: 12),
           child: Stack(
@@ -584,16 +386,13 @@ Widget textField(String hintText, {bool isEnable = true}) => Padding(
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 19),
           focusedBorder: OutlineInputBorder(
-              borderSide:
-                  const BorderSide(width: 1, color: AppColors.salad100),
+              borderSide: const BorderSide(width: 1, color: AppColors.salad100),
               borderRadius: BorderRadius.circular(20)),
           enabledBorder: OutlineInputBorder(
-              borderSide:
-                  const BorderSide(width: 1, color: AppColors.salad100),
+              borderSide: const BorderSide(width: 1, color: AppColors.salad100),
               borderRadius: BorderRadius.circular(20)),
           disabledBorder: OutlineInputBorder(
-              borderSide:
-                  const BorderSide(width: 1, color: AppColors.salad100),
+              borderSide: const BorderSide(width: 1, color: AppColors.salad100),
               borderRadius: BorderRadius.circular(20)),
           // filled: true,
           // fillColor: Colors.white,
@@ -653,8 +452,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
                             Padding(
                               padding: EdgeInsets.only(top: 20),
                               child: Text(
-                                Constants.strLongLoremIpsum
-                                ,
+                                Constants.strLongLoremIpsum,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
@@ -696,7 +494,6 @@ ButtonStyle buttonStyleCustom({
       ),
     );
 
-
 class StatColumn extends StatelessWidget {
   final bool ifProfileSheet;
   const StatColumn({Key? key, this.ifProfileSheet = false}) : super(key: key);
@@ -715,7 +512,6 @@ class StatColumn extends StatelessWidget {
               text1: 'Уровень ',
               text2: 'Базовый',
             ),
-
             Container(
               decoration: BoxDecoration(
                   color: AppColors.salad100,
@@ -727,23 +523,25 @@ class StatColumn extends StatelessWidget {
                 size: 13,
               ),
             ),
-
           ],
         ),
 
-        const SizedBox(height: 5,),
+        const SizedBox(
+          height: 5,
+        ),
 
         progressParametr(
             progress: 0.3,
             context: context,
             text1: 'Токены за встречи  ',
             text2: '150',
-            icon: NetworkIcons.rhombus
+            icon: NetworkIcons.rhombus),
+
+        const SizedBox(
+          height: 15,
         ),
 
-        const SizedBox(height: 15,),
-
-        if(ifProfileSheet)
+        if (ifProfileSheet)
           const RichTextTwo(
             text1: 'До следущего уровня осталось\nнабрать ',
             text2: '1500 токенов',
@@ -752,38 +550,31 @@ class StatColumn extends StatelessWidget {
             fontWeight2: FontWeight.w500,
           ),
 
-        if(ifProfileSheet)
+        if (ifProfileSheet)
           Padding(
-          padding: const EdgeInsets.only(top: 25, bottom: 7),
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(
-                vertical: 12,
-                horizontal: 20
-              ),
-              backgroundColor: AppColors.salad100,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(13)
-              )
-            ),
-              onPressed: (){},
-              child: const Text("Докупить токены",
-              style: TextStyle(
-                color: AppColors.textBlack
-              ),
-              )
+            padding: const EdgeInsets.only(top: 25, bottom: 7),
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 12, horizontal: 20),
+                    backgroundColor: AppColors.salad100,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(13))),
+                onPressed: () {},
+                child: const Text(
+                  "Докупить токены",
+                  style: TextStyle(color: AppColors.textBlack),
+                )),
           ),
-        ),
 
-
-        if(ifProfileSheet)
-        progressParametr(
-            context: context,
-            text1: '5 встреч',
-            text2: 'Еще 25 встреч',
-            progress: 0.25,
-            isMeetingRow: true,
-            icon: NetworkIcons.people),
+        if (ifProfileSheet)
+          progressParametr(
+              context: context,
+              text1: '5 встреч',
+              text2: 'Еще 25 встреч',
+              progress: 0.25,
+              isMeetingRow: true,
+              icon: NetworkIcons.people),
 
         titleStatText('Статистика'),
         progressParametr(
@@ -822,7 +613,8 @@ class StatColumn extends StatelessWidget {
 class CustomCheckListTile extends StatefulWidget {
   final Function? func;
   final String title;
-  const CustomCheckListTile({Key? key, required this.title, this.func}) : super(key: key);
+  const CustomCheckListTile({Key? key, required this.title, this.func})
+      : super(key: key);
 
   @override
   State<CustomCheckListTile> createState() => _CustomCheckListTileState();
@@ -840,9 +632,8 @@ class _CustomCheckListTileState extends State<CustomCheckListTile> {
         checkColor: Colors.black,
         controlAffinity: ListTileControlAffinity.leading,
         value: value,
-        onChanged: (newValue){
-
-          if(widget.func!=null){
+        onChanged: (newValue) {
+          if (widget.func != null) {
             widget.func!();
           }
 
@@ -853,16 +644,15 @@ class _CustomCheckListTileState extends State<CustomCheckListTile> {
         activeColor: AppColors.salad100,
         title: Transform.translate(
           offset: const Offset(-17, 0),
-          child: Text(widget.title, style: const TextStyle(
-            color: Colors.white
-          ),),
+          child: Text(
+            widget.title,
+            style: const TextStyle(color: Colors.white),
+          ),
         ),
       ),
     );
   }
 }
-
-
 
 class BottomSheetMinPaint extends CustomPainter {
   final Color? color;
@@ -925,10 +715,8 @@ class BottomSheetMinPaint extends CustomPainter {
       ..strokeWidth = size.width * 0.01866667;
     paint1Stroke.color = const Color(0xffE2FF2D).withOpacity(1.0);
     paint1Stroke.strokeCap = StrokeCap.round;
-    canvas.drawLine(
-        Offset(size.width * 0.4560000, size.height * 0.1206897),
-        Offset(size.width * 0.5440320, size.height * 0.1206897),
-        paint1Stroke);
+    canvas.drawLine(Offset(size.width * 0.4560000, size.height * 0.1206897),
+        Offset(size.width * 0.5440320, size.height * 0.1206897), paint1Stroke);
   }
 
   @override
@@ -1077,7 +865,8 @@ class _RadioListState extends State<RadioList> {
 class MeetRow extends StatelessWidget {
   final Function? func;
   final bool isExchange;
-  const MeetRow({Key? key, this.func, this.isExchange = false}) : super(key: key);
+  const MeetRow({Key? key, this.func, this.isExchange = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -1265,7 +1054,6 @@ class MeetRow extends StatelessWidget {
                   contSize: contSize,
                 ),
               ),
-
             ],
           );
   }

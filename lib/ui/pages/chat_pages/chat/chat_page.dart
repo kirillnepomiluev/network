@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/home/home_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/utils/utils_responsive.dart';
@@ -250,7 +251,7 @@ class _ChatPageState extends State<ChatPage> {
                                   const Positioned(
                                     top: 0,
                                     child:
-                                      CustomCircleAvatar(
+                                      AppCircleAvatar(
                                           imageUrl:  'assets/images/avatars/avatar_0.png',
                                           contSize: 45
                                       )

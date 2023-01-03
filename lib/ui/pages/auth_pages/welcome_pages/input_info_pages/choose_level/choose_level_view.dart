@@ -41,19 +41,19 @@ class ChooseLevelView extends StatelessWidget {
 
                       LevelContainer(
                           openBottomSheetProfile: model.openBottomSheetProfile,
-                          title: AppString.of(context).baseLevel,
+                          title: AppString.of(context).base,
                           value: LevelOptions.base,
                           groupValue: model.groupValue,
                           onPressed: model.onPressed),
                       LevelContainer(
                           openBottomSheetProfile: model.openBottomSheetProfile,
-                          title: AppString.of(context).standartLevel,
+                          title: AppString.of(context).standart,
                           value: LevelOptions.standart,
                           groupValue: model.groupValue,
                           onPressed: model.onPressed),
                       LevelContainer(
                           openBottomSheetProfile: model.openBottomSheetProfile,
-                          title: AppString.of(context).premiumLevel,
+                          title: AppString.of(context).premium,
                           value: LevelOptions.premium,
                           groupValue: model.groupValue,
                           onPressed: model.onPressed),

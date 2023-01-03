@@ -4,7 +4,6 @@ import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/i
 import 'package:network_app/ui/pages/auth_pages/widgets/auth_bar_row.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/button_continue.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/search_text_field.dart';
-import 'package:network_app/ui/pages/auth_pages/widgets/wrap_select_containers.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
@@ -12,9 +11,6 @@ import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/ui/widgets/network_icons.dart';
-import 'package:network_app/utils/utils_responsive.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ChooseOccupationPage extends StatefulWidget {
   const ChooseOccupationPage({
@@ -88,7 +84,7 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
 
                   if (choosedOptions.isNotEmpty)
                     Padding(
-                      padding: EdgeInsets.only(top: 20),
+                      padding: const EdgeInsets.only(top: 20),
                       child:
                           // WrapSelectContainers(),
                           Wrap(

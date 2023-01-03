@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/pages/auth_pages/widgets/skip_container.dart';
+import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/theme/app_border_radius.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 
 class AuthBarRow extends StatelessWidget {
@@ -13,9 +16,25 @@ class AuthBarRow extends StatelessWidget {
     return isAuth
         ? Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
-        BackButtonCustom(),
-        SkipContainer(),
+      children: [
+        const BackButtonCustom(),
+        AppContainer(
+            radius: AppBorderRadius.r15,
+            padH: 18,
+            padV: 12,
+            child: Row(
+              children: [
+                Text(AppString.of(context).skip),
+                const Padding(
+                  padding: EdgeInsets.only(left: 5),
+                  child: Icon(
+                    Icons.close_rounded,
+                    color: AppColors.salad100,
+                    size: 20,
+                  ),
+                )
+              ],
+            )),
       ],
     )
         : Padding(

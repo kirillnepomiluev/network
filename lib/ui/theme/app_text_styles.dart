@@ -40,12 +40,23 @@ class AppTextStyles {
   
 
   static final primary10 = primary.copyWith(fontSize: UtilsResponsive.getResSize(10));
+  static final primary12 = primary.copyWith(fontSize: UtilsResponsive.getResSize(12));
 
   static final primary16 = primary.copyWith(fontSize: UtilsResponsive.getResSize(16));
 
   static final primary20w5 = primary.copyWith(
       fontSize: UtilsResponsive.getResSize(24), //24
       fontWeight: FontWeight.w500
+  );
+
+  static final primary26w7 = primary.copyWith(
+      fontSize: UtilsResponsive.getResSize(26), //24
+      fontWeight: FontWeight.w700
+  );
+
+  static final primary22w6 = primary.copyWith(
+        fontSize: UtilsResponsive.getResSize(22), //22
+        fontWeight: FontWeight.w600
   );
 
   static final white32w6 = TextStyle(
@@ -102,6 +113,14 @@ class AppTextStyles {
         fontWeight: FontWeight.w600
   );
 
+  static final darkSaladPrimary = primary.copyWith(
+      color: AppColors.darkSalad
+  );
+
+  static final darkSalad14w5 =
+  darkSaladPrimary.copyWith(
+      fontWeight: FontWeight.w500
+  );
 
 
 }

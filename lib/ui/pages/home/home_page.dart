@@ -5,7 +5,7 @@ import 'package:network_app/ui/pages/chat_pages/messages_main/messages_main_page
 import 'package:network_app/ui/pages/wallet_pages/wallet_main/walltet_main_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
-import 'package:network_app/ui/pages/profile_pages/profile_main/profile_main_page.dart';
+import 'package:network_app/ui/pages/profile_pages/profile_main/profile_main_view.dart';
 import 'package:network_app/ui/pages/store_pages/store_main/store_main_page.dart';
 import 'package:network_app/ui/pages/meeting_pages/meetings_main/meetings_main_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -27,8 +27,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     _currentPage = widget.initIndex;
     _pageController = PageController(initialPage: _currentPage);
-    // _pageController.;
-
     super.initState();
   }
 
@@ -37,12 +35,11 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       extendBody: true,
-      // backgroundColor: Colors.green,
       body: PageView(
         controller: _pageController,
         children: [
           const MeetingsMainPage(),
-          ProfileMainPage(isCupboard: widget.isCupboard),
+          ProfileMainPage(isCupboardInit: widget.isCupboard),
           const WalletMainPage(),
           const StorePage(),
           const MessagesMainPage(),
@@ -57,19 +54,14 @@ class _HomePageState extends State<HomePage> {
             horizontal: 15,
           vertical: 8
             ),
-        // padding: const EdgeInsets.only(bottom: 5),
         child: BlurryContainer(
           padding: EdgeInsets.zero,
           blur: 20,
-          // decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.15), //цвет рамки c округлением
             borderRadius: BorderRadius.circular(20),
-          // ),
           child: BottomBar(
-            // height: 54,
             border: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
-              // side:  BorderSide(width: 3),
             ),
             padding: EdgeInsets.zero,
             itemPadding: const EdgeInsets.symmetric(
@@ -83,11 +75,11 @@ class _HomePageState extends State<HomePage> {
               setState(() => _currentPage = index);
             },
             items: <BottomBarItem>[
-              barItem(icon: NetworkIcons.people, text: 'Встречи'),
-              barItem(icon: NetworkIcons.person, text: 'Профиль'),
-              barItem(icon: NetworkIcons.wallet, text: 'Кошелек'),
-              barItem(icon: NetworkIcons.cart, text: 'Магазин'),
-              barItem(icon: NetworkIcons.chat, text: 'Чат'),
+              _barItem(icon: NetworkIcons.people, text: 'Встречи'),
+              _barItem(icon: NetworkIcons.person, text: 'Профиль'),
+              _barItem(icon: NetworkIcons.wallet, text: 'Кошелек'),
+              _barItem(icon: NetworkIcons.cart, text: 'Магазин'),
+              _barItem(icon: NetworkIcons.chat, text: 'Чат'),
             ],
           ),
         ),
@@ -95,7 +87,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  BottomBarItem barItem({required IconData icon, required String text}) {
+  BottomBarItem _barItem({required IconData icon, required String text}) {
     final double iconSize = 18.sp; //21
 
     return BottomBarItem(

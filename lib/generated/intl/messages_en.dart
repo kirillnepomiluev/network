@@ -24,15 +24,21 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutYou": MessageLookupByLibrary.simpleMessage("о вас"),
         "accept": MessageLookupByLibrary.simpleMessage("Принять"),
-        "baseLevel": MessageLookupByLibrary.simpleMessage("Базовый"),
+        "avatars": MessageLookupByLibrary.simpleMessage("Аватары"),
+        "base": MessageLookupByLibrary.simpleMessage("Базовый"),
+        "baseLevel": MessageLookupByLibrary.simpleMessage("Базовый уровень"),
         "choose": MessageLookupByLibrary.simpleMessage("Выберете"),
         "chooseInterests":
             MessageLookupByLibrary.simpleMessage("Выберете интересы"),
         "chooseStatus": MessageLookupByLibrary.simpleMessage("Выберете статус"),
         "code": MessageLookupByLibrary.simpleMessage("код"),
+        "cupboard": MessageLookupByLibrary.simpleMessage("Шкаф"),
+        "empty": MessageLookupByLibrary.simpleMessage("пустой"),
         "enter": MessageLookupByLibrary.simpleMessage("вход"),
         "execute": MessageLookupByLibrary.simpleMessage("Выполните"),
         "female": MessageLookupByLibrary.simpleMessage("Женщина"),
+        "friends": MessageLookupByLibrary.simpleMessage("Друзья"),
+        "headwears": MessageLookupByLibrary.simpleMessage("Головные уборы"),
         "hideAge": MessageLookupByLibrary.simpleMessage("Скрыть возраст"),
         "hideSex": MessageLookupByLibrary.simpleMessage("Скрыть пол"),
         "input": MessageLookupByLibrary.simpleMessage("Введите"),
@@ -49,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mainThingInRelationsIs":
             MessageLookupByLibrary.simpleMessage("Главное в связах\n - это"),
         "male": MessageLookupByLibrary.simpleMessage("Мужчина"),
+        "meets": MessageLookupByLibrary.simpleMessage("встречи"),
         "metPeopleNear": MessageLookupByLibrary.simpleMessage(
             "Знакомьтесь и встречайтесь\nс людьми рядом с вами"),
         "occupationsWillBeShowedInProfile":
@@ -61,8 +68,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "ofOccupation":
             MessageLookupByLibrary.simpleMessage("сферу деятельности"),
         "ofOptions": MessageLookupByLibrary.simpleMessage("варианта"),
+        "ofPoints": MessageLookupByLibrary.simpleMessage("баллов"),
         "ownOption": MessageLookupByLibrary.simpleMessage("свой вариант"),
-        "premiumLevel": MessageLookupByLibrary.simpleMessage("Премиум"),
+        "premium": MessageLookupByLibrary.simpleMessage("Премиум"),
+        "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
+        "rare": MessageLookupByLibrary.simpleMessage("Редкий"),
+        "rating": MessageLookupByLibrary.simpleMessage("рейтинг"),
+        "readyToMeet": MessageLookupByLibrary.simpleMessage("Готов к встрече"),
         "recovery": MessageLookupByLibrary.simpleMessage("Восстановление"),
         "recoveryAccess":
             MessageLookupByLibrary.simpleMessage("Восстановить доступ"),
@@ -85,7 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "skip": MessageLookupByLibrary.simpleMessage("Пропустить"),
         "soWillDisplayInNetwork": MessageLookupByLibrary.simpleMessage(
             "Так оно будет отображаться в Network"),
-        "standartLevel": MessageLookupByLibrary.simpleMessage("Стандартный"),
+        "standart": MessageLookupByLibrary.simpleMessage("Стандартный"),
         "status": MessageLookupByLibrary.simpleMessage("статус"),
         "statusWillShowenInYourProfile": MessageLookupByLibrary.simpleMessage(
             "Статус будет отображаться в вашем профиле"),
@@ -97,6 +109,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "toRecoveryAccess": MessageLookupByLibrary.simpleMessage(
             "Чтобы восстановить доступ\nк своему аккаунту"),
         "turnOn": MessageLookupByLibrary.simpleMessage("Включите"),
+        "usual": MessageLookupByLibrary.simpleMessage("Обычный"),
+        "visitStore": MessageLookupByLibrary.simpleMessage("Посетить магазин"),
+        "visitStoreToBuyThingsForYourCharacter":
+            MessageLookupByLibrary.simpleMessage(
+                "Посетите магазин, чтобы купить новые\nпредметы для своего персонажа"),
         "weCongratulate": MessageLookupByLibrary.simpleMessage("Поздравляем!"),
         "youCanChoose":
             MessageLookupByLibrary.simpleMessage("Вы можете выбрать"),
