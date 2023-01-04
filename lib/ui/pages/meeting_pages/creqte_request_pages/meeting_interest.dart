@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
+import 'package:network_app/ui/widgets/common/option_container.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
@@ -85,7 +87,7 @@ class _MeetInterestsChooseState extends State<MeetInterestsChoose> {
                     Stack(
                       alignment: Alignment.center,
                       children: [
-                        const BackButtonCustom(),
+                        const AppBackButton(),
                         Center(child: Text('Создание личного запроса',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -154,7 +156,7 @@ class _MeetInterestsChooseState extends State<MeetInterestsChoose> {
                     children: [
 
                       for (final item in Constants.hobbiesList)
-                        HobbySelected(title: item,),
+                        OptionsContainer(title: item,),
 
                     ],
                   ),

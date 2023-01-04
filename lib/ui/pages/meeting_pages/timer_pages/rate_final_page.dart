@@ -1,7 +1,8 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/pages/home/home_page.dart';
+import 'package:network_app/ui/pages/home_pages/home_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -39,41 +40,11 @@ class _RateFinalPageState extends State<RateFinalPage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child:
-                    BackButtonCustom(
+                    AppBackButton(
                         func: (){
                           showInterruptDialog(context);
                         }),
 
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //   children: [
-                    //     BackButtonCustom(
-                    //         func: (){
-                    //           showInterruptDialog(context);
-                    //         }),
-                    //
-                    //     Container(
-                    //       // alignment: Alignment.topLeft,
-                    //       width: 0.11466*mediaWidth, //43
-                    //       height: 0.11466*mediaWidth, //43
-                    //       decoration: BoxDecoration(
-                    //         color: Colors.grey.shade300,
-                    //         borderRadius: BorderRadius.circular(15),
-                    //       ),
-                    //       child: Center(
-                    //         child: IconButton(
-                    //             onPressed: (){
-                    //               showInterruptDialog(context);
-                    //             },
-                    //             icon: Icon(
-                    //               Icons.close_outlined,
-                    //               color: Colors.black,
-                    //               size: 18.5.sp, //18
-                    //             )),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
                   ),
 
                   Padding(
@@ -91,15 +62,6 @@ class _RateFinalPageState extends State<RateFinalPage> {
                       color2: AppColors.textWhite,
                       textAlign: TextAlign.center,
                     )
-
-                    // Text(
-                    //   'Дайте оценку\nкаждой категории',
-                    //   textAlign: TextAlign.center,
-                    //   style: TextStyle(
-                    //     fontSize: 19.5.sp,   //20
-                    //     fontWeight: FontWeight.w700,
-                    //   ),
-                    // ),
 
                   ),
 

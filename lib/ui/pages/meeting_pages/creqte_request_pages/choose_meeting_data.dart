@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
@@ -41,7 +42,7 @@ class _ChooseMeetingDateState extends State<ChooseMeetingDate> {
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
-                        const BackButtonCustom(),
+                        const AppBackButton(),
                         Center(
                             child: Text(
                           'Создание личного запроса',

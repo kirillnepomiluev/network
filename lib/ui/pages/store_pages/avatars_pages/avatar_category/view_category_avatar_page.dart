@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/pages/store_pages/avatars_pages/avatar_view/view_prod_avatar_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/constants.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -77,7 +77,7 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                      const BackButtonCustom(),
+                      const AppBackButton(),
                       Center(child: Text('Аватары',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -166,7 +166,6 @@ class _ViewCategoryAvatarPageState extends State<ViewCategoryAvatarPage> {
 Widget avatarContainer(
     {required BuildContext context,
       bool isView = false,
-      bool isBoxes = false,
       String strCategory = 'Обычный'
     }) {
 
@@ -182,7 +181,6 @@ Widget avatarContainer(
         Navigator.of(context).push(MaterialPageRoute<void>(
             builder: (context) => ViewProdAvatarPage(
               title: 'Костюм "Выходной"',
-              // imageURL: 'assets/images/3.png',
               imageURL: Assets.images.avatars.avatar3.keyName,
             )));
       }),
@@ -199,9 +197,7 @@ Widget avatarContainer(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
 
-            isBoxes
-                ? Container()
-                : Padding(
+       Padding(
               padding: const EdgeInsets.only(
                 bottom: 5,
               ),
@@ -219,56 +215,21 @@ Widget avatarContainer(
               ),
             ),
 
-            Padding(
-              padding: EdgeInsets.only(top: isBoxes? 20 : 0),
-              child: Container(
-                height: imageHeight,
-                decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    // image: DecorationImage(
-                    //     image: AssetImage(
-                    //       'assets/images/${strCategory=='Обычный'? '4': '3'}.png',
-                    //     )
-                    // ),
-                    borderRadius: BorderRadius.circular(10)),
-                child:
-                // strCategory=='Обычный'
-                //     ? Assets.images.avatars.avatar4.image()
-                //     : Assets.images.avatars.avatar3.image(),
-                Image.asset(
-                  // 'assets/images/${strCategory=='Обычный'? '4': '3'}.png',
-                  strCategory=='Обычный'
-                      ? Assets.images.avatars.avatar4.keyName
-                      : Assets.images.avatars.avatar3.keyName,
-                  fit: BoxFit.contain,
-                ),
+            Container(
+              height: imageHeight,
+              decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(10)),
+              child:
+              Image.asset(
+                strCategory=='Обычный'
+                    ? Assets.images.avatars.avatar4.keyName
+                    : Assets.images.avatars.avatar3.keyName,
+                fit: BoxFit.contain,
               ),
             ),
 
-            isBoxes
-                ? Padding(
-              padding: const EdgeInsets.only(top: 35),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Бокс для уровня ',
-                    style: TextStyle(
-                        fontSize: 14.sp, //11
-                        // color: ConstColor.textWhite,
-                    ),
-                  ),
-                  Text(
-                    'Базовый',
-                    style: TextStyle(
-                        fontSize: 14.sp, //11
-                        // color: ConstColor.textWhite,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
-            )
-                : Padding(
+       Padding(
               padding: const EdgeInsets.only(top: 12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -73,7 +73,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
 
               const Padding(
                 padding: EdgeInsets.only(left: 16, top: 10, bottom: 20),
-                child:  BackButtonCustom(),
+                child:  AppBackButton(),
               ),
 
               Expanded(
@@ -186,7 +186,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
 
                 const Padding(
                   padding: EdgeInsets.only(left: 16, top: 10, bottom: 20),
-                  child:  BackButtonCustom(),
+                  child:  AppBackButton(),
                 ),
 
                 //Верхняя часть

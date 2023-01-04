@@ -8,6 +8,9 @@ class UtilsResponsive {
       case 10:
         responSize = 14.sp;
         break;
+      case 11:
+        responSize = 15.sp;
+        break;
       case 12:
         responSize = 15.5.sp;
         break;

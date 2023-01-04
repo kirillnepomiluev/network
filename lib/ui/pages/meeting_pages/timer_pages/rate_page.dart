@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/rate_final_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -37,7 +37,7 @@ class _RatePageState extends State<RatePage> {
 
                 const Padding(
                   padding: EdgeInsets.only(left: 16, top: 10),
-                  child: BackButtonCustom(),
+                  child: AppBackButton(),
                 ),
 
                 const Padding(

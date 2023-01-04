@@ -77,5 +77,16 @@
   "headwears": "Головные уборы",
   "empty": "пустой",
   "visitStoreToBuyThingsForYourCharacter": "Посетите магазин, чтобы купить новые\nпредметы для своего персонажа",
-  "visitStore": "Посетить магазин"
+  "visitStore": "Посетить магазин",
+  "forYou": "Для вас",
+  "near": "По близости",
+  "personalRequests": "Личные запросы",
+  "online": "Онлайн",
+  "exchange": "Обменять",
+  "toMeet": "Встретиться",
+  "tokens": "Токены",
+  "currency": "Валюта",
+  "wallet": "Кошелек",
+  "messages": "Сообщения",
+  "invitations": "Приглашения"
 }

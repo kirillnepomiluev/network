@@ -4,9 +4,9 @@ import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/c
 import 'package:network_app/ui/pages/auth_pages/widgets/button_continue.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
 
 enum _SexOptions {
   male,
@@ -40,7 +40,7 @@ class _ChooseSexPageState extends State<ChooseSexPage> {
                 const SizedBox(
                   height: 10,
                 ),
-                const BackButtonCustom(),
+                const AppBackButton(),
                 EnterInfoContainer(
                   padTop: 32,
                   text1: '${AppString.of(context).choose} ',

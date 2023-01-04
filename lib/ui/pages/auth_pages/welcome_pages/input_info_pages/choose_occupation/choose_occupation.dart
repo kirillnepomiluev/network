@@ -9,7 +9,7 @@ import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
+import 'package:network_app/ui/widgets/common/option_container.dart';
 import 'package:network_app/constants.dart';
 
 class ChooseOccupationPage extends StatefulWidget {
@@ -153,7 +153,7 @@ class _ChooseOccupationPageState extends State<ChooseOccupationPage> {
                     direction: Axis.horizontal,
                     children: [
                       for (final item in Constants.hobbiesList)
-                        HobbySelected(
+                        OptionsContainer(
                           title: item,
                           func: () {
                             if (choosedOptions.length < 3) {

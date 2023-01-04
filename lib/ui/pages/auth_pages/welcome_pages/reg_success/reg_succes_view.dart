@@ -3,9 +3,9 @@ import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/reg_success/reg_success_vm.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
 
@@ -32,7 +32,7 @@ class _RegSuccessViewState extends State<RegSuccessView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 10,),
-                    const BackButtonCustom(),
+                    const AppBackButton(),
                     const SizedBox(height: 31,),
 
                     AppContainer(

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/pages/home/home_page.dart';
+import 'package:network_app/ui/pages/home_pages/home_page.dart';
 import 'package:network_app/ui/theme/app_theme.dart';
-
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: AppString.delegate.supportedLocales,
-            home: const HomePage(initIndex: 1, isCupboard: false),
+            home: const HomePage(initIndex: 4, isCupboard: false),
           );
         },
       );
@@ -45,13 +44,8 @@ class MyApp extends StatelessWidget {
 
 // import 'package:flutter/material.dart';
 // import 'package:network_app/ui/widgets/view_model_data/view_model_data.dart';
-// class TestViewModel extends ViewModel {
+
+// class ViewModel extends ViewModel {
 //   final BuildContext context;
 //   TestViewModel(this.context);
-//
-//   void onTap() {
-//     Navigator.of(context).push(MaterialPageRoute<void>(
-//         builder: (context) => const InputNamePage()));
-//   }
-//
 // }

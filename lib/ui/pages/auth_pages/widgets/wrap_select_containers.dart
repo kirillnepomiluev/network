@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
+import 'package:network_app/ui/widgets/common/option_container.dart';
 
 class WrapSelectContainers extends StatelessWidget {
   const WrapSelectContainers({
@@ -15,7 +15,7 @@ class WrapSelectContainers extends StatelessWidget {
       direction: Axis.horizontal,
       children: [
         for (final item in Constants.hobbiesList)
-          HobbySelected(
+          OptionsContainer(
             title: item,
           ),
       ],

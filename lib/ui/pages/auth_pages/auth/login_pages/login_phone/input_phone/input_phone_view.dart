@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_phone/input_phone_vm.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_phone/widgets/input_phone_field.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
@@ -31,7 +31,7 @@ class InputPhoneView extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      BackButtonCustom(
+                      AppBackButton(
                         func: model.goBack,
                       ),
                       SizedBox(

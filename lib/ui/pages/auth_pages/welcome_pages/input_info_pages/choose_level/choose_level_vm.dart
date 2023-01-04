@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_interests/choose_interests.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
+import 'package:network_app/ui/widgets/cards/bottom_sheet_min_patinr.dart';
 import 'package:network_app/ui/widgets/view_model_data/view_model_data.dart';
 import 'package:network_app/utils/auth/auth_enums.dart';
 

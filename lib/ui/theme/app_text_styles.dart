@@ -28,11 +28,18 @@ class AppTextStyles {
     color: AppColors.textBlack,
   );
 
-  static final black12w5 = TextStyle(
-    color: AppColors.textBlack,
-    fontSize: UtilsResponsive.getResSize(12),
-    fontWeight: FontWeight.w500
+  static final black12w5 = blackPrimary.copyWith(
+      color: AppColors.textBlack,
+      fontSize: UtilsResponsive.getResSize(12),
+      fontWeight: FontWeight.w500
   );
+
+  static final black11w5 = blackPrimary.copyWith(
+      fontSize: UtilsResponsive.getResSize(11),
+      fontWeight: FontWeight.w500
+  );
+
+
 
   // static final blackPrimary16 = blackPrimary.copyWith(
   //   fontSize: 16,
@@ -43,6 +50,10 @@ class AppTextStyles {
   static final primary12 = primary.copyWith(fontSize: UtilsResponsive.getResSize(12));
 
   static final primary16 = primary.copyWith(fontSize: UtilsResponsive.getResSize(16));
+  static final primary16w7 = primary.copyWith(
+      fontSize: UtilsResponsive.getResSize(16),
+      fontWeight: FontWeight.w700
+  );
 
   static final primary20w5 = primary.copyWith(
       fontSize: UtilsResponsive.getResSize(24), //24
@@ -80,6 +91,17 @@ class AppTextStyles {
   static final grayPrimary = primary.copyWith(
     color: AppColors.textGray,
   );
+
+  static final grayPrimary10 = grayPrimary.copyWith(
+    fontSize: UtilsResponsive.getResSize(10),
+  );
+
+  static final grayPrimary10w5 = grayPrimary.copyWith(
+    fontSize: UtilsResponsive.getResSize(10),
+      fontWeight: FontWeight.w500
+  );
+
+
 
   static final grayPrimary500 = grayPrimary.copyWith(
       fontWeight: FontWeight.w500

@@ -1,7 +1,8 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
+import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -76,7 +77,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // BackButtonCustom(),
-                      const BackButtonCustom(),
+                      const AppBackButton(),
 
                       Text(
                         'Уведомления',
@@ -87,10 +88,10 @@ class _NotificationsPageState extends State<NotificationsPage> {
                         ),
                       ),
 
-                      IconContainer(
+                      AppIconContainer(
                           icon: NetworkIcons.check_double,
                           iconSize: 18.5.sp,
-                          func: (){}
+                          onTap: (){}
                       )
                     ],
                   ),

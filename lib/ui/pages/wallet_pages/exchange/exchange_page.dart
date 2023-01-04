@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
+import 'package:network_app/ui/widgets/common/meet_exchange_row.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/utils/utils_responsive.dart';
@@ -35,7 +36,7 @@ class _ExchangePageState extends State<ExchangePage> {
                         child: Stack(
                           alignment: Alignment.center,
                           children: [
-                            BackButtonCustom( func: () {}),
+                            AppBackButton( func: () {}),
                             Center(
                                 child: Text(
                               'Кошелек',
@@ -187,7 +188,7 @@ class _ExchangePageState extends State<ExchangePage> {
                             child: Stack(
                               alignment: Alignment.center,
                               children: [
-                                BackButtonCustom( func: () {}),
+                                AppBackButton( func: () {}),
                                 Center(
                                     child: Text(
                                   'Кошелек',
@@ -339,9 +340,9 @@ class _ExchangePageState extends State<ExchangePage> {
                                 right: UtilsResponsive.getResSize(12),
                                 top: 35.sp     //68
                             ),
-                            child: MeetRow(
+                            child: MeetExchangeRow(
                               isExchange: true,
-                              func: (){
+                              onTap: (){
                                 setState(() {
                                   showSuccess = true;
                                 });

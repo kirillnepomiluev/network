@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/assets.gen.dart';
+import 'package:network_app/ui/pages/home_pages/store_main/store_main_view.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
+import 'package:network_app/ui/widgets/common/hobbits_container.dart';
+import 'package:network_app/ui/widgets/common/meet_exchange_row.dart';
+import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
-import 'package:network_app/ui/pages/store_pages/store_main/store_main_page.dart';
+import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ViewPartnerProfilePage extends StatefulWidget {
@@ -95,7 +100,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
 
-                    BackButtonCustom(contColor: AppColors.black1A.withOpacity(0.65)),
+                    AppBackButton(contColor: AppColors.black1A.withOpacity(0.65)),
 
                     Container(
                       padding:
@@ -156,7 +161,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                                 fontWeight: FontWeight.w400),
                           ),
 
-                          rhombusText()
+                          const RhombusText()
 
                         ],
                       ),
@@ -221,7 +226,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                         top: 30,
                         bottom: 32,
                       ),
-                      child: MeetRow(func: (){
+                      child: MeetExchangeRow(onTap: (){
                         Navigator.of(context).push(MaterialPageRoute<void>(
                             builder: (context) => const ViewPartnerProfilePage()));
                       }),
@@ -262,7 +267,7 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                   onPressed: (){
 
                     Navigator.of(context).push(MaterialPageRoute<void>(
-                        builder: (context) => const StorePage(isPartnerCupboard: true,)));
+                        builder: (context) => const StoreMainView(isPartnerCupboard: true,)));
 
                   },
                   child: const Text("Перейти в список вещей",
@@ -274,12 +279,12 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
             ),
 
 
-            titleStatText('Статус'),
+            const TitleStatText('Статус'),
             textField('ищу партнеров для бизнеса', isEnable: false),
 
-            titleStatText('Базовые данные'),
+            const TitleStatText('Базовые данные'),
             textField('Женщина, 37 лет, свободна, цель встречи: деловая.', isEnable: false),
-            titleStatText('Интересы'),
+            const TitleStatText('Интересы'),
 
             Padding(
               padding: const EdgeInsets.only(top: 20),
@@ -287,18 +292,18 @@ class _ViewPartnerProfilePageState extends State<ViewPartnerProfilePage> {
                 spacing: 8,
                 runSpacing: 10,
                 direction: Axis.horizontal,
-                children: [
-                  hobbitsContainer('Большой теннис', hasEdit: false),
-                  hobbitsContainer('Бассейн', hasEdit: false),
-                  hobbitsContainer('Управление', hasEdit: false),
-                  hobbitsContainer('Маркетинг', hasEdit: false),
+                children: const [
+                  HobbitsContainer('Большой теннис', hasEdit: false),
+                  HobbitsContainer('Бассейн', hasEdit: false),
+                  HobbitsContainer('Управление', hasEdit: false),
+                  HobbitsContainer('Маркетинг', hasEdit: false),
                 ],
               ),
             ),
 
-            titleStatText('Обо мне'),
+            const TitleStatText('Обо мне'),
             textField('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices amet tellus.'),
-            titleStatText('Сфера деятельности'),
+            const TitleStatText('Сфера деятельности'),
             textField('Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget varius a id in amet.'),
           ],
         ),

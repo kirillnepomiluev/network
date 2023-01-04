@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/auth_bar_row.dart';
-import 'package:network_app/ui/pages/home/home_page.dart';
+import 'package:network_app/ui/pages/home_pages/home_page.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 

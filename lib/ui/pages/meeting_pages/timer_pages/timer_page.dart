@@ -5,6 +5,8 @@ import 'package:network_app/ui/pages/meeting_pages/timer_pages/all_questions.dar
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/complaint_page.dart';
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/rate_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
+import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
@@ -138,7 +140,7 @@ class _TimerPageState extends State<TimerPage> {
 
                 Padding(
                   padding: const EdgeInsets.only(left: 10, top: 10),
-                  child:  BackButtonCustom( func: (){
+                  child:  AppBackButton( func: (){
                     if(currentSeconds==maxSeconds){
                       Navigator.of(context).pop();
                     }
@@ -577,9 +579,9 @@ class _TimerPageState extends State<TimerPage> {
                     ),
 
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 101),
-                      child:  rhombusText(
+                    const Padding(
+                      padding: EdgeInsets.only(top: 101),
+                      child:  RhombusText(
                         padLeft: 20,
                         fontSize: 60,
                         iconSize: 45,

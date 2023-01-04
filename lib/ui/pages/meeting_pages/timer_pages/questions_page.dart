@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/meeting_pages/timer_pages/timer_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
+import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/utils/utils_responsive.dart';
@@ -64,7 +66,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
             children: [
               const Padding(
                 padding: EdgeInsets.only(left: 10, top: 10),
-                child: BackButtonCustom(),
+                child: AppBackButton(),
               ),
 
               showSuccessPage
@@ -158,9 +160,9 @@ class _QuestionsPageState extends State<QuestionsPage> {
                                 textAlign: TextAlign.center,
                               )),
 
-                          Padding(
-                            padding: const EdgeInsets.only(top: 115),
-                            child: rhombusText(
+                          const Padding(
+                            padding: EdgeInsets.only(top: 115),
+                            child: RhombusText(
                               fontSize: 60,
                               iconSize: 40,
                               fontWeight: FontWeight.w600,

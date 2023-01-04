@@ -4,8 +4,8 @@ import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/inp
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/widgets/otp_sent_container.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/widgets/retry_login_text_link.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
 
 class InputOtpView extends StatelessWidget {
@@ -30,7 +30,7 @@ class InputOtpView extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      const BackButtonCustom(),
+                      const AppBackButton(),
                       const SizedBox(
                         height: 31,
                       ),

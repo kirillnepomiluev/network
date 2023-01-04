@@ -1,7 +1,9 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/pages/home/home_page.dart';
+import 'package:network_app/ui/pages/home_pages/home_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
+import 'package:network_app/ui/widgets/common/stat_column.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
@@ -107,8 +109,6 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
 
   Widget viewProdImage() {
     final mediaWidth = MediaQuery.of(context).size.width;
-    // final imageWidth = 0.624 * mediaWidth;
-
     return Container(
       width: mediaWidth,
       padding: const EdgeInsets.all(10),
@@ -121,11 +121,7 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
 
-          const BackButtonCustom(),
-
-          // Assets.images.avatars.avatar4.image(
-          //
-          // ),
+          const AppBackButton(),
 
           SizedBox(
             height: 270,
@@ -189,10 +185,6 @@ class _ViewProdAvatarPageState extends State<ViewProdAvatarPage> {
   }
 
 }
-
-
-
-
 
 void openSuccessSheet({required BuildContext context,}) {
 

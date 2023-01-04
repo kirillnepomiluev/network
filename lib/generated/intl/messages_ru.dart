@@ -33,10 +33,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "chooseStatus": MessageLookupByLibrary.simpleMessage("Выберете статус"),
         "code": MessageLookupByLibrary.simpleMessage("код"),
         "cupboard": MessageLookupByLibrary.simpleMessage("Шкаф"),
+        "currency": MessageLookupByLibrary.simpleMessage("Валюта"),
         "empty": MessageLookupByLibrary.simpleMessage("пустой"),
         "enter": MessageLookupByLibrary.simpleMessage("вход"),
+        "exchange": MessageLookupByLibrary.simpleMessage("Обменять"),
         "execute": MessageLookupByLibrary.simpleMessage("Выполните"),
         "female": MessageLookupByLibrary.simpleMessage("Женщина"),
+        "forYou": MessageLookupByLibrary.simpleMessage("Для вас"),
         "friends": MessageLookupByLibrary.simpleMessage("Друзья"),
         "headwears": MessageLookupByLibrary.simpleMessage("Головные уборы"),
         "hideAge": MessageLookupByLibrary.simpleMessage("Скрыть возраст"),
@@ -51,13 +54,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "inputOwnStatus":
             MessageLookupByLibrary.simpleMessage("Ввести свой статус"),
         "interests": MessageLookupByLibrary.simpleMessage("интересы"),
+        "invitations": MessageLookupByLibrary.simpleMessage("Приглашения"),
         "level": MessageLookupByLibrary.simpleMessage("Уровень"),
         "mainThingInRelationsIs":
             MessageLookupByLibrary.simpleMessage("Главное в связах\n - это"),
         "male": MessageLookupByLibrary.simpleMessage("Мужчина"),
         "meets": MessageLookupByLibrary.simpleMessage("встречи"),
+        "messages": MessageLookupByLibrary.simpleMessage("Сообщения"),
         "metPeopleNear": MessageLookupByLibrary.simpleMessage(
             "Знакомьтесь и встречайтесь\nс людьми рядом с вами"),
+        "near": MessageLookupByLibrary.simpleMessage("По близости"),
         "occupationsWillBeShowedInProfile":
             MessageLookupByLibrary.simpleMessage(
                 "Сфера деятельности будет отображаться в вашем профиле"),
@@ -69,7 +75,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("сферу деятельности"),
         "ofOptions": MessageLookupByLibrary.simpleMessage("варианта"),
         "ofPoints": MessageLookupByLibrary.simpleMessage("баллов"),
+        "online": MessageLookupByLibrary.simpleMessage("Онлайн"),
         "ownOption": MessageLookupByLibrary.simpleMessage("свой вариант"),
+        "personalRequests":
+            MessageLookupByLibrary.simpleMessage("Личные запросы"),
         "premium": MessageLookupByLibrary.simpleMessage("Премиум"),
         "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
         "rare": MessageLookupByLibrary.simpleMessage("Редкий"),
@@ -106,14 +115,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "Это информация будет отображаться в вашем профиле"),
         "toAdd": MessageLookupByLibrary.simpleMessage("Добавить"),
         "toContinue": MessageLookupByLibrary.simpleMessage("Продолжить"),
+        "toMeet": MessageLookupByLibrary.simpleMessage("Встретиться"),
         "toRecoveryAccess": MessageLookupByLibrary.simpleMessage(
             "Чтобы восстановить доступ\nк своему аккаунту"),
+        "tokens": MessageLookupByLibrary.simpleMessage("Токены"),
         "turnOn": MessageLookupByLibrary.simpleMessage("Включите"),
         "usual": MessageLookupByLibrary.simpleMessage("Обычный"),
         "visitStore": MessageLookupByLibrary.simpleMessage("Посетить магазин"),
         "visitStoreToBuyThingsForYourCharacter":
             MessageLookupByLibrary.simpleMessage(
                 "Посетите магазин, чтобы купить новые\nпредметы для своего персонажа"),
+        "wallet": MessageLookupByLibrary.simpleMessage("Кошелек"),
         "weCongratulate": MessageLookupByLibrary.simpleMessage("Поздравляем!"),
         "youCanChoose":
             MessageLookupByLibrary.simpleMessage("Вы можете выбрать"),

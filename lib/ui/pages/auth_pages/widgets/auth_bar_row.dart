@@ -3,8 +3,8 @@ import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
 
 class AuthBarRow extends StatelessWidget {
   final bool isAuth;
@@ -17,7 +17,7 @@ class AuthBarRow extends StatelessWidget {
         ? Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const BackButtonCustom(),
+        const AppBackButton(),
         AppContainer(
             radius: AppBorderRadius.r15,
             padH: 18,
@@ -42,7 +42,7 @@ class AuthBarRow extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          const BackButtonCustom(),
+          const AppBackButton(),
           Center(
               child: Text(
                   title,

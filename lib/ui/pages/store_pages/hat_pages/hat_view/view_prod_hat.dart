@@ -86,9 +86,9 @@ class _ViewProdHatPageState extends State<ViewProdHatPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    StatContainer(title: '', subtitle: AppString.of(context).baseLevel),
-                    StatContainer(title: '+10', subtitle: AppString.of(context).ofPoints),
-                    StatContainer(title: '+0.2', subtitle: AppString.of(context).rating),
+                    StatMiniContainer(title: '', subtitle: AppString.of(context).baseLevel),
+                    StatMiniContainer(title: '+10', subtitle: AppString.of(context).ofPoints),
+                    StatMiniContainer(title: '+0.2', subtitle: AppString.of(context).rating),
                   ],
                 ),
               ),

@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/pages/store_pages/avatars_pages/avatar_view/view_prod_avatar_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/constants.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-// import 'dart:ui' as ui;
 
-class ViewCategoryHatsPage extends StatefulWidget {
-  const ViewCategoryHatsPage({Key? key}) : super(key: key);
+class ViewCategoryHeadWearsPage extends StatefulWidget {
+  const ViewCategoryHeadWearsPage({Key? key}) : super(key: key);
 
   @override
-  State<ViewCategoryHatsPage> createState() => _ViewCategoryHatsPageState();
+  State<ViewCategoryHeadWearsPage> createState() => _ViewCategoryHeadWearsPageState();
 }
 
-class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
+class _ViewCategoryHeadWearsPageState extends State<ViewCategoryHeadWearsPage> {
   int _active = 1;
 
   Widget miniContainer({required int position, required String text}) =>
@@ -79,7 +78,7 @@ class _ViewCategoryHatsPageState extends State<ViewCategoryHatsPage> {
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                      const BackButtonCustom(),
+                      const AppBackButton(),
                       Center(child: Text('Головные уборы',
                         textAlign: TextAlign.center,
                         style: TextStyle(

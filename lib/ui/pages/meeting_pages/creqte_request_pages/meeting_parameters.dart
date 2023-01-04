@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/pages/home/home_page.dart';
+import 'package:network_app/ui/pages/home_pages/home_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
+import 'package:network_app/ui/widgets/common/hobbits_container.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
+import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -40,7 +43,7 @@ class _MeetingParametersState extends State<MeetingParameters> {
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
-                        const BackButtonCustom(),
+                        const AppBackButton(),
                         Center(
                             child: Text(
                               'Создание личного запроса',
@@ -64,7 +67,7 @@ class _MeetingParametersState extends State<MeetingParameters> {
 
 
 
-                  titleStatText('Категория встречи'),
+                  const TitleStatText('Категория встречи'),
                   Padding(
                     padding: const EdgeInsets.only(top: 20, bottom: 20),
                     child: InkWell(
@@ -105,11 +108,11 @@ class _MeetingParametersState extends State<MeetingParameters> {
                     ),
                   ),
 
-                  titleStatText('Описание встречи'),
+                  const TitleStatText('Описание встречи'),
                   textField('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices amet tellus.'),
 
 
-                  titleStatText('Сфера деятельности'),
+                  const TitleStatText('Сфера деятельности'),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: Wrap(
@@ -117,9 +120,9 @@ class _MeetingParametersState extends State<MeetingParameters> {
                       runSpacing: 10,
                       direction: Axis.horizontal,
                       children: [
-                        hobbitsContainer('Маркетинг'),
-                        hobbitsContainer('IT-сфера'),
-                        hobbitsContainer('Финансы'),
+                        const HobbitsContainer('Маркетинг'),
+                        const HobbitsContainer('IT-сфера'),
+                        const HobbitsContainer('Финансы'),
 
                         Container(
                             width: 36,
@@ -150,7 +153,7 @@ class _MeetingParametersState extends State<MeetingParameters> {
                     ),
                   ),
 
-                  titleStatText('Интересы'),
+                  const TitleStatText('Интересы'),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: Wrap(
@@ -158,10 +161,10 @@ class _MeetingParametersState extends State<MeetingParameters> {
                       runSpacing: 10,
                       direction: Axis.horizontal,
                       children: [
-                        hobbitsContainer('Большой теннис'),
-                        hobbitsContainer('Бассейн'),
-                        hobbitsContainer('Управление'),
-                        hobbitsContainer('Маркетинг'),
+                        const HobbitsContainer('Большой теннис'),
+                        const HobbitsContainer('Бассейн'),
+                        const HobbitsContainer('Управление'),
+                        const HobbitsContainer('Маркетинг'),
 
                         Container(
                             width: 36,
@@ -195,7 +198,7 @@ class _MeetingParametersState extends State<MeetingParameters> {
                     ),
                   ),
 
-                  titleStatText('Период для планирования встречи'),
+                  const TitleStatText('Период для планирования встречи'),
 
                   Padding(
                     padding: const EdgeInsets.only(top: 20),

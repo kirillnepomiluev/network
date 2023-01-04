@@ -3,8 +3,8 @@ import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_level/choose_level_vm.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_level/widgets/level_checkbox.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/button_continue.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
 import 'package:network_app/utils/auth/auth_enums.dart';
 
@@ -30,7 +30,7 @@ class ChooseLevelView extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      const BackButtonCustom(),
+                      const AppBackButton(),
 
                       EnterInfoContainer(
                         padTop: 32,

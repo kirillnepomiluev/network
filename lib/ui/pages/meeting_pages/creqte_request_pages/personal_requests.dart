@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/general_widgets.dart';
 import 'package:network_app/ui/pages/meeting_pages/creqte_request_pages/choose_meeting_category.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -30,7 +31,7 @@ class _PersonalRequestsPageState extends State<PersonalRequestsPage> {
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                      const BackButtonCustom(),
+                      const AppBackButton(),
                       Center(child: Text('Список личных запросов',
                         textAlign: TextAlign.center,
                         style: TextStyle(

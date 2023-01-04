@@ -839,6 +839,116 @@ class AppString {
       args: [],
     );
   }
+
+  /// `Для вас`
+  String get forYou {
+    return Intl.message(
+      'Для вас',
+      name: 'forYou',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `По близости`
+  String get near {
+    return Intl.message(
+      'По близости',
+      name: 'near',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Личные запросы`
+  String get personalRequests {
+    return Intl.message(
+      'Личные запросы',
+      name: 'personalRequests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Онлайн`
+  String get online {
+    return Intl.message(
+      'Онлайн',
+      name: 'online',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Обменять`
+  String get exchange {
+    return Intl.message(
+      'Обменять',
+      name: 'exchange',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Встретиться`
+  String get toMeet {
+    return Intl.message(
+      'Встретиться',
+      name: 'toMeet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Токены`
+  String get tokens {
+    return Intl.message(
+      'Токены',
+      name: 'tokens',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Валюта`
+  String get currency {
+    return Intl.message(
+      'Валюта',
+      name: 'currency',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Кошелек`
+  String get wallet {
+    return Intl.message(
+      'Кошелек',
+      name: 'wallet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сообщения`
+  String get messages {
+    return Intl.message(
+      'Сообщения',
+      name: 'messages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Приглашения`
+  String get invitations {
+    return Intl.message(
+      'Приглашения',
+      name: 'invitations',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppString> {

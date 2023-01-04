@@ -3,8 +3,10 @@ import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_date/choose_date_rich_text.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_sex/choose_sex.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/button_continue.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
-import 'package:network_app/ui/widgets/general_widgets.dart';
+import 'package:network_app/ui/widgets/common/app_check_list_tile.dart';
+
 
 class ChooseDatePage extends StatefulWidget {
   const ChooseDatePage({Key? key}) : super(key: key);
@@ -30,7 +32,7 @@ class _ChooseDatePageState extends State<ChooseDatePage> {
                 const SizedBox(
                   height: 10,
                 ),
-                const BackButtonCustom(),
+                const AppBackButton(),
 
                 EnterInfoContainer(
                   padTop: 32,
@@ -60,7 +62,7 @@ class _ChooseDatePageState extends State<ChooseDatePage> {
 
                 SizedBox(
                     width: 190,
-                    child: CustomCheckListTile(
+                    child: AppCheckListTile(
                       title: AppString.of(context).hideAge,
                     ))
               ],
