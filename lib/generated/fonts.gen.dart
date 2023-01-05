@@ -13,9 +13,6 @@ class FontFamily {
   /// Font family: Gilroy
   static const String gilroy = 'Gilroy';
 
-  /// Font family: Inter
-  static const String inter = 'Inter';
-
   /// Font family: NetworkIcons
   static const String networkIcons = 'NetworkIcons';
 }

@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login/login_view.dart';
-import 'package:network_app/ui/widgets/view_model_data/view_model_data.dart';
+import 'package:network_app/navigation/app_router.gr.dart';
+import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
+
 
 class StartViewModel extends ViewModel {
   final BuildContext context;
@@ -10,8 +12,7 @@ class StartViewModel extends ViewModel {
   }
 
   void onTap() {
-    Navigator.of(context).push(MaterialPageRoute<void>(
-        builder: (context) => const LoginView()));
+    context.router.push(const LoginViewRoute());
   }
 
 }

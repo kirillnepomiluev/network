@@ -5,8 +5,8 @@ import 'package:network_app/ui/pages/auth_pages/auth/widgets/enter_row_container
 import 'package:network_app/ui/pages/auth_pages/widgets/button_trouble_enter.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/network_row.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
-import 'package:network_app/ui/widgets/network_icons.dart';
-import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
+import 'package:network_app/ui/widgets/icons/network_icons.dart';
+import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 

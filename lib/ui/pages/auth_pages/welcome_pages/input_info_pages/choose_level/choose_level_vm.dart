@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/navigation/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_interests/choose_interests.dart';
 import 'package:network_app/ui/widgets/cards/bottom_sheet_min_patinr.dart';
-import 'package:network_app/ui/widgets/view_model_data/view_model_data.dart';
+import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/auth/auth_enums.dart';
 
 
@@ -13,10 +14,7 @@ class ChooseLevelViewModel extends ViewModel {
   ChooseLevelViewModel(this.context);
 
   void onContinue() {
-    Navigator.of(context).push(MaterialPageRoute<void>(
-        builder: (context) => const ChooseInterestsPage(
-          isAuth: true,
-        )));
+    context.router.push(ChooseInterestsViewRoute(isAuth: true));
   }
 
   LevelOptions groupValue = LevelOptions.premium;

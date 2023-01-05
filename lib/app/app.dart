@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/pages/home_pages/home_page.dart';
+import 'package:network_app/navigation/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_theme.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
+
+  // static final router = AppRouter(authGuard: AuthGuard());
+  static final router = AppRouter();
 
   @override
   Widget build(BuildContext context) {
     return
       ResponsiveSizer(
         builder: (context, orientation, screenType) {
-          return MaterialApp(
+          return MaterialApp.router(
+            routerDelegate: router.delegate(),
+            routeInformationParser: router.defaultRouteParser(),
             debugShowCheckedModeBanner: false,
             title: 'Network',
-            theme:  AppTheme.mainTheme,
+            theme: AppTheme.mainTheme,
             localizationsDelegates: const [
               AppString.delegate,
               GlobalMaterialLocalizations.delegate,
@@ -25,7 +30,7 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: AppString.delegate.supportedLocales,
-            home: const HomePage(initIndex: 4, isCupboard: false),
+            // home: const HomeView(initIndex: 4, isCupboard: false),
           );
         },
       );

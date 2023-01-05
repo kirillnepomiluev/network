@@ -1,7 +1,7 @@
-import 'package:network_app/ui/widgets/progress_parametr.dart';
+import 'package:network_app/ui/widgets/common/progress_parametr.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/widgets/network_icons.dart';
+import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
 

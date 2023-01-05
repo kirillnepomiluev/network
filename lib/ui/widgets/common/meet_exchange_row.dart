@@ -3,8 +3,8 @@ import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
-import 'package:network_app/ui/widgets/meet_row_icon_next.dart';
-import 'package:network_app/ui/widgets/network_icons.dart';
+import 'package:network_app/ui/widgets/common/meet_row_icon_next.dart';
+import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 

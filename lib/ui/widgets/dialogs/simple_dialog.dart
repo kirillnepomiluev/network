@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 
@@ -45,7 +46,8 @@ class CustomSimpleDialog extends StatelessWidget {
         Center(
           child: ElevatedButton(
               onPressed: () async {
-                Navigator.of(context).pop();
+                context.router.pop();
+
               },
               child: const Text("Ок")
           ),

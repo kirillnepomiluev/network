@@ -1,12 +1,11 @@
-
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/pages/auth_pages/auth/recovery_pages/recovery/recovery_view.dart';
+import 'package:network_app/navigation/app_router.gr.dart';
 
 mixin LoginMixin{
 
   void onTroubleLoginTap(BuildContext context){
-    Navigator.of(context).push(MaterialPageRoute<void>(
-        builder: (context) => const RecoveryView()));
+    context.router.push(const RecoveryViewRoute());
   }
 
   void loginGoogleTap(){}

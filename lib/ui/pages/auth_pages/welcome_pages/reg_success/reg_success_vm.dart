@@ -1,14 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/input_name/input_name_view.dart';
-import 'package:network_app/ui/widgets/view_model_data/view_model_data.dart';
+import 'package:network_app/navigation/app_router.gr.dart';
+import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 class RegSuccessViewModel extends ViewModel {
   final BuildContext context;
   RegSuccessViewModel(this.context);
 
   void onTap() {
-    Navigator.of(context).push(MaterialPageRoute<void>(
-        builder: (context) => const InputNamePage()));
+    context.router.push(const InputNameViewRoute());
   }
 
 }

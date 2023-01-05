@@ -1,12 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/navigation/app_router.gr.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/input_otp_vm.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/widgets/otp_sent_container.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/widgets/retry_login_text_link.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
-import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
+import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 
 class InputOtpView extends StatelessWidget {
   final String strPhone;
@@ -47,7 +49,10 @@ class InputOtpView extends StatelessWidget {
                           buttonColor: model.enterButtonValid
                               ? Colors.white
                               : AppColors.white15,
-                          onPressed: model.onLoginTap,
+                          // onPressed: model.onLoginTap,
+                          onPressed: (){
+                            context.router.push(const RegSuccessViewRoute());
+                          },
                           text: AppString.of(context).signIn
                       ),
                       const SizedBox(

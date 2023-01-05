@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
-import 'package:network_app/ui/widgets/network_icons.dart';
+import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
 class SearchTextField extends StatelessWidget {

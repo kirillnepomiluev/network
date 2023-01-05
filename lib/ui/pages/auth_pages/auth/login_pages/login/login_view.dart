@@ -7,7 +7,7 @@ import 'package:network_app/ui/pages/auth_pages/widgets/button_trouble_enter.dar
 import 'package:network_app/ui/pages/auth_pages/widgets/network_row.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
-import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
+import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class LoginView extends StatelessWidget {

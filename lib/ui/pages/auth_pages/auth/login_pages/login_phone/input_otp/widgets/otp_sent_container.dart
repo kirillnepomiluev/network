@@ -26,7 +26,6 @@ class OtpSentContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           RichTextTwo(
-            // text1: 'Введите ',
             text1: '${AppString.of(context).input} ',
             text2: AppString.of(context).code,
             fontSize: 24,

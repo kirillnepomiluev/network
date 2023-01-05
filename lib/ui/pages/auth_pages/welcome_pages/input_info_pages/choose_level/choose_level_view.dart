@@ -5,7 +5,7 @@ import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/c
 import 'package:network_app/ui/pages/auth_pages/widgets/button_continue.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
-import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
+import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/auth/auth_enums.dart';
 
 

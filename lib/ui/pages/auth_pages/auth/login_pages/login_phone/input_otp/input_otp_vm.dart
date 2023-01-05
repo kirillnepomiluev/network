@@ -1,6 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/reg_success/reg_succes_view.dart';
-import 'package:network_app/ui/widgets/view_model_data/view_model_data.dart';
+import 'package:network_app/navigation/app_router.gr.dart';
+import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 class InputOtpViewModel extends ViewModel {
   final BuildContext context;
@@ -32,12 +33,11 @@ class InputOtpViewModel extends ViewModel {
   void onLoginTap() {
     if (_enterButtonValid) {
       FocusManager.instance.primaryFocus?.unfocus();
-      Navigator.of(context).push(MaterialPageRoute<void>(
-          builder: (context) => const RegSuccessView()));
+      context.router.push(const RegSuccessViewRoute());
     }
   }
 
   void onRetryTap() {
-    Navigator.of(context).pop();
+    context.router.pop();
   }
 }

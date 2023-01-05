@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
-import 'package:network_app/ui/widgets/network_icons.dart';
+import 'package:network_app/ui/widgets/icons/network_icons.dart';
 
 
 class NotificationIcon extends StatelessWidget {

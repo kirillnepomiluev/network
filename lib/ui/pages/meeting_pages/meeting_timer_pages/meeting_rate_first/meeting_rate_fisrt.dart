@@ -1,0 +1,135 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:network_app/navigation/app_router.gr.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_second/meeting_rate_second.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
+import 'package:network_app/ui/widgets/icons/network_icons.dart';
+import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
+
+
+class MeetingRateFirstView extends StatefulWidget {
+  const MeetingRateFirstView({Key? key}) : super(key: key);
+
+  @override
+  State<MeetingRateFirstView> createState() => _MeetingRateFirstViewState();
+}
+
+class _MeetingRateFirstViewState extends State<MeetingRateFirstView> {
+
+  double sliderValue = 50;
+
+  @override
+  Widget build(BuildContext context) {
+
+    final mediaWidth = MediaQuery.of(context).size.width;
+
+    return WillPopScope(
+      onWillPop: () async {
+        showInterruptDialog(context);
+        return false;
+      },
+      child: Scaffold(
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+
+                const Padding(
+                  padding: EdgeInsets.only(left: 16, top: 10),
+                  child: AppBackButton(),
+                ),
+
+                const Padding(
+                  // padding: EdgeInsets.only(top: 30),    //30
+                  padding: EdgeInsets.only(top: 59),    //30
+                  child:
+
+                    RichTextTwo(
+                      text1: 'Как прошла ',
+                      text2: 'встреча?',
+                      color1: AppColors.salad100,
+                      color2: AppColors.textWhite,
+                      // fontSize: 20,
+                    )
+                ),
+
+
+                const Padding(
+                  padding: EdgeInsets.only(top: 131),
+                  child: Icon(
+                    NetworkIcons.smile_wave,
+                    size: 100,
+                    color: AppColors.salad100,
+                  ),
+                ),
+
+                const Padding(
+                  padding: EdgeInsets.only(top: 93),
+                  child: SliderCustom(
+                    min: 0,
+                    max: 100,
+                    showLabelsRow: false,
+                    sLiderValue: 50,
+                    // stepSize: 5
+                  ),
+                ),
+
+                Padding(
+                    padding: EdgeInsets.only(
+                      left: 0.0613*mediaWidth,   //23
+                      top: 65,    //44
+                    ),
+                  child: const AddCommentRow(color: Colors.black,)
+                ),
+
+
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 100,
+                      left: 16,
+                      right: 16,
+                      bottom: 0
+                  ),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                          MaterialStateProperty.all(Colors.white),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                          context.router.push(const MeetingRateSecondViewRoute());
+                          },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 25    //17
+                          ),
+                          child: Text(
+                            'Далее',
+                            style: TextStyle(
+                                color: AppColors.textBlack,
+                                fontSize: 17.5.sp,   //16
+                                fontWeight: FontWeight.w500
+
+                            ),
+                          ),
+                        )),
+                  ),
+                ),
+            ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+}
