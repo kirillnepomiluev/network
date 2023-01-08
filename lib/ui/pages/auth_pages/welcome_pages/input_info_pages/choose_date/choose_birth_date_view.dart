@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/navigation/app_router.gr.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_date/widgets/choose_date_rich_text.dart';
-import 'package:network_app/ui/pages/auth_pages/widgets/button_continue.dart';
+import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_check_list_tile.dart';
@@ -52,7 +52,7 @@ class _ChooseBirthDateViewState extends State<ChooseBirthDateView> {
                   height: 45,
                 ),
 
-                ButtonContinue(onPressed: () {
+                AppButtonContinue(onPressed: () {
                   context.router.push(const ChooseSexViewRoute());
                 }),
 

@@ -25,7 +25,7 @@ class StatColumn extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                  color: AppColors.salad100,
+                  color: AppColors.salad,
                   borderRadius: BorderRadius.circular(7)),
               width: 24,
               height: 22,
@@ -67,7 +67,7 @@ class StatColumn extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
                         vertical: 12, horizontal: 20),
-                    backgroundColor: AppColors.salad100,
+                    backgroundColor: AppColors.salad,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(13))),
                 onPressed: () {},

@@ -107,7 +107,7 @@ class _PersonProfileViewState extends State<PersonProfileView> {
                       padding:
                           const EdgeInsets.symmetric(vertical: 14, horizontal: 18),
                       decoration: BoxDecoration(
-                        color: AppColors.salad100,
+                        color: AppColors.salad,
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Center(
@@ -140,7 +140,7 @@ class _PersonProfileViewState extends State<PersonProfileView> {
                             padding: const EdgeInsets.only(left: 10),
                             child: Icon(
                               Icons.verified,
-                              color: AppColors.salad100,
+                              color: AppColors.salad,
                               size: 22.sp, //26
                             ),
                           ),
@@ -206,7 +206,7 @@ class _PersonProfileViewState extends State<PersonProfileView> {
                                 padding: const EdgeInsets.only(left: 12),
                                 child: Container(
                                   decoration: const BoxDecoration(
-                                      color: AppColors.salad100,
+                                      color: AppColors.salad,
                                       shape: BoxShape.circle),
                                   width: 0.048 * mediaWidth, //18
                                   height: 0.048 * mediaWidth,
@@ -259,7 +259,7 @@ class _PersonProfileViewState extends State<PersonProfileView> {
                           vertical: 12,
                           horizontal: 20
                       ),
-                      backgroundColor: AppColors.salad100,
+                      backgroundColor: AppColors.salad,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(13)
                       )

@@ -47,7 +47,7 @@ class _RegSuccessViewState extends State<RegSuccessView> {
                             AppString.of(context).weCongratulate,
                             textAlign: TextAlign.center,
                             style:
-                            AppTextStyles.salad24,
+                            AppTextStyles.salad24.copyWith(fontWeight: FontWeight.w600),
                           ),
 
                           const SizedBox(height: 29,),
@@ -69,7 +69,7 @@ class _RegSuccessViewState extends State<RegSuccessView> {
                                   child: ListTile(
                                     title: Text(
                                         '${AppString.of(context).rule} ${index + 1}',
-                                        style: AppTextStyles.primary18w5
+                                        style: AppTextStyles.primary18.copyWith(fontWeight: FontWeight.w500)
                                     ),
                                     contentPadding: EdgeInsets.zero,
                                     subtitle: const Padding(

@@ -262,7 +262,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
                                       child:
                                       Container(
                                           decoration: const BoxDecoration(
-                                              color: AppColors.salad100,
+                                              color: AppColors.salad,
                                               shape: BoxShape.circle
                                           ),
                                           width: 17,
@@ -287,7 +287,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
                             children: [
                               Text('У вас запланирована встреча с Джоли',
                                 style: TextStyle(
-                                  color: AppColors.salad100,
+                                  color: AppColors.salad,
                                     fontSize: 15.5.sp, //12
                                     fontWeight: FontWeight.w600
                                 ),
@@ -344,7 +344,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
             ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: isYou? AppColors.salad100 : AppColors.white10
+                color: isYou? AppColors.salad : AppColors.white10
             ),
             padding: const EdgeInsets.all(15),
             child: Text(
@@ -365,7 +365,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
 
                 isYou==false? Container():
                     Icon(NetworkIcons.check_double,
-                    color: AppColors.salad100,
+                    color: AppColors.salad,
                     size: UtilsResponsive.getResSize(10),   //12
                     ),
 

@@ -949,6 +949,286 @@ class AppString {
       args: [],
     );
   }
+
+  /// `Партнеры`
+  String get partners {
+    return Intl.message(
+      'Партнеры',
+      name: 'partners',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Деловая встреча`
+  String get businessMeeting {
+    return Intl.message(
+      'Деловая встреча',
+      name: 'businessMeeting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `токенов`
+  String get ofTokens {
+    return Intl.message(
+      'токенов',
+      name: 'ofTokens',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Токены за встречу`
+  String get tokensForMeeting {
+    return Intl.message(
+      'Токены за встречу',
+      name: 'tokensForMeeting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Начать чат`
+  String get toStartChat {
+    return Intl.message(
+      'Начать чат',
+      name: 'toStartChat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Уведомления`
+  String get notifications {
+    return Intl.message(
+      'Уведомления',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Список личных запросов`
+  String get listOfPersonalRequests {
+    return Intl.message(
+      'Список личных запросов',
+      name: 'listOfPersonalRequests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Создать новый запрос`
+  String get createNewRequest {
+    return Intl.message(
+      'Создать новый запрос',
+      name: 'createNewRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Созданные раннее`
+  String get createdBefore {
+    return Intl.message(
+      'Созданные раннее',
+      name: 'createdBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Искать`
+  String get toSearch {
+    return Intl.message(
+      'Искать',
+      name: 'toSearch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Поиск`
+  String get search {
+    return Intl.message(
+      'Поиск',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `По интересам`
+  String get byInterests {
+    return Intl.message(
+      'По интересам',
+      name: 'byInterests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `По категориям встречи`
+  String get byCategoriesOfMeeting {
+    return Intl.message(
+      'По категориям встречи',
+      name: 'byCategoriesOfMeeting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Создание личного запроса`
+  String get creatingOfPersonalRequest {
+    return Intl.message(
+      'Создание личного запроса',
+      name: 'creatingOfPersonalRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `категорию встречи`
+  String get ofCategoryOfMeeting {
+    return Intl.message(
+      'категорию встречи',
+      name: 'ofCategoryOfMeeting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Кратко опишите`
+  String get shortlyDescribe {
+    return Intl.message(
+      'Кратко опишите',
+      name: 'shortlyDescribe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `какую встречу вы планируете`
+  String get whatMeetingAreYouPlaning {
+    return Intl.message(
+      'какую встречу вы планируете',
+      name: 'whatMeetingAreYouPlaning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Укажите период для`
+  String get pointPeriodFor {
+    return Intl.message(
+      'Укажите период для',
+      name: 'pointPeriodFor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `планирования встречи`
+  String get ofPlaningMeeting {
+    return Intl.message(
+      'планирования встречи',
+      name: 'ofPlaningMeeting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выбрать дату начала`
+  String get chooseDateOfStart {
+    return Intl.message(
+      'Выбрать дату начала',
+      name: 'chooseDateOfStart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выбрать дату окончания`
+  String get chooseDateOfEnd {
+    return Intl.message(
+      'Выбрать дату окончания',
+      name: 'chooseDateOfEnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Проверьте`
+  String get check {
+    return Intl.message(
+      'Проверьте',
+      name: 'check',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `все параметры встречи`
+  String get allParametrsOfMeeting {
+    return Intl.message(
+      'все параметры встречи',
+      name: 'allParametrsOfMeeting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Категория встречи`
+  String get categoryOfMeeting {
+    return Intl.message(
+      'Категория встречи',
+      name: 'categoryOfMeeting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Описание встречи`
+  String get descriptionOfMeeting {
+    return Intl.message(
+      'Описание встречи',
+      name: 'descriptionOfMeeting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сфера деятельности`
+  String get occupation {
+    return Intl.message(
+      'Сфера деятельности',
+      name: 'occupation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Интересы`
+  String get interestsTitle {
+    return Intl.message(
+      'Интересы',
+      name: 'interestsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Создать запрос`
+  String get createRequest {
+    return Intl.message(
+      'Создать запрос',
+      name: 'createRequest',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppString> {

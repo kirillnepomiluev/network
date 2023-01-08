@@ -55,7 +55,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
                           style: TextStyle(
                               fontSize: 32,
                               fontWeight: FontWeight.w600,
-                              color: AppColors.salad100),
+                              color: AppColors.salad),
                         ),
                         Padding(
                           padding: EdgeInsets.only(top: 20),
@@ -160,21 +160,21 @@ class ProgressParametr extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(11),
-                      border: Border.all(width: 1, color: AppColors.salad100)),
+                      border: Border.all(width: 1, color: AppColors.salad)),
                   child: LinearPercentIndicator(
                     padding: EdgeInsets.zero,
                     barRadius: const Radius.circular(11),
                     lineHeight: 40, //40
                     percent: progress,
                     backgroundColor: Colors.transparent,
-                    progressColor: AppColors.salad100.withOpacity(0.2),
+                    progressColor: AppColors.salad.withOpacity(0.2),
                   ),
                 ),
                 Positioned(
                   right: 10,
                   child: Container(
                     decoration: BoxDecoration(
-                        color: AppColors.salad100,
+                        color: AppColors.salad,
                         borderRadius: BorderRadius.circular(7)),
                     width: 24,
                     height: 22,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/auth_bar_row.dart';
-import 'package:network_app/ui/pages/auth_pages/widgets/button_continue.dart';
+import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 
@@ -33,7 +33,7 @@ class InputInfoColumn extends StatelessWidget {
         const SizedBox(
           height: 36,
         ),
-        ButtonContinue(onPressed: onContinue),
+        AppButtonContinue(onPressed: onContinue),
       ],
     );
   }

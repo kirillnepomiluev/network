@@ -8,8 +8,6 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
-
-  // static final router = AppRouter(authGuard: AuthGuard());
   static final router = AppRouter();
 
   @override
@@ -37,10 +35,9 @@ class App extends StatelessWidget {
   }
 }
 
-// import 'package:network_app/ui/widgets/view_model_data/view_model_builder.dart';
 // Widget build(BuildContext context) {
-//   return ViewModelBuilder<LoginViewModel>(
-//       createModelDataEx: () => LoginViewModel(context),
+//   return ViewModelBuilder<VM>(
+//       createModelDataEx: () => VM(context),
 //       builder: (context, model) {
 //         return Scaffold();
 //       });
@@ -48,9 +45,9 @@ class App extends StatelessWidget {
 
 
 // import 'package:flutter/material.dart';
-// import 'package:network_app/ui/widgets/view_model_data/view_model_data.dart';
+// import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
-// class ViewModel extends ViewModel {
+// class TViewModel extends ViewModel {
 //   final BuildContext context;
-//   TestViewModel(this.context);
+//   TViewModel(this.context);
 // }

@@ -25,14 +25,14 @@ class RhombusText extends StatelessWidget {
           '+150',
           style: TextStyle(
               fontSize: fontSize, //14
-              color: AppColors.salad100,
+              color: AppColors.salad,
               fontWeight: fontWeight),
         ),
         Padding(
           padding: EdgeInsets.only(left: padLeft),
           child: Icon(
             NetworkIcons.rhombus,
-            color: AppColors.salad100,
+            color: AppColors.salad,
             size: iconSize,
           ),
         )

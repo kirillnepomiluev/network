@@ -42,7 +42,7 @@ class _StoreCategoryHeadwearsViewState extends State<StoreCategoryHeadwearsView>
                     text,
                     style: TextStyle(
                         fontSize: 16.5.sp,   //14
-                        color: _active==position? AppColors.salad100 : AppColors.textWhite,
+                        color: _active==position? AppColors.salad : AppColors.textWhite,
                         fontWeight: FontWeight.w400
                     ),
                   ),
@@ -50,7 +50,7 @@ class _StoreCategoryHeadwearsViewState extends State<StoreCategoryHeadwearsView>
                 Icon(
                   _active==position? Icons.keyboard_arrow_down_sharp: Icons.keyboard_arrow_right,
                   size: 20,   //14
-                  color: _active==position? AppColors.salad100 : AppColors.textWhite,
+                  color: _active==position? AppColors.salad : AppColors.textWhite,
                 )
               ],
             ),
@@ -226,7 +226,7 @@ Widget hatContainer({
                 child: Text(
                   '1.6 SOL',
                   style: TextStyle(
-                      color: AppColors.salad100,
+                      color: AppColors.salad,
                       fontSize: 18.5.sp, //16
                       fontWeight: FontWeight.w600
                   ),

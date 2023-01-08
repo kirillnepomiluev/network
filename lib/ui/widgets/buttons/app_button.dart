@@ -47,12 +47,7 @@ class AppButton extends StatelessWidget {
           text,
           style:
           textStyle??
-          AppTextStyles.primary18w5.copyWith(color: textColor),
-          // style: TextStyle(
-          //     fontWeight: FontWeight.w500,
-          //     fontSize: ResponsiveUtils.getResSize(18), //18
-          //     color: textColor
-          // ),
+          AppTextStyles.primary18.copyWith(color: textColor, fontWeight: FontWeight.w500),
         ),
       ),
     );

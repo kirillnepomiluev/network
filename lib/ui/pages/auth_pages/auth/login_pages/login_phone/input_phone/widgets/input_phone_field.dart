@@ -37,15 +37,15 @@ class InputPhoneField extends StatelessWidget {
               contentPadding: const EdgeInsets.only(top: 22, bottom: 24),
               border: OutlineInputBorder(
                   borderSide:
-                  const BorderSide(width: 1, color: AppColors.salad100),
+                  const BorderSide(width: 1, color: AppColors.salad),
                   borderRadius: BorderRadius.circular(20)),
               focusedBorder: OutlineInputBorder(
                   borderSide:
-                  const BorderSide(width: 1, color: AppColors.salad100),
+                  const BorderSide(width: 1, color: AppColors.salad),
                   borderRadius: BorderRadius.circular(20)),
               enabledBorder: OutlineInputBorder(
                   borderSide:
-                  const BorderSide(width: 1, color: AppColors.salad100),
+                  const BorderSide(width: 1, color: AppColors.salad),
                   borderRadius: BorderRadius.circular(20)),
             ),
             onChanged: onChange,

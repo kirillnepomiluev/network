@@ -10,13 +10,13 @@ class ProfileMainViewModel extends ViewModel {
   final bool isCupboardInit;
   ProfileMainViewModel(this.context, this.isCupboardInit){
     if (isCupboardInit) {
-      activeTab = ActiveProfileTab.cupboard;
+      activeTab = ActiveProfileTabs.cupboard;
     }
   }
 
-  ActiveProfileTab activeTab = ActiveProfileTab.values.first;
+  ActiveProfileTabs activeTab = ActiveProfileTabs.values.first;
 
-  void changeTab(ActiveProfileTab tabName) {
+  void changeTab(ActiveProfileTabs tabName) {
     activeTab = tabName;
     notifyListeners();
   }

@@ -7,9 +7,9 @@ class HomeWalletViewModel extends ViewModel {
   final BuildContext context;
   HomeWalletViewModel(this.context);
 
-  ActiveWalletTab activeTab = ActiveWalletTab.values.first;
+  ActiveWalletTabs activeTab = ActiveWalletTabs.values.first;
 
-  void changeTab(ActiveWalletTab tabName) {
+  void changeTab(ActiveWalletTabs tabName) {
     activeTab = tabName;
     notifyListeners();
   }

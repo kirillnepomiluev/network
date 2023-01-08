@@ -27,20 +27,21 @@ import 'package:network_app/ui/pages/home_pages/home_wallet/home_wallet_view.dar
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/meeting_invitations_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_matching/meeting_matching_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_notifications/meeting_notifications_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/check_meeting_parameters_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_categories_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_data_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_interests_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_occupations_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/input_description_meeting_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/check_meeting_parameters/check_meeting_parameters_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_categories/choose_meeting_categories_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_data/choose_meeting_data_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_interests/choose_meeting_interests_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_occupations/choose_meeting_occupations_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/input_meeting_description/input_meeting_description_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/input_meeting_occupation/input_meeting_occupation.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_requests_list/meeting_requests_list_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_search/meeting_search_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_answers/meeting_answers_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_answers_success/meeting_answers_success_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_complaint/meeting_complaint_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_questions/meeting_questions_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_first/meeting_rate_fisrt.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_second/meeting_rate_second.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/meeting_rate_first/meeting_rate_fisrt_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/meeting_rate_second/meeting_rate_second_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_timer/meeting_timer_view.dart';
 import 'package:network_app/ui/pages/messages_pages/chat_personal/chat_personal_view.dart';
 import 'package:network_app/ui/pages/profile_pages/person/person_profile_view.dart';
@@ -130,6 +131,7 @@ class RoutesLists {
     AutoRoute(page: ChooseMeetingCategoriesView),
     AutoRoute(page: InputDescriptionMeetingView),
     AutoRoute(page: ChooseMeetingOccupationsView),
+    AutoRoute(page: InputMeetingOccupationView),
     AutoRoute(page: ChooseMeetingInterestsView),
     AutoRoute(page: ChooseMeetingDateView),
     AutoRoute(page: CheckMeetingParametersView),

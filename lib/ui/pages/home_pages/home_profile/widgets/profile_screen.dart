@@ -24,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
       children: [
         Text(
           'Tima',
-          style: AppTextStyles.primary26w7
+          style: AppTextStyles.primary26.copyWith(fontWeight: FontWeight.w700)
         ),
 
         const SizedBox(height: 12,),
@@ -38,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
         //Готов к встрече
         AppContainer(
           padV: UtilsResponsive.getResSize(20),
-          color: AppColors.salad100,
+          color: AppColors.salad,
           radius: AppBorderRadius.r15,
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -60,7 +60,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                 child: Text(
                   AppString.of(context).readyToMeet,
-                  style: AppTextStyles.darkSalad14w5
+                  style: AppTextStyles.darkSalad.copyWith(fontWeight: FontWeight.w500)
                 ),
               ),
             ],

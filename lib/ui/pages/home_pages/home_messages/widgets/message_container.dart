@@ -39,14 +39,14 @@ class MessageContainer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 50),
                     child: Text(photoMap['name'] as String,
-                        style: AppTextStyles.primary16w7
+                        style: AppTextStyles.primary16.copyWith(fontWeight: FontWeight.bold)
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 5),
                     child: Text(
                       photoMap['status'] as String,
-                      style: AppTextStyles.grayPrimary10
+                      style: AppTextStyles.grey10
                     ),
                   ),
                   Padding(
@@ -62,7 +62,7 @@ class MessageContainer extends StatelessWidget {
                           padding: const EdgeInsets.only(right: 4),
                           child: Text(
                             '12:48',
-                            style: AppTextStyles.grayPrimary10w5
+                            style: AppTextStyles.grey10.copyWith(fontWeight: FontWeight.w500)
                           ),
                         ),
 
@@ -108,7 +108,7 @@ class MessageContainer extends StatelessWidget {
                     child: Icon(
                       Icons.circle,
                       size: 14, //14
-                      color: AppColors.salad100,
+                      color: AppColors.salad,
                     ))
               ],
             ),

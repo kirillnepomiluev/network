@@ -5,10 +5,10 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 
 class MeetingTab extends StatelessWidget {
-  final ActiveMeetingTab activeTab;
+  final ActiveMeetingTabs activeTab;
   final String text;
-  final ActiveMeetingTab tabName;
-  final Function(ActiveMeetingTab) changeTab;
+  final ActiveMeetingTabs tabName;
+  final Function(ActiveMeetingTabs) changeTab;
   const MeetingTab({
     Key? key,
     required this.activeTab,
@@ -26,7 +26,7 @@ class MeetingTab extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: activeTab == tabName?  AppColors.salad100 : AppColors.white10,
+            color: activeTab == tabName?  AppColors.salad : AppColors.white10,
             borderRadius: BorderRadius.circular(15),
           ),
           padding: const EdgeInsets.symmetric(

@@ -28,7 +28,7 @@ class HomeProfileView extends StatelessWidget {
               body: Stack(
                 children: [
                   //Большой аватар
-                  if (model.activeTab == ActiveProfileTab.profile)
+                  if (model.activeTab == ActiveProfileTabs.profile)
                     Positioned(
                       top: 55.sp,
                       right: 0,
@@ -66,7 +66,7 @@ class HomeProfileView extends StatelessWidget {
                               ),
 
                               //Нижняя часть профиля
-                              if (model.activeTab == ActiveProfileTab.profile)
+                              if (model.activeTab == ActiveProfileTabs.profile)
                                 Padding(
                                   padding: EdgeInsets.only(
                                       top: 22.sp, //31
@@ -76,7 +76,7 @@ class HomeProfileView extends StatelessWidget {
 
                               /////////////////////////////////////
 
-                              if (model.activeTab == ActiveProfileTab.cupboard)
+                              if (model.activeTab == ActiveProfileTabs.cupboard)
                                 Center(
                                   child: Padding(
                                     padding: const EdgeInsets.only(

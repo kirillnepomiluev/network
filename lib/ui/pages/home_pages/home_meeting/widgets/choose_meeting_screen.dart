@@ -10,8 +10,8 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 
 
 class ChooseMeetingScreen extends StatelessWidget {
-  final ActiveMeetingTab activeTab;
-  final Function(ActiveMeetingTab) changeTab;
+  final ActiveMeetingTabs activeTab;
+  final Function(ActiveMeetingTabs) changeTab;
   const ChooseMeetingScreen({
     Key? key, required this.activeTab, required this.changeTab,
   }) : super(key: key);
@@ -26,18 +26,18 @@ class ChooseMeetingScreen extends StatelessWidget {
           text: AppString.of(context).forYou,
           activeTab: activeTab,
           changeTab: changeTab,
-          tabName: ActiveMeetingTab.forYou,
+          tabName: ActiveMeetingTabs.forYou,
         ),
         MeetingTab(
           text: AppString.of(context).near,
           activeTab: activeTab,
           changeTab: changeTab,
-          tabName: ActiveMeetingTab.near,
+          tabName: ActiveMeetingTabs.near,
         ),
         Flexible(
           child: AppButton(
               borderRadius: AppBorderRadius.r15,
-              textStyle: AppTextStyles.black11w5,
+              textStyle: AppTextStyles.black11.copyWith(fontWeight: FontWeight.w500),
               width: 158,
               height: 50,
               onPressed: () {

@@ -15,7 +15,7 @@ class TitleStatText extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: AppTextStyles.primary20w5,
+        style: AppTextStyles.primary20.copyWith(fontWeight: FontWeight.w500),
         // style: TextStyle(
         //     color: Colors.white,
         //     fontWeight: FontWeight.w600,

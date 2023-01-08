@@ -29,11 +29,11 @@ class LevelContainer extends StatelessWidget {
           children: [
             Expanded(
               child: RadioListTile<LevelOptions>(
-                activeColor: AppColors.salad100,
+                activeColor: AppColors.salad,
                 title: Text(
                   title,
                   style: const TextStyle(
-                      color: AppColors.salad100,
+                      color: AppColors.salad,
                       fontSize: 18,
                       fontWeight: FontWeight.w600),
                 ),

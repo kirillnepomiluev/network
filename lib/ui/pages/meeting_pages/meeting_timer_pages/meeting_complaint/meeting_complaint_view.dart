@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
+import 'package:network_app/utils/main_pages/dialog_utls.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_timer/meeting_timer_view.dart';
 
 
 class MeetingComplaintView extends StatefulWidget {
@@ -17,16 +17,11 @@ class MeetingComplaintView extends StatefulWidget {
 
 
 
-
-
 class _MeetingComplaintViewState extends State<MeetingComplaintView> {
 
-
   final _controller = TextEditingController();
-
   bool showSendButton = false;
   bool showSuccess = false;
-
 
   void sendFunction(){
 
@@ -37,7 +32,7 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
     context.router.pop();
     context.router.pop();
 
-    openBottomSheetComplain(
+    DialogUtils.openBottomSheetComplain(
     context: context,
       icon: NetworkIcons.check_circle_outlined,
       text1: 'Ваша ',
@@ -207,7 +202,7 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
 
-                      const Icon(NetworkIcons.smile_dead, size: 80, color: AppColors.salad100,),
+                      const Icon(NetworkIcons.smile_dead, size: 80, color: AppColors.salad,),
 
 
                       Padding(
@@ -259,7 +254,7 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
                                   fontWeight: FontWeight.w400
                                 ),),
 
-                                Icon(Icons.keyboard_arrow_down, size: 22, color: AppColors.salad100,)
+                                Icon(Icons.keyboard_arrow_down, size: 22, color: AppColors.salad,)
 
                               ],
                             ),

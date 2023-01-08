@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/navigation/app_router.gr.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/input_info_column.dart';
 
 class InputOccupationView extends StatefulWidget {
@@ -25,7 +24,7 @@ class _InputOccupationViewState extends State<InputOccupationView> {
               description: AppString.of(context).occupationsWillBeShowedInProfile,
               onContinue: (){
                 FocusManager.instance.primaryFocus?.unfocus();
-                context.router.push(const InputAboutYouViewRoute());
+                context.router.pop();
               },
             ),
           ),

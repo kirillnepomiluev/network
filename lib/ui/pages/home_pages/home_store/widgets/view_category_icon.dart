@@ -20,7 +20,7 @@ class ViewCategoryIcon extends StatelessWidget {
         children: [
           Text(
             title,
-            style: AppTextStyles.primary22w6,
+            style: AppTextStyles.primary22.copyWith(fontWeight: FontWeight.w600),
             textAlign: TextAlign.start,
           ),
           IconButton(

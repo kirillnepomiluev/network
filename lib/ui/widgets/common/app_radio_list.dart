@@ -36,13 +36,13 @@ class _AppRadioListState extends State<AppRadioList> {
             itemBuilder: (BuildContext context, int index) {
               return Theme(
                 data: Theme.of(context).copyWith(
-                  unselectedWidgetColor: AppColors.salad100,
-                  disabledColor: AppColors.salad100,
+                  unselectedWidgetColor: AppColors.salad,
+                  disabledColor: AppColors.salad,
                 ),
                 child: RadioListTile(
                     visualDensity: const VisualDensity(
                         horizontal: VisualDensity.minimumDensity, vertical: -4),
-                    activeColor: AppColors.salad100,
+                    activeColor: AppColors.salad,
                     contentPadding: EdgeInsets.zero,
                     dense: true,
                     // selectedTileColor: ConstColor.salad100,

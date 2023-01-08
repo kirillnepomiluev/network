@@ -57,7 +57,7 @@ class MeetExchangeRow extends StatelessWidget {
                     isExchange
                         ? AppString.of(context).exchange
                         : AppString.of(context).toMeet,
-                    style: AppTextStyles.blackPrimary,
+                    style: AppTextStyles.black,
                   ),
 
                   //иконка >>

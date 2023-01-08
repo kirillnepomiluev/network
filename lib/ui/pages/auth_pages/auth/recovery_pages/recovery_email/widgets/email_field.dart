@@ -20,11 +20,11 @@ class EmailField extends StatelessWidget {
               vertical: 22, horizontal: 16),
           focusedBorder: OutlineInputBorder(
               borderSide: const BorderSide(
-                  width: 1, color: AppColors.salad100),
+                  width: 1, color: AppColors.salad),
               borderRadius: BorderRadius.circular(20)),
           enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(
-                  width: 1, color: AppColors.salad100),
+                  width: 1, color: AppColors.salad),
               borderRadius: BorderRadius.circular(20)),
           hintText: AppString.of(context).inputEmailAddress,
           hintStyle: const TextStyle(

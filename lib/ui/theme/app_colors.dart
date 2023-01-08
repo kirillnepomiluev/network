@@ -4,7 +4,7 @@ class AppColors {
   // static const Color salad100 = Color(0xFFE7FE55); //салатовый в 100
   // static const Color salad90 = Color.fromRGBO(231, 254, 05, 0.9); //салатоый
 
-  static const Color salad100 = Color(0xFFFEF10D); //салатовый в 100
+  static const Color salad = Color(0xFFFEF10D); //салатовый в 100
   static Color salad90 = const Color(0xFFFEF10D).withOpacity(0.9); //салатоый
 
   static const Color darkSalad = Color(0xFF3E4C14); //темно-салатовый

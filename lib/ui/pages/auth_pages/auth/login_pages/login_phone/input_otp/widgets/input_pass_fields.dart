@@ -28,10 +28,10 @@ class InputPassFields extends StatelessWidget {
 final _defaultPinTheme = PinTheme(
   width: 34.sp, //62
   height: 34.sp,
-  textStyle: AppTextStyles.primary20w5,
+  textStyle: AppTextStyles.primary20.copyWith(fontWeight: FontWeight.w500),
   decoration: BoxDecoration(
     color: Colors.transparent,
-    border: Border.all(width: 1, color: AppColors.salad100),
+    border: Border.all(width: 1, color: AppColors.salad),
     borderRadius: BorderRadius.circular(20),
   ),
 );

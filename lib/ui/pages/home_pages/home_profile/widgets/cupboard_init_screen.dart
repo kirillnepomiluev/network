@@ -12,7 +12,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 class CupboardInitScreen extends StatelessWidget {
   final ScrollController avatarScrollContr;
   final ScrollController hatScrollContr;
-  final ActiveProfileTab activeTab;
+  final ActiveProfileTabs activeTab;
   const CupboardInitScreen({
     Key? key, required this.avatarScrollContr, required this.hatScrollContr, required this.activeTab,
   }) : super(key: key);
@@ -31,7 +31,7 @@ class CupboardInitScreen extends StatelessWidget {
             children: [
               Text(
                 AppString.of(context).avatars,
-                style: AppTextStyles.primary22w6,
+                style: AppTextStyles.primary22.copyWith(fontWeight: FontWeight.w600),
                 textAlign: TextAlign.start,
               ),
               IconButton(

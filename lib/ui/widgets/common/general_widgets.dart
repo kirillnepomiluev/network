@@ -17,13 +17,13 @@ Widget textField(String hintText, {bool isEnable = true}) => Padding(
           isDense: true,
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 19),
           focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(width: 1, color: AppColors.salad100),
+              borderSide: const BorderSide(width: 1, color: AppColors.salad),
               borderRadius: BorderRadius.circular(20)),
           enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(width: 1, color: AppColors.salad100),
+              borderSide: const BorderSide(width: 1, color: AppColors.salad),
               borderRadius: BorderRadius.circular(20)),
           disabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(width: 1, color: AppColors.salad100),
+              borderSide: const BorderSide(width: 1, color: AppColors.salad),
               borderRadius: BorderRadius.circular(20)),
         ),
       ),

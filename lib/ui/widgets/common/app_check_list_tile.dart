@@ -33,7 +33,7 @@ class _AppCheckListTileState extends State<AppCheckListTile> {
             value = newValue!;
           });
         },
-        activeColor: AppColors.salad100,
+        activeColor: AppColors.salad,
         title: Transform.translate(
           offset: const Offset(-17, 0),
           child: Text(

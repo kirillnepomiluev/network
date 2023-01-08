@@ -64,7 +64,7 @@ class GraphSvg extends CustomPainter {
     Paint paint0Stroke = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1;
-    paint0Stroke.color = isDark ? AppColors.salad100 : AppColors.black1A;
+    paint0Stroke.color = isDark ? AppColors.salad : AppColors.black1A;
     // paint_0_stroke.color= Colors.transparent;
     canvas.drawPath(path_0, paint0Stroke);
 
@@ -74,7 +74,7 @@ class GraphSvg extends CustomPainter {
     canvas.drawPath(path_0, paint0Fill);
 
     Paint paint1Fill = Paint()..style = PaintingStyle.fill;
-    paint1Fill.color = isDark ? AppColors.salad100 : AppColors.black1A;
+    paint1Fill.color = isDark ? AppColors.salad : AppColors.black1A;
     canvas.drawCircle(Offset(size.width * 0.9878788, size.height * 0.03636364),
         size.width * 0.01212121, paint1Fill);
   }

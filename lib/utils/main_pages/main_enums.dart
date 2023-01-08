@@ -1,21 +1,33 @@
 
-enum ActiveMeetingTab{
+enum ActiveMeetingTabs{
   forYou,
   near,
 }
 
-enum ActiveProfileTab{
+enum ActiveProfileTabs{
   profile,
   cupboard,
   friends
 }
 
-enum ActiveStoreTab{
+enum ActiveStoreTabs{
   store,
   lottery
 }
 
-enum ActiveWalletTab{
+enum ActiveWalletTabs{
   tokens,
   currency
+}
+
+/////////////////////////////
+
+enum ActiveInvitationTabs{
+  invitations,
+  partners,
+}
+
+enum ActiveSearchTabs{
+  byInterests,
+  byCategories,
 }

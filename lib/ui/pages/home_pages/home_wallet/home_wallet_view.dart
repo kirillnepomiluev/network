@@ -38,13 +38,13 @@ class HomeWalletView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           WalletTab(
-                            tabName: ActiveWalletTab.tokens,
+                            tabName: ActiveWalletTabs.tokens,
                             text: AppString.of(context).tokens,
                             activeTab: model.activeTab,
                             changeTab: model.changeTab,
                           ),
                           WalletTab(
-                            tabName: ActiveWalletTab.currency,
+                            tabName: ActiveWalletTabs.currency,
                             text: AppString.of(context).currency,
                             activeTab: model.activeTab,
                             changeTab: model.changeTab,
@@ -52,7 +52,7 @@ class HomeWalletView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    model.activeTab == ActiveWalletTab.tokens
+                    model.activeTab == ActiveWalletTabs.tokens
                         ? const TokensScreen()
                         : const CurrencyScreen(),
                     const SizedBox(

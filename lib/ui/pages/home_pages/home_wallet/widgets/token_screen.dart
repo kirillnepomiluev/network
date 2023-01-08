@@ -35,7 +35,7 @@ class TokensScreen extends StatelessWidget {
             style: TextStyle(
                 fontSize: 27.sp, //38
                 fontWeight: FontWeight.w700,
-                color: AppColors.salad100),
+                color: AppColors.salad),
           ),
         ),
         Padding(
@@ -74,7 +74,7 @@ class TokensScreen extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 17.5.sp, //16
                               fontWeight: FontWeight.w400,
-                              color: AppColors.salad100),
+                              color: AppColors.salad),
                         ),
                         Text(
                           'токенов',

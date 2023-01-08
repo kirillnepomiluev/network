@@ -82,7 +82,7 @@ class _WalletExchangeViewState extends State<WalletExchangeView> {
                           Text(
                             '0.00045 BTC',
                             style: TextStyle(
-                                color: AppColors.salad100,
+                                color: AppColors.salad,
                                 fontSize: 27.sp, //38
                                 fontWeight: FontWeight.w600
                             ),
@@ -230,7 +230,7 @@ class _WalletExchangeViewState extends State<WalletExchangeView> {
                                       TextSpan(
                                         text: '300 баллов ',
                                         style: TextStyle(
-                                          color: AppColors.salad100
+                                          color: AppColors.salad
                                         )
                                       ),
                                       TextSpan(
@@ -240,7 +240,7 @@ class _WalletExchangeViewState extends State<WalletExchangeView> {
                                       TextSpan(
                                         text: 'Bitcoin',
                                           style: TextStyle(
-                                              color: AppColors.salad100
+                                              color: AppColors.salad
                                           )
                                       ),
                                     ])),
@@ -274,7 +274,7 @@ class _WalletExchangeViewState extends State<WalletExchangeView> {
                                       Text(
                                         '0.00045 BTC',
                                         style: TextStyle(
-                                            color: AppColors.salad100,
+                                            color: AppColors.salad,
                                             fontSize: 27.sp, //38
                                             fontWeight: FontWeight.w600
                                         ),
@@ -369,7 +369,7 @@ class _WalletExchangeViewState extends State<WalletExchangeView> {
                             width: 66,
                             height: 92,
                             decoration: BoxDecoration(
-                                color: AppColors.salad100,
+                                color: AppColors.salad,
                                 borderRadius: BorderRadius.circular(37)),
                             child: Icon(
                               Icons.close_rounded,
@@ -489,14 +489,14 @@ Widget currencyCont({required CurrencyData data}) => Padding(
                       Icon(
                         Icons.attach_money_sharp,
                         size: UtilsResponsive.getResSize(12), //12
-                        color: AppColors.salad100
+                        color: AppColors.salad
                       ),
                       Text(
                         '20.13',
                         style: TextStyle(
                             fontSize: UtilsResponsive.getResSize(12), //12
                             fontWeight: FontWeight.w400,
-                            color: AppColors.salad100
+                            color: AppColors.salad
                         ),
                       ),
                     ],
@@ -514,12 +514,12 @@ Widget cryptoCont({required CurrencyData data, bool isDark=false}) => Container(
   width: 27.sp,    //37
   height: 27.sp,   //37
   decoration:  BoxDecoration(
-      color: isDark? AppColors.salad100 : AppColors.black1A,
+      color: isDark? AppColors.salad : AppColors.black1A,
       borderRadius: BorderRadius.circular(15)
   ),
   child: Icon(
       data.icon,
       size: data.iconSize,
-      color: isDark? AppColors.black1A : AppColors.salad100
+      color: isDark? AppColors.black1A : AppColors.salad
   ),
 );

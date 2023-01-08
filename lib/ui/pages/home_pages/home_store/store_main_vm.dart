@@ -8,8 +8,8 @@ class StoreMainViewModel extends ViewModel {
   final BuildContext context;
   StoreMainViewModel(this.context);
 
-  ActiveStoreTab activeTab = ActiveStoreTab.store;
-  void changeTab(ActiveStoreTab tabName) {
+  ActiveStoreTabs activeTab = ActiveStoreTabs.values.first;
+  void changeTab(ActiveStoreTabs tabName) {
     activeTab = tabName;
     notifyListeners();
   }

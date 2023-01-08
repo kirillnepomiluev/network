@@ -5,10 +5,10 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ProfileTab extends StatelessWidget {
-  final ActiveProfileTab activeTab;
+  final ActiveProfileTabs activeTab;
   final String text;
-  final ActiveProfileTab tabName;
-  final Function(ActiveProfileTab) changeTab;
+  final ActiveProfileTabs tabName;
+  final Function(ActiveProfileTabs) changeTab;
   const ProfileTab({
     Key? key,
     required this.activeTab,
@@ -41,7 +41,7 @@ class ProfileTab extends StatelessWidget {
                   text,
                   style: TextStyle(
                       color: activeTab == tabName
-                          ? AppColors.salad100
+                          ? AppColors.salad
                           : Colors.white,
                       fontSize: 16.5.sp, //14
                       fontWeight: FontWeight.w500),
@@ -52,7 +52,7 @@ class ProfileTab extends StatelessWidget {
                 child: activeTab == tabName
                     ? Icon(
                         Icons.keyboard_arrow_down,
-                        color: AppColors.salad100,
+                        color: AppColors.salad,
                         size: 19.sp, //20
                       )
                     : Icon(

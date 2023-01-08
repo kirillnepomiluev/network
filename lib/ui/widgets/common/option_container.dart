@@ -5,8 +5,8 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class OptionsContainer extends StatefulWidget {
   final String title;
-  final Function? func;
-  const OptionsContainer({Key? key, required this.title, this.func})
+  final VoidCallback? onTap;
+  const OptionsContainer({Key? key, required this.title, this.onTap})
       : super(key: key);
 
   @override
@@ -22,8 +22,8 @@ class _OptionsContainerState extends State<OptionsContainer> {
 
     return InkWell(
       onTap: (() {
-        if (widget.func != null) {
-          widget.func!();
+        if (widget.onTap != null) {
+          widget.onTap!();
         }
 
         setState(() {
@@ -33,7 +33,7 @@ class _OptionsContainerState extends State<OptionsContainer> {
       child: Container(
         padding: EdgeInsets.all(mediaWitdh * 0.0373), //14
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.salad100 : AppColors.white10,
+          color: isSelected ? AppColors.salad : AppColors.white10,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Text(

@@ -10,9 +10,9 @@ class MeetingMainViewModel extends ViewModel {
 
   MeetingMainViewModel(this.context);
 
-  ActiveMeetingTab activeTab = ActiveMeetingTab.forYou;
+  ActiveMeetingTabs activeTab = ActiveMeetingTabs.values.first;
 
-  void changeTab(ActiveMeetingTab tabName) {
+  void changeTab(ActiveMeetingTabs tabName) {
     activeTab = tabName;
     notifyListeners();
   }

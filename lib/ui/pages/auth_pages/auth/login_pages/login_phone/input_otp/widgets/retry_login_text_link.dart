@@ -23,14 +23,14 @@ class RetryLoginTextLink extends StatelessWidget {
               bottom: 10,
               child: Text(
                 AppString.of(context).retry,
-                style: AppTextStyles.grayPrimary500,
+                style: AppTextStyles.grey.copyWith(fontWeight: FontWeight.w500),
               ),
             ),
             Positioned(
               bottom: 0,
               child: Text(
                 '_____________________________',
-                style: AppTextStyles.gray10b
+                style: AppTextStyles.grey10.copyWith(fontWeight: FontWeight.bold)
               ),
             )
           ],

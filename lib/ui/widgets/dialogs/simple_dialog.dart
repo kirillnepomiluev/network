@@ -40,7 +40,7 @@ class CustomSimpleDialog extends StatelessWidget {
       content: Text(text,
           textAlign: TextAlign.center,
           maxLines: 10,
-          style: AppTextStyles.blackPrimary
+          style: AppTextStyles.black
       ),
       actions: [
         Center(

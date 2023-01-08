@@ -89,7 +89,7 @@ class BottomSheetMain extends StatelessWidget {
                                       child: Icon(
                                         NetworkIcons.edit,
                                         size: 22,
-                                        color: AppColors.salad100,
+                                        color: AppColors.salad,
                                       ))
                                 ],
                               ),
@@ -113,7 +113,7 @@ class BottomSheetMain extends StatelessWidget {
                                   width: 36,
                                   height: 36,
                                   decoration: BoxDecoration(
-                                      color: AppColors.salad100,
+                                      color: AppColors.salad,
                                       borderRadius: BorderRadius.circular(7)),
                                   child: IconButton(
                                     padding: EdgeInsets.zero,
@@ -146,7 +146,7 @@ class BottomSheetMain extends StatelessWidget {
                                   width: 36,
                                   height: 36,
                                   decoration: BoxDecoration(
-                                      color: AppColors.salad100,
+                                      color: AppColors.salad,
                                       borderRadius: BorderRadius.circular(7)),
                                   child: IconButton(
                                     padding: EdgeInsets.zero,
@@ -188,7 +188,7 @@ class BottomSheetMain extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 10),
                             decoration: BoxDecoration(
-                                color: AppColors.salad100,
+                                color: AppColors.salad,
                                 borderRadius: BorderRadius.circular(15)),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,

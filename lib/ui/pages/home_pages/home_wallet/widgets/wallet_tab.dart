@@ -5,10 +5,10 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class WalletTab extends StatelessWidget {
-  final ActiveWalletTab activeTab;
-  final ActiveWalletTab tabName;
+  final ActiveWalletTabs activeTab;
+  final ActiveWalletTabs tabName;
   final String text;
-  final Function(ActiveWalletTab) changeTab;
+  final Function(ActiveWalletTabs) changeTab;
   const WalletTab({Key? key, required this.activeTab, required this.tabName, required this.text, required this.changeTab}) : super(key: key);
 
   @override
@@ -23,7 +23,7 @@ class WalletTab extends StatelessWidget {
         height: 40.sp,   //91   40
         decoration: BoxDecoration(
           color: activeTab == tabName
-              ? AppColors.salad100
+              ? AppColors.salad
               : AppColors.white10,
           borderRadius: BorderRadius.circular(15),
         ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/navigation/app_router.gr.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/auth_bar_row.dart';
-import 'package:network_app/ui/pages/auth_pages/widgets/button_continue.dart';
+import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/search_text_field.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/wrap_select_containers.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
@@ -34,7 +34,7 @@ class ChooseStatusView extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, bottom: 23),
         child:
-        ButtonContinue(
+        AppButtonContinue(
           onPressed: () {
             context.router.push(const InputStatusViewRoute());
           },
@@ -74,15 +74,15 @@ class ChooseStatusView extends StatelessWidget {
                       width: 180,
                       height: 50,
                       borderRadius: AppBorderRadius.r15,
-                      textStyle: AppTextStyles.black12w5,
+                      textStyle: AppTextStyles.black12.copyWith(fontWeight: FontWeight.w500),
                       onPressed: (){
-                        context.router.push(const InputStatusViewRoute());
+                        context.router.push(const ChooseOccupationViewRoute());
                   }, text: AppString.of(context).inputOwnStatus),
 
                   //Поиск
                   const Padding(
                     padding: EdgeInsets.only(bottom: 20, top: 18),
-                    child: SearchTextField(),
+                     child: SearchTextField(),
                   ),
 
                   const WrapSelectContainers(),

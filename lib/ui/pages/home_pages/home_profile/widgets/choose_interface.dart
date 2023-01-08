@@ -5,8 +5,8 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 
 
 class ChooseProfileScreen extends StatelessWidget {
-  final ActiveProfileTab activeProfileTab;
-  final Function(ActiveProfileTab) changeTab;
+  final ActiveProfileTabs activeProfileTab;
+  final Function(ActiveProfileTabs) changeTab;
   const ChooseProfileScreen({
     Key? key,
     required this.activeProfileTab, required this.changeTab,
@@ -21,17 +21,17 @@ class ChooseProfileScreen extends StatelessWidget {
         children: [
           ProfileTab(
               text: AppString.of(context).profile,
-              tabName: ActiveProfileTab.profile,
+              tabName: ActiveProfileTabs.profile,
               activeTab: activeProfileTab,
               changeTab: changeTab),
           ProfileTab(
               text: AppString.of(context).cupboard,
-              tabName: ActiveProfileTab.cupboard,
+              tabName: ActiveProfileTabs.cupboard,
               activeTab: activeProfileTab,
               changeTab: changeTab),
           ProfileTab(
               text: AppString.of(context).friends,
-              tabName: ActiveProfileTab.friends,
+              tabName: ActiveProfileTabs.friends,
               activeTab: activeProfileTab,
               changeTab: changeTab),
         ],

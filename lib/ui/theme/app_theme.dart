@@ -5,7 +5,7 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 
 class AppTheme{
   static final mainTheme = ThemeData(
-      unselectedWidgetColor: AppColors.salad100,
+      unselectedWidgetColor: AppColors.salad,
       fontFamily: 'Inter',
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(

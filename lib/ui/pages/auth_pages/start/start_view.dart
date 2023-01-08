@@ -16,7 +16,7 @@ class StartView extends StatefulWidget {
 class _StartViewState extends State<StartView> {
 
   getInit() async {
-    Future.delayed(Duration(microseconds: 100)).then((value) {
+    Future.delayed(const Duration(microseconds: 100)).then((value) {
       context.router.pushAndPopUntil(HomeViewRoute(initIndex: 0), predicate: (route) => false);
     });
   }

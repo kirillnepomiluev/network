@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 
 class AuthBarRow extends StatelessWidget {
   final bool isAuth;
@@ -29,7 +29,7 @@ class AuthBarRow extends StatelessWidget {
                   padding: EdgeInsets.only(left: 5),
                   child: Icon(
                     Icons.close_rounded,
-                    color: AppColors.salad100,
+                    color: AppColors.salad,
                     size: 20,
                   ),
                 )
@@ -37,19 +37,6 @@ class AuthBarRow extends StatelessWidget {
             )),
       ],
     )
-        : Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          const AppBackButton(),
-          Center(
-              child: Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.primary18w5))
-        ],
-      ),
-    );
+        : const AppBarRow();
   }
 }

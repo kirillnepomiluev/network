@@ -104,7 +104,7 @@ class _HomeViewState extends State<HomeView> {
             fontWeight: FontWeight.w500
               ),
         ),
-        activeColor: AppColors.salad100,
+        activeColor: AppColors.salad,
         inactiveIcon: Icon(
           size: iconSize,
           icon,

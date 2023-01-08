@@ -44,7 +44,7 @@ class _StoreCategoryAvatarsViewState extends State<StoreCategoryAvatarsView> {
                     text,
                     style: TextStyle(
                         fontSize: 16.5.sp,   //14
-                        color: _active==position? AppColors.salad100 : AppColors.textWhite,
+                        color: _active==position? AppColors.salad : AppColors.textWhite,
                         fontWeight: FontWeight.w400
                     ),
                   ),
@@ -52,7 +52,7 @@ class _StoreCategoryAvatarsViewState extends State<StoreCategoryAvatarsView> {
                 Icon(
                   _active==position? Icons.keyboard_arrow_down_sharp: Icons.keyboard_arrow_right,
                   size: 20,   //14
-                  color: _active==position? AppColors.salad100 : AppColors.textWhite,
+                  color: _active==position? AppColors.salad : AppColors.textWhite,
                 )
               ],
             ),
@@ -247,7 +247,7 @@ Widget avatarContainer(
                           Text(
                             'Костюм "Выходной"',
                             style: TextStyle(
-                                color: AppColors.salad100,
+                                color: AppColors.salad,
                                 fontSize: 16.5.sp, //14
                                 fontWeight: FontWeight.w600
                             ),
@@ -278,7 +278,7 @@ Widget avatarContainer(
                     child: Text(
                       '1.6 SOL',
                       style: TextStyle(
-                          color: AppColors.salad100,
+                          color: AppColors.salad,
                           fontSize: 17.5.sp,   //16
                           fontWeight: FontWeight.w600
                       ),
@@ -303,7 +303,7 @@ Widget avatarContainer(
 
                         const Icon(
                           NetworkIcons.rhombus,
-                          color: AppColors.salad100,
+                          color: AppColors.salad,
                           size: 15,
                         ),
 
@@ -314,7 +314,7 @@ Widget avatarContainer(
                           child: Text(
                             '1.6 SOL',
                             style: TextStyle(
-                                color: AppColors.salad100,
+                                color: AppColors.salad,
                                 fontSize: 17.sp,   //16
                                 fontWeight: FontWeight.w600
                             ),

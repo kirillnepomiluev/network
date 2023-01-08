@@ -29,7 +29,7 @@ class GraphCont extends StatelessWidget {
             bottom: UtilsResponsive.getResSize(14)),
         width: 55.sp, //161
         decoration: BoxDecoration(
-            color: isDark ? AppColors.white10 : AppColors.salad100,
+            color: isDark ? AppColors.white10 : AppColors.salad,
             borderRadius: BorderRadius.circular(15)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,7 +53,7 @@ class GraphCont extends StatelessWidget {
                             fontSize: UtilsResponsive.getResSize(16), //16
                             fontWeight: FontWeight.w500,
                             color: isDark
-                                ? AppColors.salad100
+                                ? AppColors.salad
                                 : AppColors.textBlack),
                       ),
                       Text(
@@ -150,7 +150,7 @@ class GraphCont extends StatelessWidget {
                                           UtilsResponsive.getResSize(12), //12
                                       fontWeight: FontWeight.w400,
                                       color: isDark
-                                          ? AppColors.salad100
+                                          ? AppColors.salad
                                           : AppColors.textBlack),
                                 ),
                               ],

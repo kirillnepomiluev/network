@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/navigation/app_router.gr.dart';
-import 'package:network_app/ui/pages/auth_pages/widgets/button_continue.dart';
+import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
@@ -106,7 +106,7 @@ class _ChooseSexViewState extends State<ChooseSexView> {
                           }
                         });
                       },
-                      activeColor: AppColors.salad100,
+                      activeColor: AppColors.salad,
                       title: Transform.translate(
                         offset: const Offset(-10, 0),
                         child: Text(
@@ -118,7 +118,7 @@ class _ChooseSexViewState extends State<ChooseSexView> {
                 const SizedBox(
                   height: 25,
                 ),
-                ButtonContinue(onPressed: () {
+                AppButtonContinue(onPressed: () {
                   context.router.push(const ChooseLevelViewRoute());
                 }),
               ],

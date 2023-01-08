@@ -42,7 +42,7 @@ class MessagesMiniAvatar extends StatelessWidget {
                     child: Icon(
                       Icons.circle,
                       size: 12,
-                      color: AppColors.salad100,
+                      color: AppColors.salad,
                     ),
                   )
                 ],

@@ -22,7 +22,7 @@ class MeetingPartnerInfo extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text('Джоли, 28', style: AppTextStyles.primary26w7),
+              Text('Джоли, 28', style: AppTextStyles.primary26.copyWith(fontWeight: FontWeight.w700)),
               Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: Icon(

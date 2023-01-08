@@ -23,7 +23,7 @@ class MeetingOnlineContainer extends StatelessWidget {
         children: [
           const Icon(
             Icons.circle,
-            color: AppColors.salad100,
+            color: AppColors.salad,
             size: 10,
           ),
           Padding(

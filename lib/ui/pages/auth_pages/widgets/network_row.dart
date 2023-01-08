@@ -50,7 +50,7 @@ class _Text extends StatelessWidget {
           padding: EdgeInsets.only(left: isColumn ? 0 : 15.0, top: isColumn ? 10 : 0),
           child: Text(
             'network',
-            style: AppTextStyles.white32w6,
+            style: AppTextStyles.primary32.copyWith(fontWeight: FontWeight.w600),
           ),
         );
   }

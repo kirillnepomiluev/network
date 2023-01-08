@@ -68,7 +68,7 @@ class ChooseLevelViewModel extends ViewModel {
                             Text(
                               'Базовый',
                               style: TextStyle(
-                                color: AppColors.salad100,
+                                color: AppColors.salad,
                                 fontSize: 32,
                                 fontWeight: FontWeight.w600,
                               ),

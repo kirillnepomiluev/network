@@ -48,7 +48,7 @@ class _StoreProductAvatarViewState extends State<StoreProductAvatarView> {
               child: Text(
                 '1.6 SOL',
                 style: TextStyle(
-                    color: AppColors.salad100,
+                    color: AppColors.salad,
                     fontSize: 18.sp, //16
                     fontWeight: FontWeight.w600),
               ),
@@ -141,7 +141,7 @@ class _StoreProductAvatarViewState extends State<StoreProductAvatarView> {
                 Text(
             widget.title,
             style: const TextStyle(
-                      color: AppColors.salad100,
+                      color: AppColors.salad,
                       fontSize: 26, //14
                       fontWeight: FontWeight.w600
                   ),
@@ -207,7 +207,7 @@ void openSuccessSheet({required BuildContext context,}) {
                 child: Icon(
                   NetworkIcons.check_circle_outlined,
                   size: 100,
-                  color: AppColors.salad100,
+                  color: AppColors.salad,
                 ),
               ),
 

@@ -19,7 +19,7 @@ class RichTextTwo extends StatelessWidget {
     this.fontWeight1 = FontWeight.w600,
     this.fontWeight2 = FontWeight.w600,
     this.color1 = AppColors.textWhite,
-    this.color2 = AppColors.salad100,
+    this.color2 = AppColors.salad,
     this.textAlign = TextAlign.start,
   }) : super(key: key);
 

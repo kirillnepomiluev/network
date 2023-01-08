@@ -1,237 +1,109 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
-import 'package:network_app/ui/widgets/common/option_container.dart';
-import 'package:network_app/ui/widgets/common/general_widgets.dart';
-import 'package:network_app/constants.dart';
-import 'package:network_app/ui/widgets/icons/network_icons.dart';
+import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/pages/auth_pages/widgets/search_text_field.dart';
+import 'package:network_app/ui/pages/auth_pages/widgets/wrap_select_containers.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_search/meeting_search_vm.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_search/widgets/search_tab.dart';
+import 'package:network_app/ui/theme/app_border_radius.dart';
+import 'package:network_app/ui/widgets/buttons/app_button.dart';
+import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 
-
-
-class MeetingSearchView extends StatefulWidget {
+class MeetingSearchView extends StatelessWidget {
   final bool isAuth;
-  const MeetingSearchView({Key? key, this.isAuth=false}) : super(key: key);
-
-  @override
-  State<MeetingSearchView> createState() => _MeetingSearchViewState();
-}
-
-class _MeetingSearchViewState extends State<MeetingSearchView> {
-
-  int _activeTab = 1;
-
-  Widget miniContainer({
-    required int position,
-    required String text,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: InkWell(
-        onTap: (() {
-          setState(() {
-            _activeTab = position;
-          });
-        }),
-        child: Container(
-          decoration: BoxDecoration(
-            color:   _activeTab == position?  AppColors.salad100 : AppColors.white10,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          padding: const EdgeInsets.symmetric(
-              vertical: 16, //19
-              horizontal: 20
-          ),
-          child:
-          Text(
-            text,
-            style: TextStyle(
-                color:
-                _activeTab == position
-                    ? AppColors.textBlack
-                    : AppColors.textWhite,
-                fontSize: UtilsResponsive.getResSize(12), //12
-                fontWeight: FontWeight.w500),
-          ),
-        ),
-      ),
-    );
-  }
-
-  final _controller = TextEditingController();
-
-  Widget _textEditor() => TextField(
-    maxLines: 1,
-    controller: _controller,
-    textInputAction: TextInputAction.done,
-    textAlign: TextAlign.start,
-    autofocus: false,
-    style: TextStyle(
-      fontSize: UtilsResponsive.getResSize(14),
-      // color: ConstColor.textWhite
-    ),
-    decoration: const InputDecoration(
-      counterText: '',
-    ),
-  );
+  const MeetingSearchView({Key? key, this.isAuth = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final mediaTop = MediaQuery.of(context).viewPadding.top;
-    final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWidth = MediaQuery.of(context).size.width;
-
-    return Scaffold(
-      floatingActionButton:
-      SizedBox(
-        width: 0.472*mediaWidth,  //177
-        height: 0.076*mediaHeight,               //55
-        child: ElevatedButton(
-            style: buttonStyleCustom(
-                padH: 0,
-                padV: 0,
-                radius: 17
+    return ViewModelBuilder<MeetingSearchViewModel>(
+        createModelDataEx: () => MeetingSearchViewModel(context),
+        builder: (context, model) {
+          return Scaffold(
+            floatingActionButton: AppButton(
+              borderRadius: AppBorderRadius.r15,
+              onPressed: () {},
+              text: AppString.of(context).toSearch,
+              width: 54.sp, //177
+              height: 30.sp, //55
             ),
-            onPressed: () {},
-            child: Text(
-              'Искать',
-              style:
-              TextStyle(
-                  fontSize: 18.sp,     //16
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black
-              ),
-            )),
-      ),
-      body: Padding(
-        padding: EdgeInsets.only(top: mediaTop),
-        child: GestureDetector(
-          onTap: (){
-            FocusManager.instance.primaryFocus?.unfocus();
-          },
-          child: SingleChildScrollView(
-            child:
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child:
-                    Stack(
-                      alignment: Alignment.center,
+            body: Padding(
+              padding: EdgeInsets.only(top: mediaTop),
+              child: GestureDetector(
+                onTap: model.onScreenTap,
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const AppBackButton(),
-                        Center(child: Text('Поиск',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 18.5.sp,   //18
-                            fontWeight: FontWeight.w600,
+                        AppBarRow(
+                          title: AppString.of(context).search,
+                        ),
+
+                        if (isAuth)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 40),
+                            child: AppContainer(
+                              width: double.infinity,
+                              padV: 26,
+                              padH: 18,
+                              child: RichTextTwo(
+                                text1: '${AppString.of(context).choose} ',
+                                text2: AppString.of(context).interests,
+                                fontSize: 20.sp,
+                                fontWeight1: FontWeight.w500,
+                                fontWeight2: FontWeight.w500,
+                              ),
+                            ),
                           ),
-                        ))
+
+                        const SizedBox(
+                          height: 18,
+                        ),
+
+                        Row(
+                          children: [
+                            MeetingSearchTab(
+                                activeTab: model.activeTab,
+                                text: AppString.of(context).byInterests,
+                                tabName: ActiveSearchTabs.byInterests,
+                                changeTab: model.changeTab),
+                            MeetingSearchTab(
+                                activeTab: model.activeTab,
+                                text:
+                                    AppString.of(context).byCategoriesOfMeeting,
+                                tabName: ActiveSearchTabs.byCategories,
+                                changeTab: model.changeTab),
+                          ],
+                        ),
+
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        //Поиск
+                        const SearchTextField(),
+                        const SizedBox(
+                          height: 18,
+                        ),
+
+                        const WrapSelectContainers(),
+
+                        const SizedBox(
+                          height: 100,
+                        )
                       ],
                     ),
                   ),
-
-
-                  if(widget.isAuth)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: AppColors.white10,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 26, horizontal: 18),
-                        child:
-                        RichTextTwo(text1: 'Выберете ', text2: 'интересы', fontSize: 20.sp, fontWeight1: FontWeight.w500, fontWeight2: FontWeight.w500,),
-                      ),
-                    ),
-
-
-                  Padding(
-                    padding: const EdgeInsets.only(top: 18),
-                    child: Row(children: [
-
-                      miniContainer(
-                        position: 1,
-                        text: 'По интересам',
-                      ),
-
-                      miniContainer(
-                        position: 2,
-                        text: 'По категориям встречи',
-                      ),
-
-                    ],),
-                  ),
-
-
-
-
-                  //Поиск
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20, top: 18),
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      height: 43,
-                      decoration: BoxDecoration(
-                          color: AppColors.white10,
-                          borderRadius: BorderRadius.circular(15)
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 5,
-                                right: 15
-                            ),
-                            child:
-                            Icon(
-                              NetworkIcons.search,
-                              size: UtilsResponsive.getResSize(14),
-                              color: Colors.white,
-                            ),
-                          ),
-
-                          Expanded(child: _textEditor()),
-                        ],
-                      ),
-                    ),
-                  ),
-
-
-                  Wrap(
-                    spacing: 14,
-                    runSpacing: 14,
-                    direction: Axis.horizontal,
-                    children: [
-
-                      for (final item in Constants.hobbiesList)
-                        OptionsContainer(title: item,),
-
-                    ],
-                  ),
-
-                  const SizedBox(height: 100,)
-
-                ],
+                ),
               ),
             ),
-          ),
-        ),
-      ),
-    );
+          );
+        });
   }
-
-
-
 }
