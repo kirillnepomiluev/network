@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/navigation/app_router.gr.dart';
+import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/input_otp_vm.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/widgets/otp_sent_container.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/widgets/retry_login_text_link.dart';

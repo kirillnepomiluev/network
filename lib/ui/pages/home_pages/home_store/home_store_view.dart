@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/pages/home_pages/home_store/store_main_vm.dart';
+import 'package:network_app/ui/pages/home_pages/home_store/home_store_vm.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/partner_cupboard_row.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/view_avatars_carousel.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/view_headwears_carousel.dart';

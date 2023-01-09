@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
-import 'package:network_app/ui/widgets/common/general_widgets.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 

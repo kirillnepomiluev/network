@@ -11,19 +11,22 @@ class AppTextField extends StatelessWidget {
   final TextEditingController? controller;
   final bool isTransparent;
   final bool autofocus;
+  final bool enabled;
   final String hintText;
   const AppTextField(
       {Key? key,
       this.controller,
       this.isTransparent = false,
       this.autofocus = false,
-      this.hintText = ''
+      this.hintText = '',
+        this.enabled = true
       })
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled,
       controller: controller,
       style: AppTextStyles.primary16,
       textInputAction: TextInputAction.done,
@@ -38,7 +41,7 @@ class AppTextField extends StatelessWidget {
                   const EdgeInsets.symmetric(vertical: 22, horizontal: 16),
               focusedBorder: _defaultBorder,
               enabledBorder: _defaultBorder,
-              // hintText: 'Введите адрес электронной почты',
+              disabledBorder: _defaultBorder,
               hintStyle: AppTextStyles.primary16,
             ),
     );

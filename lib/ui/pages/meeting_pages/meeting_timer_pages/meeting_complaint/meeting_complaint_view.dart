@@ -32,17 +32,14 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
     context.router.pop();
     context.router.pop();
 
-    DialogUtils.openBottomSheetComplain(
+    DialogUtils.openBottomSheetInfoWithIcon(
     context: context,
       icon: NetworkIcons.check_circle_outlined,
       text1: 'Ваша ',
       text2: 'жалоба отправлена',
       text3: 'В ближайшее время мы свяжемся с вами,\nчтобы сообщать о предпринятых мерах',
       textButton: 'Закрыть',
-      func: (){
-        context.router.pop();
-
-      }
+      // func:
     );
 
     // setState(() {

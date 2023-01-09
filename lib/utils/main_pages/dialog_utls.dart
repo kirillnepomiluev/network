@@ -5,7 +5,7 @@ import 'package:network_app/ui/theme/app_colors.dart';
 
 class DialogUtils{
 
-  static void openBottomSheetComplain({
+  static void openBottomSheetInfoWithIcon({
     required BuildContext context,
     required IconData icon,
     required String text1,
@@ -23,7 +23,7 @@ class DialogUtils{
             borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
         context: context,
         builder: (BuildContext context) {
-          return MeetingComplaintSheet(
+          return BottomSheetInfoWithIcon(
             icon: icon,
             text1: text1,
             text2: text2,
@@ -33,9 +33,6 @@ class DialogUtils{
           );
         });
   }
-
-
-
 
   static void showMeetingRateInterruptDialog(BuildContext context) {
     showDialog<void>(

@@ -1,15 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/navigation/app_router.gr.dart';
+import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/cards/bottom_sheet_min_patinr.dart';
 import 'package:network_app/ui/widgets/common/app_check_list_tile.dart';
 import 'package:network_app/ui/widgets/common/app_radio_list.dart';
 import 'package:network_app/ui/widgets/common/hobbits_container.dart';
 import 'package:network_app/ui/widgets/common/stat_column.dart';
-import 'package:network_app/ui/widgets/common/general_widgets.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
@@ -127,8 +127,7 @@ class BottomSheetMain extends StatelessWidget {
                           ),
                         ),
                         const TitleStatText('Обо мне'),
-                        textField(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices amet tellus.'),
+                        const AppTextField(hintText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices amet tellus.',),
 
                         const TitleStatText('Сфера деятельности'),
                         // textField('Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget varius a id in amet.'),

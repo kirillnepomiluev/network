@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_avatar_container.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/view_category_icon.dart';
-import 'package:network_app/ui/pages/store_pages/store_avatars_pages/store_category_avatars/store_category_avatars_view.dart';
 
 
 class ViewAvatarsCarousel extends StatelessWidget {
@@ -33,9 +33,8 @@ class ViewAvatarsCarousel extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               for (var i = 0; i < 6; i++)
-                avatarContainer(
-                  strCategory: i % 2 == 0 ? 'Редкий' : 'Обычный',
-                  context: context,
+                StoreAvatarContainer(
+                  type: i % 2 == 0 ? 'Редкий' : 'Обычный',
                 ),
             ],
           ),

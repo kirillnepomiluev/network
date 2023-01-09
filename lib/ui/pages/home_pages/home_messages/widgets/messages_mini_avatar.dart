@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/navigation/app_router.gr.dart';
+import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 
@@ -34,17 +34,16 @@ class MessagesMiniAvatar extends StatelessWidget {
                     imageUrl: photoMap['url'] as String,
                     contSize: contWidth,
                   ),
-                  photoMap['online'] == false
-                      ? Container()
-                      : const Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: Icon(
-                      Icons.circle,
-                      size: 12,
-                      color: AppColors.salad,
-                    ),
-                  )
+                  if (photoMap['online'] as bool)
+                    const Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Icon(
+                        Icons.circle,
+                        size: 12,
+                        color: AppColors.salad,
+                      ),
+                    )
                 ],
               ),
             ),

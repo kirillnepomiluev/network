@@ -10,9 +10,10 @@ enum ActiveProfileTabs{
   friends
 }
 
-enum ActiveStoreTabs{
-  store,
-  lottery
+enum ActiveStoreFilerTabs{
+  price,
+  category,
+  level
 }
 
 enum ActiveWalletTabs{
@@ -30,4 +31,11 @@ enum ActiveInvitationTabs{
 enum ActiveSearchTabs{
   byInterests,
   byCategories,
+}
+
+
+
+enum StoreCategoryScreens{
+  avatars,
+  hats,
 }

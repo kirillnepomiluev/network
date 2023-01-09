@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/navigation/app_router.gr.dart';
+import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_theme.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 

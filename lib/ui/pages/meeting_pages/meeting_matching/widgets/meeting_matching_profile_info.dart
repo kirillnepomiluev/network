@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -23,27 +23,13 @@ class MeetingMatchingProfileInfo extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.only(top: 20),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text('$strName, 28',
-                  style: AppTextStyles.primary16
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 6, bottom: 2),
-                child: Icon(
-                  Icons.verified,
-                  color: AppColors.salad,
-                  size: 17.sp, //14
-                ),
-              ),
-            ],
-          ),
+          child:
+            NameWithVerification(strName: strName, showVerified: true, textStyle: AppTextStyles.primary16, iconSize: 16.sp,)
         ),
         Padding(
           padding: const EdgeInsets.only(top: 5),
           child: Text(
-            '${AppString.of(context).level} "${AppString.of(context).base}" ',
+            '${AppString.of(context).level} "${AppString.of(context).base}"',
             style: AppTextStyles.primary12,
           ),
         ),

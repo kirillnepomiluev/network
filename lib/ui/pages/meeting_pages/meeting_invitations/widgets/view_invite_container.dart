@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/name_with_verification.dart';
+import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bar_row.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bottom.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
@@ -50,7 +50,7 @@ class ViewInviteContainer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '${AppString.of(context).level} "${AppString.of(context).base}" ',
+                  '${AppString.of(context).level} "${AppString.of(context).base}"',
                 ),
                 Text('+150 ${AppString.of(context).ofTokens}',
                     style: AppTextStyles.salad),

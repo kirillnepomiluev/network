@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
@@ -21,10 +22,7 @@ class MessagesBarRow extends StatelessWidget {
           AppBackButton(func: () {}),
           Text(
             AppString.of(context).messages,
-            style: TextStyle(
-                // color: Colors.black,
-                fontSize: 19.5.sp, //20
-                fontWeight: FontWeight.w600),
+            style: AppTextStyles.primary20.copyWith(fontWeight: FontWeight.w600)
           ),
           AppIconContainer(
             icon: NetworkIcons.search,

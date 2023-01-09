@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
@@ -5,14 +6,14 @@ import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 
 
-class MeetingComplaintSheet extends StatelessWidget {
+class BottomSheetInfoWithIcon extends StatelessWidget {
   final IconData icon;
   final String text1;
   final String text2;
   final String text3;
   final String textButton;
   final VoidCallback? func;
-  const MeetingComplaintSheet({
+  const BottomSheetInfoWithIcon({
     Key? key,
     required this.icon,
     required this.text1,
@@ -56,7 +57,7 @@ class MeetingComplaintSheet extends StatelessWidget {
             const SizedBox(height: 150,),
 
             AppButton(
-              onPressed: func,
+              onPressed: func?? context.router.pop,
               text: textButton,
             ),
             const SizedBox(height: 35,),

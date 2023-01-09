@@ -31,6 +31,7 @@ class AppTextStyles {
   static final primary18 = primary.copyWith(fontSize: UtilsResponsive.getResSize(18));
   static final primary20 = primary.copyWith(fontSize: UtilsResponsive.getResSize(20));
   static final primary22 = primary.copyWith(fontSize: UtilsResponsive.getResSize(22));
+  static final primary24 = primary.copyWith(fontSize: UtilsResponsive.getResSize(24));
   static final primary26 = primary.copyWith(fontSize: UtilsResponsive.getResSize(26));
   static final primary32 = primary.copyWith(fontSize: UtilsResponsive.getResSize(32));
   static final primary38 = primary.copyWith(fontSize: UtilsResponsive.getResSize(38));
@@ -45,9 +46,11 @@ class AppTextStyles {
 
   static final salad = primary.copyWith(color: AppColors.salad);
   static final salad10 = salad.copyWith(fontSize: UtilsResponsive.getResSize(10),);
+  static final salad12 = salad.copyWith(fontSize: UtilsResponsive.getResSize(12),);
   static final salad16 = salad.copyWith(fontSize: UtilsResponsive.getResSize(16),);
   static final salad20 = salad.copyWith(fontSize: UtilsResponsive.getResSize(20),);
   static final salad24 = salad.copyWith(fontSize: UtilsResponsive.getResSize(24),);
+  static final salad38 = salad.copyWith(fontSize: UtilsResponsive.getResSize(38),);
 
   static final darkSalad = primary.copyWith(color: AppColors.darkSalad);
 

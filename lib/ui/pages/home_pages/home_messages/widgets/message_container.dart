@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/navigation/app_router.gr.dart';
+import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
@@ -100,9 +100,9 @@ class MessageContainer extends StatelessWidget {
                     )
 
                 ),
-                photoMap['name'] == 'Станислав'
-                    ? Container()
-                    : const Positioned(
+
+                if(photoMap['name'] != 'Станислав')
+                const Positioned(
                     right: 7,
                     bottom: 0,
                     child: Icon(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_headwear_container.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/view_category_icon.dart';
-import 'package:network_app/ui/pages/store_pages/store_headwears_pages/store_category_headwears/store_category_headwears.dart';
 
 class ViewHeadwearsCarousel extends StatelessWidget {
   final ScrollController scrollController;
@@ -31,9 +31,8 @@ class ViewHeadwearsCarousel extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               for (var i = 0; i < 6; i++)
-                hatContainer(
-                  strCategory: i % 2 == 0 ? 'Обычный' : 'Редкий',
-                  context: context,
+                StoreHeadwearContainer(
+                  type: i % 2 == 0 ? 'Обычный' : 'Редкий',
                 ),
             ],
           ),

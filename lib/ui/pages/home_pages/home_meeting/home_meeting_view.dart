@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/navigation/app_router.gr.dart';
+import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/pages/home_pages/home_meeting/widgets/meeting_partner_info.dart';
 import 'package:network_app/ui/pages/home_pages/home_meeting/home_meeting_vm.dart';
 import 'package:network_app/ui/pages/home_pages/home_meeting/widgets/meeting_avatar.dart';

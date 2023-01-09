@@ -28,11 +28,11 @@ class MeetingTimerViewModel extends ViewModel {
 
   Future<bool> onWillPop() async {
     if (duration.inSeconds == maxSeconds) {
-      context.router.pop();
+      return true;
     } else {
       showPauseDialog();
+      return false;
     }
-    return false;
   }
 
   void onBackTap() {
@@ -69,7 +69,7 @@ class MeetingTimerViewModel extends ViewModel {
     if (seconds < 0) {
       timer?.cancel();
 
-      DialogUtils.openBottomSheetComplain(
+      DialogUtils.openBottomSheetInfoWithIcon(
           context: context,
           icon: NetworkIcons.smile_dead,
           text1: 'Вы получили ',
@@ -79,7 +79,6 @@ class MeetingTimerViewModel extends ViewModel {
           textButton: 'Посмотреть',
           func: () {
             context.router.pop();
-
             openBottomSheetSuccess();
           });
     } else {
