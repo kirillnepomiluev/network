@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 
@@ -23,14 +22,12 @@ class StoreMainViewModel extends ViewModel {
   void onViewAvatarsTap() {
     // context.router.push(const StoreCategoryAvatarsViewRoute());
     context.router.push(StoreCategoryViewRoute(
-        title: AppString.of(context).avatars,
-        storeCategoryScreen: StoreCategoryScreens.avatars));
+        storeCategoryScreen: StoreProductType.avatars));
   }
 
   void onViewHeadWaresTap() {
     // context.router.push(const StoreCategoryHeadwearsViewRoute());
     context.router.push(StoreCategoryViewRoute(
-        title: AppString.of(context).headwears,
-        storeCategoryScreen: StoreCategoryScreens.hats));
+        storeCategoryScreen: StoreProductType.hats));
   }
 }

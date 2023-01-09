@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 
+
 class StoreCategoryViewModel extends ViewModel {
   final BuildContext context;
-  StoreCategoryViewModel(this.context);
+  final StoreProductType storeCategoryScreen;
+  StoreCategoryViewModel(this.context, this.storeCategoryScreen){
+    if(storeCategoryScreen==StoreProductType.avatars){
+      title = AppString.of(context).avatars;
+    }
+    else if(storeCategoryScreen==StoreProductType.hats){
+      title = AppString.of(context).headwears;
+    }
+  }
+
+  late String title;
 
   ActiveStoreFilerTabs activeTab = ActiveStoreFilerTabs.values.first;
 

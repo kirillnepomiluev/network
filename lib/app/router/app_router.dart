@@ -46,9 +46,7 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_t
 import 'package:network_app/ui/pages/messages_pages/chat_personal/chat_personal_view.dart';
 import 'package:network_app/ui/pages/profile_pages/person_profile/person_profile_view.dart';
 import 'package:network_app/ui/pages/store_pages/store_category/store_category_view.dart';
-import 'package:network_app/ui/pages/store_pages/store_category_avatars/store_category_avatars_view.dart';
 import 'package:network_app/ui/pages/store_pages/store_product/store_product_view.dart';
-import 'package:network_app/ui/pages/store_pages/store_category_headwears/store_category_headwears_view.dart';
 import 'package:network_app/ui/pages/wallet_pages/wallet_exchange/wallet_exchange_view.dart';
 import 'package:network_app/ui/pages/wallet_pages/wallet_exchange_success/wallet_exchange_success_view.dart';
 
@@ -159,11 +157,8 @@ class RoutesLists {
   ];
 
   static const List<AutoRoute> storeRoutes = [
-    AutoRoute(page: StoreCategoryAvatarsView),
-    AutoRoute(page: StoreCategoryHeadwearsView),
-    AutoRoute(page: StoreProductView),
     AutoRoute(page: StoreCategoryView),
-    // AutoRoute(page: StoreProductHeadwearView),
+    AutoRoute(page: StoreProductView),
   ];
 
   static const List<AutoRoute> messagesRoutes = [

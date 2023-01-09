@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_headwear_container.dart';
-import 'package:network_app/ui/pages/store_pages/store_category_avatars/store_category_avatars_vm.dart';
-import 'package:network_app/ui/pages/store_pages/store_category_avatars/widgets/store_category_avatar_container.dart';
+import 'package:network_app/ui/pages/store_pages/store_category/store_category_vm.dart';
+import 'package:network_app/ui/pages/store_pages/store_category/widgets/store_category_avatar_container.dart';
 import 'package:network_app/ui/pages/store_pages/store_category/widgets/store_tab.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
@@ -14,14 +14,13 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class StoreCategoryView extends StatelessWidget {
-  final String title;
-  final StoreCategoryScreens storeCategoryScreen;
-  const StoreCategoryView({Key? key, required this.storeCategoryScreen, required this.title}) : super(key: key);
+  final StoreProductType storeProductType;
+  const StoreCategoryView({Key? key, required this.storeProductType,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<StoreCategoryAvatarsViewModel>(
-        createModelDataEx: () => StoreCategoryAvatarsViewModel(context),
+    return ViewModelBuilder<StoreCategoryViewModel>(
+        createModelDataEx: () => StoreCategoryViewModel(context, storeProductType),
         builder: (context, model) {
           return Scaffold(
             body: SafeArea(
@@ -81,7 +80,7 @@ class StoreCategoryView extends StatelessWidget {
                         height: 24,
                       ),
 
-                      storeCategoryScreen == StoreCategoryScreens.avatars?
+                      storeProductType == StoreProductType.avatars?
                       Column(
                         children: const [
                           StoreCategoryAvatarContainer(

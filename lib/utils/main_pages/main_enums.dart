@@ -35,7 +35,7 @@ enum ActiveSearchTabs{
 
 
 
-enum StoreCategoryScreens{
+enum StoreProductType{
   avatars,
   hats,
 }
