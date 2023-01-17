@@ -27,7 +27,7 @@ class RichTextTwo extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       textAlign: textAlign,
-      maxLines: 2,
+      maxLines: 5,
       overflow: TextOverflow.ellipsis,
       text: TextSpan(
         style: TextStyle(

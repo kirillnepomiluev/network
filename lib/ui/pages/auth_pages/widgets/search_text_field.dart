@@ -13,9 +13,9 @@ class SearchTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppContainer(
-      height: 43,
-      padV: 10,
-      padH: 10,
+      height: UtilsResponsive.getResSize(40), //43
+      padV: UtilsResponsive.getResSize(14), //10
+      padH: UtilsResponsive.getResSize(10),
       radius: AppBorderRadius.r15,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

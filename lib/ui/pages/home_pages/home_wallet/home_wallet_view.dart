@@ -9,7 +9,6 @@ import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-
 class HomeWalletView extends StatelessWidget {
   const HomeWalletView({Key? key}) : super(key: key);
 
@@ -24,7 +23,8 @@ class HomeWalletView extends StatelessWidget {
               padding: EdgeInsets.only(
                   top: mediaTop,
                   left: 17.sp, //16
-                  right: 17.sp),
+                  right: 17.sp
+              ),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

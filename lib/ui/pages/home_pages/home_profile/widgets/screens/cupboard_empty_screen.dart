@@ -15,7 +15,7 @@ class CupboardEmptyScreen extends StatelessWidget {
     return Column(
       children: [
         EnterInfoContainer(
-            padTop: 42,
+            // padTop: 42,
             text1: '${AppString.of(context).cupboard} ',
             text2: AppString.of(context).empty,
             description:

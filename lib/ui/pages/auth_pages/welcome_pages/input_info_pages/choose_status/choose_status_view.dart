@@ -25,8 +25,8 @@ class ChooseStatusView extends StatelessWidget {
       floatingActionButton:
       isAuth? null :
       AppButton(
-          width: 58.sp, //10.472 * mediaWidth, //177
-          height: 32.5.sp, //0.076 * mediaHeight, //55
+          width: 58.sp,
+          height: 32.5.sp,
           onPressed: () {},
           text: AppString.of(context).toAdd
       ),
@@ -36,7 +36,7 @@ class ChooseStatusView extends StatelessWidget {
         child:
         AppButtonContinue(
           onPressed: () {
-            context.router.push(const InputStatusViewRoute());
+            context.router.push(const ChooseOccupationViewRoute());
           },
         )
       ),
@@ -65,18 +65,17 @@ class ChooseStatusView extends StatelessWidget {
                     text1: '${AppString.of(context).choose} ',
                     text2: AppString.of(context).status,
                     description: AppString.of(context).statusWillShowenInYourProfile,
-                    padTop: 30,
                   ),
 
                   const SizedBox(height: 20,),
 
                   AppButton(
-                      width: 180,
-                      height: 50,
+                      width: 60.sp,   //180
+                      height: 30.sp,   //50
                       borderRadius: AppBorderRadius.r15,
                       textStyle: AppTextStyles.black12.copyWith(fontWeight: FontWeight.w500),
                       onPressed: (){
-                        context.router.push(const ChooseOccupationViewRoute());
+                        context.router.push(const InputStatusViewRoute());
                   }, text: AppString.of(context).inputOwnStatus),
 
                   //Поиск

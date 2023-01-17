@@ -10,17 +10,21 @@ import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-
 
 class StoreCategoryView extends StatelessWidget {
   final StoreProductType storeProductType;
-  const StoreCategoryView({Key? key, required this.storeProductType,}) : super(key: key);
+  const StoreCategoryView({
+    Key? key,
+    required this.storeProductType,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<StoreCategoryViewModel>(
-        createModelDataEx: () => StoreCategoryViewModel(context, storeProductType),
+        createModelDataEx: () =>
+            StoreCategoryViewModel(context, storeProductType),
         builder: (context, model) {
           return Scaffold(
             body: SafeArea(
@@ -93,21 +97,25 @@ class StoreCategoryView extends StatelessWidget {
                         ],
                       )
                           :
-                      Wrap(
-                        spacing: 16.sp,
-                        runSpacing: 16.sp,
-                        alignment: WrapAlignment.center,
-                        runAlignment: WrapAlignment.center,
-                        direction: Axis.horizontal,
-                        children: [
-                          for (var i=0; i<6; i++)
-                            StoreHeadwearContainer(
-                              type: i==0 || i==3? 'Редкий' : 'Обычный',
+                      GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: UtilsResponsive.getResSize(12),
+                                  mainAxisSpacing: UtilsResponsive.getResSize(12),
+                                  mainAxisExtent: 74.sp   //300
+                              ),
+                          itemCount: 6,
+                          itemBuilder: (_, index) {
+                            return StoreHeadwearContainer(
+                              type: index == 0 || index == 3
+                                  ? 'Редкий'
+                                  : 'Обычный',
                               isView: true,
-                            ),
-                        ],
-                      ),
-
+                            );
+                          })
                     ],
                   ),
                 ),

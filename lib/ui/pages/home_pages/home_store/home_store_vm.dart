@@ -21,13 +21,12 @@ class StoreMainViewModel extends ViewModel {
 
   void onViewAvatarsTap() {
     // context.router.push(const StoreCategoryAvatarsViewRoute());
-    context.router.push(StoreCategoryViewRoute(
-        storeCategoryScreen: StoreProductType.avatars));
+    context.router.push(StoreCategoryViewRoute(storeProductType: StoreProductType.avatars,));
   }
 
   void onViewHeadWaresTap() {
     // context.router.push(const StoreCategoryHeadwearsViewRoute());
     context.router.push(StoreCategoryViewRoute(
-        storeCategoryScreen: StoreProductType.hats));
+        storeProductType: StoreProductType.hats));
   }
 }

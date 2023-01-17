@@ -48,6 +48,7 @@ class AppTextStyles {
   static final salad10 = salad.copyWith(fontSize: UtilsResponsive.getResSize(10),);
   static final salad12 = salad.copyWith(fontSize: UtilsResponsive.getResSize(12),);
   static final salad16 = salad.copyWith(fontSize: UtilsResponsive.getResSize(16),);
+  static final salad18 = salad.copyWith(fontSize: UtilsResponsive.getResSize(18),);
   static final salad20 = salad.copyWith(fontSize: UtilsResponsive.getResSize(20),);
   static final salad24 = salad.copyWith(fontSize: UtilsResponsive.getResSize(24),);
   static final salad38 = salad.copyWith(fontSize: UtilsResponsive.getResSize(38),);

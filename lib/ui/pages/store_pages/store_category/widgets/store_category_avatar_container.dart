@@ -35,29 +35,28 @@ class StoreCategoryAvatarContainer extends StatelessWidget {
           radius: AppBorderRadius.r15,
           width: contWidth,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  type,
-                  style: AppTextStyles.primary
-                      .copyWith(fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.start,
-                ),
+              Text(
+                type,
+                style: AppTextStyles.primary
+                    .copyWith(fontWeight: FontWeight.bold),
+                textAlign: TextAlign.start,
               ),
               const SizedBox(
                 height: 5,
               ),
-              AppContainer(
-                height: imageHeight,
-                radius: AppBorderRadius.r10,
-                color: Colors.transparent,
-                child: Image.asset(
-                  type == 'Обычный'
-                      ? Assets.images.avatars.avatar4.keyName
-                      : Assets.images.avatars.avatar3.keyName,
-                  fit: BoxFit.contain,
+              Center(
+                child: AppContainer(
+                  height: imageHeight,
+                  radius: AppBorderRadius.r10,
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    type == 'Обычный'
+                        ? Assets.images.avatars.avatar4.keyName
+                        : Assets.images.avatars.avatar3.keyName,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               const SizedBox(

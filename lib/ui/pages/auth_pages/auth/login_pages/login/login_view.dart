@@ -26,22 +26,20 @@ class LoginView extends StatelessWidget {
                       bottom: 17.sp,
                       right: 17.sp,
                       child: TroubleLoginTextLink(onTroubleEnterTap: model.onTroubleLoginTap)),
+
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const SizedBox(
-                        height: 188,
-                      ),
+                      const SizedBox(),
                       const Center(
                           child: NetworkRow(
-                        isRow: false,
+                        isAppBar: false,
                       )),
-                      const SizedBox(
-                        height: 106,
-                      ),
                       Padding(
                         padding: EdgeInsets.only(
                           left: 17.5.sp,
+                          right: 17.5.sp
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -56,14 +54,18 @@ class LoginView extends StatelessWidget {
                             SizedBox(
                               height: 26.sp,
                             ),
-                            Wrap(
-                              direction: Axis.horizontal,
+                            Row(
+                              // direction: Axis.horizontal,
                               children: [
-                                AppButton(
-                                  width: 56.sp, //168
-                                  height: 35.sp, //62
-                                  onPressed: model.onEnterTap,
-                                  text: AppString.of(context).signIn,
+                                Expanded(
+                                  child: AppButton(
+                                    width: null, //168
+                                    height: 35.sp, //62
+                                    // width: 56.sp, //168
+                                    // height: 35.sp, //62
+                                    onPressed: model.onEnterTap,
+                                    text: AppString.of(context).signIn,
+                                  ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(left: 14.sp //10
@@ -75,7 +77,7 @@ class LoginView extends StatelessWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 14.sp), // 10
+                                  padding: EdgeInsets.only(left: 14.sp,), // 10
                                   child: LoginLogoContainer(
                                     imageUrl: Assets
                                         .images.icons.logoFacebook.keyName,

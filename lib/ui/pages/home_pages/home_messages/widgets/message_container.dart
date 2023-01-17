@@ -6,7 +6,8 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
-
+import 'package:network_app/utils/utils_responsive.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MessageContainer extends StatelessWidget {
   final Map<String, dynamic> photoMap;
@@ -17,8 +18,7 @@ class MessageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaWidth = MediaQuery.of(context).size.width;
-    final double contSize = 0.1626 * mediaWidth; //43
+    final double contSize = 35.sp; //63
     return InkWell(
       onTap: (() {
         context.router.push(const ChatPersonalViewRoute());
@@ -27,65 +27,60 @@ class MessageContainer extends StatelessWidget {
         alignment: Alignment.topCenter,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 30),
+            padding: EdgeInsets.only(top: 27.sp), //35 - на сколько аватарка выше
             child: AppContainer(
-              width: mediaWidth * 0.432,
-              padH: 10,
+              padH: UtilsResponsive.getResSize(10),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50),
-                    child: Text(photoMap['name'] as String,
-                        style: AppTextStyles.primary16.copyWith(fontWeight: FontWeight.bold)
-                    ),
+                  SizedBox(
+                    height: 29.sp, //45
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: Text(
-                      photoMap['status'] as String,
-                      style: AppTextStyles.grey10
-                    ),
+                  Text(photoMap['name'] as String,
+                      style: AppTextStyles.primary16
+                          .copyWith(fontWeight: FontWeight.bold)),
+                  const SizedBox(
+                    height: 5,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 16,
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 4),
-                          child: Text(
-                            '12:48',
-                            style: AppTextStyles.grey10.copyWith(fontWeight: FontWeight.w500)
-                          ),
-                        ),
-
-                        const Icon(
-                          NetworkIcons.check_double,
-                          size: 12,
-                          color: AppColors.textGray,
-                        )
-
-                      ],
-                    ),
+                  Text(photoMap['status'] as String,
+                      style: AppTextStyles.grey10),
+                  SizedBox(
+                    height: UtilsResponsive.getResSize(16),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 6, bottom: 26),
-                    child: Text(
-                      'Я предлагаю встретиться в каком-нибудь красивом...',
-                      style: AppTextStyles.primary12
-                    ),
-                  )
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 4),
+                        child: Text('12:48',
+                            style: AppTextStyles.grey10
+                                .copyWith(fontWeight: FontWeight.w500)),
+                      ),
+                      Icon(
+                        NetworkIcons.check_double,
+                        size: UtilsResponsive.getResSize(12),
+                        color: AppColors.textGray,
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  Text('Я предлагаю встретиться в каком-нибудь красивом...',
+                      style: AppTextStyles.primary12),
+                  SizedBox(
+                    height: UtilsResponsive.getResSize(26), //26
+                  ),
                 ],
               ),
             ),
           ),
+
+          //аватарка
           SizedBox(
             height: contSize,
             width: contSize,
@@ -97,19 +92,16 @@ class MessageContainer extends StatelessWidget {
                     child: AppCircleAvatar(
                       imageUrl: photoMap['url'] as String,
                       contSize: contSize,
-                    )
-
-                ),
-
-                if(photoMap['name'] != 'Станислав')
-                const Positioned(
-                    right: 7,
-                    bottom: 0,
-                    child: Icon(
-                      Icons.circle,
-                      size: 14, //14
-                      color: AppColors.salad,
-                    ))
+                    )),
+                if (photoMap['name'] != 'Станислав')
+                  Positioned(
+                      right: 7,
+                      bottom: 0,
+                      child: Icon(
+                        Icons.circle,
+                        size: UtilsResponsive.getResSize(14), //14
+                        color: AppColors.salad,
+                      ))
               ],
             ),
           ),

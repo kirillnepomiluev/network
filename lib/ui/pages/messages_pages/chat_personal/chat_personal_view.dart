@@ -78,7 +78,6 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
     }
   }
 
-
   bool checked = false;
 
   @override

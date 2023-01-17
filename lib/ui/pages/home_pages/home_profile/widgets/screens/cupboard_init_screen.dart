@@ -37,7 +37,7 @@ class CupboardInitScreen extends StatelessWidget {
               IconButton(
                   onPressed: () {
                     // context.router.push(const StoreCategoryAvatarsViewRoute());
-                    context.router.push(StoreCategoryViewRoute(storeCategoryScreen: StoreProductType.avatars,));
+                    context.router.push(StoreCategoryViewRoute(storeProductType: StoreProductType.avatars,));
                   },
                   icon: const Icon(
                     NetworkIcons.arrow_long_right,
@@ -83,7 +83,7 @@ class CupboardInitScreen extends StatelessWidget {
               IconButton(
                   onPressed: () {
                     // context.router.push(const StoreCategoryHeadwearsViewRoute());
-                    context.router.push(StoreCategoryViewRoute(storeCategoryScreen: StoreProductType.avatars,));
+                    context.router.push(StoreCategoryViewRoute(storeProductType: StoreProductType.avatars,));
                   },
                   icon: const Icon(
                     NetworkIcons.arrow_long_right,

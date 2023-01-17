@@ -7,6 +7,7 @@ import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class ChooseMeetingScreen extends StatelessWidget {
@@ -38,8 +39,8 @@ class ChooseMeetingScreen extends StatelessWidget {
           child: AppButton(
               borderRadius: AppBorderRadius.r15,
               textStyle: AppTextStyles.black11.copyWith(fontWeight: FontWeight.w500),
-              width: 158,
-              height: 50,
+              width: 60.sp,   //158
+              height: 30.sp,   //50
               onPressed: () {
                 context.router.push(const MeetingRequestsListViewRoute());
               },

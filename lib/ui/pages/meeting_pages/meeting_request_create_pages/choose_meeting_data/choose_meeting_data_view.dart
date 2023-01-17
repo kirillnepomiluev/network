@@ -40,7 +40,7 @@ class _ChooseMeetingDateViewState extends State<ChooseMeetingDateView> {
                     title: AppString.of(context).creatingOfPersonalRequest,
                   ),
                   EnterInfoContainer(
-                    padTop: 40,
+                    // padTop: 40,
                     text1: '${AppString.of(context).pointPeriodFor} ',
                     text2: AppString.of(context).ofPlaningMeeting,
                     description:

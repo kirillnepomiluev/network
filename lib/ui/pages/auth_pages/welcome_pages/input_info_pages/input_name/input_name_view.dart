@@ -32,7 +32,6 @@ class _InputNameViewState extends State<InputNameView> {
                     const SizedBox(height: 10,),
                     const AppBackButton(),
                     EnterInfoContainer(
-                      padTop: 32,
                       text1: '${AppString.of(context).input} ',
                       text2: AppString.of(context).yourName,
                       description: AppString.of(context).soWillDisplayInNetwork,

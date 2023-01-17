@@ -16,8 +16,8 @@ class LoginLogoContainer extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: AppContainer(
-        padH: 18,
-        padV: 23,
+        padH: 17.sp,   //18
+        padV: 20.sp,   //23
         width: 35.sp,   //66
         height: 35.sp, //64
         child: Image.asset(imageUrl),

@@ -13,7 +13,6 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 class InputPhoneView extends StatelessWidget {
   const InputPhoneView({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<InputPhoneViewModel>(
@@ -37,14 +36,14 @@ class InputPhoneView extends StatelessWidget {
                       SizedBox(
                         height: UtilsResponsive.getResSize(32),
                       ),
-
                       AppContainer(
+                        padV: UtilsResponsive.getResSize(23),   //23
+                        padH: UtilsResponsive.getResSize(18),   //18
                         width: double.infinity,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             RichTextTwo(
-                                // text1: 'Введите ',
                                 text1: '${AppString.of(context).input} ',
                                 text2: AppString.of(context).yourPhoneNumber,
                                 fontSize: UtilsResponsive.getResSize(21)), //24

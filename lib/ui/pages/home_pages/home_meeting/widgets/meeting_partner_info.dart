@@ -5,6 +5,7 @@ import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingPartnerInfo extends StatelessWidget {
@@ -49,9 +50,11 @@ class MeetingPartnerInfo extends StatelessWidget {
                   fontWeight: FontWeight.w400),
             ),
           ),
-          const Padding(
-              padding: EdgeInsets.only(top: 10, bottom: 26), //26
-              child: RhombusText()),
+          Padding(
+              padding: EdgeInsets.only(top: 10,
+                  bottom: UtilsResponsive.getResSize(26)
+              ), //26
+              child: const RhombusText()),
         ],
       ),
     );

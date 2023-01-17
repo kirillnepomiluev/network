@@ -4,6 +4,7 @@ import 'package:network_app/ui/pages/home_pages/home_messages/widgets/messages_i
 import 'package:network_app/ui/pages/home_pages/home_messages/home_messages_vm.dart';
 import 'package:network_app/ui/pages/home_pages/home_messages/widgets/messages_wrap.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 class HomeMessagesView extends StatelessWidget {
   const HomeMessagesView({Key? key}) : super(key: key);
@@ -16,7 +17,11 @@ class HomeMessagesView extends StatelessWidget {
           final mediaTop = MediaQuery.of(context).viewPadding.top;
           return Scaffold(
             body: Padding(
-              padding: EdgeInsets.only(top: mediaTop, left: 15, right: 15),
+              padding: EdgeInsets.only(
+                  top: mediaTop,
+                  left: UtilsResponsive.getResSize(15),
+                  right: UtilsResponsive.getResSize(15),
+              ),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,6 +37,3 @@ class HomeMessagesView extends StatelessWidget {
         });
   }
 }
-
-
-

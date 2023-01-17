@@ -22,7 +22,6 @@ class InputStatusView extends StatelessWidget {
               onContinue: (){
                 FocusManager.instance.primaryFocus?.unfocus();
                 context.router.pop();
-
               },
             ),
           ),

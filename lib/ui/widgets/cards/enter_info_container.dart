@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class EnterInfoContainer extends StatelessWidget {
-  final double padTop;
   final String text1;
   final String text2;
   final String? description;
@@ -20,7 +20,6 @@ class EnterInfoContainer extends StatelessWidget {
         this.maxLines,
         this.description,
         this.showDescription = true,
-        required this.padTop,
         this.fontSize,
         this.fontWeight = FontWeight.w500
       })
@@ -29,10 +28,10 @@ class EnterInfoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: padTop),
+      padding: EdgeInsets.only(top: UtilsResponsive.getResSize(32)),
       child: AppContainer(
-        padV: 23,
-        padH: 18,
+        padV: UtilsResponsive.getResSize(23),   //23
+        padH: UtilsResponsive.getResSize(18),   //18
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,14 +46,10 @@ class EnterInfoContainer extends StatelessWidget {
 
             if(showDescription)
               Padding(
-                padding: const EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(top: 20), //20
                 child: Text(
                   description ?? Constants.strLoremIpsum,
                   maxLines: maxLines,
-                  // style: TextStyle(
-                  //     fontSize: ResponsiveUtils.getResSize(14),
-                  //     fontWeight: FontWeight.w400
-                  // ),
                 ),
               ),
           ],

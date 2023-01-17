@@ -12,7 +12,6 @@ import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 
 class InputOtpView extends StatelessWidget {
   final String strPhone;
-
   const InputOtpView({Key? key, required this.strPhone}) : super(key: key);
 
   @override

@@ -7,6 +7,7 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/common/meet_exchange_row.dart';
 import 'package:network_app/utils/main_pages/wallet_currency_data.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class WalletTokensScreen extends StatelessWidget {
@@ -37,7 +38,7 @@ class WalletTokensScreen extends StatelessWidget {
           ),
           child: AppContainer(
             padH: 19.5.sp, //20
-            padV: 24.sp, //32
+            padV: UtilsResponsive.getResSize(32), //32
             radius: AppBorderRadius.r15,
             child: Column(
               children: [

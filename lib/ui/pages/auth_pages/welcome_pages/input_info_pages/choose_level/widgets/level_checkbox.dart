@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/auth/auth_enums.dart';
-
+import 'package:network_app/utils/utils_responsive.dart';
 
 
 class LevelContainer extends StatelessWidget {
@@ -22,9 +25,9 @@ class LevelContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 20),
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10), color: AppColors.white10),
+      child: AppContainer(
+        padV: 5,
+        radius: AppBorderRadius.r10,
         child: Row(
           children: [
             Expanded(
@@ -32,10 +35,7 @@ class LevelContainer extends StatelessWidget {
                 activeColor: AppColors.salad,
                 title: Text(
                   title,
-                  style: const TextStyle(
-                      color: AppColors.salad,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600),
+                  style: AppTextStyles.salad18.copyWith(fontWeight: FontWeight.w600),
                 ),
                 value: value,
                 groupValue: groupValue,
@@ -44,10 +44,12 @@ class LevelContainer extends StatelessWidget {
             ),
             IconButton(
                 onPressed: openBottomSheetProfile,
-                icon: const Icon(
+                icon: Icon(
                   NetworkIcons.info,
                   color: Colors.white,
-                ))
+                  size: UtilsResponsive.getResSize(24),
+                )),
+            const SizedBox(width: 10,)
           ],
         ),
       ),

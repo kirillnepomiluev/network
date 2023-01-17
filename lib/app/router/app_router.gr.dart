@@ -166,7 +166,8 @@ class AppRouter extends _i51.RootStackRouter {
       );
     },
     HomeViewRoute.name: (routeData) {
-      final args = routeData.argsAs<HomeViewRouteArgs>();
+      final args = routeData.argsAs<HomeViewRouteArgs>(
+          orElse: () => const HomeViewRouteArgs());
       return _i51.AdaptivePage<dynamic>(
         routeData: routeData,
         child: _i8.HomeView(
@@ -446,7 +447,7 @@ class AppRouter extends _i51.RootStackRouter {
         routeData: routeData,
         child: _i48.StoreCategoryView(
           key: args.key,
-          storeProductType: args.storeCategoryScreen,
+          storeProductType: args.storeProductType,
         ),
       );
     },
@@ -789,7 +790,7 @@ class RecoveryEmailViewRoute extends _i51.PageRouteInfo<void> {
 class HomeViewRoute extends _i51.PageRouteInfo<HomeViewRouteArgs> {
   HomeViewRoute({
     _i52.Key? key,
-    required int initIndex,
+    int initIndex = 4,
     bool isCupboard = false,
   }) : super(
           HomeViewRoute.name,
@@ -807,7 +808,7 @@ class HomeViewRoute extends _i51.PageRouteInfo<HomeViewRouteArgs> {
 class HomeViewRouteArgs {
   const HomeViewRouteArgs({
     this.key,
-    required this.initIndex,
+    this.initIndex = 4,
     this.isCupboard = false,
   });
 
@@ -1434,13 +1435,13 @@ class StoreCategoryViewRoute
     extends _i51.PageRouteInfo<StoreCategoryViewRouteArgs> {
   StoreCategoryViewRoute({
     _i52.Key? key,
-    required _i53.StoreProductType storeCategoryScreen,
+    required _i53.StoreProductType storeProductType,
   }) : super(
           StoreCategoryViewRoute.name,
           path: '/store-category-view',
           args: StoreCategoryViewRouteArgs(
             key: key,
-            storeCategoryScreen: storeCategoryScreen,
+            storeProductType: storeProductType,
           ),
         );
 
@@ -1450,16 +1451,16 @@ class StoreCategoryViewRoute
 class StoreCategoryViewRouteArgs {
   const StoreCategoryViewRouteArgs({
     this.key,
-    required this.storeCategoryScreen,
+    required this.storeProductType,
   });
 
   final _i52.Key? key;
 
-  final _i53.StoreProductType storeCategoryScreen;
+  final _i53.StoreProductType storeProductType;
 
   @override
   String toString() {
-    return 'StoreCategoryViewRouteArgs{key: $key, storeCategoryScreen: $storeCategoryScreen}';
+    return 'StoreCategoryViewRouteArgs{key: $key, storeProductType: $storeProductType}';
   }
 }
 

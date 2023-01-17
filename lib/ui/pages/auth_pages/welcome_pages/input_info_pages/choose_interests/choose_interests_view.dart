@@ -10,27 +10,23 @@ import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class ChooseInterestsView extends StatefulWidget {
+class ChooseInterestsView extends StatelessWidget {
   final bool isAuth;
   const ChooseInterestsView({Key? key, this.isAuth = false}) : super(key: key);
 
   @override
-  State<ChooseInterestsView> createState() => _ChooseInterestsViewState();
-}
-
-class _ChooseInterestsViewState extends State<ChooseInterestsView> {
-  @override
   Widget build(BuildContext context) {
     final mediaTop = MediaQuery.of(context).viewPadding.top;
     return Scaffold(
-      floatingActionButton: widget.isAuth
+
+      floatingActionButton: isAuth
           ? null
           : AppButton(
-              width: 58.sp, //10.472 * mediaWidth, //177
-              height: 32.5.sp, //0.076 * mediaHeight, //55
+              width: 58.sp,
+              height: 32.5.sp,
               onPressed: () {},
               text: AppString.of(context).toAdd),
-      bottomNavigationBar: widget.isAuth == false
+      bottomNavigationBar: isAuth == false
           ? null
           : Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, bottom: 23),
@@ -53,18 +49,15 @@ class _ChooseInterestsViewState extends State<ChooseInterestsView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AuthBarRow(
-                      isAuth: widget.isAuth,
+                      isAuth: isAuth,
                       title: AppString.of(context).chooseInterests),
 
-                  if (widget.isAuth)
+                  if (isAuth)
                     EnterInfoContainer(
                       text1: '${AppString.of(context).choose} ',
                       text2: AppString.of(context).interests,
-                      padTop: 40,
                       showDescription: false,
-                      fontSize: 24,
                     ),
-
                   //Поиск
                   const Padding(
                     padding: EdgeInsets.only(bottom: 20, top: 18),

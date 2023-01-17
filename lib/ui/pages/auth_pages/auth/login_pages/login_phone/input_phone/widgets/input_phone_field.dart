@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/phone_number.dart';
-import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/theme/app_input_border.dart';
 
 
 class InputPhoneField extends StatelessWidget {
@@ -24,30 +24,15 @@ class InputPhoneField extends StatelessWidget {
               color: Colors.white,
             ),
             autofocus: false,
-            dropdownTextStyle:
-            const TextStyle(color: Colors.white, fontSize: 14),
-            style: const TextStyle(fontSize: 14, color: Colors.white),
+            // AppTextStyles.primary,
+            // dropdownTextStyle:const TextStyle(color: Colors.white, fontSize: 14),
+            // style: const TextStyle(fontSize: 14, color: Colors.white),
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly
             ],
             initialCountryCode: 'RU',
-            decoration: InputDecoration(
-              // contentPadding: const EdgeInsets.only(top: 25, bottom: 24),
-              contentPadding: const EdgeInsets.only(top: 22, bottom: 24),
-              border: OutlineInputBorder(
-                  borderSide:
-                  const BorderSide(width: 1, color: AppColors.salad),
-                  borderRadius: BorderRadius.circular(20)),
-              focusedBorder: OutlineInputBorder(
-                  borderSide:
-                  const BorderSide(width: 1, color: AppColors.salad),
-                  borderRadius: BorderRadius.circular(20)),
-              enabledBorder: OutlineInputBorder(
-                  borderSide:
-                  const BorderSide(width: 1, color: AppColors.salad),
-                  borderRadius: BorderRadius.circular(20)),
-            ),
+            decoration: AppInputBorder.inputDecoration,
             onChanged: onChange,
           )),
     );

@@ -36,7 +36,6 @@ class _ChooseBirthDateViewState extends State<ChooseBirthDateView> {
                 const AppBackButton(),
 
                 EnterInfoContainer(
-                  padTop: 32,
                   text1: '${AppString.of(context).input} ',
                   text2: AppString.of(context).ofBirthDay,
                   description: AppString.of(context).youCanHideYourAge,
@@ -61,7 +60,7 @@ class _ChooseBirthDateViewState extends State<ChooseBirthDateView> {
                 ),
 
                 SizedBox(
-                    width: 190,
+                    width: 165, //165
                     child: AppCheckListTile(
                       title: AppString.of(context).hideAge,
                     ))

@@ -1,36 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class NetworkRow extends StatelessWidget {
-  final bool isRow;
+  final bool isAppBar;
   const NetworkRow({
     Key? key,
-    required this.isRow,
+    required this.isAppBar,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return isRow == false
+    return isAppBar == false
         ? Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Assets.images.icons.handshake.image(
-                width: 118,
-                height: 118,
+                width: 48.sp,   //118
+                height: 48.sp,  //118
               ),
               const _Text(isColumn: true),
             ],
           )
         : Row(
-            mainAxisAlignment: isRow ? MainAxisAlignment.start : MainAxisAlignment.center,
+            mainAxisAlignment: isAppBar ? MainAxisAlignment.start : MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Assets.images.icons.handshake.image(
-                width: 46,
-                height: 46,
+                width: 30.sp, //46
+                height: 30.sp, //46
               ),
               const _Text(),
             ],

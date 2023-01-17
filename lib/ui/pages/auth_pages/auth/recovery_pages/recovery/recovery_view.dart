@@ -27,7 +27,6 @@ class RecoveryView extends StatelessWidget {
                       const AppBackButton(),
 
                       EnterInfoContainer(
-                        padTop: 32,
                         text1: '${AppString.of(context).recovery} ',
                         text2: AppString.of(context).ofAccount,
                       ),

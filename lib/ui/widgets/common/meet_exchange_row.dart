@@ -5,6 +5,7 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/common/meet_row_icon_next.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -23,7 +24,6 @@ class MeetExchangeRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-
         Expanded(
           child: InkWell(
             onTap: onTap,
@@ -70,7 +70,7 @@ class MeetExchangeRow extends StatelessWidget {
 
         if(isExchange==false)
           Padding(
-            padding: const EdgeInsets.only(left: 18),
+            padding: EdgeInsets.only(left: UtilsResponsive.getResSize(18)),
             child: AppIconContainer(
               icon: NetworkIcons.star,
               iconSize: iconSize,

@@ -2,7 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
+import 'package:network_app/utils/utils_responsive.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MessagesMiniAvatar extends StatelessWidget {
   final Map<String, dynamic> photoMap;
@@ -13,10 +16,10 @@ class MessagesMiniAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const contWidth = 45.00;
+    final contWidth = 29.sp; //45
     return Padding(
-      padding: const EdgeInsets.only(
-        left: 15,
+      padding: EdgeInsets.only(
+        left: UtilsResponsive.getResSize(15),
       ),
       child: InkWell(
         onTap: (() {
@@ -35,12 +38,12 @@ class MessagesMiniAvatar extends StatelessWidget {
                     contSize: contWidth,
                   ),
                   if (photoMap['online'] as bool)
-                    const Positioned(
+                    Positioned(
                       bottom: 0,
                       right: 0,
                       child: Icon(
                         Icons.circle,
-                        size: 12,
+                        size: UtilsResponsive.getResSize(12),
                         color: AppColors.salad,
                       ),
                     )
@@ -51,6 +54,7 @@ class MessagesMiniAvatar extends StatelessWidget {
               padding: const EdgeInsets.only(top: 5),
               child: Text(
                 photoMap['name'] as String,
+                style: AppTextStyles.primary12,
               ),
             )
           ],

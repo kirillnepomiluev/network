@@ -5,6 +5,7 @@ import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 class AuthBarRow extends StatelessWidget {
   final bool isAuth;
@@ -20,17 +21,17 @@ class AuthBarRow extends StatelessWidget {
         const AppBackButton(),
         AppContainer(
             radius: AppBorderRadius.r15,
-            padH: 18,
-            padV: 12,
+            padH: UtilsResponsive.getResSize(18), //18
+            padV: UtilsResponsive.getResSize(12), //12
             child: Row(
               children: [
                 Text(AppString.of(context).skip),
-                const Padding(
-                  padding: EdgeInsets.only(left: 5),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5),
                   child: Icon(
                     Icons.close_rounded,
                     color: AppColors.salad,
-                    size: 20,
+                    size: UtilsResponsive.getResSize(20), //20
                   ),
                 )
               ],

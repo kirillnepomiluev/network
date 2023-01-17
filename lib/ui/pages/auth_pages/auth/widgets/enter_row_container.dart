@@ -8,6 +8,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 class EnterRowContainer extends StatelessWidget {
   final VoidCallback onTap;
   final IconData? icon;
+  final double? iconSize;
   final String iconName;
   final String title;
   const EnterRowContainer(
@@ -15,7 +16,9 @@ class EnterRowContainer extends StatelessWidget {
       this.icon,
       this.iconName = '',
       required this.title,
-      required this.onTap})
+      required this.onTap,
+        this.iconSize
+      })
       : super(key: key);
 
   @override
@@ -27,19 +30,19 @@ class EnterRowContainer extends StatelessWidget {
           child: Row(
             children: [
               Padding(
-                  padding: const EdgeInsets.only(
+                  padding: EdgeInsets.only(
                     top: 4,
                     bottom: 4,
                     left: 4,
-                    right: 24, //24
+                    right: 22.sp, //24
                   ),
                   child: AppContainer(
-                    width: 54,
-                    height: 54,
+                    width: 32.sp,  //54
+                    height: 32.sp,
                     color: Colors.white,
                     radius: AppBorderRadius.r15,
                     child: icon != null
-                        ? Icon(icon, color: Colors.black, size: 21)
+                        ? Icon(icon, color: Colors.black, size: iconSize?? 21.sp) //21
                         : Padding(
                             padding: const EdgeInsets.all(17),
                             child: Image.asset(
@@ -51,9 +54,12 @@ class EnterRowContainer extends StatelessWidget {
                             ),
                           ),
                   )),
-              Text(
-                title,
-                style: AppTextStyles.primary16
+              Padding(
+                padding: EdgeInsets.only(right: 8.sp),
+                child: Text(
+                  title,
+                  style: AppTextStyles.primary16
+                ),
               )
             ],
           )),

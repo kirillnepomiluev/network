@@ -7,6 +7,8 @@ import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
+import 'package:network_app/utils/utils_responsive.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class StoreAvatarContainer extends StatelessWidget {
@@ -16,96 +18,95 @@ class StoreAvatarContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaWidth = MediaQuery.of(context).size.width;
-    final double contWidth = 0.58 * mediaWidth; //217.57
-    final double imageHeight = contWidth;
+    final double contWidth = 65.sp; //217.57
 
-    return Padding(
-      padding: const EdgeInsets.only(right: 15),
-      child: InkWell(
-        onTap: (() {
-          context.router.push(StoreProductViewRoute(
-            title: 'Костюм "Выходной"',
-            imageURL: Assets.images.avatars.avatar3.keyName,
-          ));
-        }),
-        child: AppContainer(
-          padH: 15,
-          padV: 15,
-          radius: AppBorderRadius.r15,
-          width: contWidth,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  type,
-                  style: AppTextStyles.primary.copyWith(fontWeight: FontWeight.w600),
-                  textAlign: TextAlign.start,
+    return InkWell(
+      onTap: (() {
+        context.router.push(StoreProductViewRoute(
+          title: 'Костюм "Выходной"',
+          imageURL: Assets.images.avatars.avatar3.keyName,
+        ));
+      }),
+      child: AppContainer(
+        padH: UtilsResponsive.getResSize(15),
+        padV: UtilsResponsive.getResSize(15),
+        radius: AppBorderRadius.r15,
+        width: contWidth,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                type,
+                style: AppTextStyles.primary.copyWith(fontWeight: FontWeight.w600),
+                textAlign: TextAlign.start,
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            AppContainer(
+              height: contWidth,
+              radius: AppBorderRadius.r10,
+              color: Colors.transparent,
+              child: Image.asset(
+                type == 'Обычный'
+                    ? Assets.images.avatars.avatar4.keyName
+                    : Assets.images.avatars.avatar3.keyName,
+                fit: BoxFit.contain,
+                // height: 70.sp, //220
+              ),
+            ),
+            SizedBox(
+              height: UtilsResponsive.getResSize(12),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Костюм "Выходной"',
+                            style: AppTextStyles.salad.copyWith(fontWeight: FontWeight.w600)),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text('#0863246', style: AppTextStyles.primary12),
+                      ],
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              AppContainer(
-                height: imageHeight,
-                radius: AppBorderRadius.r10,
-                color: Colors.transparent,
-                child: Image.asset(
-                  type == 'Обычный'
-                      ? Assets.images.avatars.avatar4.keyName
-                      : Assets.images.avatars.avatar3.keyName,
-                  fit: BoxFit.contain,
+                SizedBox(
+                  height: 24.sp, //29
                 ),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Костюм "Выходной"',
-                              style: AppTextStyles.salad.copyWith(fontWeight: FontWeight.w600)),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Text('#0863246', style: AppTextStyles.primary12),
-                        ],
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 29,
-                  ),
 
-                  Wrap(
-                    spacing: 10, //80
-                    direction: Axis.horizontal,
-                    children: [
-                      Text('Уровень 6  Баллы +150',
-                          style: AppTextStyles.primary12),
-                      const Icon(
+                Wrap(
+                  spacing: UtilsResponsive.getResSize(10), //80
+                  direction: Axis.horizontal,
+                  children: [
+                    Text('Уровень 6  Баллы +150',
+                        style: AppTextStyles.primary12),
+                    Transform.translate(
+                      offset: const Offset(-4, 0),
+                      child: Icon(
                         NetworkIcons.rhombus,
                         color: AppColors.salad,
-                        size: 15,
+                        size: UtilsResponsive.getResSize(12), //15
                       ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                ],
-              ),
-            ],
-          ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: UtilsResponsive.getResSize(12),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

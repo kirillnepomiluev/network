@@ -50,7 +50,6 @@ class HomeMeetingView extends StatelessWidget {
                       ],
                     ),
                   ),
-
                   //Нижняя часть
                   Expanded(
                     child: MeetingAvatar(onPartnerTap: model.onPartnerTap),

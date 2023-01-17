@@ -12,7 +12,8 @@ class StartViewModel extends ViewModel {
   }
 
   void onTap() {
-    context.router.push(const LoginViewRoute());
+    // context.router.push(const LoginViewRoute());
+    context.router.push(HomeViewRoute(initIndex: 0),);
   }
 
 }

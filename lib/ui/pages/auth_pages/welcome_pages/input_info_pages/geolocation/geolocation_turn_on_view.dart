@@ -23,18 +23,13 @@ class GeolocationTurnOnView extends StatelessWidget {
               children: [
                 const AuthBarRow(),
                 EnterInfoContainer(
-                  padTop: 32,
                   text1: '${AppString.of(context).turnOn} ',
                   text2: AppString.of(context).ofGeolocation,
                   description: '${AppString.of(context).metPeopleNear}\n\n${AppString.of(context).yourLocationWillBeUsed}',
-                  // description: 'Знакомьтесь и встречайтесь\nс людьми рядом с вами\n\nВаше местоположение будет использовано для показа потенциальных партнеров для встреч',
-                  // description: AppString.of(context).yourLocationWillBeUsed,
                 ),
                 const SizedBox(height: 40,),
                 AppButton(onPressed: (){
                   context.router.pushAndPopUntil(HomeViewRoute(initIndex: 0), predicate: (route) => false);
-                  // Route route = MaterialPageRoute<void>(builder: (context) => const HomeView(initIndex: 0));
-                  // Navigator.pushAndRemoveUntil<void>(context, route, (route) => false);
                 }, text: 'Включить геолокацию')
               ],
             ),

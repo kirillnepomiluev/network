@@ -14,6 +14,7 @@ import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/option_container.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ChooseOccupationView extends StatefulWidget {
   const ChooseOccupationView({
@@ -37,7 +38,7 @@ class _ChooseOccupationViewState extends State<ChooseOccupationView> {
               padding: const EdgeInsets.only(left: 16, right: 16, bottom: 23),
               child: AppButtonContinue(
                 onPressed: () {
-                  context.router.push(const InputOccupationViewRoute());
+                  context.router.push(const InputAboutYouViewRoute());
                 },
               ),
             ),
@@ -62,7 +63,7 @@ class _ChooseOccupationViewState extends State<ChooseOccupationView> {
                           text2: AppString.of(context).ofOccupation,
                           description: AppString.of(context)
                               .occupationsWillBeShowedInProfile,
-                          padTop: 40,
+                          // padTop: 40,
                         ),
 
                         Padding(
@@ -132,15 +133,18 @@ class _ChooseOccupationViewState extends State<ChooseOccupationView> {
                           height: 20,
                         ),
 
+
                         AppButton(
-                            width: 185,
-                            height: 50,
+                            width: 60.sp,   //180
+                            height: 30.sp,   //50
+                            // width: 185,
+                            // height: 50,
                             borderRadius: AppBorderRadius.r15,
                             textStyle: AppTextStyles.black12
                                 .copyWith(fontWeight: FontWeight.w500),
                             onPressed: () {
                               context.router
-                                  .push(const InputAboutYouViewRoute());
+                                  .push(const InputOccupationViewRoute());
                             },
                             text: AppString.of(context).inputOwnOption),
 

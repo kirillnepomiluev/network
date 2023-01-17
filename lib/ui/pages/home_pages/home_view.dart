@@ -8,12 +8,12 @@ import 'package:network_app/ui/pages/home_pages/home_store/home_store_view.dart'
 import 'package:network_app/ui/pages/home_pages/home_wallet/home_wallet_view.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HomeView extends StatefulWidget {
   final bool isCupboard;
   final int initIndex;
-  const HomeView({Key? key, required this.initIndex, this.isCupboard = false}) : super(key: key);
+  const HomeView({Key? key, this.initIndex = 4, this.isCupboard = false})
+      : super(key: key);
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -30,8 +30,20 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
   }
 
+  final double widthOne = 375;
+  final double widthTwo = 360;
+
   @override
   Widget build(BuildContext context) {
+    final mediaWitdh = MediaQuery.of(context).size.width;
+    final double contPadH = mediaWitdh < widthOne ? 10 : 15; //15
+    final double contPadV = mediaWitdh < widthOne ? 6 : 8; //8
+
+    final double itemPadH = mediaWitdh < widthOne ? 15 : 20;
+    final double itemPadV = mediaWitdh < widthOne ? 14 : 20;
+
+    final double iconSize = mediaWitdh < widthOne ? 12 : 14; //14
+    final double fontSize = mediaWitdh < widthOne ? 10 : 12; //12
 
     return Scaffold(
       extendBody: true,
@@ -50,24 +62,21 @@ class _HomeViewState extends State<HomeView> {
       ),
       bottomNavigationBar: Container(
         color: Colors.transparent, //за рамками навигатора
-        padding: const EdgeInsets.symmetric(
-            horizontal: 15,
-          vertical: 8
-            ),
+        padding: EdgeInsets.symmetric(horizontal: contPadH, vertical: contPadV),
         child: BlurryContainer(
           padding: EdgeInsets.zero,
           blur: 20,
-            color: Colors.white.withOpacity(0.15), //цвет рамки c округлением
-            borderRadius: BorderRadius.circular(20),
+          color: Colors.white.withOpacity(0.15), //цвет рамки c округлением
+          borderRadius: BorderRadius.circular(20),
           child: BottomBar(
             border: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
             padding: EdgeInsets.zero,
-            itemPadding: const EdgeInsets.symmetric(
-                vertical: 20,
-                horizontal: 20 //16
-                ),
+            itemPadding: EdgeInsets.symmetric(
+              horizontal: itemPadH,
+              vertical: itemPadV,
+            ),
             backgroundColor: Colors.transparent,
             selectedIndex: _currentPage,
             onTap: (int index) {
@@ -75,11 +84,31 @@ class _HomeViewState extends State<HomeView> {
               setState(() => _currentPage = index);
             },
             items: <BottomBarItem>[
-              _barItem(icon: NetworkIcons.people, text: 'Встречи'),
-              _barItem(icon: NetworkIcons.person, text: 'Профиль'),
-              _barItem(icon: NetworkIcons.wallet, text: 'Кошелек'),
-              _barItem(icon: NetworkIcons.cart, text: 'Магазин'),
-              _barItem(icon: NetworkIcons.chat, text: 'Чат'),
+              _barItem(
+                  icon: NetworkIcons.people,
+                  text: 'Встречи',
+                  fontSize: fontSize,
+                  iconSize: iconSize),
+              _barItem(
+                  icon: NetworkIcons.person,
+                  text: 'Профиль',
+                  fontSize: fontSize,
+                  iconSize: iconSize),
+              _barItem(
+                  icon: NetworkIcons.wallet,
+                  text: 'Кошелек',
+                  fontSize: fontSize,
+                  iconSize: iconSize),
+              _barItem(
+                  icon: NetworkIcons.cart,
+                  text: 'Магазин',
+                  fontSize: fontSize,
+                  iconSize: iconSize),
+              _barItem(
+                  icon: NetworkIcons.chat,
+                  text: 'Чат',
+                  fontSize: fontSize,
+                  iconSize: iconSize),
             ],
           ),
         ),
@@ -87,9 +116,11 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  BottomBarItem _barItem({required IconData icon, required String text}) {
-    final double iconSize = 18.sp; //21
-
+  BottomBarItem _barItem(
+      {required IconData icon,
+      required String text,
+      required double iconSize,
+      required double fontSize}) {
     return BottomBarItem(
         icon: Icon(
           icon,
@@ -100,9 +131,8 @@ class _HomeViewState extends State<HomeView> {
           text,
           style: TextStyle(
               color: Colors.black,
-              fontSize: 15.sp, //12
-            fontWeight: FontWeight.w500
-              ),
+              fontSize: fontSize,
+              fontWeight: FontWeight.w500),
         ),
         activeColor: AppColors.salad,
         inactiveIcon: Icon(
@@ -110,7 +140,6 @@ class _HomeViewState extends State<HomeView> {
           icon,
           color: Colors.white,
         ),
-        backgroundColorOpacity: 1
-    );
+        backgroundColorOpacity: 1);
   }
 }

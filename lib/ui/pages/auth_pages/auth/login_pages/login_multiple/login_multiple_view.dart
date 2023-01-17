@@ -22,26 +22,23 @@ class LoginMultipleView extends StatelessWidget {
             body: SafeArea(
               child: Stack(
                 children: [
-
                   Positioned(
                       bottom: 17.sp, //5
                       right: 17.sp, //10
                       child: TroubleLoginTextLink(onTroubleEnterTap: model.onTroubleLoginTap,)
                   ),
-
                   Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      padding: EdgeInsets.symmetric(horizontal: 16.sp),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
 
-                          SizedBox(height: 30.sp,), //60
-                          const NetworkRow(isRow: true,),
+                          const SizedBox(height: 10,),
+                          const NetworkRow(isAppBar: true,),
 
                           EnterInfoContainer(
-                            padTop: 42,
-                            // text1: 'Выполните ',
-                            text1: AppString.of(context).execute,
+                            // padTop: 28.sp, //42
+                            text1: '${AppString.of(context).execute} ',
                             text2: AppString.of(context).enter,
                             maxLines: 3,
                           ),
@@ -49,6 +46,7 @@ class LoginMultipleView extends StatelessWidget {
                           SizedBox(height: 30.sp,), //57
                           
                           EnterRowContainer(
+                            iconSize: 19.sp,
                             onTap: model.loginPhoneTap,
                             icon: NetworkIcons.call,
                             title: AppString.of(context).signInByPhone,

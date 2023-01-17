@@ -39,7 +39,7 @@ class CheckMeetingParametersView extends StatelessWidget {
                   EnterInfoContainer(
                     text1: '${AppString.of(context).check} ',
                     text2: AppString.of(context).allParametrsOfMeeting,
-                    padTop: 40,
+                    // padTop: 40,
                     showDescription: false,
                     fontSize: 24,
                   ),

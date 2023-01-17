@@ -28,7 +28,6 @@ class InputDescriptionMeetingView extends StatelessWidget {
                 ),
 
                 EnterInfoContainer(
-                  padTop: 32,
                   text1: '${AppString.of(context).shortlyDescribe} ',
                   text2: AppString.of(context).whatMeetingAreYouPlaning,
                   description: 'Здесь будет небольшое описание, что именно здесь нужно указать',

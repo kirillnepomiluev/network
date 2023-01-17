@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class AppButton extends StatelessWidget {
@@ -19,7 +20,7 @@ class AppButton extends StatelessWidget {
       {Key? key,
         required this.onPressed,
         this.width = double.infinity,
-        this.height = 65,
+        this.height,
         required this.text,
         this.buttonColor = Colors.white,
         this.textColor = AppColors.textBlack,
@@ -33,7 +34,7 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      height: height,
+      height: height??35.sp,  //65
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(

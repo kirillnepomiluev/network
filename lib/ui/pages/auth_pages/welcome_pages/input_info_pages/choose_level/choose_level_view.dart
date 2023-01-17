@@ -33,7 +33,6 @@ class ChooseLevelView extends StatelessWidget {
                       const AppBackButton(),
 
                       EnterInfoContainer(
-                        padTop: 32,
                         text1: '${AppString.of(context).choose} ',
                         text2: AppString.of(context).level.toLowerCase(),
                         description: 'Здесь мы даем объяснение, что значит уровень',

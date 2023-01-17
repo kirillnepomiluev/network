@@ -21,7 +21,6 @@ class InputInfoColumn extends StatelessWidget {
       children: [
         const AuthBarRow(),
         EnterInfoContainer(
-          padTop: 32,
           text1: text1,
           text2: text2,
           description: description,

@@ -5,7 +5,8 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:network_app/ui/widgets/icons/notification_icon.dart';
-
+import 'package:network_app/utils/utils_responsive.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ProfileAvatarRow extends StatelessWidget {
   final String title;
@@ -29,9 +30,11 @@ class ProfileAvatarRow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-                padding: const EdgeInsets.only(right: 20),
+                padding: EdgeInsets.symmetric(
+                  horizontal: UtilsResponsive.getResSize(15),
+                ),
                 child: AppCircleAvatar(
-                  contSize: 60,
+                  contSize: 33.sp, //60
                   imageUrl: Assets.images.avatars.avatar0.keyName,
                 )),
             Column(

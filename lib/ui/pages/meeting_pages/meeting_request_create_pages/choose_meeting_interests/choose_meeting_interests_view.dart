@@ -45,7 +45,7 @@ class ChooseMeetingInterestsView extends StatelessWidget {
                   EnterInfoContainer(
                     text1: '${AppString.of(context).choose} ',
                     text2: AppString.of(context).interests,
-                    padTop: 40,
+                    // padTop: 40,
                     showDescription: false,
                     fontSize: 24,
                   ),

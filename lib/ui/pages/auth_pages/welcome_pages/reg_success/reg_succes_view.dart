@@ -34,7 +34,6 @@ class _RegSuccessViewState extends State<RegSuccessView> {
                     const SizedBox(height: 10,),
                     const AppBackButton(),
                     const SizedBox(height: 31,),
-
                     AppContainer(
                       padV: 20,
                       padH: 20,
@@ -49,7 +48,6 @@ class _RegSuccessViewState extends State<RegSuccessView> {
                             style:
                             AppTextStyles.salad24.copyWith(fontWeight: FontWeight.w600),
                           ),
-
                           const SizedBox(height: 29,),
                           Text(
                               AppString.of(context).youSuccessfullySignedUp,

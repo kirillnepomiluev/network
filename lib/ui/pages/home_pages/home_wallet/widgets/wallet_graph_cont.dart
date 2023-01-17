@@ -23,7 +23,6 @@ class WalletGraphCont extends StatelessWidget {
       padding: EdgeInsets.only(right: 20.sp //21
           ),
       child: Container(
-        height: 250,
         padding: EdgeInsets.only(
             top: UtilsResponsive.getResSize(14),
             right: UtilsResponsive.getResSize(14),
@@ -83,8 +82,9 @@ class WalletGraphCont extends StatelessWidget {
                 ),
               ],
             ),
+
             Padding(
-              padding: EdgeInsets.only(top: isDark ? 17 : 27),
+              padding: EdgeInsets.only(top: UtilsResponsive.getResSize(26)), //27
               child: Transform.scale(
                 scaleY: isDark ? -1 : 1,
                 child: ClipRect(

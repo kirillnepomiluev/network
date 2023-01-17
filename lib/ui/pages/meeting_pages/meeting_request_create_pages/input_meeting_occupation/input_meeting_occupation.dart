@@ -29,7 +29,6 @@ class _InputMeetingOccupationViewState extends State<InputMeetingOccupationView>
               children: [
                 AppBarRow(title: AppString.of(context).creatingOfPersonalRequest),
                 EnterInfoContainer(
-                  padTop: 32,
                   text1: '${AppString.of(context).input} ',
                   text2: AppString.of(context).ownOption,
                   description: AppString.of(context).occupationsWillBeShowedInProfile,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/home_pages/home_messages/widgets/message_container.dart';
+import 'package:network_app/utils/utils_responsive.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MessagesWrap extends StatelessWidget {
   final List<Map<String, dynamic>> photoList;
@@ -9,20 +11,23 @@ class MessagesWrap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.only(bottom: 80),
-      child: Wrap(
-        spacing: 0.04 * mediaWidth, //15
-        runSpacing: 20,
-        alignment: WrapAlignment.center,
-        runAlignment: WrapAlignment.center,
-        direction: Axis.horizontal,
-        children: [
-          for (final photoMap in photoList)
-            MessageContainer(photoMap: photoMap),
-        ],
-      ),
+      child:
+      GridView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          gridDelegate:
+          SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: UtilsResponsive.getResSize(12),
+              mainAxisSpacing: UtilsResponsive.getResSize(12),
+              mainAxisExtent: 68.sp   //300
+          ),
+          itemCount: photoList.length,
+          itemBuilder: (_, index) {
+            return MessageContainer(photoMap: photoList[index]);
+          })
     );
   }
 }

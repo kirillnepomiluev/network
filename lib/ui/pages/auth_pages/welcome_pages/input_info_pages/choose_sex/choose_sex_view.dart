@@ -8,6 +8,7 @@ import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 enum _SexOptions {
   male,
@@ -26,7 +27,6 @@ class ChooseSexView extends StatefulWidget {
 class _ChooseSexViewState extends State<ChooseSexView> {
   _SexOptions choosedSex = _SexOptions.none;
 
-  // bool value = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,20 +43,17 @@ class _ChooseSexViewState extends State<ChooseSexView> {
                 ),
                 const AppBackButton(),
                 EnterInfoContainer(
-                  padTop: 32,
                   text1: '${AppString.of(context).choose} ',
                   text2: AppString.of(context).sex,
                   description: AppString.of(context).youCanHideYourSex,
                 ),
-                const SizedBox(
-                  height: 40,
+                SizedBox(
+                  height: UtilsResponsive.getResSize(40),  //40
                 ),
                 AppButton(
                     onPressed: () {
                       setState(() {
-                        // strSex = 'female';
                         choosedSex = _SexOptions.female;
-                        // value = false;
                       });
                     },
                     buttonColor: choosedSex == _SexOptions.female
@@ -67,15 +64,13 @@ class _ChooseSexViewState extends State<ChooseSexView> {
                         : Colors.white,
                     borderRadius: AppBorderRadius.r15,
                     text: AppString.of(context).female),
-                const SizedBox(
-                  height: 50,
+                SizedBox(
+                  height: UtilsResponsive.getResSize(40),  //40
                 ),
                 AppButton(
                     onPressed: () {
                       setState(() {
                         choosedSex = _SexOptions.male;
-                        // strSex = 'male';
-                        // value = false;
                       });
                     },
                     buttonColor: choosedSex == _SexOptions.male
@@ -86,19 +81,17 @@ class _ChooseSexViewState extends State<ChooseSexView> {
                         : Colors.white,
                     borderRadius: AppBorderRadius.r15,
                     text: AppString.of(context).male),
-                const SizedBox(
-                  height: 25,
+                SizedBox(
+                  height: UtilsResponsive.getResSize(25), //25
                 ),
                 SizedBox(
-                    width: 185,
+                    width: 165,
                     child: CheckboxListTile(
                       checkColor: Colors.black,
                       controlAffinity: ListTileControlAffinity.leading,
                       value: choosedSex == _SexOptions.hidden,
                       onChanged: (newValue) {
                         setState(() {
-                          // value = newValue!;
-
                           if (choosedSex == _SexOptions.hidden) {
                             choosedSex = _SexOptions.none;
                           } else {
@@ -111,12 +104,12 @@ class _ChooseSexViewState extends State<ChooseSexView> {
                         offset: const Offset(-10, 0),
                         child: Text(
                           AppString.of(context).hideSex,
-                          style: const TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white, fontSize: 14),
                         ),
                       ),
                     )),
-                const SizedBox(
-                  height: 25,
+                SizedBox(
+                  height: UtilsResponsive.getResSize(25), //25
                 ),
                 AppButtonContinue(onPressed: () {
                   context.router.push(const ChooseLevelViewRoute());

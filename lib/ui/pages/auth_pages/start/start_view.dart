@@ -17,14 +17,16 @@ class _StartViewState extends State<StartView> {
 
   getInit() async {
     Future.delayed(const Duration(microseconds: 100)).then((value) {
-      context.router.pushAndPopUntil(HomeViewRoute(initIndex: 0), predicate: (route) => false);
+      context.router.push(HomeViewRoute(initIndex: 0),);
+      // context.router.pushAndPopUntil(HomeViewRoute(initIndex: 0), predicate: (route) => false);
+      // context.router.push(const LoginViewRoute());
     });
   }
 
   @override
   void initState() {
     super.initState();
-    getInit();
+    // getInit();
   }
 
   @override
@@ -38,7 +40,7 @@ class _StartViewState extends State<StartView> {
             InkWell(
               onTap: model.onTap,
               child: const NetworkRow(
-                isRow: false,
+                isAppBar: false,
               ),
             ),
           ),

@@ -157,7 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "toContinue": MessageLookupByLibrary.simpleMessage("Продолжить"),
         "toMeet": MessageLookupByLibrary.simpleMessage("Встретиться"),
         "toRecoveryAccess": MessageLookupByLibrary.simpleMessage(
-            "Чтобы восстановить доступ\nк своему аккаунту"),
+            "Чтобы восстановить доступ к своему аккаунту"),
         "toSearch": MessageLookupByLibrary.simpleMessage("Искать"),
         "toStartChat": MessageLookupByLibrary.simpleMessage("Начать чат"),
         "tokens": MessageLookupByLibrary.simpleMessage("Токены"),

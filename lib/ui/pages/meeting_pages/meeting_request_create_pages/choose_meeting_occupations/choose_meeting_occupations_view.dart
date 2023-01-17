@@ -67,7 +67,7 @@ class _ChooseMeetingOccupationsViewState
                           text2: AppString.of(context).ofOccupation,
                           description: AppString.of(context)
                               .occupationsWillBeShowedInProfile,
-                          padTop: 40,
+                          // padTop: 40,
                         ),
 
                         Padding(
