@@ -6,6 +6,7 @@ import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingInvitationsView extends StatelessWidget {
@@ -20,25 +21,17 @@ class MeetingInvitationsView extends StatelessWidget {
           return Scaffold(
             extendBody: true,
             extendBodyBehindAppBar: true,
-            bottomNavigationBar: Padding(
-              padding: EdgeInsets.only(bottom: 20.sp), //25
-              child: AppIconContainer(
-                icon: NetworkIcons.tune,
-                contSize: 35.sp,
-                iconSize: 19.sp,
-                boxShape: BoxShape.circle,
-                contColor: Colors.white,
-                iconColor: Colors.black,
-              ),
-            ),
             body: Padding(
-              padding: EdgeInsets.only(top: mediaTop, left: 15, right: 15),
+              padding: EdgeInsets.only(top: mediaTop,
+                  left: UtilsResponsive.getResSize(15),
+                  right: UtilsResponsive.getResSize(15)
+              ),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const AppBarRow(),
-                    const SizedBox(height: 20,),
+                    SizedBox(height: UtilsResponsive.getResSize(20),),
 
                     ChooseInvitationScreen(
                       changeTab: model.changeTab,
@@ -52,6 +45,18 @@ class MeetingInvitationsView extends StatelessWidget {
 
                   ],
                 ),
+              ),
+            ),
+
+            bottomNavigationBar: Padding(
+              padding: EdgeInsets.only(bottom: 20.sp), //25
+              child: AppIconContainer(
+                icon: NetworkIcons.tune,
+                contSize: 35.sp,
+                iconSize: 19.sp,
+                boxShape: BoxShape.circle,
+                contColor: Colors.white,
+                iconColor: Colors.black,
               ),
             ),
           );

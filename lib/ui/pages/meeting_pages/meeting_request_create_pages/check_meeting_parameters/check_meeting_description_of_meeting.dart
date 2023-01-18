@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 class CheckMeetingDescriptionOfMeeting extends StatelessWidget {
   const CheckMeetingDescriptionOfMeeting({
@@ -14,8 +15,8 @@ class CheckMeetingDescriptionOfMeeting extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TitleStatText(AppString.of(context).descriptionOfMeeting),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: UtilsResponsive.getResSize(10),
         ),
         const AppTextField(
           hintText:

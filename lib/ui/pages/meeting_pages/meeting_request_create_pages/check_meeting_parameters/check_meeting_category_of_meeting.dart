@@ -5,6 +5,7 @@ import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 class CheckMeetingCategoryOfMeeting extends StatelessWidget {
   const CheckMeetingCategoryOfMeeting({
@@ -17,14 +18,14 @@ class CheckMeetingCategoryOfMeeting extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TitleStatText(AppString.of(context).categoryOfMeeting),
-        const SizedBox(
-          height: 20,
+        SizedBox(
+          height: UtilsResponsive.getResSize(20),
         ),
         InkWell(
           onTap: () {},
           child: AppContainer(
-            padH: 15,
-            padV: 10,
+            padH: UtilsResponsive.getResSize(15),
+            padV: UtilsResponsive.getResSize(10),
             radius: AppBorderRadius.r10,
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -32,11 +33,11 @@ class CheckMeetingCategoryOfMeeting extends StatelessWidget {
                 Text(
                   AppString.of(context).businessMeeting,
                 ),
-                const Padding(
-                    padding: EdgeInsets.only(left: 8.0),
+                Padding(
+                    padding: const EdgeInsets.only(left: 8),
                     child: Icon(
                       NetworkIcons.edit,
-                      size: 15,
+                      size: UtilsResponsive.getResSize(14),
                       color: AppColors.salad,
                     ))
               ],

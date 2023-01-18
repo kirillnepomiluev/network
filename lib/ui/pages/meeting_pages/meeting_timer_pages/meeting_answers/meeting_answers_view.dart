@@ -8,6 +8,8 @@ import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
+import 'package:network_app/utils/utils_responsive.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingAnswersView extends StatefulWidget {
   const MeetingAnswersView({Key? key}) : super(key: key);
@@ -30,12 +32,15 @@ class _MeetingAnswersViewState extends State<MeetingAnswersView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: 10, top: 10),
-                      child: AppBackButton(),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: UtilsResponsive.getResSize(10),
+                          top: UtilsResponsive.getResSize(10)
+                      ),
+                      child: const AppBackButton(),
                     ),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: UtilsResponsive.getResSize(20),
                     ),
 
                     //Прогресс
@@ -43,20 +48,21 @@ class _MeetingAnswersViewState extends State<MeetingAnswersView> {
                       progress: model.progress,
                     ),
 
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: UtilsResponsive.getResSize(20),
                     ),
 
                     //Нижняя часть
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 27),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: UtilsResponsive.getResSize(16),
+                          vertical: UtilsResponsive.getResSize(26)
+                      ),
                       height: mediaHeight,
                       width: mediaWidth,
                       decoration: BoxDecoration(
                           color: AppColors.white10,
-                          borderRadius: const BorderRadius.vertical(
-                              top: Radius.circular(30))),
+                          borderRadius: const BorderRadius.vertical(top: Radius.circular(30))),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -64,8 +70,8 @@ class _MeetingAnswersViewState extends State<MeetingAnswersView> {
                             questionCount: model.questionCount,
                             questionIndex: model.questionIndex,
                           ),
-                          const SizedBox(
-                            height: 42,
+                          SizedBox(
+                            height: UtilsResponsive.getResSize(40),
                           ),
 
                           for (final answer in model.answersList)
@@ -79,8 +85,8 @@ class _MeetingAnswersViewState extends State<MeetingAnswersView> {
                               missedCount: model.missedCount,
                               sendFunction: model.sendFunction,
                             ),
-                          const SizedBox(
-                            height: 71,
+                          SizedBox(
+                            height: 28.sp, //71
                           ),
                           AppButton(
                             onPressed: model.sendFunction,
@@ -89,7 +95,6 @@ class _MeetingAnswersViewState extends State<MeetingAnswersView> {
                         ],
                       ),
                     ),
-
                     const SizedBox(
                       height: 27,
                     ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/common/option_container.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 class WrapSelectContainers extends StatelessWidget {
   final List<String> list;
@@ -12,8 +13,8 @@ class WrapSelectContainers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: 14,
-      runSpacing: 14,
+      spacing: UtilsResponsive.getResSize(14),
+      runSpacing: UtilsResponsive.getResSize(14),
       direction: Axis.horizontal,
       children: [
         for (final item in list)

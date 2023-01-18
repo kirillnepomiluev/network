@@ -7,6 +7,8 @@ import 'package:network_app/ui/pages/auth_pages/widgets/wrap_select_containers.d
 import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
+import 'package:network_app/utils/utils_responsive.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ChooseMeetingInterestsView extends StatelessWidget {
   const ChooseMeetingInterestsView({
@@ -19,7 +21,11 @@ class ChooseMeetingInterestsView extends StatelessWidget {
 
     return Scaffold(
       bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 23),
+          padding: EdgeInsets.only(
+              left: UtilsResponsive.getResSize(16),
+              right: UtilsResponsive.getResSize(16),
+              bottom: UtilsResponsive.getResSize(23)
+          ),
           child: AppButtonContinue(
             onPressed: () {
               context.router.push(const ChooseMeetingDateViewRoute());
@@ -34,7 +40,7 @@ class ChooseMeetingInterestsView extends StatelessWidget {
           },
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: UtilsResponsive.getResSize(16), vertical: UtilsResponsive.getResSize(10)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -45,21 +51,19 @@ class ChooseMeetingInterestsView extends StatelessWidget {
                   EnterInfoContainer(
                     text1: '${AppString.of(context).choose} ',
                     text2: AppString.of(context).interests,
-                    // padTop: 40,
                     showDescription: false,
-                    fontSize: 24,
+                    fontSize: UtilsResponsive.getResSize(24),
                   ),
 
                   //Поиск
-                  const Padding(
-                    padding: EdgeInsets.only(bottom: 20, top: 18),
-                    child: SearchTextField(),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: UtilsResponsive.getResSize(20), top: UtilsResponsive.getResSize(18)),
+                    child: const SearchTextField(),
                   ),
-
                   const WrapSelectContainers(),
 
-                  const SizedBox(
-                    height: 100,
+                  SizedBox(
+                    height: 45.sp, //100
                   )
                 ],
               ),

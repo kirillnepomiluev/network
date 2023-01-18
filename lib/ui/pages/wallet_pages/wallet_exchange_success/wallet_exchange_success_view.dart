@@ -9,6 +9,7 @@ import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/main_pages/wallet_currency_data.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class WalletExchangeSuccessView extends StatelessWidget {
@@ -23,7 +24,7 @@ class WalletExchangeSuccessView extends StatelessWidget {
             body: SafeArea(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: EdgeInsets.symmetric(horizontal: UtilsResponsive.getResSize(16)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -39,17 +40,16 @@ class WalletExchangeSuccessView extends StatelessWidget {
                           '0.00045 BTC',
                           style: AppTextStyles.salad38.copyWith(fontWeight: FontWeight.w600)
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 13), //29
-                        child: Text(
-                          'на вашем счете',
-                        ),
+                      SizedBox(height: UtilsResponsive.getResSize(13),),
+                      Text(
+                        'на вашем счете',
                       ),
-                      const SizedBox(height: 50),
+                      SizedBox(height: UtilsResponsive.getResSize(40),),
+                      // const SizedBox(height: 50),
 
                       WalletCurrencyContainer(data: WalletCurrencyData.currencyList[0]),
-
-                      const SizedBox(height: 48),
+                      SizedBox(height: UtilsResponsive.getResSize(40),),
+                      // const SizedBox(height: 48),
 
                       AppButton(onPressed: (){
                         context.router.pop();

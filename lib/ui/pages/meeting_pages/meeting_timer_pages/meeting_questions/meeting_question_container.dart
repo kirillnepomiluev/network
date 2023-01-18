@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/theme/app_border_radius.dart';
+import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/utils/utils_responsive.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class MeetingQuestionContainer extends StatelessWidget {
@@ -10,19 +13,17 @@ class MeetingQuestionContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaWidth = MediaQuery.of(context).size.width;
-    final double contSize = mediaWidth * 0.42;
-    return Container(
-      padding: EdgeInsets.all(0.0266 * mediaWidth), //10
-      width: contSize,
-      height: contSize * 0.74, //112
-      decoration: BoxDecoration(
-          color: AppColors.white10, borderRadius: BorderRadius.circular(22)),
+    return AppContainer(
+      padH: UtilsResponsive.getResSize(10),
+      padV: UtilsResponsive.getResSize(10),
+      radius: AppBorderRadius.r20,
+      // width: 48.sp, //158
+      height: 46.sp, //112
       child: Center(
         child: Text(
           text,
-          style: const TextStyle(
-              fontSize: 12, //12
+          style: TextStyle(
+              fontSize: UtilsResponsive.getResSize(12), //12
               fontWeight: FontWeight.w600,
               overflow: TextOverflow.visible),
           textAlign: TextAlign.center,

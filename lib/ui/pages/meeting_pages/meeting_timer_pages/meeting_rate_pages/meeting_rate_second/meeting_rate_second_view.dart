@@ -7,6 +7,7 @@ import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/utils/main_pages/dialog_utls.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 class MeetingRateSecondView extends StatelessWidget {
   const MeetingRateSecondView({Key? key}) : super(key: key);
@@ -21,8 +22,8 @@ class MeetingRateSecondView extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           body: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
+            padding: EdgeInsets.symmetric(
+              horizontal: UtilsResponsive.getResSize(16),
             ),
             child: SingleChildScrollView(
               child: Column(
@@ -31,8 +32,8 @@ class MeetingRateSecondView extends StatelessWidget {
                   AppBarRow(
                     onPressed: () => DialogUtils.showMeetingRateInterruptDialog,
                   ),
-                  const SizedBox(
-                    height: 44,
+                  SizedBox(
+                    height: UtilsResponsive.getResSize(25),
                   ),
                   const RichTextTwo(
                     text1: 'Дайте оценку\n',
@@ -43,37 +44,32 @@ class MeetingRateSecondView extends StatelessWidget {
                     color2: AppColors.textWhite,
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(
-                    height: 59,
+                  SizedBox(
+                    height: UtilsResponsive.getResSize(40),
                   ),
                   const RateSliderContainer(
                     title: 'Понравилось ли вам общение?',
                   ),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    height: UtilsResponsive.getResSize(20),
                   ),
                   const RateSliderContainer(title: 'Возникла ли симпатия?'),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    height: UtilsResponsive.getResSize(20),
                   ),
                   const RateSliderContainer(
                       title: 'Интересна ли сфера деятельности?'),
-                  const SizedBox(
-                    height: 37,
+                  SizedBox(
+                    height: UtilsResponsive.getResSize(35),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                    ),
-                    child: AppButton(
-                      onPressed: () {
-                        context.router.push(HomeViewRoute(initIndex: 0));
-                      },
-                      text: 'Оценить',
-                    ),
+                  AppButton(
+                    onPressed: () {
+                      context.router.push(HomeViewRoute(initIndex: 0));
+                    },
+                    text: 'Оценить',
                   ),
-                  const SizedBox(
-                    height: 36,
+                  SizedBox(
+                    height: UtilsResponsive.getResSize(35),
                   ),
                 ],
               ),

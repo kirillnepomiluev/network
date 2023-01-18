@@ -4,7 +4,7 @@ import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 class MeetingAnswersSkipQuestion extends StatelessWidget {
   final Function({bool isMissing}) sendFunction;
@@ -26,7 +26,7 @@ class MeetingAnswersSkipQuestion extends StatelessWidget {
             },
             child: AppContainer(
               padV: 3,
-              padH: 18,
+              padH: UtilsResponsive.getResSize(18),
               radius: AppBorderRadius.r15,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -39,14 +39,14 @@ class MeetingAnswersSkipQuestion extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                      padding: const EdgeInsets.only(left: 11, top: 1),
+                      padding: const EdgeInsets.only(left: 11),
                       child: AppIconContainer(
-                        contSize: 21,
+                        contSize: UtilsResponsive.getResSize(21),
                         contColor: AppColors.salad,
                         boxShape: BoxShape.circle,
                         icon: Icons.close_rounded,
                         iconColor: Colors.black,
-                        iconSize: 15.5.sp,
+                        iconSize: UtilsResponsive.getResSize(12),
                       ))
                 ],
               ),

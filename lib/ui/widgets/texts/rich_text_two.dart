@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 class RichTextTwo extends StatelessWidget {
   final String text1;
   final String text2;
-  final double fontSize;
+  final double? fontSize;
   final FontWeight fontWeight1;
   final FontWeight fontWeight2;
   final Color color1;
@@ -15,7 +16,7 @@ class RichTextTwo extends StatelessWidget {
     Key? key,
     this.text1 = '',
     this.text2 = '',
-    this.fontSize = 20,
+    this.fontSize,
     this.fontWeight1 = FontWeight.w600,
     this.fontWeight2 = FontWeight.w600,
     this.color1 = AppColors.textWhite,
@@ -32,7 +33,7 @@ class RichTextTwo extends StatelessWidget {
       text: TextSpan(
         style: TextStyle(
           color: color1,
-          fontSize: fontSize, // 20.sp, //24
+          fontSize: fontSize?? UtilsResponsive.getResSize(20), // 20.sp, //24
           fontWeight: fontWeight1,
         ),
         children: <TextSpan>[

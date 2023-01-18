@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
+import 'package:network_app/utils/utils_responsive.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class BottomSheetInfoWithIcon extends StatelessWidget {
@@ -25,44 +27,57 @@ class BottomSheetInfoWithIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaHeight = MediaQuery.of(context).size.height;
+
     return BlurryContainer(
+      height: mediaHeight*0.8,
       blur: 30,
       color: Colors.transparent,
       borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const SizedBox(height: 69,),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
+        children: [
 
-            Icon(
+          Padding(
+            padding: EdgeInsets.only(
+              top: 35.sp //69
+            ),
+            child: Icon(
               icon,
-              size: 100,
+              size: 45.sp, //100
               color: AppColors.salad,
             ),
-            const SizedBox(height: 69,),
+          ),
 
-            RichTextTwo(
-              text1: text1,
-              text2: text2,
-            ),
-            const SizedBox(height: 35,),
+          // SizedBox(height: 35.sp,),  //69
 
-            Text(
-              text3,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 150,),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              RichTextTwo(
+                text1: text1,
+                text2: text2,
+              ),
+              SizedBox(height: UtilsResponsive.getResSize(35),),
+              Text(
+                text3,
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
 
-            AppButton(
+          // const SizedBox(height: 150,),
+
+          Padding(
+            padding: EdgeInsets.only(bottom: UtilsResponsive.getResSize(20)),
+            child: AppButton(
               onPressed: func?? context.router.pop,
               text: textButton,
             ),
-            const SizedBox(height: 35,),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

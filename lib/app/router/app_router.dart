@@ -50,7 +50,6 @@ import 'package:network_app/ui/pages/store_pages/store_product/store_product_vie
 import 'package:network_app/ui/pages/wallet_pages/wallet_exchange/wallet_exchange_view.dart';
 import 'package:network_app/ui/pages/wallet_pages/wallet_exchange_success/wallet_exchange_success_view.dart';
 
-
 @AdaptiveAutoRouter(
   // replaceInRouteName: 'View,Route',
   routes: <AutoRoute>[
@@ -78,8 +77,6 @@ import 'package:network_app/ui/pages/wallet_pages/wallet_exchange_success/wallet
   ],
 )
 class $AppRouter {}
-
-
 
 class RoutesLists {
   static const List<AutoRoute> authRoutes = [

@@ -10,6 +10,7 @@ import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 
@@ -67,20 +68,24 @@ class MeetingSearchView extends StatelessWidget {
                           height: 18,
                         ),
 
-                        Row(
-                          children: [
-                            MeetingSearchTab(
-                                activeTab: model.activeTab,
-                                text: AppString.of(context).byInterests,
-                                tabName: ActiveSearchTabs.byInterests,
-                                changeTab: model.changeTab),
-                            MeetingSearchTab(
-                                activeTab: model.activeTab,
-                                text:
-                                    AppString.of(context).byCategoriesOfMeeting,
-                                tabName: ActiveSearchTabs.byCategories,
-                                changeTab: model.changeTab),
-                          ],
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              MeetingSearchTab(
+                                  activeTab: model.activeTab,
+                                  text: AppString.of(context).byInterests,
+                                  tabName: ActiveSearchTabs.byInterests,
+                                  changeTab: model.changeTab),
+                              SizedBox(width: UtilsResponsive.getResSize(10),),
+                              MeetingSearchTab(
+                                  activeTab: model.activeTab,
+                                  text:
+                                      AppString.of(context).byCategoriesOfMeeting,
+                                  tabName: ActiveSearchTabs.byCategories,
+                                  changeTab: model.changeTab),
+                            ],
+                          ),
                         ),
 
                         const SizedBox(

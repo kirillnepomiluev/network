@@ -4,6 +4,7 @@ import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/utils_responsive.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({
@@ -21,7 +22,7 @@ class SearchTextField extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 5, right: 15),
+            padding: EdgeInsets.only(left: 5.sp, right: UtilsResponsive.getResSize(15)),
             child: Icon(
               NetworkIcons.search,
               size: UtilsResponsive.getResSize(14),

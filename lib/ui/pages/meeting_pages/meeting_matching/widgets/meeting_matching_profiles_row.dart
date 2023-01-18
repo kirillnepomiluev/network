@@ -4,6 +4,7 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_matching/widgets/meet
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingMatchingProfilesRow extends StatelessWidget {
@@ -22,12 +23,12 @@ class MeetingMatchingProfilesRow extends StatelessWidget {
           imageUrl: Assets.images.avatars.avatar0.keyName,
         ),
         Padding(
-            padding: const EdgeInsets.only(top: 35),
+            padding: EdgeInsets.only(top: UtilsResponsive.getResSize(35)), //35
             child: AppIconContainer(
               icon: NetworkIcons.electric,
               contColor: AppColors.salad,
               iconSize: 18.sp,
-              contSize: 48,
+              contSize: 30.sp, //48
               iconColor: Colors.black,
             )),
         MeetingMatchingProfileInfo(

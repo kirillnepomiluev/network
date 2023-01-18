@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/bottom_sheet_min_patinr.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
@@ -8,81 +9,87 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:network_app/constants.dart';
 
-
 void opeinInfoSheet({required BuildContext context, required String title}) {
   final mediaHeight = MediaQuery.of(context).size.height;
   final mediaWidth = MediaQuery.of(context).size.width;
   final height = mediaHeight * 0.9;
-
   showModalBottomSheet<void>(
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
       context: context,
-      builder: (BuildContext context) => Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          Container(
-            color: Colors.transparent,
-            height: height,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  CustomPaint(
-                    size: Size(
-                        mediaWidth,
-                        (mediaWidth * 0.07733333333333334)
-                            .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-                    painter: BottomSheetMinPaint(
-                      color: Colors.black.withOpacity(0.5),
-                    ),
-                  ),
-                  BlurryContainer(
-                    borderRadius: BorderRadius.zero,
-                    height: height - mediaWidth * 0.07733333333333334,
-                    blur: 20,
+      builder: (BuildContext context) => SizedBox(
+        height: height,
+        child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                SingleChildScrollView(
+                  child: Container(
                     color: Colors.transparent,
-                    padding: const EdgeInsets.only(
-                        left: 15, right: 15, bottom: 15, top: 15),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      children: const [
-                        Text(
-                          'Энергия',
-                          style: TextStyle(
-                              fontSize: 32,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.salad),
+                      children: [
+                        _CustomPaint(
+                          color: Colors.black.withOpacity(0.5),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 20),
-                          child: Text(
-                            Constants.strLongLoremIpsum,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400),
+                        BlurryContainer(
+                          borderRadius: BorderRadius.zero,
+                          // height: height - mediaWidth * 0.07733333333333334,
+                          blur: 20,
+                          color: Colors.transparent,
+                          padding: EdgeInsets.all(UtilsResponsive.getResSize(15)),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text('Энергия',
+                                  style: AppTextStyles.salad32
+                                      .copyWith(fontWeight: FontWeight.w600)),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    top: UtilsResponsive.getResSize(20)),
+                                child: Text(Constants.strLongLoremIpsum,
+                                    style: AppTextStyles.primary16),
+                              )
+                            ],
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+                const Positioned(
+                  top: 0,
+                  child: _CustomPaint(
+                    color: Colors.transparent,
+                  ),
+                ),
+              ],
             ),
-          ),
-          CustomPaint(
-            size: Size(
-                mediaWidth,
-                (mediaWidth * 0.07733333333333334)
-                    .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-            painter: BottomSheetMinPaint(color: Colors.transparent),
-          ),
-        ],
       ));
+}
+
+class _CustomPaint extends StatelessWidget {
+  final Color color;
+  const _CustomPaint({
+    Key? key,
+    required this.color,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final mediaWidth = MediaQuery.of(context).size.width;
+    return CustomPaint(
+      size: Size(
+          mediaWidth,
+          (mediaWidth * 0.07733333333333334)
+              .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+      painter: BottomSheetMinPaint(
+        color: color,
+      ),
+    );
+  }
 }
 
 class ProgressParametr extends StatelessWidget {
@@ -103,7 +110,7 @@ class ProgressParametr extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 22.5),
+      padding: EdgeInsets.only(top: UtilsResponsive.getResSize(22)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -138,22 +145,23 @@ class ProgressParametr extends StatelessWidget {
                         RichTextTwo(
                           text1: text1,
                           text2: text2,
-                          fontSize: 16,
+                          fontSize: UtilsResponsive.getResSize(16),
                           fontWeight1: FontWeight.w400,
                           fontWeight2: FontWeight.w700,
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 13),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: UtilsResponsive.getResSize(13)),
                           child: Icon(
                             NetworkIcons.info,
                             color: Colors.white,
-                            size: 18,
+                            size: UtilsResponsive.getResSize(18),
                           ),
                         )
                       ],
                     )),
           Padding(
-            padding: const EdgeInsets.only(top: 12),
+            padding: EdgeInsets.only(top: UtilsResponsive.getResSize(12)),
             child: Stack(
               alignment: Alignment.centerRight,
               children: [
@@ -164,7 +172,7 @@ class ProgressParametr extends StatelessWidget {
                   child: LinearPercentIndicator(
                     padding: EdgeInsets.zero,
                     barRadius: const Radius.circular(11),
-                    lineHeight: 40, //40
+                    lineHeight: UtilsResponsive.getResSize(40), //40
                     percent: progress,
                     backgroundColor: Colors.transparent,
                     progressColor: AppColors.salad.withOpacity(0.2),
@@ -176,11 +184,11 @@ class ProgressParametr extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: AppColors.salad,
                         borderRadius: BorderRadius.circular(7)),
-                    width: 24,
-                    height: 22,
+                    width: UtilsResponsive.getResSize(24),
+                    height: UtilsResponsive.getResSize(22),
                     child: Icon(
                       icon,
-                      size: 13,
+                      size: UtilsResponsive.getResSize(13),
                     ),
                   ),
                 ),

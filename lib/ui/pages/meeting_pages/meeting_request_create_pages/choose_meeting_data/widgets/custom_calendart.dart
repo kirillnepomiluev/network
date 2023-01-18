@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:table_calendar/table_calendar.dart';
-
 
 class CustomCalendar extends StatefulWidget {
   const CustomCalendar({Key? key}) : super(key: key);
@@ -23,55 +24,44 @@ class _CustomCalendarState extends State<CustomCalendar> {
     super.initState();
   }
 
-  // CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
   DateTime _selectedDay = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
+      padding: EdgeInsets.all(UtilsResponsive.getResSize(10)),
       decoration: BoxDecoration(
           color: AppColors.white10, borderRadius: BorderRadius.circular(12)),
       child: TableCalendar<dynamic>(
-        calendarStyle: const CalendarStyle(
-          defaultTextStyle: TextStyle(color: Colors.white),
-          holidayTextStyle: TextStyle(color: Colors.white),
-          weekendTextStyle: TextStyle(color: Colors.white),
-          todayDecoration: BoxDecoration(color: Colors.transparent),
-          //   defaultDecoration: BoxDecoration(
-          //     shape: BoxShape.circle,
-          //     color: ConstColor.salad100
-          // ),
+        calendarStyle: CalendarStyle(
+          defaultTextStyle: AppTextStyles.primary,
+          holidayTextStyle: AppTextStyles.primary,
+          weekendTextStyle: AppTextStyles.primary,
+          todayDecoration: const BoxDecoration(color: Colors.transparent),
           selectedDecoration:
-          BoxDecoration(shape: BoxShape.circle, color: AppColors.salad),
-          selectedTextStyle: TextStyle(color: Colors.black),
+              const BoxDecoration(shape: BoxShape.circle, color: AppColors.salad),
+          selectedTextStyle: AppTextStyles.black,
         ),
         firstDay: kFirstDay,
         lastDay: kLastDay,
         focusedDay: _focusedDay,
         locale: 'ru_RU',
         availableGestures: AvailableGestures.all,
-        headerStyle: const HeaderStyle(
+        headerStyle: HeaderStyle(
           formatButtonVisible: false,
           titleCentered: true,
           leftChevronIcon: Icon(
             NetworkIcons.arrow_long_left,
             color: Colors.white,
-            size: 15,
+            size: UtilsResponsive.getResSize(15),
           ),
-          // leftChevronIcon: Transform.rotate(
-          //     angle: 3.14,
-          //     child:
-          //     Icon(NetworkIcons.arrow_right_long, color: Colors.white,)
-          // ),
           rightChevronIcon: Icon(
             NetworkIcons.arrow_long_right,
             color: Colors.white,
-            size: 15,
+            size: UtilsResponsive.getResSize(15),
           ),
         ),
-        // calendarFormat: _calendarFormat,
         selectedDayPredicate: (day) {
           return isSameDay(_selectedDay, day);
         },
@@ -83,13 +73,6 @@ class _CustomCalendarState extends State<CustomCalendar> {
             });
           }
         },
-        // onFormatChanged: (format) {
-        //   if (_calendarFormat != format) {
-        //     setState(() {
-        //       _calendarFormat = format;
-        //     });
-        //   }
-        // },
         onPageChanged: (focusedDay) {
           _focusedDay = focusedDay;
         },

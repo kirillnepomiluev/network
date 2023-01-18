@@ -11,6 +11,7 @@ import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/common/meet_exchange_row.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class PersonProfileAvatarInfoContainer extends StatelessWidget {
@@ -21,7 +22,7 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
+      padding: EdgeInsets.all(UtilsResponsive.getResSize(10)),
       decoration: const BoxDecoration(
         color: Colors.transparent,
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(50)),
@@ -35,8 +36,8 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
             children: [
               AppBackButton(contColor: AppColors.black1A.withOpacity(0.65)),
               AppContainer(
-                padV: 14,
-                padH: 15,
+                padV: UtilsResponsive.getResSize(14),
+                padH: UtilsResponsive.getResSize(15),
                 color: AppColors.salad,
                 radius: AppBorderRadius.r15,
                 child: Center(
@@ -47,43 +48,37 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
           ),
           Column(
             children: [
-              const SizedBox(
-                height: 43,
-              ),
               NameWithVerification(
                   strName: 'Джоли, 28',
                   showVerified: true,
                   iconSize: 21.sp,
                   textStyle: AppTextStyles.primary32
                       .copyWith(fontWeight: FontWeight.w600)),
-              const SizedBox(
-                height: 11,
+              SizedBox(
+                height: UtilsResponsive.getResSize(10),
               ),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     '${AppString.of(context).level} "${AppString.of(context).base}"',
-                    style: TextStyle(
-                        fontSize: 16.5.sp, //14
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400),
+                  ),
+                  SizedBox(
+                    width: 5,
                   ),
                   const RhombusText()
                 ],
               ),
-              const SizedBox(
-                height: 26,
+              SizedBox(
+                height: UtilsResponsive.getResSize(26),
               ),
               const Text(
                 '250 м в направлении',
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              SizedBox(height: UtilsResponsive.getResSize(10)),
               AppContainer(
-                  padH: 18,
-                  padV: 10,
+                  padH: UtilsResponsive.getResSize(18),
+                  padV: UtilsResponsive.getResSize(10),
                   color: AppColors.white10,
                   radius: AppBorderRadius.r10,
                   child: Row(
@@ -93,7 +88,8 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                         'Открыть карту',
                       ),
                       Padding(
-                          padding: const EdgeInsets.only(left: 12),
+                          padding: EdgeInsets.only(
+                              left: UtilsResponsive.getResSize(12)),
                           child: AppIconContainer(
                             contSize: 18.sp,
                             contColor: AppColors.salad,
@@ -104,14 +100,14 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                           )),
                     ],
                   )),
-              const SizedBox(
-                height: 30,
+              SizedBox(
+                height: UtilsResponsive.getResSize(30),
               ),
               MeetExchangeRow(onTap: () {
                 context.router.push(const PersonProfileViewRoute());
               }),
-              const SizedBox(
-                height: 32,
+              SizedBox(
+                height: UtilsResponsive.getResSize(24), //32
               ),
             ],
           )

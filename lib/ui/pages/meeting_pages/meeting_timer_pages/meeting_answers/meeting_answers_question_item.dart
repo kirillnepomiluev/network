@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:network_app/utils/utils_responsive.dart';
+
+List<String> _testList = [
+  'А ещё вопрос может быть длинным придлинным и на него тоже нужно ответить?',
+  'Второй вопрос',
+  'Третий вопрос'
+];
+
 
 class MeetingAnswersQuestionItem extends StatelessWidget {
   final int questionCount;
@@ -10,34 +18,28 @@ class MeetingAnswersQuestionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: questionCount,
-        itemBuilder: (BuildContext context, int index) {
-          return questionIndex == index
-              ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Вопрос ${index + 1} из $questionCount',
-                        style: AppTextStyles.salad16.copyWith(
-                          fontWeight: FontWeight.w700,
-                        )),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 25, right: 32),
-                      child: SizedBox(
-                        child: Text(
-                            index == 0
-                                ? 'А ещё вопрос может быть длинным придлинным и на него тоже нужно ответить?'
-                                : 'Какой-нибудь вопрос №${index + 1}',
-                            style: AppTextStyles.primary20
-                                .copyWith(fontWeight: FontWeight.w600)),
-                      ),
-                    ),
-                  ],
-                )
-              : Container();
-        });
+    return
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Вопрос ${questionIndex + 1} из $questionCount',
+              style: AppTextStyles.salad16.copyWith(
+                fontWeight: FontWeight.w700,
+              )),
+          Padding(
+            padding: EdgeInsets.only(
+                top: UtilsResponsive.getResSize(25), //25
+                right: UtilsResponsive.getResSize(32) //32
+            ),
+            child: SizedBox(
+              child: Text(
+                  _testList[questionIndex],
+                  style: AppTextStyles.primary20
+                      .copyWith(fontWeight: FontWeight.w600)),
+            ),
+          ),
+        ],
+      );
+      // _TestColumn(questionCount: questionCount, index: questionIndex, textInit: _testList[questionIndex],);
   }
 }

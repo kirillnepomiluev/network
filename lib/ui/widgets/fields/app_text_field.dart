@@ -23,15 +23,15 @@ class AppTextField extends StatelessWidget {
     return TextFormField(
       enabled: enabled,
       controller: controller,
-      style: AppTextStyles.primary16,
+      style: AppTextStyles.primary,
       textInputAction: TextInputAction.done,
       cursorColor: Colors.white,
       autofocus: autofocus,
       initialValue: hintText,
       maxLines: null,
       decoration: isTransparent
-          ? null
-          : AppInputBorder.inputDecoration
+          ? AppInputBorder.inputDecorationTransparent
+          : AppInputBorder.inputDecorationBorder
     );
   }
 }

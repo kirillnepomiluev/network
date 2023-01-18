@@ -6,6 +6,7 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_matching/meeting_matc
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 class MeetingMatchingView extends StatelessWidget {
   const MeetingMatchingView({Key? key}) : super(key: key);
@@ -20,32 +21,28 @@ class MeetingMatchingView extends StatelessWidget {
             body: SafeArea(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: UtilsResponsive.getResSize(16)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const AppBarRow(),
-                      const SizedBox(
-                        height: 25,
+                      SizedBox(
+                        height: UtilsResponsive.getResSize(25),
                       ),
-
                       const MeetingMatchingProfilesRow(),
-
-                      const SizedBox(
-                        height: 70,
+                      SizedBox(
+                        height: UtilsResponsive.getResSize(40),
                       ),
-
-                      //Нижняя часть
                       const MeetingMatchingInfoContainer(),
-
-                      const SizedBox(
-                        height: 40,
+                      SizedBox(
+                        height: UtilsResponsive.getResSize(40),
                       ),
                       AppButton(
                           onPressed: model.onStartChat,
                           text: AppString.of(context).toStartChat),
-                      const SizedBox(
-                        height: 23,
+                      SizedBox(
+                        height: UtilsResponsive.getResSize(23),
                       ),
                     ],
                   ),

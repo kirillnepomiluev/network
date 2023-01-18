@@ -1,9 +1,14 @@
+import 'package:network_app/ui/theme/app_border_radius.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/progress_parametr.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
+import 'package:network_app/utils/utils_responsive.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class StatColumn extends StatelessWidget {
   final bool ifProfileSheet;
@@ -14,8 +19,6 @@ class StatColumn extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // titleStatText('Уровень Базовый'),
-
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -23,15 +26,18 @@ class StatColumn extends StatelessWidget {
               text1: 'Уровень ',
               text2: 'Базовый',
             ),
-            Container(
-              decoration: BoxDecoration(
-                  color: AppColors.salad,
-                  borderRadius: BorderRadius.circular(7)),
-              width: 24,
-              height: 22,
-              child: const Icon(
-                Icons.mode_edit_outline_outlined,
-                size: 13,
+            Padding(
+              padding: EdgeInsets.only(right: UtilsResponsive.getResSize(10)),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: AppColors.salad,
+                    borderRadius: BorderRadius.circular(7)),
+                width: UtilsResponsive.getResSize(24),
+                height: UtilsResponsive.getResSize(22),
+                child: Icon(
+                  Icons.mode_edit_outline_outlined,
+                  size: UtilsResponsive.getResSize(13),
+                ),
               ),
             ),
           ],
@@ -47,34 +53,36 @@ class StatColumn extends StatelessWidget {
             text2: '150',
             icon: NetworkIcons.rhombus),
 
-        const SizedBox(
-          height: 15,
+        SizedBox(
+          height: UtilsResponsive.getResSize(15),
         ),
 
         if (ifProfileSheet)
-          const RichTextTwo(
+          RichTextTwo(
             text1: 'До следущего уровня осталось\nнабрать ',
             text2: '1500 токенов',
-            fontSize: 14,
+            fontSize: UtilsResponsive.getResSize(14),
             fontWeight1: FontWeight.w500,
             fontWeight2: FontWeight.w500,
           ),
 
         if (ifProfileSheet)
           Padding(
-            padding: const EdgeInsets.only(top: 25, bottom: 7),
-            child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 12, horizontal: 20),
-                    backgroundColor: AppColors.salad,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(13))),
-                onPressed: () {},
-                child: const Text(
-                  "Докупить токены",
-                  style: TextStyle(color: AppColors.textBlack),
-                )),
+            padding: EdgeInsets.only(
+                top: UtilsResponsive.getResSize(25),
+                bottom: 8.sp
+            ),
+            child:
+            AppButton(
+              onPressed: () {},
+              text: 'Докупить токены',
+              width: null,
+              height: 28.5.sp,
+              buttonColor: AppColors.salad,
+              textStyle: AppTextStyles.black,
+              borderColor: AppColors.salad,
+              borderRadius: AppBorderRadius.r10,
+            )
           ),
 
         if (ifProfileSheet)

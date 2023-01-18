@@ -5,6 +5,7 @@ import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 class InputMeetingOccupationView extends StatefulWidget {
   const InputMeetingOccupationView({Key? key}) : super(key: key);
@@ -19,10 +20,9 @@ class _InputMeetingOccupationViewState extends State<InputMeetingOccupationView>
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: UtilsResponsive.getResSize(16), vertical: UtilsResponsive.getResSize(10)),
           child: SingleChildScrollView(
             child:
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -33,12 +33,12 @@ class _InputMeetingOccupationViewState extends State<InputMeetingOccupationView>
                   text2: AppString.of(context).ownOption,
                   description: AppString.of(context).occupationsWillBeShowedInProfile,
                 ),
-                const SizedBox(
-                  height: 36,
+                SizedBox(
+                  height: UtilsResponsive.getResSize(35),
                 ),
                 const AppTextField(),
-                const SizedBox(
-                  height: 36,
+                SizedBox(
+                  height: UtilsResponsive.getResSize(35),
                 ),
                 AppButtonContinue(onPressed: (){
                   FocusManager.instance.primaryFocus?.unfocus();
@@ -47,7 +47,6 @@ class _InputMeetingOccupationViewState extends State<InputMeetingOccupationView>
                 },),
               ],
             )
-
           ),
         ),
       ),

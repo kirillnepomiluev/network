@@ -5,6 +5,7 @@ import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingTimerBottom extends StatelessWidget {
@@ -28,8 +29,8 @@ class MeetingTimerBottom extends StatelessWidget {
               child: InkWell(
                 onTap: onGoTap,
                 child: AppContainer(
-                  width: 66, //66
-                  height: 92, //92
+                  width: 35.sp, //66
+                  height: 35.sp * 1.394, //92
                   color: isPaused ? AppColors.white10 : AppColors.salad,
                   radius: 37,
                   child: Center(
@@ -54,8 +55,8 @@ class MeetingTimerBottom extends StatelessWidget {
                   },
                   text: 'Показать вопросы',
                 ),
-                const SizedBox(
-                  height: 26,
+                SizedBox(
+                  height: UtilsResponsive.getResSize(26),
                 ),
                 Text('Чтобы получить больше токенов,\nответеть на вопросы',
                     textAlign: TextAlign.center,

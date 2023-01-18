@@ -14,6 +14,7 @@ import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/option_container.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ChooseOccupationView extends StatefulWidget {
@@ -96,7 +97,7 @@ class _ChooseOccupationViewState extends State<ChooseOccupationView> {
                               children: [
                                 for (final item in model.choosedOptions)
                                   Container(
-                                      padding: const EdgeInsets.all(14), //14
+                                      padding: EdgeInsets.all(UtilsResponsive.getResSize(14)), //14
                                       decoration: BoxDecoration(
                                         color: AppColors.white10,
                                         borderRadius: BorderRadius.circular(12),
@@ -117,14 +118,17 @@ class _ChooseOccupationViewState extends State<ChooseOccupationView> {
                                                 padding: EdgeInsets.zero,
                                                 constraints:
                                                 const BoxConstraints(),
-                                                iconSize: 20,
-                                                icon: const Icon(
+                                                iconSize:
+                                                UtilsResponsive.getResSize(
+                                                    20),
+                                                icon: Icon(
                                                   Icons.close_rounded,
                                                   color: AppColors.salad,
+                                                  size: UtilsResponsive.getResSize(16),
                                                 )),
                                           )
                                         ],
-                                      )),
+                                      ))
                               ],
                             ),
                           ),

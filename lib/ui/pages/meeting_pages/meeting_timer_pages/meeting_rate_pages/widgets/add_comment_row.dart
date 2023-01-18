@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AddCommentRow extends StatefulWidget {
-  final Color color;
-  const AddCommentRow({Key? key, required this.color}) : super(key: key);
+  const AddCommentRow({Key? key,}) : super(key: key);
 
   @override
   State<AddCommentRow> createState() => _AddCommentRowState();
@@ -41,15 +42,10 @@ class _AddCommentRowState extends State<AddCommentRow> {
                   color: AppColors.salad,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 21, bottom: 2),
+              const Padding(
+                padding: EdgeInsets.only(left: 21, bottom: 2),
                 child: Text(
                   'Добавить комментарий',
-                  style: TextStyle(
-                    fontSize: 16.5.sp, //14
-                    fontWeight: FontWeight.w400,
-                    // color: widget.color
-                  ),
                 ),
               )
             ],
@@ -60,13 +56,16 @@ class _AddCommentRowState extends State<AddCommentRow> {
   Widget textFieldColumn() => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const AppTextField(),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+              height: 30.sp,
+              child: const AppTextField()),
+          SizedBox(
+            height: UtilsResponsive.getResSize(20),
           ),
           AppButton(
-              height: 60,
-              width: 200,
+              width: 55.sp,
+              height: 30.sp,
+              textStyle: AppTextStyles.black,
               buttonColor: AppColors.salad,
               borderColor: AppColors.salad,
               onPressed: () {

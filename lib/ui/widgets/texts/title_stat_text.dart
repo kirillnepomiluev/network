@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 class TitleStatText extends StatelessWidget {
   final String text;
@@ -9,18 +10,13 @@ class TitleStatText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return     Padding(
-      padding: const EdgeInsets.only(
-        top: 20,
+    return  Padding(
+      padding: EdgeInsets.only(
+        top: UtilsResponsive.getResSize(20),
       ),
       child: Text(
         text,
         style: AppTextStyles.primary20.copyWith(fontWeight: FontWeight.w500),
-        // style: TextStyle(
-        //     color: Colors.white,
-        //     fontWeight: FontWeight.w600,
-        //     fontSize: 19.sp //20
-        // ),
       ),
     );
   }

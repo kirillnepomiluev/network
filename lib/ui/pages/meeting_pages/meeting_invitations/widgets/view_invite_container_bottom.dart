@@ -26,10 +26,10 @@ class ViewInviteContainerBottom extends StatelessWidget {
           children: [
             AppCircleAvatar(
               imageUrl: imageUrl,
-              contSize: 83,
+              contSize: 40.sp, //83
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 21),
+              padding: EdgeInsets.only(left: UtilsResponsive.getResSize(21)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -41,8 +41,8 @@ class ViewInviteContainerBottom extends StatelessWidget {
                     iconSize: 15.sp,
                     contSize: UtilsResponsive.getResSize(18),
                   ),
-                  const SizedBox(
-                    height: 10,
+                  SizedBox(
+                    height: UtilsResponsive.getResSize(10),
                   ),
                   Text('250 м',
                       style: AppTextStyles.salad20
@@ -52,6 +52,7 @@ class ViewInviteContainerBottom extends StatelessWidget {
             )
           ],
         ),
+
         InkWell(
           onTap: () {
             context.router.push(const MeetingMatchingViewRoute());
@@ -63,8 +64,6 @@ class ViewInviteContainerBottom extends StatelessWidget {
                 border: Border.all(color: AppColors.salad)),
             width: 35.sp, //66
             height: 35.sp * 1.394, //92
-            // width: mediaWidth * 0.176, //66
-            // height: mediaWidth * 0.176 * 1.394, //92
             child: Icon(
               NetworkIcons.arrow_long_right,
               color: AppColors.salad,

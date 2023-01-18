@@ -94,7 +94,7 @@ class StoreCategoryAvatarContainer extends StatelessWidget {
                   ),
 
                   Wrap(
-                    spacing: 10, //80
+                    spacing: 10,
                     direction: Axis.horizontal,
                     children: [
                       Text('Уровень 6  Баллы +150',

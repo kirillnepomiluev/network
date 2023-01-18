@@ -6,6 +6,7 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -27,7 +28,7 @@ class ViewInviteContainerTop extends StatelessWidget {
         //Тип
         AppContainer(
           height: 28.sp, //38,
-          padH: 17,
+          padH: UtilsResponsive.getResSize(17),
           radius: AppBorderRadius.r15,
           child: Center(
             child: Text(AppString.of(context).businessMeeting,
@@ -41,7 +42,9 @@ class ViewInviteContainerTop extends StatelessWidget {
             : Flexible(
                 child: Container(
                   padding: EdgeInsets.symmetric(
-                      vertical: 13, horizontal: showVerified ? 17 : 13),
+                      vertical: UtilsResponsive.getResSize(13),
+                      horizontal: showVerified ? UtilsResponsive.getResSize(17) : UtilsResponsive.getResSize(13)
+                  ),
                   decoration: BoxDecoration(
                     color:
                         showVerified ? AppColors.white10 : AppColors.salad,
@@ -54,12 +57,12 @@ class ViewInviteContainerTop extends StatelessWidget {
                             Text('02:04:15',
                                 style: AppTextStyles.primary12
                                     .copyWith(fontWeight: FontWeight.bold)),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 5),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5),
                               child: Icon(
                                 Icons.timer_outlined,
                                 color: Colors.white,
-                                size: 16, //16
+                                size: UtilsResponsive.getResSize(16), //16
                               ),
                             )
                           ],

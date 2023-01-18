@@ -19,7 +19,7 @@ class InvitationTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 10),
+      padding: EdgeInsets.only(right: UtilsResponsive.getResSize(10)),
       child: InkWell(
         onTap: (){
           changeTab(tabName);
@@ -29,9 +29,9 @@ class InvitationTab extends StatelessWidget {
             color: activeTab == tabName?  AppColors.salad : AppColors.white10,
             borderRadius: BorderRadius.circular(15),
           ),
-          padding: const EdgeInsets.symmetric(
-              vertical: 16, //19
-              horizontal: 20
+          padding: EdgeInsets.symmetric(
+              vertical: UtilsResponsive.getResSize(16),
+              horizontal: UtilsResponsive.getResSize(20)
           ),
           child:
           Text(

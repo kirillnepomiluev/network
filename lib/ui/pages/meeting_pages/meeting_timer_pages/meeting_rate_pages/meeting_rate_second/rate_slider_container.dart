@@ -3,6 +3,7 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_r
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/widgets/rate_slitder_custom.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 
 class RateSliderContainer extends StatelessWidget {
@@ -14,7 +15,10 @@ class RateSliderContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 20),
+      padding: EdgeInsets.symmetric(
+          vertical: UtilsResponsive.getResSize(17),
+          horizontal: UtilsResponsive.getResSize(20)
+      ),
       decoration: BoxDecoration(
           color: AppColors.white10, borderRadius: BorderRadius.circular(15)),
       child: Column(
@@ -23,10 +27,10 @@ class RateSliderContainer extends StatelessWidget {
         children: [
           Text(title, style: AppTextStyles.primary16),
           Padding(
-            padding: const EdgeInsets.only(top: 20),
+            padding: EdgeInsets.only(top: UtilsResponsive.getResSize(20)),
             child: Column(
-              children: const [
-                SliderCustom(
+              children: [
+                const SliderCustom(
                   sLiderValue: 0,
                   min: 0,
                   max: 5,
@@ -34,8 +38,8 @@ class RateSliderContainer extends StatelessWidget {
                   stepSize: 50,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 32),
-                  child: AddCommentRow(color: AppColors.grey),
+                  padding: EdgeInsets.only(top: UtilsResponsive.getResSize(32)),
+                  child: const AddCommentRow(),
                 )
               ],
             ),

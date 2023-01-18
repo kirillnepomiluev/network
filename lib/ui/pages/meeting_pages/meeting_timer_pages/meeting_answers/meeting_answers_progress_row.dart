@@ -3,6 +3,7 @@ import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 
 class MeetingAnswersProgressRow extends StatelessWidget {
@@ -15,16 +16,15 @@ class MeetingAnswersProgressRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaWidth = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: UtilsResponsive.getResSize(16)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           AppContainer(
-            width: 0.1146 * mediaWidth, //43
-            height: 0.1146 * mediaWidth,
+            width: UtilsResponsive.getResSize(40), //43
+            height: UtilsResponsive.getResSize(40),
             radius: AppBorderRadius.r15,
             child: Center(
                 child: Text(
@@ -34,7 +34,8 @@ class MeetingAnswersProgressRow extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 0.1173 * mediaWidth //44
+              padding: EdgeInsets.symmetric(
+                  horizontal: UtilsResponsive.getResSize(40)//44
                   ),
               child: LinearProgressIndicator(
                 backgroundColor: AppColors.white10,
@@ -45,8 +46,8 @@ class MeetingAnswersProgressRow extends StatelessWidget {
             ),
           ),
           AppContainer(
-            width: 0.1146 * mediaWidth, //43
-            height: 0.1146 * mediaWidth,
+            width: UtilsResponsive.getResSize(40), //43
+            height:UtilsResponsive.getResSize(40),
             radius: AppBorderRadius.r15,
             child: Center(
                 child: Text(

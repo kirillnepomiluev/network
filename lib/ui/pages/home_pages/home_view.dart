@@ -12,7 +12,7 @@ import 'package:network_app/ui/widgets/icons/network_icons.dart';
 class HomeView extends StatefulWidget {
   final bool isCupboard;
   final int initIndex;
-  const HomeView({Key? key, this.initIndex = 4, this.isCupboard = false})
+  const HomeView({Key? key, this.initIndex = 0, this.isCupboard = false})
       : super(key: key);
 
   @override

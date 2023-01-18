@@ -7,6 +7,7 @@ import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ViewInviteContainer extends StatelessWidget {
@@ -27,8 +28,8 @@ class ViewInviteContainer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: AppContainer(
-        padH: 21,
-        padV: 26,
+        padH: UtilsResponsive.getResSize(21),
+        padV: UtilsResponsive.getResSize(26),
         radius: AppBorderRadius.r30,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,14 +37,14 @@ class ViewInviteContainer extends StatelessWidget {
             ViewInviteContainerTop(
                 activeTab: activeTab, showVerified: showVerified),
 
-            const SizedBox(
-              height: 15,
+            SizedBox(
+              height: UtilsResponsive.getResSize(15),
             ),
 
             NameWithVerification(strName: strName, showVerified: showVerified),
 
-            const SizedBox(
-              height: 15,
+            SizedBox(
+              height: UtilsResponsive.getResSize(15),
             ),
 
             Row(

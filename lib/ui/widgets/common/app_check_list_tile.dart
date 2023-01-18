@@ -38,7 +38,6 @@ class _AppCheckListTileState extends State<AppCheckListTile> {
           offset: const Offset(-17, 0),
           child: Text(
             widget.title,
-            style: const TextStyle(color: Colors.white, fontSize: 14),
           ),
         ),
       ),

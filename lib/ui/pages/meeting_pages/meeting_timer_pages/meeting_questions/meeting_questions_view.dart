@@ -7,6 +7,7 @@ import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingQuestionsView extends StatelessWidget {
@@ -27,13 +28,12 @@ class MeetingQuestionsView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                      const AppBarRow(),
-                      const SizedBox(height: 35,),
+                      SizedBox(height: UtilsResponsive.getResSize(35),),
                       const RichTextTwo(
                         text1: 'Вам необходимо ответить\nна ',
                         text2: '10 вопросов',
                       ),
-                      const SizedBox(height: 35,),
-
+                      SizedBox(height: UtilsResponsive.getResSize(35),),
                       //Начать с 1-го вопроса
                       AppButton(
                         onPressed: () {
@@ -42,19 +42,26 @@ class MeetingQuestionsView extends StatelessWidget {
                         },
                         text: 'Начать с 1-го вопроса',
                       ),
-                      const SizedBox(height: 35,),
 
-                      //Нижняя часть
-                      Wrap(
-                        spacing: 24.sp,
-                        runSpacing: 22,
-                        children: [
-                          for (final item in model.questionsList)
-                            MeetingQuestionContainer(
-                              text: item,
-                            ),
-                        ],
-                      ),
+                      SizedBox(height: UtilsResponsive.getResSize(35),),
+
+                      GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          gridDelegate:
+                          SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: UtilsResponsive.getResSize(12),
+                              mainAxisSpacing: UtilsResponsive.getResSize(12),
+                              mainAxisExtent: 46.sp   //112
+                          ),
+                          itemCount: model.questionsList.length,
+                          itemBuilder: (_, index) {
+                            return
+                              MeetingQuestionContainer(
+                                text: model.questionsList[index],
+                              );
+                          })
                     ],
                   ),
                 ),

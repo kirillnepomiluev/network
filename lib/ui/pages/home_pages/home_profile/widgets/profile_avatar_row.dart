@@ -34,7 +34,7 @@ class ProfileAvatarRow extends StatelessWidget {
                   horizontal: UtilsResponsive.getResSize(15),
                 ),
                 child: AppCircleAvatar(
-                  contSize: 33.sp, //60
+                  contSize: UtilsResponsive.getResSize(60), //60
                   imageUrl: Assets.images.avatars.avatar0.keyName,
                 )),
             Column(

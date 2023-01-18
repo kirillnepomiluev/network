@@ -6,10 +6,10 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_requests_list/widgets
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 
 class MeetingRequestsListView extends StatelessWidget {
   const MeetingRequestsListView({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,8 +24,8 @@ class MeetingRequestsListView extends StatelessWidget {
                 AppBarRow(
                   title: AppString.of(context).listOfPersonalRequests,
                 ),
-                const SizedBox(
-                  height: 35,
+                SizedBox(
+                  height: UtilsResponsive.getResSize(35),
                 ),
                 AppButton(
                     onPressed: () {
@@ -33,8 +33,8 @@ class MeetingRequestsListView extends StatelessWidget {
                           .push(const ChooseMeetingCategoriesViewRoute());
                     },
                     text: AppString.of(context).createNewRequest),
-                const SizedBox(
-                  height: 40,
+                SizedBox(
+                  height: UtilsResponsive.getResSize(40),
                 ),
                 Text(
                   AppString.of(context).createdBefore,

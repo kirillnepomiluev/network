@@ -2,40 +2,38 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
+import 'package:network_app/utils/utils_responsive.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingAnswersSuccessView extends StatelessWidget {
   const MeetingAnswersSuccessView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final mediaHeight = MediaQuery.of(context).size.height;
-    final mediaWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 10, top: 10),
-                child: AppBackButton(),
-              ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                  left: UtilsResponsive.getResSize(10),
+                  top: UtilsResponsive.getResSize(10),
+                  bottom: UtilsResponsive.getResSize(17)),
+              child: const AppBackButton(),
+            ),
 
-              const SizedBox(
-                height: 17,
-              ),
-
-              //Нижняя часть
-              Container(
+            //Нижняя часть
+            Expanded(
+              child: Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                height: mediaHeight,
-                width: mediaWidth,
+                padding: EdgeInsets.symmetric(
+                    horizontal: UtilsResponsive.getResSize(16)),
                 decoration: BoxDecoration(
                     color: AppColors.white10,
                     borderRadius:
@@ -43,41 +41,37 @@ class MeetingAnswersSuccessView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Padding(
-                        padding: EdgeInsets.only(top: 49),
-                        child: RichTextTwo(
+                    Padding(
+                        padding: EdgeInsets.only(top: 30.sp), //49
+                        child: const RichTextTwo(
                           text1: 'Поздравляем, ',
                           color1: AppColors.salad,
                           text2: 'вы ответили\nна все вопросы',
                           color2: AppColors.textWhite,
                           textAlign: TextAlign.center,
                         )),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 115),
+                    Padding(
+                      padding: EdgeInsets.only(top: 48.sp), //118
                       child: RhombusText(
-                        fontSize: 60,
-                        iconSize: 40,
+                        fontSize: UtilsResponsive.getResSize(60), //60
+                        iconSize: UtilsResponsive.getResSize(40),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(
-                        left: 38,
-                        right: 38,
-                        top: 125,
+                        top: 48.sp, //118
                       ),
                       child: Text(
                         'Здесь размещаем какую-то\nдополнительную информацию',
-                        style: TextStyle(
+                        style: AppTextStyles.primary16.copyWith(
                           height: 1.3,
-                          fontSize: 16, //16
-                          fontWeight: FontWeight.w400,
                         ),
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    const SizedBox(
-                      height: 63,
+                    SizedBox(
+                      height: UtilsResponsive.getResSize(60), //60
                     ),
                     AppButton(
                       onPressed: () {
@@ -85,12 +79,12 @@ class MeetingAnswersSuccessView extends StatelessWidget {
                             .push(MeetingTimerViewRoute(isTimer: true));
                       },
                       text: 'Начать чат',
-                    )
+                    ),
                   ],
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );

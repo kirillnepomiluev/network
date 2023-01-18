@@ -452,7 +452,8 @@ class AppRouter extends _i51.RootStackRouter {
       );
     },
     StoreProductViewRoute.name: (routeData) {
-      final args = routeData.argsAs<StoreProductViewRouteArgs>();
+      final args = routeData.argsAs<StoreProductViewRouteArgs>(
+          orElse: () => const StoreProductViewRouteArgs());
       return _i51.AdaptivePage<dynamic>(
         routeData: routeData,
         child: _i49.StoreProductView(
@@ -790,7 +791,7 @@ class RecoveryEmailViewRoute extends _i51.PageRouteInfo<void> {
 class HomeViewRoute extends _i51.PageRouteInfo<HomeViewRouteArgs> {
   HomeViewRoute({
     _i52.Key? key,
-    int initIndex = 4,
+    int initIndex = 0,
     bool isCupboard = false,
   }) : super(
           HomeViewRoute.name,
@@ -808,7 +809,7 @@ class HomeViewRoute extends _i51.PageRouteInfo<HomeViewRouteArgs> {
 class HomeViewRouteArgs {
   const HomeViewRouteArgs({
     this.key,
-    this.initIndex = 4,
+    this.initIndex = 0,
     this.isCupboard = false,
   });
 
@@ -1470,8 +1471,8 @@ class StoreProductViewRoute
     extends _i51.PageRouteInfo<StoreProductViewRouteArgs> {
   StoreProductViewRoute({
     _i52.Key? key,
-    required String title,
-    required String imageURL,
+    String title = 'Костюм "Выходной"',
+    String? imageURL,
   }) : super(
           StoreProductViewRoute.name,
           path: '/store-product-view',
@@ -1488,15 +1489,15 @@ class StoreProductViewRoute
 class StoreProductViewRouteArgs {
   const StoreProductViewRouteArgs({
     this.key,
-    required this.title,
-    required this.imageURL,
+    this.title = 'Костюм "Выходной"',
+    this.imageURL,
   });
 
   final _i52.Key? key;
 
   final String title;
 
-  final String imageURL;
+  final String? imageURL;
 
   @override
   String toString() {

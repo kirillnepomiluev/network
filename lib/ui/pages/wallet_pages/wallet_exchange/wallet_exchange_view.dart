@@ -23,7 +23,7 @@ class WalletExchangeView extends StatelessWidget {
             body: SafeArea(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: EdgeInsets.symmetric(horizontal: UtilsResponsive.getResSize(16)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,15 +51,15 @@ class WalletExchangeView extends StatelessWidget {
                           onTap: model.onExchangeTap,
                         ),
                       ),
-                      const SizedBox(
-                        height: 45,
+                      SizedBox(
+                        height: UtilsResponsive.getResSize(40), //45
                       ),
                       InkWell(
                         onTap: model.onCloseIconTap,
                         child: Center(
                           child: AppContainer(
-                            width: 66,
-                            height: 92,
+                            width: 35.sp, //66
+                            height: 35.sp * 1.394, //92
                             radius: 37,
                             color: AppColors.salad,
                             child: Icon(
@@ -70,8 +70,8 @@ class WalletExchangeView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 50,
+                      SizedBox(
+                        height: UtilsResponsive.getResSize(40), //50
                       ),
                     ],
                   ),

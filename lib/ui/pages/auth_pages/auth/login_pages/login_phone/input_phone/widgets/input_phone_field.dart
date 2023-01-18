@@ -32,7 +32,7 @@ class InputPhoneField extends StatelessWidget {
               FilteringTextInputFormatter.digitsOnly
             ],
             initialCountryCode: 'RU',
-            decoration: AppInputBorder.inputDecoration,
+            decoration: AppInputBorder.inputDecorationBorder,
             onChanged: onChange,
           )),
     );

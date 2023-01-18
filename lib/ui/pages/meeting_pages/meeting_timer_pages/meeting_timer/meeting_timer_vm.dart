@@ -18,7 +18,7 @@ class MeetingTimerViewModel extends ViewModel {
     strSeconds = twoDigits(duration.inSeconds.remainder(60));
   }
 
-  Duration duration = const Duration(seconds: 10);
+  Duration duration = const Duration(seconds: 1);
   Timer? timer;
   int maxSeconds = 0;
   late String strMinutes;

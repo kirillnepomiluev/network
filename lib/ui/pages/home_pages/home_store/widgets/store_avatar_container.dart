@@ -86,7 +86,7 @@ class StoreAvatarContainer extends StatelessWidget {
                 ),
 
                 Wrap(
-                  spacing: UtilsResponsive.getResSize(10), //80
+                  spacing: UtilsResponsive.getResSize(10),
                   direction: Axis.horizontal,
                   children: [
                     Text('Уровень 6  Баллы +150',

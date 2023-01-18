@@ -31,7 +31,7 @@ class EnterInfoContainer extends StatelessWidget {
       padding: EdgeInsets.only(top: UtilsResponsive.getResSize(32)),
       child: AppContainer(
         padV: UtilsResponsive.getResSize(23),   //23
-        padH: UtilsResponsive.getResSize(18),   //18
+        padH: UtilsResponsive.getResSize(17),   //17
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

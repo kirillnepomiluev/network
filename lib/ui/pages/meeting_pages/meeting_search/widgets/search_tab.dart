@@ -18,32 +18,29 @@ class MeetingSearchTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: InkWell(
-        onTap: (){
-          changeTab(tabName);
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            color: activeTab == tabName?  AppColors.salad : AppColors.white10,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          padding: const EdgeInsets.symmetric(
-              vertical: 16, //19
-              horizontal: 20
-          ),
-          child:
-          Text(
-            text,
-            style: TextStyle(
-                color:
-                activeTab == tabName
-                    ? AppColors.textBlack
-                    : AppColors.textWhite,
-                fontSize: UtilsResponsive.getResSize(12), //12
-                fontWeight: FontWeight.w500),
-          ),
+    return InkWell(
+      onTap: (){
+        changeTab(tabName);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: activeTab == tabName?  AppColors.salad : AppColors.white10,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        padding: EdgeInsets.symmetric(
+            vertical: UtilsResponsive.getResSize(16),
+            horizontal: UtilsResponsive.getResSize(20)
+        ),
+        child:
+        Text(
+          text,
+          style: TextStyle(
+              color:
+              activeTab == tabName
+                  ? AppColors.textBlack
+                  : AppColors.textWhite,
+              fontSize: UtilsResponsive.getResSize(12),
+              fontWeight: FontWeight.w500),
         ),
       ),
     );
