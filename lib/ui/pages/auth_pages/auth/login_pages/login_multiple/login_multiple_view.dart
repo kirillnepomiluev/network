@@ -37,7 +37,6 @@ class LoginMultipleView extends StatelessWidget {
                           const NetworkRow(isAppBar: true,),
 
                           EnterInfoContainer(
-                            // padTop: 28.sp, //42
                             text1: '${AppString.of(context).execute} ',
                             text2: AppString.of(context).enter,
                             maxLines: 3,

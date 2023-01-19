@@ -16,6 +16,8 @@ class StartViewModel extends ViewModel {
 
   void onTap() {
       context.router.push(HomeViewRoute(initIndex: 0),);
+      // context.router.push(InputPhoneViewRoute());
+      // context.router.push(const RegSuccessViewRoute());
   }
 
 }

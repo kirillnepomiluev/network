@@ -63,7 +63,7 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                   Text(
                     '${AppString.of(context).level} "${AppString.of(context).base}"',
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   const RhombusText()

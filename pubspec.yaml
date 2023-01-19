@@ -49,6 +49,7 @@ dependencies:
   pinput:
   auto_route:
   provider:
+  supabase_flutter:
 
 dev_dependencies:
   flutter_test:

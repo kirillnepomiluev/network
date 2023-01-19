@@ -5,8 +5,6 @@ import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
-import 'package:network_app/ui/widgets/cards/app_container_with_remove.dart';
-import 'package:network_app/ui/widgets/common/hobbits_container.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
@@ -58,7 +56,7 @@ class MeetingMatchingInfoContainer extends StatelessWidget {
           SizedBox(
             height: UtilsResponsive.getResSize(26),
           ),
-      AppWrapContainersWithRemove(listOptions: ['Большой теннис', 'Бассейн', 'Управление', 'Маркетинг'],)
+      const AppWrapContainersWithRemove(listOptions: ['Большой теннис', 'Бассейн', 'Управление', 'Маркетинг'],)
 
           // Wrap(
           //   spacing: UtilsResponsive.getResSize(10),

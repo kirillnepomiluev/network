@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_email/login_email_vm.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_phone/input_phone_vm.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_phone/widgets/input_phone_field.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
 
-class InputPhoneView extends StatelessWidget {
-  const InputPhoneView({Key? key}) : super(key: key);
+class LoginEmailView extends StatelessWidget {
+  const LoginEmailView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<InputPhoneViewModel>(
-        createModelDataEx: () => InputPhoneViewModel(context),
+    return ViewModelBuilder<LoginEmailViewModel>(
+        createModelDataEx: () => LoginEmailViewModel(context),
         builder: (context, model) {
           return Scaffold(
             body: SafeArea(
@@ -50,12 +52,16 @@ class InputPhoneView extends StatelessWidget {
                             SizedBox(
                               height: UtilsResponsive.getResSize(20),
                             ),
-                            InputPhoneField(
-                              // phoneContr: model.phoneContr,
-                              showErrorText: model.showErrorText,
-                              formstate: model.formstate,
-                              onChange: model.onPhoneFieldChange,
+
+                            Text('Email'),
+                            AppTextField(
+                              controller: model.emailContr,
                             ),
+                            Text('Password'),
+                            AppTextField(
+                              controller: model.passwordContr,
+                            ),
+
                             const Text(
                               Constants.strLoremIpsum,
                               maxLines: 5,
@@ -63,13 +69,10 @@ class InputPhoneView extends StatelessWidget {
                           ],
                         ),
                       ),
-
                       const SizedBox(
                         height: 45,
                       ),
-
-                      AppButton(onPressed: model.getOTP, text: AppString.of(context).sendCode)
-
+                      AppButton(onPressed: model.signInByEmail, text: 'Войти')
                     ],
                   ),
                 ),

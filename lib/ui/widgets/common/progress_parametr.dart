@@ -11,7 +11,6 @@ import 'package:network_app/constants.dart';
 
 void opeinInfoSheet({required BuildContext context, required String title}) {
   final mediaHeight = MediaQuery.of(context).size.height;
-  final mediaWidth = MediaQuery.of(context).size.width;
   final height = mediaHeight * 0.9;
   showModalBottomSheet<void>(
       backgroundColor: Colors.transparent,

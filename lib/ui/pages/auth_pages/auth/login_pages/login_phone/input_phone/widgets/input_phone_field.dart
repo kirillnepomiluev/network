@@ -6,33 +6,40 @@ import 'package:network_app/ui/theme/app_input_border.dart';
 
 
 class InputPhoneField extends StatelessWidget {
+  final bool showErrorText;
   final Function(PhoneNumber) onChange;
   final GlobalKey formstate;
   const InputPhoneField(
-      {Key? key, required this.formstate, required this.onChange})
+      {Key? key, required this.formstate, required this.onChange, required this.showErrorText,})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Form(
       key: formstate,
-      child: SizedBox(
-          height: 80,
+      child: Container(
+          padding: const EdgeInsets.all(8),
+          height: 100,
           child: IntlPhoneField(
             dropdownIcon: const Icon(
               Icons.arrow_drop_down,
               color: Colors.white,
             ),
             autofocus: false,
-            // AppTextStyles.primary,
-            // dropdownTextStyle:const TextStyle(color: Colors.white, fontSize: 14),
-            // style: const TextStyle(fontSize: 14, color: Colors.white),
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly
             ],
-            initialCountryCode: 'RU',
-            decoration: AppInputBorder.inputDecorationBorder,
+            initialCountryCode: 'PH',
+            textAlignVertical: TextAlignVertical.center,
+            decoration: AppInputBorder.inputPhoneDecorationBorder,
+            invalidNumberMessage: showErrorText? 'Неправильный формат' : ' ',
+            initialValue: '960379358',
+            // InputDecoration(
+            //   border: UnderlineInputBorder(
+            //     borderSide: BorderSide(width: 1, color: Colors.white)
+            //   )
+            // ),
             onChanged: onChange,
           )),
     );

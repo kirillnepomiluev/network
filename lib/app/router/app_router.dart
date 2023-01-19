@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:network_app/app/router/auth_guard.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login/login_view.dart';
+import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_email/login_email_view.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_multiple/login_multiple_view.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/input_otp_view.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_phone/input_phone_view.dart';
@@ -54,26 +56,20 @@ import 'package:network_app/ui/pages/wallet_pages/wallet_exchange_success/wallet
   // replaceInRouteName: 'View,Route',
   routes: <AutoRoute>[
     ...RoutesLists.authRoutes,
-    ...RoutesLists.welcomeRoutes,
-    ...RoutesLists.homeRoutes,
-    ...RoutesLists.meetingRoutes,
-    ...RoutesLists.profileRoutes,
-    ...RoutesLists.walletRoutes,
-    ...RoutesLists.storeRoutes,
-    ...RoutesLists.messagesRoutes,
-    // AutoRoute(
-    //   page: HomeView,
-    //   guards: [AuthGuard],
-    //   children: <AutoRoute>[
-    //     ...RoutesLists.welcomeRoutes,
-    //     ...RoutesLists.homeRoutes,
-    //     ...RoutesLists.meetingRoutes,
-    //     ...RoutesLists.profileRoutes,
-    //     ...RoutesLists.walletRoutes,
-    //     ...RoutesLists.storeRoutes,
-    //     ...RoutesLists.messagesRoutes,
-    //   ],
-    // ),
+
+    AutoRoute(
+      page: HomeView,
+      guards: [AuthGuard],
+      children: <AutoRoute>[
+        ...RoutesLists.welcomeRoutes,
+        ...RoutesLists.homeRoutes,
+        ...RoutesLists.meetingRoutes,
+        ...RoutesLists.profileRoutes,
+        ...RoutesLists.walletRoutes,
+        ...RoutesLists.storeRoutes,
+        ...RoutesLists.messagesRoutes,
+      ],
+    ),
   ],
 )
 class $AppRouter {}
@@ -83,6 +79,7 @@ class RoutesLists {
     AutoRoute(page: StartView, initial: true),
     AutoRoute(page: LoginView),
     AutoRoute(page: LoginMultipleView),
+    AutoRoute(page: LoginEmailView),
     AutoRoute(page: InputPhoneView),
     AutoRoute(page: InputOtpView),
     AutoRoute(page: RecoveryView),
@@ -106,7 +103,7 @@ class RoutesLists {
   ];
 
   static const List<AutoRoute> homeRoutes = [
-    AutoRoute(page: HomeView),
+    // AutoRoute(page: HomeView),
     AutoRoute(page: HomeMeetingView),
     AutoRoute(page: HomeProfileView),
     AutoRoute(page: HomeWalletView),

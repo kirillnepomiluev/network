@@ -41,7 +41,7 @@ class WalletExchangeSuccessView extends StatelessWidget {
                           style: AppTextStyles.salad38.copyWith(fontWeight: FontWeight.w600)
                       ),
                       SizedBox(height: UtilsResponsive.getResSize(13),),
-                      Text(
+                      const Text(
                         'на вашем счете',
                       ),
                       SizedBox(height: UtilsResponsive.getResSize(40),),

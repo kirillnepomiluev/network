@@ -38,7 +38,7 @@ class OtpSentContainer extends StatelessWidget {
           Text(strPhone,),
           const SizedBox(height: 40,),
           InputPassFields(
-            onValdation: onValdation,
+            onValidation: onValdation,
             onComplete: onComplete,
           ),
           const SizedBox(height: 10,),

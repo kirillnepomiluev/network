@@ -28,7 +28,7 @@ class AppWrapContainersWithRemove extends StatelessWidget {
           ),
 
         if(showAdd)
-        AppAddRectangleIcon(),
+        const AppAddRectangleIcon(),
       ],
     );
   }

@@ -1,14 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:network_app/app/router/auth_guard.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_theme.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
+
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//
+//   await Supabase.initialize(
+//     url: SupabaseCredentials.apiUrl,
+//     anonKey: SupabaseCredentials.apiKey,
+//   );
+//
+//   runApp(const Core());
+// }
+//
+// class Core extends StatelessWidget {
+//   const Core({Key? key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MultiProvider(providers: AppProviders.provider, child: const Lava(),);
+//   }
+// }
+//
+// class Lava extends StatelessWidget {
+//   const Lava({Key? key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       theme: ThemeData.dark(),
+//       initialRoute: AppRoutes.loginRoute,
+//       routes: AppRoutes.routes,
+//     );
+//   }
+// }
+
+
+
+
+
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
-  static final router = AppRouter();
+  static final router = AppRouter(authGuard: AuthGuard());
 
   @override
   Widget build(BuildContext context) {

@@ -6,8 +6,6 @@ import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
-import 'package:network_app/ui/widgets/cards/app_container_with_remove.dart';
-import 'package:network_app/ui/widgets/common/hobbits_container.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -48,7 +46,7 @@ class PersonProfileStatColumn extends StatelessWidget {
           const AppTextField(hintText: 'Женщина, 37 лет, свободна, цель встречи: деловая.', enabled: false,),
           const TitleStatText('Интересы'),
           const SizedBox(height: 20,),
-          AppWrapContainersWithRemove(listOptions: ['Большой теннис', 'Бассейн', 'Управление', 'Маркетинг']),
+          const AppWrapContainersWithRemove(listOptions: ['Большой теннис', 'Бассейн', 'Управление', 'Маркетинг']),
 
 
           // Wrap(

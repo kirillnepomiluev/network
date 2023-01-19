@@ -46,7 +46,7 @@ class StoreProductImageContainer extends StatelessWidget {
                   style: AppTextStyles.salad26
                       .copyWith(fontWeight: FontWeight.w600)),
               Padding(
-                padding: EdgeInsets.only(top: 7),
+                padding: const EdgeInsets.only(top: 7),
                 child: Text('#0863246', style: AppTextStyles.primary24),
               ),
             ],
@@ -61,7 +61,7 @@ class StoreProductImageContainer extends StatelessWidget {
               decoration: BoxDecoration(
                   color: AppColors.white10,
                   borderRadius: BorderRadius.circular(10)),
-              child: Text(
+              child: const Text(
                 'Редкий',
               )),
           SizedBox(

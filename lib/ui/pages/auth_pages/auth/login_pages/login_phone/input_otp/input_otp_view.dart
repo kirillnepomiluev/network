@@ -37,7 +37,7 @@ class InputOtpView extends StatelessWidget {
                       ),
                       OtpSentContainer(
                           strPhone: model.strPhone,
-                          onComplete: model.onComplete,
+                          onComplete: model.onCompletePassword,
                           onValdation: model.onValdation
                       ),
                       const SizedBox(height: 40),
@@ -49,9 +49,7 @@ class InputOtpView extends StatelessWidget {
                               ? Colors.white
                               : AppColors.white15,
                           // onPressed: model.onLoginTap,
-                          onPressed: (){
-                            context.router.push(const RegSuccessViewRoute());
-                          },
+                          onPressed: model.onOtpSent,
                           text: AppString.of(context).signIn
                       ),
                       const SizedBox(

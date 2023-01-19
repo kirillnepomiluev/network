@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/app_wrap_containers_with_remove.dart';
-import 'package:network_app/ui/theme/app_border_radius.dart';
-import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/widgets/cards/app_container_with_remove.dart';
-import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
 import 'package:network_app/utils/utils_responsive.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
+
 
 class CheckMeetingInterests extends StatelessWidget {
   const CheckMeetingInterests({
@@ -25,7 +21,7 @@ class CheckMeetingInterests extends StatelessWidget {
             height: UtilsResponsive.getResSize(20)
         ),
 
-        AppWrapContainersWithRemove(listOptions: ['Большой теннис', 'Бассейн', 'Управление', 'Маркетинг'], showAdd: true,),
+        const AppWrapContainersWithRemove(listOptions: ['Большой теннис', 'Бассейн', 'Управление', 'Маркетинг'], showAdd: true,),
 
         //   Wrap(
         //   crossAxisAlignment: WrapCrossAlignment.center,

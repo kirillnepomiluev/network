@@ -4,15 +4,13 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class TroubleLoginTextLink extends StatelessWidget {
-  final Function(BuildContext context) onTroubleEnterTap;
+  final VoidCallback onTroubleEnterTap;
   const TroubleLoginTextLink({Key? key, required this.onTroubleEnterTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        onTroubleEnterTap(context);
-      },
+      onTap: onTroubleEnterTap,
       child: SizedBox(
         height: 23.sp, //30
         width: 55.5.sp, //160

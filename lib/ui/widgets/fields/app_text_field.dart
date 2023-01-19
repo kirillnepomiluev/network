@@ -27,7 +27,7 @@ class AppTextField extends StatelessWidget {
       textInputAction: TextInputAction.done,
       cursorColor: Colors.white,
       autofocus: autofocus,
-      initialValue: hintText,
+      // initialValue: hintText,
       maxLines: null,
       decoration: isTransparent
           ? AppInputBorder.inputDecorationTransparent

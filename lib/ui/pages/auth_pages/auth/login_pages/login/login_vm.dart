@@ -5,11 +5,19 @@ import 'package:network_app/utils/auth/auth_mixin.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 
-class LoginViewModel extends ViewModel with LoginMixin{
+class LoginViewModel extends ViewModel{
   final BuildContext context;
   LoginViewModel(this.context);
 
   void onEnterTap() {
     context.router.push(const LoginMultipleViewRoute());
   }
+
+  void loginGoogleTap(){}
+  void loginFacebookTap(){}
+
+  void onTroubleLoginTap(){
+    context.router.push(const RecoveryViewRoute());
+  }
+
 }

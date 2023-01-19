@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/utils/utils_responsive.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AppRadioList extends StatefulWidget {
   final List<String> listOptions;

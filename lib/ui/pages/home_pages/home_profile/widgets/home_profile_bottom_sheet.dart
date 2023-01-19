@@ -6,18 +6,15 @@ import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/app_wrap_containers_with_remove.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_container_with_remove.dart';
 import 'package:network_app/ui/widgets/cards/bottom_sheet_min_patinr.dart';
 import 'package:network_app/ui/widgets/common/app_check_list_tile.dart';
 import 'package:network_app/ui/widgets/common/app_radio_list.dart';
 import 'package:network_app/ui/widgets/common/stat_column.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
-import 'package:network_app/ui/widgets/icons/app_add_rectangle_icon.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
 import 'package:network_app/utils/utils_responsive.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HomeProfileBottomSheet extends StatelessWidget {
   const HomeProfileBottomSheet({Key? key}) : super(key: key);
@@ -78,11 +75,11 @@ class HomeProfileBottomSheet extends StatelessWidget {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Text(
+                                const Text(
                                   'Я люблю веселиться',
                                 ),
                                 Padding(
-                                    padding: EdgeInsets.only(left: 8.0),
+                                    padding: const EdgeInsets.only(left: 8.0),
                                     child: Icon(
                                       NetworkIcons.edit,
                                       size: UtilsResponsive.getResSize(22),
@@ -99,7 +96,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
                         SizedBox(
                           height: UtilsResponsive.getResSize(20),
                         ),
-                        AppWrapContainersWithRemove(
+                        const AppWrapContainersWithRemove(
                           listOptions: [
                             'Большой теннис',
                             'Бассейн',
@@ -120,7 +117,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
                         SizedBox(
                           height: UtilsResponsive.getResSize(20),
                         ),
-                        AppWrapContainersWithRemove(
+                        const AppWrapContainersWithRemove(
                           listOptions: ['Маркетинг', 'IT-сфера', 'Финансы'],
                           showAdd: true,
                         ),
@@ -177,7 +174,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
                         SizedBox(
                           height: UtilsResponsive.getResSize(10),
                         ),
-                        AppCheckListTile(
+                        const AppCheckListTile(
                           title: 'Скрыть возраст',
                         ),
                         const TitleStatText('Семейное положение'),
