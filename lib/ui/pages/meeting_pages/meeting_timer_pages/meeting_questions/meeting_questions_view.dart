@@ -53,7 +53,7 @@ class MeetingQuestionsView extends StatelessWidget {
                               crossAxisCount: 2,
                               crossAxisSpacing: UtilsResponsive.getResSize(12),
                               mainAxisSpacing: UtilsResponsive.getResSize(12),
-                              mainAxisExtent: 46.sp   //112
+                              mainAxisExtent: 46.sp,   //112
                           ),
                           itemCount: model.questionsList.length,
                           itemBuilder: (_, index) {
@@ -61,13 +61,13 @@ class MeetingQuestionsView extends StatelessWidget {
                               MeetingQuestionContainer(
                                 text: model.questionsList[index],
                               );
-                          })
+                          },)
                     ],
                   ),
                 ),
               ),
             ),
           );
-        });
+        },);
   }
 }

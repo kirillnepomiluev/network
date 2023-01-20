@@ -6,13 +6,13 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 
 
 class ProfileMainViewModel extends ViewModel {
-  final BuildContext context;
-  final bool isCupboardInit;
   ProfileMainViewModel(this.context, this.isCupboardInit){
     if (isCupboardInit) {
       activeTab = ActiveProfileTabs.cupboard;
     }
   }
+  final BuildContext context;
+  final bool isCupboardInit;
 
   ActiveProfileTabs activeTab = ActiveProfileTabs.values.first;
 
@@ -36,9 +36,9 @@ class ProfileMainViewModel extends ViewModel {
         backgroundColor: Colors.transparent,
         isScrollControlled: true,
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(25)),),
         context: context,
-        builder: (BuildContext context) => const HomeProfileBottomSheet());
+        builder: (BuildContext context) => const HomeProfileBottomSheet(),);
   }
 
   final ScrollController avatarScrollContr = ScrollController();

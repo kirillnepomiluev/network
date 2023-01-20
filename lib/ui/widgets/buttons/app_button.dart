@@ -6,15 +6,6 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class AppButton extends StatelessWidget {
-  final Color buttonColor;
-  final Color textColor;
-  final Color borderColor;
-  final String text;
-  final double? width;
-  final double? height;
-  final double borderRadius;
-  final VoidCallback? onPressed;
-  final TextStyle? textStyle;
 
   const AppButton(
       {Key? key,
@@ -26,9 +17,18 @@ class AppButton extends StatelessWidget {
         this.textColor = AppColors.textBlack,
         this.borderColor = Colors.white,
         this.borderRadius = AppBorderRadius.r20,
-        this.textStyle
+        this.textStyle,
       })
       : super(key: key);
+  final Color buttonColor;
+  final Color textColor;
+  final Color borderColor;
+  final String text;
+  final double? width;
+  final double? height;
+  final double borderRadius;
+  final VoidCallback? onPressed;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -40,15 +40,15 @@ class AppButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
             backgroundColor: buttonColor,
             shape: RoundedRectangleBorder(
-              side: BorderSide(width: 1, color: borderColor),
+              side: BorderSide(color: borderColor),
               borderRadius: BorderRadius.circular(borderRadius),
-            )
+            ),
         ),
         child: Text(
           text,
           style:
           textStyle??
-            AppTextStyles.black18.copyWith(fontWeight: FontWeight.w500)
+            AppTextStyles.black18.copyWith(fontWeight: FontWeight.w500),
           // AppTextStyles.primary18.copyWith(color: textColor, fontWeight: FontWeight.w500),
         ),
       ),

@@ -35,14 +35,13 @@ class _MeetingRateFirstViewState extends State<MeetingRateFirstView> {
             child: Scaffold(
               body: SafeArea(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       children: [
                         Padding(
                           padding: EdgeInsets.only(
-                              left: UtilsResponsive.getResSize(16)),
+                              left: UtilsResponsive.getResSize(16),),
                           child: const AppBarRow(),
                         ),
                         SizedBox(
@@ -80,7 +79,7 @@ class _MeetingRateFirstViewState extends State<MeetingRateFirstView> {
                             padding: EdgeInsets.symmetric(
                               horizontal: UtilsResponsive.getResSize(20),
                             ),
-                            child: const AddCommentRow()),
+                            child: const AddCommentRow(),),
                       ],
                     ),
                     Padding(
@@ -94,13 +93,13 @@ class _MeetingRateFirstViewState extends State<MeetingRateFirstView> {
                             context.router
                                 .push(const MeetingRateSecondViewRoute());
                           },
-                          text: 'Далее'),
+                          text: 'Далее',),
                     ),
                   ],
                 ),
               ),
             ),
           );
-        });
+        },);
   }
 }

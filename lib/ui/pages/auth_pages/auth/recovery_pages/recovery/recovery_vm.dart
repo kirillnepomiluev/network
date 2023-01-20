@@ -4,8 +4,8 @@ import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 class RecoveryViewModel extends ViewModel {
-  final BuildContext context;
   RecoveryViewModel(this.context);
+  final BuildContext context;
 
   void onLoginEmailTap() {
     context.router.push(const RecoveryEmailViewRoute());

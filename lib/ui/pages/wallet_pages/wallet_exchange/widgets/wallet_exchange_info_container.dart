@@ -17,7 +17,6 @@ class WalletExchangeInfoContainer extends StatelessWidget {
         width: double.infinity,
         radius: AppBorderRadius.r15,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
               height: 24.sp,
@@ -28,24 +27,23 @@ class WalletExchangeInfoContainer extends StatelessWidget {
             SizedBox(height: UtilsResponsive.getResSize(15)),
             Text('0.00045 BTC',
                 style: AppTextStyles.salad38
-                    .copyWith(fontWeight: FontWeight.w600)),
+                    .copyWith(fontWeight: FontWeight.w600),),
             Padding(
                 padding: EdgeInsets.only(
                     left: 20.sp, //22
                     right: 20.sp, //22
                     top: 27.sp, //37
-                    bottom: 18.5.sp //19
+                    bottom: 18.5.sp, //19
                     ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Text(
                       'Комиссия (2%)',
                     ),
                     Text('0.00015', style: AppTextStyles.primary18),
                   ],
-                )),
+                ),),
           ],
         ),
       ),

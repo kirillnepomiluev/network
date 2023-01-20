@@ -1,7 +1,5 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/input_otp_vm.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/widgets/otp_sent_container.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/widgets/retry_login_text_link.dart';
@@ -11,8 +9,8 @@ import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 
 class InputOtpView extends StatelessWidget {
-  final String strPhone;
   const InputOtpView({Key? key, required this.strPhone}) : super(key: key);
+  final String strPhone;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +23,6 @@ class InputOtpView extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: SingleChildScrollView(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       const SizedBox(
                         height: 10,
@@ -38,7 +34,7 @@ class InputOtpView extends StatelessWidget {
                       OtpSentContainer(
                           strPhone: model.strPhone,
                           onComplete: model.onCompletePassword,
-                          onValdation: model.onValdation
+                          onValdation: model.onValdation,
                       ),
                       const SizedBox(height: 40),
                       AppButton(
@@ -50,7 +46,7 @@ class InputOtpView extends StatelessWidget {
                               : AppColors.white15,
                           // onPressed: model.onLoginTap,
                           onPressed: model.onOtpSent,
-                          text: AppString.of(context).signIn
+                          text: AppString.of(context).signIn,
                       ),
                       const SizedBox(
                         height: 20,
@@ -65,7 +61,7 @@ class InputOtpView extends StatelessWidget {
               ),
             ),
           );
-        });
+        },);
   }
 }
 

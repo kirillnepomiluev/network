@@ -5,8 +5,8 @@ import 'package:network_app/ui/widgets/icons/network_icons.dart';
 
 
 class NotificationIcon extends StatelessWidget {
-  final VoidCallback? onTap;
   const NotificationIcon({Key? key, required this.onTap}) : super(key: key);
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {

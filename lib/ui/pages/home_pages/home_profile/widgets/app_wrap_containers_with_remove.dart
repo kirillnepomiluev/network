@@ -8,11 +8,11 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 //- -
 
 class AppWrapContainersWithRemove extends StatelessWidget {
-  final List<String> listOptions;
-  final bool showAdd;
   const AppWrapContainersWithRemove({
     Key? key, required this.listOptions, this.showAdd = false,
   }) : super(key: key);
+  final List<String> listOptions;
+  final bool showAdd;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,6 @@ class AppWrapContainersWithRemove extends StatelessWidget {
       crossAxisAlignment: WrapCrossAlignment.center,
       spacing: 8.sp,
       runSpacing: UtilsResponsive.getResSize(10),
-      direction: Axis.horizontal,
       children: [
         for(final item in listOptions)
           AppContainerWithRemove(

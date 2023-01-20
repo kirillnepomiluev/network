@@ -6,13 +6,13 @@ import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class StoreProductImageContainer extends StatelessWidget {
-  final String title;
-  final String imageURL;
   const StoreProductImageContainer({
     Key? key,
     required this.title,
     required this.imageURL,
   }) : super(key: key);
+  final String title;
+  final String imageURL;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +25,6 @@ class StoreProductImageContainer extends StatelessWidget {
         borderRadius: const BorderRadius.vertical(bottom: Radius.circular(50)),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const AppBackButton(),
           SizedBox(
@@ -40,11 +38,10 @@ class StoreProductImageContainer extends StatelessWidget {
             height: UtilsResponsive.getResSize(26),
           ),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(title,
                   style: AppTextStyles.salad26
-                      .copyWith(fontWeight: FontWeight.w600)),
+                      .copyWith(fontWeight: FontWeight.w600),),
               Padding(
                 padding: const EdgeInsets.only(top: 7),
                 child: Text('#0863246', style: AppTextStyles.primary24),
@@ -57,13 +54,13 @@ class StoreProductImageContainer extends StatelessWidget {
           Container(
               padding: EdgeInsets.symmetric(
                   vertical: UtilsResponsive.getResSize(10),
-                  horizontal: UtilsResponsive.getResSize(20)),
+                  horizontal: UtilsResponsive.getResSize(20),),
               decoration: BoxDecoration(
                   color: AppColors.white10,
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(10),),
               child: const Text(
                 'Редкий',
-              )),
+              ),),
           SizedBox(
             height: UtilsResponsive.getResSize(20),
           ),

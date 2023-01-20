@@ -30,7 +30,7 @@ class MeetingMatchingProfilesRow extends StatelessWidget {
               iconSize: 18.sp,
               contSize: 30.sp, //48
               iconColor: Colors.black,
-            )),
+            ),),
         MeetingMatchingProfileInfo(
           strName: 'Тимофей',
           imageUrl: Assets.images.avatars.avatar1.keyName,

@@ -4,10 +4,10 @@ import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 class MeetingAnswersViewModel extends ViewModel {
-  final BuildContext context;
   MeetingAnswersViewModel(this.context){
     groupValue = answersList.first;
   }
+  final BuildContext context;
 
   final List<String> answersList = [
     'Вариант ответа A',

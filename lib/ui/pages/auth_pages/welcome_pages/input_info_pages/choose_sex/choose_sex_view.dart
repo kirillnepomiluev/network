@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/ui/widgets/buttons/button_continue.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
+import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
@@ -35,8 +35,6 @@ class _ChooseSexViewState extends State<ChooseSexView> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(
                   height: 10,
@@ -63,7 +61,7 @@ class _ChooseSexViewState extends State<ChooseSexView> {
                         ? Colors.black
                         : Colors.white,
                     borderRadius: AppBorderRadius.r15,
-                    text: AppString.of(context).female),
+                    text: AppString.of(context).female,),
                 SizedBox(
                   height: UtilsResponsive.getResSize(40),  //40
                 ),
@@ -80,7 +78,7 @@ class _ChooseSexViewState extends State<ChooseSexView> {
                         ? Colors.black
                         : Colors.white,
                     borderRadius: AppBorderRadius.r15,
-                    text: AppString.of(context).male),
+                    text: AppString.of(context).male,),
                 SizedBox(
                   height: UtilsResponsive.getResSize(25), //25
                 ),
@@ -107,13 +105,13 @@ class _ChooseSexViewState extends State<ChooseSexView> {
                           style: const TextStyle(color: Colors.white, fontSize: 14),
                         ),
                       ),
-                    )),
+                    ),),
                 SizedBox(
                   height: UtilsResponsive.getResSize(25), //25
                 ),
                 AppButtonContinue(onPressed: () {
                   context.router.push(const ChooseLevelViewRoute());
-                }),
+                },),
               ],
             ),
           ),

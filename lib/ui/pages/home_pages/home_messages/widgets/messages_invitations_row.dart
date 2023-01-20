@@ -7,10 +7,10 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 
 class MessagesInvitationsRow extends StatelessWidget {
-  final List<Map<String, dynamic>> photoList;
   const MessagesInvitationsRow({
     Key? key, required this.photoList,
   }) : super(key: key);
+  final List<Map<String, dynamic>> photoList;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,6 @@ class MessagesInvitationsRow extends StatelessWidget {
         radius: AppBorderRadius.r15,
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(

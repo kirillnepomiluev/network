@@ -5,14 +5,14 @@ import 'package:network_app/ui/pages/store_pages/store_product/widgets/store_pro
 import 'package:network_app/ui/widgets/common/stat_column.dart';
 
 class StoreProductView extends StatelessWidget {
-  final String title;
-  final String? imageURL;
   const StoreProductView(
       {Key? key,
         this.title = 'Костюм "Выходной"',
-        this.imageURL
+        this.imageURL,
       })
       : super(key: key);
+  final String title;
+  final String? imageURL;
 
   //   title: 'Костюм "Выходной"',
   //           imageURL: Assets.images.avatars.avatar3.keyName,
@@ -21,8 +21,6 @@ class StoreProductView extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaTop = MediaQuery.of(context).viewPadding.top;
     return Scaffold(
-      extendBodyBehindAppBar: false,
-      extendBody: false,
       body: Padding(
         padding: EdgeInsets.only(top: mediaTop),
         child: SingleChildScrollView(
@@ -35,7 +33,7 @@ class StoreProductView extends StatelessWidget {
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 31),
-                child: StatColumn(ifProfileSheet: false),
+                child: StatColumn(),
               ),
             ],
           ),

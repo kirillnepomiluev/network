@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bar_row.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bottom.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ViewInviteContainer extends StatelessWidget {
-  final ActiveInvitationTabs activeTab;
-  final String strName;
-  final String imageUrl;
-  final bool showVerified;
   const ViewInviteContainer({
     Key? key,
     required this.activeTab,
@@ -22,6 +18,10 @@ class ViewInviteContainer extends StatelessWidget {
     required this.imageUrl,
     required this.showVerified,
   }) : super(key: key);
+  final ActiveInvitationTabs activeTab;
+  final String strName;
+  final String imageUrl;
+  final bool showVerified;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class ViewInviteContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ViewInviteContainerTop(
-                activeTab: activeTab, showVerified: showVerified),
+                activeTab: activeTab, showVerified: showVerified,),
 
             SizedBox(
               height: UtilsResponsive.getResSize(15),
@@ -54,7 +54,7 @@ class ViewInviteContainer extends StatelessWidget {
                   '${AppString.of(context).level} "${AppString.of(context).base}"',
                 ),
                 Text('+150 ${AppString.of(context).ofTokens}',
-                    style: AppTextStyles.salad),
+                    style: AppTextStyles.salad,),
               ],
             ),
 

@@ -25,7 +25,7 @@ class ChooseDateRichText extends StatelessWidget {
               text: '  /  ',
               style: TextStyle(
                 color: AppColors.salad,
-              )),
+              ),),
           TextSpan(
             text: 'DD',
           ),
@@ -33,7 +33,7 @@ class ChooseDateRichText extends StatelessWidget {
               text: '  /  ',
               style: TextStyle(
                 color: AppColors.salad,
-              )),
+              ),),
           TextSpan(
             text: 'YYYY',
           ),

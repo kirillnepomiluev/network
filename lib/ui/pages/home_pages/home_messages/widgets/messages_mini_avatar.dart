@@ -8,11 +8,11 @@ import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MessagesMiniAvatar extends StatelessWidget {
-  final Map<String, dynamic> photoMap;
   const MessagesMiniAvatar({
     Key? key,
     required this.photoMap,
   }) : super(key: key);
+  final Map<String, dynamic> photoMap;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class MessagesMiniAvatar extends StatelessWidget {
         left: UtilsResponsive.getResSize(15),
       ),
       child: InkWell(
-        onTap: (() {
+        onTap: () {
           context.router.push(const ChatPersonalViewRoute());
-        }),
+        },
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

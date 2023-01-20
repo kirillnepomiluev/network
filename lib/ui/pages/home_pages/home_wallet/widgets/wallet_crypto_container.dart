@@ -4,11 +4,11 @@ import 'package:network_app/utils/main_pages/wallet_currency_data.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class WalletCryptoContainer extends StatelessWidget {
-  final WalletCurrencyData data;
-  final bool isDark;
   const WalletCryptoContainer({
     Key? key, required this.data, this.isDark = false,
   }) : super(key: key);
+  final WalletCurrencyData data;
+  final bool isDark;
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +17,10 @@ class WalletCryptoContainer extends StatelessWidget {
       height: 27.sp, //37
       decoration: BoxDecoration(
           color: isDark ? AppColors.salad : AppColors.black1A,
-          borderRadius: BorderRadius.circular(15)),
+          borderRadius: BorderRadius.circular(15),),
       child: Icon(data.icon,
           size: data.iconSize,
-          color: isDark ? AppColors.black1A : AppColors.salad),
+          color: isDark ? AppColors.black1A : AppColors.salad,),
     );
   }
 }

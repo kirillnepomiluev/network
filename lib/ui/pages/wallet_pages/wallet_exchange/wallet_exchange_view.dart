@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/pages/wallet_pages/wallet_exchange/wallet_exchange_vm.dart';
 import 'package:network_app/ui/pages/wallet_pages/wallet_exchange/widgets/wallet_exchange_info_container.dart';
 import 'package:network_app/ui/pages/wallet_pages/wallet_exchange/widgets/wallet_exchange_top_row.dart';
-import 'package:network_app/ui/pages/wallet_pages/wallet_exchange/wallet_exchange_vm.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
@@ -25,7 +25,6 @@ class WalletExchangeView extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: UtilsResponsive.getResSize(16)),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppBarRow(
@@ -44,7 +43,7 @@ class WalletExchangeView extends StatelessWidget {
                             bottom: 35.sp, //70
                             left: UtilsResponsive.getResSize(12),
                             right: UtilsResponsive.getResSize(12),
-                            top: 35.sp //68
+                            top: 35.sp, //68
                             ),
                         child: MeetExchangeRow(
                           isExchange: true,
@@ -79,6 +78,6 @@ class WalletExchangeView extends StatelessWidget {
               ),
             ),
           );
-        });
+        },);
   }
 }

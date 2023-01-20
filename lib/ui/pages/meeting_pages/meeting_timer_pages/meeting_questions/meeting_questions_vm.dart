@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 class MeetingQuestionsViewModel extends ViewModel {
-  final BuildContext context;
   MeetingQuestionsViewModel(this.context);
+  final BuildContext context;
 
   List<String> questionsList = [
     'А еще вопрос может быть длинным придлинным и на него тоже нужно ответить?',

@@ -9,9 +9,6 @@ import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingTimerBottom extends StatelessWidget {
-  final bool isTimer;
-  final bool isPaused;
-  final VoidCallback onGoTap;
 
   const MeetingTimerBottom({
     Key? key,
@@ -19,6 +16,9 @@ class MeetingTimerBottom extends StatelessWidget {
     required this.isPaused,
     required this.onGoTap,
   }) : super(key: key);
+  final bool isTimer;
+  final bool isPaused;
+  final VoidCallback onGoTap;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class MeetingTimerBottom extends StatelessWidget {
                     child: isPaused
                         ? Text('GO',
                             style: AppTextStyles.primary20
-                                .copyWith(fontWeight: FontWeight.w600))
+                                .copyWith(fontWeight: FontWeight.w600),)
                         : Icon(
                             Icons.close_rounded,
                             color: Colors.black,
@@ -60,7 +60,7 @@ class MeetingTimerBottom extends StatelessWidget {
                 ),
                 Text('Чтобы получить больше токенов,\nответеть на вопросы',
                     textAlign: TextAlign.center,
-                    style: AppTextStyles.primary16),
+                    style: AppTextStyles.primary16,),
               ],
             ),
     );

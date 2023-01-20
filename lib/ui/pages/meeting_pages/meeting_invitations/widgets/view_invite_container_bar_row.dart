@@ -32,18 +32,16 @@ class ViewInviteContainerTop extends StatelessWidget {
           radius: AppBorderRadius.r15,
           child: Center(
             child: Text(AppString.of(context).businessMeeting,
-                style: AppTextStyles.primary12),
+                style: AppTextStyles.primary12,),
           ),
         ),
 
-        activeTab == ActiveInvitationTabs.invitations
-            ? Text('2 ч назад',
-                style: AppTextStyles.primary.copyWith(color: AppColors.grey3))
-            : Flexible(
+        if (activeTab == ActiveInvitationTabs.invitations) Text('2 ч назад',
+                style: AppTextStyles.primary.copyWith(color: AppColors.grey3),) else Flexible(
                 child: Container(
                   padding: EdgeInsets.symmetric(
                       vertical: UtilsResponsive.getResSize(13),
-                      horizontal: showVerified ? UtilsResponsive.getResSize(17) : UtilsResponsive.getResSize(13)
+                      horizontal: showVerified ? UtilsResponsive.getResSize(17) : UtilsResponsive.getResSize(13),
                   ),
                   decoration: BoxDecoration(
                     color:
@@ -56,7 +54,7 @@ class ViewInviteContainerTop extends StatelessWidget {
                           children: [
                             Text('02:04:15',
                                 style: AppTextStyles.primary12
-                                    .copyWith(fontWeight: FontWeight.bold)),
+                                    .copyWith(fontWeight: FontWeight.bold),),
                             Padding(
                               padding: const EdgeInsets.only(left: 5),
                               child: Icon(
@@ -73,7 +71,7 @@ class ViewInviteContainerTop extends StatelessWidget {
                           children: [
                             Text(AppString.of(context).readyToMeet,
                                 style: AppTextStyles.black12
-                                    .copyWith(fontWeight: FontWeight.w500)),
+                                    .copyWith(fontWeight: FontWeight.w500),),
                             Padding(
                               padding: const EdgeInsets.only(left: 5.75),
                               child: Icon(

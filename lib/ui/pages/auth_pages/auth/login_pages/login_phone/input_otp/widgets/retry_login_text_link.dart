@@ -3,12 +3,12 @@ import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 
 class RetryLoginTextLink extends StatelessWidget {
-  final VoidCallback onRetryTap;
 
   const RetryLoginTextLink({
     Key? key,
     required this.onRetryTap,
   }) : super(key: key);
+  final VoidCallback onRetryTap;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class RetryLoginTextLink extends StatelessWidget {
               bottom: 0,
               child: Text(
                 '_____________________________',
-                style: AppTextStyles.grey10.copyWith(fontWeight: FontWeight.bold)
+                style: AppTextStyles.grey10.copyWith(fontWeight: FontWeight.bold),
               ),
             )
           ],

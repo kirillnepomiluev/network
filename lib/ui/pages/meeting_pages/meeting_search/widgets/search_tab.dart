@@ -5,16 +5,16 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 
 class MeetingSearchTab extends StatelessWidget {
-  final ActiveSearchTabs activeTab;
-  final String text;
-  final ActiveSearchTabs tabName;
-  final Function(ActiveSearchTabs) changeTab;
   const MeetingSearchTab({
     Key? key,
     required this.activeTab,
     required this.text,
     required this.tabName, required this.changeTab,
   }) : super(key: key);
+  final ActiveSearchTabs activeTab;
+  final String text;
+  final ActiveSearchTabs tabName;
+  final Function(ActiveSearchTabs) changeTab;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class MeetingSearchTab extends StatelessWidget {
         ),
         padding: EdgeInsets.symmetric(
             vertical: UtilsResponsive.getResSize(16),
-            horizontal: UtilsResponsive.getResSize(20)
+            horizontal: UtilsResponsive.getResSize(20),
         ),
         child:
         Text(
@@ -40,7 +40,7 @@ class MeetingSearchTab extends StatelessWidget {
                   ? AppColors.textBlack
                   : AppColors.textWhite,
               fontSize: UtilsResponsive.getResSize(12),
-              fontWeight: FontWeight.w500),
+              fontWeight: FontWeight.w500,),
         ),
       ),
     );

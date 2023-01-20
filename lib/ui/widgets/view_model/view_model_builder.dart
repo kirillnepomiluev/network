@@ -5,6 +5,13 @@ import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 class ViewModelBuilder <T extends ViewModel>  //указываем тип, чтоб в разных классах применять - при создани экземпляра НАДО УКАЗАТЬ
     extends StatefulWidget {
 
+
+  const ViewModelBuilder({
+    Key? key,
+    required this.builder,
+    required this.createModelDataEx,
+  }) : super(key: key);
+
   //1. Чтобы передать ViewModel для управления
   final T Function() createModelDataEx;  //чтобы создать экземплях с расширением ViewModelData
   //в виде функции для того чтобы передать аргументы для создания (как Widget ex() => Container())
@@ -16,13 +23,6 @@ class ViewModelBuilder <T extends ViewModel>  //указываем тип, чт�
                       //T содержит в себе ViewModelData, зато можно для разных классов применять
                      //modelData принимает тип, который будет указан при создании - ViewModelBuilder<ExampleModelData>
       ) builder;
-
-
-  const ViewModelBuilder({
-    Key? key,
-    required this.builder,
-    required this.createModelDataEx,
-  }) : super(key: key);
 
 
   @override
@@ -59,7 +59,7 @@ class _ViewModelBuilderState<T extends ViewModel>   //надо сюда пере
   Widget build(BuildContext context) {
     return widget.builder(                //builder это виджет
         context,
-        modelDataEx                       //а это данные - класс с расширением ViewModelData
+        modelDataEx,                       //а это данные - класс с расширением ViewModelData
     );
   }
 }

@@ -24,10 +24,10 @@ class MeetingRequestInfoContainer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(AppString.of(context).businessMeeting,
-                    style: AppTextStyles.primary16.copyWith(fontWeight: FontWeight.w500)
+                    style: AppTextStyles.primary16.copyWith(fontWeight: FontWeight.w500),
                 ),
                 Text('#256893',
-                    style: AppTextStyles.salad16.copyWith(fontWeight: FontWeight.w500)),
+                    style: AppTextStyles.salad16.copyWith(fontWeight: FontWeight.w500),),
               ],
             ),
             const SizedBox(

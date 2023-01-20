@@ -5,10 +5,6 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 
 class RhombusText extends StatelessWidget {
-  final double? iconSize;
-  final double? fontSize;
-  final double padLeft;
-  final FontWeight fontWeight;
   const RhombusText({
     Key? key,
     this.iconSize,
@@ -16,6 +12,10 @@ class RhombusText extends StatelessWidget {
     this.padLeft = 5,
     this.fontWeight = FontWeight.w400,
   }) : super(key: key);
+  final double? iconSize;
+  final double? fontSize;
+  final double padLeft;
+  final FontWeight fontWeight;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class RhombusText extends StatelessWidget {
           style: TextStyle(
               fontSize: fontSize??UtilsResponsive.getResSize(14), //14
               color: AppColors.salad,
-              fontWeight: fontWeight),
+              fontWeight: fontWeight,),
         ),
         Padding(
           padding: EdgeInsets.only(left: padLeft),

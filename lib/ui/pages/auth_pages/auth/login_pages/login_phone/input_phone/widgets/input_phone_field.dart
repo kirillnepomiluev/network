@@ -6,12 +6,12 @@ import 'package:network_app/ui/theme/app_input_border.dart';
 
 
 class InputPhoneField extends StatelessWidget {
-  final bool showErrorText;
-  final Function(PhoneNumber) onChange;
-  final GlobalKey formstate;
   const InputPhoneField(
       {Key? key, required this.formstate, required this.onChange, required this.showErrorText,})
       : super(key: key);
+  final bool showErrorText;
+  final Function(PhoneNumber) onChange;
+  final GlobalKey formstate;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,6 @@ class InputPhoneField extends StatelessWidget {
               Icons.arrow_drop_down,
               color: Colors.white,
             ),
-            autofocus: false,
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly
@@ -41,7 +40,7 @@ class InputPhoneField extends StatelessWidget {
             //   )
             // ),
             onChanged: onChange,
-          )),
+          ),),
     );
   }
 }

@@ -22,13 +22,13 @@ class MeetRowIconNext extends StatelessWidget {
                   Icons.keyboard_arrow_right,
                   size: 20,
                   color: AppColors.grey,
-                )),
+                ),),
             Positioned(
                 left: 6,
                 child: Icon(
                   Icons.keyboard_arrow_right,
                   size: 20,
-                )),
+                ),),
           ],
         ),
       ),

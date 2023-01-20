@@ -6,13 +6,6 @@ import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class EnterInfoContainer extends StatelessWidget {
-  final String text1;
-  final String text2;
-  final String? description;
-  final int? maxLines;
-  final bool showDescription;
-  final double? fontSize;
-  final FontWeight fontWeight;
   const EnterInfoContainer(
       {Key? key,
         required this.text1,
@@ -21,9 +14,16 @@ class EnterInfoContainer extends StatelessWidget {
         this.description,
         this.showDescription = true,
         this.fontSize,
-        this.fontWeight = FontWeight.w500
+        this.fontWeight = FontWeight.w500,
       })
       : super(key: key);
+  final String text1;
+  final String text2;
+  final String? description;
+  final int? maxLines;
+  final bool showDescription;
+  final double? fontSize;
+  final FontWeight fontWeight;
 
   @override
   Widget build(BuildContext context) {

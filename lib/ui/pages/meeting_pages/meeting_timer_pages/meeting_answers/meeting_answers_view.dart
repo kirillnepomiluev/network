@@ -30,12 +30,11 @@ class _MeetingAnswersViewState extends State<MeetingAnswersView> {
             body: SafeArea(
               child: SingleChildScrollView(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
                           left: UtilsResponsive.getResSize(10),
-                          top: UtilsResponsive.getResSize(10)
+                          top: UtilsResponsive.getResSize(10),
                       ),
                       child: const AppBackButton(),
                     ),
@@ -56,13 +55,13 @@ class _MeetingAnswersViewState extends State<MeetingAnswersView> {
                     Container(
                       padding: EdgeInsets.symmetric(
                           horizontal: UtilsResponsive.getResSize(16),
-                          vertical: UtilsResponsive.getResSize(26)
+                          vertical: UtilsResponsive.getResSize(26),
                       ),
                       height: mediaHeight,
                       width: mediaWidth,
                       decoration: BoxDecoration(
                           color: AppColors.white10,
-                          borderRadius: const BorderRadius.vertical(top: Radius.circular(30))),
+                          borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -78,7 +77,7 @@ class _MeetingAnswersViewState extends State<MeetingAnswersView> {
                             MeetingAnswersRadioListTile(
                                 title: answer,
                                 groupValue: model.groupValue,
-                                onAnswerTap: model.onAnswerTap),
+                                onAnswerTap: model.onAnswerTap,),
 
                           if (model.missedCount > 0)
                             MeetingAnswersSkipQuestion(
@@ -103,6 +102,6 @@ class _MeetingAnswersViewState extends State<MeetingAnswersView> {
               ),
             ),
           );
-        });
+        },);
   }
 }

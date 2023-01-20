@@ -5,10 +5,10 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class ProfileBottomCurve extends StatelessWidget {
-  final VoidCallback openBottomSheetProfile;
   const ProfileBottomCurve({
     Key? key, required this.openBottomSheetProfile,
   }) : super(key: key);
+  final VoidCallback openBottomSheetProfile;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class ProfileBottomCurve extends StatelessWidget {
               size: Size(
                   mediaWidth,
                   (mediaWidth * 0.07733333333333334)
-                      .toDouble()),
+                      .toDouble(),),
               painter: BottomSheetMinPaint(),
             ),
             BlurryContainer(
@@ -38,6 +38,6 @@ class ProfileBottomCurve extends StatelessWidget {
               child: Container(),
             )
           ],
-        ));
+        ),);
   }
 }

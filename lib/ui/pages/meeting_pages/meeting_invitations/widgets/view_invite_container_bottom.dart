@@ -46,7 +46,7 @@ class ViewInviteContainerBottom extends StatelessWidget {
                   ),
                   Text('250 м',
                       style: AppTextStyles.salad20
-                          .copyWith(fontWeight: FontWeight.w600))
+                          .copyWith(fontWeight: FontWeight.w600),)
                 ],
               ),
             )
@@ -61,7 +61,7 @@ class ViewInviteContainerBottom extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(37),
                 color: Colors.transparent,
-                border: Border.all(color: AppColors.salad)),
+                border: Border.all(color: AppColors.salad),),
             width: 35.sp, //66
             height: 35.sp * 1.394, //92
             child: Icon(

@@ -3,13 +3,13 @@ import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class LoginLogoContainer extends StatelessWidget {
-  final String imageUrl;
-  final VoidCallback onTap;
   const LoginLogoContainer({
     Key? key,
     required this.imageUrl,
     required this.onTap,
   }) : super(key: key);
+  final String imageUrl;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {

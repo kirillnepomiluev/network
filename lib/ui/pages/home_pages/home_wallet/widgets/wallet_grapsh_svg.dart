@@ -1,11 +1,13 @@
+// ignore_for_file: cascade_invocations
+
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 
 
 class WalletGraphSvg extends CustomPainter {
-  final bool isDark;
 
   WalletGraphSvg({this.isDark = false});
+  final bool isDark;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -17,49 +19,49 @@ class WalletGraphSvg extends CustomPainter {
         size.width * 0.05393939,
         size.height * 1.038182,
         size.width * 0.1121212,
-        size.height * 0.9000000);
+        size.height * 0.9000000,);
     path_0.cubicTo(
         size.width * 0.1848485,
         size.height * 0.7272727,
         size.width * 0.2242424,
         size.height * 0.5363636,
         size.width * 0.3212121,
-        size.height * 0.9000000);
+        size.height * 0.9000000,);
     path_0.cubicTo(
         size.width * 0.4181818,
         size.height * 1.263636,
         size.width * 0.3696970,
         size.height * 0.3818218,
         size.width * 0.4515152,
-        size.height * 0.2727309);
+        size.height * 0.2727309,);
     path_0.cubicTo(
         size.width * 0.5333333,
         size.height * 0.1636400,
         size.width * 0.4939394,
         size.height * 0.8000036,
         size.width * 0.5787879,
-        size.height * 0.7363673);
+        size.height * 0.7363673,);
     path_0.cubicTo(
         size.width * 0.6636364,
         size.height * 0.6727309,
         size.width * 0.6152121,
         size.height * 0.3436545,
         size.width * 0.7121212,
-        size.height * 0.3727273);
+        size.height * 0.3727273,);
     path_0.cubicTo(
         size.width * 0.7727273,
         size.height * 0.3909091,
         size.width * 0.7424242,
         size.height * 0.5454545,
         size.width * 0.8151515,
-        size.height * 0.5909091);
+        size.height * 0.5909091,);
     path_0.cubicTo(
         size.width * 0.8733333,
         size.height * 0.6272727,
         size.width * 0.9525273,
         size.height * 0.2484855,
         size.width * 0.9848485,
-        size.height * 0.05454545);
+        size.height * 0.05454545,);
 
     Paint paint0Stroke = Paint()
       ..style = PaintingStyle.stroke
@@ -76,7 +78,7 @@ class WalletGraphSvg extends CustomPainter {
     Paint paint1Fill = Paint()..style = PaintingStyle.fill;
     paint1Fill.color = isDark ? AppColors.salad : AppColors.black1A;
     canvas.drawCircle(Offset(size.width * 0.9878788, size.height * 0.03636364),
-        size.width * 0.01212121, paint1Fill);
+        size.width * 0.01212121, paint1Fill,);
   }
 
   @override

@@ -25,7 +25,7 @@ class LoginView extends StatelessWidget {
                   Positioned(
                       bottom: 17.sp,
                       right: 17.sp,
-                      child: TroubleLoginTextLink(onTroubleEnterTap: model.onTroubleLoginTap)),
+                      child: TroubleLoginTextLink(onTroubleEnterTap: model.onTroubleLoginTap),),
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,11 +35,11 @@ class LoginView extends StatelessWidget {
                       const Center(
                           child: NetworkRow(
                         isAppBar: false,
-                      )),
+                      ),),
                       Padding(
                         padding: EdgeInsets.only(
                           left: 17.5.sp,
-                          right: 17.5.sp
+                          right: 17.5.sp,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -68,7 +68,7 @@ class LoginView extends StatelessWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 14.sp //10
+                                  padding: EdgeInsets.only(left: 14.sp, //10
                                       ), //10
                                   child: LoginLogoContainer(
                                     imageUrl:
@@ -95,6 +95,6 @@ class LoginView extends StatelessWidget {
               ),
             ),
           );
-        });
+        },);
   }
 }

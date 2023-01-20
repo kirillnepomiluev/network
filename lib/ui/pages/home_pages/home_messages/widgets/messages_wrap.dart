@@ -4,10 +4,10 @@ import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MessagesWrap extends StatelessWidget {
-  final List<Map<String, dynamic>> photoList;
   const MessagesWrap({
     Key? key, required this.photoList,
   }) : super(key: key);
+  final List<Map<String, dynamic>> photoList;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +22,12 @@ class MessagesWrap extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: UtilsResponsive.getResSize(12),
               mainAxisSpacing: UtilsResponsive.getResSize(12),
-              mainAxisExtent: 68.sp   //300
+              mainAxisExtent: 68.sp,   //300
           ),
           itemCount: photoList.length,
           itemBuilder: (_, index) {
             return MessageContainer(photoMap: photoList[index]);
-          })
+          },),
     );
   }
 }

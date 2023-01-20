@@ -5,10 +5,10 @@ import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
 class AppContainerWithRemove extends StatelessWidget {
+  const AppContainerWithRemove({Key? key, required this.title, this.onRemove, this.hasRemove = true}) : super(key: key);
   final String title;
   final VoidCallback? onRemove;
   final bool hasRemove;
-  const AppContainerWithRemove({Key? key, required this.title, this.onRemove, this.hasRemove = true}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +39,9 @@ class AppContainerWithRemove extends StatelessWidget {
                       Icons.close_rounded,
                       color: AppColors.salad,
                       size: UtilsResponsive.getResSize(16),
-                    )),
+                    ),),
               )
             ],
-          ));
+          ),);
   }
 }

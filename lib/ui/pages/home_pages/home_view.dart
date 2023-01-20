@@ -10,10 +10,10 @@ import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 
 class HomeView extends StatefulWidget {
-  final bool isCupboard;
-  final int initIndex;
   const HomeView({Key? key, this.initIndex = 0, this.isCupboard = false})
       : super(key: key);
+  final bool isCupboard;
+  final int initIndex;
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -21,7 +21,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   int _currentPage = 0;
-  var _pageController = PageController(initialPage: 0);
+  var _pageController = PageController();
 
   @override
   void initState() {
@@ -88,27 +88,27 @@ class _HomeViewState extends State<HomeView> {
                   icon: NetworkIcons.people,
                   text: 'Встречи',
                   fontSize: fontSize,
-                  iconSize: iconSize),
+                  iconSize: iconSize,),
               _barItem(
                   icon: NetworkIcons.person,
                   text: 'Профиль',
                   fontSize: fontSize,
-                  iconSize: iconSize),
+                  iconSize: iconSize,),
               _barItem(
                   icon: NetworkIcons.wallet,
                   text: 'Кошелек',
                   fontSize: fontSize,
-                  iconSize: iconSize),
+                  iconSize: iconSize,),
               _barItem(
                   icon: NetworkIcons.cart,
                   text: 'Магазин',
                   fontSize: fontSize,
-                  iconSize: iconSize),
+                  iconSize: iconSize,),
               _barItem(
                   icon: NetworkIcons.chat,
                   text: 'Чат',
                   fontSize: fontSize,
-                  iconSize: iconSize),
+                  iconSize: iconSize,),
             ],
           ),
         ),
@@ -120,7 +120,7 @@ class _HomeViewState extends State<HomeView> {
       {required IconData icon,
       required String text,
       required double iconSize,
-      required double fontSize}) {
+      required double fontSize,}) {
     return BottomBarItem(
         icon: Icon(
           icon,
@@ -132,7 +132,7 @@ class _HomeViewState extends State<HomeView> {
           style: TextStyle(
               color: Colors.black,
               fontSize: fontSize,
-              fontWeight: FontWeight.w500),
+              fontWeight: FontWeight.w500,),
         ),
         activeColor: AppColors.salad,
         inactiveIcon: Icon(
@@ -140,6 +140,6 @@ class _HomeViewState extends State<HomeView> {
           icon,
           color: Colors.white,
         ),
-        backgroundColorOpacity: 1);
+        backgroundColorOpacity: 1,);
   }
 }

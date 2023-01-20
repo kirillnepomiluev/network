@@ -6,12 +6,12 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class ChooseProfileScreen extends StatelessWidget {
-  final ActiveProfileTabs activeProfileTab;
-  final Function(ActiveProfileTabs) changeTab;
   const ChooseProfileScreen({
     Key? key,
     required this.activeProfileTab, required this.changeTab,
   }) : super(key: key);
+  final ActiveProfileTabs activeProfileTab;
+  final Function(ActiveProfileTabs) changeTab;
 
   @override
   Widget build(BuildContext context) {
@@ -23,23 +23,22 @@ class ChooseProfileScreen extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             ProfileTab(
                 text: AppString.of(context).profile,
                 tabName: ActiveProfileTabs.profile,
                 activeTab: activeProfileTab,
-                changeTab: changeTab),
+                changeTab: changeTab,),
             ProfileTab(
                 text: AppString.of(context).cupboard,
                 tabName: ActiveProfileTabs.cupboard,
                 activeTab: activeProfileTab,
-                changeTab: changeTab),
+                changeTab: changeTab,),
             ProfileTab(
                 text: AppString.of(context).friends,
                 tabName: ActiveProfileTabs.friends,
                 activeTab: activeProfileTab,
-                changeTab: changeTab),
+                changeTab: changeTab,),
           ],
         ),
       ),

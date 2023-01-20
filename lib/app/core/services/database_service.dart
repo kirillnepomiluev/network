@@ -1,5 +1,5 @@
 
-import 'package:network_app/app/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 
 class DatabaseService {
   Future<dynamic> fetchToDo() async {

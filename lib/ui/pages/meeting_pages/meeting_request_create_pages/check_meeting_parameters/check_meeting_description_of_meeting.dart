@@ -19,7 +19,7 @@ class CheckMeetingDescriptionOfMeeting extends StatelessWidget {
           height: UtilsResponsive.getResSize(10),
         ),
         const AppTextField(
-          hintText:
+          initialValue:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices amet tellus.',
         ),
       ],

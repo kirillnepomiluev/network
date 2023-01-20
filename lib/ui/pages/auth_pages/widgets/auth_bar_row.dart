@@ -5,9 +5,9 @@ import 'package:network_app/ui/widgets/cards/app_container_with_remove.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 
 class AuthBarRow extends StatelessWidget {
+  const AuthBarRow({Key? key, this.isAuth=true, this.title=''}) : super(key: key);
   final bool isAuth;
   final String title;
-  const AuthBarRow({Key? key, this.isAuth=true, this.title=''}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -72,9 +72,9 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
     if (_scrollController.hasClients) {
       _scrollController.animateTo(_scrollController.position.maxScrollExtent,
           duration: const Duration(milliseconds: 300),
-          curve: Curves.elasticOut);
+          curve: Curves.elasticOut,);
     } else {
-      Timer(const Duration(milliseconds: 400), () => _scrollToBottom());
+      Timer(const Duration(milliseconds: 400), _scrollToBottom);
     }
   }
 
@@ -95,7 +95,6 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
       },
       child: Scaffold(
         extendBody: true,
-        extendBodyBehindAppBar: false,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           toolbarHeight: 70,
@@ -103,19 +102,18 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
           title: GestureDetector(
             onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AppBackButton(func: () {
                   context.router.push(HomeViewRoute(initIndex: 4));
-                }),
+                },),
                 Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: Text(
                     'Джоли',
                     style: TextStyle(
                         fontSize: 20.sp, //20
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w600,),
                   ),
                 ),
                 const AppIconContainer(icon: Icons.more_horiz_rounded),
@@ -127,11 +125,11 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
         bottomNavigationBar: Container(
           color: Colors.transparent,
           padding: EdgeInsets.only(
-              left: 16, right: 16, top: 10, bottom: keyboardSize + 10),
+              left: 16, right: 16, top: 10, bottom: keyboardSize + 10,),
           child: Container(
             decoration: BoxDecoration(
                 color: AppColors.white10,
-                borderRadius: BorderRadius.circular(15)),
+                borderRadius: BorderRadius.circular(15),),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -145,15 +143,13 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
                             NetworkIcons.smile,
                             size: 22.sp, //26
                             color: Colors.grey,
-                          ))
+                          ),)
                       : IconButton(
-                          onPressed: () {
-                            sendFunction();
-                          },
+                          onPressed: sendFunction,
                           icon: Icon(
                             Icons.send,
                             size: 22.sp, //26
-                          )),
+                          ),),
                 )
               ],
             ),
@@ -169,15 +165,12 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
       child: ListView.builder(
           controller: _scrollController,
           padding: const EdgeInsets.only(top: 20, bottom: 10),
-          scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemCount: messagesList.length,
           itemBuilder: (BuildContext context, int index) {
             return Column(
               children: [
-                index != 0
-                    ? Container()
-                    : Padding(
+                if (index != 0) Container() else Padding(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: Column(
                           children: [
@@ -188,7 +181,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
                                 style: TextStyle(
                                     fontSize: 15.5.sp, //12
                                     color: AppColors.textGray,
-                                    fontWeight: FontWeight.w400),
+                                    fontWeight: FontWeight.w400,),
                               ),
                             ),
                             Container(
@@ -197,7 +190,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
                               decoration: BoxDecoration(
                                   color: AppColors.white10,
                                   // color: Colors.grey.shade300,
-                                  borderRadius: BorderRadius.circular(15)),
+                                  borderRadius: BorderRadius.circular(15),),
                               child: Row(
                                 children: [
                                   Padding(
@@ -213,7 +206,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
                                               child: AppCircleAvatar(
                                                   imageUrl:
                                                       'assets/images/avatars/avatar_0.png',
-                                                  contSize: 45)),
+                                                  contSize: 45,),),
                                           Positioned(
                                               right: 0,
                                               bottom: 0,
@@ -223,14 +216,14 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
                                                           color:
                                                               AppColors.salad,
                                                           shape:
-                                                              BoxShape.circle),
+                                                              BoxShape.circle,),
                                                   width: 17,
                                                   height: 17,
                                                   child: const Icon(
                                                     NetworkIcons.electric,
                                                     size: 7,
                                                     color: Colors.black,
-                                                  )))
+                                                  ),),)
                                         ],
                                       ),
                                     ),
@@ -245,7 +238,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
                                         style: TextStyle(
                                             color: AppColors.salad,
                                             fontSize: 15.5.sp, //12
-                                            fontWeight: FontWeight.w600),
+                                            fontWeight: FontWeight.w600,),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.only(top: 5),
@@ -253,11 +246,11 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
                                           'Пообщайтесь и обговорите важные моменты.',
                                           style: TextStyle(
                                               fontSize: 15.5.sp, //12
-                                              fontWeight: FontWeight.w400),
+                                              fontWeight: FontWeight.w400,),
                                         ),
                                       ),
                                     ],
-                                  )),
+                                  ),),
                                 ],
                               ),
                             )
@@ -265,14 +258,12 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
                         ),
                       ),
                 messageCont(messagesList[index]),
-                index != messagesList.length - 1
-                    ? Container()
-                    : const SizedBox(
+                if (index != messagesList.length - 1) Container() else const SizedBox(
                         height: 100,
                       )
               ],
             );
-          }),
+          },),
     );
   }
 
@@ -285,11 +276,10 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
 
     return Padding(
       padding: EdgeInsets.only(
-          left: 10, right: 10, top: 10, bottom: intMin < 2 ? 0 : 10),
+          left: 10, right: 10, top: 10, bottom: intMin < 2 ? 0 : 10,),
       child: Column(
         crossAxisAlignment:
             isYou ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
             constraints: BoxConstraints(
@@ -297,29 +287,24 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
             ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: isYou ? AppColors.salad : AppColors.white10),
+                color: isYou ? AppColors.salad : AppColors.white10,),
             padding: const EdgeInsets.all(15),
             child: Text(strText,
                 style: TextStyle(
                   color: isYou ? AppColors.textBlack : AppColors.textWhite,
                   fontSize: 16.5.sp, //14
                   fontWeight: FontWeight.w400,
-                )),
+                ),),
           ),
-          intMin < 2
-              ? Container()
-              : Padding(
+          if (intMin < 2) Container() else Padding(
                   padding: const EdgeInsets.only(
                     top: 5,
                   ),
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment:
                         isYou ? MainAxisAlignment.end : MainAxisAlignment.start,
                     children: [
-                      isYou == false
-                          ? Container()
-                          : Icon(
+                      if (isYou == false) Container() else Icon(
                               NetworkIcons.check_double,
                               color: AppColors.salad,
                               size: UtilsResponsive.getResSize(10), //12
@@ -331,7 +316,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
                           style: TextStyle(
                               fontSize: 12,
                               color: Colors.grey.shade600,
-                              fontWeight: FontWeight.w400),
+                              fontWeight: FontWeight.w400,),
                         ),
                       ),
                     ],
@@ -359,8 +344,6 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
           },
           // maxLines: 3,
           controller: _controller,
-          textAlign: TextAlign.start,
-          autofocus: false,
           decoration: InputDecoration(
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
@@ -368,18 +351,18 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
             hintStyle: TextStyle(
                 color: AppColors.textGray,
                 fontSize: UtilsResponsive.getResSize(14),
-                fontWeight: FontWeight.w400),
+                fontWeight: FontWeight.w400,),
             counterText: '',
             focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(width: 0, color: Colors.transparent),
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15),
-                    bottomLeft: Radius.circular(15))),
+                    bottomLeft: Radius.circular(15),),),
             enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(width: 0, color: Colors.transparent),
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15),
-                    bottomLeft: Radius.circular(15))
+                    bottomLeft: Radius.circular(15),),
                 // borderRadius: BorderRadius.circular(15)
                 ),
             // filled: true,

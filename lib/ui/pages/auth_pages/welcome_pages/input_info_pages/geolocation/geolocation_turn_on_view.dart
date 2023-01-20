@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/auth_bar_row.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
@@ -19,7 +19,6 @@ class GeolocationTurnOnView extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const AuthBarRow(),
                 EnterInfoContainer(
@@ -29,8 +28,8 @@ class GeolocationTurnOnView extends StatelessWidget {
                 ),
                 const SizedBox(height: 40,),
                 AppButton(onPressed: (){
-                  context.router.pushAndPopUntil(HomeViewRoute(initIndex: 0), predicate: (route) => false);
-                }, text: 'Включить геолокацию')
+                  context.router.pushAndPopUntil(HomeViewRoute(), predicate: (route) => false);
+                }, text: 'Включить геолокацию',)
               ],
             ),
           ),

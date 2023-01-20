@@ -32,7 +32,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
     return Container(
       padding: EdgeInsets.all(UtilsResponsive.getResSize(10)),
       decoration: BoxDecoration(
-          color: AppColors.white10, borderRadius: BorderRadius.circular(12)),
+          color: AppColors.white10, borderRadius: BorderRadius.circular(12),),
       child: TableCalendar<dynamic>(
         calendarStyle: CalendarStyle(
           defaultTextStyle: AppTextStyles.primary,
@@ -47,7 +47,6 @@ class _CustomCalendarState extends State<CustomCalendar> {
         lastDay: kLastDay,
         focusedDay: _focusedDay,
         locale: 'ru_RU',
-        availableGestures: AvailableGestures.all,
         headerStyle: HeaderStyle(
           formatButtonVisible: false,
           titleCentered: true,

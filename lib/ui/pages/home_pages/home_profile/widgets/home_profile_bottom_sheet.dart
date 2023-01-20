@@ -38,19 +38,17 @@ class HomeProfileBottomSheet extends StatelessWidget {
                 children: [
                   CustomPaint(
                     size: Size(mediaWidth,
-                        (mediaWidth * 0.07733333333333334).toDouble() //29
+                        (mediaWidth * 0.07733333333333334).toDouble(), //29
                         ),
                     painter: BottomSheetMinPaint(
-                        color: Colors.black.withOpacity(0.5)),
+                        color: Colors.black.withOpacity(0.5),),
                   ),
                   BlurryContainer(
                     borderRadius: BorderRadius.zero,
                     blur: 50,
-                    color: Colors.transparent,
                     padding: EdgeInsets.all(UtilsResponsive.getResSize(15)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         const StatColumn(
@@ -68,10 +66,10 @@ class HomeProfileBottomSheet extends StatelessWidget {
                           child: Container(
                             padding: EdgeInsets.symmetric(
                                 horizontal: UtilsResponsive.getResSize(15),
-                                vertical: UtilsResponsive.getResSize(10)),
+                                vertical: UtilsResponsive.getResSize(10),),
                             decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(10)),
+                                borderRadius: BorderRadius.circular(10),),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -84,7 +82,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
                                       NetworkIcons.edit,
                                       size: UtilsResponsive.getResSize(22),
                                       color: AppColors.salad,
-                                    ))
+                                    ),)
                               ],
                             ),
                           ),
@@ -110,7 +108,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
                           height: UtilsResponsive.getResSize(10),
                         ),
                         const AppTextField(
-                          hintText:
+                          initialValue:
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices amet tellus.',
                         ),
                         const TitleStatText('Сфера деятельности'),
@@ -151,10 +149,10 @@ class HomeProfileBottomSheet extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.symmetric(
                               horizontal: UtilsResponsive.getResSize(15),
-                              vertical: UtilsResponsive.getResSize(10)),
+                              vertical: UtilsResponsive.getResSize(10),),
                           decoration: BoxDecoration(
                               color: AppColors.salad,
-                              borderRadius: BorderRadius.circular(15)),
+                              borderRadius: BorderRadius.circular(15),),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -162,7 +160,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.only(
                                     left: UtilsResponsive.getResSize(17),
-                                    right: 3),
+                                    right: 3,),
                                 child: Icon(
                                   NetworkIcons.pencil,
                                   size: UtilsResponsive.getResSize(16),
@@ -198,7 +196,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
                           title: 'Скрыть цель встречи',
                         ),
                         const TitleStatText(
-                            'Готов ли знакомиться с противоположным полом'),
+                            'Готов ли знакомиться с противоположным полом',),
                         SizedBox(
                           height: UtilsResponsive.getResSize(20),
                         ),
@@ -225,7 +223,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
             size: Size(
                 mediaWidth,
                 (mediaWidth * 0.07733333333333334)
-                    .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                    .toDouble(),), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
             painter: BottomSheetMinPaint(color: Colors.transparent),
           ),
         ],

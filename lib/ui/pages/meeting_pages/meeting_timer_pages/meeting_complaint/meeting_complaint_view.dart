@@ -47,14 +47,13 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
         child: Scaffold(
           // backgroundColor: Colors.grey.shade400,
           body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               //Верхняя часть
               Padding(
                 padding: EdgeInsets.only(
                     left: UtilsResponsive.getResSize(16),
                     right: UtilsResponsive.getResSize(16),
-                    bottom: UtilsResponsive.getResSize(20)),
+                    bottom: UtilsResponsive.getResSize(20),),
                 child: Column(
                   children: [
                     const AppBarRow(),
@@ -86,14 +85,12 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
               Expanded(
                 child: Container(
                   padding: EdgeInsets.symmetric(
-                      horizontal: UtilsResponsive.getResSize(16)),
+                      horizontal: UtilsResponsive.getResSize(16),),
                   decoration: BoxDecoration(
                       color: AppColors.white10,
                       borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(30))),
+                          top: Radius.circular(30),),),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
                         height: UtilsResponsive.getResSize(32),
@@ -103,7 +100,7 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
                         padding: EdgeInsets.all(UtilsResponsive.getResSize(14)),
                         decoration: BoxDecoration(
                             color: AppColors.white10,
-                            borderRadius: BorderRadius.circular(15)),
+                            borderRadius: BorderRadius.circular(15),),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -128,10 +125,10 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
                         child: Container(
                             decoration: BoxDecoration(
                                 color: AppColors.white10,
-                                borderRadius: BorderRadius.circular(15)),
+                                borderRadius: BorderRadius.circular(15),),
                             child: const AppTextField(
                               isTransparent: true,
-                            )),
+                            ),),
                       ),
 
                       SizedBox(
@@ -140,13 +137,11 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
 
                       Padding(
                           padding: EdgeInsets.only(
-                              bottom: UtilsResponsive.getResSize(35)),
+                              bottom: UtilsResponsive.getResSize(35),),
                           child: AppButton(
                             text: 'Отправить',
-                            onPressed: () {
-                              sendFunction();
-                            },
-                          )
+                            onPressed: sendFunction,
+                          ),
                           ),
                     ],
                   ),

@@ -24,7 +24,7 @@ class MeetingNotificationsView extends StatelessWidget {
           padding: EdgeInsets.only(
               top: mediaTop,
               left: 17.sp, //16
-              right: 17.sp),
+              right: 17.sp,),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,17 +33,16 @@ class MeetingNotificationsView extends StatelessWidget {
                   height: 10,
                 ),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const AppBackButton(),
                     Text(AppString.of(context).notifications,
                         style: AppTextStyles.primary20
-                            .copyWith(fontWeight: FontWeight.w600)),
+                            .copyWith(fontWeight: FontWeight.w600),),
                     AppIconContainer(
                         icon: NetworkIcons.check_double,
                         iconSize: 18.5.sp,
-                        onTap: () {})
+                        onTap: () {},)
                   ],
                 ),
                 const MeetingNotificationInfoContainer(
@@ -52,35 +51,35 @@ class MeetingNotificationsView extends StatelessWidget {
                     title2: 'пригласила вас на ',
                     title3: 'встречу',
                     strTime: '5 мин назад',
-                    icon: NetworkIcons.electric),
+                    icon: NetworkIcons.electric,),
                 const MeetingNotificationInfoContainer(
                     showOnline: true,
                     title1: 'Питер ',
                     title2: 'добавил вас в ',
                     title3: 'избранное',
                     strTime: '15 мин назад',
-                    icon: NetworkIcons.star),
+                    icon: NetworkIcons.star,),
                 const MeetingNotificationInfoContainer(
                     showOnline: false,
                     title1: 'Меган ',
                     title2: 'хочет добавить вас в ',
                     title3: 'друзья',
                     strTime: '2 ч назад',
-                    icon: NetworkIcons.people),
+                    icon: NetworkIcons.people,),
                 const MeetingNotificationInfoContainer(
                     showOnline: false,
                     title1: '',
                     title2: 'На вас подали ',
                     title3: 'жалобу',
                     strTime: '2 ч назад',
-                    icon: NetworkIcons.info),
+                    icon: NetworkIcons.info,),
                 const MeetingNotificationInfoContainer(
                     showOnline: false,
                     title1: '',
                     title2: 'Появился ',
                     title3: 'новый запрос',
                     strTime: '2 ч назад',
-                    icon: NetworkIcons.electric),
+                    icon: NetworkIcons.electric,),
               ],
             ),
           ),

@@ -7,11 +7,11 @@ import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
 class MeetingAnswersSkipQuestion extends StatelessWidget {
-  final Function({bool isMissing}) sendFunction;
-  final int missedCount;
   const MeetingAnswersSkipQuestion({
     Key? key, required this.sendFunction, required this.missedCount,
   }) : super(key: key);
+  final Function({bool isMissing}) sendFunction;
+  final int missedCount;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,6 @@ class MeetingAnswersSkipQuestion extends StatelessWidget {
               radius: AppBorderRadius.r15,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.5),
@@ -47,7 +46,7 @@ class MeetingAnswersSkipQuestion extends StatelessWidget {
                         icon: Icons.close_rounded,
                         iconColor: Colors.black,
                         iconSize: UtilsResponsive.getResSize(12),
-                      ))
+                      ),)
                 ],
               ),
             ),
@@ -57,11 +56,10 @@ class MeetingAnswersSkipQuestion extends StatelessWidget {
           padding: const EdgeInsets.only(top: 6, left: 8),
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text('Вы можете пропустить ', style: AppTextStyles.grey10),
               Text('$missedCount вопроса',
-                  style: AppTextStyles.salad10),
+                  style: AppTextStyles.salad10,),
             ],
           ),
         ),

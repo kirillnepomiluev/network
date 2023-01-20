@@ -5,16 +5,16 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ProfileTab extends StatelessWidget {
-  final ActiveProfileTabs activeTab;
-  final String text;
-  final ActiveProfileTabs tabName;
-  final Function(ActiveProfileTabs) changeTab;
   const ProfileTab({
     Key? key,
     required this.activeTab,
     required this.text,
     required this.tabName, required this.changeTab,
   }) : super(key: key);
+  final ActiveProfileTabs activeTab;
+  final String text;
+  final ActiveProfileTabs tabName;
+  final Function(ActiveProfileTabs) changeTab;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +32,6 @@ class ProfileTab extends StatelessWidget {
             vertical: 18.5.sp, //19
           ),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 20),
@@ -44,7 +42,7 @@ class ProfileTab extends StatelessWidget {
                           ? AppColors.salad
                           : Colors.white,
                       fontSize: 16.5.sp, //14
-                      fontWeight: FontWeight.w500),
+                      fontWeight: FontWeight.w500,),
                 ),
               ),
               Padding(

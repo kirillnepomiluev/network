@@ -6,11 +6,11 @@ import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HobbitsContainer extends StatelessWidget {
-  final String text;
-  final bool hasEdit;
   const HobbitsContainer(this.text, {
     Key? key, this.hasEdit = true,
   }) : super(key: key);
+  final String text;
+  final bool hasEdit;
 
   @override
   Widget build(BuildContext context) {

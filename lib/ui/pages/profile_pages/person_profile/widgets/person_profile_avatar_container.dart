@@ -23,7 +23,7 @@ class PersonProfileAvatarContainer extends StatelessWidget {
                 width: mediaWidth,
                 child: Assets.images.avatars.avatar3D.image(
                   alignment: Alignment.topCenter,
-                )),
+                ),),
           ),
           Container(
             decoration: BoxDecoration(
@@ -40,7 +40,7 @@ class PersonProfileAvatarContainer extends StatelessWidget {
                   Colors.black.withOpacity(0.88),
                   Colors.black.withOpacity(0.88),
                   // Colors.black
-                ])),
+                ],),),
           ),
           const PersonProfileAvatarInfoContainer(),
         ],

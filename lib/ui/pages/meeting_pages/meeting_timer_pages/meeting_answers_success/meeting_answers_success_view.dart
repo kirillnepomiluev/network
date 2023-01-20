@@ -18,13 +18,12 @@ class MeetingAnswersSuccessView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
               padding: EdgeInsets.only(
                   left: UtilsResponsive.getResSize(10),
                   top: UtilsResponsive.getResSize(10),
-                  bottom: UtilsResponsive.getResSize(17)),
+                  bottom: UtilsResponsive.getResSize(17),),
               child: const AppBackButton(),
             ),
 
@@ -33,13 +32,12 @@ class MeetingAnswersSuccessView extends StatelessWidget {
               child: Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.symmetric(
-                    horizontal: UtilsResponsive.getResSize(16)),
+                    horizontal: UtilsResponsive.getResSize(16),),
                 decoration: BoxDecoration(
                     color: AppColors.white10,
                     borderRadius:
-                        const BorderRadius.vertical(top: Radius.circular(30))),
+                        const BorderRadius.vertical(top: Radius.circular(30)),),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
                         padding: EdgeInsets.only(top: 30.sp), //49
@@ -49,7 +47,7 @@ class MeetingAnswersSuccessView extends StatelessWidget {
                           text2: 'вы ответили\nна все вопросы',
                           color2: AppColors.textWhite,
                           textAlign: TextAlign.center,
-                        )),
+                        ),),
                     Padding(
                       padding: EdgeInsets.only(top: 48.sp), //118
                       child: RhombusText(

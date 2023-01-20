@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_matching/meeting_matching_vm.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_matching/widgets/meeting_matching_info_container.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_matching/widgets/meeting_matching_profiles_row.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_matching/meeting_matching_vm.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
@@ -22,9 +22,8 @@ class MeetingMatchingView extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: UtilsResponsive.getResSize(16)),
+                      horizontal: UtilsResponsive.getResSize(16),),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const AppBarRow(),
                       SizedBox(
@@ -40,7 +39,7 @@ class MeetingMatchingView extends StatelessWidget {
                       ),
                       AppButton(
                           onPressed: model.onStartChat,
-                          text: AppString.of(context).toStartChat),
+                          text: AppString.of(context).toStartChat,),
                       SizedBox(
                         height: UtilsResponsive.getResSize(23),
                       ),
@@ -50,6 +49,6 @@ class MeetingMatchingView extends StatelessWidget {
               ),
             ),
           );
-        });
+        },);
   }
 }

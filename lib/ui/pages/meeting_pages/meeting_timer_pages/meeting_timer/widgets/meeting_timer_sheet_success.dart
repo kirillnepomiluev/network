@@ -21,10 +21,8 @@ class MeetingTimerSheetSuccess extends StatelessWidget {
     return BlurryContainer(
       height: mediaHeight*0.8,
       blur: 30,
-      color: Colors.transparent,
       borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -40,7 +38,7 @@ class MeetingTimerSheetSuccess extends StatelessWidget {
           RhombusText(
               fontSize: UtilsResponsive.getResSize(60), //60
               iconSize: UtilsResponsive.getResSize(40), //45
-              fontWeight: FontWeight.w600),
+              fontWeight: FontWeight.w600,),
 
           Padding(
               padding: EdgeInsets.only(bottom: UtilsResponsive.getResSize(20)),
@@ -65,12 +63,11 @@ class MeetingTimerSheetSuccess extends StatelessWidget {
                   text: 'Оценить позже',
                   height: 35.sp, //70
                   buttonColor: Colors.black,
-                  borderColor: Colors.white,
                   textStyle: AppTextStyles.primary18,
                   // width: 1,
                 ),
               ],
-            )
+            ),
           ),
         ],
       ),

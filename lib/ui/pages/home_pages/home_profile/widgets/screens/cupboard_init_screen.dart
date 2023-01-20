@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_avatar_container.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_headwear_container.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
@@ -10,12 +10,12 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CupboardInitScreen extends StatelessWidget {
-  final ScrollController avatarScrollContr;
-  final ScrollController hatScrollContr;
-  final ActiveProfileTabs activeTab;
   const CupboardInitScreen({
     Key? key, required this.avatarScrollContr, required this.hatScrollContr, required this.activeTab,
   }) : super(key: key);
+  final ScrollController avatarScrollContr;
+  final ScrollController hatScrollContr;
+  final ActiveProfileTabs activeTab;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,6 @@ class CupboardInitScreen extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 10, bottom: 15, right: 15),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -43,7 +42,7 @@ class CupboardInitScreen extends StatelessWidget {
                     NetworkIcons.arrow_long_right,
                     color: Colors.white,
                     size: 25,
-                  ))
+                  ),)
             ],
           ),
         ),
@@ -54,11 +53,12 @@ class CupboardInitScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               for (var i = 0; i < 6; i++)
                 StoreAvatarContainer(
-                  type: i % 2 == 0
+                  type:
+                  // i % 2 == 0
+                  i.isEven
                       ? AppString.of(context).rare
                       : AppString.of(context).usual,
                 ),
@@ -77,7 +77,7 @@ class CupboardInitScreen extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 20.5.sp, //22
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w600,),
                 textAlign: TextAlign.start,
               ),
               IconButton(
@@ -89,7 +89,7 @@ class CupboardInitScreen extends StatelessWidget {
                     NetworkIcons.arrow_long_right,
                     color: Colors.white,
                     size: 25,
-                  ))
+                  ),)
             ],
           ),
         ),
@@ -102,11 +102,12 @@ class CupboardInitScreen extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 for (var i = 0; i < 6; i++)
                   StoreHeadwearContainer(
-                    type: i % 2 == 0
+                    type:
+                    // i % 2 == 0
+                    i.isEven
                         ? AppString.of(context).rare
                         : AppString.of(context).usual,
                   ),

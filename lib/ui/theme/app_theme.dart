@@ -11,12 +11,12 @@ class AppTheme{
           style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(13)
-              )
-          )
+                  borderRadius: BorderRadius.circular(13),
+              ),
+          ),
       ),
       appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
       textTheme: AppTextStyles.textTheme,
-      scaffoldBackgroundColor: AppColors.blackBack
+      scaffoldBackgroundColor: AppColors.blackBack,
   );
 }

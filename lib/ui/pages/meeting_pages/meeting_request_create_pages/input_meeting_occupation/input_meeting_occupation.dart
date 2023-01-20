@@ -25,7 +25,6 @@ class _InputMeetingOccupationViewState extends State<InputMeetingOccupationView>
             child:
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 AppBarRow(title: AppString.of(context).creatingOfPersonalRequest),
                 EnterInfoContainer(
@@ -46,7 +45,7 @@ class _InputMeetingOccupationViewState extends State<InputMeetingOccupationView>
                   context.router.pop();
                 },),
               ],
-            )
+            ),
           ),
         ),
       ),

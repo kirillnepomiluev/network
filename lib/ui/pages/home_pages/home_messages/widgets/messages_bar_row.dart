@@ -16,13 +16,12 @@ class MessagesBarRow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           AppBackButton(func: () {}),
           Text(
             AppString.of(context).messages,
-            style: AppTextStyles.primary20.copyWith(fontWeight: FontWeight.w600)
+            style: AppTextStyles.primary20.copyWith(fontWeight: FontWeight.w600),
           ),
           AppIconContainer(
             icon: NetworkIcons.search,

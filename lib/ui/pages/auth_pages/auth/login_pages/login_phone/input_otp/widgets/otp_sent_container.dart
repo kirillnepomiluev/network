@@ -6,15 +6,15 @@ import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 
 
 class OtpSentContainer extends StatelessWidget {
-  final String strPhone;
-  final String? Function(String?) onValdation;
-  final void Function(String) onComplete;
   const OtpSentContainer({
     Key? key,
     required this.strPhone,
     required this.onValdation,
     required this.onComplete,
   }) : super(key: key);
+  final String strPhone;
+  final String? Function(String?) onValdation;
+  final void Function(String) onComplete;
 
   @override
   Widget build(BuildContext context) {

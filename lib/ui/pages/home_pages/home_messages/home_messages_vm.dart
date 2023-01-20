@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 class HomeMessagesViewModel extends ViewModel {
-  final BuildContext context;
   HomeMessagesViewModel(this.context);
+  final BuildContext context;
 
 
   List<Map<String, dynamic>> photoList = [

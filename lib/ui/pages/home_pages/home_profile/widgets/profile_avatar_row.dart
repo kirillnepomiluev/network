@@ -8,15 +8,15 @@ import 'package:network_app/ui/widgets/icons/notification_icon.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
 class ProfileAvatarRow extends StatelessWidget {
-  final String title;
-  final bool showNotifications;
-  final VoidCallback? onNotificationIconTap;
   const ProfileAvatarRow({
     Key? key,
     this.title = 'Тимофей, 37',
     this.showNotifications = true,
     this.onNotificationIconTap,
   }) : super(key: key);
+  final String title;
+  final bool showNotifications;
+  final VoidCallback? onNotificationIconTap;
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +35,13 @@ class ProfileAvatarRow extends StatelessWidget {
                 child: AppCircleAvatar(
                   contSize: UtilsResponsive.getResSize(60), //60
                   imageUrl: Assets.images.avatars.avatar0.keyName,
-                )),
+                ),),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(title,
                     style: AppTextStyles.primary18
-                        .copyWith(fontWeight: FontWeight.w700)),
+                        .copyWith(fontWeight: FontWeight.w700),),
                 const SizedBox(
                   height: 7,
                 ),
@@ -51,7 +51,7 @@ class ProfileAvatarRow extends StatelessWidget {
                     radius: AppBorderRadius.r10,
                     child: Center(
                         child: Text('я люблю веселиться 😁',
-                            style: AppTextStyles.primary12))),
+                            style: AppTextStyles.primary12,),),),
               ],
             ),
           ],

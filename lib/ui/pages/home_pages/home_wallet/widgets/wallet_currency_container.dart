@@ -8,21 +8,21 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class WalletCurrencyContainer extends StatelessWidget {
-  final WalletCurrencyData data;
 
   const WalletCurrencyContainer({
     Key? key, required this.data,
   }) : super(key: key);
+  final WalletCurrencyData data;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 20.sp //21
+      padding: EdgeInsets.only(bottom: 20.sp, //21
           ),
       child: Container(
         padding: EdgeInsets.all(22.5.sp), //27
         decoration: BoxDecoration(
-            color: AppColors.white10, borderRadius: BorderRadius.circular(15)),
+            color: AppColors.white10, borderRadius: BorderRadius.circular(15),),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,19 +32,19 @@ class WalletCurrencyContainer extends StatelessWidget {
                 WalletCryptoContainer(data: data, isDark: true),
                 Padding(
                   padding:
-                      EdgeInsets.only(left: UtilsResponsive.getResSize(18) //18
+                      EdgeInsets.only(left: UtilsResponsive.getResSize(18), //18
                           ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         data.title,
-                        style: AppTextStyles.primary16
+                        style: AppTextStyles.primary16,
                       ),
                       const SizedBox(height: 5,),
                       Text(
                         data.subtitle,
-                        style: AppTextStyles.grey
+                        style: AppTextStyles.grey,
                       ),
                     ],
                   ),
@@ -63,10 +63,10 @@ class WalletCurrencyContainer extends StatelessWidget {
                     children: [
                       Icon(Icons.attach_money_sharp,
                           size: UtilsResponsive.getResSize(12), //12
-                          color: AppColors.salad),
+                          color: AppColors.salad,),
                       Text(
                         '20.13',
-                        style: AppTextStyles.salad12
+                        style: AppTextStyles.salad12,
                       ),
                     ],
                   ),

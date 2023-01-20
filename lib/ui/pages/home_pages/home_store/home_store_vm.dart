@@ -5,8 +5,8 @@ import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 
 class StoreMainViewModel extends ViewModel {
-  final BuildContext context;
   StoreMainViewModel(this.context);
+  final BuildContext context;
 
   ActiveStoreFilerTabs activeTab = ActiveStoreFilerTabs.values.first;
   void changeTab(ActiveStoreFilerTabs tabName) {
@@ -27,6 +27,6 @@ class StoreMainViewModel extends ViewModel {
   void onViewHeadWaresTap() {
     // context.router.push(const StoreCategoryHeadwearsViewRoute());
     context.router.push(StoreCategoryViewRoute(
-        storeProductType: StoreProductType.hats));
+        storeProductType: StoreProductType.hats,),);
   }
 }

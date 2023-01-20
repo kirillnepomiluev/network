@@ -4,8 +4,8 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 
 
 class HomeWalletViewModel extends ViewModel {
-  final BuildContext context;
   HomeWalletViewModel(this.context);
+  final BuildContext context;
 
   ActiveWalletTabs activeTab = ActiveWalletTabs.values.first;
 

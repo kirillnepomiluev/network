@@ -5,17 +5,16 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 
 
 class ChooseInvitationScreen extends StatelessWidget {
-  final ActiveInvitationTabs activeTab;
-  final Function(ActiveInvitationTabs) changeTab;
   const ChooseInvitationScreen({
     Key? key, required this.activeTab, required this.changeTab,
   }) : super(key: key);
+  final ActiveInvitationTabs activeTab;
+  final Function(ActiveInvitationTabs) changeTab;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         InvitationTab(
           text: AppString.of(context).invitations,

@@ -7,20 +7,20 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 
 class RateSliderContainer extends StatelessWidget {
-  final String title;
   const RateSliderContainer({
     Key? key, required this.title,
   }) : super(key: key);
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
           vertical: UtilsResponsive.getResSize(17),
-          horizontal: UtilsResponsive.getResSize(20)
+          horizontal: UtilsResponsive.getResSize(20),
       ),
       decoration: BoxDecoration(
-          color: AppColors.white10, borderRadius: BorderRadius.circular(15)),
+          color: AppColors.white10, borderRadius: BorderRadius.circular(15),),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,

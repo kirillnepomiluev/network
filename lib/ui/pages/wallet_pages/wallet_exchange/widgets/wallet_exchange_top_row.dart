@@ -14,7 +14,7 @@ class WalletExchangeTopRow extends StatelessWidget {
       children: [
         Text('Вы собираетесь обменять',
             style:
-                AppTextStyles.primary24.copyWith(fontWeight: FontWeight.w500)),
+                AppTextStyles.primary24.copyWith(fontWeight: FontWeight.w500),),
         RichText(
             text: TextSpan(
                 style: AppTextStyles.primary24
@@ -22,13 +22,13 @@ class WalletExchangeTopRow extends StatelessWidget {
                 children: const <TextSpan>[
               TextSpan(
                   text: '300 баллов ',
-                  style: TextStyle(color: AppColors.salad)),
+                  style: TextStyle(color: AppColors.salad),),
               TextSpan(
                 text: 'в ',
               ),
               TextSpan(
-                  text: 'Bitcoin', style: TextStyle(color: AppColors.salad)),
-            ])),
+                  text: 'Bitcoin', style: TextStyle(color: AppColors.salad),),
+            ],),),
       ],
     );
   }

@@ -5,11 +5,11 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class WalletTab extends StatelessWidget {
+  const WalletTab({Key? key, required this.activeTab, required this.tabName, required this.text, required this.changeTab}) : super(key: key);
   final ActiveWalletTabs activeTab;
   final ActiveWalletTabs tabName;
   final String text;
   final Function(ActiveWalletTabs) changeTab;
-  const WalletTab({Key? key, required this.activeTab, required this.tabName, required this.text, required this.changeTab}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,6 @@ class WalletTab extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
 
@@ -39,13 +38,13 @@ class WalletTab extends StatelessWidget {
                       ? AppColors.textBlack
                       : AppColors.textWhite,
                   fontSize: 18.sp, //16
-                  fontWeight: FontWeight.w400),
+                  fontWeight: FontWeight.w400,),
             ),
 
 
             Padding(
               padding: EdgeInsets.only(
-                  left: 13.sp //9
+                  left: 13.sp, //9
               ),
               child: Icon(
                 activeTab == tabName

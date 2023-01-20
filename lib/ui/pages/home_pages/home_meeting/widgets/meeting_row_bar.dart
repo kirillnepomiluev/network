@@ -9,13 +9,13 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class MeetingRowBar extends StatelessWidget {
-  final VoidCallback onSearchIconTap;
-  final VoidCallback onNotificationIconTap;
-  final VoidCallback onTimerIconTap;
   const MeetingRowBar({
     Key? key, required this.onSearchIconTap, required this.onNotificationIconTap, required this.onTimerIconTap,
 
   }) : super(key: key);
+  final VoidCallback onSearchIconTap;
+  final VoidCallback onNotificationIconTap;
+  final VoidCallback onTimerIconTap;
 
 
   @override
@@ -29,17 +29,14 @@ class MeetingRowBar extends StatelessWidget {
               icon: NetworkIcons.search,
               onTap: onSearchIconTap,
               iconSize: 16.sp, //17
-              iconColor: Colors.white,
-            )),
+            ),),
 
         Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AppIconContainer(
               icon: NetworkIcons.notification,
               onTap: onNotificationIconTap,
               iconSize: 16.sp, //17
-              iconColor: Colors.white,
             ),
 
             Padding(
@@ -66,7 +63,7 @@ class MeetingRowBar extends StatelessWidget {
                           ),
                         )
                       ],
-                    )),
+                    ),),
               ),
             ),
           ],

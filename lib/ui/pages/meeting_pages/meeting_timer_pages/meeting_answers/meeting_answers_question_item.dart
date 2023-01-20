@@ -10,11 +10,11 @@ List<String> _testList = [
 
 
 class MeetingAnswersQuestionItem extends StatelessWidget {
-  final int questionCount;
-  final int questionIndex;
   const MeetingAnswersQuestionItem({
     Key? key, required this.questionCount, required this.questionIndex,
   }) : super(key: key);
+  final int questionCount;
+  final int questionIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +25,17 @@ class MeetingAnswersQuestionItem extends StatelessWidget {
           Text('Вопрос ${questionIndex + 1} из $questionCount',
               style: AppTextStyles.salad16.copyWith(
                 fontWeight: FontWeight.w700,
-              )),
+              ),),
           Padding(
             padding: EdgeInsets.only(
                 top: UtilsResponsive.getResSize(25), //25
-                right: UtilsResponsive.getResSize(32) //32
+                right: UtilsResponsive.getResSize(32), //32
             ),
             child: SizedBox(
               child: Text(
                   _testList[questionIndex],
                   style: AppTextStyles.primary20
-                      .copyWith(fontWeight: FontWeight.w600)),
+                      .copyWith(fontWeight: FontWeight.w600),),
             ),
           ),
         ],

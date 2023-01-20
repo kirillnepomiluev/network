@@ -5,10 +5,10 @@ import 'package:network_app/ui/widgets/icons/notification_icon.dart';
 
 
 class PartnerCupboardRow extends StatelessWidget {
-  final VoidCallback onNotificationIconTap;
   const PartnerCupboardRow({
     Key? key, required this.onNotificationIconTap,
   }) : super(key: key);
+  final VoidCallback onNotificationIconTap;
 
   @override
   Widget build(BuildContext context) {

@@ -36,7 +36,7 @@ class MeetingTimerCircle extends StatelessWidget {
           onGetText: (double value) {
             return Text('$strMinutes:$strSeconds',
                 style: AppTextStyles.primary38
-                    .copyWith(fontWeight: FontWeight.w700));
+                    .copyWith(fontWeight: FontWeight.w700),);
           },
         ),
       ),

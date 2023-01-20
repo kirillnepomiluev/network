@@ -40,9 +40,9 @@ class RecoveryView extends StatelessWidget {
                       ),
 
                     ],
-                  )),
+                  ),),
             ),
           );
-        });
+        },);
   }
 }

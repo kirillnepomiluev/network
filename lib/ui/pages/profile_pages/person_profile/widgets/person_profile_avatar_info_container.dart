@@ -1,8 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
@@ -11,6 +10,7 @@ import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/common/meet_exchange_row.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
+import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -29,7 +29,6 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,7 +41,7 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                 radius: AppBorderRadius.r15,
                 child: Center(
                     child: Text(AppString.of(context).businessMeeting,
-                        style: AppTextStyles.black12)),
+                        style: AppTextStyles.black12,),),
               ),
             ],
           ),
@@ -53,7 +52,7 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                   showVerified: true,
                   iconSize: 21.sp,
                   textStyle: AppTextStyles.primary32
-                      .copyWith(fontWeight: FontWeight.w600)),
+                      .copyWith(fontWeight: FontWeight.w600),),
               SizedBox(
                 height: UtilsResponsive.getResSize(10),
               ),
@@ -89,7 +88,7 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                       ),
                       Padding(
                           padding: EdgeInsets.only(
-                              left: UtilsResponsive.getResSize(12)),
+                              left: UtilsResponsive.getResSize(12),),
                           child: AppIconContainer(
                             contSize: 18.sp,
                             contColor: AppColors.salad,
@@ -97,15 +96,15 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                             icon: Icons.call_received,
                             iconColor: Colors.black,
                             iconSize: 15.sp,
-                          )),
+                          ),),
                     ],
-                  )),
+                  ),),
               SizedBox(
                 height: UtilsResponsive.getResSize(30),
               ),
               MeetExchangeRow(onTap: () {
                 context.router.push(const PersonProfileViewRoute());
-              }),
+              },),
               SizedBox(
                 height: UtilsResponsive.getResSize(24), //32
               ),

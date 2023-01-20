@@ -19,7 +19,7 @@ class WalletTokensScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(top: 26.sp //37
+          padding: EdgeInsets.only(top: 26.sp, //37
           ),
           child: Text(
             'Общее количество баллов',
@@ -34,7 +34,7 @@ class WalletTokensScreen extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 25.sp //33
+          padding: EdgeInsets.only(top: 25.sp, //33
           ),
           child: AppContainer(
             padH: 19.5.sp, //20
@@ -43,13 +43,11 @@ class WalletTokensScreen extends StatelessWidget {
             child: Column(
               children: [
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Flexible(
                       child: Text(
                         'Вы можете обменять баллы\nна выбранную криптовалюту',
-                        maxLines: null,
                       ),
                     ),
                     Column(
@@ -57,13 +55,11 @@ class WalletTokensScreen extends StatelessWidget {
                       children: [
                         Text(
                           '300',
-                          maxLines: null,
-                          style: AppTextStyles.salad16
+                          style: AppTextStyles.salad16,
                         ),
                         Text(
                           'токенов',
-                          maxLines: null,
-                          style: AppTextStyles.grey12.copyWith(color: Colors.grey)
+                          style: AppTextStyles.grey12.copyWith(color: Colors.grey),
                         ),
                       ],
                     )

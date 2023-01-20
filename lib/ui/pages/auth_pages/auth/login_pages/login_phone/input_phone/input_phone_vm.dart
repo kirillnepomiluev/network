@@ -2,21 +2,21 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl_phone_field/phone_number.dart';
-import 'package:network_app/app/core/service/auth_service.dart';
+import 'package:network_app/app/core/services/auth_service.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 class InputPhoneViewModel extends ViewModel {
-  final BuildContext context;
   InputPhoneViewModel(this.context);
+  final BuildContext context;
 
   String strPhone = '';
   bool showErrorText = false;
-  var formstate = GlobalKey<FormState>();
+  GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
   // final phoneContr = TextEditingController(text: '9603793580');
 
-  goBack() {
+  void goBack() {
     FocusManager.instance.primaryFocus?.unfocus();
     SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
 

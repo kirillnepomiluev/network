@@ -18,7 +18,7 @@ class MeetingRateInterruptDialog extends StatelessWidget {
     return BlurryContainer(
       blur: 15,
       child: Dialog(
-          insetPadding: EdgeInsets.symmetric(horizontal: 0.04 * mediaWidth //30
+          insetPadding: EdgeInsets.symmetric(horizontal: 0.04 * mediaWidth, //30
               ),
           // insetPadding: EdgeInsets.symmetric(horizontal: 16),
           backgroundColor: Colors.transparent,
@@ -34,7 +34,6 @@ class MeetingRateInterruptDialog extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const RichTextTwo(
                   text1: 'Вы уверены, что хотите\n',
@@ -51,12 +50,12 @@ class MeetingRateInterruptDialog extends StatelessWidget {
                     style: TextStyle(
                         color: AppColors.textGray,
                         fontSize: 14, //16
-                        fontWeight: FontWeight.w400),
+                        fontWeight: FontWeight.w400,),
                     textAlign: TextAlign.center,
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 0.0986 * mediaWidth //37
+                  padding: EdgeInsets.only(top: 0.0986 * mediaWidth, //37
                       ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -77,31 +76,31 @@ class MeetingRateInterruptDialog extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.symmetric(
                                 vertical: 0.056 * mediaWidth * 0.428, //9
-                                horizontal: 0.0266 * mediaWidth //15
+                                horizontal: 0.0266 * mediaWidth, //15
                                 ),
                             child: Text(
                               'Продолжить',
                               style: TextStyle(
                                   color: AppColors.textBlack,
                                   fontSize: 16.5.sp, //14
-                                  fontWeight: FontWeight.w400),
+                                  fontWeight: FontWeight.w400,),
                             ),
-                          )),
+                          ),),
                       Padding(
-                        padding: EdgeInsets.only(left: 0.064 * mediaWidth //24
+                        padding: EdgeInsets.only(left: 0.064 * mediaWidth, //24
                             ),
                         child: InkWell(
                           onTap: () {
                             context.router.pushAndPopUntil(
-                                HomeViewRoute(initIndex: 0),
-                                predicate: (route) => false);
+                                HomeViewRoute(),
+                                predicate: (route) => false,);
                           },
                           child: Text(
                             'Прервать',
                             style: TextStyle(
                                 fontSize: 16.5.sp, //14
                                 fontWeight: FontWeight.w400,
-                                color: AppColors.textGray),
+                                color: AppColors.textGray,),
                           ),
                         ),
                       )
@@ -110,7 +109,7 @@ class MeetingRateInterruptDialog extends StatelessWidget {
                 )
               ],
             ),
-          )),
+          ),),
     );
   }
 }

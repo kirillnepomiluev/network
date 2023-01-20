@@ -7,8 +7,8 @@ import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 
 
 class HomeStoreView extends StatelessWidget {
-  final bool isPartnerCupboard;
   const HomeStoreView({Key? key, this.isPartnerCupboard = false}) : super(key: key);
+  final bool isPartnerCupboard;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class HomeStoreView extends StatelessWidget {
                         if (isPartnerCupboard)
                           PartnerCupboardRow(
                               onNotificationIconTap:
-                                  model.onNotificationIconTap),
+                                  model.onNotificationIconTap,),
 
                         const SizedBox(
                           height: 10,
@@ -63,6 +63,6 @@ class HomeStoreView extends StatelessWidget {
               ],
             ),
           );
-        });
+        },);
   }
 }

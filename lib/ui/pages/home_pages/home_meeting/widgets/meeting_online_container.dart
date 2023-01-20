@@ -29,7 +29,7 @@ class MeetingOnlineContainer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 5),
             child: Text(AppString.of(context).online,
-                style: AppTextStyles.primary12),
+                style: AppTextStyles.primary12,),
           )
         ],
       ),

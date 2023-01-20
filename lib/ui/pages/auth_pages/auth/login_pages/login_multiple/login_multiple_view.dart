@@ -25,12 +25,11 @@ class LoginMultipleView extends StatelessWidget {
                   Positioned(
                       bottom: 17.sp, //5
                       right: 17.sp, //10
-                      child: TroubleLoginTextLink(onTroubleEnterTap: model.onTroubleLoginTap,)
+                      child: TroubleLoginTextLink(onTroubleEnterTap: model.onTroubleLoginTap,),
                   ),
                   Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16.sp),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
 
                           const SizedBox(height: 10,),
@@ -78,11 +77,11 @@ class LoginMultipleView extends StatelessWidget {
                             // leftPad: 23.sp   //28
                           ),
                         ],
-                      ))
+                      ),)
                 ],
               ),
             ),
           );
-        });
+        },);
   }
 }

@@ -9,14 +9,14 @@ import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
+import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 
 class MeetingSearchView extends StatelessWidget {
-  final bool isAuth;
   const MeetingSearchView({Key? key, this.isAuth = false}) : super(key: key);
+  final bool isAuth;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class MeetingSearchView extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 10),
+                        horizontal: 16, vertical: 10,),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -76,14 +76,14 @@ class MeetingSearchView extends StatelessWidget {
                                   activeTab: model.activeTab,
                                   text: AppString.of(context).byInterests,
                                   tabName: ActiveSearchTabs.byInterests,
-                                  changeTab: model.changeTab),
+                                  changeTab: model.changeTab,),
                               SizedBox(width: UtilsResponsive.getResSize(10),),
                               MeetingSearchTab(
                                   activeTab: model.activeTab,
                                   text:
                                       AppString.of(context).byCategoriesOfMeeting,
                                   tabName: ActiveSearchTabs.byCategories,
-                                  changeTab: model.changeTab),
+                                  changeTab: model.changeTab,),
                             ],
                           ),
                         ),
@@ -109,6 +109,6 @@ class MeetingSearchView extends StatelessWidget {
               ),
             ),
           );
-        });
+        },);
   }
 }

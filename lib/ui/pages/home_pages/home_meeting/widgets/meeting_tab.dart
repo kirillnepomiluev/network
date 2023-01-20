@@ -5,16 +5,16 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 
 class MeetingTab extends StatelessWidget {
-  final ActiveMeetingTabs activeTab;
-  final String text;
-  final ActiveMeetingTabs tabName;
-  final Function(ActiveMeetingTabs) changeTab;
   const MeetingTab({
     Key? key,
     required this.activeTab,
     required this.text,
     required this.tabName, required this.changeTab,
   }) : super(key: key);
+  final ActiveMeetingTabs activeTab;
+  final String text;
+  final ActiveMeetingTabs tabName;
+  final Function(ActiveMeetingTabs) changeTab;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class MeetingTab extends StatelessWidget {
           ),
           padding: EdgeInsets.symmetric(
               vertical: UtilsResponsive.getResSize(16),
-              horizontal: UtilsResponsive.getResSize(20)
+              horizontal: UtilsResponsive.getResSize(20),
           ),
           child:
           Text(
@@ -42,7 +42,7 @@ class MeetingTab extends StatelessWidget {
                     ? AppColors.textBlack
                     : AppColors.textWhite,
                 fontSize: UtilsResponsive.getResSize(12), //12
-                fontWeight: FontWeight.w500),
+                fontWeight: FontWeight.w500,),
           ),
         ),
       ),

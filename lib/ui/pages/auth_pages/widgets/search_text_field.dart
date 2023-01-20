@@ -19,7 +19,6 @@ class SearchTextField extends StatelessWidget {
       padH: UtilsResponsive.getResSize(10),
       radius: AppBorderRadius.r15,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: EdgeInsets.only(left: 5.sp, right: UtilsResponsive.getResSize(15)),
@@ -32,7 +31,7 @@ class SearchTextField extends StatelessWidget {
           const Expanded(
               child: AppTextField(
             isTransparent: true,
-          )),
+          ),),
         ],
       ),
     );

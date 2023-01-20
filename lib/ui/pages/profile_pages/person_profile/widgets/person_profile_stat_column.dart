@@ -21,7 +21,6 @@ class PersonProfileStatColumn extends StatelessWidget {
       padding: const EdgeInsets.only(left: 15, right: 15, bottom: 50, top: 27),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           AppButton(
@@ -40,10 +39,10 @@ class PersonProfileStatColumn extends StatelessWidget {
           const SizedBox(height: 5,),
           const TitleStatText('Статус'),
           const SizedBox(height: 10,),
-          const AppTextField(hintText: 'ищу партнеров для бизнеса', enabled: false,),
+          const AppTextField(initialValue: 'ищу партнеров для бизнеса', enabled: false,),
           const TitleStatText('Базовые данные'),
           const SizedBox(height: 10,),
-          const AppTextField(hintText: 'Женщина, 37 лет, свободна, цель встречи: деловая.', enabled: false,),
+          const AppTextField(initialValue: 'Женщина, 37 лет, свободна, цель встречи: деловая.', enabled: false,),
           const TitleStatText('Интересы'),
           const SizedBox(height: 20,),
           const AppWrapContainersWithRemove(listOptions: ['Большой теннис', 'Бассейн', 'Управление', 'Маркетинг']),
@@ -62,10 +61,10 @@ class PersonProfileStatColumn extends StatelessWidget {
           // ),
           const TitleStatText('Обо мне'),
           const SizedBox(height: 10,),
-          const AppTextField(hintText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices amet tellus.', enabled: false,),
+          const AppTextField(initialValue: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices amet tellus.', enabled: false,),
           const TitleStatText('Сфера деятельности'),
           const SizedBox(height: 10,),
-          const AppTextField(hintText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget varius a id in amet.', enabled: false,),
+          const AppTextField(initialValue: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget varius a id in amet.', enabled: false,),
         ],
       ),
     );

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_level/choose_level_vm.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_level/widgets/level_checkbox.dart';
-import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
+import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/auth/auth_enums.dart';
@@ -22,7 +22,6 @@ class ChooseLevelView extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
@@ -43,19 +42,19 @@ class ChooseLevelView extends StatelessWidget {
                           title: AppString.of(context).base,
                           value: LevelOptions.base,
                           groupValue: model.groupValue,
-                          onPressed: model.onPressed),
+                          onPressed: model.onPressed,),
                       LevelContainer(
                           openBottomSheetProfile: model.openBottomSheetProfile,
                           title: AppString.of(context).standart,
                           value: LevelOptions.standart,
                           groupValue: model.groupValue,
-                          onPressed: model.onPressed),
+                          onPressed: model.onPressed,),
                       LevelContainer(
                           openBottomSheetProfile: model.openBottomSheetProfile,
                           title: AppString.of(context).premium,
                           value: LevelOptions.premium,
                           groupValue: model.groupValue,
-                          onPressed: model.onPressed),
+                          onPressed: model.onPressed,),
                     ],
                   ),
                   Column(
@@ -71,7 +70,7 @@ class ChooseLevelView extends StatelessWidget {
             ),
           ),
         );
-      });
+      },);
   }
 }
 

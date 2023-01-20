@@ -9,17 +9,17 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 
 class LevelContainer extends StatelessWidget {
-  final VoidCallback openBottomSheetProfile;
-  final String title;
-  final LevelOptions value;
-  final LevelOptions groupValue;
-  final Function(LevelOptions?) onPressed;
   const LevelContainer({
     Key? key,
     required this.title,
     required this.onPressed,
     required this.groupValue, required this.value, required this.openBottomSheetProfile,
   }) : super(key: key);
+  final VoidCallback openBottomSheetProfile;
+  final String title;
+  final LevelOptions value;
+  final LevelOptions groupValue;
+  final Function(LevelOptions?) onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class LevelContainer extends StatelessWidget {
                   NetworkIcons.info,
                   color: Colors.white,
                   size: UtilsResponsive.getResSize(24),
-                )),
+                ),),
             const SizedBox(width: 10,)
           ],
         ),

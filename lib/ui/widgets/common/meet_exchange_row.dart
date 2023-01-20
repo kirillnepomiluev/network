@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/common/meet_row_icon_next.dart';
+import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class MeetExchangeRow extends StatelessWidget {
-  final VoidCallback? onTap;
-  final bool isExchange;
   const MeetExchangeRow({Key? key, this.onTap, this.isExchange = false})
       : super(key: key);
+  final VoidCallback? onTap;
+  final bool isExchange;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class MeetExchangeRow extends StatelessWidget {
                       iconSize: isExchange? 15.sp: 19.sp,
                       contSize: contSize,
                       contColor: AppColors.black1A,
-                      onTap: onTap
+                      onTap: onTap,
                   ),
 
                   Text(

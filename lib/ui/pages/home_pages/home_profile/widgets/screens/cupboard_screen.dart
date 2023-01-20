@@ -5,13 +5,13 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 
 
 class CupboardScreen extends StatelessWidget {
-  final ActiveProfileTabs activeTab;
-  final ScrollController avatarScrollContr;
-  final ScrollController hatScrollContr;
   const CupboardScreen({
     Key? key,
     required this.isCupboardInit, required this.activeTab, required this.avatarScrollContr, required this.hatScrollContr,
   }) : super(key: key);
+  final ActiveProfileTabs activeTab;
+  final ScrollController avatarScrollContr;
+  final ScrollController hatScrollContr;
 
   final bool isCupboardInit;
 

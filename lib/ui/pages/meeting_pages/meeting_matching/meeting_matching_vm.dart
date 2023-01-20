@@ -4,8 +4,8 @@ import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 class MeetingMatchingViewModel extends ViewModel {
-  final BuildContext context;
   MeetingMatchingViewModel(this.context);
+  final BuildContext context;
 
   List<String> questionsList = [
     'Какой-нибудь вопрос?',

@@ -6,11 +6,11 @@ import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingAvatar extends StatelessWidget {
-  final VoidCallback onPartnerTap;
   const MeetingAvatar({
     Key? key,
     required this.onPartnerTap,
   }) : super(key: key);
+  final VoidCallback onPartnerTap;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class MeetingAvatar extends StatelessWidget {
                       colors: [
                     Colors.transparent,
                     Colors.black.withOpacity(0.88)
-                  ])),
+                  ],),),
             )
           ],
         ),

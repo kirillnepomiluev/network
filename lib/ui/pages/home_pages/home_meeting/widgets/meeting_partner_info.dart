@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
+import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingPartnerInfo extends StatelessWidget {
-  final VoidCallback onPartnerTap;
   const MeetingPartnerInfo({
     Key? key,
     required this.onPartnerTap,
   }) : super(key: key);
+  final VoidCallback onPartnerTap;
 
   @override
   Widget build(BuildContext context) {
@@ -47,14 +47,14 @@ class MeetingPartnerInfo extends StatelessWidget {
               style: TextStyle(
                   // color: ConstColor.textWhite,
                   fontSize: 15.5.sp, //12
-                  fontWeight: FontWeight.w400),
+                  fontWeight: FontWeight.w400,),
             ),
           ),
           Padding(
               padding: EdgeInsets.only(top: 10,
-                  bottom: UtilsResponsive.getResSize(26)
+                  bottom: UtilsResponsive.getResSize(26),
               ), //26
-              child: const RhombusText()),
+              child: const RhombusText(),),
         ],
       ),
     );

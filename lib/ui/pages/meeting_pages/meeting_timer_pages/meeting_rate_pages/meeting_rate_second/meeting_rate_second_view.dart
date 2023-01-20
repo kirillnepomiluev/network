@@ -27,7 +27,6 @@ class MeetingRateSecondView extends StatelessWidget {
             ),
             child: SingleChildScrollView(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   AppBarRow(
                     onPressed: () => DialogUtils.showMeetingRateInterruptDialog,
@@ -58,13 +57,13 @@ class MeetingRateSecondView extends StatelessWidget {
                     height: UtilsResponsive.getResSize(20),
                   ),
                   const RateSliderContainer(
-                      title: 'Интересна ли сфера деятельности?'),
+                      title: 'Интересна ли сфера деятельности?',),
                   SizedBox(
                     height: UtilsResponsive.getResSize(35),
                   ),
                   AppButton(
                     onPressed: () {
-                      context.router.push(HomeViewRoute(initIndex: 0));
+                      context.router.push(HomeViewRoute());
                     },
                     text: 'Оценить',
                   ),

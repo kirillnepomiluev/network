@@ -23,7 +23,6 @@ class RecoveryEmailView extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const SizedBox(height: 10,),
                     const AppBackButton(),
@@ -35,12 +34,12 @@ class RecoveryEmailView extends StatelessWidget {
                     ),
 
                     const SizedBox(height: 36,),
-                    const AppTextField(hintText: 'Введите адрес электронной почты'),
+                    const AppTextField(initialValue: 'Введите адрес электронной почты'),
                     const SizedBox(height: 62,),
 
                     AppButton(
                         onPressed: model.onSendTap,
-                        text: AppString.of(context).recoveryAccess
+                        text: AppString.of(context).recoveryAccess,
                     ),
 
                   ],
@@ -49,6 +48,6 @@ class RecoveryEmailView extends StatelessWidget {
             ),
           ),
         );
-      });
+      },);
   }
 }

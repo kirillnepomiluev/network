@@ -35,7 +35,7 @@ class MeetingMatchingInfoContainer extends StatelessWidget {
             color: AppColors.salad,
             radius: AppBorderRadius.r15,
             child: Text(AppString.of(context).businessMeeting,
-                style: AppTextStyles.black12),
+                style: AppTextStyles.black12,),
           ),
           SizedBox(
             height: UtilsResponsive.getResSize(26),
@@ -43,7 +43,7 @@ class MeetingMatchingInfoContainer extends StatelessWidget {
           Row(
             children: [
               Text(AppString.of(context).tokensForMeeting,
-                  style: AppTextStyles.primary12),
+                  style: AppTextStyles.primary12,),
               Padding(
                 padding: const EdgeInsets.only(left: 7),
                 child: RhombusText(

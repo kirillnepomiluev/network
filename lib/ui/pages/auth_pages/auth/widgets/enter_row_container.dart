@@ -6,27 +6,26 @@ import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class EnterRowContainer extends StatelessWidget {
-  final VoidCallback onTap;
-  final IconData? icon;
-  final double? iconSize;
-  final String iconName;
-  final String title;
   const EnterRowContainer(
       {Key? key,
       this.icon,
       this.iconName = '',
       required this.title,
       required this.onTap,
-        this.iconSize
+        this.iconSize,
       })
       : super(key: key);
+  final VoidCallback onTap;
+  final IconData? icon;
+  final double? iconSize;
+  final String iconName;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: AppContainer(
-          radius: AppBorderRadius.r20,
           child: Row(
             children: [
               Padding(
@@ -53,16 +52,16 @@ class EnterRowContainer extends StatelessWidget {
                               height: 21.sp,
                             ),
                           ),
-                  )),
+                  ),),
               Padding(
                 padding: EdgeInsets.only(right: 8.sp),
                 child: Text(
                   title,
-                  style: AppTextStyles.primary16
+                  style: AppTextStyles.primary16,
                 ),
               )
             ],
-          )),
+          ),),
     );
   }
 }

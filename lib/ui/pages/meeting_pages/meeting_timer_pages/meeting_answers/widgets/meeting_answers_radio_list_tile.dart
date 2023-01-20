@@ -3,22 +3,22 @@ import 'package:network_app/ui/theme/app_colors.dart';
 
 
 class MeetingAnswersRadioListTile extends StatelessWidget {
-  final String title;
-  final String groupValue;
-  final Function(String?) onAnswerTap;
   const MeetingAnswersRadioListTile(
       {Key? key,
         required this.title,
         required this.groupValue,
-        required this.onAnswerTap})
+        required this.onAnswerTap,})
       : super(key: key);
+  final String title;
+  final String groupValue;
+  final Function(String?) onAnswerTap;
 
   @override
   Widget build(BuildContext context) {
     return RadioListTile(
         visualDensity: const VisualDensity(
             horizontal: VisualDensity.minimumDensity,
-            vertical: VisualDensity.minimumDensity),
+            vertical: VisualDensity.minimumDensity,),
         contentPadding: EdgeInsets.zero,
         activeColor: AppColors.salad,
         value: title,
@@ -26,6 +26,6 @@ class MeetingAnswersRadioListTile extends StatelessWidget {
           title,
         ),
         groupValue: groupValue,
-        onChanged: onAnswerTap);
+        onChanged: onAnswerTap,);
   }
 }

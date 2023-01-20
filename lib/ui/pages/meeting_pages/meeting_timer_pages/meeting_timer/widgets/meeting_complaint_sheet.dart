@@ -9,12 +9,6 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class BottomSheetInfoWithIcon extends StatelessWidget {
-  final IconData icon;
-  final String text1;
-  final String text2;
-  final String text3;
-  final String textButton;
-  final VoidCallback? func;
   const BottomSheetInfoWithIcon({
     Key? key,
     required this.icon,
@@ -24,6 +18,12 @@ class BottomSheetInfoWithIcon extends StatelessWidget {
     required this.textButton,
     this.func,
   }) : super(key: key);
+  final IconData icon;
+  final String text1;
+  final String text2;
+  final String text3;
+  final String textButton;
+  final VoidCallback? func;
 
   @override
   Widget build(BuildContext context) {
@@ -32,17 +32,15 @@ class BottomSheetInfoWithIcon extends StatelessWidget {
     return BlurryContainer(
       height: mediaHeight*0.8,
       blur: 30,
-      color: Colors.transparent,
       borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.min,
         children: [
 
           Padding(
             padding: EdgeInsets.only(
-              top: 35.sp //69
+              top: 35.sp, //69
             ),
             child: Icon(
               icon,
@@ -54,7 +52,6 @@ class BottomSheetInfoWithIcon extends StatelessWidget {
           // SizedBox(height: 35.sp,),  //69
 
           Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               RichTextTwo(
                 text1: text1,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/invite_containers_column.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/meetring_invitations_vm.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/choose_invitation_screen.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/invite_containers_column.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
@@ -24,7 +24,7 @@ class MeetingInvitationsView extends StatelessWidget {
             body: Padding(
               padding: EdgeInsets.only(top: mediaTop,
                   left: UtilsResponsive.getResSize(15),
-                  right: UtilsResponsive.getResSize(15)
+                  right: UtilsResponsive.getResSize(15),
               ),
               child: SingleChildScrollView(
                 child: Column(
@@ -60,6 +60,6 @@ class MeetingInvitationsView extends StatelessWidget {
               ),
             ),
           );
-        });
+        },);
   }
 }

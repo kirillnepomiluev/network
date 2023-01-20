@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/ui/pages/home_pages/home_messages/home_messages_vm.dart';
 import 'package:network_app/ui/pages/home_pages/home_messages/widgets/messages_bar_row.dart';
 import 'package:network_app/ui/pages/home_pages/home_messages/widgets/messages_invitations_row.dart';
-import 'package:network_app/ui/pages/home_pages/home_messages/home_messages_vm.dart';
 import 'package:network_app/ui/pages/home_pages/home_messages/widgets/messages_wrap.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/utils_responsive.dart';
@@ -24,7 +24,6 @@ class HomeMessagesView extends StatelessWidget {
               ),
               child: SingleChildScrollView(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const MessagesBarRow(),
                     MessagesInvitationsRow(photoList: model.photoList),
@@ -34,6 +33,6 @@ class HomeMessagesView extends StatelessWidget {
               ),
             ),
           );
-        });
+        },);
   }
 }

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/check_meeting_parameters/check_meeting_category_of_meeting.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/check_meeting_parameters/check_meeting_date.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/check_meeting_parameters/check_meeting_description_of_meeting.dart';
@@ -32,7 +32,7 @@ class CheckMeetingParametersView extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: UtilsResponsive.getResSize(16),
-                  vertical: UtilsResponsive.getResSize(10)
+                  vertical: UtilsResponsive.getResSize(10),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +62,7 @@ class CheckMeetingParametersView extends StatelessWidget {
                   ),
                   AppButton(
                     onPressed: () {
-                      context.router.push(HomeViewRoute(initIndex: 0));
+                      context.router.push(HomeViewRoute());
                     },
                     text: AppString.of(context).createRequest,
                   ),

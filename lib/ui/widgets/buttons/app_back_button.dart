@@ -5,10 +5,10 @@ import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AppBackButton extends StatelessWidget {
-  final VoidCallback? func;
-  final Color? contColor;
   const AppBackButton({Key? key, this.func, this.contColor})
       : super(key: key);
+  final VoidCallback? func;
+  final Color? contColor;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +19,6 @@ class AppBackButton extends StatelessWidget {
           icon: NetworkIcons.arrow_back,
           iconSize: 14.sp,
           contColor: contColor,
-        ));
+        ),);
   }
 }

@@ -7,9 +7,9 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 
 
 class MeetingMainViewModel extends ViewModel {
-  final BuildContext context;
 
   MeetingMainViewModel(this.context);
+  final BuildContext context;
 
   ActiveMeetingTabs activeTab = ActiveMeetingTabs.values.first;
 

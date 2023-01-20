@@ -3,10 +3,10 @@ import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingNotificationRichText extends StatelessWidget {
+  const MeetingNotificationRichText(this.text1, this.text2, this.text3, {Key? key,}) : super(key: key);
   final String text1;
   final String text2;
   final String text3;
-  const MeetingNotificationRichText(this.text1, this.text2, this.text3, {Key? key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +22,14 @@ class MeetingNotificationRichText extends StatelessWidget {
           TextSpan(
               text: text1,
               style: const TextStyle(
-                  color: AppColors.salad, fontWeight: FontWeight.w600)),
+                  color: AppColors.salad, fontWeight: FontWeight.w600,),),
           TextSpan(
               text: text2,
-              style: const TextStyle(fontWeight: FontWeight.w400)),
+              style: const TextStyle(fontWeight: FontWeight.w400),),
           TextSpan(
               text: text3,
               style: const TextStyle(
-                  color: AppColors.salad, fontWeight: FontWeight.w600)),
+                  color: AppColors.salad, fontWeight: FontWeight.w600,),),
         ],
       ),
       // minFontSize: 14,

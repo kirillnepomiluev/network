@@ -5,16 +5,16 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 
 class InvitationTab extends StatelessWidget {
-  final ActiveInvitationTabs activeTab;
-  final String text;
-  final ActiveInvitationTabs tabName;
-  final Function(ActiveInvitationTabs) changeTab;
   const InvitationTab({
     Key? key,
     required this.activeTab,
     required this.text,
     required this.tabName, required this.changeTab,
   }) : super(key: key);
+  final ActiveInvitationTabs activeTab;
+  final String text;
+  final ActiveInvitationTabs tabName;
+  final Function(ActiveInvitationTabs) changeTab;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class InvitationTab extends StatelessWidget {
           ),
           padding: EdgeInsets.symmetric(
               vertical: UtilsResponsive.getResSize(16),
-              horizontal: UtilsResponsive.getResSize(20)
+              horizontal: UtilsResponsive.getResSize(20),
           ),
           child:
           Text(
@@ -42,7 +42,7 @@ class InvitationTab extends StatelessWidget {
                     ? AppColors.textBlack
                     : AppColors.textWhite,
                 fontSize: UtilsResponsive.getResSize(12), //12
-                fontWeight: FontWeight.w500),
+                fontWeight: FontWeight.w500,),
           ),
         ),
       ),

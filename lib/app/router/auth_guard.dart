@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:network_app/app/core/service/auth_service.dart';
+import 'package:network_app/app/core/services/auth_service.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

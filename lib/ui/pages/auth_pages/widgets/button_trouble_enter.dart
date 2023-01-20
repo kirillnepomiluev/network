@@ -4,8 +4,8 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class TroubleLoginTextLink extends StatelessWidget {
-  final VoidCallback onTroubleEnterTap;
   const TroubleLoginTextLink({Key? key, required this.onTroubleEnterTap}) : super(key: key);
+  final VoidCallback onTroubleEnterTap;
 
   @override
   Widget build(BuildContext context) {

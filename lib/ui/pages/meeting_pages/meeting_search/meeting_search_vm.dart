@@ -3,8 +3,8 @@ import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 
 class MeetingSearchViewModel extends ViewModel {
-  final BuildContext context;
   MeetingSearchViewModel(this.context);
+  final BuildContext context;
 
   ActiveSearchTabs activeTab = ActiveSearchTabs.values.first;
 

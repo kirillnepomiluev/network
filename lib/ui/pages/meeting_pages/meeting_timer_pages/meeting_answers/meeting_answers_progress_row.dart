@@ -19,7 +19,6 @@ class MeetingAnswersProgressRow extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: UtilsResponsive.getResSize(16)),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           AppContainer(
@@ -30,12 +29,12 @@ class MeetingAnswersProgressRow extends StatelessWidget {
                 child: Text(
               '1',
               style: AppTextStyles.primary.copyWith(fontWeight: FontWeight.w500),
-            )),
+            ),),
           ),
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: UtilsResponsive.getResSize(40)//44
+                  horizontal: UtilsResponsive.getResSize(40),//44
                   ),
               child: LinearProgressIndicator(
                 backgroundColor: AppColors.white10,
@@ -54,7 +53,7 @@ class MeetingAnswersProgressRow extends StatelessWidget {
               '3',
               style:
                   AppTextStyles.primary.copyWith(fontWeight: FontWeight.w500),
-            )),
+            ),),
           ),
         ],
       ),

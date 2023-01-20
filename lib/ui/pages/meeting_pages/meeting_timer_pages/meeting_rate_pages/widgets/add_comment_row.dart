@@ -31,7 +31,6 @@ class _AddCommentRowState extends State<AddCommentRow> {
             });
           },
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Transform(
                 alignment: Alignment.center,
@@ -58,7 +57,7 @@ class _AddCommentRowState extends State<AddCommentRow> {
         children: [
           SizedBox(
               height: 30.sp,
-              child: const AppTextField()),
+              child: const AppTextField(),),
           SizedBox(
             height: UtilsResponsive.getResSize(20),
           ),
@@ -75,7 +74,7 @@ class _AddCommentRowState extends State<AddCommentRow> {
                   showTextField = false;
                 });
               },
-              text: 'Отправить'),
+              text: 'Отправить',),
         ],
       );
 }

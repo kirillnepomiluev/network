@@ -4,10 +4,10 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 
 class OptionsContainer extends StatefulWidget {
-  final String title;
-  final VoidCallback? onTap;
   const OptionsContainer({Key? key, required this.title, this.onTap})
       : super(key: key);
+  final String title;
+  final VoidCallback? onTap;
 
   @override
   State<OptionsContainer> createState() => _OptionsContainerState();
@@ -19,15 +19,16 @@ class _OptionsContainerState extends State<OptionsContainer> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (() {
+      onTap: () {
+
         if (widget.onTap != null) {
-          widget.onTap!();
+          widget.onTap?.call();
         }
 
         setState(() {
           isSelected = !isSelected;
         });
-      }),
+      },
       child: Container(
         padding: EdgeInsets.all(UtilsResponsive.getResSize(14)), //14
         decoration: BoxDecoration(
@@ -39,7 +40,7 @@ class _OptionsContainerState extends State<OptionsContainer> {
           style: TextStyle(
               color: isSelected ? Colors.black : AppColors.textWhite,
               fontSize: UtilsResponsive.getResSize(12), //12
-              fontWeight: FontWeight.w400
+              fontWeight: FontWeight.w400,
           ),
         ),
       ),

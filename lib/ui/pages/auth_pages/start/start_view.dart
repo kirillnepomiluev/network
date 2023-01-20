@@ -23,6 +23,6 @@ class StartView extends StatelessWidget {
             ),
           ),
         );
-      });
+      },);
   }
 }

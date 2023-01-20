@@ -16,11 +16,9 @@ class DialogUtils{
   }) {
     showModalBottomSheet<void>(
         backgroundColor: AppColors.black1A.withOpacity(0.5),
-        enableDrag: true,
-        isDismissible: true,
         isScrollControlled: true,
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(30)),),
         context: context,
         builder: (BuildContext context) {
           return BottomSheetInfoWithIcon(
@@ -31,13 +29,13 @@ class DialogUtils{
             textButton: textButton,
             func: func,
           );
-        });
+        },);
   }
 
   static void showMeetingRateInterruptDialog(BuildContext context) {
     showDialog<void>(
         context: context,
-        builder: (BuildContext context) => const MeetingRateInterruptDialog());
+        builder: (BuildContext context) => const MeetingRateInterruptDialog(),);
   }
 
 

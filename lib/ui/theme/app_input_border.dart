@@ -6,19 +6,21 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 class AppInputBorder {
   static final _defaultBorder = OutlineInputBorder(
-      borderSide: const BorderSide(width: 1, color: AppColors.salad),
-      borderRadius: BorderRadius.circular(AppBorderRadius.r20));
+      borderSide: const BorderSide(color: AppColors.salad),
+      borderRadius: BorderRadius.circular(AppBorderRadius.r20),);
 
   static final inputDecorationBorder = InputDecoration(
     contentPadding: EdgeInsets.symmetric(
         vertical: UtilsResponsive.getResSize(22),
-        horizontal: UtilsResponsive.getResSize(16)),
+        horizontal: UtilsResponsive.getResSize(16),),
     focusedBorder: _defaultBorder,
     enabledBorder: _defaultBorder,
     disabledBorder: _defaultBorder,
-    hintStyle: AppTextStyles.primary16,
+    hintStyle: AppTextStyles.primary,
+    labelStyle: AppTextStyles.primary,
   );
 
+  /////////////////////////////////////////////////
   static const _transBorder = OutlineInputBorder(
     borderSide: BorderSide(color: Colors.transparent),
     // borderRadius: BorderRadius.circular(AppBorderRadius.r20)
@@ -27,15 +29,19 @@ class AppInputBorder {
   static final inputDecorationTransparent = InputDecoration(
     contentPadding: EdgeInsets.symmetric(
         vertical: UtilsResponsive.getResSize(22),
-        horizontal: UtilsResponsive.getResSize(16)),
+        horizontal: UtilsResponsive.getResSize(16),),
     focusedBorder: _transBorder,
     enabledBorder: _transBorder,
     disabledBorder: _transBorder,
-    hintStyle: AppTextStyles.primary16,
+    hintStyle: AppTextStyles.primary,
+    labelStyle: AppTextStyles.primary,
   );
 
-  static final _phoneBorder = UnderlineInputBorder(
-      borderSide: BorderSide(width: 1, color: Colors.white));
+
+  /////////////////////////////////////////////////
+
+  static const _phoneBorder = UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.white),);
   // OutlineInputBorder(
   //     borderSide: const BorderSide(width: 1, color: AppColors.salad),
   //     borderRadius: BorderRadius.circular(AppBorderRadius.r20)
@@ -48,6 +54,7 @@ class AppInputBorder {
     border: _phoneBorder,
     errorBorder: _phoneBorder,
     focusedErrorBorder: _phoneBorder,
-    hintStyle: AppTextStyles.primary16,
+    hintStyle: AppTextStyles.primary,
+    labelStyle: AppTextStyles.primary,
   );
 }

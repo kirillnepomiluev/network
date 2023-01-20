@@ -39,7 +39,7 @@ class CheckMeetingCategoryOfMeeting extends StatelessWidget {
                       NetworkIcons.edit,
                       size: UtilsResponsive.getResSize(14),
                       color: AppColors.salad,
-                    ))
+                    ),)
               ],
             ),
           ),

@@ -5,11 +5,11 @@ import 'package:pinput/pinput.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class InputPassFields extends StatelessWidget {
+  const InputPassFields(
+      {Key? key, required this.onValidation, required this.onComplete,})
+      : super(key: key);
   final String? Function(String?) onValidation;
   final void Function(String) onComplete;
-  const InputPassFields(
-      {Key? key, required this.onValidation, required this.onComplete})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,7 @@ class InputPassFields extends StatelessWidget {
       defaultPinTheme: _defaultPinTheme,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       validator: onValidation,
-      pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
       textInputAction: TextInputAction.next,
-      showCursor: true,
       onCompleted: onComplete,
     );
   }
@@ -32,7 +30,7 @@ final _defaultPinTheme = PinTheme(
   textStyle: AppTextStyles.primary16.copyWith(fontWeight: FontWeight.w500),
   decoration: BoxDecoration(
     color: Colors.transparent,
-    border: Border.all(width: 1, color: AppColors.salad),
+    border: Border.all(color: AppColors.salad),
     borderRadius: BorderRadius.circular(20),
   ),
 );

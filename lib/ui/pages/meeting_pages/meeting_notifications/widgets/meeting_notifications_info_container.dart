@@ -8,12 +8,6 @@ import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingNotificationInfoContainer extends StatelessWidget {
-  final bool showOnline;
-  final String title1;
-  final String title2;
-  final String title3;
-  final String strTime;
-  final IconData icon;
 
   const MeetingNotificationInfoContainer(
       {Key? key,
@@ -22,8 +16,14 @@ class MeetingNotificationInfoContainer extends StatelessWidget {
       required this.title2,
       required this.title3,
       required this.strTime,
-      required this.icon})
+      required this.icon,})
       : super(key: key);
+  final bool showOnline;
+  final String title1;
+  final String title2;
+  final String title3;
+  final String strTime;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +45,9 @@ class MeetingNotificationInfoContainer extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: 18.sp, //17
-                  vertical: 16.2.sp //14
+                  vertical: 16.2.sp, //14
                   ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   if (title1 != '')
                     SizedBox(

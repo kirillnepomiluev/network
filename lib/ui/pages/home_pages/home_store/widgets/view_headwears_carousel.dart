@@ -5,11 +5,11 @@ import 'package:network_app/ui/pages/home_pages/home_store/widgets/view_category
 import 'package:network_app/utils/utils_responsive.dart';
 
 class ViewHeadwearsCarousel extends StatelessWidget {
-  final ScrollController scrollController;
-  final VoidCallback onPressed;
   const ViewHeadwearsCarousel({
     Key? key, required this.scrollController, required this.onPressed,
   }) : super(key: key);
+  final ScrollController scrollController;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +29,13 @@ class ViewHeadwearsCarousel extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               for (var i = 0; i < 6; i++)
                 Padding(
                   padding: EdgeInsets.only(right: UtilsResponsive.getResSize(10)),
                   child: StoreHeadwearContainer(
-                    type: i % 2 == 0 ? 'Обычный' : 'Редкий',
+                    // type: i % 2 == 0 ? 'Обычный' : 'Редкий',
+                    type: i.isEven ? 'Обычный' : 'Редкий',
                   ),
                 ),
             ],

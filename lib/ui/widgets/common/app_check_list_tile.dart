@@ -3,10 +3,10 @@ import 'package:network_app/ui/theme/app_colors.dart';
 
 
 class AppCheckListTile extends StatefulWidget {
-  final Function? func;
-  final String title;
   const AppCheckListTile({Key? key, required this.title, this.func})
       : super(key: key);
+  final Function? func;
+  final String title;
 
   @override
   State<AppCheckListTile> createState() => _AppCheckListTileState();
@@ -25,8 +25,9 @@ class _AppCheckListTileState extends State<AppCheckListTile> {
         controlAffinity: ListTileControlAffinity.leading,
         value: value,
         onChanged: (newValue) {
+
           if (widget.func != null) {
-            widget.func!();
+            widget.func?.call();
           }
 
           setState(() {

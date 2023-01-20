@@ -4,8 +4,8 @@ import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 class WalletExchangeViewModel extends ViewModel {
-  final BuildContext context;
   WalletExchangeViewModel(this.context);
+  final BuildContext context;
 
   void onExchangeTap(){
     context.router.push(const WalletExchangeSuccessViewRoute());

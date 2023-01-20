@@ -22,7 +22,7 @@ class AppTextStyles {
   static final primary = GoogleFonts.inter(
       fontSize: UtilsResponsive.getResSize(14),
       fontWeight: FontWeight.w400,
-      color: AppColors.textWhite
+      color: AppColors.textWhite,
   );
 
   static final primary10 = primary.copyWith(fontSize: UtilsResponsive.getResSize(10));

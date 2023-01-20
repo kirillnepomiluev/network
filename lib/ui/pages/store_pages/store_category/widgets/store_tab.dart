@@ -4,16 +4,16 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class StoreFilterTab extends StatelessWidget {
-  final ActiveStoreFilerTabs activeTab;
-  final String text;
-  final ActiveStoreFilerTabs tabName;
-  final Function(ActiveStoreFilerTabs) changeTab;
   const StoreFilterTab({
     Key? key,
     required this.activeTab,
     required this.text,
     required this.tabName, required this.changeTab,
   }) : super(key: key);
+  final ActiveStoreFilerTabs activeTab;
+  final String text;
+  final ActiveStoreFilerTabs tabName;
+  final Function(ActiveStoreFilerTabs) changeTab;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class StoreFilterTab extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 16.5.sp,   //14
                       color: isActive? AppColors.salad : AppColors.textWhite,
-                      fontWeight: FontWeight.w400
+                      fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
@@ -53,7 +53,7 @@ class StoreFilterTab extends StatelessWidget {
               )
             ],
           ),
-        )
+        ),
 
         // BlurryContainer(
         //   blur: 20,

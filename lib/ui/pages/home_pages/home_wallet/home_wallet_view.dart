@@ -23,16 +23,16 @@ class HomeWalletView extends StatelessWidget {
               padding: EdgeInsets.only(
                   top: mediaTop,
                   left: 17.sp, //16
-                  right: 17.sp
+                  right: 17.sp,
               ),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppBarRow(
-                        title: AppString.of(context).wallet, onPressed: () {}),
+                        title: AppString.of(context).wallet, onPressed: () {},),
                     Padding(
-                      padding: EdgeInsets.only(top: 28.sp //41
+                      padding: EdgeInsets.only(top: 28.sp, //41
                           ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,9 +52,7 @@ class HomeWalletView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    model.activeTab == ActiveWalletTabs.tokens
-                        ? const WalletTokensScreen()
-                        : const WalletCurrencyScreen(),
+                    if (model.activeTab == ActiveWalletTabs.tokens) const WalletTokensScreen() else const WalletCurrencyScreen(),
                     const SizedBox(
                       height: 100,
                     )
@@ -63,6 +61,6 @@ class HomeWalletView extends StatelessWidget {
               ),
             ),
           );
-        });
+        },);
   }
 }

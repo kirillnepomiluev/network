@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_requests_list/widgets/meeting_request_info_container.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
@@ -19,7 +19,6 @@ class MeetingRequestsListView extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 AppBarRow(
                   title: AppString.of(context).listOfPersonalRequests,
@@ -32,7 +31,7 @@ class MeetingRequestsListView extends StatelessWidget {
                       context.router
                           .push(const ChooseMeetingCategoriesViewRoute());
                     },
-                    text: AppString.of(context).createNewRequest),
+                    text: AppString.of(context).createNewRequest,),
                 SizedBox(
                   height: UtilsResponsive.getResSize(40),
                 ),

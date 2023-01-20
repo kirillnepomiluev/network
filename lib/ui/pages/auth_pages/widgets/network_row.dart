@@ -5,18 +5,17 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class NetworkRow extends StatelessWidget {
-  final bool isAppBar;
   const NetworkRow({
     Key? key,
     required this.isAppBar,
   }) : super(key: key);
+  final bool isAppBar;
 
   @override
   Widget build(BuildContext context) {
     return isAppBar == false
         ? Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Assets.images.icons.handshake.image(
                 width: 48.sp,   //118
@@ -27,7 +26,6 @@ class NetworkRow extends StatelessWidget {
           )
         : Row(
             mainAxisAlignment: isAppBar ? MainAxisAlignment.start : MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Assets.images.icons.handshake.image(
                 width: 30.sp, //46
@@ -40,10 +38,10 @@ class NetworkRow extends StatelessWidget {
 }
 
 class _Text extends StatelessWidget {
-  final bool isColumn;
   const _Text({
     Key? key, this.isColumn = false,
   }) : super(key: key);
+  final bool isColumn;
 
   @override
   Widget build(BuildContext context) {

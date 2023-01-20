@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/search_text_field.dart';
-import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/wrap_select_containers.dart';
+import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/utils/utils_responsive.dart';
@@ -66,11 +66,11 @@ class ChooseMeetingCategoriesView extends StatelessWidget {
         padding: EdgeInsets.only(
             left: UtilsResponsive.getResSize(16),
             right: UtilsResponsive.getResSize(16),
-            bottom: UtilsResponsive.getResSize(23)
+            bottom: UtilsResponsive.getResSize(23),
         ),
         child: AppButtonContinue(onPressed: () {
           context.router.push(const InputDescriptionMeetingViewRoute());
-        }),
+        },),
       ),
     );
   }

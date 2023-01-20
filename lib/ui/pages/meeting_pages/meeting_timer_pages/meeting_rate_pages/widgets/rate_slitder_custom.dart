@@ -5,11 +5,6 @@ import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class SliderCustom extends StatefulWidget {
-  final double sLiderValue;
-  final double min;
-  final double max;
-  final int? stepSize;
-  final bool showLabelsRow;
   const SliderCustom({
     Key? key,
     required this.sLiderValue,
@@ -18,6 +13,11 @@ class SliderCustom extends StatefulWidget {
     this.stepSize,
     required this.showLabelsRow,
   }) : super(key: key);
+  final double sLiderValue;
+  final double min;
+  final double max;
+  final int? stepSize;
+  final bool showLabelsRow;
 
   @override
   State<SliderCustom> createState() => _SliderCustomState();
@@ -37,8 +37,8 @@ class _SliderCustomState extends State<SliderCustom> {
   @override
   Widget build(BuildContext context) {
     if (widget.showLabelsRow) {
-      showLabel =
-      sliderValue == widget.min || sliderValue == widget.max ? false : true;
+      // showLabel = sliderValue == widget.min || sliderValue == widget.max ? false : true;
+      showLabel = !(sliderValue == widget.min || sliderValue == widget.max);
     }
     return Column(
       children: [
@@ -60,7 +60,7 @@ class _SliderCustomState extends State<SliderCustom> {
                       sliderValue == 0 ? FontWeight.w700 : FontWeight.w400,
                       color: sliderValue == 0
                           ? AppColors.salad
-                          : AppColors.textGray),
+                          : AppColors.textGray,),
                 ),
                 Text(
                   '5',
@@ -71,7 +71,7 @@ class _SliderCustomState extends State<SliderCustom> {
                           : FontWeight.w400,
                       color: sliderValue == widget.max
                           ? AppColors.salad
-                          : AppColors.textGray),
+                          : AppColors.textGray,),
                 ),
               ],
             ),
@@ -88,7 +88,7 @@ class _SliderCustomState extends State<SliderCustom> {
               thumbColor: AppColors.salad,
               overlayColor: Colors.black.withOpacity(0.1),
               thumbShape: RoundSliderThumbShape(enabledThumbRadius: UtilsResponsive.getResSize(14)),
-              overlayShape: SliderComponentShape.noThumb),
+              overlayShape: SliderComponentShape.noThumb,),
           child: Slider(
             label: sliderValue.toStringAsFixed(1),
             min: widget.min,

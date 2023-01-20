@@ -20,11 +20,11 @@ import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/i
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/input_occupation/input_occupation_view.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/input_status/input_status_view.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/reg_success/reg_succes_view.dart';
-import 'package:network_app/ui/pages/home_pages/home_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_meeting/home_meeting_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_messages/home_messages_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/home_profile_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/home_store_view.dart';
+import 'package:network_app/ui/pages/home_pages/home_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_wallet/home_wallet_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/meeting_invitations_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_matching/meeting_matching_view.dart';

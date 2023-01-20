@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/constants.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/reg_success/reg_success_vm.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
@@ -6,7 +7,6 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/app_card.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 
 
@@ -51,14 +51,13 @@ class _RegSuccessViewState extends State<RegSuccessView> {
                           const SizedBox(height: 29,),
                           Text(
                               AppString.of(context).youSuccessfullySignedUp,
-                              style: AppTextStyles.primary16
+                              style: AppTextStyles.primary16,
                           ),
 
                           const SizedBox(height: 35,),
 
                           ListView.builder(
                               physics: const NeverScrollableScrollPhysics(),
-                              scrollDirection: Axis.vertical,
                               shrinkWrap: true,
                               itemCount: 4,
                               itemBuilder: (BuildContext context, int index) {
@@ -67,7 +66,7 @@ class _RegSuccessViewState extends State<RegSuccessView> {
                                   child: ListTile(
                                     title: Text(
                                         '${AppString.of(context).rule} ${index + 1}',
-                                        style: AppTextStyles.primary18.copyWith(fontWeight: FontWeight.w500)
+                                        style: AppTextStyles.primary18.copyWith(fontWeight: FontWeight.w500),
                                     ),
                                     contentPadding: EdgeInsets.zero,
                                     subtitle: const Padding(
@@ -79,7 +78,7 @@ class _RegSuccessViewState extends State<RegSuccessView> {
                                     ),
                                   ),
                                 );
-                              }),
+                              },),
                         ],
                       ),
                     ),
@@ -94,7 +93,7 @@ class _RegSuccessViewState extends State<RegSuccessView> {
             ),
           ),
         );
-      });
+      },);
 }
 
 }

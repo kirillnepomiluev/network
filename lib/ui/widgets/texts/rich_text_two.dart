@@ -3,14 +3,6 @@ import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
 class RichTextTwo extends StatelessWidget {
-  final String text1;
-  final String text2;
-  final double? fontSize;
-  final FontWeight fontWeight1;
-  final FontWeight fontWeight2;
-  final Color color1;
-  final Color color2;
-  final TextAlign textAlign;
 
   const RichTextTwo({
     Key? key,
@@ -23,6 +15,14 @@ class RichTextTwo extends StatelessWidget {
     this.color2 = AppColors.salad,
     this.textAlign = TextAlign.start,
   }) : super(key: key);
+  final String text1;
+  final String text2;
+  final double? fontSize;
+  final FontWeight fontWeight1;
+  final FontWeight fontWeight2;
+  final Color color1;
+  final Color color2;
+  final TextAlign textAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class RichTextTwo extends StatelessWidget {
               style: TextStyle(
                 fontWeight: fontWeight2,
                 color: color2,
-              )),
+              ),),
         ],
       ),
       // minFontSize: 14,

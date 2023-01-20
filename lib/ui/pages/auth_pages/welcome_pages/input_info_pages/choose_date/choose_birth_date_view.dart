@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_date/widgets/choose_date_rich_text.dart';
-import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
+import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_check_list_tile.dart';
 
@@ -27,8 +27,6 @@ class _ChooseBirthDateViewState extends State<ChooseBirthDateView> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(
                   height: 10,
@@ -53,7 +51,7 @@ class _ChooseBirthDateViewState extends State<ChooseBirthDateView> {
 
                 AppButtonContinue(onPressed: () {
                   context.router.push(const ChooseSexViewRoute());
-                }),
+                },),
 
                 const SizedBox(
                   height: 30,
@@ -63,7 +61,7 @@ class _ChooseBirthDateViewState extends State<ChooseBirthDateView> {
                     width: 165, //165
                     child: AppCheckListTile(
                       title: AppString.of(context).hideAge,
-                    ))
+                    ),)
               ],
             ),
           ),

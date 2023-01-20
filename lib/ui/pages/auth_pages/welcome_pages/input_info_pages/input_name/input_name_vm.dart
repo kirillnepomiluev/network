@@ -4,8 +4,8 @@ import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 class InputNameViewModel extends ViewModel {
-  final BuildContext context;
   InputNameViewModel(this.context);
+  final BuildContext context;
 
   void onTap() {
     FocusManager.instance.primaryFocus?.unfocus();

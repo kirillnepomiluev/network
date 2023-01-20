@@ -1,18 +1,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/ui/pages/auth_pages/widgets/search_text_field.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/auth_bar_row.dart';
-import 'package:network_app/ui/widgets/buttons/button_continue.dart';
+import 'package:network_app/ui/pages/auth_pages/widgets/search_text_field.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/wrap_select_containers.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
+import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ChooseInterestsView extends StatelessWidget {
-  final bool isAuth;
   const ChooseInterestsView({Key? key, this.isAuth = false}) : super(key: key);
+  final bool isAuth;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class ChooseInterestsView extends StatelessWidget {
               width: 58.sp,
               height: 32.5.sp,
               onPressed: () {},
-              text: AppString.of(context).toAdd),
+              text: AppString.of(context).toAdd,),
       bottomNavigationBar: isAuth == false
           ? null
           : Padding(
@@ -34,7 +34,7 @@ class ChooseInterestsView extends StatelessWidget {
                 onPressed: () {
                   context.router.push(ChooseStatusViewRoute(isAuth: true));
                 },
-              )),
+              ),),
       extendBody: true,
       body: Padding(
         padding: EdgeInsets.only(top: mediaTop),
@@ -50,7 +50,7 @@ class ChooseInterestsView extends StatelessWidget {
                 children: [
                   AuthBarRow(
                       isAuth: isAuth,
-                      title: AppString.of(context).chooseInterests),
+                      title: AppString.of(context).chooseInterests,),
 
                   if (isAuth)
                     EnterInfoContainer(

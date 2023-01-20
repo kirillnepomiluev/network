@@ -1,4 +1,6 @@
+import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/constants.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/bottom_sheet_min_patinr.dart';
@@ -6,8 +8,6 @@ import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:blurrycontainer/blurrycontainer.dart';
-import 'package:network_app/constants.dart';
 
 void opeinInfoSheet({required BuildContext context, required String title}) {
   final mediaHeight = MediaQuery.of(context).size.height;
@@ -16,7 +16,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(25)),),
       context: context,
       builder: (BuildContext context) => SizedBox(
         height: height,
@@ -35,21 +35,18 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
                           borderRadius: BorderRadius.zero,
                           // height: height - mediaWidth * 0.07733333333333334,
                           blur: 20,
-                          color: Colors.transparent,
                           padding: EdgeInsets.all(UtilsResponsive.getResSize(15)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.max,
                             children: [
                               Text('Энергия',
                                   style: AppTextStyles.salad32
-                                      .copyWith(fontWeight: FontWeight.w600)),
+                                      .copyWith(fontWeight: FontWeight.w600),),
                               Padding(
                                 padding: EdgeInsets.only(
-                                    top: UtilsResponsive.getResSize(20)),
+                                    top: UtilsResponsive.getResSize(20),),
                                 child: Text(Constants.strLongLoremIpsum,
-                                    style: AppTextStyles.primary16),
+                                    style: AppTextStyles.primary16,),
                               )
                             ],
                           ),
@@ -66,15 +63,15 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
                 ),
               ],
             ),
-      ));
+      ),);
 }
 
 class _CustomPaint extends StatelessWidget {
-  final Color color;
   const _CustomPaint({
     Key? key,
     required this.color,
   }) : super(key: key);
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +80,7 @@ class _CustomPaint extends StatelessWidget {
       size: Size(
           mediaWidth,
           (mediaWidth * 0.07733333333333334)
-              .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+              .toDouble(),), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
       painter: BottomSheetMinPaint(
         color: color,
       ),
@@ -92,11 +89,6 @@ class _CustomPaint extends StatelessWidget {
 }
 
 class ProgressParametr extends StatelessWidget {
-  final String text1;
-  final String text2;
-  final IconData icon;
-  final double progress;
-  final bool isMeetingRow;
   const ProgressParametr({
     Key? key,
     required this.text1,
@@ -105,6 +97,11 @@ class ProgressParametr extends StatelessWidget {
     this.isMeetingRow = false,
     this.progress = 0,
   }) : super(key: key);
+  final String text1;
+  final String text2;
+  final IconData icon;
+  final double progress;
+  final bool isMeetingRow;
 
   @override
   Widget build(BuildContext context) {
@@ -112,12 +109,11 @@ class ProgressParametr extends StatelessWidget {
       padding: EdgeInsets.only(top: UtilsResponsive.getResSize(22)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           InkWell(
-              onTap: (() {
+              onTap: () {
                 opeinInfoSheet(title: text1, context: context);
-              }),
+              },
               child: isMeetingRow
                   ? Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -150,7 +146,7 @@ class ProgressParametr extends StatelessWidget {
                         ),
                         Padding(
                           padding: EdgeInsets.only(
-                              right: UtilsResponsive.getResSize(13)),
+                              right: UtilsResponsive.getResSize(13),),
                           child: Icon(
                             NetworkIcons.info,
                             color: Colors.white,
@@ -158,7 +154,7 @@ class ProgressParametr extends StatelessWidget {
                           ),
                         )
                       ],
-                    )),
+                    ),),
           Padding(
             padding: EdgeInsets.only(top: UtilsResponsive.getResSize(12)),
             child: Stack(
@@ -167,7 +163,7 @@ class ProgressParametr extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(11),
-                      border: Border.all(width: 1, color: AppColors.salad)),
+                      border: Border.all(color: AppColors.salad),),
                   child: LinearPercentIndicator(
                     padding: EdgeInsets.zero,
                     barRadius: const Radius.circular(11),
@@ -182,7 +178,7 @@ class ProgressParametr extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                         color: AppColors.salad,
-                        borderRadius: BorderRadius.circular(7)),
+                        borderRadius: BorderRadius.circular(7),),
                     width: UtilsResponsive.getResSize(24),
                     height: UtilsResponsive.getResSize(22),
                     child: Icon(

@@ -7,11 +7,11 @@ import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class StoreHeadwearContainer extends StatelessWidget {
+  const StoreHeadwearContainer(
+      {Key? key, required this.type, this.isView = false,})
+      : super(key: key);
   final bool isView;
   final String type;
-  const StoreHeadwearContainer(
-      {Key? key, required this.type, this.isView = false})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class StoreHeadwearContainer extends StatelessWidget {
             children: [
               Text('1.6 SOL',
                   style: AppTextStyles.salad16
-                      .copyWith(fontWeight: FontWeight.w600)),
+                      .copyWith(fontWeight: FontWeight.w600),),
               const SizedBox(
                 height: 5,
               ),

@@ -5,8 +5,6 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 
 
 class StoreCategoryViewModel extends ViewModel {
-  final BuildContext context;
-  final StoreProductType storeCategoryScreen;
   StoreCategoryViewModel(this.context, this.storeCategoryScreen){
     if(storeCategoryScreen==StoreProductType.avatars){
       title = AppString.of(context).avatars;
@@ -15,6 +13,8 @@ class StoreCategoryViewModel extends ViewModel {
       title = AppString.of(context).headwears;
     }
   }
+  final BuildContext context;
+  final StoreProductType storeCategoryScreen;
 
   late String title;
 

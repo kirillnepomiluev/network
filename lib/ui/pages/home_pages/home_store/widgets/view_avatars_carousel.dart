@@ -6,11 +6,11 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 
 class ViewAvatarsCarousel extends StatelessWidget {
-  final ScrollController scrollController;
-  final VoidCallback onPressed;
   const ViewAvatarsCarousel({
     Key? key, required this.scrollController, required this.onPressed,
   }) : super(key: key);
+  final ScrollController scrollController;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +31,13 @@ class ViewAvatarsCarousel extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               for (var i = 0; i < 6; i++)
                 Padding(
                   padding: EdgeInsets.only(right: UtilsResponsive.getResSize(10)),
                   child: StoreAvatarContainer(
-                    type: i % 2 == 0 ? 'Редкий' : 'Обычный',
+                    // type: i % 2 == 0 ? 'Редкий' : 'Обычный',
+                    type: i.isEven ? 'Редкий' : 'Обычный',
                   ),
                 ),
             ],

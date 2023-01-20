@@ -5,7 +5,6 @@ import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 
 class StartViewModel extends ViewModel {
-  final BuildContext context;
   StartViewModel(this.context){
       // Future.delayed(const Duration(microseconds: 100)).then((value) {
       //   context.router.push(HomeViewRoute(initIndex: 0),);
@@ -13,11 +12,12 @@ class StartViewModel extends ViewModel {
       //   // context.router.push(MeetingSearchViewRoute());
       // });
   }
+  final BuildContext context;
 
   void onTap() {
-      context.router.push(HomeViewRoute(initIndex: 0),);
-      // context.router.push(InputPhoneViewRoute());
-      // context.router.push(const RegSuccessViewRoute());
+      // context.router.push(HomeViewRoute(initIndex: 0),);
+      // context.router.push(ChatPersonalViewRoute());
+      context.router.push(const LoginViewRoute());
   }
 
 }

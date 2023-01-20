@@ -5,11 +5,11 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class StatMiniContainer extends StatelessWidget {
-  final String title;
-  final String subtitle;
   const StatMiniContainer({
     Key? key, required this.title, required this.subtitle,
   }) : super(key: key);
+  final String title;
+  final String subtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +24,13 @@ class StatMiniContainer extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          title == ''
-              ? Container()
-              : Text(
+          if (title == '') Container() else Text(
                   title,
                   style: TextStyle(
                       fontSize: 23.sp, //28
                       fontWeight: FontWeight.w500,
-                      color: Colors.white),
+                      color: Colors.white,),
                 ),
           Padding(
             padding: const EdgeInsets.only(top: 5),
@@ -42,7 +39,7 @@ class StatMiniContainer extends StatelessWidget {
               style: TextStyle(
                   fontSize: 17.5.sp, //16
                   fontWeight: FontWeight.w500,
-                  color: Colors.white),
+                  color: Colors.white,),
               textAlign: TextAlign.center,
             ),
           )

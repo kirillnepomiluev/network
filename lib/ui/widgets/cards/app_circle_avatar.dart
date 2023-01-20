@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AppCircleAvatar extends StatelessWidget {
+  const AppCircleAvatar(
+      {Key? key, required this.imageUrl, required this.contSize,})
+      : super(key: key);
   final String imageUrl;
   final double contSize;
-  const AppCircleAvatar(
-      {Key? key, required this.imageUrl, required this.contSize})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

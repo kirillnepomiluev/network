@@ -8,10 +8,10 @@ import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingTimerPauseDialog extends StatelessWidget {
-  final VoidCallback startTimer;
   const MeetingTimerPauseDialog({
     Key? key, required this.startTimer,
   }) : super(key: key);
+  final VoidCallback startTimer;
 
 
   @override
@@ -21,14 +21,13 @@ class MeetingTimerPauseDialog extends StatelessWidget {
     return BlurryContainer(
       blur: 20,
       child: Dialog(
-          insetPadding: EdgeInsets.symmetric(horizontal: 0.08 * mediaWidth //30
+          insetPadding: EdgeInsets.symmetric(horizontal: 0.08 * mediaWidth, //30
               ),
           backgroundColor: Colors.transparent,
           // backgroundColor: ConstColor.white10,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               BlurryContainer(
                 blur: 20,
@@ -43,7 +42,6 @@ class MeetingTimerPauseDialog extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     RichTextTwo(
                       text1: 'Вы уверены, что хотите\n',
@@ -54,7 +52,7 @@ class MeetingTimerPauseDialog extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 0.0986 * mediaWidth //37
+                      padding: EdgeInsets.only(top: 0.0986 * mediaWidth, //37
                           ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -77,32 +75,32 @@ class MeetingTimerPauseDialog extends StatelessWidget {
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
                                     vertical: 0.056 * mediaWidth * 0.428, //9
-                                    horizontal: 0.0266 * mediaWidth //15
+                                    horizontal: 0.0266 * mediaWidth, //15
                                     ),
                                 child: Text(
                                   'Продолжить',
                                   style: TextStyle(
                                       color: AppColors.textBlack,
                                       fontSize: 16.5.sp, //14
-                                      fontWeight: FontWeight.w400),
+                                      fontWeight: FontWeight.w400,),
                                 ),
-                              )),
+                              ),),
                           Padding(
                             padding:
-                                EdgeInsets.only(left: 0.064 * mediaWidth //24
+                                EdgeInsets.only(left: 0.064 * mediaWidth, //24
                                     ),
                             child: InkWell(
                               onTap: () {
                                 context.router.pushAndPopUntil(
-                                    HomeViewRoute(initIndex: 0),
-                                    predicate: (route) => false);
+                                    HomeViewRoute(),
+                                    predicate: (route) => false,);
                               },
                               child: Text(
                                 'Прервать',
                                 style: TextStyle(
                                     fontSize: 16.5.sp, //14
                                     fontWeight: FontWeight.w400,
-                                    color: AppColors.textGray),
+                                    color: AppColors.textGray,),
                               ),
                             ),
                           )
@@ -127,7 +125,6 @@ class MeetingTimerPauseDialog extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(bottom: 21),
@@ -166,7 +163,7 @@ class MeetingTimerPauseDialog extends StatelessWidget {
                             child: Padding(
                               padding: EdgeInsets.symmetric(
                                   vertical: 0.056 * mediaWidth * 0.428, //9
-                                  horizontal: 0.0266 * mediaWidth //15
+                                  horizontal: 0.0266 * mediaWidth, //15
                                   ),
                               child: Text(
                                 // 'Создать чат',
@@ -174,16 +171,16 @@ class MeetingTimerPauseDialog extends StatelessWidget {
                                 style: TextStyle(
                                     color: AppColors.textBlack,
                                     fontSize: 16.5.sp, //14
-                                    fontWeight: FontWeight.w400),
+                                    fontWeight: FontWeight.w400,),
                               ),
-                            )),
+                            ),),
                       )
                     ],
                   ),
                 ),
               )
             ],
-          )),
+          ),),
     );
   }
 }

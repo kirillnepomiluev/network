@@ -9,7 +9,6 @@ import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/main_pages/dialog_utls.dart';
 
 class MeetingTimerViewModel extends ViewModel {
-  final BuildContext context;
   MeetingTimerViewModel(this.context) {
     maxSeconds = duration.inSeconds;
     valueNotifier = ValueNotifier(0.0);
@@ -17,6 +16,7 @@ class MeetingTimerViewModel extends ViewModel {
     strMinutes = twoDigits(duration.inMinutes.remainder(60));
     strSeconds = twoDigits(duration.inSeconds.remainder(60));
   }
+  final BuildContext context;
 
   Duration duration = const Duration(seconds: 1);
   Timer? timer;
@@ -80,7 +80,7 @@ class MeetingTimerViewModel extends ViewModel {
           func: () {
             context.router.pop();
             openBottomSheetSuccess();
-          });
+          },);
     } else {
       duration = Duration(seconds: seconds);
     }
@@ -108,20 +108,18 @@ class MeetingTimerViewModel extends ViewModel {
         context: context,
         builder: (BuildContext context) => MeetingTimerPauseDialog(
               startTimer: startTimer,
-            ));
+            ),);
   }
 
   void openBottomSheetSuccess() {
     showModalBottomSheet<void>(
         backgroundColor: AppColors.black1A.withOpacity(0.5),
-        enableDrag: true,
-        isDismissible: true,
         isScrollControlled: true,
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(25)),),
         context: context,
         builder: (BuildContext context) {
           return const MeetingTimerSheetSuccess();
-        });
+        },);
   }
 }
