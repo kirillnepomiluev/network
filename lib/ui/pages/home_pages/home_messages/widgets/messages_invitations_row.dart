@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_messages/widgets/messages_mini_avatar.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
 
@@ -16,8 +16,8 @@ class MessagesInvitationsRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: UtilsResponsive.getResSize(20),
-          bottom: UtilsResponsive.getResSize(20),
+          top: Res.s20,
+          bottom: Res.s20,
       ),
       child: AppContainer(
         width: MediaQuery.of(context).size.width,
@@ -28,15 +28,15 @@ class MessagesInvitationsRow extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(
-                left: UtilsResponsive.getResSize(15),
-                top: UtilsResponsive.getResSize(15),
+                left: Res.s15,
+                top: Res.s15,
               ),
               child: Text(
                 AppString.of(context).invitations,
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: UtilsResponsive.getResSize(15),),
+              padding: EdgeInsets.symmetric(vertical: Res.s15,),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(

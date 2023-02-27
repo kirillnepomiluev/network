@@ -27,16 +27,16 @@ class StatColumn extends StatelessWidget {
               text2: 'Базовый',
             ),
             Padding(
-              padding: EdgeInsets.only(right: UtilsResponsive.getResSize(10)),
+              padding: EdgeInsets.only(right: Res.s10),
               child: Container(
                 decoration: BoxDecoration(
                     color: AppColors.salad,
                     borderRadius: BorderRadius.circular(7),),
-                width: UtilsResponsive.getResSize(24),
-                height: UtilsResponsive.getResSize(22),
+                width: Res.s24,
+                height: Res.s22,
                 child: Icon(
                   Icons.mode_edit_outline_outlined,
-                  size: UtilsResponsive.getResSize(13),
+                  size: Res.s13,
                 ),
               ),
             ),
@@ -54,14 +54,14 @@ class StatColumn extends StatelessWidget {
             icon: NetworkIcons.rhombus,),
 
         SizedBox(
-          height: UtilsResponsive.getResSize(15),
+          height: Res.s15,
         ),
 
         if (ifProfileSheet)
           RichTextTwo(
             text1: 'До следущего уровня осталось\nнабрать ',
             text2: '1500 токенов',
-            fontSize: UtilsResponsive.getResSize(14),
+            fontSize: Res.s14,
             fontWeight1: FontWeight.w500,
             fontWeight2: FontWeight.w500,
           ),
@@ -69,7 +69,7 @@ class StatColumn extends StatelessWidget {
         if (ifProfileSheet)
           Padding(
             padding: EdgeInsets.only(
-                top: UtilsResponsive.getResSize(25),
+                top: Res.s25,
                 bottom: 8.sp,
             ),
             child:

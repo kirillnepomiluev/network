@@ -6,13 +6,15 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 class AppInputBorder {
   static final _defaultBorder = OutlineInputBorder(
+
       borderSide: const BorderSide(color: AppColors.salad),
       borderRadius: BorderRadius.circular(AppBorderRadius.r20),);
 
   static final inputDecorationBorder = InputDecoration(
     contentPadding: EdgeInsets.symmetric(
-        vertical: UtilsResponsive.getResSize(22),
-        horizontal: UtilsResponsive.getResSize(16),),
+        vertical: Res.s22,
+        horizontal: Res.s16,),
+    // contentPadding: EdgeInsets.zero,
     focusedBorder: _defaultBorder,
     enabledBorder: _defaultBorder,
     disabledBorder: _defaultBorder,
@@ -27,9 +29,10 @@ class AppInputBorder {
   );
 
   static final inputDecorationTransparent = InputDecoration(
-    contentPadding: EdgeInsets.symmetric(
-        vertical: UtilsResponsive.getResSize(22),
-        horizontal: UtilsResponsive.getResSize(16),),
+    // contentPadding: EdgeInsets.symmetric(
+    //     vertical: UtilsRes.s22,
+    //     horizontal: UtilsRes.s16,),
+    contentPadding: EdgeInsets.zero,
     focusedBorder: _transBorder,
     enabledBorder: _transBorder,
     disabledBorder: _transBorder,

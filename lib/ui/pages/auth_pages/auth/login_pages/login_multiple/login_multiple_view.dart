@@ -50,7 +50,7 @@ class LoginMultipleView extends StatelessWidget {
                             title: AppString.of(context).signInByPhone,
                           ),
 
-                          SizedBox(height: UtilsResponsive.getResSize(21),), //21
+                          SizedBox(height: Res.s21,), //21
 
                           EnterRowContainer(
                             onTap: model.loginEmailTap,
@@ -59,7 +59,7 @@ class LoginMultipleView extends StatelessWidget {
                             // leftPad: 24.sp   //30
                           ),
 
-                          SizedBox(height: UtilsResponsive.getResSize(21),), //21
+                          SizedBox(height: Res.s21,), //21
 
                           EnterRowContainer(
                             onTap: model.loginGoogleTap,
@@ -68,7 +68,7 @@ class LoginMultipleView extends StatelessWidget {
                             // leftPad: 23.sp   //28
                           ),
 
-                          SizedBox(height: UtilsResponsive.getResSize(21),), //21
+                          SizedBox(height: Res.s21,), //21
 
                           EnterRowContainer(
                             onTap: model.loginFacebookTap,

@@ -6,7 +6,7 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_search/meeting_search
 import 'package:network_app/ui/pages/meeting_pages/meeting_search/widgets/search_tab.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
@@ -77,7 +77,7 @@ class MeetingSearchView extends StatelessWidget {
                                   text: AppString.of(context).byInterests,
                                   tabName: ActiveSearchTabs.byInterests,
                                   changeTab: model.changeTab,),
-                              SizedBox(width: UtilsResponsive.getResSize(10),),
+                              SizedBox(width: Res.s10,),
                               MeetingSearchTab(
                                   activeTab: model.activeTab,
                                   text:

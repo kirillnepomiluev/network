@@ -4,7 +4,7 @@ import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -56,7 +56,7 @@ class MeetingTimerBottom extends StatelessWidget {
                   text: 'Показать вопросы',
                 ),
                 SizedBox(
-                  height: UtilsResponsive.getResSize(26),
+                  height: Res.s26,
                 ),
                 Text('Чтобы получить больше токенов,\nответеть на вопросы',
                     textAlign: TextAlign.center,

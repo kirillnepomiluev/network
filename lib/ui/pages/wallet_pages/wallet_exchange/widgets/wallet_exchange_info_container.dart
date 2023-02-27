@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -24,7 +24,7 @@ class WalletExchangeInfoContainer extends StatelessWidget {
             const Text(
               'Вы получите',
             ),
-            SizedBox(height: UtilsResponsive.getResSize(15)),
+            SizedBox(height: Res.s15),
             Text('0.00045 BTC',
                 style: AppTextStyles.salad38
                     .copyWith(fontWeight: FontWeight.w600),),

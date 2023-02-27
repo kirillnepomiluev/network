@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
 class MeetingRequestInfoContainer extends StatelessWidget {
@@ -12,11 +12,11 @@ class MeetingRequestInfoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: UtilsResponsive.getResSize(20)),
+      padding: EdgeInsets.only(top: Res.s20),
       child: AppContainer(
         width: double.infinity,
-        padV: UtilsResponsive.getResSize(26),
-        padH: UtilsResponsive.getResSize(18),
+        padV: Res.s26,
+        padH: Res.s18,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -38,7 +38,7 @@ class MeetingRequestInfoContainer extends StatelessWidget {
               style: AppTextStyles.grey,
             ),
             SizedBox(
-              height: UtilsResponsive.getResSize(20),
+              height: Res.s20,
             ),
             const Text(
               'Здесь будет небольшое описание встречи, которое будет видно на 2 строчки...',

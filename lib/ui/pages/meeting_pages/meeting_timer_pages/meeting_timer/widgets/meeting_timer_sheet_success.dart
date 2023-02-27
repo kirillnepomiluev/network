@@ -36,12 +36,12 @@ class MeetingTimerSheetSuccess extends StatelessWidget {
           ),
 
           RhombusText(
-              fontSize: UtilsResponsive.getResSize(60), //60
-              iconSize: UtilsResponsive.getResSize(40), //45
+              fontSize: Res.s60, //60
+              iconSize: Res.s40, //45
               fontWeight: FontWeight.w600,),
 
           Padding(
-              padding: EdgeInsets.only(bottom: UtilsResponsive.getResSize(20)),
+              padding: EdgeInsets.only(bottom: Res.s20),
             child: Column(
               children: [
                 AppButton(

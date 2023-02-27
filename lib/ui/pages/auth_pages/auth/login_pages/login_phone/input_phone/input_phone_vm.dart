@@ -5,6 +5,7 @@ import 'package:intl_phone_field/phone_number.dart';
 import 'package:network_app/app/core/services/auth_service.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
+import 'package:network_app/utils/utils.dart';
 
 class InputPhoneViewModel extends ViewModel {
   InputPhoneViewModel(this.context);
@@ -17,7 +18,7 @@ class InputPhoneViewModel extends ViewModel {
   // final phoneContr = TextEditingController(text: '9603793580');
 
   void goBack() {
-    FocusManager.instance.primaryFocus?.unfocus();
+    Utils.unFocus();
     SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
 
     Future.delayed(const Duration(milliseconds: 100))
@@ -34,7 +35,7 @@ class InputPhoneViewModel extends ViewModel {
 
     if (formdata!.validate()) {
       strPhone = phone.completeNumber;
-      FocusManager.instance.primaryFocus?.unfocus();
+      Utils.unFocus();
     }
   }
 
@@ -47,7 +48,7 @@ class InputPhoneViewModel extends ViewModel {
     var formdata = formstate.currentState;
 
     if (formdata!.validate()) {
-        bool isSuccess = await _authentificationService.getVerificationsCodeService(phoneNumber: strPhone);
+        bool isSuccess = await _authentificationService.signInByPhoneGetOTP(phoneNumber: strPhone);
         print('getOTP - strPhone $strPhone - isSuccess - $isSuccess');
 
       // strPhone ='${strPhone.substring(0, 1)} ${strPhone.substring(1, 2)} ${strPhone.substring(2, 5)} ${strPhone.substring(5, 8)} ${strPhone.substring(8, 10)} ${strPhone.substring(10)}'; //33

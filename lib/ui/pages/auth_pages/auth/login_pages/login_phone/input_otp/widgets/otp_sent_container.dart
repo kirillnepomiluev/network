@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/widgets/input_pass_fields.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 
 

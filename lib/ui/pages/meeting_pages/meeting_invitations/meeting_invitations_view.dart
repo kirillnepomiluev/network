@@ -23,15 +23,15 @@ class MeetingInvitationsView extends StatelessWidget {
             extendBodyBehindAppBar: true,
             body: Padding(
               padding: EdgeInsets.only(top: mediaTop,
-                  left: UtilsResponsive.getResSize(15),
-                  right: UtilsResponsive.getResSize(15),
+                  left: Res.s15,
+                  right: Res.s15,
               ),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const AppBarRow(),
-                    SizedBox(height: UtilsResponsive.getResSize(20),),
+                    SizedBox(height: Res.s20,),
 
                     ChooseInvitationScreen(
                       changeTab: model.changeTab,

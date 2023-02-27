@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -28,10 +28,10 @@ class EnterInfoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: UtilsResponsive.getResSize(32)),
+      padding: EdgeInsets.only(top: Res.s32),
       child: AppContainer(
-        padV: UtilsResponsive.getResSize(23),   //23
-        padH: UtilsResponsive.getResSize(17),   //17
+        padV: Res.s23,   //23
+        padH: Res.s17,   //17
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

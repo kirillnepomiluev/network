@@ -4,7 +4,7 @@ import 'package:network_app/ui/pages/home_pages/home_profile/widgets/profile_bot
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/stat_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/utils_responsive.dart';
@@ -21,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: UtilsResponsive.getResSize(25),
+          top: Res.s25,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.only(
-                left: UtilsResponsive.getResSize(15),
+                left: Res.s15,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
                         .copyWith(fontWeight: FontWeight.w700),),
 
                 SizedBox(
-                  height: UtilsResponsive.getResSize(12),
+                  height: Res.s12,
                 ),
 
                 Text(
@@ -52,7 +52,7 @@ class ProfileScreen extends StatelessWidget {
 
                 //Готов к встрече
                 AppContainer(
-                  padV: UtilsResponsive.getResSize(20),
+                  padV: Res.s20,
                   color: AppColors.salad,
                   radius: AppBorderRadius.r15,
                   child: Row(
@@ -60,18 +60,18 @@ class ProfileScreen extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(
-                            left: UtilsResponsive.getResSize(15),
+                            left: Res.s15,
                             ),
                         child: Icon(
                           NetworkIcons.check_thin,
-                          size: UtilsResponsive.getResSize(14),
+                          size: Res.s14,
                           color: Colors.black,
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                            left: UtilsResponsive.getResSize(12),
-                            right: UtilsResponsive.getResSize(20),
+                            left: Res.s12,
+                            right: Res.s20,
                             ),
                         child: Text(AppString.of(context).readyToMeet,
                             style: AppTextStyles.darkSalad
@@ -87,7 +87,7 @@ class ProfileScreen extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                    left: UtilsResponsive.getResSize(15),
+                    left: Res.s15,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -101,7 +101,7 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: UtilsResponsive.getResSize(32),),
+              SizedBox(height: Res.s32,),
               ProfileBottomCurve(
                 openBottomSheetProfile: openBottomSheetProfile,
               ),

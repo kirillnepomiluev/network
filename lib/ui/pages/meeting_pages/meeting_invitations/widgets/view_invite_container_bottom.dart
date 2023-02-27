@@ -29,7 +29,7 @@ class ViewInviteContainerBottom extends StatelessWidget {
               contSize: 40.sp, //83
             ),
             Padding(
-              padding: EdgeInsets.only(left: UtilsResponsive.getResSize(21)),
+              padding: EdgeInsets.only(left: Res.s21),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -39,10 +39,10 @@ class ViewInviteContainerBottom extends StatelessWidget {
                     iconColor: Colors.black,
                     boxShape: BoxShape.circle,
                     iconSize: 15.sp,
-                    contSize: UtilsResponsive.getResSize(18),
+                    contSize: Res.s18,
                   ),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(10),
+                    height: Res.s10,
                   ),
                   Text('250 м',
                       style: AppTextStyles.salad20

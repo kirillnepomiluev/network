@@ -22,18 +22,18 @@ class StoreProductBottom extends StatelessWidget {
       blur: 50,
       width: MediaQuery.of(context).size.width,
       color: AppColors.black1A.withOpacity(0.5),
-      padding: EdgeInsets.symmetric(vertical: UtilsResponsive.getResSize(12)),
+      padding: EdgeInsets.symmetric(vertical: Res.s12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: UtilsResponsive.getResSize(35)), //30
+            padding: EdgeInsets.only(left: Res.s35), //30
             child: Text('1.6 SOL',
                 style: AppTextStyles.salad16
                     .copyWith(fontWeight: FontWeight.w600),),
           ),
           Padding(
-              padding: EdgeInsets.only(right: UtilsResponsive.getResSize(15)),
+              padding: EdgeInsets.only(right: Res.s15),
               child: AppButton(
                 width: 60.sp, //180
                 height: 32.sp,   //50

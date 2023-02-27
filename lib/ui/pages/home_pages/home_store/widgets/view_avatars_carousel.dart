@@ -34,7 +34,7 @@ class ViewAvatarsCarousel extends StatelessWidget {
             children: [
               for (var i = 0; i < 6; i++)
                 Padding(
-                  padding: EdgeInsets.only(right: UtilsResponsive.getResSize(10)),
+                  padding: EdgeInsets.only(right: Res.s10),
                   child: StoreAvatarContainer(
                     // type: i % 2 == 0 ? 'Редкий' : 'Обычный',
                     type: i.isEven ? 'Редкий' : 'Обычный',

@@ -16,7 +16,7 @@ class CheckMeetingDescriptionOfMeeting extends StatelessWidget {
       children: [
         TitleStatText(AppString.of(context).descriptionOfMeeting),
         SizedBox(
-          height: UtilsResponsive.getResSize(10),
+          height: Res.s10,
         ),
         const AppTextField(
           initialValue:

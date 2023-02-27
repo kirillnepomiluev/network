@@ -5,7 +5,7 @@ import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -27,8 +27,8 @@ class StoreAvatarContainer extends StatelessWidget {
         ),);
       },
       child: AppContainer(
-        padH: UtilsResponsive.getResSize(15),
-        padV: UtilsResponsive.getResSize(15),
+        padH: Res.s15,
+        padV: Res.s15,
         radius: AppBorderRadius.r15,
         width: contWidth,
         child: Column(
@@ -57,7 +57,7 @@ class StoreAvatarContainer extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: UtilsResponsive.getResSize(12),
+              height: Res.s12,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +83,7 @@ class StoreAvatarContainer extends StatelessWidget {
                 ),
 
                 Wrap(
-                  spacing: UtilsResponsive.getResSize(10),
+                  spacing: Res.s10,
                   children: [
                     Text('Уровень 6  Баллы +150',
                         style: AppTextStyles.primary12,),
@@ -92,13 +92,13 @@ class StoreAvatarContainer extends StatelessWidget {
                       child: Icon(
                         NetworkIcons.rhombus,
                         color: AppColors.salad,
-                        size: UtilsResponsive.getResSize(12), //15
+                        size: Res.s12, //15
                       ),
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: UtilsResponsive.getResSize(12),
+                  height: Res.s12,
                 ),
               ],
             ),

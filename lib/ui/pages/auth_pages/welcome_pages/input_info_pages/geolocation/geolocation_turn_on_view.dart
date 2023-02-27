@@ -20,7 +20,11 @@ class GeolocationTurnOnView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const AuthBarRow(),
+                AuthBarRow(
+                  onSkip: (){
+                    context.router.pushAndPopUntil(HomeViewRoute(), predicate: (route) => false);
+                  },
+                ),
                 EnterInfoContainer(
                   text1: '${AppString.of(context).turnOn} ',
                   text2: AppString.of(context).ofGeolocation,

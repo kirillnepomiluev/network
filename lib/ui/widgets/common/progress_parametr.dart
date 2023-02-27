@@ -35,7 +35,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
                           borderRadius: BorderRadius.zero,
                           // height: height - mediaWidth * 0.07733333333333334,
                           blur: 20,
-                          padding: EdgeInsets.all(UtilsResponsive.getResSize(15)),
+                          padding: EdgeInsets.all(Res.s15),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -44,7 +44,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
                                       .copyWith(fontWeight: FontWeight.w600),),
                               Padding(
                                 padding: EdgeInsets.only(
-                                    top: UtilsResponsive.getResSize(20),),
+                                    top: Res.s20,),
                                 child: Text(Constants.strLongLoremIpsum,
                                     style: AppTextStyles.primary16,),
                               )
@@ -106,7 +106,7 @@ class ProgressParametr extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: UtilsResponsive.getResSize(22)),
+      padding: EdgeInsets.only(top: Res.s22),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -122,14 +122,14 @@ class ProgressParametr extends StatelessWidget {
                           text1,
                           style: TextStyle(
                             color: AppColors.textGray,
-                            fontSize: UtilsResponsive.getResSize(14),
+                            fontSize: Res.s14,
                           ),
                         ),
                         Text(
                           text2,
                           style: TextStyle(
                             color: AppColors.textGray,
-                            fontSize: UtilsResponsive.getResSize(14),
+                            fontSize: Res.s14,
                           ),
                         ),
                       ],
@@ -140,23 +140,23 @@ class ProgressParametr extends StatelessWidget {
                         RichTextTwo(
                           text1: text1,
                           text2: text2,
-                          fontSize: UtilsResponsive.getResSize(16),
+                          fontSize: Res.s16,
                           fontWeight1: FontWeight.w400,
                           fontWeight2: FontWeight.w700,
                         ),
                         Padding(
                           padding: EdgeInsets.only(
-                              right: UtilsResponsive.getResSize(13),),
+                              right: Res.s13,),
                           child: Icon(
                             NetworkIcons.info,
                             color: Colors.white,
-                            size: UtilsResponsive.getResSize(18),
+                            size: Res.s18,
                           ),
                         )
                       ],
                     ),),
           Padding(
-            padding: EdgeInsets.only(top: UtilsResponsive.getResSize(12)),
+            padding: EdgeInsets.only(top: Res.s12),
             child: Stack(
               alignment: Alignment.centerRight,
               children: [
@@ -167,7 +167,7 @@ class ProgressParametr extends StatelessWidget {
                   child: LinearPercentIndicator(
                     padding: EdgeInsets.zero,
                     barRadius: const Radius.circular(11),
-                    lineHeight: UtilsResponsive.getResSize(40), //40
+                    lineHeight: Res.s40, //40
                     percent: progress,
                     backgroundColor: Colors.transparent,
                     progressColor: AppColors.salad.withOpacity(0.2),
@@ -179,11 +179,11 @@ class ProgressParametr extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: AppColors.salad,
                         borderRadius: BorderRadius.circular(7),),
-                    width: UtilsResponsive.getResSize(24),
-                    height: UtilsResponsive.getResSize(22),
+                    width: Res.s24,
+                    height: Res.s22,
                     child: Icon(
                       icon,
-                      size: UtilsResponsive.getResSize(13),
+                      size: Res.s13,
                     ),
                   ),
                 ),

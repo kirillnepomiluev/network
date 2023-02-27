@@ -24,7 +24,7 @@ class WalletExchangeSuccessView extends StatelessWidget {
             body: SafeArea(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: UtilsResponsive.getResSize(16)),
+                  padding: EdgeInsets.symmetric(horizontal: Res.s16),
                   child: Column(
                     children: [
                       AppBarRow(title: AppString.of(context).wallet,),
@@ -39,15 +39,15 @@ class WalletExchangeSuccessView extends StatelessWidget {
                           '0.00045 BTC',
                           style: AppTextStyles.salad38.copyWith(fontWeight: FontWeight.w600),
                       ),
-                      SizedBox(height: UtilsResponsive.getResSize(13),),
+                      SizedBox(height: Res.s13,),
                       const Text(
                         'на вашем счете',
                       ),
-                      SizedBox(height: UtilsResponsive.getResSize(40),),
+                      SizedBox(height: Res.s40,),
                       // const SizedBox(height: 50),
 
                       WalletCurrencyContainer(data: WalletCurrencyData.currencyList[0]),
-                      SizedBox(height: UtilsResponsive.getResSize(40),),
+                      SizedBox(height: Res.s40,),
                       // const SizedBox(height: 48),
 
                       AppButton(onPressed: (){

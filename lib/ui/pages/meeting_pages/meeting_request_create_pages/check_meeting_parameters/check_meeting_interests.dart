@@ -18,7 +18,7 @@ class CheckMeetingInterests extends StatelessWidget {
       children: [
         TitleStatText(AppString.of(context).interestsTitle),
         SizedBox(
-            height: UtilsResponsive.getResSize(20),
+            height: Res.s20,
         ),
 
         const AppWrapContainersWithRemove(listOptions: ['Большой теннис', 'Бассейн', 'Управление', 'Маркетинг'], showAdd: true,),
@@ -45,12 +45,12 @@ class CheckMeetingInterests extends StatelessWidget {
         // ),
 
         SizedBox(
-          height: UtilsResponsive.getResSize(20),
+          height: Res.s20,
         ),
         RichTextTwo(
           text1: 'Вы можете указать ',
           text2: 'до 10 интересов',
-          fontSize: UtilsResponsive.getResSize(10),
+          fontSize: Res.s10,
           fontWeight1: FontWeight.w400,
           fontWeight2: FontWeight.w400,
         ),

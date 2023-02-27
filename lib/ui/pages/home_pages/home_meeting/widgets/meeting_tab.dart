@@ -30,8 +30,8 @@ class MeetingTab extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
           padding: EdgeInsets.symmetric(
-              vertical: UtilsResponsive.getResSize(16),
-              horizontal: UtilsResponsive.getResSize(20),
+              vertical: Res.s16,
+              horizontal: Res.s20,
           ),
           child:
           Text(
@@ -41,7 +41,7 @@ class MeetingTab extends StatelessWidget {
                 activeTab == tabName
                     ? AppColors.textBlack
                     : AppColors.textWhite,
-                fontSize: UtilsResponsive.getResSize(12), //12
+                fontSize: Res.s12, //12
                 fontWeight: FontWeight.w500,),
           ),
         ),

@@ -23,10 +23,10 @@ class MeetingTimerCircle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: UtilsResponsive.getResSize(20)),
+        padding: EdgeInsets.symmetric(horizontal: Res.s20),
         child: SimpleCircularProgressBar(
-          backStrokeWidth: UtilsResponsive.getResSize(26), //28
-          progressStrokeWidth: UtilsResponsive.getResSize(26),
+          backStrokeWidth: Res.s26, //28
+          progressStrokeWidth: Res.s26,
           size: 65.sp, //281
           backColor: AppColors.white10,
           progressColors: const [AppColors.salad],

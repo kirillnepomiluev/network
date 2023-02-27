@@ -4,7 +4,7 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/v
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bottom.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:network_app/utils/utils_responsive.dart';
@@ -28,8 +28,8 @@ class ViewInviteContainer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: AppContainer(
-        padH: UtilsResponsive.getResSize(21),
-        padV: UtilsResponsive.getResSize(26),
+        padH: Res.s21,
+        padV: Res.s26,
         radius: AppBorderRadius.r30,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,13 +38,13 @@ class ViewInviteContainer extends StatelessWidget {
                 activeTab: activeTab, showVerified: showVerified,),
 
             SizedBox(
-              height: UtilsResponsive.getResSize(15),
+              height: Res.s15,
             ),
 
             NameWithVerification(strName: strName, showVerified: showVerified),
 
             SizedBox(
-              height: UtilsResponsive.getResSize(15),
+              height: Res.s15,
             ),
 
             Row(

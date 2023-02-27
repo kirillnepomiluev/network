@@ -10,7 +10,7 @@ class MeetRowIconNext extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: UtilsResponsive.getResSize(21)), //21
+      padding: EdgeInsets.only(right: Res.s21), //21
       child: SizedBox(
         width: 20,
         height: 20,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/app/core/services/auth_service.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
+import 'package:network_app/utils/utils.dart';
 
 class InputOtpViewModel extends ViewModel {
   InputOtpViewModel(this.context, this.strPhone);
@@ -44,11 +45,11 @@ class InputOtpViewModel extends ViewModel {
     // context.router.push(const RegSuccessViewRoute());
 
       if(strOtp.length == 6){
-        final isSucceful = await _authentificationService.sendOtp(phoneNumber: strPhone, otp: strOtp);
+        final isSucceful = await _authentificationService.signInByPhoneSendOTP(phoneNumber: strPhone, otp: strOtp);
         print('onOtpSent - strOtp $strOtp - isSucceful - $isSucceful');
         if(isSucceful){
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Неверный пароль')));
-          FocusManager.instance.primaryFocus?.unfocus();
+          Utils.unFocus();
           context.router.push(const RegSuccessViewRoute());
         }
       }

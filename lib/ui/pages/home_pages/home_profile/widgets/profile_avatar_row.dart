@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/icons/notification_icon.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
@@ -30,10 +30,10 @@ class ProfileAvatarRow extends StatelessWidget {
           children: [
             Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: UtilsResponsive.getResSize(15),
+                  horizontal: Res.s15,
                 ),
                 child: AppCircleAvatar(
-                  contSize: UtilsResponsive.getResSize(60), //60
+                  contSize: Res.s60, //60
                   imageUrl: Assets.images.avatars.avatar0.keyName,
                 ),),
             Column(

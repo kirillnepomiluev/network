@@ -6,19 +6,23 @@ import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 
 class InputInfoColumn extends StatelessWidget {
   const InputInfoColumn({
-    Key? key, required this.text1, required this.text2, required this.description, required this.onContinue,
+    Key? key, required this.text1, required this.text2, required this.description, required this.onContinue, this.controller, this.onNextPage,
   }) : super(key: key);
   final String text1;
   final String text2;
   final String description;
   final VoidCallback onContinue;
+  final VoidCallback? onNextPage;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const AuthBarRow(),
+        AuthBarRow(
+          onSkip: onNextPage,
+        ),
         EnterInfoContainer(
           text1: text1,
           text2: text2,
@@ -27,7 +31,9 @@ class InputInfoColumn extends StatelessWidget {
         const SizedBox(
           height: 36,
         ),
-        const AppTextField(),
+        AppTextField(
+          controller: controller,
+        ),
         const SizedBox(
           height: 36,
         ),

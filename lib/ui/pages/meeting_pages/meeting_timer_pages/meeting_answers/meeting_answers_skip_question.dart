@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
@@ -26,7 +26,7 @@ class MeetingAnswersSkipQuestion extends StatelessWidget {
             },
             child: AppContainer(
               padV: 3,
-              padH: UtilsResponsive.getResSize(18),
+              padH: Res.s18,
               radius: AppBorderRadius.r15,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -40,12 +40,12 @@ class MeetingAnswersSkipQuestion extends StatelessWidget {
                   Padding(
                       padding: const EdgeInsets.only(left: 11),
                       child: AppIconContainer(
-                        contSize: UtilsResponsive.getResSize(21),
+                        contSize: Res.s21,
                         contColor: AppColors.salad,
                         boxShape: BoxShape.circle,
                         icon: Icons.close_rounded,
                         iconColor: Colors.black,
-                        iconSize: UtilsResponsive.getResSize(12),
+                        iconSize: Res.s12,
                       ),)
                 ],
               ),

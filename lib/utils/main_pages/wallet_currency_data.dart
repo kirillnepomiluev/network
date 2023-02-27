@@ -16,14 +16,14 @@ class WalletCurrencyData {
       'BTC',
       'Bitcoin',
       NetworkIcons.bitcoin,
-      UtilsResponsive.getResSize(20),
+      Res.s20,
     ), //20
     WalletCurrencyData(
-        'SOL', 'Solana', NetworkIcons.sol, UtilsResponsive.getResSize(14),), //14
+        'SOL', 'Solana', NetworkIcons.sol, Res.s14,), //14
     WalletCurrencyData(
-        'DASH', 'Dash', NetworkIcons.dash, UtilsResponsive.getResSize(15),), //15
+        'DASH', 'Dash', NetworkIcons.dash, Res.s15,), //15
     WalletCurrencyData(
-        'ETH', 'Ethereum', NetworkIcons.eth, UtilsResponsive.getResSize(20),), //20
+        'ETH', 'Ethereum', NetworkIcons.eth, Res.s20,), //20
   ];
 
 }

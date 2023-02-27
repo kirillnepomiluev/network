@@ -12,7 +12,7 @@ class TitleStatText extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Padding(
       padding: EdgeInsets.only(
-        top: UtilsResponsive.getResSize(20),
+        top: Res.s20,
       ),
       child: Text(
         text,

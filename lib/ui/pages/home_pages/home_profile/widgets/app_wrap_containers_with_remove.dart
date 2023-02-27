@@ -19,7 +19,7 @@ class AppWrapContainersWithRemove extends StatelessWidget {
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.center,
       spacing: 8.sp,
-      runSpacing: UtilsResponsive.getResSize(10),
+      runSpacing: Res.s10,
       children: [
         for(final item in listOptions)
           AppContainerWithRemove(

@@ -18,7 +18,7 @@ class CheckMeetingOccupation extends StatelessWidget {
       children: [
         TitleStatText(AppString.of(context).occupation),
         SizedBox(
-          height: UtilsResponsive.getResSize(20),
+          height: Res.s20,
         ),
         const AppWrapContainersWithRemove(listOptions: ['Маркетинг', 'IT-сфера', 'Финансы'], showAdd: true,),
         // Wrap(
@@ -41,12 +41,12 @@ class CheckMeetingOccupation extends StatelessWidget {
         //   ],
         // ),
         SizedBox(
-          height: UtilsResponsive.getResSize(20),
+          height: Res.s20,
         ),
         RichTextTwo(
           text1: 'Вы можете указать ',
           text2: '3 сферы деятельности',
-          fontSize: UtilsResponsive.getResSize(10),
+          fontSize: Res.s10,
           fontWeight1: FontWeight.w400,
           fontWeight2: FontWeight.w400,
         ),

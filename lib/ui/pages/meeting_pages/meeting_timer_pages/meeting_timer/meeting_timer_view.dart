@@ -23,8 +23,8 @@ class MeetingTimerView extends StatelessWidget {
                 body: SingleChildScrollView(
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: UtilsResponsive.getResSize(16),
-                        vertical: UtilsResponsive.getResSize(10),
+                        horizontal: Res.s16,
+                        vertical: Res.s10,
                     ),
                     child: Column(
                       children: [
@@ -46,7 +46,7 @@ class MeetingTimerView extends StatelessWidget {
                                 : 'до конца встречи',
                             style: AppTextStyles.primary22,),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(24),
+                          height: Res.s24,
                         ),
                         Text(
                           'Минимальное время встречи\nдля начисления баллов 20 минут',

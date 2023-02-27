@@ -28,12 +28,12 @@ class MeetingQuestionsView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                      const AppBarRow(),
-                      SizedBox(height: UtilsResponsive.getResSize(35),),
+                      SizedBox(height: Res.s35,),
                       const RichTextTwo(
                         text1: 'Вам необходимо ответить\nна ',
                         text2: '10 вопросов',
                       ),
-                      SizedBox(height: UtilsResponsive.getResSize(35),),
+                      SizedBox(height: Res.s35,),
                       //Начать с 1-го вопроса
                       AppButton(
                         onPressed: () {
@@ -43,7 +43,7 @@ class MeetingQuestionsView extends StatelessWidget {
                         text: 'Начать с 1-го вопроса',
                       ),
 
-                      SizedBox(height: UtilsResponsive.getResSize(35),),
+                      SizedBox(height: Res.s35,),
 
                       GridView.builder(
                           physics: const NeverScrollableScrollPhysics(),
@@ -51,8 +51,8 @@ class MeetingQuestionsView extends StatelessWidget {
                           gridDelegate:
                           SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
-                              crossAxisSpacing: UtilsResponsive.getResSize(12),
-                              mainAxisSpacing: UtilsResponsive.getResSize(12),
+                              crossAxisSpacing: Res.s12,
+                              mainAxisSpacing: Res.s12,
                               mainAxisExtent: 46.sp,   //112
                           ),
                           itemCount: model.questionsList.length,

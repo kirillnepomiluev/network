@@ -38,6 +38,7 @@ class AppButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
+          disabledBackgroundColor: Colors.grey,
             backgroundColor: buttonColor,
             shape: RoundedRectangleBorder(
               side: BorderSide(color: borderColor),

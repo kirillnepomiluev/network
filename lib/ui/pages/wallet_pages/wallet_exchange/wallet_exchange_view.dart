@@ -4,7 +4,7 @@ import 'package:network_app/ui/pages/wallet_pages/wallet_exchange/wallet_exchang
 import 'package:network_app/ui/pages/wallet_pages/wallet_exchange/widgets/wallet_exchange_info_container.dart';
 import 'package:network_app/ui/pages/wallet_pages/wallet_exchange/widgets/wallet_exchange_top_row.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/common/meet_exchange_row.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
@@ -23,7 +23,7 @@ class WalletExchangeView extends StatelessWidget {
             body: SafeArea(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: UtilsResponsive.getResSize(16)),
+                  padding: EdgeInsets.symmetric(horizontal: Res.s16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -41,8 +41,8 @@ class WalletExchangeView extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(
                             bottom: 35.sp, //70
-                            left: UtilsResponsive.getResSize(12),
-                            right: UtilsResponsive.getResSize(12),
+                            left: Res.s12,
+                            right: Res.s12,
                             top: 35.sp, //68
                             ),
                         child: MeetExchangeRow(
@@ -51,7 +51,7 @@ class WalletExchangeView extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: UtilsResponsive.getResSize(40), //45
+                        height: Res.s40, //45
                       ),
                       InkWell(
                         onTap: model.onCloseIconTap,
@@ -70,7 +70,7 @@ class WalletExchangeView extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: UtilsResponsive.getResSize(40), //50
+                        height: Res.s40, //50
                       ),
                     ],
                   ),

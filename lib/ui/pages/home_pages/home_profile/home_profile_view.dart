@@ -43,8 +43,8 @@ class HomeProfileView extends StatelessWidget {
                       //Большой аватар
                       if (model.activeTab == ActiveProfileTabs.profile)
                         Positioned(
-                          top: UtilsResponsive.getResSize(15),
-                          right: UtilsResponsive.getResSize(15),
+                          top: Res.s15,
+                          right: Res.s15,
                           child: Assets.images.avatars.avatar3D.image(
                             height: 110.sp, //681
                           ),

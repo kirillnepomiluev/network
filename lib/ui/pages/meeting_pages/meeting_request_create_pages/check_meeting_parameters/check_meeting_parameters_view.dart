@@ -10,6 +10,7 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
+import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
 class CheckMeetingParametersView extends StatelessWidget {
@@ -25,14 +26,12 @@ class CheckMeetingParametersView extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.only(top: mediaTop),
         child: GestureDetector(
-          onTap: () {
-            FocusManager.instance.primaryFocus?.unfocus();
-          },
+          onTap: Utils.unFocus,
           child: SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: UtilsResponsive.getResSize(16),
-                  vertical: UtilsResponsive.getResSize(10),
+                  horizontal: Res.s16,
+                  vertical: Res.s10,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,21 +43,21 @@ class CheckMeetingParametersView extends StatelessWidget {
                     text1: '${AppString.of(context).check} ',
                     text2: AppString.of(context).allParametrsOfMeeting,
                     showDescription: false,
-                    fontSize: UtilsResponsive.getResSize(24),
+                    fontSize: Res.s24,
                   ),
                   const CheckMeetingCategoryOfMeeting(),
                   const CheckMeetingDescriptionOfMeeting(),
                   const CheckMeetingOccupation(),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(20),
+                    height: Res.s20,
                   ),
                   const CheckMeetingInterests(),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(20),
+                    height: Res.s20,
                   ),
                   const CheckMeetingDate(),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(40),
+                    height: Res.s40,
                   ),
                   AppButton(
                     onPressed: () {
@@ -67,7 +66,7 @@ class CheckMeetingParametersView extends StatelessWidget {
                     text: AppString.of(context).createRequest,
                   ),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(20),
+                    height: Res.s20,
                   ),
                 ],
               ),

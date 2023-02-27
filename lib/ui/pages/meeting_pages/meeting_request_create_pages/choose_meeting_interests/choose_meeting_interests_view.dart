@@ -7,6 +7,7 @@ import 'package:network_app/ui/pages/auth_pages/widgets/wrap_select_containers.d
 import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
+import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -22,9 +23,9 @@ class ChooseMeetingInterestsView extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: Padding(
           padding: EdgeInsets.only(
-              left: UtilsResponsive.getResSize(16),
-              right: UtilsResponsive.getResSize(16),
-              bottom: UtilsResponsive.getResSize(23),
+              left: Res.s16,
+              right: Res.s16,
+              bottom: Res.s23,
           ),
           child: AppButtonContinue(
             onPressed: () {
@@ -35,12 +36,10 @@ class ChooseMeetingInterestsView extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.only(top: mediaTop),
         child: GestureDetector(
-          onTap: () {
-            FocusManager.instance.primaryFocus?.unfocus();
-          },
+          onTap: Utils.unFocus,
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: UtilsResponsive.getResSize(16), vertical: UtilsResponsive.getResSize(10)),
+              padding: EdgeInsets.symmetric(horizontal: Res.s16, vertical: Res.s10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -52,13 +51,14 @@ class ChooseMeetingInterestsView extends StatelessWidget {
                     text1: '${AppString.of(context).choose} ',
                     text2: AppString.of(context).interests,
                     showDescription: false,
-                    fontSize: UtilsResponsive.getResSize(24),
+                    fontSize: Res.s24,
                   ),
 
                   //Поиск
                   Padding(
-                    padding: EdgeInsets.only(bottom: UtilsResponsive.getResSize(20), top: UtilsResponsive.getResSize(18)),
-                    child: const SearchTextField(),
+                    padding: EdgeInsets.only(bottom: Res.s20, top: Res.s18),
+                    child: const SearchTextField(
+                    ),
                   ),
                   const WrapSelectContainers(),
 

@@ -33,7 +33,7 @@ class RichTextTwo extends StatelessWidget {
       text: TextSpan(
         style: TextStyle(
           color: color1,
-          fontSize: fontSize?? UtilsResponsive.getResSize(20), // 20.sp, //24
+          fontSize: fontSize?? Res.s20, // 20.sp, //24
           fontWeight: fontWeight1,
         ),
         children: <TextSpan>[

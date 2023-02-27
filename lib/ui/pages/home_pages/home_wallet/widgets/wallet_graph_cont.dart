@@ -24,9 +24,9 @@ class WalletGraphCont extends StatelessWidget {
           ),
       child: Container(
         padding: EdgeInsets.only(
-            top: UtilsResponsive.getResSize(14),
-            right: UtilsResponsive.getResSize(14),
-            bottom: UtilsResponsive.getResSize(14),),
+            top: Res.s14,
+            right: Res.s14,
+            bottom: Res.s14,),
         width: 55.sp, //161
         decoration: BoxDecoration(
             color: isDark ? AppColors.white10 : AppColors.salad,
@@ -41,7 +41,7 @@ class WalletGraphCont extends StatelessWidget {
               children: [
                 Padding(
                   padding:
-                      EdgeInsets.only(left: UtilsResponsive.getResSize(14), //14
+                      EdgeInsets.only(left: Res.s14, //14
                           ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +50,7 @@ class WalletGraphCont extends StatelessWidget {
                       Text(
                         data.title,
                         style: TextStyle(
-                            fontSize: UtilsResponsive.getResSize(16), //16
+                            fontSize: Res.s16, //16
                             fontWeight: FontWeight.w500,
                             color: isDark
                                 ? AppColors.salad
@@ -59,7 +59,7 @@ class WalletGraphCont extends StatelessWidget {
                       Text(
                         '+5,76%',
                         style: TextStyle(
-                            fontSize: UtilsResponsive.getResSize(12), //12
+                            fontSize: Res.s12, //12
                             fontWeight: FontWeight.w400,
                             color: isDark
                                 ? AppColors.textWhite
@@ -70,12 +70,12 @@ class WalletGraphCont extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                      left: UtilsResponsive.getResSize(14), //14
+                      left: Res.s14, //14
                       top: 5,),
                   child: Text(
                     data.subtitle,
                     style: TextStyle(
-                        fontSize: UtilsResponsive.getResSize(14), //14
+                        fontSize: Res.s14, //14
                         fontWeight: FontWeight.w400,
                         color: isDark ? AppColors.textGray : AppColors.black1A,),
                   ),
@@ -84,7 +84,7 @@ class WalletGraphCont extends StatelessWidget {
             ),
 
             Padding(
-              padding: EdgeInsets.only(top: UtilsResponsive.getResSize(26)), //27
+              padding: EdgeInsets.only(top: Res.s26), //27
               child: Transform.scale(
                 scaleY: isDark ? -1 : 1,
                 child: ClipRect(
@@ -104,13 +104,13 @@ class WalletGraphCont extends StatelessWidget {
             Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: UtilsResponsive.getResSize(10)),
+                  padding: EdgeInsets.only(top: Res.s10),
                   child: Align(
                     alignment: Alignment.topRight,
                     child: Text(
                       'Вы получите',
                       style: TextStyle(
-                          fontSize: UtilsResponsive.getResSize(10), //10
+                          fontSize: Res.s10, //10
                           fontWeight: FontWeight.w500,
                           color: isDark
                               ? AppColors.textGray
@@ -120,8 +120,8 @@ class WalletGraphCont extends StatelessWidget {
                 ),
                 Padding(
                     padding: EdgeInsets.only(
-                        left: UtilsResponsive.getResSize(14), //14
-                        top: UtilsResponsive.getResSize(12), //12
+                        left: Res.s14, //14
+                        top: Res.s12, //12
                         ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -133,7 +133,7 @@ class WalletGraphCont extends StatelessWidget {
                             Text(
                               '0.00045',
                               style: TextStyle(
-                                  fontSize: UtilsResponsive.getResSize(14), //14
+                                  fontSize: Res.s14, //14
                                   fontWeight: FontWeight.w400,
                                   color: isDark
                                       ? AppColors.textWhite
@@ -142,13 +142,13 @@ class WalletGraphCont extends StatelessWidget {
                             Row(
                               children: [
                                 Icon(Icons.attach_money_sharp,
-                                    size: UtilsResponsive.getResSize(12),
+                                    size: Res.s12,
                                     color: AppColors.textBlack,),
                                 Text(
                                   '20.13',
                                   style: TextStyle(
                                       fontSize:
-                                          UtilsResponsive.getResSize(12), //12
+                                          Res.s12, //12
                                       fontWeight: FontWeight.w400,
                                       color: isDark
                                           ? AppColors.salad

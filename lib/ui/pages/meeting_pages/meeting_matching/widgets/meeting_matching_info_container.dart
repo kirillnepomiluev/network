@@ -4,7 +4,7 @@ import 'package:network_app/ui/pages/home_pages/home_profile/widgets/app_wrap_co
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
@@ -16,8 +16,8 @@ class MeetingMatchingInfoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppContainer(
-      padV: UtilsResponsive.getResSize(23),   //23
-      padH: UtilsResponsive.getResSize(17),   //17
+      padV: Res.s23,   //23
+      padH: Res.s17,   //17
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -27,18 +27,18 @@ class MeetingMatchingInfoContainer extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(
-            height: UtilsResponsive.getResSize(20),
+            height: Res.s20,
           ),
           AppContainer(
-            padV: UtilsResponsive.getResSize(13),
-            padH: UtilsResponsive.getResSize(15),
+            padV: Res.s13,
+            padH: Res.s15,
             color: AppColors.salad,
             radius: AppBorderRadius.r15,
             child: Text(AppString.of(context).businessMeeting,
                 style: AppTextStyles.black12,),
           ),
           SizedBox(
-            height: UtilsResponsive.getResSize(26),
+            height: Res.s26,
           ),
           Row(
             children: [
@@ -47,14 +47,14 @@ class MeetingMatchingInfoContainer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 7),
                 child: RhombusText(
-                  fontSize: UtilsResponsive.getResSize(18),
+                  fontSize: Res.s18,
                   fontWeight: FontWeight.w500,
                 ),
               )
             ],
           ),
           SizedBox(
-            height: UtilsResponsive.getResSize(26),
+            height: Res.s26,
           ),
       const AppWrapContainersWithRemove(listOptions: ['Большой теннис', 'Бассейн', 'Управление', 'Маркетинг'],)
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/utils_responsive.dart';
@@ -52,7 +52,7 @@ class MeetingPartnerInfo extends StatelessWidget {
           ),
           Padding(
               padding: EdgeInsets.only(top: 10,
-                  bottom: UtilsResponsive.getResSize(26),
+                  bottom: Res.s26,
               ), //26
               child: const RhombusText(),),
         ],

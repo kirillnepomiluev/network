@@ -38,7 +38,9 @@ class _InputNameViewState extends State<InputNameView> {
 
                     const SizedBox(height: 36,),
 
-                    const AppTextField(),
+                    AppTextField(
+                      controller: model.textController,
+                    ),
 
                     const SizedBox(height: 62,),
 

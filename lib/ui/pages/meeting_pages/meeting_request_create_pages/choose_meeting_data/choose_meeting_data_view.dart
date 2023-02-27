@@ -7,6 +7,7 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
+import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
 class ChooseMeetingDateView extends StatefulWidget {
@@ -27,14 +28,12 @@ class _ChooseMeetingDateViewState extends State<ChooseMeetingDateView> {
       body: Padding(
         padding: EdgeInsets.only(top: mediaTop),
         child: GestureDetector(
-          onTap: () {
-            FocusManager.instance.primaryFocus?.unfocus();
-          },
+          onTap: Utils.unFocus,
           child: SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: UtilsResponsive.getResSize(16),
-                  vertical: UtilsResponsive.getResSize(10),),
+                  horizontal: Res.s16,
+                  vertical: Res.s10,),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -48,24 +47,24 @@ class _ChooseMeetingDateViewState extends State<ChooseMeetingDateView> {
                         'Здесь будет небольшое описание, что именно здесь нужно указать',
                   ),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(40),
+                    height: Res.s40,
                   ),
                   Text(AppString.of(context).chooseDateOfStart,
                       style: AppTextStyles.primary20
                           .copyWith(fontWeight: FontWeight.w600),),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(20),
+                    height: Res.s20,
                   ),
                   const CustomCalendar(),
                   Padding(
-                    padding: EdgeInsets.only(top: UtilsResponsive.getResSize(40), bottom: UtilsResponsive.getResSize(20)),
+                    padding: EdgeInsets.only(top: Res.s40, bottom: Res.s20),
                     child: Text(AppString.of(context).chooseDateOfEnd,
                         style: AppTextStyles.primary20
                             .copyWith(fontWeight: FontWeight.w600),),
                   ),
                   const CustomCalendar(),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(20),
+                    height: Res.s20,
                   ),
                   AppButtonContinue(
                     onPressed: () {
@@ -74,7 +73,7 @@ class _ChooseMeetingDateViewState extends State<ChooseMeetingDateView> {
                     },
                   ),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(20),
+                    height: Res.s20,
                   ),
                 ],
               ),

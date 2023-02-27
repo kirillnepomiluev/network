@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
 import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -29,7 +29,7 @@ class MessageContainer extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(top: 27.sp), //35 - на сколько аватарка выше
             child: AppContainer(
-              padH: UtilsResponsive.getResSize(10),
+              padH: Res.s10,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +46,7 @@ class MessageContainer extends StatelessWidget {
                   Text(photoMap['status'] as String,
                       style: AppTextStyles.grey10,),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(16),
+                    height: Res.s16,
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
@@ -59,7 +59,7 @@ class MessageContainer extends StatelessWidget {
                       ),
                       Icon(
                         NetworkIcons.check_double,
-                        size: UtilsResponsive.getResSize(12),
+                        size: Res.s12,
                         color: AppColors.textGray,
                       )
                     ],
@@ -70,7 +70,7 @@ class MessageContainer extends StatelessWidget {
                   Text('Я предлагаю встретиться в каком-нибудь красивом...',
                       style: AppTextStyles.primary12,),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(26), //26
+                    height: Res.s26, //26
                   ),
                 ],
               ),
@@ -96,7 +96,7 @@ class MessageContainer extends StatelessWidget {
                       bottom: 0,
                       child: Icon(
                         Icons.circle,
-                        size: UtilsResponsive.getResSize(14), //14
+                        size: Res.s14, //14
                         color: AppColors.salad,
                       ),)
               ],

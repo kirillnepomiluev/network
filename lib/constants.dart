@@ -33,8 +33,29 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna netus tempus, qua
     'Хореография',
     'Модельный бизнес',
   ];
-}
 
+  // static final List<HobbyModel> hobbiesListOfMap = [
+  //   HobbyModel('Чтение', 1),
+  //   HobbyModel('Общение', 2),
+  //   HobbyModel('Мотоциклы', 3),
+  //   HobbyModel('Коллекционирование', 4),
+  //   HobbyModel('Спорт', 5),
+  //   HobbyModel('Дизайн', 6),
+  //   HobbyModel('Автомобили', 7),
+  //   HobbyModel('Компьютерные игры', 8),
+  //   HobbyModel('Кино', 9),
+  //   HobbyModel('Интернет', 10),
+  //   HobbyModel('Сканворды и кроссворды', 11),
+  //   HobbyModel('Писательская деятельность', 12),
+  //   HobbyModel('Живопись', 13),
+  //   HobbyModel('Стенография', 14),
+  //   HobbyModel('Астрология', 15),
+  //   HobbyModel('Паркур', 16),
+  //   HobbyModel('Хореография', 17),
+  //   HobbyModel('Модельный бизнес', 18),
+  // ];
+
+}
 
 
 

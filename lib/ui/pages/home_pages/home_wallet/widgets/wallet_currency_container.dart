@@ -32,7 +32,7 @@ class WalletCurrencyContainer extends StatelessWidget {
                 WalletCryptoContainer(data: data, isDark: true),
                 Padding(
                   padding:
-                      EdgeInsets.only(left: UtilsResponsive.getResSize(18), //18
+                      EdgeInsets.only(left: Res.s18, //18
                           ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +62,7 @@ class WalletCurrencyContainer extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(Icons.attach_money_sharp,
-                          size: UtilsResponsive.getResSize(12), //12
+                          size: Res.s12, //12
                           color: AppColors.salad,),
                       Text(
                         '20.13',

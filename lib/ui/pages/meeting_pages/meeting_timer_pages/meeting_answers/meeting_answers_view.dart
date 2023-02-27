@@ -33,13 +33,13 @@ class _MeetingAnswersViewState extends State<MeetingAnswersView> {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
-                          left: UtilsResponsive.getResSize(10),
-                          top: UtilsResponsive.getResSize(10),
+                          left: Res.s10,
+                          top: Res.s10,
                       ),
                       child: const AppBackButton(),
                     ),
                     SizedBox(
-                      height: UtilsResponsive.getResSize(20),
+                      height: Res.s20,
                     ),
 
                     //Прогресс
@@ -48,14 +48,14 @@ class _MeetingAnswersViewState extends State<MeetingAnswersView> {
                     ),
 
                     SizedBox(
-                      height: UtilsResponsive.getResSize(20),
+                      height: Res.s20,
                     ),
 
                     //Нижняя часть
                     Container(
                       padding: EdgeInsets.symmetric(
-                          horizontal: UtilsResponsive.getResSize(16),
-                          vertical: UtilsResponsive.getResSize(26),
+                          horizontal: Res.s16,
+                          vertical: Res.s26,
                       ),
                       height: mediaHeight,
                       width: mediaWidth,
@@ -70,7 +70,7 @@ class _MeetingAnswersViewState extends State<MeetingAnswersView> {
                             questionIndex: model.questionIndex,
                           ),
                           SizedBox(
-                            height: UtilsResponsive.getResSize(40),
+                            height: Res.s40,
                           ),
 
                           for (final answer in model.answersList)

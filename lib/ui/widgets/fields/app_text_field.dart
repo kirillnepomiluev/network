@@ -12,6 +12,7 @@ class AppTextField extends StatelessWidget {
         this.enabled = true,
         this.labelText,
         this.obscureText = false,
+        this.onChange,
       })
       : super(key: key);
   final TextEditingController? controller;
@@ -21,18 +22,19 @@ class AppTextField extends StatelessWidget {
   final bool obscureText;
   final String? initialValue;
   final String? labelText;
+  final Function(String? newValue)? onChange;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       enabled: enabled,
       controller: controller,
-      style: AppTextStyles.primary,
+      // style: AppTextStyles.primary,
       textInputAction: TextInputAction.done,
       cursorColor: Colors.white,
+      onChanged: onChange,
       autofocus: autofocus,
-      // initialValue: hintText,
-      maxLines: null,
+      maxLines: obscureText? 1 : null,
       obscureText: obscureText,
       decoration: isTransparent
           ? AppInputBorder.inputDecorationTransparent

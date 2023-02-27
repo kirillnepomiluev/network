@@ -31,7 +31,7 @@ class RecoveryView extends StatelessWidget {
                         text2: AppString.of(context).ofAccount,
                       ),
 
-                      SizedBox(height: UtilsResponsive.getResSize(57),),
+                      SizedBox(height: Res.s57,),
 
                       EnterRowContainer(
                         onTap: model.onLoginEmailTap,

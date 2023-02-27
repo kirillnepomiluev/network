@@ -14,7 +14,7 @@ class ViewCategoryIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: UtilsResponsive.getResSize(15)),
+      padding: EdgeInsets.only(right: Res.s15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -29,7 +29,7 @@ class ViewCategoryIcon extends StatelessWidget {
               NetworkIcons.arrow_long_right,
               color: Colors.white,
             ),
-            iconSize: UtilsResponsive.getResSize(20),
+            iconSize: Res.s20,
           )
         ],
       ),

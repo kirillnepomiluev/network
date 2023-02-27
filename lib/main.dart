@@ -7,10 +7,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Supabase.initialize(
-    url: SupabaseCredentials.apiUrl,
-    anonKey: SupabaseCredentials.apiKey,
+    url: AppSupabase.apiUrl,
+    anonKey: AppSupabase.apiKey,
+    debug: false,
   );
 
   runApp(const App());
-
 }

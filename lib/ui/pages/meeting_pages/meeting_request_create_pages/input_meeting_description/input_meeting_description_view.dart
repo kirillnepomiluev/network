@@ -6,6 +6,7 @@ import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
+import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
 class InputDescriptionMeetingView extends StatelessWidget {
@@ -17,7 +18,7 @@ class InputDescriptionMeetingView extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding:
-              EdgeInsets.symmetric(horizontal: UtilsResponsive.getResSize(16)),
+              EdgeInsets.symmetric(horizontal: Res.s16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -32,15 +33,15 @@ class InputDescriptionMeetingView extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  top: UtilsResponsive.getResSize(35),
-                  bottom: UtilsResponsive.getResSize(35), //62
+                  top: Res.s35,
+                  bottom: Res.s35, //62
                 ),
                 child: const AppTextField(
 
                 ),
               ),
               AppButtonContinue(onPressed: () {
-                FocusManager.instance.primaryFocus?.unfocus();
+                Utils.unFocus();
                 context.router
                     .push(const ChooseMeetingOccupationsViewRoute());
               },),

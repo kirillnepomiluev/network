@@ -14,6 +14,7 @@ import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/common/option_container.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
+import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -31,9 +32,9 @@ class ChooseMeetingOccupationsView extends StatelessWidget {
           return Scaffold(
             bottomNavigationBar: Padding(
               padding: EdgeInsets.only(
-                  left: UtilsResponsive.getResSize(16),
-                  right: UtilsResponsive.getResSize(16),
-                  bottom: UtilsResponsive.getResSize(23),),
+                  left: Res.s16,
+                  right: Res.s16,
+                  bottom: Res.s23,),
               child: AppButtonContinue(
                 onPressed: () {
                   context.router.push(const ChooseMeetingInterestsViewRoute());
@@ -44,14 +45,12 @@ class ChooseMeetingOccupationsView extends StatelessWidget {
             body: Padding(
               padding: EdgeInsets.only(top: mediaTop),
               child: GestureDetector(
-                onTap: () {
-                  FocusManager.instance.primaryFocus?.unfocus();
-                },
+                onTap: Utils.unFocus,
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: UtilsResponsive.getResSize(16),
-                        vertical: UtilsResponsive.getResSize(10),),
+                        horizontal: Res.s16,
+                        vertical: Res.s10,),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -69,7 +68,7 @@ class ChooseMeetingOccupationsView extends StatelessWidget {
                         ),
                         Padding(
                           padding: EdgeInsets.only(
-                              top: UtilsResponsive.getResSize(20), left: 8.sp,),
+                              top: Res.s20, left: 8.sp,),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -90,15 +89,15 @@ class ChooseMeetingOccupationsView extends StatelessWidget {
                         if (model.choosedOptions.isNotEmpty)
                           Padding(
                             padding: EdgeInsets.only(
-                                top: UtilsResponsive.getResSize(20),),
+                                top: Res.s20,),
                             child: Wrap(
-                              spacing: UtilsResponsive.getResSize(14),
-                              runSpacing: UtilsResponsive.getResSize(14),
+                              spacing: Res.s14,
+                              runSpacing: Res.s14,
                               children: [
                                 for (final item in model.choosedOptions)
                                   AppContainerWithRemove(
                                     title: item,
-                                    onRemove: (){
+                                    onTap: (){
                                       model.onRemove(item);
                                     },
                                   )
@@ -106,7 +105,7 @@ class ChooseMeetingOccupationsView extends StatelessWidget {
                             ),
                           ),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(20),
+                          height: Res.s20,
                         ),
                         AppButton(
                             width: 60.sp, //180
@@ -123,13 +122,13 @@ class ChooseMeetingOccupationsView extends StatelessWidget {
                         //Поиск
                         Padding(
                             padding: EdgeInsets.only(
-                                bottom: UtilsResponsive.getResSize(20),
-                                top: UtilsResponsive.getResSize(18),),
+                                bottom: Res.s20,
+                                top: Res.s18,),
                             child: const SearchTextField(),),
 
                         Wrap(
-                          spacing: UtilsResponsive.getResSize(14),
-                          runSpacing: UtilsResponsive.getResSize(14),
+                          spacing: Res.s14,
+                          runSpacing: Res.s14,
                           children: [
                             for (final item in Constants.hobbiesList)
                               OptionsContainer(

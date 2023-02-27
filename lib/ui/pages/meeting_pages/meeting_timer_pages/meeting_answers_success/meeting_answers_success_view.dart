@@ -21,9 +21,9 @@ class MeetingAnswersSuccessView extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(
-                  left: UtilsResponsive.getResSize(10),
-                  top: UtilsResponsive.getResSize(10),
-                  bottom: UtilsResponsive.getResSize(17),),
+                  left: Res.s10,
+                  top: Res.s10,
+                  bottom: Res.s17,),
               child: const AppBackButton(),
             ),
 
@@ -32,7 +32,7 @@ class MeetingAnswersSuccessView extends StatelessWidget {
               child: Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.symmetric(
-                    horizontal: UtilsResponsive.getResSize(16),),
+                    horizontal: Res.s16,),
                 decoration: BoxDecoration(
                     color: AppColors.white10,
                     borderRadius:
@@ -51,8 +51,8 @@ class MeetingAnswersSuccessView extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 48.sp), //118
                       child: RhombusText(
-                        fontSize: UtilsResponsive.getResSize(60), //60
-                        iconSize: UtilsResponsive.getResSize(40),
+                        fontSize: Res.s60, //60
+                        iconSize: Res.s40,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -69,7 +69,7 @@ class MeetingAnswersSuccessView extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: UtilsResponsive.getResSize(60), //60
+                      height: Res.s60, //60
                     ),
                     AppButton(
                       onPressed: () {

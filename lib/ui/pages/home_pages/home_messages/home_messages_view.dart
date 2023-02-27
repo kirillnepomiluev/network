@@ -19,8 +19,8 @@ class HomeMessagesView extends StatelessWidget {
             body: Padding(
               padding: EdgeInsets.only(
                   top: mediaTop,
-                  left: UtilsResponsive.getResSize(15),
-                  right: UtilsResponsive.getResSize(15),
+                  left: Res.s15,
+                  right: Res.s15,
               ),
               child: SingleChildScrollView(
                 child: Column(

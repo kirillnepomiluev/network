@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
@@ -16,14 +16,14 @@ class CheckMeetingDate extends StatelessWidget {
       children: [
         const TitleStatText('Период для планирования встречи'),
         SizedBox(
-          height: UtilsResponsive.getResSize(20),
+          height: Res.s20,
         ),
         Row(
           children: [
             Expanded(
               child: AppContainer(
-                padV: UtilsResponsive.getResSize(15),
-                padH: UtilsResponsive.getResSize(15),
+                padV: Res.s15,
+                padH: Res.s15,
                 radius: AppBorderRadius.r10,
                 child: const Text(
                   'с  01.03.2021',
@@ -31,12 +31,12 @@ class CheckMeetingDate extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: UtilsResponsive.getResSize(10),
+              width: Res.s10,
             ),
             Expanded(
               child: AppContainer(
-                padV: UtilsResponsive.getResSize(15),
-                padH: UtilsResponsive.getResSize(15),
+                padV: Res.s15,
+                padH: Res.s15,
                 radius: AppBorderRadius.r10,
                 child: const Text(
                   'по  01.03.2021',

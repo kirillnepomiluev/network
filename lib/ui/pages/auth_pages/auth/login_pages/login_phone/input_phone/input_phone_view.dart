@@ -5,7 +5,7 @@ import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/inp
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_phone/widgets/input_phone_field.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/utils_responsive.dart';
@@ -33,11 +33,11 @@ class InputPhoneView extends StatelessWidget {
                         func: model.goBack,
                       ),
                       SizedBox(
-                        height: UtilsResponsive.getResSize(32),
+                        height: Res.s32,
                       ),
                       AppContainer(
-                        padV: UtilsResponsive.getResSize(23),   //23
-                        padH: UtilsResponsive.getResSize(18),   //18
+                        padV: Res.s23,   //23
+                        padH: Res.s18,   //18
                         width: double.infinity,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,9 +45,9 @@ class InputPhoneView extends StatelessWidget {
                             RichTextTwo(
                                 text1: '${AppString.of(context).input} ',
                                 text2: AppString.of(context).yourPhoneNumber,
-                                fontSize: UtilsResponsive.getResSize(21),), //24
+                                fontSize: Res.s21,), //24
                             SizedBox(
-                              height: UtilsResponsive.getResSize(20),
+                              height: Res.s20,
                             ),
                             InputPhoneField(
                               // phoneContr: model.phoneContr,

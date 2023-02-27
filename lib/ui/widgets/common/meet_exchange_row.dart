@@ -70,7 +70,7 @@ class MeetExchangeRow extends StatelessWidget {
 
         if(isExchange==false)
           Padding(
-            padding: EdgeInsets.only(left: UtilsResponsive.getResSize(18)),
+            padding: EdgeInsets.only(left: Res.s18),
             child: AppIconContainer(
               icon: NetworkIcons.star,
               iconSize: iconSize,

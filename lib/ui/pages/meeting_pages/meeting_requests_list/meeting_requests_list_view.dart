@@ -24,7 +24,7 @@ class MeetingRequestsListView extends StatelessWidget {
                   title: AppString.of(context).listOfPersonalRequests,
                 ),
                 SizedBox(
-                  height: UtilsResponsive.getResSize(35),
+                  height: Res.s35,
                 ),
                 AppButton(
                     onPressed: () {
@@ -33,7 +33,7 @@ class MeetingRequestsListView extends StatelessWidget {
                     },
                     text: AppString.of(context).createNewRequest,),
                 SizedBox(
-                  height: UtilsResponsive.getResSize(40),
+                  height: Res.s40,
                 ),
                 Text(
                   AppString.of(context).createdBefore,

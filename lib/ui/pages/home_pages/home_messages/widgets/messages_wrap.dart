@@ -20,8 +20,8 @@ class MessagesWrap extends StatelessWidget {
           gridDelegate:
           SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing: UtilsResponsive.getResSize(12),
-              mainAxisSpacing: UtilsResponsive.getResSize(12),
+              crossAxisSpacing: Res.s12,
+              mainAxisSpacing: Res.s12,
               mainAxisExtent: 68.sp,   //300
           ),
           itemCount: photoList.length,

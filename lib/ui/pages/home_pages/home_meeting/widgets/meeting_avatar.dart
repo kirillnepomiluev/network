@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/pages/home_pages/home_meeting/widgets/meeting_online_container.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -22,8 +22,8 @@ class MeetingAvatar extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
-              top: UtilsResponsive.getResSize(15),
-              right: UtilsResponsive.getResSize(15),
+              top: Res.s15,
+              right: Res.s15,
               child: Assets.images.avatars.avatar3D.image(
                 height: 110.sp, //681
               ),

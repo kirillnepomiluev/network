@@ -45,9 +45,9 @@ class _SliderCustomState extends State<SliderCustom> {
         if (widget.showLabelsRow)
           Padding(
             padding: EdgeInsets.only(
-                left: sliderValue == 0 ? 8.sp : UtilsResponsive.getResSize(16),
-                right: sliderValue == widget.max ? 8.sp : UtilsResponsive.getResSize(16),
-                bottom: UtilsResponsive.getResSize(10),
+                left: sliderValue == 0 ? 8.sp : Res.s16,
+                right: sliderValue == widget.max ? 8.sp : Res.s16,
+                bottom: Res.s10,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,7 +55,7 @@ class _SliderCustomState extends State<SliderCustom> {
                 Text(
                   '0',
                   style: TextStyle(
-                      fontSize: sliderValue == 0 ? UtilsResponsive.getResSize(16) : UtilsResponsive.getResSize(15),
+                      fontSize: sliderValue == 0 ? Res.s16 : Res.s15,
                       fontWeight:
                       sliderValue == 0 ? FontWeight.w700 : FontWeight.w400,
                       color: sliderValue == 0
@@ -65,7 +65,7 @@ class _SliderCustomState extends State<SliderCustom> {
                 Text(
                   '5',
                   style: TextStyle(
-                      fontSize: sliderValue == 0 ? UtilsResponsive.getResSize(16) : UtilsResponsive.getResSize(15),
+                      fontSize: sliderValue == 0 ? Res.s16 : Res.s15,
                       fontWeight: sliderValue == widget.max
                           ? FontWeight.w700
                           : FontWeight.w400,
@@ -80,14 +80,14 @@ class _SliderCustomState extends State<SliderCustom> {
           data: SliderTheme.of(context).copyWith(
               valueIndicatorTextStyle:
               AppTextStyles.salad16.copyWith(fontWeight: FontWeight.w700),
-              trackHeight: UtilsResponsive.getResSize(10),
+              trackHeight: Res.s10,
               valueIndicatorColor:
               Colors.transparent,
               inactiveTrackColor: AppColors.white10,
               activeTrackColor: AppColors.salad,
               thumbColor: AppColors.salad,
               overlayColor: Colors.black.withOpacity(0.1),
-              thumbShape: RoundSliderThumbShape(enabledThumbRadius: UtilsResponsive.getResSize(14)),
+              thumbShape: RoundSliderThumbShape(enabledThumbRadius: Res.s14),
               overlayShape: SliderComponentShape.noThumb,),
           child: Slider(
             label: sliderValue.toStringAsFixed(1),

@@ -7,6 +7,7 @@ import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
+import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -60,7 +61,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
       },
     );
 
-    FocusManager.instance.primaryFocus?.unfocus();
+    Utils.unFocus();
     _controller.clear();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
@@ -100,7 +101,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
           toolbarHeight: 70,
           elevation: 0,
           title: GestureDetector(
-            onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+            onTap: () => Utils.unFocus(),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -161,7 +162,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
 
   Widget _body() {
     return GestureDetector(
-      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      onTap: () => Utils.unFocus(),
       child: ListView.builder(
           controller: _scrollController,
           padding: const EdgeInsets.only(top: 20, bottom: 10),
@@ -307,7 +308,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
                       if (isYou == false) Container() else Icon(
                               NetworkIcons.check_double,
                               color: AppColors.salad,
-                              size: UtilsResponsive.getResSize(10), //12
+                              size: Res.s10, //12
                             ),
                       Padding(
                         padding: const EdgeInsets.only(left: 6.5),
@@ -350,7 +351,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
             hintText: 'Ваше сообщение...',
             hintStyle: TextStyle(
                 color: AppColors.textGray,
-                fontSize: UtilsResponsive.getResSize(14),
+                fontSize: Res.s14,
                 fontWeight: FontWeight.w400,),
             counterText: '',
             focusedBorder: const OutlineInputBorder(

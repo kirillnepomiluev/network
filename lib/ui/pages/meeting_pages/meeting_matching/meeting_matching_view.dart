@@ -22,26 +22,26 @@ class MeetingMatchingView extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: UtilsResponsive.getResSize(16),),
+                      horizontal: Res.s16,),
                   child: Column(
                     children: [
                       const AppBarRow(),
                       SizedBox(
-                        height: UtilsResponsive.getResSize(25),
+                        height: Res.s25,
                       ),
                       const MeetingMatchingProfilesRow(),
                       SizedBox(
-                        height: UtilsResponsive.getResSize(40),
+                        height: Res.s40,
                       ),
                       const MeetingMatchingInfoContainer(),
                       SizedBox(
-                        height: UtilsResponsive.getResSize(40),
+                        height: Res.s40,
                       ),
                       AppButton(
                           onPressed: model.onStartChat,
                           text: AppString.of(context).toStartChat,),
                       SizedBox(
-                        height: UtilsResponsive.getResSize(23),
+                        height: Res.s23,
                       ),
                     ],
                   ),

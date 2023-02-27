@@ -3,7 +3,7 @@ import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:network_app/utils/utils_responsive.dart';
@@ -28,7 +28,7 @@ class ViewInviteContainerTop extends StatelessWidget {
         //Тип
         AppContainer(
           height: 28.sp, //38,
-          padH: UtilsResponsive.getResSize(17),
+          padH: Res.s17,
           radius: AppBorderRadius.r15,
           child: Center(
             child: Text(AppString.of(context).businessMeeting,
@@ -40,8 +40,8 @@ class ViewInviteContainerTop extends StatelessWidget {
                 style: AppTextStyles.primary.copyWith(color: AppColors.grey3),) else Flexible(
                 child: Container(
                   padding: EdgeInsets.symmetric(
-                      vertical: UtilsResponsive.getResSize(13),
-                      horizontal: showVerified ? UtilsResponsive.getResSize(17) : UtilsResponsive.getResSize(13),
+                      vertical: Res.s13,
+                      horizontal: showVerified ? Res.s17 : Res.s13,
                   ),
                   decoration: BoxDecoration(
                     color:
@@ -60,7 +60,7 @@ class ViewInviteContainerTop extends StatelessWidget {
                               child: Icon(
                                 Icons.timer_outlined,
                                 color: Colors.white,
-                                size: UtilsResponsive.getResSize(16), //16
+                                size: Res.s16, //16
                               ),
                             )
                           ],

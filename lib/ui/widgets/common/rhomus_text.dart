@@ -25,7 +25,7 @@ class RhombusText extends StatelessWidget {
         Text(
           '+150',
           style: TextStyle(
-              fontSize: fontSize??UtilsResponsive.getResSize(14), //14
+              fontSize: fontSize??Res.s14, //14
               color: AppColors.salad,
               fontWeight: fontWeight,),
         ),
@@ -34,7 +34,7 @@ class RhombusText extends StatelessWidget {
           child: Icon(
             NetworkIcons.rhombus,
             color: AppColors.salad,
-            size: iconSize??UtilsResponsive.getResSize(15),
+            size: iconSize??Res.s15,
           ),
         )
       ],

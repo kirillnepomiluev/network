@@ -6,7 +6,7 @@ import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/meet_exchange_row.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
@@ -22,7 +22,7 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(UtilsResponsive.getResSize(10)),
+      padding: EdgeInsets.all(Res.s10),
       decoration: const BoxDecoration(
         color: Colors.transparent,
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(50)),
@@ -35,8 +35,8 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
             children: [
               AppBackButton(contColor: AppColors.black1A.withOpacity(0.65)),
               AppContainer(
-                padV: UtilsResponsive.getResSize(14),
-                padH: UtilsResponsive.getResSize(15),
+                padV: Res.s14,
+                padH: Res.s15,
                 color: AppColors.salad,
                 radius: AppBorderRadius.r15,
                 child: Center(
@@ -54,7 +54,7 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                   textStyle: AppTextStyles.primary32
                       .copyWith(fontWeight: FontWeight.w600),),
               SizedBox(
-                height: UtilsResponsive.getResSize(10),
+                height: Res.s10,
               ),
               Row(
                 mainAxisSize: MainAxisSize.min,
@@ -69,15 +69,15 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: UtilsResponsive.getResSize(26),
+                height: Res.s26,
               ),
               const Text(
                 '250 м в направлении',
               ),
-              SizedBox(height: UtilsResponsive.getResSize(10)),
+              SizedBox(height: Res.s10),
               AppContainer(
-                  padH: UtilsResponsive.getResSize(18),
-                  padV: UtilsResponsive.getResSize(10),
+                  padH: Res.s18,
+                  padV: Res.s10,
                   color: AppColors.white10,
                   radius: AppBorderRadius.r10,
                   child: Row(
@@ -88,7 +88,7 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                       ),
                       Padding(
                           padding: EdgeInsets.only(
-                              left: UtilsResponsive.getResSize(12),),
+                              left: Res.s12,),
                           child: AppIconContainer(
                             contSize: 18.sp,
                             contColor: AppColors.salad,
@@ -100,13 +100,13 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                     ],
                   ),),
               SizedBox(
-                height: UtilsResponsive.getResSize(30),
+                height: Res.s32,
               ),
               MeetExchangeRow(onTap: () {
                 context.router.push(const PersonProfileViewRoute());
               },),
               SizedBox(
-                height: UtilsResponsive.getResSize(24), //32
+                height: Res.s24, //32
               ),
             ],
           )

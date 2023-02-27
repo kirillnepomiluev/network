@@ -14,6 +14,7 @@ import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
+import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
 class HomeProfileBottomSheet extends StatelessWidget {
@@ -26,7 +27,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
     final height = mediaHeight * 0.95;
 
     return GestureDetector(
-      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      onTap: Utils.unFocus,
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
@@ -46,7 +47,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
                   BlurryContainer(
                     borderRadius: BorderRadius.zero,
                     blur: 50,
-                    padding: EdgeInsets.all(UtilsResponsive.getResSize(15)),
+                    padding: EdgeInsets.all(Res.s15),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -57,16 +58,16 @@ class HomeProfileBottomSheet extends StatelessWidget {
 
                         const TitleStatText('Статус'),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(20),
+                          height: Res.s20,
                         ),
                         InkWell(
                           onTap: () {
-                            context.router.push(ChooseStatusViewRoute());
+                            // context.router.push(ChooseStatusViewRoute());
                           },
                           child: Container(
                             padding: EdgeInsets.symmetric(
-                                horizontal: UtilsResponsive.getResSize(15),
-                                vertical: UtilsResponsive.getResSize(10),),
+                                horizontal: Res.s15,
+                                vertical: Res.s10,),
                             decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.1),
                                 borderRadius: BorderRadius.circular(10),),
@@ -80,7 +81,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
                                     padding: const EdgeInsets.only(left: 8.0),
                                     child: Icon(
                                       NetworkIcons.edit,
-                                      size: UtilsResponsive.getResSize(22),
+                                      size: Res.s22,
                                       color: AppColors.salad,
                                     ),)
                               ],
@@ -88,11 +89,11 @@ class HomeProfileBottomSheet extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(10),
+                          height: Res.s10,
                         ),
                         const TitleStatText('Интересы'),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(20),
+                          height: Res.s20,
                         ),
                         const AppWrapContainersWithRemove(
                           listOptions: [
@@ -105,7 +106,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
                         ),
                         const TitleStatText('Обо мне'),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(10),
+                          height: Res.s10,
                         ),
                         const AppTextField(
                           initialValue:
@@ -113,43 +114,43 @@ class HomeProfileBottomSheet extends StatelessWidget {
                         ),
                         const TitleStatText('Сфера деятельности'),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(20),
+                          height: Res.s20,
                         ),
                         const AppWrapContainersWithRemove(
                           listOptions: ['Маркетинг', 'IT-сфера', 'Финансы'],
                           showAdd: true,
                         ),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(20),
+                          height: Res.s20,
                         ),
                         RichTextTwo(
                           text1: 'Вы можете указать ',
                           text2: '3 сферы деятельности',
-                          fontSize: UtilsResponsive.getResSize(10),
+                          fontSize: Res.s10,
                           fontWeight1: FontWeight.w400,
                           fontWeight2: FontWeight.w400,
                         ),
                         const TitleStatText('Пол'),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(20),
+                          height: Res.s20,
                         ),
                         const AppRadioList(
                           listOptions: ['Мужчина', 'Женщина'],
                         ),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(10),
+                          height: Res.s10,
                         ),
                         AppCheckListTile(
                           title: AppString.of(context).hideSex,
                         ),
                         const TitleStatText('Возраст'),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(20),
+                          height: Res.s20,
                         ),
                         Container(
                           padding: EdgeInsets.symmetric(
-                              horizontal: UtilsResponsive.getResSize(15),
-                              vertical: UtilsResponsive.getResSize(10),),
+                              horizontal: Res.s15,
+                              vertical: Res.s10,),
                           decoration: BoxDecoration(
                               color: AppColors.salad,
                               borderRadius: BorderRadius.circular(15),),
@@ -159,25 +160,25 @@ class HomeProfileBottomSheet extends StatelessWidget {
                               Text('37 лет', style: AppTextStyles.black),
                               Padding(
                                 padding: EdgeInsets.only(
-                                    left: UtilsResponsive.getResSize(17),
+                                    left: Res.s17,
                                     right: 3,),
                                 child: Icon(
                                   NetworkIcons.pencil,
-                                  size: UtilsResponsive.getResSize(16),
+                                  size: Res.s16,
                                 ),
                               )
                             ],
                           ),
                         ),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(10),
+                          height: Res.s10,
                         ),
                         const AppCheckListTile(
                           title: 'Скрыть возраст',
                         ),
                         const TitleStatText('Семейное положение'),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(20),
+                          height: Res.s20,
                         ),
                         const AppRadioList(
                           listOptions: ['Женат', 'Свободен', 'В поиске'],
@@ -187,7 +188,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
                         ),
                         const TitleStatText('Цель встречи'),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(20),
+                          height: Res.s20,
                         ),
                         const AppRadioList(
                           listOptions: ['Деловая', 'Общение', 'Свидание'],
@@ -198,7 +199,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
                         const TitleStatText(
                             'Готов ли знакомиться с противоположным полом',),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(20),
+                          height: Res.s20,
                         ),
                         const AppRadioList(
                           listOptions: [
@@ -210,7 +211,7 @@ class HomeProfileBottomSheet extends StatelessWidget {
                           title: 'Скрыть',
                         ),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(60),
+                          height: Res.s60,
                         ),
                       ],
                     ),

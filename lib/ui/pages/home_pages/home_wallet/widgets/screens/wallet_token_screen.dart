@@ -4,7 +4,7 @@ import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/pages/home_pages/home_wallet/widgets/wallet_graph_cont.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/meet_exchange_row.dart';
 import 'package:network_app/utils/main_pages/wallet_currency_data.dart';
 import 'package:network_app/utils/utils_responsive.dart';
@@ -38,7 +38,7 @@ class WalletTokensScreen extends StatelessWidget {
           ),
           child: AppContainer(
             padH: 19.5.sp, //20
-            padV: UtilsResponsive.getResSize(32), //32
+            padV: Res.s32, //32
             radius: AppBorderRadius.r15,
             child: Column(
               children: [

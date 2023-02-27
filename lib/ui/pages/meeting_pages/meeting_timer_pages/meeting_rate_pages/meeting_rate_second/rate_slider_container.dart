@@ -16,8 +16,8 @@ class RateSliderContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-          vertical: UtilsResponsive.getResSize(17),
-          horizontal: UtilsResponsive.getResSize(20),
+          vertical: Res.s17,
+          horizontal: Res.s20,
       ),
       decoration: BoxDecoration(
           color: AppColors.white10, borderRadius: BorderRadius.circular(15),),
@@ -27,7 +27,7 @@ class RateSliderContainer extends StatelessWidget {
         children: [
           Text(title, style: AppTextStyles.primary16),
           Padding(
-            padding: EdgeInsets.only(top: UtilsResponsive.getResSize(20)),
+            padding: EdgeInsets.only(top: Res.s20),
             child: Column(
               children: [
                 const SliderCustom(
@@ -38,7 +38,7 @@ class RateSliderContainer extends StatelessWidget {
                   stepSize: 50,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: UtilsResponsive.getResSize(32)),
+                  padding: EdgeInsets.only(top: Res.s32),
                   child: const AddCommentRow(),
                 )
               ],

@@ -35,7 +35,7 @@ class StoreProductImageContainer extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: UtilsResponsive.getResSize(26),
+            height: Res.s26,
           ),
           Column(
             children: [
@@ -49,12 +49,12 @@ class StoreProductImageContainer extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: UtilsResponsive.getResSize(25),
+            height: Res.s25,
           ),
           Container(
               padding: EdgeInsets.symmetric(
-                  vertical: UtilsResponsive.getResSize(10),
-                  horizontal: UtilsResponsive.getResSize(20),),
+                  vertical: Res.s10,
+                  horizontal: Res.s20,),
               decoration: BoxDecoration(
                   color: AppColors.white10,
                   borderRadius: BorderRadius.circular(10),),
@@ -62,7 +62,7 @@ class StoreProductImageContainer extends StatelessWidget {
                 'Редкий',
               ),),
           SizedBox(
-            height: UtilsResponsive.getResSize(20),
+            height: Res.s20,
           ),
         ],
       ),

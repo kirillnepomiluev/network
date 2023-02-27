@@ -28,8 +28,8 @@ class MeetingAnswersQuestionItem extends StatelessWidget {
               ),),
           Padding(
             padding: EdgeInsets.only(
-                top: UtilsResponsive.getResSize(25), //25
-                right: UtilsResponsive.getResSize(32), //32
+                top: Res.s25, //25
+                right: Res.s32, //32
             ),
             child: SizedBox(
               child: Text(

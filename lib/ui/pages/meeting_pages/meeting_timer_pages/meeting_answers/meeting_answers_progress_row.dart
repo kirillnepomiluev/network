@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
 
@@ -17,13 +17,13 @@ class MeetingAnswersProgressRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: UtilsResponsive.getResSize(16)),
+      padding: EdgeInsets.symmetric(horizontal: Res.s16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           AppContainer(
-            width: UtilsResponsive.getResSize(40), //43
-            height: UtilsResponsive.getResSize(40),
+            width: Res.s40, //43
+            height: Res.s40,
             radius: AppBorderRadius.r15,
             child: Center(
                 child: Text(
@@ -34,7 +34,7 @@ class MeetingAnswersProgressRow extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: UtilsResponsive.getResSize(40),//44
+                  horizontal: Res.s40,//44
                   ),
               child: LinearProgressIndicator(
                 backgroundColor: AppColors.white10,
@@ -45,8 +45,8 @@ class MeetingAnswersProgressRow extends StatelessWidget {
             ),
           ),
           AppContainer(
-            width: UtilsResponsive.getResSize(40), //43
-            height:UtilsResponsive.getResSize(40),
+            width: Res.s40, //43
+            height:Res.s40,
             radius: AppBorderRadius.r15,
             child: Center(
                 child: Text(

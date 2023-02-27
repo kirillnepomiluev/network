@@ -19,7 +19,7 @@ class MessagesMiniAvatar extends StatelessWidget {
     final contWidth = 29.sp; //45
     return Padding(
       padding: EdgeInsets.only(
-        left: UtilsResponsive.getResSize(15),
+        left: Res.s15,
       ),
       child: InkWell(
         onTap: () {
@@ -43,7 +43,7 @@ class MessagesMiniAvatar extends StatelessWidget {
                       right: 0,
                       child: Icon(
                         Icons.circle,
-                        size: UtilsResponsive.getResSize(12),
+                        size: Res.s12,
                         color: AppColors.salad,
                       ),
                     )

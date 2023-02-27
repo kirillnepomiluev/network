@@ -41,7 +41,7 @@ class _MeetingRateFirstViewState extends State<MeetingRateFirstView> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(
-                              left: UtilsResponsive.getResSize(16),),
+                              left: Res.s16,),
                           child: const AppBarRow(),
                         ),
                         SizedBox(
@@ -73,20 +73,20 @@ class _MeetingRateFirstViewState extends State<MeetingRateFirstView> {
                           // stepSize: 5
                         ),
                         SizedBox(
-                          height: UtilsResponsive.getResSize(60), //60
+                          height: Res.s60, //60
                         ),
                         Padding(
                             padding: EdgeInsets.symmetric(
-                              horizontal: UtilsResponsive.getResSize(20),
+                              horizontal: Res.s20,
                             ),
                             child: const AddCommentRow(),),
                       ],
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                        left: UtilsResponsive.getResSize(16),
-                        right: UtilsResponsive.getResSize(16),
-                        bottom: UtilsResponsive.getResSize(35),
+                        left: Res.s16,
+                        right: Res.s16,
+                        bottom: Res.s35,
                       ),
                       child: AppButton(
                           onPressed: () {

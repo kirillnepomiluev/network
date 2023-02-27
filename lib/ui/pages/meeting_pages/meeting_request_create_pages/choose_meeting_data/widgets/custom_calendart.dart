@@ -30,7 +30,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(UtilsResponsive.getResSize(10)),
+      padding: EdgeInsets.all(Res.s10),
       decoration: BoxDecoration(
           color: AppColors.white10, borderRadius: BorderRadius.circular(12),),
       child: TableCalendar<dynamic>(
@@ -53,12 +53,12 @@ class _CustomCalendarState extends State<CustomCalendar> {
           leftChevronIcon: Icon(
             NetworkIcons.arrow_long_left,
             color: Colors.white,
-            size: UtilsResponsive.getResSize(15),
+            size: Res.s15,
           ),
           rightChevronIcon: Icon(
             NetworkIcons.arrow_long_right,
             color: Colors.white,
-            size: UtilsResponsive.getResSize(15),
+            size: Res.s15,
           ),
         ),
         selectedDayPredicate: (day) {

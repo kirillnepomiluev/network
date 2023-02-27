@@ -2,9 +2,10 @@
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 
 class DatabaseService {
+
   Future<dynamic> fetchToDo() async {
     try {
-      final response = await SupabaseCredentials.supabaseClient.from('tododb').select();
+      final response = await AppSupabase.client.from('tododb').select();
       print('fetched type - ${response.runtimeType}');
       return response;
     } catch (error) {
@@ -18,7 +19,7 @@ class DatabaseService {
     required String description,
   }) async {
     try {
-      final response = await SupabaseCredentials.supabaseClient.from('tododb').insert(
+      final response = await AppSupabase.client.from('tododb').insert(
           {
             'title' : title,
             'description' : description,
@@ -28,6 +29,5 @@ class DatabaseService {
       print('addToDo error - $error');
     }
   }
-
 
 }

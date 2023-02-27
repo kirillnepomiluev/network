@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
+import 'package:network_app/utils/utils.dart';
 
 class MeetingSearchViewModel extends ViewModel {
   MeetingSearchViewModel(this.context);
@@ -14,7 +15,7 @@ class MeetingSearchViewModel extends ViewModel {
   }
 
   void onScreenTap(){
-    FocusManager.instance.primaryFocus?.unfocus();
+    Utils.unFocus();
   }
 
 }

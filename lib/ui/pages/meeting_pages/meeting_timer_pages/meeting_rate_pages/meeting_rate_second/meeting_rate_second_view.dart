@@ -23,7 +23,7 @@ class MeetingRateSecondView extends StatelessWidget {
         child: Scaffold(
           body: Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: UtilsResponsive.getResSize(16),
+              horizontal: Res.s16,
             ),
             child: SingleChildScrollView(
               child: Column(
@@ -32,7 +32,7 @@ class MeetingRateSecondView extends StatelessWidget {
                     onPressed: () => DialogUtils.showMeetingRateInterruptDialog,
                   ),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(25),
+                    height: Res.s25,
                   ),
                   const RichTextTwo(
                     text1: 'Дайте оценку\n',
@@ -44,22 +44,22 @@ class MeetingRateSecondView extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(40),
+                    height: Res.s40,
                   ),
                   const RateSliderContainer(
                     title: 'Понравилось ли вам общение?',
                   ),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(20),
+                    height: Res.s20,
                   ),
                   const RateSliderContainer(title: 'Возникла ли симпатия?'),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(20),
+                    height: Res.s20,
                   ),
                   const RateSliderContainer(
                       title: 'Интересна ли сфера деятельности?',),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(35),
+                    height: Res.s35,
                   ),
                   AppButton(
                     onPressed: () {
@@ -68,7 +68,7 @@ class MeetingRateSecondView extends StatelessWidget {
                     text: 'Оценить',
                   ),
                   SizedBox(
-                    height: UtilsResponsive.getResSize(35),
+                    height: Res.s35,
                   ),
                 ],
               ),

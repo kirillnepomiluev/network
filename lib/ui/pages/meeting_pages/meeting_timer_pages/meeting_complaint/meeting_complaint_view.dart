@@ -7,6 +7,7 @@ import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/main_pages/dialog_utls.dart';
+import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -22,7 +23,7 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
   bool showSendButton = false;
 
   void sendFunction() {
-    FocusManager.instance.primaryFocus?.unfocus();
+    Utils.unFocus();
     _controller.clear();
     context.router.pop();
     context.router.pop();
@@ -41,7 +42,7 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        FocusManager.instance.primaryFocus?.unfocus();
+        Utils.unFocus();
       },
       child: SafeArea(
         child: Scaffold(
@@ -51,9 +52,9 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
               //Верхняя часть
               Padding(
                 padding: EdgeInsets.only(
-                    left: UtilsResponsive.getResSize(16),
-                    right: UtilsResponsive.getResSize(16),
-                    bottom: UtilsResponsive.getResSize(20),),
+                    left: Res.s16,
+                    right: Res.s16,
+                    bottom: Res.s20,),
                 child: Column(
                   children: [
                     const AppBarRow(),
@@ -63,11 +64,11 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
                       color: AppColors.salad,
                     ),
                     SizedBox(
-                      height: UtilsResponsive.getResSize(26),
+                      height: Res.s26,
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: UtilsResponsive.getResSize(10),
+                        horizontal: Res.s10,
                       ),
                       child: const Text(
                         'Мы очень сожалеем о вашем плохом опыте. Пожалуйста, потратьте немного своего времени, чтобы точно описать, что произошло, чтобы мы могли исправить ситуацию, как можно скорее.',
@@ -78,14 +79,14 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
                 ),
               ),
               SizedBox(
-                height: UtilsResponsive.getResSize(16),
+                height: Res.s16,
               ),
 
               //Нижняя часть
               Expanded(
                 child: Container(
                   padding: EdgeInsets.symmetric(
-                      horizontal: UtilsResponsive.getResSize(16),),
+                      horizontal: Res.s16,),
                   decoration: BoxDecoration(
                       color: AppColors.white10,
                       borderRadius: const BorderRadius.vertical(
@@ -93,11 +94,11 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: UtilsResponsive.getResSize(32),
+                        height: Res.s32,
                       ),
                       //Выберете тип жалобы
                       Container(
-                        padding: EdgeInsets.all(UtilsResponsive.getResSize(14)),
+                        padding: EdgeInsets.all(Res.s14),
                         decoration: BoxDecoration(
                             color: AppColors.white10,
                             borderRadius: BorderRadius.circular(15),),
@@ -110,14 +111,14 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
                             ),
                             Icon(
                               Icons.keyboard_arrow_down,
-                              size: UtilsResponsive.getResSize(22),
+                              size: Res.s22,
                               color: AppColors.salad,
                             )
                           ],
                         ),
                       ),
                       SizedBox(
-                        height: UtilsResponsive.getResSize(21),
+                        height: Res.s21,
                       ),
 
                       //Ввод ответа
@@ -137,7 +138,7 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
 
                       Padding(
                           padding: EdgeInsets.only(
-                              bottom: UtilsResponsive.getResSize(35),),
+                              bottom: Res.s35,),
                           child: AppButton(
                             text: 'Отправить',
                             onPressed: sendFunction,

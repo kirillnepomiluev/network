@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class LoginLogoContainer extends StatelessWidget {

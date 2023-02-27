@@ -24,7 +24,7 @@ class MeetingMatchingProfileInfo extends StatelessWidget {
           contSize: 48.sp, //120
         ),
         Padding(
-            padding: EdgeInsets.only(top: UtilsResponsive.getResSize(20)),
+            padding: EdgeInsets.only(top: Res.s20),
             child: NameWithVerification(
               strName: strName,
               showVerified: true,

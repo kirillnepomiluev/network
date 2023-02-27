@@ -2,24 +2,23 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthService {
 
-  Future<bool> signInService({
+  Future<bool> signInByEmail({
     required String email,
     required String password,
   }) async {
     try {
-      final response = await Supabase.instance.client.auth
-          .signInWithPassword(email: email, password: password);
+      final response = await Supabase.instance.client.auth.signInWithPassword(email: email, password: password);
 
       final userEmail = response.user!.email;
-      print('signInService successfully - userEmail $userEmail');
+      print('signInByEmail successfully - userEmail $userEmail');
       return true;
     } catch (error) {
-      print('signInService error $error');
+      print('signInByEmail error $error');
       return false;
     }
   }
 
-  Future<bool> signUpService({
+  Future<bool> signUpByEmail({
     required String email,
     required String password,
   }) async {
@@ -28,17 +27,17 @@ class AuthService {
           .signUp(email: email, password: password);
 
       final userEmail = response.user!.email;
-      print('signUpService successfully - userEmail $userEmail');
+      print('signUpByEmail successfully - userEmail $userEmail');
       return true;
     } catch (error) {
-      print('signUpService error $error');
+      print('signUpByEmail error $error');
       return false;
     }
   }
 
-  //////////////////////////////////
+  ///////////////////////////////////////////
 
-  Future<bool> getVerificationsCodeService({
+  Future<bool> signInByPhoneGetOTP({
     required String phoneNumber,
   }) async {
 
@@ -46,17 +45,16 @@ class AuthService {
       await Supabase.instance.client.auth.signInWithOtp(
         phone: phoneNumber,
       );
+      print('signInByPhoneGetOTP successfully');
 
       return true;
     } catch (error) {
-      print('signInService error $error');
+      print('signInByPhoneGetOTP error $error');
       return false;
     }
   }
 
-  //////////////////////////////////////
-
-  Future<bool> sendOtp({
+  Future<bool> signInByPhoneSendOTP({
     required String phoneNumber,
     required String otp,
   }) async {
@@ -66,18 +64,37 @@ class AuthService {
         token: otp,
         type: OtpType.sms,
       );
-
-      print('sendOtp success - ${result.user!.phone}');
-
+      print('signInByPhoneSendOTP success - ${result.user!.phone}');
       return true;
     } catch (error) {
-      print('sendOtp error $error');
+      print('signInByPhoneSendOTP error $error');
+      return false;
+    }
+  }
+
+  ///////////////////////////////////////////
+
+  Future<bool> signInByFacebook() async {
+    try {
+      final result = await Supabase.instance.client.auth.signInWithOAuth(Provider.facebook);
+      print('signInByFacebook success - $result');
+      return true;
+    } catch (error) {
+      print('signInByFacebook error $error');
+      return false;
+    }
+  }
+
+  ///////////////////////////////////////////
+
+  Future<bool> signInByGoogle() async {
+    try {
+      final result = await Supabase.instance.client.auth.signInWithOAuth(Provider.google);
+      print('signInByGoogle success - $result');
+      return true;
+    } catch (error) {
+      print('signInByGoogle error $error');
       return false;
     }
   }
 }
-
-//// After receiving a SMS with a OTP.
-// const { data, error } = await supabase
-// .auth
-// .verifyOtp({ phone, token })

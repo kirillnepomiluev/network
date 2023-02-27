@@ -57,7 +57,7 @@ class BottomSheetInfoWithIcon extends StatelessWidget {
                 text1: text1,
                 text2: text2,
               ),
-              SizedBox(height: UtilsResponsive.getResSize(35),),
+              SizedBox(height: Res.s35,),
               Text(
                 text3,
                 textAlign: TextAlign.center,
@@ -68,7 +68,7 @@ class BottomSheetInfoWithIcon extends StatelessWidget {
           // const SizedBox(height: 150,),
 
           Padding(
-            padding: EdgeInsets.only(bottom: UtilsResponsive.getResSize(20)),
+            padding: EdgeInsets.only(bottom: Res.s20),
             child: AppButton(
               onPressed: func?? context.router.pop,
               text: textButton,

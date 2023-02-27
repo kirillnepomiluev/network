@@ -23,7 +23,7 @@ class MeetingMatchingProfilesRow extends StatelessWidget {
           imageUrl: Assets.images.avatars.avatar0.keyName,
         ),
         Padding(
-            padding: EdgeInsets.only(top: UtilsResponsive.getResSize(35)), //35
+            padding: EdgeInsets.only(top: Res.s35), //35
             child: AppIconContainer(
               icon: NetworkIcons.electric,
               contColor: AppColors.salad,

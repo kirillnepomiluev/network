@@ -5,6 +5,11 @@ import 'package:network_app/ui/theme/app_colors.dart';
 
 class DialogUtils{
 
+  static void showScaffoldMessage(BuildContext context, String text) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
+  }
+
+
   static void openBottomSheetInfoWithIcon({
     required BuildContext context,
     required IconData icon,

@@ -6,7 +6,7 @@ import 'package:network_app/ui/pages/store_pages/store_category/store_category_v
 import 'package:network_app/ui/pages/store_pages/store_category/widgets/store_category_avatar_container.dart';
 import 'package:network_app/ui/pages/store_pages/store_category/widgets/store_tab.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_card.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
@@ -99,8 +99,8 @@ class StoreCategoryView extends StatelessWidget {
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
-                                  crossAxisSpacing: UtilsResponsive.getResSize(12),
-                                  mainAxisSpacing: UtilsResponsive.getResSize(12),
+                                  crossAxisSpacing: Res.s12,
+                                  mainAxisSpacing: Res.s12,
                                   mainAxisExtent: 74.sp,   //300
                               ),
                           itemCount: 6,
