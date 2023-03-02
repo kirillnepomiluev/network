@@ -27,9 +27,13 @@ class StoreProductImageContainer extends StatelessWidget {
       child: Column(
         children: [
           const AppBackButton(),
+
           SizedBox(
             height: 72.sp, //270
-            child: Image.asset(
+            child:
+            imageURL.isEmpty
+            ? Container()
+            : Image.network(
               imageURL,
               fit: BoxFit.contain,
             ),

@@ -7,6 +7,7 @@ class AppSupabase{
   // static SupabaseClient clientCred = SupabaseClient(apiUrl, apiKey);
   static SupabaseClient client = Supabase.instance.client;
 
-  static const String users = 'users';
+  static const String strUsers = 'users';
+  static const String strClothes = 'clothes';
 
 }

@@ -24,9 +24,10 @@ class StoreCategoryAvatarContainer extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 20),
       child: InkWell(
         onTap: () {
-          context.router.push(StoreProductViewRoute(
-            imageURL: Assets.images.avatars.avatar3.keyName,
-          ),);
+          // context.router.push(StoreProductViewRoute(
+          //     clotheModel: clotheModel
+          //   // imageURL: Assets.images.avatars.avatar3.keyName,
+          // ),);
         },
         child: AppContainer(
           padH: 30,

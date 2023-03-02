@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/providers/app_provider.dart';
-import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_theme.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-
 
 
 class App extends StatefulWidget {
@@ -22,25 +18,25 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
 
-  @override
-  void initState() {
-
-    UserNotifier userNotifier = UserNotifier();
-    // SettingsNotifier settingsNotifier = SettingsNotifier();
-
-    AppSupabase.client.auth.onAuthStateChange.listen((data) {
-      final AuthChangeEvent event = data.event;
-      if (event == AuthChangeEvent.signedIn) {
-        print('app авторизован');
-        userNotifier.setUserDataFunc();
-        // settingsNotifier.setSettings();
-      } else {
-        print('app не авторизован');
-      }
-    });
-
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //
+  //   UserNotifier userNotifier = UserNotifier();
+  //   // SettingsNotifier settingsNotifier = SettingsNotifier();
+  //
+  //   AppSupabase.client.auth.onAuthStateChange.listen((data) {
+  //     final AuthChangeEvent event = data.event;
+  //     if (event == AuthChangeEvent.signedIn) {
+  //       print('app авторизован');
+  //       userNotifier.setUserDataFunc();
+  //       // settingsNotifier.setSettings();
+  //     } else {
+  //       print('app не авторизован');
+  //     }
+  //   });
+  //
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {

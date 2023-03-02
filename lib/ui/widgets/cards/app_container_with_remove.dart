@@ -6,7 +6,7 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 class AppContainerWithRemove extends StatelessWidget {
   const AppContainerWithRemove(
-      {Key? key, required this.title, this.onTap, this.hasSkip = true})
+      {Key? key, required this.title, this.onTap, this.hasSkip = true,})
       : super(key: key);
   final String title;
   final VoidCallback? onTap;
@@ -21,7 +21,6 @@ class AppContainerWithRemove extends StatelessWidget {
         padH: Res.s14,
         radius: AppBorderRadius.r10,
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
@@ -34,7 +33,7 @@ class AppContainerWithRemove extends StatelessWidget {
                     Icons.close_rounded,
                     color: AppColors.salad,
                     size: Res.s16,
-                  )
+                  ),
 
                   // IconButton(
                   //     onPressed: onRemove,

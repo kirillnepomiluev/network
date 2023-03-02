@@ -1,5 +1,6 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_responsive.dart';
@@ -61,7 +62,7 @@ class OptionsContainerTest extends StatefulWidget {
   final HobbyModel hobbyModel;
   final Function(int) onTap;
   final int index;
-  bool isSelected = false;
+  late bool isSelected;
 
   @override
   State<OptionsContainerTest> createState() => _OptionsContainerTestState();

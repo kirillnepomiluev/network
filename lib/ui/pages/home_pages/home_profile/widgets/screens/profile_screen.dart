@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/profile_bottom_curve.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
@@ -8,6 +9,7 @@ import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/stat_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/utils_responsive.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -19,6 +21,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userData = Provider.of<UserNotifier>(context).userData;
     return Padding(
       padding: EdgeInsets.only(
           top: Res.s25,
@@ -34,7 +37,8 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Tima',
+                Text(
+                  'Tima',
                     style: AppTextStyles.primary26
                         .copyWith(fontWeight: FontWeight.w700),),
 
@@ -43,7 +47,8 @@ class ProfileScreen extends StatelessWidget {
                 ),
 
                 Text(
-                  AppString.of(context).baseLevel,
+                    userData.level
+                  // AppString.of(context).baseLevel,
                 ),
 
                 SizedBox(
@@ -52,7 +57,7 @@ class ProfileScreen extends StatelessWidget {
 
                 //Готов к встрече
                 AppContainer(
-                  padV: Res.s20,
+                  padV: Res.s16,
                   color: AppColors.salad,
                   radius: AppBorderRadius.r15,
                   child: Row(
@@ -93,11 +98,11 @@ class ProfileScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     StatMiniContainer(
-                        title: '9.4k', subtitle: AppString.of(context).ofPoints,),
+                        title: userData.points.toString(), subtitle: AppString.of(context).ofPoints,),
                     StatMiniContainer(
-                        title: '23', subtitle: AppString.of(context).meets,),
+                        title: userData.meetingsCount.toString(), subtitle: AppString.of(context).meets,),
                     StatMiniContainer(
-                        title: '4.5', subtitle: AppString.of(context).rating,),
+                        title: userData.rating.toString(), subtitle: AppString.of(context).rating,),
                   ],
                 ),
               ),

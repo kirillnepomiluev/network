@@ -34,7 +34,6 @@ class ViewHeadwearsCarousel extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(right: Res.s10),
                   child: StoreHeadwearContainer(
-                    // type: i % 2 == 0 ? 'Обычный' : 'Редкий',
                     type: i.isEven ? 'Обычный' : 'Редкий',
                   ),
                 ),

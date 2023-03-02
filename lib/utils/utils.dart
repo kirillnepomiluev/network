@@ -1,3 +1,5 @@
+// ignore_for_file: parameter_assignments
+
 import 'package:flutter/material.dart';
 
 class Utils {
@@ -14,7 +16,7 @@ class Utils {
       }).toList();
 
   static List<HobbyModel> onSearchChanged(String? value,
-      List<HobbyModel> displayedList, List<HobbyModel> currentList) {
+      List<HobbyModel> displayedList, List<HobbyModel> currentList,) {
     final newValue = value!;
 
     if (newValue.isEmpty) {
@@ -30,7 +32,7 @@ class Utils {
   }
 
   static Map<String, dynamic> onSelectContainer(
-      int neededIndex, List<HobbyModel> currentList, List<String> resultList) {
+      int neededIndex, List<HobbyModel> currentList, List<String> resultList,) {
     final wasActive = currentList[neededIndex].active;
     currentList[neededIndex].active = !wasActive;
 

@@ -5,15 +5,21 @@ import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 class StartViewModel extends ViewModel {
-  StartViewModel(this.context);
+  StartViewModel(this.context){
+    // onTap();
+  }
   final BuildContext context;
 
   Future<void> onTap() async {
     if (AppSupabase.client.auth.currentUser == null) {
       context.router.push(const LoginViewRoute());
     } else {
+
+      // Future.delayed(Duration(seconds: 4)).then((value) => context.router.push(HomeViewRoute(),));
+
       // context.router.push(const RegSuccessViewRoute());
-      context.router.push(InputAboutYouViewRoute());
+      // context.router.push(const InputAboutYouViewRoute());
+      context.router.push(HomeViewRoute(),);
     }
   }
 }

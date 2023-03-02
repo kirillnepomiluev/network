@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_avatar_container.dart';
@@ -7,6 +8,7 @@ import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_headwea
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
+import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CupboardInitScreen extends StatelessWidget {
@@ -48,23 +50,51 @@ class CupboardInitScreen extends StatelessWidget {
         ),
 
         //Карусель аватаров
-        SingleChildScrollView(
-          controller: avatarScrollContr,
-          physics: const BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              for (var i = 0; i < 6; i++)
-                StoreAvatarContainer(
-                  type:
-                  // i % 2 == 0
-                  i.isEven
-                      ? AppString.of(context).rare
-                      : AppString.of(context).usual,
-                ),
-            ],
-          ),
-        ),
+        StreamBuilder(
+            stream: AppSupabase.client
+                .from(AppSupabase.strClothes)
+                .stream(primaryKey: ['id']),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                final list = snapshot.data as List<Map<String, dynamic>>;
+                return SizedBox(
+                  height: 83.sp,
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      controller: avatarScrollContr,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: list.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: EdgeInsets.only(right: Res.s10),
+                          child: StoreAvatarContainer(
+                            currentNote: list[index],
+                            // type: index.isEven ? 'Редкий' : 'Обычный',
+                          ),
+                        );
+                      }),
+                );
+              }
+              return Container();
+            }),
+        // SingleChildScrollView(
+        //   controller: avatarScrollContr,
+        //   physics: const BouncingScrollPhysics(),
+        //   scrollDirection: Axis.horizontal,
+        //   child: Row(
+        //     children: [
+        //       for (var i = 0; i < 6; i++)
+        //         StoreAvatarContainer(
+        //           currentNote: {},
+        //           type:
+        //           // i % 2 == 0
+        //           i.isEven
+        //               ? AppString.of(context).rare
+        //               : AppString.of(context).usual,
+        //         ),
+        //     ],
+        //   ),
+        // ),
 
         //Головные уборы
         Padding(

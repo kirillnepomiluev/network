@@ -24,6 +24,7 @@ class ProfileBottomCurve extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+
             CustomPaint(
               size: Size(
                   mediaWidth,
@@ -31,12 +32,14 @@ class ProfileBottomCurve extends StatelessWidget {
                       .toDouble(),),
               painter: BottomSheetMinPaint(),
             ),
+
             BlurryContainer(
               blur: 20,
               width: mediaWidth,
               height: 40.sp, //75
               child: Container(),
             )
+
           ],
         ),);
   }

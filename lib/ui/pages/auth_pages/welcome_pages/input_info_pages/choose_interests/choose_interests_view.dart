@@ -47,7 +47,7 @@ class ChooseInterestsView extends StatelessWidget {
                           ),
                         //Поиск
                         Padding(
-                          padding: EdgeInsets.only(bottom: 20, top: 18),
+                          padding: const EdgeInsets.only(bottom: 20, top: 18),
                           child: SearchTextField(
                             controller: model.textController,
                             onChange: model.onSearchChanged,

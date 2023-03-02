@@ -41,9 +41,7 @@ class _MeetingComplaintViewState extends State<MeetingComplaintView> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Utils.unFocus();
-      },
+      onTap: Utils.unFocus,
       child: SafeArea(
         child: Scaffold(
           // backgroundColor: Colors.grey.shade400,

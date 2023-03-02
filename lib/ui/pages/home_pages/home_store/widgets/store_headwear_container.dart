@@ -17,7 +17,6 @@ class StoreHeadwearContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final double contWidth = 52.sp;
     final double contHeight = isView ? 74.sp : 68.sp;
-
     return AppContainer(
       padH: Res.s15,
       padV: Res.s15,

@@ -85,7 +85,7 @@ class ChooseOccupationViewModel extends ViewModel {
 
   void onNextPage() {
     Utils.unFocus();
-    context.router.push(InputAboutYouViewRoute());
+    context.router.push(const InputAboutYouViewRoute());
   }
 
   void writeData() {

@@ -1,7 +1,5 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/app_wrap_containers_with_remove.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
@@ -25,7 +23,6 @@ class HomeProfileBottomSheet extends StatelessWidget {
     final mediaHeight = MediaQuery.of(context).size.height;
     final mediaWidth = MediaQuery.of(context).size.width;
     final height = mediaHeight * 0.95;
-
     return GestureDetector(
       onTap: Utils.unFocus,
       child: Stack(

@@ -101,7 +101,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
           toolbarHeight: 70,
           elevation: 0,
           title: GestureDetector(
-            onTap: () => Utils.unFocus(),
+            onTap: Utils.unFocus,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -162,7 +162,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
 
   Widget _body() {
     return GestureDetector(
-      onTap: () => Utils.unFocus(),
+      onTap: Utils.unFocus,
       child: ListView.builder(
           controller: _scrollController,
           padding: const EdgeInsets.only(top: 20, bottom: 10),

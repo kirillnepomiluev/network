@@ -1229,6 +1229,16 @@ class AppString {
       args: [],
     );
   }
+
+  /// `Стандартный уровень`
+  String get standartLevel {
+    return Intl.message(
+      'Стандартный уровень',
+      name: 'standartLevel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppString> {

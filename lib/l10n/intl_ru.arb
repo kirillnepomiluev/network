@@ -116,5 +116,6 @@
   "descriptionOfMeeting": "Описание встречи",
   "occupation": "Сфера деятельности",
   "interestsTitle": "Интересы",
-  "createRequest": "Создать запрос"
+  "createRequest": "Создать запрос",
+  "standartLevel": "Стандартный уровень"
 }

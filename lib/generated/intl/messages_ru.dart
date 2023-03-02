@@ -147,6 +147,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "soWillDisplayInNetwork": MessageLookupByLibrary.simpleMessage(
             "Так оно будет отображаться в Network"),
         "standart": MessageLookupByLibrary.simpleMessage("Стандартный"),
+        "standartLevel":
+            MessageLookupByLibrary.simpleMessage("Стандартный уровень"),
         "status": MessageLookupByLibrary.simpleMessage("статус"),
         "statusWillShowenInYourProfile": MessageLookupByLibrary.simpleMessage(
             "Статус будет отображаться в вашем профиле"),

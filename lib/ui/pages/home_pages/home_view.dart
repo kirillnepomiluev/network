@@ -35,15 +35,15 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final mediaWitdh = MediaQuery.of(context).size.width;
-    final double contPadH = mediaWitdh < widthOne ? 10 : 15; //15
-    final double contPadV = mediaWitdh < widthOne ? 6 : 8; //8
+    final mediaWidth = MediaQuery.of(context).size.width;
+    final double contPadH = mediaWidth < widthOne ? 10 : 15; //15
+    final double contPadV = mediaWidth < widthOne ? 6 : 8; //8
 
-    final double itemPadH = mediaWitdh < widthOne ? 15 : 20;
-    final double itemPadV = mediaWitdh < widthOne ? 14 : 20;
+    final double itemPadH = mediaWidth < widthOne ? 15 : 20;
+    final double itemPadV = mediaWidth < widthOne ? 14 : 20;
 
-    final double iconSize = mediaWitdh < widthOne ? 12 : 14; //14
-    final double fontSize = mediaWitdh < widthOne ? 10 : 12; //12
+    final double iconSize = mediaWidth < widthOne ? 12 : 14; //14
+    final double fontSize = mediaWidth < widthOne ? 10 : 12; //12
 
     return Scaffold(
       extendBody: true,

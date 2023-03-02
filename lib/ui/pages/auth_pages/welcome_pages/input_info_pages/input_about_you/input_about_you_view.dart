@@ -1,6 +1,4 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/input_about_you/input_about_you_vm.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/input_info_column.dart';
@@ -32,7 +30,7 @@ class InputAboutYouView extends StatelessWidget {
             ),
           ),
         );
-      });
+      },);
 }
 
 }
