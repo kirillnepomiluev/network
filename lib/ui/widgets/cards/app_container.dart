@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AppContainer extends StatelessWidget {
   const AppContainer(
@@ -11,9 +12,21 @@ class AppContainer extends StatelessWidget {
       this.padV = 0, //23
       this.child,
       this.width,
-      this.height,
+      this.height, this.boxBorder,
       })
       : super(key: key);
+
+  factory AppContainer.outlined({required Widget child, double? width, double? height}){
+    return AppContainer(
+      boxBorder: Border.all(color: AppColors.salad),
+      color: Colors.transparent,
+      padH: 18.sp,
+      padV: 18.sp,
+      width: width,
+      height: height,
+      child: child,
+    );
+  }
   final Color? color;
   final double radius;
   final double padH;
@@ -21,6 +34,7 @@ class AppContainer extends StatelessWidget {
   final double? width;
   final double? height;
   final Widget? child;
+  final BoxBorder? boxBorder;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +44,8 @@ class AppContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: color ?? AppColors.white10,
         borderRadius: BorderRadius.circular(radius),
+        // shape: BoxShape.rectangle
+        border: boxBorder,
       ),
       padding: EdgeInsets.symmetric(vertical: padV, horizontal: padH),
       child: child,

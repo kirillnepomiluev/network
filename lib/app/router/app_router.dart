@@ -45,6 +45,8 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_r
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/meeting_rate_second/meeting_rate_second_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_timer/meeting_timer_view.dart';
 import 'package:network_app/ui/pages/messages_pages/chat_personal/chat_personal_view.dart';
+import 'package:network_app/ui/pages/profile_pages/choose_categories/choose_categories_view.dart';
+import 'package:network_app/ui/pages/profile_pages/edit_field/edit_field_view.dart';
 import 'package:network_app/ui/pages/profile_pages/person_profile/person_profile_view.dart';
 import 'package:network_app/ui/pages/store_pages/store_category/store_category_view.dart';
 import 'package:network_app/ui/pages/store_pages/store_product/store_product_view.dart';
@@ -143,6 +145,8 @@ class RoutesLists {
 
   static const List<AutoRoute> profileRoutes = [
     AutoRoute(page: PersonProfileView),
+    AutoRoute(page: EditFieldView),
+    AutoRoute(page: ChooseCategoriesView),
   ];
 
   static const List<AutoRoute> walletRoutes = [

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 
 class AppCheckListTile extends StatelessWidget {
   const AppCheckListTile(
@@ -19,12 +19,14 @@ class AppCheckListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width ?? Res.s188,
+      width: width,
       child: Transform.translate(
         offset: const Offset(-4, 0),
         child: CheckboxListTile(
           contentPadding: EdgeInsets.zero,
-          checkColor: Colors.black,
+          checkColor: AppColors.black1A,
+          checkboxShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+          side: const BorderSide(color: AppColors.salad),
           controlAffinity: ListTileControlAffinity.leading,
           value: value,
           onChanged: onChanged,
@@ -33,6 +35,7 @@ class AppCheckListTile extends StatelessWidget {
             offset: const Offset(-17, 0),
             child: Text(
               title,
+              style: AppTextStyles.primary,
             ),
           ),
         ),

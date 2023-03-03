@@ -28,6 +28,7 @@ class AppTextField extends StatelessWidget {
     return TextFormField(
       enabled: enabled,
       controller: controller,
+      initialValue: initialValue,
       // style: AppTextStyles.primary,
       textInputAction: TextInputAction.done,
       cursorColor: Colors.white,

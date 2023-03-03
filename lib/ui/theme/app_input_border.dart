@@ -6,9 +6,9 @@ import 'package:network_app/utils/utils_responsive.dart';
 
 class AppInputBorder {
   static final _defaultBorder = OutlineInputBorder(
-
       borderSide: const BorderSide(color: AppColors.salad),
-      borderRadius: BorderRadius.circular(AppBorderRadius.r20),);
+      borderRadius: BorderRadius.circular(AppBorderRadius.r20),
+  );
 
   static final inputDecorationBorder = InputDecoration(
     contentPadding: EdgeInsets.symmetric(

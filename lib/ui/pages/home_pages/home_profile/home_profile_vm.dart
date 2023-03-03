@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/pages/home_pages/home_profile/widgets/home_profile_bottom_sheet.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_notifications/meeting_notifications_view.dart';
+import 'package:network_app/ui/pages/profile_pages/profile_bottom_sheet/profile_bottom_sheet_view.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 
@@ -38,7 +38,7 @@ class ProfileMainViewModel extends ViewModel {
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(25)),),
         context: context,
-        builder: (BuildContext context) => const HomeProfileBottomSheet(),);
+        builder: (BuildContext context) => const ProfileBottomSheetView(),);
   }
 
   final ScrollController avatarScrollContr = ScrollController();

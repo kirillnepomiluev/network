@@ -6,7 +6,6 @@ import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/icons/notification_icon.dart';
 import 'package:network_app/utils/utils_responsive.dart';
-import 'package:provider/provider.dart';
 
 class ProfileAvatarRow extends StatelessWidget {
   const ProfileAvatarRow({
@@ -41,7 +40,6 @@ class ProfileAvatarRow extends StatelessWidget {
                   imageUrl: Assets.images.avatars.avatar0.keyName,
                 ),),
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(title,

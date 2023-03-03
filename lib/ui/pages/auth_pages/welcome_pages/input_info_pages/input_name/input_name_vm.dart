@@ -22,6 +22,6 @@ class InputNameViewModel extends ViewModel {
       );
     }
 
-    context.router.push(const ChooseBirthDateViewRoute());
+    context.router.push(ChooseBirthDateViewRoute(isAuth: true));
   }
 }

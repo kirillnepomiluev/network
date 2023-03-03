@@ -1,7 +1,6 @@
 // ignore_for_file: cascade_invocations
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'dart:ui';
 
 class BottomSheetMinPaint extends CustomPainter {
 
@@ -55,7 +54,6 @@ class BottomSheetMinPaint extends CustomPainter {
         size.height * 0.2597538,);
     path_0.close();
 
-    final double blur = 10;
 
     Paint paint0Fill = Paint()
       ..color = color ?? AppColors.white10

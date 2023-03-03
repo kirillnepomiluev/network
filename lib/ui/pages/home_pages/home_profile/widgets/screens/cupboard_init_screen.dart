@@ -1,3 +1,5 @@
+// ignore_for_file: cast_nullable_to_non_nullable
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
@@ -38,7 +40,7 @@ class CupboardInitScreen extends StatelessWidget {
               IconButton(
                   onPressed: () {
                     // context.router.push(const StoreCategoryAvatarsViewRoute());
-                    context.router.push(StoreCategoryViewRoute(storeProductType: StoreProductType.avatars,));
+                    context.router.push(StoreCategoryViewRoute(productType: StoreProductType.body, isCupboard: true));
                   },
                   icon: const Icon(
                     NetworkIcons.arrow_long_right,
@@ -69,14 +71,13 @@ class CupboardInitScreen extends StatelessWidget {
                           padding: EdgeInsets.only(right: Res.s10),
                           child: StoreAvatarContainer(
                             currentNote: list[index],
-                            // type: index.isEven ? 'Редкий' : 'Обычный',
                           ),
                         );
-                      }),
+                      },),
                 );
               }
               return Container();
-            }),
+            },),
         // SingleChildScrollView(
         //   controller: avatarScrollContr,
         //   physics: const BouncingScrollPhysics(),
@@ -113,7 +114,7 @@ class CupboardInitScreen extends StatelessWidget {
               IconButton(
                   onPressed: () {
                     // context.router.push(const StoreCategoryHeadwearsViewRoute());
-                    context.router.push(StoreCategoryViewRoute(storeProductType: StoreProductType.avatars,));
+                    context.router.push(StoreCategoryViewRoute(productType: StoreProductType.body, isCupboard: true));
                   },
                   icon: const Icon(
                     NetworkIcons.arrow_long_right,

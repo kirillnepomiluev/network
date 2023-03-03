@@ -5,11 +5,13 @@ import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AppAddRectangleIcon extends StatelessWidget {
-  const AppAddRectangleIcon({Key? key}) : super(key: key);
+  const AppAddRectangleIcon({Key? key, this.onTap}) : super(key: key);
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return AppIconContainer(
+      onTap: onTap,
       icon: Icons.add,
       contSize: 25.sp,
       iconSize: 17.5.sp,

@@ -36,6 +36,6 @@ enum ActiveSearchTabs{
 
 
 enum StoreProductType{
-  avatars,
-  hats,
+  body,
+  head,
 }

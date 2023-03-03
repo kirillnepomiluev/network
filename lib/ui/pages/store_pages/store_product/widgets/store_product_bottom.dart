@@ -1,23 +1,23 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
-import 'package:network_app/ui/widgets/icons/network_icons.dart';
-import 'package:network_app/utils/main_pages/dialog_utls.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class StoreProductBottom extends StatelessWidget {
   const StoreProductBottom({
-    Key? key,
+    Key? key, required this.buyClothe, required this.cost,
   }) : super(key: key);
+
+  final VoidCallback buyClothe;
+  final double cost;
 
   @override
   Widget build(BuildContext context) {
+
     return BlurryContainer(
       blur: 50,
       width: MediaQuery.of(context).size.width,
@@ -28,7 +28,7 @@ class StoreProductBottom extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.only(left: Res.s35), //30
-            child: Text('1.6 SOL',
+            child: Text('$cost SOL',
                 style: AppTextStyles.salad16
                     .copyWith(fontWeight: FontWeight.w600),),
           ),
@@ -39,21 +39,7 @@ class StoreProductBottom extends StatelessWidget {
                 height: 32.sp,   //50
                 textStyle: AppTextStyles.black,
                 borderRadius: AppBorderRadius.r15,
-                onPressed: () {
-                  DialogUtils.openBottomSheetInfoWithIcon(
-                      context: context,
-                      icon: NetworkIcons.check_circle_outlined,
-                      text1: 'Оплата прошла ',
-                      text2: 'успешно',
-                      text3:
-                          'Новый головной убор вы можете\nнайти в своем шкафу',
-                      textButton: 'Перейти в шкаф',
-                      func: () {
-                        context.router.pop();
-                        context.router.push(
-                            HomeViewRoute(initIndex: 1, isCupboard: true),);
-                      },);
-                },
+                onPressed: buyClothe,
                 text: 'Купить сейчас',
               ),)
         ],

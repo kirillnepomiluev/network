@@ -43,7 +43,7 @@ class ChooseSexViewModel extends ViewModel {
   Future<void> onTap() async {
 
     UserNotifier().updateData(
-      newData: {'hide_sex': hideSex, 'sex': maleChoosed? 'male' : 'female'},
+      newData: {'hide_sex': hideSex, 'sex': maleChoosed? 'Мужчина' : 'Женщина'},
     );
 
     context.router.push(const ChooseLevelViewRoute());

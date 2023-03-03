@@ -11,8 +11,9 @@ import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class StatColumn extends StatelessWidget {
-  const StatColumn({Key? key, this.ifProfileSheet = false}) : super(key: key);
+  const StatColumn({Key? key, this.ifProfileSheet = false, required this.onBuyTokens}) : super(key: key);
   final bool ifProfileSheet;
+  final VoidCallback onBuyTokens;
 
   @override
   Widget build(BuildContext context) {

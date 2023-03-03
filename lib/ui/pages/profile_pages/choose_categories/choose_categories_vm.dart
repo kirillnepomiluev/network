@@ -7,18 +7,19 @@ import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/utils.dart';
 import 'package:provider/provider.dart';
 
-class ChooseInterestsViewModel extends ViewModel {
-  ChooseInterestsViewModel(this.context, this.isAuth) {
+class ChooseCategoriesViewModel extends ViewModel {
+  ChooseCategoriesViewModel(this.context, this.isAuth, this.keyName) {
     getInit();
   }
   final BuildContext context;
   final bool isAuth;
+  final String keyName;
 
   void getInit(){
-    List interestsList = [];
+    List initialList = [];
     if(!isAuth){
       final userData = Provider.of<UserNotifier>(context).userData;
-      interestsList = userData.interests;
+      initialList = userData.mapData[keyName];
     }
 
     const optionsList = Constants.hobbiesList;
@@ -27,7 +28,7 @@ class ChooseInterestsViewModel extends ViewModel {
       bool active = false;
       final item = optionsList[i];
 
-      if(!isAuth && interestsList.contains(item)){
+      if(!isAuth && initialList.contains(item)){
         active = true;
       }
 
@@ -74,7 +75,7 @@ class ChooseInterestsViewModel extends ViewModel {
 
     if(resultList.isNotEmpty){
       UserNotifier().updateData(
-        newData: {'interests': resultList},
+        newData: {keyName: resultList},
       );
     }
   }

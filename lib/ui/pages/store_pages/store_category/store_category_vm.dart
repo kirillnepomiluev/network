@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_avatar_container.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 
 
 class StoreCategoryViewModel extends ViewModel {
   StoreCategoryViewModel(this.context, this.storeCategoryScreen){
-    if(storeCategoryScreen==StoreProductType.avatars){
+    if(storeCategoryScreen==StoreProductType.body){
       title = AppString.of(context).avatars;
     }
-    else if(storeCategoryScreen==StoreProductType.hats){
+    else if(storeCategoryScreen==StoreProductType.head){
       title = AppString.of(context).headwears;
     }
   }
@@ -23,6 +24,10 @@ class StoreCategoryViewModel extends ViewModel {
   void changeTab(ActiveStoreFilerTabs tabName) {
     activeTab = tabName;
     notifyListeners();
+  }
+
+  void onProductTap(ClotheModel clotheModel){
+
   }
 
 }

@@ -30,6 +30,7 @@ class ProfileScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+
           Padding(
             padding: EdgeInsets.only(
                 left: Res.s15,
@@ -47,7 +48,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
 
                 Text(
-                    userData.level
+                    userData.level,
                   // AppString.of(context).baseLevel,
                 ),
 

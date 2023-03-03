@@ -3,36 +3,10 @@ import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+// final userData = Provider.of<UserNotifier>(context).userData;
+
 class UserModel {
   UserModel({
-    // required this.userID,
-    // required this.personID,
-    // required this.name,
-    // required this.phone,
-    // required this.email,
-    // required this.createdDate,
-    // required this.birthdayDate,
-    // required this.age,
-    // required this.hideAge,
-    // required this.sex,
-    // required this.hideSex,
-    // required this.level,
-    // required this.interests,
-    // required this.status,
-    // required this.occupation,
-    // required this.familyStatus,
-    // required this.about,
-    // required this.points,
-    // required this.rating,
-    // required this.energy,
-    // required this.recoverySpeed,
-    // required this.meetingsCount,
-    // required this.messagesCountDay,
-    // required this.likesCountDay,
-    // required this.meetingsGoal,
-    // required this.verified,
-    // required this.online,
-    // required this.walletTokens,
     this.userID,
     this.personID = -1,
     this.age = '',
@@ -49,6 +23,8 @@ class UserModel {
     this.status = '',
     required this.occupation,
     this.familyStatus = '',
+    this.hideFamilyStatus = false,
+    this.hideMeetingsGoal = false,
     this.about = '',
     this.points = 0,
     this.rating = 5.0,
@@ -61,39 +37,30 @@ class UserModel {
     this.verified = false,
     this.online = false,
     this.walletTokens = 0,
+    required this.mapData,
+    this.avatarBodyID = 1,
+    this.avatarHeadID = 3,
+    required this.avatarBodyCupboard,
+    required this.avatarHeadCupboard,
+    required this.clothesIdList,
   });
-
-  static String _getAge(birthdayDate) {
-    String age = '';
-    if (birthdayDate != null) {
-      final currentYear = DateTime.now().year;
-      final lastDate =
-          DateTime(currentYear, birthdayDate.month, birthdayDate.day);
-      final difInYears = currentYear - birthdayDate.year;
-      print('lastDate $lastDate difInYears $difInYears');
-
-      if (lastDate.compareTo(birthdayDate) >= 0) {
-        age = difInYears.toString();
-      } else {
-        age = (difInYears - 1).toString();
-      }
-      print('age $age');
-    }
-    return age;
-  }
 
   factory UserModel.fromJson(Map<String, dynamic> map) {
     final birthdayDate = DateTime.tryParse(map['birthday_date']);
     String age = _getAge(birthdayDate);
-    final _mapLevel = map['level'];
+    final mapLevel = map['level'];
     String level = '';
-    if (_mapLevel == 'base') {
+    if (mapLevel == 'base') {
       level = AppString().base;
-    } else if (_mapLevel == 'standart') {
+    } else if (mapLevel == 'standart') {
       level = AppString().standart;
     } else {
       level = AppString().premium;
     }
+
+    List avatarBodyCupboard = map['avatar_body_cupboard'];
+    List avatarHeadCupboard = map['avatar_head_cupboard'];
+    List clothesIdList = [...avatarBodyCupboard, ...avatarHeadCupboard];
 
     return UserModel(
       userID: map['id'],
@@ -124,7 +91,31 @@ class UserModel {
       verified: map['verified'],
       online: map['online'],
       walletTokens: map['wallet_tokens'],
+      mapData: map,
+      hideFamilyStatus: map['hide_family_status'],
+      hideMeetingsGoal: map['hide_meetings_goal'],
+      avatarBodyID: map['avatar_body_id'],
+      avatarHeadID: map['avatar_head_id'],
+      avatarBodyCupboard: avatarBodyCupboard,
+      avatarHeadCupboard: avatarHeadCupboard,
+      clothesIdList: clothesIdList,
     );
+  }
+
+  static String _getAge(birthdayDate) {
+    String age = '';
+    if (birthdayDate != null) {
+      final currentYear = DateTime.now().year;
+      final lastDate =
+          DateTime(currentYear, birthdayDate.month, birthdayDate.day);
+      final difInYears = currentYear - birthdayDate.year;
+      if (lastDate.compareTo(birthdayDate) >= 0) {
+        age = difInYears.toString();
+      } else {
+        age = (difInYears - 1).toString();
+      }
+    }
+    return age;
   }
 
   final String? userID;
@@ -136,6 +127,8 @@ class UserModel {
   final DateTime? birthdayDate;
   final String age;
   final bool hideAge;
+  final bool hideFamilyStatus;
+  final bool hideMeetingsGoal;
   final String sex;
   final bool hideSex;
   final String level;
@@ -155,6 +148,12 @@ class UserModel {
   final bool verified;
   final bool online;
   final int walletTokens;
+  final Map<String, dynamic> mapData;
+  final int avatarBodyID;
+  final int avatarHeadID;
+  final List avatarBodyCupboard;
+  final List avatarHeadCupboard;
+  final List clothesIdList;
 
   @override
   String toString() {
@@ -167,11 +166,17 @@ class UserModel {
 
 //Для управления данными авторизованного юзера (нельзя исп. на стр. входа, т.к. содержит в себе currentUser. Вызовет null exception)
 class UserNotifier with ChangeNotifier {
-  UserModel userData =
-      UserModel(createdDate: DateTime.now(), interests: [], occupation: []);
+  UserModel userData = UserModel(
+    createdDate: DateTime.now(),
+    interests: [],
+    occupation: [],
+    mapData: {},
+    avatarHeadCupboard: [],
+    avatarBodyCupboard: [],
+    clothesIdList: [],
+  );
 
   Future<void> setUserDataFunc({bool isInit = false}) async {
-    print('setUserDataFunc');
     if (AppSupabase.client.auth.currentUser == null) {
       return;
     }
@@ -201,8 +206,6 @@ class UserNotifier with ChangeNotifier {
     } else {
       final id = AppSupabase.client.auth.currentUser!.id;
 
-      print('newData $newData');
-
       try {
         await AppSupabase.client
             .from(AppSupabase.strUsers)
@@ -221,16 +224,15 @@ class UserNotifier with ChangeNotifier {
 }
 
 UserNotifier initData() {
-  print('uuuuuuuuuuuu');
   UserNotifier userNotifier = UserNotifier();
   AppSupabase.client.auth.onAuthStateChange.listen((data) {
     final AuthChangeEvent event = data.event;
     if (event == AuthChangeEvent.signedIn) {
-      print('u авторизован');
+      print('авторизован');
       userNotifier.setUserDataFunc();
       // settingsNotifier.setSettings();
     } else {
-      print('u не авторизован');
+      print('не авторизован');
     }
   });
   return userNotifier;

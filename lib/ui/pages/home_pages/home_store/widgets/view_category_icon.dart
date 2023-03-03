@@ -15,23 +15,33 @@ class ViewCategoryIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(right: Res.s15),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            title,
-            style: AppTextStyles.primary22.copyWith(fontWeight: FontWeight.w600),
-            textAlign: TextAlign.start,
-          ),
-          IconButton(
-            onPressed: onPressed,
-            icon: const Icon(
+      child: InkWell(
+        onTap: onPressed,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: AppTextStyles.primary22.copyWith(fontWeight: FontWeight.w600),
+              textAlign: TextAlign.start,
+            ),
+
+            Icon(
               NetworkIcons.arrow_long_right,
               color: Colors.white,
+              size: Res.s18,
             ),
-            iconSize: Res.s20,
-          )
-        ],
+
+            // IconButton(
+            //   onPressed: onPressed,
+            //   icon: const Icon(
+            //     NetworkIcons.arrow_long_right,
+            //     color: Colors.white,
+            //   ),
+            //   iconSize: Res.s20,
+            // )
+          ],
+        ),
       ),
     );
   }

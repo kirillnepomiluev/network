@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/pages/home_pages/home_profile/widgets/screens/cupboard_empty_screen.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/screens/cupboard_init_screen.dart';
+import 'package:network_app/ui/pages/home_pages/home_store/widgets/clothes_carousel/clothes_carousels_view.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 
 
@@ -17,16 +17,25 @@ class CupboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 10, left: 16, right: 16),
-        child: isCupboardInit
-            ? CupboardInitScreen(
-                activeTab: activeTab,
-                avatarScrollContr: avatarScrollContr,
-                hatScrollContr: hatScrollContr,
-              )
-            : const CupboardEmptyScreen(),
+    return Padding(
+      padding: const EdgeInsets.only(top: 15, left: 16, right: 16),
+      child: SingleChildScrollView(
+        child:
+        const ClothesCarousels(
+          isCupboard: true,
+        )
+        // Container(
+        //   child:  isCupboardInit
+        //       ? CupboardInitScreen(
+        //     activeTab: activeTab,
+        //     avatarScrollContr: avatarScrollContr,
+        //     hatScrollContr: hatScrollContr,
+        //   )
+        //   // : const CupboardEmptyScreen(),
+        //       : const ClothesCarousels(
+        //     isCupboard: true,
+        //   ),
+        // ),
       ),
     );
   }

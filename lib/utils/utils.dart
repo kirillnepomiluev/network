@@ -1,11 +1,26 @@
 // ignore_for_file: parameter_assignments
-
 import 'package:flutter/material.dart';
+import 'package:network_app/utils/main_pages/main_enums.dart';
 
 class Utils {
   static void unFocus() {
     FocusManager.instance.primaryFocus?.unfocus();
   }
+
+  static String getProductType(StoreProductType productType) {
+    String strType = '';
+    if(productType==StoreProductType.head){
+      strType = 'head';
+    }
+    else if(productType==StoreProductType.body){
+      strType = 'body';
+    }
+
+    return strType;
+
+  }
+
+
 
   static List<HobbyModel> containFilterFuncTest({
     required List<HobbyModel> queryList,
@@ -36,17 +51,17 @@ class Utils {
     final wasActive = currentList[neededIndex].active;
     currentList[neededIndex].active = !wasActive;
 
-    final title = currentList[neededIndex].title;
+    // final title = currentList[neededIndex].title;
 
-    if (wasActive) {
-      resultList.remove(title);
-    } else {
-      resultList.add(title);
-    }
+    // if (wasActive) {
+    //   resultList.remove(title);
+    // } else {
+    //   resultList.add(title);
+    // }
 
     final resultMap = {
       'currentList': currentList,
-      'resultList': resultList,
+      // 'resultList': resultList,
     };
 
     return resultMap;

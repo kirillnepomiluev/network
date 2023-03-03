@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_interests/choose_interests_vm.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/auth_bar_row.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/search_text_field.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/wrap_select_containers.dart';
+import 'package:network_app/ui/pages/profile_pages/choose_categories/choose_categories_vm.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class ChooseInterestsView extends StatelessWidget {
-  const ChooseInterestsView({Key? key, required this.isAuth}) : super(key: key);
+class ChooseCategoriesView extends StatelessWidget {
+  const ChooseCategoriesView({Key? key, required this.isAuth, required this.keyName}) : super(key: key);
   final bool isAuth;
+  final String keyName;
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<ChooseInterestsViewModel>(
-        createModelDataEx: () => ChooseInterestsViewModel(context, isAuth),
+    return ViewModelBuilder<ChooseCategoriesViewModel>(
+        createModelDataEx: () => ChooseCategoriesViewModel(context, isAuth, keyName),
         builder: (context, model) {
           final mediaTop = MediaQuery.of(context).viewPadding.top;
           return Scaffold(
