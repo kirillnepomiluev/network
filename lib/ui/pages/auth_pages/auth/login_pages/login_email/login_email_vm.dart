@@ -18,7 +18,7 @@ class LoginEmailViewModel extends ViewModel {
 
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
-  final emailContr = TextEditingController(text: 'test@mail.ru');
+  final emailContr = TextEditingController(text: '');
   final passwordContr = TextEditingController(text: '');
 
   void goBack() {

@@ -50,7 +50,6 @@ dependencies:
   auto_route:
   provider:
   supabase_flutter:
-  url_launcher:
 
 
 dev_dependencies:

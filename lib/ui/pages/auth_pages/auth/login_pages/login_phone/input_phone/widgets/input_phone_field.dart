@@ -33,7 +33,7 @@ class InputPhoneField extends StatelessWidget {
             textAlignVertical: TextAlignVertical.center,
             decoration: AppInputBorder.inputPhoneDecorationBorder,
             invalidNumberMessage: showErrorText? 'Неправильный формат' : ' ',
-            initialValue: '960379358',
+            // initialValue: '960379358',
 
             onChanged: onChange,
           ),),

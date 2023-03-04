@@ -25,12 +25,12 @@ class LoginMultipleViewModel extends ViewModel{
 
   Future<void> loginFacebookTap() async {
 
-    bool isSuccess = await AuthService().signInByFacebook();
-
-    print('isSuccess $isSuccess');
-    if(isSuccess){
-      context.router.push(const RegSuccessViewRoute());
-    }
+    // bool isSuccess = await AuthService().signInByFacebook();
+    //
+    // print('isSuccess $isSuccess');
+    // if(isSuccess){
+    //   context.router.push(const RegSuccessViewRoute());
+    // }
   }
 
 }
