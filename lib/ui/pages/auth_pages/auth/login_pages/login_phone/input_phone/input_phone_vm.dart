@@ -42,17 +42,20 @@ class InputPhoneViewModel extends ViewModel {
   final _authentificationService = AuthService();
 
   Future<void> getOTP() async {
+    print('getOtp');
     showErrorText = true;
     notifyListeners();
 
     var formdata = formstate.currentState;
 
     if (formdata!.validate()) {
-        bool isSuccess = await _authentificationService.signInByPhoneGetOTP(phoneNumber: strPhone);
-        print('getOTP - strPhone $strPhone - isSuccess - $isSuccess');
+        _authentificationService.signInByPhoneGetOTP(phoneNumber: strPhone);
+        // print('getOTP - strPhone $strPhone - isSuccess - $isSuccess');
 
       // strPhone ='${strPhone.substring(0, 1)} ${strPhone.substring(1, 2)} ${strPhone.substring(2, 5)} ${strPhone.substring(5, 8)} ${strPhone.substring(8, 10)} ${strPhone.substring(10)}'; //33
       context.router.push(InputOtpViewRoute(strPhone: strPhone));
+    }else{
+      print('not valid');
     }
   }
 }

@@ -1,12 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/core/services/auth_service.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/main_pages/dialog_utls.dart';
 import 'package:network_app/utils/utils.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:provider/provider.dart';
 
 class LoginEmailViewModel extends ViewModel {
   LoginEmailViewModel(this.context);
@@ -42,8 +44,7 @@ class LoginEmailViewModel extends ViewModel {
 
       print('isSuccess $isSuccess');
       if (isSuccess) {
-        print('Переход');
-        context.router.push(const RegSuccessViewRoute());
+        Utils.checkReg(context);
       }
       else{
         DialogUtils.showScaffoldMessage(context, 'Неверный логин или пароль');
@@ -75,13 +76,13 @@ class LoginEmailViewModel extends ViewModel {
   }
 
   Future<void> signOut() async {
-    if(Supabase.instance.client.auth.currentUser==null){
+    if(AppSupabase.client.auth.currentUser==null){
       print('не авторизован');
     }
     else{
-      final id = Supabase.instance.client.auth.currentUser!.id;
+      final id = AppSupabase.client.auth.currentUser!.id;
       print('авторизован id $id');
-      await Supabase.instance.client.auth.signOut();
+      await AppSupabase.client.auth.signOut();
     }
   }
 

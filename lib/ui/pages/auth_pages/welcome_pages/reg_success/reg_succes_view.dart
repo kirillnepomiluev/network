@@ -32,7 +32,7 @@ class _RegSuccessViewState extends State<RegSuccessView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 10,),
-                    const AppBackButton(),
+                    AppBackButton(func: model.onBack),
                     const SizedBox(height: 31,),
                     AppContainer(
                       padV: 20,

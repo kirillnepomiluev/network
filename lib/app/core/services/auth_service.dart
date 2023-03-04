@@ -1,3 +1,4 @@
+import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthService {
@@ -42,14 +43,14 @@ class AuthService {
   }) async {
 
     try {
-      await Supabase.instance.client.auth.signInWithOtp(
+      await AppSupabase.client.auth.signInWithOtp(
         phone: phoneNumber,
       );
-      print('signInByPhoneGetOTP successfully');
+      print('GetOTP successfully');
 
       return true;
     } catch (error) {
-      print('signInByPhoneGetOTP error $error');
+      print('GetOTP error $error');
       return false;
     }
   }

@@ -61,7 +61,14 @@ class ChooseCategoriesViewModel extends ViewModel {
 
   void onNextPage() {
     Utils.unFocus();
-    context.router.push(ChooseOccupationViewRoute(isAuth: true));
+    // context.router.push(ChooseOccupationViewRoute(isAuth: true));
+    if(keyName=='interests'){
+      context.router.push(ChooseCategoriesViewRoute(isAuth: true, keyName: 'occupation'));
+    }
+    else{
+      context.router.push(const InputAboutYouViewRoute());
+    }
+
   }
 
   void writeData() {

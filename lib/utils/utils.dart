@@ -1,6 +1,10 @@
 // ignore_for_file: parameter_assignments
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
+
+import '../app/router/app_router.gr.dart';
 
 class Utils {
   static void unFocus() {
@@ -20,6 +24,23 @@ class Utils {
 
   }
 
+
+  static Future<void> checkReg(BuildContext context) async {
+    String level = '';
+    final data = await AppSupabase.client
+        .from(AppSupabase.strUsers)
+        .select()
+        .eq('id', AppSupabase.client.auth.currentUser!.id);
+
+    level = data[0]['level']??'';
+
+    if(level.isEmpty){
+      context.router.push(const RegSuccessViewRoute());
+    }
+    else{
+      context.router.push(HomeViewRoute(),);
+    }
+  }
 
 
   static List<HobbyModel> containFilterFuncTest({

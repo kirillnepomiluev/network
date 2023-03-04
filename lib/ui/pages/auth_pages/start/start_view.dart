@@ -12,14 +12,11 @@ class StartView extends StatelessWidget {
   return ViewModelBuilder<StartViewModel>(
       createModelDataEx: () => StartViewModel(context),
       builder: (context, model) {
-        return Scaffold(
+        return const Scaffold(
           body: Center(
             child:
-            InkWell(
-              onTap: model.onTap,
-              child: const NetworkRow(
-                isAppBar: false,
-              ),
+            NetworkRow(
+              isAppBar: false,
             ),
           ),
         );

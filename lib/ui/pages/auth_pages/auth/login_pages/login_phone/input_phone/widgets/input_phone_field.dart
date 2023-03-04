@@ -34,11 +34,7 @@ class InputPhoneField extends StatelessWidget {
             decoration: AppInputBorder.inputPhoneDecorationBorder,
             invalidNumberMessage: showErrorText? 'Неправильный формат' : ' ',
             initialValue: '960379358',
-            // InputDecoration(
-            //   border: UnderlineInputBorder(
-            //     borderSide: BorderSide(width: 1, color: Colors.white)
-            //   )
-            // ),
+
             onChanged: onChange,
           ),),
     );

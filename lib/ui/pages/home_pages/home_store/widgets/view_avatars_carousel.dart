@@ -33,6 +33,7 @@ class ViewAvatarsCarousel extends StatelessWidget {
     final userData = Provider.of<UserNotifier>(context).userData;
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ViewCategoryIcon(
           title: title,
@@ -61,6 +62,7 @@ class ViewAvatarsCarousel extends StatelessWidget {
               return SizedBox(
                 height: isAvatarBody ? 87.sp : 82.sp,
                 child: ListView.builder(
+                  // padding: EdgeInsets.zero,
                   shrinkWrap: true,
                   controller: scrollController,
                   scrollDirection: Axis.horizontal,

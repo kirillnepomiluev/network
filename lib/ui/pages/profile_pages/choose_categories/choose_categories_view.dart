@@ -43,7 +43,7 @@ class ChooseCategoriesView extends StatelessWidget {
                         if (isAuth)
                           EnterInfoContainer(
                             text1: '${AppString.of(context).choose} ',
-                            text2: AppString.of(context).interests,
+                            text2: keyName=='interests'? AppString.of(context).interests : AppString.of(context).ofOccupation,
                             showDescription: false,
                           ),
                         //Поиск

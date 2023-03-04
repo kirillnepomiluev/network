@@ -1,25 +1,27 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
+import 'package:network_app/utils/utils.dart';
+import 'package:provider/provider.dart';
 
 class StartViewModel extends ViewModel {
   StartViewModel(this.context){
-    // onTap();
+    getInit();
   }
   final BuildContext context;
 
-  Future<void> onTap() async {
+  Future<void> getInit() async {
+    // AppSupabase.client.auth.signOut();
+
     if (AppSupabase.client.auth.currentUser == null) {
       context.router.push(const LoginViewRoute());
     } else {
 
-      // Future.delayed(Duration(seconds: 4)).then((value) => context.router.push(HomeViewRoute(),));
+      Utils.checkReg(context);
 
-      // context.router.push(const RegSuccessViewRoute());
-      // context.router.push(const InputAboutYouViewRoute());
-      context.router.push(HomeViewRoute(),);
     }
   }
 }

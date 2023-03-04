@@ -15,56 +15,57 @@ class InputOtpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<InputOtpViewModel>(
-        createModelDataEx: () => InputOtpViewModel(context, strPhone),
-        builder: (context, model) {
-          return Scaffold(
-            body: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 10,
+      createModelDataEx: () => InputOtpViewModel(context, strPhone),
+      builder: (context, model) {
+        return Scaffold(
+          body: SafeArea(
+            child: model.showLoading
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const AppBackButton(),
+                          const SizedBox(
+                            height: 31,
+                          ),
+                          OtpSentContainer(
+                            strPhone: model.strPhone,
+                            onComplete: model.onCompletePassword,
+                            onValdation: model.onValdation,
+                          ),
+                          const SizedBox(height: 40),
+                          AppButton(
+                            textColor: model.enterButtonValid
+                                ? AppColors.black1A
+                                : AppColors.textGray,
+                            buttonColor: model.enterButtonValid
+                                ? Colors.white
+                                : AppColors.white15,
+                            // onPressed: model.onLoginTap,
+                            onPressed: model.onOtpSent,
+                            text: AppString.of(context).signIn,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          RetryLoginTextLink(onRetryTap: model.onRetryTap),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                        ],
                       ),
-                      const AppBackButton(),
-                      const SizedBox(
-                        height: 31,
-                      ),
-                      OtpSentContainer(
-                          strPhone: model.strPhone,
-                          onComplete: model.onCompletePassword,
-                          onValdation: model.onValdation,
-                      ),
-                      const SizedBox(height: 40),
-                      AppButton(
-                          textColor: model.enterButtonValid
-                              ? AppColors.black1A
-                              : AppColors.textGray,
-                          buttonColor: model.enterButtonValid
-                              ? Colors.white
-                              : AppColors.white15,
-                          // onPressed: model.onLoginTap,
-                          onPressed: model.onOtpSent,
-                          text: AppString.of(context).signIn,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      RetryLoginTextLink(onRetryTap: model.onRetryTap),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-            ),
-          );
-        },);
+          ),
+        );
+      },
+    );
   }
 }
-
-
-
-

@@ -8,7 +8,6 @@ import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/main_pages/dialog_utls.dart';
 import 'package:provider/provider.dart';
 
-
 class StoreProductViewModel extends ViewModel {
   StoreProductViewModel(this.context, this.clotheModel);
   final BuildContext context;
@@ -16,7 +15,6 @@ class StoreProductViewModel extends ViewModel {
 
   Future<void> buyClothe() async {
     print('buyClothe');
-
 
     final userData = Provider.of<UserNotifier>(context, listen: false).userData;
 
@@ -26,37 +24,35 @@ class StoreProductViewModel extends ViewModel {
     // List currentList = [];
     // String keyName = '';
 
-    final currentList = type=='body' ? userData.avatarBodyCupboard : userData.avatarHeadCupboard;
-    final keyName = type=='body' ? 'avatar_body_cupboard' : 'avatar_head_cupboard';
-
-
+    final currentList = type == 'body'
+        ? userData.avatarBodyCupboard
+        : userData.avatarHeadCupboard;
+    final keyName =
+        type == 'body' ? 'avatar_body_cupboard' : 'avatar_head_cupboard';
 
     print('currentList $currentList');
 
-    final newList = [
-      ...currentList,
-      clotheModel.id
-    ];
+    final newList = [...currentList, clotheModel.id];
 
     print('newList $newList');
 
-    await UserNotifier().updateData(newData: {
-      keyName : newList
-    },);
+    await UserNotifier().updateData(
+      newData: {keyName: newList},
+    );
 
     DialogUtils.openBottomSheetInfoWithIcon(
       context: context,
       icon: NetworkIcons.check_circle_outlined,
       text1: 'Оплата прошла ',
       text2: 'успешно',
-      text3:
-      'Новую одежду вы можете\nнайти в своем шкафу',
+      text3: 'Новую одежду вы можете\nнайти в своем шкафу',
       textButton: 'Перейти в шкаф',
       func: () {
         context.router.pop();
         context.router.push(
-          HomeViewRoute(initIndex: 1, isCupboard: true),);
-      },);
+          HomeViewRoute(initIndex: 1, isCupboard: true),
+        );
+      },
+    );
   }
-
 }

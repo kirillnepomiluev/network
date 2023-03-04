@@ -1,4 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
@@ -35,10 +38,18 @@ class ProfileAvatarRow extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                   horizontal: Res.s15,
                 ),
-                child: AppCircleAvatar(
-                  contSize: Res.s60, //60
-                  imageUrl: Assets.images.avatars.avatar0.keyName,
+                child: InkWell(
+                  onTap: (){
+                    AppSupabase.client.auth.signOut();
+                    context.router.push(StartViewRoute());
+                  },
+                  child: AppCircleAvatar(
+                    contSize: Res.s60, //60
+                    imageUrl: Assets.images.avatars.avatar0.keyName,
+                  ),
                 ),),
+
+
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

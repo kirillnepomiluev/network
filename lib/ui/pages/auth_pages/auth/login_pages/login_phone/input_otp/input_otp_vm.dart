@@ -40,17 +40,27 @@ class InputOtpViewModel extends ViewModel {
   bool get enterButtonValid => _enterButtonValid;
   final _authentificationService = AuthService();
 
+  bool showLoading = false;
+
   Future<void> onOtpSent() async {
     print('otpSent');
     // context.router.push(const RegSuccessViewRoute());
 
       if(strOtp.length == 6){
+        showLoading = true;
+        notifyListeners();
+
         final isSucceful = await _authentificationService.signInByPhoneSendOTP(phoneNumber: strPhone, otp: strOtp);
         print('onOtpSent - strOtp $strOtp - isSucceful - $isSucceful');
         if(isSucceful){
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Неверный пароль')));
           Utils.unFocus();
-          context.router.push(const RegSuccessViewRoute());
+          // context.router.push(const RegSuccessViewRoute());
+          Utils.checkReg(context);
+
+        }else{
+          showLoading = false;
+          notifyListeners();
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Неверный пароль')));
         }
       }
       else{

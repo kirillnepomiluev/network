@@ -31,7 +31,8 @@ class ChooseLevelViewModel extends ViewModel {
       newData: {'level': level},
     );
 
-    context.router.push(ChooseInterestsViewRoute(isAuth: true));
+    // context.router.push(ChooseInterestsViewRoute(isAuth: true));
+    context.router.push(ChooseCategoriesViewRoute(keyName: 'interests',isAuth: true));
   }
 
   LevelOptions groupValue = LevelOptions.premium;
