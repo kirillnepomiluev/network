@@ -34,12 +34,13 @@ class CheckMeetingCategoryOfMeeting extends StatelessWidget {
                   AppString.of(context).businessMeeting,
                 ),
                 Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Icon(
-                      NetworkIcons.edit,
-                      size: Res.s14,
-                      color: AppColors.salad,
-                    ),)
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Icon(
+                    NetworkIcons.edit,
+                    size: Res.s14,
+                    color: AppColors.salad,
+                  ),
+                )
               ],
             ),
           ),

@@ -11,6 +11,10 @@ class Utils {
     FocusManager.instance.primaryFocus?.unfocus();
   }
 
+  static DateTime? getDate(String strDate){
+    return DateTime.tryParse(strDate);
+  }
+
   static String getProductType(StoreProductType productType) {
     String strType = '';
     if(productType==StoreProductType.head){
@@ -19,9 +23,7 @@ class Utils {
     else if(productType==StoreProductType.body){
       strType = 'body';
     }
-
     return strType;
-
   }
 
 

@@ -21,25 +21,6 @@ class CheckMeetingOccupation extends StatelessWidget {
           height: Res.s20,
         ),
         const AppWrapContainersWithRemove(listOptions: ['Маркетинг', 'IT-сфера', 'Финансы'], showAdd: true,),
-        // Wrap(
-        //   crossAxisAlignment: WrapCrossAlignment.center,
-        //   spacing: UtilsResponsive.getResSize(10),
-        //   runSpacing: UtilsResponsive.getResSize(10),
-        //   direction: Axis.horizontal,
-        //   children: [
-        //     const AppContainerWithRemove(title: 'Маркетинг'),
-        //     const AppContainerWithRemove(title: 'IT-сфера'),
-        //     const AppContainerWithRemove(title: 'Финансы'),
-        //     AppIconContainer(
-        //       icon: Icons.add,
-        //       contSize: 25.sp,
-        //       iconSize: 17.5.sp,
-        //       contColor: AppColors.salad,
-        //       iconColor: Colors.black,
-        //       radius: AppBorderRadius.r7,
-        //     ),
-        //   ],
-        // ),
         SizedBox(
           height: Res.s20,
         ),

@@ -24,7 +24,7 @@ class ProfileBottomSheetView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  return ViewModelBuilder<ProfileBottomSheetViewModel>(
+    return ViewModelBuilder<ProfileBottomSheetViewModel>(
       createModelDataEx: () => ProfileBottomSheetViewModel(context),
       builder: (context, model) {
         final mediaHeight = MediaQuery.of(context).size.height;
@@ -60,13 +60,10 @@ class ProfileBottomSheetView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-
-
                             StatColumn(
                               onBuyTokens: model.onBuyTokens,
                               ifProfileSheet: true,
                             ),
-
 
                             const TitleStatText('Статус'),
                             SizedBox(
@@ -125,8 +122,8 @@ class ProfileBottomSheetView extends StatelessWidget {
                             ),
 
                             InkWell(
-                                onTap: model.onAboutTap,
-                            child: AppContainer.outlined(
+                              onTap: model.onAboutTap,
+                              child: AppContainer.outlined(
                                 width: double.infinity,
                                 child: Text(userData.about),
                               ),
@@ -197,7 +194,8 @@ class ProfileBottomSheetView extends StatelessWidget {
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Text('${userData.age} лет', style: AppTextStyles.black),
+                                    Text('${userData.age} лет',
+                                        style: AppTextStyles.black,),
                                     Padding(
                                       padding: EdgeInsets.only(
                                         left: Res.s17,
@@ -285,7 +283,7 @@ class ProfileBottomSheetView extends StatelessWidget {
             ],
           ),
         );
-      },);
-}
-
+      },
+    );
+  }
 }

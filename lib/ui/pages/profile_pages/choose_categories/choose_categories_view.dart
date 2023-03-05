@@ -4,21 +4,20 @@ import 'package:network_app/ui/pages/auth_pages/widgets/auth_bar_row.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/search_text_field.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/wrap_select_containers.dart';
 import 'package:network_app/ui/pages/profile_pages/choose_categories/choose_categories_vm.dart';
-import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ChooseCategoriesView extends StatelessWidget {
-  const ChooseCategoriesView({Key? key, required this.isAuth, required this.keyName}) : super(key: key);
+  const ChooseCategoriesView({Key? key, required this.isAuth, required this.keyName, this.isMeeting=false}) : super(key: key);
   final bool isAuth;
   final String keyName;
+  final bool isMeeting;
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ChooseCategoriesViewModel>(
-        createModelDataEx: () => ChooseCategoriesViewModel(context, isAuth, keyName),
+        createModelDataEx: () => ChooseCategoriesViewModel(context, isAuth, keyName, isMeeting),
         builder: (context, model) {
           final mediaTop = MediaQuery.of(context).viewPadding.top;
           return Scaffold(
@@ -40,12 +39,13 @@ class ChooseCategoriesView extends StatelessWidget {
                           title: AppString.of(context).chooseInterests,
                         ),
 
-                        if (isAuth)
+                        if (isAuth || isMeeting)
                           EnterInfoContainer(
                             text1: '${AppString.of(context).choose} ',
                             text2: keyName=='interests'? AppString.of(context).interests : AppString.of(context).ofOccupation,
                             showDescription: false,
                           ),
+
                         //Поиск
                         Padding(
                           padding: const EdgeInsets.only(bottom: 20, top: 18),
@@ -69,17 +69,19 @@ class ChooseCategoriesView extends StatelessWidget {
                 ),
               ),
             ),
-            floatingActionButton: isAuth
-                ? null
-                : AppButton(
-              width: 58.sp,
-              height: 32.5.sp,
-              onPressed: model.onAddInterests,
-              text: AppString.of(context).toAdd,
-            ),
-            bottomNavigationBar: isAuth == false
-                ? null
-                : Padding(
+            // floatingActionButton: isAuth || isMeeting
+            //     ? null
+            //     : AppButton(
+            //   width: 58.sp,
+            //   height: 32.5.sp,
+            //   onPressed: model.onContinue,
+            //   text: AppString.of(context).toAdd,
+            // ),
+            bottomNavigationBar:
+            // isAuth == false
+            //     ? null
+            //     :
+            Padding(
               padding:
               const EdgeInsets.only(left: 16, right: 16, bottom: 23),
               child: AppButtonContinue(

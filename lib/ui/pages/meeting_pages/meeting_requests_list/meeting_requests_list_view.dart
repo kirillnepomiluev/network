@@ -27,11 +27,12 @@ class MeetingRequestsListView extends StatelessWidget {
                   height: Res.s35,
                 ),
                 AppButton(
-                    onPressed: () {
-                      context.router
-                          .push(const ChooseMeetingCategoriesViewRoute());
-                    },
-                    text: AppString.of(context).createNewRequest,),
+                  onPressed: () {
+                    context.router
+                        .push(const ChooseMeetingCategoriesViewRoute());
+                  },
+                  text: AppString.of(context).createNewRequest,
+                ),
                 SizedBox(
                   height: Res.s40,
                 ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/utils/utils.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 // final userData = Provider.of<UserNotifier>(context).userData;
@@ -45,10 +46,11 @@ class UserModel {
     required this.clothesIdList,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> map) {
-    final birthdayDate = DateTime.tryParse(map['birthday_date']);
+  factory UserModel.fromJson(Map<String, dynamic> dataMap) {
+    DateTime createdDate = Utils.getDate(dataMap['created_date'])!;
+    DateTime? birthdayDate = DateTime.tryParse(dataMap['birthday_date']);
     String age = _getAge(birthdayDate);
-    final mapLevel = map['level'];
+    final mapLevel = dataMap['level'];
     String level = '';
     if (mapLevel == 'base') {
       level = AppString().base;
@@ -58,44 +60,44 @@ class UserModel {
       level = AppString().premium;
     }
 
-    List avatarBodyCupboard = map['avatar_body_cupboard'];
-    List avatarHeadCupboard = map['avatar_head_cupboard'];
+    List avatarBodyCupboard = dataMap['avatar_body_cupboard'];
+    List avatarHeadCupboard = dataMap['avatar_head_cupboard'];
     List clothesIdList = [...avatarBodyCupboard, ...avatarHeadCupboard];
 
     return UserModel(
-      userID: map['id'],
-      personID: map['person_id'],
-      name: map['name'],
-      phone: map['phone']??'',
-      email: map['email']??'',
-      createdDate: DateTime.parse(map['created_date']),
+      userID: dataMap['id'],
+      personID: dataMap['person_id'],
+      name: dataMap['name'],
+      phone: dataMap['phone'] ?? '',
+      email: dataMap['email'] ?? '',
+      createdDate: createdDate,
       birthdayDate: birthdayDate,
       age: age,
-      hideAge: map['hide_age'],
-      sex: map['sex'],
-      hideSex: map['hide_sex'],
+      hideAge: dataMap['hide_age'],
+      sex: dataMap['sex'],
+      hideSex: dataMap['hide_sex'],
       level: level,
-      interests: map['interests'],
-      status: map['status'],
-      occupation: map['occupation'],
-      familyStatus: map['family_status'],
-      about: map['about'],
-      points: map['points'],
-      rating: map['rating'],
-      energy: map['energy'],
-      recoverySpeed: map['recovery_speed'],
-      meetingsCount: map['meetings_count'],
-      messagesCountDay: map['messages_count_day'],
-      likesCountDay: map['likes_count_day'],
-      meetingsGoal: map['meetings_goal'],
-      verified: map['verified'],
-      online: map['online'],
-      walletTokens: map['wallet_tokens'],
-      mapData: map,
-      hideFamilyStatus: map['hide_family_status'],
-      hideMeetingsGoal: map['hide_meetings_goal'],
-      avatarBodyID: map['avatar_body_id'],
-      avatarHeadID: map['avatar_head_id'],
+      interests: dataMap['interests'],
+      status: dataMap['status'],
+      occupation: dataMap['occupation'],
+      familyStatus: dataMap['family_status'],
+      about: dataMap['about'],
+      points: dataMap['points'],
+      rating: dataMap['rating'],
+      energy: dataMap['energy'],
+      recoverySpeed: dataMap['recovery_speed'],
+      meetingsCount: dataMap['meetings_count'],
+      messagesCountDay: dataMap['messages_count_day'],
+      likesCountDay: dataMap['likes_count_day'],
+      meetingsGoal: dataMap['meetings_goal'],
+      verified: dataMap['verified'],
+      online: dataMap['online'],
+      walletTokens: dataMap['wallet_tokens'],
+      mapData: dataMap,
+      hideFamilyStatus: dataMap['hide_family_status'],
+      hideMeetingsGoal: dataMap['hide_meetings_goal'],
+      avatarBodyID: dataMap['avatar_body_id'],
+      avatarHeadID: dataMap['avatar_head_id'],
       avatarBodyCupboard: avatarBodyCupboard,
       avatarHeadCupboard: avatarHeadCupboard,
       clothesIdList: clothesIdList,
@@ -159,9 +161,7 @@ class UserModel {
   String toString() {
     return '$userID - $name';
   }
-
   // List<UserModel> fromJson(String str) => List<UserModel>.from(json.decode(str).map((x) => UserModel.fromJson(x)));
-
 }
 
 //Для управления данными авторизованного юзера (нельзя исп. на стр. входа, т.к. содержит в себе currentUser. Вызовет null exception)
@@ -196,7 +196,7 @@ class UserNotifier with ChangeNotifier {
           }
         })
         .onError((e) {
-          print('Ошибка в Data -> setUserDataFunc: $e');
+          print('Ошибка в setUserDataFunc: $e');
         });
   }
 
@@ -221,6 +221,9 @@ class UserNotifier with ChangeNotifier {
     //     .select('*')
     //     .eq('id', id);
   }
+
+  MeetingModel meetingDraft = MeetingModel(id: 0, createdDate: DateTime.now(), meetingPlaningDate: DateTime.now(), occupation: [], interests: [], questionsList: []);
+
 }
 
 UserNotifier initData() {
@@ -236,6 +239,108 @@ UserNotifier initData() {
     }
   });
   return userNotifier;
+}
+
+class MeetingModel {
+  MeetingModel({
+    required this.id,
+    this.creatorID = '',
+    this.partnerID = '',
+    required this.createdDate,
+    this.type = 'Общение',
+    this.title = '',
+    this.description = '',
+    required this.occupation,
+    required this.interests,
+    // this.requestStartDate,
+    // this.requestEndDate,
+    this.requestStatus = 'created',
+    this.meetingStatus = 'not started',
+    required this.meetingPlaningDate,
+    this.meetingStartDate,
+    this.meetingEndDate,
+    this.meetingDurationMaxSeconds = 1200,
+    this.meetingDurationFactSeconds = 0,
+    this.questionsCount = 0,
+    this.questionsMissedCount = 0,
+    this.questionsAnsweredCount = 0,
+    required this.questionsList,
+    this.ratingGeneral,
+    this.ratingTalking,
+    this.ratingSympathy,
+    this.complainSentBy,
+    this.complainType,
+    this.complainDescription,
+  });
+
+  factory MeetingModel.fromMap(Map<String, dynamic> dataMap) {
+    DateTime createdDate = Utils.getDate(dataMap['created_date'])!;
+    // DateTime? requestStartDate = Utils.getDate(dataMap['request_start_date']);
+    // DateTime? requestEndDate = Utils.getDate(dataMap['request_end_date']);
+    DateTime? meetingStartDate = Utils.getDate(dataMap['meeting_start_date']);
+    DateTime? meetingEndDate = Utils.getDate(dataMap['meeting_end_date']);
+    DateTime? meetingPlaningDate = Utils.getDate(dataMap['meeting_planing_date']);
+
+    return MeetingModel(
+      id: dataMap['id'],
+      creatorID: dataMap['creator_id'],
+      partnerID: dataMap['partner_id'],
+      createdDate: createdDate,
+      type: dataMap['type'],
+      title: dataMap[''],
+      description: dataMap[''],
+      occupation: dataMap['occupation'],
+      interests: dataMap['interests'],
+      // requestStartDate: requestStartDate,
+      // requestEndDate: requestEndDate,
+      meetingPlaningDate: meetingPlaningDate,
+      meetingStartDate: meetingStartDate,
+      meetingEndDate: meetingEndDate,
+      meetingDurationMaxSeconds: dataMap['meeting_duration_max_seconds'],
+      meetingDurationFactSeconds: dataMap['meeting_duration_fact_seconds'],
+      questionsCount: dataMap['questions_count'],
+      questionsMissedCount: dataMap['questions_missed_count'],
+      questionsAnsweredCount: dataMap['questions_answered_count'],
+      questionsList: dataMap['questionsList'],
+      requestStatus: dataMap['request_status'],
+      meetingStatus: dataMap['meeting_status'],
+      ratingGeneral: dataMap['rating_general'],
+      ratingTalking: dataMap['rating_talking'],
+      ratingSympathy: dataMap['rating_sympathy'],
+      complainSentBy: dataMap['complain_sent_by'],
+      complainType: dataMap['complain_type'],
+      complainDescription: dataMap['complain_description'],
+    );
+  }
+
+  int id;
+  String creatorID;
+  String partnerID;
+  DateTime createdDate;
+  String type; //Общение / Деловая
+  String title;
+  String description;
+  List occupation;
+  List interests;
+  // DateTime? requestStartDate;
+  // DateTime? requestEndDate;
+  DateTime? meetingPlaningDate;
+  DateTime? meetingStartDate;
+  DateTime? meetingEndDate;
+  int meetingDurationMaxSeconds;
+  int meetingDurationFactSeconds;
+  int questionsCount;
+  int questionsMissedCount;
+  int questionsAnsweredCount;
+  List questionsList; //List<Map<String, dynamic>>
+  String requestStatus;
+  String meetingStatus;
+  double? ratingGeneral;
+  double? ratingTalking;
+  double? ratingSympathy;
+  String? complainSentBy; //creator or partner
+  String? complainType;
+  String? complainDescription;
 }
 
 //import 'dart:convert';

@@ -41,7 +41,7 @@ class ProfileAvatarRow extends StatelessWidget {
                 child: InkWell(
                   onTap: (){
                     AppSupabase.client.auth.signOut();
-                    context.router.push(StartViewRoute());
+                    context.router.push(const StartViewRoute());
                   },
                   child: AppCircleAvatar(
                     contSize: Res.s60, //60

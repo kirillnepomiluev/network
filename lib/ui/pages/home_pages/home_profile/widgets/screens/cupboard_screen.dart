@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/pages/home_pages/home_profile/widgets/screens/cupboard_init_screen.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/clothes_carousel/clothes_carousels_view.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 
@@ -17,13 +16,13 @@ class CupboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 15, left: 16, right: 16),
+    return const Padding(
+      padding: EdgeInsets.only(top: 15, left: 16, right: 16),
       child: SingleChildScrollView(
         child:
-        const ClothesCarousels(
+        ClothesCarousels(
           isCupboard: true,
-        )
+        ),
         // Container(
         //   child:  isCupboardInit
         //       ? CupboardInitScreen(

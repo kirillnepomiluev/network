@@ -23,27 +23,6 @@ class CheckMeetingInterests extends StatelessWidget {
 
         const AppWrapContainersWithRemove(listOptions: ['Большой теннис', 'Бассейн', 'Управление', 'Маркетинг'], showAdd: true,),
 
-        //   Wrap(
-        //   crossAxisAlignment: WrapCrossAlignment.center,
-        //   spacing: UtilsResponsive.getResSize(10),
-        //   runSpacing: UtilsResponsive.getResSize(10),
-        //   direction: Axis.horizontal,
-        //   children: [
-        //     const AppContainerWithRemove(title: 'Большой теннис'),
-        //     const AppContainerWithRemove(title: 'Бассейн'),
-        //     const AppContainerWithRemove(title: 'Управление'),
-        //     const AppContainerWithRemove(title: 'Маркетинг'),
-        //     AppIconContainer(
-        //       icon: Icons.add,
-        //       contSize: 25.sp,
-        //       iconSize: 17.5.sp,
-        //       contColor: AppColors.salad,
-        //       iconColor: Colors.black,
-        //       radius: AppBorderRadius.r7,
-        //     ),
-        //   ],
-        // ),
-
         SizedBox(
           height: Res.s20,
         ),
