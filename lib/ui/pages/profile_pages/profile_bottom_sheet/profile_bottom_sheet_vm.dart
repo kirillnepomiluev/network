@@ -118,9 +118,6 @@ class ProfileBottomSheetViewModel extends ViewModel {
     },);
   }
 
-
-
-
   void _getInit(){
     final userData = Provider.of<UserNotifier>(context).userData;
     hideSex = userData.hideSex;

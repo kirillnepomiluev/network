@@ -29,10 +29,10 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/meeting_i
 import 'package:network_app/ui/pages/meeting_pages/meeting_matching/meeting_matching_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_notifications/meeting_notifications_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/check_meeting_parameters/check_meeting_parameters_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_categories/choose_meeting_categories_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_data/choose_meeting_data_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_date/choose_meeting_date_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_interests/choose_meeting_interests_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_occupations/choose_meeting_occupations_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_type/choose_meeting_type_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/input_meeting_description/input_meeting_description_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/input_meeting_occupation/input_meeting_occupation.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_requests_list/meeting_requests_list_view.dart';
@@ -124,7 +124,7 @@ class RoutesLists {
   ];
 
   static const List<AutoRoute> meetingRequestRoutes = [
-    AutoRoute(page: ChooseMeetingCategoriesView),
+    AutoRoute(page: ChooseMeetingTypeView),
     AutoRoute(page: InputDescriptionMeetingView),
     AutoRoute(page: ChooseMeetingOccupationsView),
     AutoRoute(page: InputMeetingOccupationView),

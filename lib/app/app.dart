@@ -51,6 +51,7 @@ class _AppState extends State<App> {
               debugShowCheckedModeBanner: false,
               title: 'Network',
               theme: AppTheme.mainTheme,
+              locale: const Locale('ru', 'RU'),
               localizationsDelegates: const [
                 AppString.delegate,
                 GlobalMaterialLocalizations.delegate,

@@ -73,9 +73,9 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_notifications/meeting
     as _i28;
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/check_meeting_parameters/check_meeting_parameters_view.dart'
     as _i38;
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_categories/choose_meeting_categories_view.dart'
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_type/choose_meeting_type_view.dart'
     as _i32;
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_data/choose_meeting_data_view.dart'
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_date/choose_meeting_date_view.dart'
     as _i37;
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_interests/choose_meeting_interests_view.dart'
     as _i36;
@@ -358,7 +358,7 @@ class AppRouter extends _i54.RootStackRouter {
     ChooseMeetingCategoriesViewRoute.name: (routeData) {
       return _i54.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i32.ChooseMeetingCategoriesView(),
+        child: const _i32.ChooseMeetingTypeView(),
       );
     },
     InputDescriptionMeetingViewRoute.name: (routeData) {
@@ -471,6 +471,7 @@ class AppRouter extends _i54.RootStackRouter {
           key: args.key,
           isAuth: args.isAuth,
           keyName: args.keyName,
+          isMeeting: args.isMeeting,
         ),
       );
     },
@@ -1314,7 +1315,7 @@ class MeetingRequestsListViewRoute extends _i54.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i32.ChooseMeetingCategoriesView]
+/// [_i32.ChooseMeetingTypeView]
 class ChooseMeetingCategoriesViewRoute extends _i54.PageRouteInfo<void> {
   const ChooseMeetingCategoriesViewRoute()
       : super(
@@ -1573,6 +1574,7 @@ class ChooseCategoriesViewRoute
     _i55.Key? key,
     required bool isAuth,
     required String keyName,
+    bool isMeeting = false,
   }) : super(
           ChooseCategoriesViewRoute.name,
           path: '/choose-categories-view',
@@ -1580,6 +1582,7 @@ class ChooseCategoriesViewRoute
             key: key,
             isAuth: isAuth,
             keyName: keyName,
+            isMeeting: isMeeting,
           ),
         );
 
@@ -1591,6 +1594,7 @@ class ChooseCategoriesViewRouteArgs {
     this.key,
     required this.isAuth,
     required this.keyName,
+    this.isMeeting = false,
   });
 
   final _i55.Key? key;
@@ -1599,9 +1603,11 @@ class ChooseCategoriesViewRouteArgs {
 
   final String keyName;
 
+  final bool isMeeting;
+
   @override
   String toString() {
-    return 'ChooseCategoriesViewRouteArgs{key: $key, isAuth: $isAuth, keyName: $keyName}';
+    return 'ChooseCategoriesViewRouteArgs{key: $key, isAuth: $isAuth, keyName: $keyName, isMeeting: $isMeeting}';
   }
 }
 

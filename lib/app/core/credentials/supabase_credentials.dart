@@ -9,5 +9,6 @@ class AppSupabase{
 
   static const String strUsers = 'users';
   static const String strClothes = 'clothes';
+  static const String strMeetings = 'meetings';
 
 }
