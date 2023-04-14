@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/input_meeting_description/input_meeting_description_vm.dart';
@@ -7,6 +8,7 @@ import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/utils_responsive.dart';
+
 
 class InputDescriptionMeetingView extends StatelessWidget {
   const InputDescriptionMeetingView({Key? key}) : super(key: key);

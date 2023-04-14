@@ -1,5 +1,6 @@
 // ignore_for_file: cast_nullable_to_non_nullable
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
@@ -17,6 +18,7 @@ import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+
 
 class StoreCategoryView extends StatelessWidget {
   const StoreCategoryView({

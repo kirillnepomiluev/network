@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/home_store_vm.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/clothes_carousel/clothes_carousels_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/partner_cupboard_row.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
+
 
 class HomeStoreView extends StatelessWidget {
   const HomeStoreView({Key? key, this.isPartnerCupboard = false})

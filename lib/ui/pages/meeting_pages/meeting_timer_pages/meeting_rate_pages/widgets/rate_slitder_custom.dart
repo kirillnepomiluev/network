@@ -90,7 +90,7 @@ class _SliderCustomState extends State<SliderCustom> {
               thumbShape: RoundSliderThumbShape(enabledThumbRadius: Res.s14),
               overlayShape: SliderComponentShape.noThumb,),
           child: Slider(
-            label: sliderValue.toStringAsFixed(1),
+              label: sliderValue.toStringAsFixed(1),
             min: widget.min,
             max: widget.max,
             value: sliderValue,

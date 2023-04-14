@@ -2,6 +2,13 @@
 
 
 class Constants {
+
+  String userOne = '71af7780-a104-43a4-a6cf-4239a03fc6f0';
+  String userTwo = '40bb032a-3b18-46d5-acec-4c9b848b431a';
+  String userThree = '3de4a024-c75b-4a57-aeca-e640415a2ba7';
+  String userFour = 'a2a13d13-1619-4830-ab7f-5078afe9313b';
+
+
   static const String strLoremIpsum =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci pharetra nibh integer id adipiscing odio. Enim faucibus ut vel sit sed. Sit sit neque mi id ornare malesuada sed purus. Amet dolor sed et ornare mauris amet.';
 

@@ -1,14 +1,19 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/utils.dart';
-
+import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+import 'package:map_launcher/map_launcher.dart';
 
 class StartViewModel extends ViewModel {
-  StartViewModel(this.context){
-    getInit();
+  StartViewModel(this.context) {
+    // getInit();
   }
   final BuildContext context;
 
@@ -18,11 +23,101 @@ class StartViewModel extends ViewModel {
     if (AppSupabase.client.auth.currentUser == null) {
       context.router.push(const LoginViewRoute());
     } else {
-
+      final userNotifier = Provider.of<UserNotifier>(context, listen: false);
+      userNotifier.setCurrentID(AppSupabase.client.auth.currentUser!.id);
+      await userNotifier.setUserDataFunc();
       Utils.checkReg(context);
-
     }
   }
+
+  Future<Position> _getCurrentLocation() async {
+    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+
+    // if (serviceEnabled == false) {
+    //   return Future.error('Определение геолокации отключено');
+    // }
+
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Определение геолокации отключено');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Определение геолокации отключено навсегда, включите в настройках');
+    }
+
+    return await Geolocator.getCurrentPosition();
+        // .timeout(const Duration(seconds: 5)
+  }
+
+  void _liveLocation() {
+    LocationSettings locationSettings = const LocationSettings(
+      accuracy: LocationAccuracy.high,
+      distanceFilter: 100, //каждые 100 метров будет обновлять
+    );
+
+    Geolocator.getPositionStream(locationSettings: locationSettings)
+        .listen((Position position) {
+      lat = position.latitude;
+      long = position.longitude;
+      print('$lat $long');
+    });
+  }
+
+  Future<void> _openMap(String lat, String long) async {
+    String googleURL =
+        'https://www.google.com/maps/search/&api=1&query=$lat,$long';
+
+    await canLaunchUrlString(googleURL)
+        ? await launchUrlString(googleURL)
+        : throw 'Could not launch $googleURL';
+  }
+
+  double lat = 0;
+  double long = 0;
+
+  String strLocation = '';
+
+  Future<void> onTap() async {
+    final result = await _getCurrentLocation();
+    lat = result.latitude;
+    long = result.longitude;
+
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(
+        lat,
+        long,
+      );
+      print(placemarks[0]);
+      // print(placemarks[0].country);
+
+      strLocation = '${placemarks[0].country}, ${placemarks[0].name}';
+
+    } catch (err) {
+      print('Ошибка определения места: $err');
+    }
+
+    print('result $lat $long');
+    notifyListeners();
+    // _liveLocation();
+  }
+
+  Future<void> openMap() async {
+    // _openMap(lat, long);
+    final availableMaps = await MapLauncher.installedMaps;
+    print(
+        availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
+
+    await availableMaps.first.showMarker(
+      coords: Coords(lat, long),
+      title: 'Ваше местоположение',
+    );
+  }
+
 }
 
 // Widget build(BuildContext context) {
@@ -33,16 +128,12 @@ class StartViewModel extends ViewModel {
 //       });
 // }
 
-
 // import 'package:flutter/material.dart';
 // import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 // class TViewModel extends ViewModel {
 //   final BuildContext context;
 //   TViewModel(this.context);
 // }
-
-
-
 
 // void test(){
 //   // await FacebookAuth.instance.login(

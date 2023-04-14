@@ -4,6 +4,7 @@ import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/input_info_column.dart';
 import 'package:network_app/utils/utils.dart';
 
+
 class InputOccupationView extends StatefulWidget {
   const InputOccupationView({Key? key}) : super(key: key);
 

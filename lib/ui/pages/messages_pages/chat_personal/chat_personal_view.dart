@@ -11,6 +11,7 @@ import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+
 class ChatPersonalView extends StatefulWidget {
   const ChatPersonalView({Key? key}) : super(key: key);
 

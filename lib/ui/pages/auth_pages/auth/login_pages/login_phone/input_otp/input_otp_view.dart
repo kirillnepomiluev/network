@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/input_otp_vm.dart';
@@ -7,6 +8,7 @@ import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
+
 
 class InputOtpView extends StatelessWidget {
   const InputOtpView({Key? key, required this.strPhone}) : super(key: key);

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/search_text_field.dart';
@@ -13,6 +14,7 @@ import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+
 
 class MeetingSearchView extends StatelessWidget {
   const MeetingSearchView({Key? key, this.isAuth = false}) : super(key: key);

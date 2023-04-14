@@ -47,9 +47,12 @@ dependencies:
   table_calendar:
   google_fonts:
   pinput:
-  auto_route:
+  auto_route: ^5.0.4
   provider:
   supabase_flutter:
+  geolocator:
+  geocoding:
+  map_launcher:
 
 
 dev_dependencies:
@@ -57,9 +60,9 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints:
-  build_runner:
+  build_runner: ^2.3.3
   flutter_gen_runner:
-  auto_route_generator:
+  auto_route_generator: ^5.0.3
 
 flutter_gen:
   output: lib/generated/

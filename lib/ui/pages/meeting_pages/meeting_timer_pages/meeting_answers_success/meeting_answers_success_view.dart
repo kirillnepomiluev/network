@@ -10,6 +10,7 @@ import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+
 class MeetingAnswersSuccessView extends StatelessWidget {
   const MeetingAnswersSuccessView({Key? key}) : super(key: key);
 

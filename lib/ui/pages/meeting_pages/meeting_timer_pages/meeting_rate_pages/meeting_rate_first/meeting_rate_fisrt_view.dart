@@ -14,6 +14,7 @@ import 'package:network_app/utils/main_pages/dialog_utls.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+
 class MeetingRateFirstView extends StatefulWidget {
   const MeetingRateFirstView({Key? key}) : super(key: key);
 

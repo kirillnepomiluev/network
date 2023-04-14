@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/auth_bar_row.dart';
 import 'package:network_app/ui/pages/profile_pages/edit_field/edit_field_vm.dart';
@@ -5,6 +6,7 @@ import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
+
 
 class EditFieldView extends StatelessWidget {
   const EditFieldView(

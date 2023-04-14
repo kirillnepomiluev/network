@@ -74,7 +74,7 @@ class ChooseMeetingDateViewModel extends ViewModel {
   Future<void> onTap() async {
     final userNotifier = Provider.of<UserNotifier>(context, listen: false);
     final meetingPlaningDate =
-        eventDate.add(Duration(hours: eventTime.hour, minutes: eventTime.hour));
+        eventDate.add(Duration(hours: eventTime.hour, minutes: eventTime.minute));
     print('requestDate $meetingPlaningDate');
     userNotifier.meetingDraft.meetingPlaningDate = meetingPlaningDate;
     context.router.push(const CheckMeetingParametersViewRoute());

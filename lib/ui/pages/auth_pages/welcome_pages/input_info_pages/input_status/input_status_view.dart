@@ -5,6 +5,7 @@ import 'package:network_app/ui/pages/auth_pages/widgets/input_info_column.dart';
 import 'package:network_app/utils/utils.dart';
 
 
+
 class InputStatusView extends StatelessWidget {
   const InputStatusView({Key? key}) : super(key: key);
 

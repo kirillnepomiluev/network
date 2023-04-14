@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:network_app/ui/pages/home_pages/home_store/home_store_view.dart'
 import 'package:network_app/ui/pages/home_pages/home_wallet/home_wallet_view.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
+
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key, this.initIndex = 0, this.isCupboard = false})

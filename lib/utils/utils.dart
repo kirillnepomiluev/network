@@ -15,6 +15,10 @@ class Utils {
     return DateTime.tryParse(strDate);
   }
 
+  // static DateTime? getFormatedDate(DateTime date){
+  //   return DateTime.tryParse(strDate);
+  // }
+
   static String getProductType(StoreProductType productType) {
     String strType = '';
     if(productType==StoreProductType.head){

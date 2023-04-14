@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_avatar_container.dart';
@@ -7,6 +8,7 @@ import 'package:network_app/ui/pages/store_pages/store_product/widgets/store_pro
 import 'package:network_app/ui/widgets/common/stat_column.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:provider/provider.dart';
+
 
 class StoreProductView extends StatelessWidget {
   const StoreProductView({

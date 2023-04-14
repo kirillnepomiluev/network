@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/auth_bar_row.dart';
@@ -7,6 +8,7 @@ import 'package:network_app/ui/pages/profile_pages/choose_categories/choose_cate
 import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
+
 
 class ChooseCategoriesView extends StatelessWidget {
   const ChooseCategoriesView({Key? key, required this.isAuth, required this.keyName, this.isMeeting=false}) : super(key: key);

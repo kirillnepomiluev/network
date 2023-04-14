@@ -9,6 +9,7 @@ import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/utils/main_pages/dialog_utls.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 
+
 class MeetingRateSecondView extends StatelessWidget {
   const MeetingRateSecondView({Key? key}) : super(key: key);
 

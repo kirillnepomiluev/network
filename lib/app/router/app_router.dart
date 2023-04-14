@@ -32,6 +32,7 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_date/choose_meeting_date_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_interests/choose_meeting_interests_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_occupations/choose_meeting_occupations_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_person/choose_meeting_person_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_type/choose_meeting_type_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/input_meeting_description/input_meeting_description_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/input_meeting_occupation/input_meeting_occupation.dart';
@@ -89,6 +90,7 @@ class RoutesLists {
     AutoRoute(page: HomeView),
   ];
 
+
   static const List<AutoRoute> welcomeRoutes = [
     AutoRoute(page: RegSuccessView),
     AutoRoute(page: InputNameView),
@@ -125,6 +127,7 @@ class RoutesLists {
 
   static const List<AutoRoute> meetingRequestRoutes = [
     AutoRoute(page: ChooseMeetingTypeView),
+    AutoRoute(page: ChooseMeetingPersonView),
     AutoRoute(page: InputDescriptionMeetingView),
     AutoRoute(page: ChooseMeetingOccupationsView),
     AutoRoute(page: InputMeetingOccupationView),

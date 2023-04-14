@@ -135,6 +135,5 @@ linter:
     use_to_and_as_if_applicable: true
     depend_on_referenced_packages: false
     prefer_relative_imports: false
-    body_might_complete_normally_nullable: false
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

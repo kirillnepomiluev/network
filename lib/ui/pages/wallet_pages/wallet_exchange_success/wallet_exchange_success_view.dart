@@ -12,6 +12,7 @@ import 'package:network_app/utils/main_pages/wallet_currency_data.dart';
 import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+
 class WalletExchangeSuccessView extends StatelessWidget {
   const WalletExchangeSuccessView({Key? key}) : super(key: key);
 

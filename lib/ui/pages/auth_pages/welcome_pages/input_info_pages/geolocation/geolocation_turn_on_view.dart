@@ -7,6 +7,7 @@ import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 
 
+
 class GeolocationTurnOnView extends StatelessWidget {
   const GeolocationTurnOnView({Key? key}) : super(key: key);
 
