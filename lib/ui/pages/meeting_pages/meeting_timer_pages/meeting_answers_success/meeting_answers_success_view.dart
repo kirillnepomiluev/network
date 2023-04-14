@@ -74,8 +74,10 @@ class MeetingAnswersSuccessView extends StatelessWidget {
                     ),
                     AppButton(
                       onPressed: () {
-                        context.router
-                            .push(MeetingTimerViewRoute(isTimer: true));
+                        // Navigator.of(context).pop();
+                        // Navigator.of(context).pop();
+                        // Navigator.of(context).pop();
+                        context.router.push(MeetingTimerViewRoute(isTimer: true));
                       },
                       text: 'Начать чат',
                     ),

@@ -16,8 +16,8 @@ class EditFieldViewModel extends ViewModel {
   void getInit(){
     final userData = Provider.of<UserNotifier>(context).userData;
 
-    initialData = userData.mapData[keyName]??'';
-    print('mapData ${UserNotifier().userData.mapData}');
+    initialData = userData.dataMap[keyName]??'';
+    print('mapData ${UserNotifier().userData.dataMap}');
     print('keyName $keyName initialData $initialData');
     textController.text = initialData;
   }

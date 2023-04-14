@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
@@ -12,10 +13,12 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 class ViewInviteContainerBottom extends StatelessWidget {
   const ViewInviteContainerBottom({
     Key? key,
-    required this.imageUrl,
+    required this.imageUrl, required this.meetingMap, required this.creatorModel,
   }) : super(key: key);
 
   final String imageUrl;
+  final Map<String, dynamic> meetingMap;
+  final UserModel creatorModel;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +58,7 @@ class ViewInviteContainerBottom extends StatelessWidget {
 
         InkWell(
           onTap: () {
-            context.router.push(const MeetingMatchingViewRoute());
+            context.router.push(MeetingMatchingViewRoute(creatorModel: creatorModel, meetingMap: meetingMap));
           },
           child: Container(
             decoration: BoxDecoration(

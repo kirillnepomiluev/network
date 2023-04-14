@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_questions/meeting_question_container.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_questions/widgets/meeting_question_container.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_questions/meeting_questions_vm.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';

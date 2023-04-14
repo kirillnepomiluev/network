@@ -13,6 +13,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i55;
 import 'package:flutter/material.dart' as _i56;
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart'
+    as _i57;
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login/login_view.dart'
     as _i2;
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_email/login_email_view.dart'
@@ -61,7 +63,7 @@ import 'package:network_app/ui/pages/home_pages/home_profile/home_profile_view.d
 import 'package:network_app/ui/pages/home_pages/home_store/home_store_view.dart'
     as _i25;
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_avatar_container.dart'
-    as _i58;
+    as _i59;
 import 'package:network_app/ui/pages/home_pages/home_view.dart' as _i9;
 import 'package:network_app/ui/pages/home_pages/home_wallet/home_wallet_view.dart'
     as _i24;
@@ -121,7 +123,7 @@ import 'package:network_app/ui/pages/wallet_pages/wallet_exchange/wallet_exchang
     as _i50;
 import 'package:network_app/ui/pages/wallet_pages/wallet_exchange_success/wallet_exchange_success_view.dart'
     as _i51;
-import 'package:network_app/utils/main_pages/main_enums.dart' as _i57;
+import 'package:network_app/utils/main_pages/main_enums.dart' as _i58;
 
 class AppRouter extends _i55.RootStackRouter {
   AppRouter([_i56.GlobalKey<_i56.NavigatorState>? navigatorKey])
@@ -346,9 +348,14 @@ class AppRouter extends _i55.RootStackRouter {
       );
     },
     MeetingMatchingViewRoute.name: (routeData) {
+      final args = routeData.argsAs<MeetingMatchingViewRouteArgs>();
       return _i55.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i30.MeetingMatchingView(),
+        child: _i30.MeetingMatchingView(
+          key: args.key,
+          meetingMap: args.meetingMap,
+          creatorModel: args.creatorModel,
+        ),
       );
     },
     MeetingRequestsListViewRoute.name: (routeData) {
@@ -413,6 +420,7 @@ class AppRouter extends _i55.RootStackRouter {
         child: _i40.MeetingTimerView(
           key: args.key,
           isTimer: args.isTimer,
+          meetingID: args.meetingID,
         ),
       );
     },
@@ -441,15 +449,23 @@ class AppRouter extends _i55.RootStackRouter {
       );
     },
     MeetingRateFirstViewRoute.name: (routeData) {
+      final args = routeData.argsAs<MeetingRateFirstViewRouteArgs>();
       return _i55.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i45.MeetingRateFirstView(),
+        child: _i45.MeetingRateFirstView(
+          key: args.key,
+          meetingModel: args.meetingModel,
+        ),
       );
     },
     MeetingRateSecondViewRoute.name: (routeData) {
+      final args = routeData.argsAs<MeetingRateSecondViewRouteArgs>();
       return _i55.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i46.MeetingRateSecondView(),
+        child: _i46.MeetingRateSecondView(
+          key: args.key,
+          meetingModel: args.meetingModel,
+        ),
       );
     },
     PersonProfileViewRoute.name: (routeData) {
@@ -1304,14 +1320,42 @@ class MeetingInvitationsViewRoute extends _i55.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i30.MeetingMatchingView]
-class MeetingMatchingViewRoute extends _i55.PageRouteInfo<void> {
-  const MeetingMatchingViewRoute()
-      : super(
+class MeetingMatchingViewRoute
+    extends _i55.PageRouteInfo<MeetingMatchingViewRouteArgs> {
+  MeetingMatchingViewRoute({
+    _i56.Key? key,
+    required Map<String, dynamic> meetingMap,
+    required _i57.UserModel creatorModel,
+  }) : super(
           MeetingMatchingViewRoute.name,
           path: '/meeting-matching-view',
+          args: MeetingMatchingViewRouteArgs(
+            key: key,
+            meetingMap: meetingMap,
+            creatorModel: creatorModel,
+          ),
         );
 
   static const String name = 'MeetingMatchingViewRoute';
+}
+
+class MeetingMatchingViewRouteArgs {
+  const MeetingMatchingViewRouteArgs({
+    this.key,
+    required this.meetingMap,
+    required this.creatorModel,
+  });
+
+  final _i56.Key? key;
+
+  final Map<String, dynamic> meetingMap;
+
+  final _i57.UserModel creatorModel;
+
+  @override
+  String toString() {
+    return 'MeetingMatchingViewRouteArgs{key: $key, meetingMap: $meetingMap, creatorModel: $creatorModel}';
+  }
 }
 
 /// generated route for
@@ -1429,12 +1473,14 @@ class MeetingTimerViewRoute
   MeetingTimerViewRoute({
     _i56.Key? key,
     bool isTimer = false,
+    int meetingID = 0,
   }) : super(
           MeetingTimerViewRoute.name,
           path: '/meeting-timer-view',
           args: MeetingTimerViewRouteArgs(
             key: key,
             isTimer: isTimer,
+            meetingID: meetingID,
           ),
         );
 
@@ -1445,15 +1491,18 @@ class MeetingTimerViewRouteArgs {
   const MeetingTimerViewRouteArgs({
     this.key,
     this.isTimer = false,
+    this.meetingID = 0,
   });
 
   final _i56.Key? key;
 
   final bool isTimer;
 
+  final int meetingID;
+
   @override
   String toString() {
-    return 'MeetingTimerViewRouteArgs{key: $key, isTimer: $isTimer}';
+    return 'MeetingTimerViewRouteArgs{key: $key, isTimer: $isTimer, meetingID: $meetingID}';
   }
 }
 
@@ -1507,26 +1556,72 @@ class MeetingComplaintViewRoute extends _i55.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i45.MeetingRateFirstView]
-class MeetingRateFirstViewRoute extends _i55.PageRouteInfo<void> {
-  const MeetingRateFirstViewRoute()
-      : super(
+class MeetingRateFirstViewRoute
+    extends _i55.PageRouteInfo<MeetingRateFirstViewRouteArgs> {
+  MeetingRateFirstViewRoute({
+    _i56.Key? key,
+    required _i57.MeetingModel meetingModel,
+  }) : super(
           MeetingRateFirstViewRoute.name,
           path: '/meeting-rate-first-view',
+          args: MeetingRateFirstViewRouteArgs(
+            key: key,
+            meetingModel: meetingModel,
+          ),
         );
 
   static const String name = 'MeetingRateFirstViewRoute';
 }
 
+class MeetingRateFirstViewRouteArgs {
+  const MeetingRateFirstViewRouteArgs({
+    this.key,
+    required this.meetingModel,
+  });
+
+  final _i56.Key? key;
+
+  final _i57.MeetingModel meetingModel;
+
+  @override
+  String toString() {
+    return 'MeetingRateFirstViewRouteArgs{key: $key, meetingModel: $meetingModel}';
+  }
+}
+
 /// generated route for
 /// [_i46.MeetingRateSecondView]
-class MeetingRateSecondViewRoute extends _i55.PageRouteInfo<void> {
-  const MeetingRateSecondViewRoute()
-      : super(
+class MeetingRateSecondViewRoute
+    extends _i55.PageRouteInfo<MeetingRateSecondViewRouteArgs> {
+  MeetingRateSecondViewRoute({
+    _i56.Key? key,
+    required _i57.MeetingModel meetingModel,
+  }) : super(
           MeetingRateSecondViewRoute.name,
           path: '/meeting-rate-second-view',
+          args: MeetingRateSecondViewRouteArgs(
+            key: key,
+            meetingModel: meetingModel,
+          ),
         );
 
   static const String name = 'MeetingRateSecondViewRoute';
+}
+
+class MeetingRateSecondViewRouteArgs {
+  const MeetingRateSecondViewRouteArgs({
+    this.key,
+    required this.meetingModel,
+  });
+
+  final _i56.Key? key;
+
+  final _i57.MeetingModel meetingModel;
+
+  @override
+  String toString() {
+    return 'MeetingRateSecondViewRouteArgs{key: $key, meetingModel: $meetingModel}';
+  }
 }
 
 /// generated route for
@@ -1665,7 +1760,7 @@ class StoreCategoryViewRoute
     extends _i55.PageRouteInfo<StoreCategoryViewRouteArgs> {
   StoreCategoryViewRoute({
     _i56.Key? key,
-    required _i57.StoreProductType productType,
+    required _i58.StoreProductType productType,
     required bool isCupboard,
   }) : super(
           StoreCategoryViewRoute.name,
@@ -1689,7 +1784,7 @@ class StoreCategoryViewRouteArgs {
 
   final _i56.Key? key;
 
-  final _i57.StoreProductType productType;
+  final _i58.StoreProductType productType;
 
   final bool isCupboard;
 
@@ -1705,7 +1800,7 @@ class StoreProductViewRoute
     extends _i55.PageRouteInfo<StoreProductViewRouteArgs> {
   StoreProductViewRoute({
     _i56.Key? key,
-    required _i58.ClotheModel clotheModel,
+    required _i59.ClotheModel clotheModel,
   }) : super(
           StoreProductViewRoute.name,
           path: '/store-product-view',
@@ -1726,7 +1821,7 @@ class StoreProductViewRouteArgs {
 
   final _i56.Key? key;
 
-  final _i58.ClotheModel clotheModel;
+  final _i59.ClotheModel clotheModel;
 
   @override
   String toString() {

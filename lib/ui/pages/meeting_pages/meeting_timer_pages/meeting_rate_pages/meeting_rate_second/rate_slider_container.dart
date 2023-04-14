@@ -30,8 +30,8 @@ class RateSliderContainer extends StatelessWidget {
             padding: EdgeInsets.only(top: Res.s20),
             child: Column(
               children: [
-                const SliderCustom(
-                  sLiderValue: 0,
+                SliderCustom(
+                  sliderValue: 0,
                   min: 0,
                   max: 5,
                   showLabelsRow: true,

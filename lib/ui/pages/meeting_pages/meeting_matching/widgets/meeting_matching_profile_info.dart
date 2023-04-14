@@ -10,10 +10,11 @@ class MeetingMatchingProfileInfo extends StatelessWidget {
   const MeetingMatchingProfileInfo({
     Key? key,
     required this.strName,
-    required this.imageUrl,
+    required this.imageUrl, required this.level,
   }) : super(key: key);
   final String strName;
   final String imageUrl;
+  final String level;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class MeetingMatchingProfileInfo extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 5),
           child: Text(
-            '${AppString.of(context).level} "${AppString.of(context).base}"',
+            '${AppString.of(context).level} "$level"',
             style: AppTextStyles.primary12,
           ),
         ),

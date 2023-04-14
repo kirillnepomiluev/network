@@ -9,6 +9,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 // final userData = Provider.of<UserNotifier>(context).userData;
 
 class UserModel {
+
   UserModel({
     this.userID,
     this.personID = -1,
@@ -21,7 +22,7 @@ class UserModel {
     this.hideAge = false,
     this.sex = '',
     this.hideSex = false,
-    this.level = '',
+    this.levelText = '',
     required this.interests,
     this.status = '',
     required this.occupation,
@@ -30,7 +31,13 @@ class UserModel {
     this.hideMeetingsGoal = false,
     this.about = '',
     this.points = 0,
-    this.rating = 5.0,
+    this.rating = '0.0',
+    this.ratingCount = 0,
+    this.ratingStars1 = 0,
+    this.ratingStars2 = 0,
+    this.ratingStars3 = 0,
+    this.ratingStars4 = 0,
+    this.ratingStars5 = 0,
     this.energy = 0,
     this.recoverySpeed = 1.0,
     this.meetingsCount = 0,
@@ -40,7 +47,7 @@ class UserModel {
     this.verified = false,
     this.online = false,
     this.walletTokens = 0,
-    required this.mapData,
+    required this.dataMap,
     this.avatarBodyID = 1,
     this.avatarHeadID = 3,
     required this.avatarBodyCupboard,
@@ -53,11 +60,43 @@ class UserModel {
       createdDate: DateTime.now(),
       interests: [],
       occupation: [],
-      mapData: {},
+      dataMap: {},
       avatarHeadCupboard: [],
       avatarBodyCupboard: [],
       clothesIdList: [],
     );
+  }
+
+  static String getStarsKey(int rate){
+    return 'rating_stars_$rate';
+  }
+
+  static String getRating(Map<String, dynamic> dataMap){
+    double rating = 0.0;
+
+    final stars1 = dataMap[getStarsKey(1)];
+    final stars2 = dataMap[getStarsKey(2)];
+    final stars3 = dataMap[getStarsKey(3)];
+    final stars4 = dataMap[getStarsKey(4)];
+    final stars5 = dataMap[getStarsKey(5)];
+
+    //(5*252 + 4*124 + 3*40 + 2*29 + 1*33) / (252+124+40+29+33) = 4.11 and change
+    // final stars1 = 33;
+    // final stars2 = 29;
+    // final stars3 = 40;
+    // final stars4 = 124;
+    // final stars5 = 252;
+
+    final sumOne = stars1*1 + stars2*2 + stars3*3 + stars4*4 + stars5*5;
+    final sumTwo = stars1 + stars2 + stars3 + stars4 + stars5;
+
+    if(sumTwo>0){
+      rating = sumOne/sumTwo;
+    }
+
+    print('before  sumOne $sumOne sumTwo $sumTwo rating $rating');
+
+    return rating.toStringAsFixed(1);
   }
 
   factory UserModel.fromJson(Map<String, dynamic> dataMap) {
@@ -65,18 +104,22 @@ class UserModel {
     DateTime? birthdayDate = DateTime.tryParse(dataMap['birthday_date']);
     String age = _getAge(birthdayDate);
     final mapLevel = dataMap['level'];
-    String level = '';
+    String levelText = '';
     if (mapLevel == 'base') {
-      level = AppString().base;
+      levelText = AppString().base;
     } else if (mapLevel == 'standart') {
-      level = AppString().standart;
+      levelText = AppString().standart;
     } else {
-      level = AppString().premium;
+      levelText = AppString().premium;
     }
 
     List avatarBodyCupboard = dataMap['avatar_body_cupboard'];
     List avatarHeadCupboard = dataMap['avatar_head_cupboard'];
     List clothesIdList = [...avatarBodyCupboard, ...avatarHeadCupboard];
+
+
+    final rating = getRating(dataMap);
+
 
     return UserModel(
       userID: dataMap['id'],
@@ -90,14 +133,15 @@ class UserModel {
       hideAge: dataMap['hide_age'],
       sex: dataMap['sex'],
       hideSex: dataMap['hide_sex'],
-      level: level,
+      levelText: levelText,
       interests: dataMap['interests'],
       status: dataMap['status'],
       occupation: dataMap['occupation'],
       familyStatus: dataMap['family_status'],
       about: dataMap['about'],
       points: dataMap['points'],
-      rating: dataMap['rating'],
+      rating: rating,
+      ratingCount: dataMap['rating_count'],
       energy: dataMap['energy'],
       recoverySpeed: dataMap['recovery_speed'],
       meetingsCount: dataMap['meetings_count'],
@@ -107,7 +151,7 @@ class UserModel {
       verified: dataMap['verified'],
       online: dataMap['online'],
       walletTokens: dataMap['wallet_tokens'],
-      mapData: dataMap,
+      dataMap: dataMap,
       hideFamilyStatus: dataMap['hide_family_status'],
       hideMeetingsGoal: dataMap['hide_meetings_goal'],
       avatarBodyID: dataMap['avatar_body_id'],
@@ -115,6 +159,11 @@ class UserModel {
       avatarBodyCupboard: avatarBodyCupboard,
       avatarHeadCupboard: avatarHeadCupboard,
       clothesIdList: clothesIdList,
+      ratingStars1: dataMap['rating_stars_1'],
+      ratingStars2: dataMap['rating_stars_2'],
+      ratingStars3: dataMap['rating_stars_3'],
+      ratingStars4: dataMap['rating_stars_4'],
+      ratingStars5: dataMap['rating_stars_5'],
     );
   }
 
@@ -147,14 +196,20 @@ class UserModel {
   final bool hideMeetingsGoal;
   final String sex;
   final bool hideSex;
-  final String level;
+  final String levelText;
   final List interests;
   final String status;
   final List occupation;
   final String familyStatus;
   final String about;
   final int points;
-  final double rating;
+  final String rating;
+  final int ratingStars1;
+  final int ratingStars2;
+  final int ratingStars3;
+  final int ratingStars4;
+  final int ratingStars5;
+  final int ratingCount;
   final int energy;
   final double recoverySpeed;
   final int meetingsCount;
@@ -164,7 +219,7 @@ class UserModel {
   final bool verified;
   final bool online;
   final int walletTokens;
-  final Map<String, dynamic> mapData;
+  final Map<String, dynamic> dataMap;
   final int avatarBodyID;
   final int avatarHeadID;
   final List avatarBodyCupboard;
@@ -180,6 +235,11 @@ class UserModel {
 
 //Для управления данными авторизованного юзера (нельзя исп. на стр. входа, т.к. содержит в себе currentUser. Вызовет null exception)
 class UserNotifier with ChangeNotifier {
+
+
+
+
+
   UserModel userData = UserModel.emptyModel();
   // UserModel(
   //   createdDate: DateTime.now(),
@@ -259,7 +319,7 @@ class UserNotifier with ChangeNotifier {
     //     .eq('id', id);
   }
 
-  MeetingModel meetingDraft = MeetingModel(id: 0, createdDate: DateTime.now(), meetingPlaningDate: DateTime.now(), occupation: [], interests: [], questionsList: []);
+  MeetingModel meetingDraft = MeetingModel.emptyModel();
 
 }
 
@@ -304,15 +364,21 @@ class MeetingModel {
     this.questionsMissedCount = 0,
     this.questionsAnsweredCount = 0,
     required this.questionsList,
-    this.ratingGeneral,
-    this.ratingTalking,
-    this.ratingSympathy,
-    this.complainSentBy,
-    this.complainType,
-    this.complainDescription,
+    this.creatorRating,
+    this.partnerRating,
+    // this.ratingGeneral,
+    // this.ratingTalking,
+    // this.ratingSympathy,
+    // this.complainSentBy,
+    // this.complainType,
+    // this.complainDescription,
   });
 
-  factory MeetingModel.fromMap(Map<String, dynamic> dataMap) {
+  factory MeetingModel.emptyModel() {
+    return MeetingModel(id: 0, createdDate: DateTime.now(), meetingPlaningDate: DateTime.now(), occupation: [], interests: [], questionsList: []);
+  }
+
+    factory MeetingModel.fromMap(Map<String, dynamic> dataMap) {
     DateTime createdDate = Utils.getDate(dataMap['created_date'])!;
     // DateTime? requestStartDate = Utils.getDate(dataMap['request_start_date']);
     // DateTime? requestEndDate = Utils.getDate(dataMap['request_end_date']);
@@ -343,12 +409,15 @@ class MeetingModel {
       questionsList: dataMap['questions_list']??[],
       requestStatus: dataMap['request_status'],
       meetingStatus: dataMap['meeting_status'],
-      ratingGeneral: dataMap['rating_general'],
-      ratingTalking: dataMap['rating_talking'],
-      ratingSympathy: dataMap['rating_sympathy'],
-      complainSentBy: dataMap['complain_sent_by'],
-      complainType: dataMap['complain_type'],
-      complainDescription: dataMap['complain_description'],
+      creatorRating: dataMap['creator_rating'],
+      partnerRating: dataMap['partner_rating'],
+      // : dataMap['rating_general'],
+      // ratingGeneral: dataMap['rating_general'],
+      // ratingTalking: dataMap['rating_talking'],
+      // ratingSympathy: dataMap['rating_sympathy'],
+      // complainSentBy: dataMap['complain_sent_by'],
+      // complainType: dataMap['complain_type'],
+      // complainDescription: dataMap['complain_description'],
     );
   }
 
@@ -374,44 +443,12 @@ class MeetingModel {
   List questionsList; //List<Map<String, dynamic>>
   String requestStatus;
   String meetingStatus;
-  double? ratingGeneral;
-  double? ratingTalking;
-  double? ratingSympathy;
-  String? complainSentBy; //creator or partner
-  String? complainType;
-  String? complainDescription;
+  double? creatorRating;
+  double? partnerRating;
+  // double? ratingGeneral;
+  // double? ratingTalking;
+  // double? ratingSympathy;
+  // String? complainSentBy; //creator or partner
+  // String? complainType;
+  // String? complainDescription;
 }
-
-//import 'dart:convert';
-//
-// List<ToDo> toDoFromJson(String str) => List<ToDo>.from(json.decode(str).map((x) => ToDo.fromJson(x)));
-//
-// String toDoToJson(List<ToDo> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-//
-// class ToDo {
-//   ToDo({
-//     required this.id,
-//     required this.createdAt,
-//     required this.title,
-//     required this.description,
-//   });
-//
-//   final int id;
-//   final DateTime createdAt;
-//   final String title;
-//   final String description;
-//
-//   factory ToDo.fromJson(Map<String, dynamic> map) => ToDo(
-//     id: map["id"],
-//     createdAt: DateTime.parse(map["created_at"]),
-//     title: map["title"],
-//     description: map["description"],
-//   );
-//
-//   Map<String, dynamic> toJson() => {
-//     "id": id,
-//     "created_at": createdAt.toIso8601String(),
-//     "title": title,
-//     "description": description,
-//   };
-// }

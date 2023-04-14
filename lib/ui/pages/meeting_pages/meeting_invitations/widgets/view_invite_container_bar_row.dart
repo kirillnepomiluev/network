@@ -14,11 +14,12 @@ class ViewInviteContainerTop extends StatelessWidget {
   const ViewInviteContainerTop({
     Key? key,
     required this.activeTab,
-    required this.showVerified,
+    required this.showVerified, required this.meetingType,
   }) : super(key: key);
 
   final ActiveInvitationTabs activeTab;
   final bool showVerified;
+  final String meetingType;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,10 @@ class ViewInviteContainerTop extends StatelessWidget {
           padH: Res.s17,
           radius: AppBorderRadius.r15,
           child: Center(
-            child: Text(AppString.of(context).businessMeeting,
+            child:
+            Text(
+              // AppString.of(context).businessMeeting,
+              meetingType,
                 style: AppTextStyles.primary12,),
           ),
         ),

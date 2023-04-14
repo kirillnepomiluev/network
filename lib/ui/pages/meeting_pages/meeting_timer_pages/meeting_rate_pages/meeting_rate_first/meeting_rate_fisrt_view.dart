@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/meeting_rate_first/meeting_rate_fisrt._vm.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/meeting_rate_second/rate_slider_container.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/widgets/add_comment_row.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/widgets/rate_slitder_custom.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
@@ -15,18 +17,15 @@ import 'package:network_app/utils/utils_responsive.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
-class MeetingRateFirstView extends StatefulWidget {
-  const MeetingRateFirstView({Key? key}) : super(key: key);
+class MeetingRateFirstView extends StatelessWidget {
+  const MeetingRateFirstView({Key? key, required this.meetingModel}) : super(key: key);
+  final MeetingModel meetingModel;
 
-  @override
-  State<MeetingRateFirstView> createState() => _MeetingRateFirstViewState();
-}
 
-class _MeetingRateFirstViewState extends State<MeetingRateFirstView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<MeetingRateFirstViewModel>(
-        createModelDataEx: () => MeetingRateFirstViewModel(context),
+        createModelDataEx: () => MeetingRateFirstViewModel(context, meetingModel),
         builder: (context, model) {
           return WillPopScope(
             onWillPop: () async {
@@ -66,13 +65,27 @@ class _MeetingRateFirstViewState extends State<MeetingRateFirstView> {
                         SizedBox(
                           height: 43.sp, //93
                         ),
-                        const SliderCustom(
-                          min: 0,
-                          max: 100,
-                          showLabelsRow: false,
-                          sLiderValue: 50,
-                          // stepSize: 5
+                        // const SliderCustom(
+                        //   min: 0,
+                        //   max: 100,
+                        //   showLabelsRow: false,
+                        //   sLiderValue: 50,
+                        //   // stepSize: 5
+                        // ),
+                        // const RateSliderContainer(title: 'Возникла ли симпатия?'),
+
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: SliderCustom(
+                            sliderValue: model.sliderValue,
+                            onSliderChange: model.onSliderChange,
+                            min: 1,
+                            max: 5,
+                            showLabelsRow: true,
+                            stepSize: 4,
+                          ),
                         ),
+
                         SizedBox(
                           height: Res.s60, //60
                         ),
@@ -90,11 +103,8 @@ class _MeetingRateFirstViewState extends State<MeetingRateFirstView> {
                         bottom: Res.s35,
                       ),
                       child: AppButton(
-                          onPressed: () {
-                            context.router
-                                .push(const MeetingRateSecondViewRoute());
-                          },
-                          text: 'Далее',),
+                          onPressed: model.onRateTap,
+                          text: 'Оценить',),
                     ),
                   ],
                 ),

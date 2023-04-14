@@ -48,7 +48,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
 
                 Text(
-                    userData.level,
+                    userData.levelText,
                   // AppString.of(context).baseLevel,
                 ),
 

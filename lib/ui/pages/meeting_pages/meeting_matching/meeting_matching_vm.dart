@@ -4,8 +4,9 @@ import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 class MeetingMatchingViewModel extends ViewModel {
-  MeetingMatchingViewModel(this.context);
+  MeetingMatchingViewModel(this.context, this.meetingMap);
   final BuildContext context;
+  final Map<String, dynamic> meetingMap;
 
   List<String> questionsList = [
     'Какой-нибудь вопрос?',
@@ -17,7 +18,8 @@ class MeetingMatchingViewModel extends ViewModel {
   ];
 
   void onStartChat(){
-    context.router.push(const ChatPersonalViewRoute());
+    // context.router.push(const ChatPersonalViewRoute());
+    context.router.push(MeetingTimerViewRoute(meetingID: meetingMap['id']));
   }
 
 }

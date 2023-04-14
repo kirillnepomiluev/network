@@ -27,7 +27,7 @@ class ChooseCategoriesViewModel extends ViewModel {
     if (!isAuth) {
       final userNotifier = Provider.of<UserNotifier>(context, listen: false);
       final userData = userNotifier.userData;
-      initialList = userData.mapData[keyName];
+      initialList = userData.dataMap[keyName];
 
       if (isMeeting) {
         if (keyName == 'interests') {
