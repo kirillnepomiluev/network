@@ -16,7 +16,7 @@ import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/utils.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
 
 class ProfileBottomSheetView extends StatelessWidget {

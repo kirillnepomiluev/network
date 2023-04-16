@@ -8,7 +8,7 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/stat_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 

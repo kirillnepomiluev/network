@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bar_row.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bottom.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ViewInviteContainer extends StatefulWidget {
@@ -18,12 +20,12 @@ class ViewInviteContainer extends StatefulWidget {
     required this.activeTab,
     required this.imageUrl,
     required this.showVerified,
-    required this.meetingMap,
+    required this.meetingModel,
   }) : super(key: key);
   final ActiveInvitationTabs activeTab;
   final String imageUrl;
   final bool showVerified;
-  final Map<String, dynamic> meetingMap;
+  final MeetingModel meetingModel;
 
   @override
   State<ViewInviteContainer> createState() => _ViewInviteContainerState();
@@ -31,10 +33,12 @@ class ViewInviteContainer extends StatefulWidget {
 
 class _ViewInviteContainerState extends State<ViewInviteContainer> {
   UserModel creatorModel = UserModel.emptyModel();
+  // MeetingModel meetingModel = MeetingModel.emptyModel();
   bool show = false;
 
   Future<void> getInit() async {
-    final creatorID = widget.meetingMap['creator_id'];
+    // meetingModel = MeetingModel.fromMap(widget.meetingModel);
+    final creatorID = widget.meetingModel.creatorID;
 
     final dataList = await AppSupabase.client
         .from(AppSupabase.strUsers)
@@ -58,7 +62,7 @@ class _ViewInviteContainerState extends State<ViewInviteContainer> {
   Widget build(BuildContext context) {
     final creatorName = '${creatorModel.name}, ${creatorModel.age}';
     final level = creatorModel.levelText;
-    final meetingType = widget.meetingMap['type'];
+    final meetingType = widget.meetingModel.type;
     return !show
         ? Container()
         : Padding(
@@ -102,10 +106,33 @@ class _ViewInviteContainerState extends State<ViewInviteContainer> {
                     ],
                   ),
 
-                  SizedBox(height: 23.sp), //29
+                  SizedBox(height: Res.s20),
 
-                  //Аватар и направление
-                  ViewInviteContainerBottom(imageUrl: widget.imageUrl, meetingMap: widget.meetingMap, creatorModel: creatorModel,)
+                  ViewInviteContainerBottom(imageUrl: widget.imageUrl, meetingModel: widget.meetingModel, creatorModel: creatorModel,),
+
+                  SizedBox(height: Res.s20),
+
+                  Text('Встреча ${widget.meetingModel.statusText}'),
+
+                  if(widget.meetingModel.rateFromCreator != null)
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 10,),
+                        Divider(color: Colors.white,),
+                        SizedBox(height: 5,),
+                        Row(
+                          children: [
+                            Text('${widget.meetingModel.rateFromCreator}'),
+                            SizedBox(width: 5,),
+                            Icon(Icons.star, color: AppColors.salad, size: Res.s16,)
+                          ],
+                        ),
+                        SizedBox(height: 10,),
+                        Text('${widget.meetingModel.fbFromCreator}'),
+                      ],
+                    ),
+
                 ],
               ),
             ),

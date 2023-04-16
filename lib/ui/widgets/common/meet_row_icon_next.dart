@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 
 class MeetRowIconNext extends StatelessWidget {
   const MeetRowIconNext({

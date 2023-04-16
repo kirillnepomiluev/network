@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/widgets/common/option_container.dart';
 import 'package:network_app/utils/utils.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 
 class WrapSelectContainers extends StatelessWidget {
   const WrapSelectContainers({

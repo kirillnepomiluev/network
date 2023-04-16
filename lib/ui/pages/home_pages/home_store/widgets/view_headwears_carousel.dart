@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_headwear_container.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/view_category_icon.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 
 class ViewHeadwearsCarousel extends StatelessWidget {
   const ViewHeadwearsCarousel({

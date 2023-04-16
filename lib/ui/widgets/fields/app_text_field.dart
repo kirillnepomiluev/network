@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_input_border.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 
 class AppTextField extends StatelessWidget {
   const AppTextField(

@@ -7,7 +7,7 @@ import 'package:network_app/ui/widgets/common/progress_parametr.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class StatColumn extends StatelessWidget {

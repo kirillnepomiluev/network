@@ -6,7 +6,7 @@ import 'package:network_app/ui/pages/auth_pages/auth/widgets/enter_row_container
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 
 
 

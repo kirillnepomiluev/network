@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
@@ -7,12 +8,13 @@ import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class MeetingAnswersSuccessView extends StatelessWidget {
-  const MeetingAnswersSuccessView({Key? key}) : super(key: key);
+  const MeetingAnswersSuccessView({Key? key, required this.meetingModel}) : super(key: key);
+  final MeetingModel meetingModel;
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +79,7 @@ class MeetingAnswersSuccessView extends StatelessWidget {
                         // Navigator.of(context).pop();
                         // Navigator.of(context).pop();
                         // Navigator.of(context).pop();
-                        context.router.push(MeetingTimerViewRoute(isTimer: true));
+                        context.router.push(MeetingTimerViewRoute(isTimer: true, meetingID: meetingModel.id));
                       },
                       text: 'Начать чат',
                     ),

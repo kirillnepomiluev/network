@@ -3,15 +3,21 @@ import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_person/choose_meeting_person_vm.dart';
+import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/button_continue.dart';
+import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
+import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
+import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/utils.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class ChooseMeetingPersonView extends StatelessWidget {
@@ -22,8 +28,8 @@ class ChooseMeetingPersonView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userData = Provider.of<UserNotifier>(context,).userData;
-    final currentID = userData.userID;
-    print('userData ${userData.userID}');
+    final currentID = userData.id;
+    print('userData ${userData.id}');
 
     return ViewModelBuilder<ChooseMeetingPersonViewModel>(
       createModelDataEx: () => ChooseMeetingPersonViewModel(context),
@@ -73,17 +79,75 @@ class ChooseMeetingPersonView extends StatelessWidget {
                               itemCount: list.length,
                               itemBuilder: (BuildContext context, int index) {
                                 final currentMap = list[index] as Map<String, dynamic>;
-                                final partnerID = currentMap['id'];
-                                final name = currentMap['name'];
+                                final partnerModel = UserModel.fromJson(currentMap);
                                 return Padding(
                                   padding: EdgeInsets.only(bottom: Res.s10),
                                   child: InkWell(
                                     onTap: (){
-                                      model.onPartnerChoosed(partnerID);
+                                      model.onPartnerChoosed(partnerModel.id!);
+                                      model.onTap();
                                     },
-                                    child: Text(name, style: AppTextStyles.primary.copyWith(
-                                      color: model.choosedPartnerID==partnerID? AppColors.salad : AppColors.textWhite
-                                    ),),
+                                    child:
+                                    AppContainer(
+                                      padH: Res.s21,
+                                      padV: Res.s26,
+                                      radius: AppBorderRadius.r30,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+
+                                          NameWithVerification(
+                                              strName: partnerModel.name, showVerified: true),
+
+                                          SizedBox(
+                                            height: Res.s15,
+                                          ),
+
+                                              Text(
+                                                '${AppString.of(context).level} "${partnerModel.levelText}"',
+                                              ),
+
+                                          SizedBox(height: Res.s20),
+
+                                          Row(
+                                            children: [
+                                              AppCircleAvatar(
+                                                imageUrl: '',
+                                                contSize: 40.sp, //83
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.only(left: Res.s21),
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    AppIconContainer(
+                                                      icon: Icons.call_made,
+                                                      contColor: AppColors.salad,
+                                                      iconColor: Colors.black,
+                                                      boxShape: BoxShape.circle,
+                                                      iconSize: 15.sp,
+                                                      contSize: Res.s18,
+                                                    ),
+                                                    SizedBox(
+                                                      height: Res.s10,
+                                                    ),
+                                                    Text('250 м',
+                                                      style: AppTextStyles.salad20
+                                                          .copyWith(fontWeight: FontWeight.w600),)
+                                                  ],
+                                                ),
+                                              ),
+
+                                            ],
+                                          ),
+
+                                        ],
+                                      ),
+                                    )
+                                    // Text(name, style: AppTextStyles.primary.copyWith(
+                                    //   color: model.choosedPartnerID==partnerID? AppColors.salad : AppColors.textWhite
+                                    // ),
+                                    // ),
                                   ),
                                 );
                               },
@@ -99,14 +163,14 @@ class ChooseMeetingPersonView extends StatelessWidget {
               ),
             ),
           ),
-          bottomNavigationBar: Padding(
-            padding: EdgeInsets.only(
-              left: Res.s16,
-              right: Res.s16,
-              bottom: Res.s23,
-            ),
-            child: AppButtonContinue(onPressed: model.onTap,),
-          ),
+          // bottomNavigationBar: Padding(
+          //   padding: EdgeInsets.only(
+          //     left: Res.s16,
+          //     right: Res.s16,
+          //     bottom: Res.s23,
+          //   ),
+          //   child: AppButtonContinue(onPressed: model.onTap,),
+          // ),
         );
       },);
   }

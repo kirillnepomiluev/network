@@ -4,11 +4,12 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 import 'package:network_app/utils/utils.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AddCommentRow extends StatefulWidget {
-  const AddCommentRow({Key? key,}) : super(key: key);
+  const AddCommentRow({Key? key, required this.controller,}) : super(key: key);
+  final TextEditingController controller;
 
   @override
   State<AddCommentRow> createState() => _AddCommentRowState();
@@ -16,7 +17,6 @@ class AddCommentRow extends StatefulWidget {
 
 class _AddCommentRowState extends State<AddCommentRow> {
   bool showTextField = false;
-  final _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +57,10 @@ class _AddCommentRowState extends State<AddCommentRow> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-              height: 30.sp,
-              child: const AppTextField(),),
+              height: 40.sp,
+              child: AppTextField(
+                controller: widget.controller,
+              ),),
           SizedBox(
             height: Res.s20,
           ),
@@ -70,12 +72,12 @@ class _AddCommentRowState extends State<AddCommentRow> {
               borderColor: AppColors.salad,
               onPressed: () {
                 Utils.unFocus();
-                _controller.clear();
+                widget.controller.clear();
                 setState(() {
                   showTextField = false;
                 });
               },
-              text: 'Отправить',),
+              text: 'Отменить',),
         ],
       );
 }

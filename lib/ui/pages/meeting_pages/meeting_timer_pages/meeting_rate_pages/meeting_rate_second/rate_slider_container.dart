@@ -3,7 +3,7 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_r
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/widgets/rate_slitder_custom.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 
 
 class RateSliderContainer extends StatelessWidget {
@@ -37,10 +37,10 @@ class RateSliderContainer extends StatelessWidget {
                   showLabelsRow: true,
                   stepSize: 50,
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: Res.s32),
-                  child: const AddCommentRow(),
-                )
+                // Padding(
+                //   padding: EdgeInsets.only(top: Res.s32),
+                //   child: const AddCommentRow(),
+                // )
               ],
             ),
           )

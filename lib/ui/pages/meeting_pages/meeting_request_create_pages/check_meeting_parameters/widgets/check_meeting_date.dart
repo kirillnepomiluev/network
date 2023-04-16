@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 
 class CheckMeetingDate extends StatelessWidget {
   const CheckMeetingDate({

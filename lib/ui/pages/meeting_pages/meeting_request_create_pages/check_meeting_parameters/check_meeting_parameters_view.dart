@@ -12,12 +12,12 @@ import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
+import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:network_app/ui/widgets/texts/title_stat_text.dart';
 import 'package:network_app/utils/utils.dart';
-import 'package:network_app/utils/utils_responsive.dart';
-import 'package:provider/provider.dart';
-
-
+import 'package:network_app/utils/res.dart';
+import 'package:provider/provider.dart' as provider;
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class CheckMeetingParametersView extends StatelessWidget {
   const CheckMeetingParametersView({
@@ -27,13 +27,12 @@ class CheckMeetingParametersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaTop = MediaQuery.of(context).viewPadding.top;
-    final userNotifier = Provider.of<UserNotifier>(context);
+    final userNotifier = provider.Provider.of<UserNotifier>(context);
     final meetingDraft = userNotifier.meetingDraft;
     final localizations = MaterialLocalizations.of(context);
-    final strDate =
-        localizations.formatFullDate(meetingDraft.meetingPlaningDate!);
+    final strDate = localizations.formatFullDate(meetingDraft.scheduledDate);
     final strTime = localizations.formatTimeOfDay(
-      TimeOfDay.fromDateTime(meetingDraft.meetingPlaningDate!),
+      TimeOfDay.fromDateTime(meetingDraft.scheduledDate),
     );
     return Scaffold(
       body: Padding(
@@ -69,9 +68,8 @@ class CheckMeetingParametersView extends StatelessWidget {
                     padV: Res.s10,
                     radius: AppBorderRadius.r10,
                     child: Text(
-                      // AppString.of(context).businessMeeting,
-                        meetingDraft.type
-                    ),
+                        // AppString.of(context).businessMeeting,
+                        meetingDraft.type),
                   ),
 
                   // const CheckMeetingDescriptionOfMeeting(),
@@ -142,19 +140,25 @@ class CheckMeetingParametersView extends StatelessWidget {
                     ],
                   ),
 
-
                   const TitleStatText('Партнер'),
+                  SizedBox(
+                    height: Res.s15,
+                  ),
                   StreamBuilder(
                     stream: AppSupabase.client
                         .from(AppSupabase.strUsers)
-                        .stream(primaryKey: ['id'])
-                        .eq('id', meetingDraft.partnerID),
+                        .stream(primaryKey: ['id']).eq(
+                            'id', meetingDraft.partnerID),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        final list = snapshot.data as List<Map<String, dynamic>>;
+                        final list =
+                            snapshot.data as List<Map<String, dynamic>>;
                         final currentMap = list.first as Map<String, dynamic>;
                         final name = currentMap['name'];
-                        return Text(name, style: AppTextStyles.primary,);
+                        return Text(
+                          name,
+                          style: AppTextStyles.primary16,
+                        );
                       }
                       return const Center(child: CircularProgressIndicator());
                     },
@@ -164,26 +168,35 @@ class CheckMeetingParametersView extends StatelessWidget {
                     height: Res.s40,
                   ),
                   AppButton(
-                    onPressed: () {
-                      final userID = userNotifier.userData.userID;
+                    onPressed: () async {
+                      final userID = userNotifier.userData.id;
                       print('userID $userID');
-                      AppSupabase.client.from(AppSupabase.strMeetings).insert({
-                        'creator_id': userNotifier.userData.userID,
+                      await AppSupabase.client
+                          .from(AppSupabase.strMeetings)
+                          .insert({
+                        'creator_id': userNotifier.userData.id,
                         'partner_id': meetingDraft.partnerID,
                         'type': meetingDraft.type,
                         'description': meetingDraft.description,
                         'occupation': meetingDraft.occupation,
                         'interests': meetingDraft.interests,
-                        'meeting_planing_date':
-                            meetingDraft.meetingPlaningDate!.toIso8601String(),
+                        'scheduled_date':
+                            meetingDraft.scheduledDate.toIso8601String(),
+                      }).then((value) {
+                        print('Then');
+                        context.router.pushAndPopUntil(
+                          const MeetingRequestsListViewRoute(),
+                          predicate: (route) => false,
+                        );
                       }).onError(
-                        (error, stackTrace) =>
-                            print('Ошибка в insert meetings: $error'),
+                        (PostgrestException error, stackTrace) {
+                          print('Ошибка в insert meetings: $error');
+                          showSimpleDialog(
+                              title: 'Ошибка',
+                              text: error.message,
+                              context: context);
+                        },
                       );
-
-                      // context.router.pushAndPopUntil(HomeViewRoute(initIndex: 1), predicate: (route) => false,);
-                      context.router.pushAndPopUntil(const MeetingRequestsListViewRoute(), predicate: (route) => false,);
-
                     },
                     text: AppString.of(context).createRequest,
                   ),

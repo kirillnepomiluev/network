@@ -5,7 +5,7 @@ import 'package:network_app/ui/pages/home_pages/home_messages/widgets/messages_b
 import 'package:network_app/ui/pages/home_pages/home_messages/widgets/messages_invitations_row.dart';
 import 'package:network_app/ui/pages/home_pages/home_messages/widgets/messages_wrap.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 
 
 class HomeMessagesView extends StatelessWidget {

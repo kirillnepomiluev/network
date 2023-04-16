@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:network_app/ui/widgets/buttons/app_button.dart';
+import 'package:network_app/utils/res.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 void showSimpleDialog(
@@ -44,12 +47,16 @@ class CustomSimpleDialog extends StatelessWidget {
       ),
       actions: [
         Center(
-          child: ElevatedButton(
+          child: AppButton(
+            width: 40.sp,
+            height: Res.s40,
+            borderColor: Colors.black,
               onPressed: () async {
                 context.router.pop();
 
               },
-              child: const Text('Ок'),
+            text: 'Ок',
+              // child: const Text('Ок'),
           ),
         )
       ],

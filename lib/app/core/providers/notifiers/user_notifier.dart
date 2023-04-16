@@ -1,17 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/utils/utils.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 // final userData = Provider.of<UserNotifier>(context).userData;
-
 class UserModel {
-
   UserModel({
-    this.userID,
+    this.id,
     this.personID = -1,
     this.age = '',
     this.name = '',
@@ -67,11 +65,11 @@ class UserModel {
     );
   }
 
-  static String getStarsKey(int rate){
-    return 'rating_stars_$rate';
+  static String getStarsKey(int rate) {
+    return 'rate_$rate';
   }
 
-  static String getRating(Map<String, dynamic> dataMap){
+  static String getRating(Map<String, dynamic> dataMap) {
     double rating = 0.0;
 
     final stars1 = dataMap[getStarsKey(1)];
@@ -87,11 +85,12 @@ class UserModel {
     // final stars4 = 124;
     // final stars5 = 252;
 
-    final sumOne = stars1*1 + stars2*2 + stars3*3 + stars4*4 + stars5*5;
+    final sumOne =
+        stars1 * 1 + stars2 * 2 + stars3 * 3 + stars4 * 4 + stars5 * 5;
     final sumTwo = stars1 + stars2 + stars3 + stars4 + stars5;
 
-    if(sumTwo>0){
-      rating = sumOne/sumTwo;
+    if (sumTwo > 0) {
+      rating = sumOne / sumTwo;
     }
 
     print('before  sumOne $sumOne sumTwo $sumTwo rating $rating');
@@ -117,12 +116,10 @@ class UserModel {
     List avatarHeadCupboard = dataMap['avatar_head_cupboard'];
     List clothesIdList = [...avatarBodyCupboard, ...avatarHeadCupboard];
 
-
     final rating = getRating(dataMap);
 
-
     return UserModel(
-      userID: dataMap['id'],
+      id: dataMap['id'],
       personID: dataMap['person_id'],
       name: dataMap['name'],
       phone: dataMap['phone'] ?? '',
@@ -159,11 +156,11 @@ class UserModel {
       avatarBodyCupboard: avatarBodyCupboard,
       avatarHeadCupboard: avatarHeadCupboard,
       clothesIdList: clothesIdList,
-      ratingStars1: dataMap['rating_stars_1'],
-      ratingStars2: dataMap['rating_stars_2'],
-      ratingStars3: dataMap['rating_stars_3'],
-      ratingStars4: dataMap['rating_stars_4'],
-      ratingStars5: dataMap['rating_stars_5'],
+      ratingStars1: dataMap[getStarsKey(1)],
+      ratingStars2: dataMap[getStarsKey(2)],
+      ratingStars3: dataMap[getStarsKey(3)],
+      ratingStars4: dataMap[getStarsKey(4)],
+      ratingStars5: dataMap[getStarsKey(5)],
     );
   }
 
@@ -183,7 +180,7 @@ class UserModel {
     return age;
   }
 
-  final String? userID;
+  final String? id;
   final int personID;
   final String name;
   final String phone;
@@ -228,18 +225,13 @@ class UserModel {
 
   @override
   String toString() {
-    return '$userID - $name';
+    return '$id - $name';
   }
   // List<UserModel> fromJson(String str) => List<UserModel>.from(json.decode(str).map((x) => UserModel.fromJson(x)));
 }
 
 //Для управления данными авторизованного юзера (нельзя исп. на стр. входа, т.к. содержит в себе currentUser. Вызовет null exception)
 class UserNotifier with ChangeNotifier {
-
-
-
-
-
   UserModel userData = UserModel.emptyModel();
   // UserModel(
   //   createdDate: DateTime.now(),
@@ -251,14 +243,13 @@ class UserNotifier with ChangeNotifier {
   //   clothesIdList: [],
   // );
 
-
   String currentUserID = '';
-  void setCurrentID(String newValue){
+  void setCurrentID(String newValue) {
     currentUserID = newValue;
     // notifyListeners();
   }
 
-  void signOut(BuildContext context){
+  void signOut(BuildContext context) {
     // AppSupabase.client.auth.signOut();
     currentUserID = '';
     userData = UserModel.emptyModel();
@@ -266,40 +257,41 @@ class UserNotifier with ChangeNotifier {
   }
 
   Future<void> setUserDataFunc({bool isInit = false}) async {
-
     // if (AppSupabase.client.auth.currentUser == null) {
     //   return;
     // }
     // final userID = AppSupabase.client.auth.currentUser!.id;
     final userID = currentUserID;
 
-    if(userID.isNotEmpty) {
+    if (userID.isNotEmpty) {
       AppSupabase.client
           .from(AppSupabase.strUsers)
           .stream(primaryKey: ['id'])
           .eq('id', userID)
           .listen((List<Map<String, dynamic>> data) {
+
             Map<String, dynamic> userDataMap = data.first;
             // userData = UserModel(name: userDataMep['name']);
-            userData = UserModel.fromJson(userDataMap);
-            if (isInit == false) {
-              notifyListeners();
+
+            if(currentUserID==userDataMap['id']){
+              userData = UserModel.fromJson(userDataMap);
+              if (isInit == false) {
+                notifyListeners();
+              }
             }
+
           })
           .onError((e) {
             print('Ошибка в setUserDataFunc: $e');
           });
-    }else{
-
-    }
+    } else {}
   }
 
   Future<void> updateData({required Map<String, dynamic> newData}) async {
     // if (AppSupabase.client.auth.currentUser == null) {
     if (currentUserID.isEmpty) {
       print('Нельзя обновить данные - не авторизован');
-    }
-    else {
+    } else {
       // final id = AppSupabase.client.auth.currentUser!.id;
       final id = currentUserID;
 
@@ -320,7 +312,6 @@ class UserNotifier with ChangeNotifier {
   }
 
   MeetingModel meetingDraft = MeetingModel.emptyModel();
-
 }
 
 UserNotifier initData() {
@@ -340,115 +331,3 @@ UserNotifier initData() {
   return userNotifier;
 }
 
-class MeetingModel {
-  MeetingModel({
-    required this.id,
-    this.creatorID = '',
-    this.partnerID = '',
-    required this.createdDate,
-    this.type = 'Общение',
-    this.title = '',
-    this.description = '',
-    required this.occupation,
-    required this.interests,
-    // this.requestStartDate,
-    // this.requestEndDate,
-    this.requestStatus = 'created',
-    this.meetingStatus = 'not started',
-    required this.meetingPlaningDate,
-    this.meetingStartDate,
-    this.meetingEndDate,
-    this.meetingDurationMaxSeconds = 1200,
-    this.meetingDurationFactSeconds = 0,
-    this.questionsCount = 0,
-    this.questionsMissedCount = 0,
-    this.questionsAnsweredCount = 0,
-    required this.questionsList,
-    this.creatorRating,
-    this.partnerRating,
-    // this.ratingGeneral,
-    // this.ratingTalking,
-    // this.ratingSympathy,
-    // this.complainSentBy,
-    // this.complainType,
-    // this.complainDescription,
-  });
-
-  factory MeetingModel.emptyModel() {
-    return MeetingModel(id: 0, createdDate: DateTime.now(), meetingPlaningDate: DateTime.now(), occupation: [], interests: [], questionsList: []);
-  }
-
-    factory MeetingModel.fromMap(Map<String, dynamic> dataMap) {
-    DateTime createdDate = Utils.getDate(dataMap['created_date'])!;
-    // DateTime? requestStartDate = Utils.getDate(dataMap['request_start_date']);
-    // DateTime? requestEndDate = Utils.getDate(dataMap['request_end_date']);
-    DateTime? meetingStartDate = Utils.getDate(dataMap['meeting_start_date']??'');
-    DateTime? meetingEndDate = Utils.getDate(dataMap['meeting_end_date']??'');
-    DateTime? meetingPlaningDate = Utils.getDate(dataMap['meeting_planing_date']);
-
-    return MeetingModel(
-      id: dataMap['id'],
-      creatorID: dataMap['creator_id'],
-      partnerID: dataMap['partner_id']??'',
-      createdDate: createdDate,
-      type: dataMap['type'],
-      title: dataMap['title'],
-      description: dataMap['description'],
-      occupation: dataMap['occupation'],
-      interests: dataMap['interests'],
-      // requestStartDate: requestStartDate,
-      // requestEndDate: requestEndDate,
-      meetingPlaningDate: meetingPlaningDate,
-      meetingStartDate: meetingStartDate,
-      meetingEndDate: meetingEndDate,
-      meetingDurationMaxSeconds: dataMap['meeting_duration_max_seconds'],
-      meetingDurationFactSeconds: dataMap['meeting_duration_fact_seconds'],
-      questionsCount: dataMap['questions_count'],
-      questionsMissedCount: dataMap['questions_missed_count'],
-      questionsAnsweredCount: dataMap['questions_answered_count'],
-      questionsList: dataMap['questions_list']??[],
-      requestStatus: dataMap['request_status'],
-      meetingStatus: dataMap['meeting_status'],
-      creatorRating: dataMap['creator_rating'],
-      partnerRating: dataMap['partner_rating'],
-      // : dataMap['rating_general'],
-      // ratingGeneral: dataMap['rating_general'],
-      // ratingTalking: dataMap['rating_talking'],
-      // ratingSympathy: dataMap['rating_sympathy'],
-      // complainSentBy: dataMap['complain_sent_by'],
-      // complainType: dataMap['complain_type'],
-      // complainDescription: dataMap['complain_description'],
-    );
-  }
-
-  int id;
-  String creatorID;
-  String partnerID;
-  DateTime createdDate;
-  String type; //Общение / Деловая
-  String title;
-  String description;
-  List occupation;
-  List interests;
-  // DateTime? requestStartDate;
-  // DateTime? requestEndDate;
-  DateTime? meetingPlaningDate;
-  DateTime? meetingStartDate;
-  DateTime? meetingEndDate;
-  int meetingDurationMaxSeconds;
-  int meetingDurationFactSeconds;
-  int questionsCount;
-  int questionsMissedCount;
-  int questionsAnsweredCount;
-  List questionsList; //List<Map<String, dynamic>>
-  String requestStatus;
-  String meetingStatus;
-  double? creatorRating;
-  double? partnerRating;
-  // double? ratingGeneral;
-  // double? ratingTalking;
-  // double? ratingSympathy;
-  // String? complainSentBy; //creator or partner
-  // String? complainType;
-  // String? complainDescription;
-}

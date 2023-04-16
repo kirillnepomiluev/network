@@ -6,7 +6,7 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/bottom_sheet_min_patinr.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 void opeinInfoSheet({required BuildContext context, required String title}) {

@@ -6,7 +6,7 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_t
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingTimerView extends StatelessWidget {
@@ -68,6 +68,7 @@ class MeetingTimerView extends StatelessWidget {
                               isTimer: isTimer,
                               isPaused: model.isPaused,
                               onGoTap: model.onGoTap,
+                              meetingModel: model.meetingModel,
                             ),
                           ],
                         ),

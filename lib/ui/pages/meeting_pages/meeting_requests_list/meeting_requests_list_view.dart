@@ -9,7 +9,7 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_requests_list/widgets
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
 
 
@@ -57,7 +57,7 @@ class MeetingRequestsListView extends StatelessWidget {
                   stream: AppSupabase.client
                       .from(AppSupabase.strMeetings)
                       .stream(primaryKey: ['id']).eq(
-                          'creator_id', userData.userID),
+                          'creator_id', userData.id).order('created_date'),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       final list = snapshot.data as List<Map<String, dynamic>>;
@@ -82,6 +82,8 @@ class MeetingRequestsListView extends StatelessWidget {
                     return const Center(child: CircularProgressIndicator());
                   },
                 ),
+
+                SizedBox(height: 30,)
 
                 // const MeetingRequestInfoContainer(),
                 // const MeetingRequestInfoContainer(),

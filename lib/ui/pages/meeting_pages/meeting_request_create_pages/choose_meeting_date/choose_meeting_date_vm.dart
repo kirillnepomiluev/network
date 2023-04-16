@@ -76,7 +76,7 @@ class ChooseMeetingDateViewModel extends ViewModel {
     final meetingPlaningDate =
         eventDate.add(Duration(hours: eventTime.hour, minutes: eventTime.minute));
     print('requestDate $meetingPlaningDate');
-    userNotifier.meetingDraft.meetingPlaningDate = meetingPlaningDate;
+    userNotifier.meetingDraft.scheduledDate = meetingPlaningDate;
     context.router.push(const CheckMeetingParametersViewRoute());
   }
 }

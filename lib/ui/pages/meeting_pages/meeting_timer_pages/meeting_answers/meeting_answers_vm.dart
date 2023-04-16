@@ -1,13 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
 class MeetingAnswersViewModel extends ViewModel {
-  MeetingAnswersViewModel(this.context){
+  MeetingAnswersViewModel(this.context, this.meetingModel){
     groupValue = answersList.first;
   }
   final BuildContext context;
+  final MeetingModel meetingModel;
 
   final List<String> answersList = [
     'Вариант ответа A',
@@ -37,7 +39,7 @@ class MeetingAnswersViewModel extends ViewModel {
     showSendButton = false;
 
     if ((questionIndex + 1) == questionCount) {
-      context.router.push( const MeetingAnswersSuccessViewRoute());
+      context.router.push( MeetingAnswersSuccessViewRoute(meetingModel: meetingModel));
     } else {
       groupValue = 'Вариант ответа A';
       progress = (questionIndex + 1) / questionCount;

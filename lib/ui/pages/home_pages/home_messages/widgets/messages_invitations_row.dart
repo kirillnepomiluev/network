@@ -3,7 +3,7 @@ import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_messages/widgets/messages_mini_avatar.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 
 
 class MessagesInvitationsRow extends StatelessWidget {

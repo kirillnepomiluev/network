@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_timer/widgets/meeting_timer_pause_dialog.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_timer/widgets/meeting_timer_sheet_success.dart';
@@ -44,7 +45,7 @@ class MeetingTimerViewModel extends ViewModel {
     final List dataList = await AppSupabase.client
         .from(AppSupabase.strMeetings)
         .select()
-        .eq('id', 5);
+        .eq('id', meetingID);
 
     if(dataList.isNotEmpty){
       meetingModel = MeetingModel.fromMap(dataList.first);

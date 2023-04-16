@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_answers/meeting_answers_progress_row.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_answers/meeting_answers_question_item.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_answers/meeting_answers_skip_question.dart';
@@ -9,22 +10,18 @@ import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
-class MeetingAnswersView extends StatefulWidget {
-  const MeetingAnswersView({Key? key}) : super(key: key);
+class MeetingAnswersView extends StatelessWidget {
+  const MeetingAnswersView({Key? key, required this.meetingModel}) : super(key: key);
+  final MeetingModel meetingModel;
 
-  @override
-  State<MeetingAnswersView> createState() => _MeetingAnswersViewState();
-}
-
-class _MeetingAnswersViewState extends State<MeetingAnswersView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<MeetingAnswersViewModel>(
-        createModelDataEx: () => MeetingAnswersViewModel(context),
+        createModelDataEx: () => MeetingAnswersViewModel(context, meetingModel),
         builder: (context, model) {
           final mediaHeight = MediaQuery.of(context).size.height;
           final mediaWidth = MediaQuery.of(context).size.width;

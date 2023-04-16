@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/generated/assets.gen.dart';
 
 class AppCircleAvatar extends StatelessWidget {
   const AppCircleAvatar(
@@ -9,12 +10,15 @@ class AppCircleAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final url = imageUrl.isEmpty? Assets.images.avatars.avatar0.keyName : imageUrl;
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
         shape: BoxShape.circle,
         image: DecorationImage(
-          image: AssetImage(imageUrl),
+          image: AssetImage(url),
           fit: BoxFit.fitHeight,
           // alignment: Alignment.bottomCenter
         ),

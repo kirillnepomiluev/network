@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/home_pages/home_messages/widgets/message_container.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MessagesWrap extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 
 
 class InvitationTab extends StatelessWidget {

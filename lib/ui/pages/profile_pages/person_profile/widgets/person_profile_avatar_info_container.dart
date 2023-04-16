@@ -11,7 +11,7 @@ import 'package:network_app/ui/widgets/common/meet_exchange_row.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
-import 'package:network_app/utils/utils_responsive.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class PersonProfileAvatarInfoContainer extends StatelessWidget {
