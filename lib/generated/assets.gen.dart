@@ -9,10 +9,14 @@
 
 import 'package:flutter/widgets.dart';
 
-class $BuildGen {
-  const $BuildGen();
+class $TruffleArtifactsGen {
+  const $TruffleArtifactsGen();
 
-  $BuildContractsGen get contracts => const $BuildContractsGen();
+  /// File path: truffle-artifacts/LifeMeaning.json
+  String get lifeMeaning => 'truffle-artifacts/LifeMeaning.json';
+
+  /// List of all assets
+  List<String> get values => [lifeMeaning];
 }
 
 class $AssetsImagesGen {
@@ -21,16 +25,6 @@ class $AssetsImagesGen {
   $AssetsImagesAvatarsGen get avatars => const $AssetsImagesAvatarsGen();
   $AssetsImagesHatsGen get hats => const $AssetsImagesHatsGen();
   $AssetsImagesIconsGen get icons => const $AssetsImagesIconsGen();
-}
-
-class $BuildContractsGen {
-  const $BuildContractsGen();
-
-  /// File path: build/contracts/LifeMeaning.json
-  String get lifeMeaning => 'build/contracts/LifeMeaning.json';
-
-  /// List of all assets
-  List<String> get values => [lifeMeaning];
 }
 
 class $AssetsImagesAvatarsGen {
@@ -101,7 +95,7 @@ class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
-  static const $BuildGen build = $BuildGen();
+  static const $TruffleArtifactsGen truffleArtifacts = $TruffleArtifactsGen();
 }
 
 class AssetGenImage {

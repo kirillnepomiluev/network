@@ -9,5 +9,6 @@ class AppProviders{
     // ChangeNotifierProvider<UserNotifier>(create: (context) => UserNotifier()), //данные для авторизованного
     ChangeNotifierProvider<UserNotifier>(create: (context) => initData()), //данные для авторизованного
     ChangeNotifierProvider<SettingsNotifier>(create: (context) => SettingsNotifier()), //данные настроек
+    // ChangeNotifierProvider<LifeMeaningModel>(create: (context) => LifeMeaningModel(context)), //данные контрактов/
   ];
 }

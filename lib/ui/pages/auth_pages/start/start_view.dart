@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/constants.dart';
@@ -26,69 +25,68 @@ class StartView extends StatelessWidget {
       createModelDataEx: () => StartViewModel(context),
       builder: (context, model) {
         return Scaffold(
-          body: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: model.onTap,
-                    child: const NetworkRow(
-                      isAppBar: false,
-                    ),
+            body: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: model.onTap,
+                  child: const NetworkRow(
+                    isAppBar: false,
                   ),
+                ),
 
-                  const SizedBox(
-                    height: 30,
-                  ),
+                const SizedBox(
+                  height: 30,
+                ),
 
-                  AppButton(
-                    height: Res.s57,
-                    onPressed: () {
-                      onUserChoosed(Constants().userOne, context);
-                    },
-                    text: 'Первый',
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                AppButton(
+                  height: Res.s57,
+                  onPressed: () {
+                    onUserChoosed(Constants().userOne, context);
+                  },
+                  text: 'Первый',
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
 
-                  AppButton(
-                    height: Res.s57,
-                    onPressed: () {
-                      onUserChoosed(Constants().userTwo, context);
-                    },
-                    text: 'Второй',
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                AppButton(
+                  height: Res.s57,
+                  onPressed: () {
+                    onUserChoosed(Constants().userTwo, context);
+                  },
+                  text: 'Второй',
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
 
-                  AppButton(
-                    height: Res.s57,
-                    onPressed: () {
-                      onUserChoosed(Constants().userThree, context);
-                    },
-                    text: 'Третий',
-                  ),
+                AppButton(
+                  height: Res.s57,
+                  onPressed: () {
+                    onUserChoosed(Constants().userThree, context);
+                  },
+                  text: 'Третий',
+                ),
 
-                  // SizedBox(height: 10,),
-                  //
-                  // Text('${model.lat}, ${model.long}'),
-                  //
-                  // SizedBox(height: 20,),
-                  //
-                  // Text('${model.strLocation}'),
-                  //
-                  // SizedBox(height: 20,),
-                  //
-                  // AppButton(onPressed: model.openMap, text: 'Открыть карту'),
-                ],
-              ),
+                // SizedBox(height: 10,),
+                //
+                // Text('${model.lat}, ${model.long}'),
+                //
+                // SizedBox(height: 20,),
+                //
+                // Text('${model.strLocation}'),
+                //
+                // SizedBox(height: 20,),
+                //
+                // AppButton(onPressed: model.openMap, text: 'Открыть карту'),
+              ],
             ),
           ),
-        );
+        ));
       },
     );
   }

@@ -113,9 +113,9 @@ linter:
     prefer_null_aware_method_calls: true
     public_member_api_docs: false
     require_trailing_commas: true
-    sort_child_properties_last: true
-    sort_constructors_first: true
-    sort_unnamed_constructors_first: true
+#    sort_child_properties_last: true
+#    sort_constructors_first: true
+#    sort_unnamed_constructors_first: true
     tighten_type_of_initializing_formals: true
     type_annotate_public_apis: true
     unawaited_futures: false

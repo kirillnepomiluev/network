@@ -17,6 +17,8 @@ class StartViewModel extends ViewModel {
   }
   final BuildContext context;
 
+  final controller = TextEditingController();
+
   Future<void> getInit() async {
     // AppSupabase.client.auth.signOut();
 
