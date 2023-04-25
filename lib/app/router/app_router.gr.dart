@@ -11,185 +11,194 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i55;
-import 'package:flutter/material.dart' as _i56;
-import 'package:network_app/app/core/models/meeting_model.dart' as _i57;
+import 'package:auto_route/auto_route.dart' as _i56;
+import 'package:flutter/material.dart' as _i57;
+import 'package:network_app/app/core/models/meeting_model.dart' as _i58;
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart'
-    as _i58;
+    as _i59;
+import 'package:network_app/blockchain/home_page.dart' as _i2;
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login/login_view.dart'
-    as _i2;
-import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_email/login_email_view.dart'
-    as _i4;
-import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_multiple/login_multiple_view.dart'
     as _i3;
-import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/input_otp_view.dart'
-    as _i6;
-import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_phone/input_phone_view.dart'
+import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_email/login_email_view.dart'
     as _i5;
-import 'package:network_app/ui/pages/auth_pages/auth/recovery_pages/recovery/recovery_view.dart'
+import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_multiple/login_multiple_view.dart'
+    as _i4;
+import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_otp/input_otp_view.dart'
     as _i7;
-import 'package:network_app/ui/pages/auth_pages/auth/recovery_pages/recovery_email/recovery_email_view.dart'
+import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_phone/input_phone/input_phone_view.dart'
+    as _i6;
+import 'package:network_app/ui/pages/auth_pages/auth/recovery_pages/recovery/recovery_view.dart'
     as _i8;
+import 'package:network_app/ui/pages/auth_pages/auth/recovery_pages/recovery_email/recovery_email_view.dart'
+    as _i9;
 import 'package:network_app/ui/pages/auth_pages/start/start_view.dart' as _i1;
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_date/choose_birth_date_view.dart'
-    as _i12;
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_interests/choose_interests_view.dart'
-    as _i15;
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_level/choose_level_view.dart'
-    as _i14;
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_occupation/choose_occupation_view.dart'
-    as _i18;
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_sex/choose_sex_view.dart'
     as _i13;
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_status/choose_status_view.dart'
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_interests/choose_interests_view.dart'
     as _i16;
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/geolocation/geolocation_turn_on_view.dart'
-    as _i21;
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/input_about_you/input_about_you_view.dart'
-    as _i20;
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/input_name/input_name_view.dart'
-    as _i11;
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/input_occupation/input_occupation_view.dart'
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_level/choose_level_view.dart'
+    as _i15;
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_occupation/choose_occupation_view.dart'
     as _i19;
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/input_status/input_status_view.dart'
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_sex/choose_sex_view.dart'
+    as _i14;
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_status/choose_status_view.dart'
     as _i17;
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/reg_success/reg_succes_view.dart'
-    as _i10;
-import 'package:network_app/ui/pages/home_pages/home_meeting/home_meeting_view.dart'
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/geolocation/geolocation_turn_on_view.dart'
     as _i22;
-import 'package:network_app/ui/pages/home_pages/home_messages/home_messages_view.dart'
-    as _i26;
-import 'package:network_app/ui/pages/home_pages/home_profile/home_profile_view.dart'
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/input_about_you/input_about_you_view.dart'
+    as _i21;
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/input_name/input_name_view.dart'
+    as _i12;
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/input_occupation/input_occupation_view.dart'
+    as _i20;
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/input_status/input_status_view.dart'
+    as _i18;
+import 'package:network_app/ui/pages/auth_pages/welcome_pages/reg_success/reg_succes_view.dart'
+    as _i11;
+import 'package:network_app/ui/pages/home_pages/home_meeting/home_meeting_view.dart'
     as _i23;
-import 'package:network_app/ui/pages/home_pages/home_store/home_store_view.dart'
-    as _i25;
-import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_avatar_container.dart'
-    as _i60;
-import 'package:network_app/ui/pages/home_pages/home_view.dart' as _i9;
-import 'package:network_app/ui/pages/home_pages/home_wallet/home_wallet_view.dart'
-    as _i24;
-import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/meeting_invitations_view.dart'
-    as _i29;
-import 'package:network_app/ui/pages/meeting_pages/meeting_matching/meeting_matching_view.dart'
-    as _i30;
-import 'package:network_app/ui/pages/meeting_pages/meeting_notifications/meeting_notifications_view.dart'
-    as _i28;
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/check_meeting_parameters/check_meeting_parameters_view.dart'
-    as _i39;
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_date/choose_meeting_date_view.dart'
-    as _i38;
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_interests/choose_meeting_interests_view.dart'
-    as _i37;
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_occupations/choose_meeting_occupations_view.dart'
-    as _i35;
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_person/choose_meeting_person_view.dart'
-    as _i33;
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_type/choose_meeting_type_view.dart'
-    as _i32;
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/input_meeting_description/input_meeting_description_view.dart'
-    as _i34;
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/input_meeting_occupation/input_meeting_occupation.dart'
-    as _i36;
-import 'package:network_app/ui/pages/meeting_pages/meeting_requests_list/meeting_requests_list_view.dart'
-    as _i31;
-import 'package:network_app/ui/pages/meeting_pages/meeting_search/meeting_search_view.dart'
+import 'package:network_app/ui/pages/home_pages/home_messages/home_messages_view.dart'
     as _i27;
-import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_answers/meeting_answers_view.dart'
-    as _i42;
-import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_answers_success/meeting_answers_success_view.dart'
-    as _i43;
-import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_complaint/meeting_complaint_view.dart'
-    as _i44;
-import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_questions/meeting_questions_view.dart'
-    as _i41;
-import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/meeting_rate_first/meeting_rate_fisrt_view.dart'
-    as _i45;
-import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/meeting_rate_second/meeting_rate_second_view.dart'
-    as _i46;
-import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_timer/meeting_timer_view.dart'
+import 'package:network_app/ui/pages/home_pages/home_profile/home_profile_view.dart'
+    as _i24;
+import 'package:network_app/ui/pages/home_pages/home_store/home_store_view.dart'
+    as _i26;
+import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_avatar_container.dart'
+    as _i61;
+import 'package:network_app/ui/pages/home_pages/home_view.dart' as _i10;
+import 'package:network_app/ui/pages/home_pages/home_wallet/home_wallet_view.dart'
+    as _i25;
+import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/meeting_invitations_view.dart'
+    as _i30;
+import 'package:network_app/ui/pages/meeting_pages/meeting_matching/meeting_matching_view.dart'
+    as _i31;
+import 'package:network_app/ui/pages/meeting_pages/meeting_notifications/meeting_notifications_view.dart'
+    as _i29;
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/check_meeting_parameters/check_meeting_parameters_view.dart'
     as _i40;
-import 'package:network_app/ui/pages/messages_pages/chat_personal/chat_personal_view.dart'
-    as _i54;
-import 'package:network_app/ui/pages/profile_pages/choose_categories/choose_categories_view.dart'
-    as _i49;
-import 'package:network_app/ui/pages/profile_pages/edit_field/edit_field_view.dart'
-    as _i48;
-import 'package:network_app/ui/pages/profile_pages/person_profile/person_profile_view.dart'
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_date/choose_meeting_date_view.dart'
+    as _i39;
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_interests/choose_meeting_interests_view.dart'
+    as _i38;
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_occupations/choose_meeting_occupations_view.dart'
+    as _i36;
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_person/choose_meeting_person_view.dart'
+    as _i34;
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_type/choose_meeting_type_view.dart'
+    as _i33;
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/input_meeting_description/input_meeting_description_view.dart'
+    as _i35;
+import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/input_meeting_occupation/input_meeting_occupation.dart'
+    as _i37;
+import 'package:network_app/ui/pages/meeting_pages/meeting_requests_list/meeting_requests_list_view.dart'
+    as _i32;
+import 'package:network_app/ui/pages/meeting_pages/meeting_search/meeting_search_view.dart'
+    as _i28;
+import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_answers/meeting_answers_view.dart'
+    as _i43;
+import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_answers_success/meeting_answers_success_view.dart'
+    as _i44;
+import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_complaint/meeting_complaint_view.dart'
+    as _i45;
+import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_questions/meeting_questions_view.dart'
+    as _i42;
+import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/meeting_rate_first/meeting_rate_fisrt_view.dart'
+    as _i46;
+import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/meeting_rate_second/meeting_rate_second_view.dart'
     as _i47;
-import 'package:network_app/ui/pages/store_pages/store_category/store_category_view.dart'
-    as _i52;
-import 'package:network_app/ui/pages/store_pages/store_product/store_product_view.dart'
-    as _i53;
-import 'package:network_app/ui/pages/wallet_pages/wallet_exchange/wallet_exchange_view.dart'
+import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_timer/meeting_timer_view.dart'
+    as _i41;
+import 'package:network_app/ui/pages/messages_pages/chat_personal/chat_personal_view.dart'
+    as _i55;
+import 'package:network_app/ui/pages/profile_pages/choose_categories/choose_categories_view.dart'
     as _i50;
-import 'package:network_app/ui/pages/wallet_pages/wallet_exchange_success/wallet_exchange_success_view.dart'
+import 'package:network_app/ui/pages/profile_pages/edit_field/edit_field_view.dart'
+    as _i49;
+import 'package:network_app/ui/pages/profile_pages/person_profile/person_profile_view.dart'
+    as _i48;
+import 'package:network_app/ui/pages/store_pages/store_category/store_category_view.dart'
+    as _i53;
+import 'package:network_app/ui/pages/store_pages/store_product/store_product_view.dart'
+    as _i54;
+import 'package:network_app/ui/pages/wallet_pages/wallet_exchange/wallet_exchange_view.dart'
     as _i51;
-import 'package:network_app/utils/main_pages/main_enums.dart' as _i59;
+import 'package:network_app/ui/pages/wallet_pages/wallet_exchange_success/wallet_exchange_success_view.dart'
+    as _i52;
+import 'package:network_app/utils/main_pages/main_enums.dart' as _i60;
 
-class AppRouter extends _i55.RootStackRouter {
-  AppRouter([_i56.GlobalKey<_i56.NavigatorState>? navigatorKey])
+class AppRouter extends _i56.RootStackRouter {
+  AppRouter([_i57.GlobalKey<_i57.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i55.PageFactory> pagesMap = {
+  final Map<String, _i56.PageFactory> pagesMap = {
     StartViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i1.StartView(),
       );
     },
-    LoginViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+    ContractTestViewRoute.name: (routeData) {
+      final args = routeData.argsAs<ContractTestViewRouteArgs>(
+          orElse: () => const ContractTestViewRouteArgs());
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i2.LoginView(),
+        child: _i2.ContractTestView(key: args.key),
+      );
+    },
+    LoginViewRoute.name: (routeData) {
+      return _i56.AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: const _i3.LoginView(),
       );
     },
     LoginMultipleViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i3.LoginMultipleView(),
+        child: const _i4.LoginMultipleView(),
       );
     },
     LoginEmailViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i4.LoginEmailView(),
+        child: const _i5.LoginEmailView(),
       );
     },
     InputPhoneViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i5.InputPhoneView(),
+        child: const _i6.InputPhoneView(),
       );
     },
     InputOtpViewRoute.name: (routeData) {
       final args = routeData.argsAs<InputOtpViewRouteArgs>();
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i6.InputOtpView(
+        child: _i7.InputOtpView(
           key: args.key,
           strPhone: args.strPhone,
         ),
       );
     },
     RecoveryViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i7.RecoveryView(),
+        child: const _i8.RecoveryView(),
       );
     },
     RecoveryEmailViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i8.RecoveryEmailView(),
+        child: const _i9.RecoveryEmailView(),
       );
     },
     HomeViewRoute.name: (routeData) {
       final args = routeData.argsAs<HomeViewRouteArgs>(
           orElse: () => const HomeViewRouteArgs());
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i9.HomeView(
+        child: _i10.HomeView(
           key: args.key,
           initIndex: args.initIndex,
           isCupboard: args.isCupboard,
@@ -197,44 +206,44 @@ class AppRouter extends _i55.RootStackRouter {
       );
     },
     RegSuccessViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i10.RegSuccessView(),
+        child: const _i11.RegSuccessView(),
       );
     },
     InputNameViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i11.InputNameView(),
+        child: const _i12.InputNameView(),
       );
     },
     ChooseBirthDateViewRoute.name: (routeData) {
       final args = routeData.argsAs<ChooseBirthDateViewRouteArgs>();
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i12.ChooseBirthDateView(
+        child: _i13.ChooseBirthDateView(
           key: args.key,
           isAuth: args.isAuth,
         ),
       );
     },
     ChooseSexViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i13.ChooseSexView(),
+        child: const _i14.ChooseSexView(),
       );
     },
     ChooseLevelViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i14.ChooseLevelView(),
+        child: const _i15.ChooseLevelView(),
       );
     },
     ChooseInterestsViewRoute.name: (routeData) {
       final args = routeData.argsAs<ChooseInterestsViewRouteArgs>();
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i15.ChooseInterestsView(
+        child: _i16.ChooseInterestsView(
           key: args.key,
           isAuth: args.isAuth,
         ),
@@ -243,116 +252,116 @@ class AppRouter extends _i55.RootStackRouter {
     ChooseStatusViewRoute.name: (routeData) {
       final args = routeData.argsAs<ChooseStatusViewRouteArgs>(
           orElse: () => const ChooseStatusViewRouteArgs());
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i16.ChooseStatusView(
+        child: _i17.ChooseStatusView(
           key: args.key,
           isAuth: args.isAuth,
         ),
       );
     },
     InputStatusViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i17.InputStatusView(),
+        child: const _i18.InputStatusView(),
       );
     },
     ChooseOccupationViewRoute.name: (routeData) {
       final args = routeData.argsAs<ChooseOccupationViewRouteArgs>();
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i18.ChooseOccupationView(
+        child: _i19.ChooseOccupationView(
           key: args.key,
           isAuth: args.isAuth,
         ),
       );
     },
     InputOccupationViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i19.InputOccupationView(),
+        child: const _i20.InputOccupationView(),
       );
     },
     InputAboutYouViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i20.InputAboutYouView(),
+        child: const _i21.InputAboutYouView(),
       );
     },
     GeolocationTurnOnViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i21.GeolocationTurnOnView(),
+        child: const _i22.GeolocationTurnOnView(),
       );
     },
     HomeMeetingViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i22.HomeMeetingView(),
+        child: const _i23.HomeMeetingView(),
       );
     },
     HomeProfileViewRoute.name: (routeData) {
       final args = routeData.argsAs<HomeProfileViewRouteArgs>(
           orElse: () => const HomeProfileViewRouteArgs());
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i23.HomeProfileView(
+        child: _i24.HomeProfileView(
           key: args.key,
           isCupboardInit: args.isCupboardInit,
         ),
       );
     },
     HomeWalletViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i24.HomeWalletView(),
+        child: const _i25.HomeWalletView(),
       );
     },
     HomeStoreViewRoute.name: (routeData) {
       final args = routeData.argsAs<HomeStoreViewRouteArgs>(
           orElse: () => const HomeStoreViewRouteArgs());
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i25.HomeStoreView(
+        child: _i26.HomeStoreView(
           key: args.key,
           isPartnerCupboard: args.isPartnerCupboard,
         ),
       );
     },
     HomeMessagesViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i26.HomeMessagesView(),
+        child: const _i27.HomeMessagesView(),
       );
     },
     MeetingSearchViewRoute.name: (routeData) {
       final args = routeData.argsAs<MeetingSearchViewRouteArgs>(
           orElse: () => const MeetingSearchViewRouteArgs());
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i27.MeetingSearchView(
+        child: _i28.MeetingSearchView(
           key: args.key,
           isAuth: args.isAuth,
         ),
       );
     },
     MeetingNotificationsViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i28.MeetingNotificationsView(),
+        child: const _i29.MeetingNotificationsView(),
       );
     },
     MeetingInvitationsViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i29.MeetingInvitationsView(),
+        child: const _i30.MeetingInvitationsView(),
       );
     },
     MeetingMatchingViewRoute.name: (routeData) {
       final args = routeData.argsAs<MeetingMatchingViewRouteArgs>();
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i30.MeetingMatchingView(
+        child: _i31.MeetingMatchingView(
           key: args.key,
           meetingModel: args.meetingModel,
           creatorModel: args.creatorModel,
@@ -360,65 +369,65 @@ class AppRouter extends _i55.RootStackRouter {
       );
     },
     MeetingRequestsListViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i31.MeetingRequestsListView(),
+        child: const _i32.MeetingRequestsListView(),
       );
     },
     ChooseMeetingTypeViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i32.ChooseMeetingTypeView(),
+        child: const _i33.ChooseMeetingTypeView(),
       );
     },
     ChooseMeetingPersonViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i33.ChooseMeetingPersonView(),
+        child: const _i34.ChooseMeetingPersonView(),
       );
     },
     InputDescriptionMeetingViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i34.InputDescriptionMeetingView(),
+        child: const _i35.InputDescriptionMeetingView(),
       );
     },
     ChooseMeetingOccupationsViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i35.ChooseMeetingOccupationsView(),
+        child: const _i36.ChooseMeetingOccupationsView(),
       );
     },
     InputMeetingOccupationViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i36.InputMeetingOccupationView(),
+        child: const _i37.InputMeetingOccupationView(),
       );
     },
     ChooseMeetingInterestsViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i37.ChooseMeetingInterestsView(),
+        child: const _i38.ChooseMeetingInterestsView(),
       );
     },
     ChooseMeetingDateViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i38.ChooseMeetingDateView(),
+        child: const _i39.ChooseMeetingDateView(),
       );
     },
     CheckMeetingParametersViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i39.CheckMeetingParametersView(),
+        child: const _i40.CheckMeetingParametersView(),
       );
     },
     MeetingTimerViewRoute.name: (routeData) {
       final args = routeData.argsAs<MeetingTimerViewRouteArgs>(
           orElse: () => const MeetingTimerViewRouteArgs());
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i40.MeetingTimerView(
+        child: _i41.MeetingTimerView(
           key: args.key,
           isTimer: args.isTimer,
           meetingID: args.meetingID,
@@ -427,9 +436,9 @@ class AppRouter extends _i55.RootStackRouter {
     },
     MeetingQuestionsViewRoute.name: (routeData) {
       final args = routeData.argsAs<MeetingQuestionsViewRouteArgs>();
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i41.MeetingQuestionsView(
+        child: _i42.MeetingQuestionsView(
           key: args.key,
           meetingModel: args.meetingModel,
         ),
@@ -437,9 +446,9 @@ class AppRouter extends _i55.RootStackRouter {
     },
     MeetingAnswersViewRoute.name: (routeData) {
       final args = routeData.argsAs<MeetingAnswersViewRouteArgs>();
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i42.MeetingAnswersView(
+        child: _i43.MeetingAnswersView(
           key: args.key,
           meetingModel: args.meetingModel,
         ),
@@ -447,25 +456,25 @@ class AppRouter extends _i55.RootStackRouter {
     },
     MeetingAnswersSuccessViewRoute.name: (routeData) {
       final args = routeData.argsAs<MeetingAnswersSuccessViewRouteArgs>();
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i43.MeetingAnswersSuccessView(
+        child: _i44.MeetingAnswersSuccessView(
           key: args.key,
           meetingModel: args.meetingModel,
         ),
       );
     },
     MeetingComplaintViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i44.MeetingComplaintView(),
+        child: const _i45.MeetingComplaintView(),
       );
     },
     MeetingRateFirstViewRoute.name: (routeData) {
       final args = routeData.argsAs<MeetingRateFirstViewRouteArgs>();
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i45.MeetingRateFirstView(
+        child: _i46.MeetingRateFirstView(
           key: args.key,
           meetingModel: args.meetingModel,
         ),
@@ -473,25 +482,25 @@ class AppRouter extends _i55.RootStackRouter {
     },
     MeetingRateSecondViewRoute.name: (routeData) {
       final args = routeData.argsAs<MeetingRateSecondViewRouteArgs>();
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i46.MeetingRateSecondView(
+        child: _i47.MeetingRateSecondView(
           key: args.key,
           meetingModel: args.meetingModel,
         ),
       );
     },
     PersonProfileViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i47.PersonProfileView(),
+        child: const _i48.PersonProfileView(),
       );
     },
     EditFieldViewRoute.name: (routeData) {
       final args = routeData.argsAs<EditFieldViewRouteArgs>();
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i48.EditFieldView(
+        child: _i49.EditFieldView(
           key: args.key,
           text1: args.text1,
           text2: args.text2,
@@ -502,9 +511,9 @@ class AppRouter extends _i55.RootStackRouter {
     },
     ChooseCategoriesViewRoute.name: (routeData) {
       final args = routeData.argsAs<ChooseCategoriesViewRouteArgs>();
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i49.ChooseCategoriesView(
+        child: _i50.ChooseCategoriesView(
           key: args.key,
           isAuth: args.isAuth,
           keyName: args.keyName,
@@ -513,22 +522,22 @@ class AppRouter extends _i55.RootStackRouter {
       );
     },
     WalletExchangeViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i50.WalletExchangeView(),
+        child: const _i51.WalletExchangeView(),
       );
     },
     WalletExchangeSuccessViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i51.WalletExchangeSuccessView(),
+        child: const _i52.WalletExchangeSuccessView(),
       );
     },
     StoreCategoryViewRoute.name: (routeData) {
       final args = routeData.argsAs<StoreCategoryViewRouteArgs>();
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i52.StoreCategoryView(
+        child: _i53.StoreCategoryView(
           key: args.key,
           productType: args.productType,
           isCupboard: args.isCupboard,
@@ -537,237 +546,241 @@ class AppRouter extends _i55.RootStackRouter {
     },
     StoreProductViewRoute.name: (routeData) {
       final args = routeData.argsAs<StoreProductViewRouteArgs>();
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i53.StoreProductView(
+        child: _i54.StoreProductView(
           key: args.key,
           clotheModel: args.clotheModel,
         ),
       );
     },
     ChatPersonalViewRoute.name: (routeData) {
-      return _i55.AdaptivePage<dynamic>(
+      return _i56.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i54.ChatPersonalView(),
+        child: const _i55.ChatPersonalView(),
       );
     },
   };
 
   @override
-  List<_i55.RouteConfig> get routes => [
-        _i55.RouteConfig(
+  List<_i56.RouteConfig> get routes => [
+        _i56.RouteConfig(
           StartViewRoute.name,
           path: '/',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
+          ContractTestViewRoute.name,
+          path: '/contract-test-view',
+        ),
+        _i56.RouteConfig(
           LoginViewRoute.name,
           path: '/login-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           LoginMultipleViewRoute.name,
           path: '/login-multiple-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           LoginEmailViewRoute.name,
           path: '/login-email-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           InputPhoneViewRoute.name,
           path: '/input-phone-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           InputOtpViewRoute.name,
           path: '/input-otp-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           RecoveryViewRoute.name,
           path: '/recovery-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           RecoveryEmailViewRoute.name,
           path: '/recovery-email-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           HomeViewRoute.name,
           path: '/home-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           RegSuccessViewRoute.name,
           path: '/reg-success-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           InputNameViewRoute.name,
           path: '/input-name-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           ChooseBirthDateViewRoute.name,
           path: '/choose-birth-date-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           ChooseSexViewRoute.name,
           path: '/choose-sex-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           ChooseLevelViewRoute.name,
           path: '/choose-level-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           ChooseInterestsViewRoute.name,
           path: '/choose-interests-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           ChooseStatusViewRoute.name,
           path: '/choose-status-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           InputStatusViewRoute.name,
           path: '/input-status-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           ChooseOccupationViewRoute.name,
           path: '/choose-occupation-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           InputOccupationViewRoute.name,
           path: '/input-occupation-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           InputAboutYouViewRoute.name,
           path: '/input-about-you-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           GeolocationTurnOnViewRoute.name,
           path: '/geolocation-turn-on-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           HomeMeetingViewRoute.name,
           path: '/home-meeting-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           HomeProfileViewRoute.name,
           path: '/home-profile-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           HomeWalletViewRoute.name,
           path: '/home-wallet-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           HomeStoreViewRoute.name,
           path: '/home-store-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           HomeMessagesViewRoute.name,
           path: '/home-messages-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           MeetingSearchViewRoute.name,
           path: '/meeting-search-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           MeetingNotificationsViewRoute.name,
           path: '/meeting-notifications-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           MeetingInvitationsViewRoute.name,
           path: '/meeting-invitations-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           MeetingMatchingViewRoute.name,
           path: '/meeting-matching-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           MeetingRequestsListViewRoute.name,
           path: '/meeting-requests-list-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           ChooseMeetingTypeViewRoute.name,
           path: '/choose-meeting-type-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           ChooseMeetingPersonViewRoute.name,
           path: '/choose-meeting-person-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           InputDescriptionMeetingViewRoute.name,
           path: '/input-description-meeting-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           ChooseMeetingOccupationsViewRoute.name,
           path: '/choose-meeting-occupations-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           InputMeetingOccupationViewRoute.name,
           path: '/input-meeting-occupation-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           ChooseMeetingInterestsViewRoute.name,
           path: '/choose-meeting-interests-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           ChooseMeetingDateViewRoute.name,
           path: '/choose-meeting-date-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           CheckMeetingParametersViewRoute.name,
           path: '/check-meeting-parameters-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           MeetingTimerViewRoute.name,
           path: '/meeting-timer-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           MeetingQuestionsViewRoute.name,
           path: '/meeting-questions-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           MeetingAnswersViewRoute.name,
           path: '/meeting-answers-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           MeetingAnswersSuccessViewRoute.name,
           path: '/meeting-answers-success-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           MeetingComplaintViewRoute.name,
           path: '/meeting-complaint-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           MeetingRateFirstViewRoute.name,
           path: '/meeting-rate-first-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           MeetingRateSecondViewRoute.name,
           path: '/meeting-rate-second-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           PersonProfileViewRoute.name,
           path: '/person-profile-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           EditFieldViewRoute.name,
           path: '/edit-field-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           ChooseCategoriesViewRoute.name,
           path: '/choose-categories-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           WalletExchangeViewRoute.name,
           path: '/wallet-exchange-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           WalletExchangeSuccessViewRoute.name,
           path: '/wallet-exchange-success-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           StoreCategoryViewRoute.name,
           path: '/store-category-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           StoreProductViewRoute.name,
           path: '/store-product-view',
         ),
-        _i55.RouteConfig(
+        _i56.RouteConfig(
           ChatPersonalViewRoute.name,
           path: '/chat-personal-view',
         ),
@@ -776,7 +789,7 @@ class AppRouter extends _i55.RootStackRouter {
 
 /// generated route for
 /// [_i1.StartView]
-class StartViewRoute extends _i55.PageRouteInfo<void> {
+class StartViewRoute extends _i56.PageRouteInfo<void> {
   const StartViewRoute()
       : super(
           StartViewRoute.name,
@@ -787,8 +800,33 @@ class StartViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.LoginView]
-class LoginViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i2.ContractTestView]
+class ContractTestViewRoute
+    extends _i56.PageRouteInfo<ContractTestViewRouteArgs> {
+  ContractTestViewRoute({_i57.Key? key})
+      : super(
+          ContractTestViewRoute.name,
+          path: '/contract-test-view',
+          args: ContractTestViewRouteArgs(key: key),
+        );
+
+  static const String name = 'ContractTestViewRoute';
+}
+
+class ContractTestViewRouteArgs {
+  const ContractTestViewRouteArgs({this.key});
+
+  final _i57.Key? key;
+
+  @override
+  String toString() {
+    return 'ContractTestViewRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i3.LoginView]
+class LoginViewRoute extends _i56.PageRouteInfo<void> {
   const LoginViewRoute()
       : super(
           LoginViewRoute.name,
@@ -799,8 +837,8 @@ class LoginViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.LoginMultipleView]
-class LoginMultipleViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i4.LoginMultipleView]
+class LoginMultipleViewRoute extends _i56.PageRouteInfo<void> {
   const LoginMultipleViewRoute()
       : super(
           LoginMultipleViewRoute.name,
@@ -811,8 +849,8 @@ class LoginMultipleViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.LoginEmailView]
-class LoginEmailViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i5.LoginEmailView]
+class LoginEmailViewRoute extends _i56.PageRouteInfo<void> {
   const LoginEmailViewRoute()
       : super(
           LoginEmailViewRoute.name,
@@ -823,8 +861,8 @@ class LoginEmailViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.InputPhoneView]
-class InputPhoneViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i6.InputPhoneView]
+class InputPhoneViewRoute extends _i56.PageRouteInfo<void> {
   const InputPhoneViewRoute()
       : super(
           InputPhoneViewRoute.name,
@@ -835,10 +873,10 @@ class InputPhoneViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.InputOtpView]
-class InputOtpViewRoute extends _i55.PageRouteInfo<InputOtpViewRouteArgs> {
+/// [_i7.InputOtpView]
+class InputOtpViewRoute extends _i56.PageRouteInfo<InputOtpViewRouteArgs> {
   InputOtpViewRoute({
-    _i56.Key? key,
+    _i57.Key? key,
     required String strPhone,
   }) : super(
           InputOtpViewRoute.name,
@@ -858,7 +896,7 @@ class InputOtpViewRouteArgs {
     required this.strPhone,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
   final String strPhone;
 
@@ -869,8 +907,8 @@ class InputOtpViewRouteArgs {
 }
 
 /// generated route for
-/// [_i7.RecoveryView]
-class RecoveryViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i8.RecoveryView]
+class RecoveryViewRoute extends _i56.PageRouteInfo<void> {
   const RecoveryViewRoute()
       : super(
           RecoveryViewRoute.name,
@@ -881,8 +919,8 @@ class RecoveryViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i8.RecoveryEmailView]
-class RecoveryEmailViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i9.RecoveryEmailView]
+class RecoveryEmailViewRoute extends _i56.PageRouteInfo<void> {
   const RecoveryEmailViewRoute()
       : super(
           RecoveryEmailViewRoute.name,
@@ -893,10 +931,10 @@ class RecoveryEmailViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i9.HomeView]
-class HomeViewRoute extends _i55.PageRouteInfo<HomeViewRouteArgs> {
+/// [_i10.HomeView]
+class HomeViewRoute extends _i56.PageRouteInfo<HomeViewRouteArgs> {
   HomeViewRoute({
-    _i56.Key? key,
+    _i57.Key? key,
     int initIndex = 0,
     bool isCupboard = false,
   }) : super(
@@ -919,7 +957,7 @@ class HomeViewRouteArgs {
     this.isCupboard = false,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
   final int initIndex;
 
@@ -932,8 +970,8 @@ class HomeViewRouteArgs {
 }
 
 /// generated route for
-/// [_i10.RegSuccessView]
-class RegSuccessViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i11.RegSuccessView]
+class RegSuccessViewRoute extends _i56.PageRouteInfo<void> {
   const RegSuccessViewRoute()
       : super(
           RegSuccessViewRoute.name,
@@ -944,8 +982,8 @@ class RegSuccessViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i11.InputNameView]
-class InputNameViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i12.InputNameView]
+class InputNameViewRoute extends _i56.PageRouteInfo<void> {
   const InputNameViewRoute()
       : super(
           InputNameViewRoute.name,
@@ -956,11 +994,11 @@ class InputNameViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i12.ChooseBirthDateView]
+/// [_i13.ChooseBirthDateView]
 class ChooseBirthDateViewRoute
-    extends _i55.PageRouteInfo<ChooseBirthDateViewRouteArgs> {
+    extends _i56.PageRouteInfo<ChooseBirthDateViewRouteArgs> {
   ChooseBirthDateViewRoute({
-    _i56.Key? key,
+    _i57.Key? key,
     required bool isAuth,
   }) : super(
           ChooseBirthDateViewRoute.name,
@@ -980,7 +1018,7 @@ class ChooseBirthDateViewRouteArgs {
     required this.isAuth,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
   final bool isAuth;
 
@@ -991,8 +1029,8 @@ class ChooseBirthDateViewRouteArgs {
 }
 
 /// generated route for
-/// [_i13.ChooseSexView]
-class ChooseSexViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i14.ChooseSexView]
+class ChooseSexViewRoute extends _i56.PageRouteInfo<void> {
   const ChooseSexViewRoute()
       : super(
           ChooseSexViewRoute.name,
@@ -1003,8 +1041,8 @@ class ChooseSexViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i14.ChooseLevelView]
-class ChooseLevelViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i15.ChooseLevelView]
+class ChooseLevelViewRoute extends _i56.PageRouteInfo<void> {
   const ChooseLevelViewRoute()
       : super(
           ChooseLevelViewRoute.name,
@@ -1015,11 +1053,11 @@ class ChooseLevelViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i15.ChooseInterestsView]
+/// [_i16.ChooseInterestsView]
 class ChooseInterestsViewRoute
-    extends _i55.PageRouteInfo<ChooseInterestsViewRouteArgs> {
+    extends _i56.PageRouteInfo<ChooseInterestsViewRouteArgs> {
   ChooseInterestsViewRoute({
-    _i56.Key? key,
+    _i57.Key? key,
     required bool isAuth,
   }) : super(
           ChooseInterestsViewRoute.name,
@@ -1039,7 +1077,7 @@ class ChooseInterestsViewRouteArgs {
     required this.isAuth,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
   final bool isAuth;
 
@@ -1050,11 +1088,11 @@ class ChooseInterestsViewRouteArgs {
 }
 
 /// generated route for
-/// [_i16.ChooseStatusView]
+/// [_i17.ChooseStatusView]
 class ChooseStatusViewRoute
-    extends _i55.PageRouteInfo<ChooseStatusViewRouteArgs> {
+    extends _i56.PageRouteInfo<ChooseStatusViewRouteArgs> {
   ChooseStatusViewRoute({
-    _i56.Key? key,
+    _i57.Key? key,
     bool isAuth = false,
   }) : super(
           ChooseStatusViewRoute.name,
@@ -1074,7 +1112,7 @@ class ChooseStatusViewRouteArgs {
     this.isAuth = false,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
   final bool isAuth;
 
@@ -1085,8 +1123,8 @@ class ChooseStatusViewRouteArgs {
 }
 
 /// generated route for
-/// [_i17.InputStatusView]
-class InputStatusViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i18.InputStatusView]
+class InputStatusViewRoute extends _i56.PageRouteInfo<void> {
   const InputStatusViewRoute()
       : super(
           InputStatusViewRoute.name,
@@ -1097,11 +1135,11 @@ class InputStatusViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i18.ChooseOccupationView]
+/// [_i19.ChooseOccupationView]
 class ChooseOccupationViewRoute
-    extends _i55.PageRouteInfo<ChooseOccupationViewRouteArgs> {
+    extends _i56.PageRouteInfo<ChooseOccupationViewRouteArgs> {
   ChooseOccupationViewRoute({
-    _i56.Key? key,
+    _i57.Key? key,
     required bool isAuth,
   }) : super(
           ChooseOccupationViewRoute.name,
@@ -1121,7 +1159,7 @@ class ChooseOccupationViewRouteArgs {
     required this.isAuth,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
   final bool isAuth;
 
@@ -1132,8 +1170,8 @@ class ChooseOccupationViewRouteArgs {
 }
 
 /// generated route for
-/// [_i19.InputOccupationView]
-class InputOccupationViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i20.InputOccupationView]
+class InputOccupationViewRoute extends _i56.PageRouteInfo<void> {
   const InputOccupationViewRoute()
       : super(
           InputOccupationViewRoute.name,
@@ -1144,8 +1182,8 @@ class InputOccupationViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i20.InputAboutYouView]
-class InputAboutYouViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i21.InputAboutYouView]
+class InputAboutYouViewRoute extends _i56.PageRouteInfo<void> {
   const InputAboutYouViewRoute()
       : super(
           InputAboutYouViewRoute.name,
@@ -1156,8 +1194,8 @@ class InputAboutYouViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i21.GeolocationTurnOnView]
-class GeolocationTurnOnViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i22.GeolocationTurnOnView]
+class GeolocationTurnOnViewRoute extends _i56.PageRouteInfo<void> {
   const GeolocationTurnOnViewRoute()
       : super(
           GeolocationTurnOnViewRoute.name,
@@ -1168,8 +1206,8 @@ class GeolocationTurnOnViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i22.HomeMeetingView]
-class HomeMeetingViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i23.HomeMeetingView]
+class HomeMeetingViewRoute extends _i56.PageRouteInfo<void> {
   const HomeMeetingViewRoute()
       : super(
           HomeMeetingViewRoute.name,
@@ -1180,11 +1218,11 @@ class HomeMeetingViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i23.HomeProfileView]
+/// [_i24.HomeProfileView]
 class HomeProfileViewRoute
-    extends _i55.PageRouteInfo<HomeProfileViewRouteArgs> {
+    extends _i56.PageRouteInfo<HomeProfileViewRouteArgs> {
   HomeProfileViewRoute({
-    _i56.Key? key,
+    _i57.Key? key,
     bool isCupboardInit = false,
   }) : super(
           HomeProfileViewRoute.name,
@@ -1204,7 +1242,7 @@ class HomeProfileViewRouteArgs {
     this.isCupboardInit = false,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
   final bool isCupboardInit;
 
@@ -1215,8 +1253,8 @@ class HomeProfileViewRouteArgs {
 }
 
 /// generated route for
-/// [_i24.HomeWalletView]
-class HomeWalletViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i25.HomeWalletView]
+class HomeWalletViewRoute extends _i56.PageRouteInfo<void> {
   const HomeWalletViewRoute()
       : super(
           HomeWalletViewRoute.name,
@@ -1227,10 +1265,10 @@ class HomeWalletViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i25.HomeStoreView]
-class HomeStoreViewRoute extends _i55.PageRouteInfo<HomeStoreViewRouteArgs> {
+/// [_i26.HomeStoreView]
+class HomeStoreViewRoute extends _i56.PageRouteInfo<HomeStoreViewRouteArgs> {
   HomeStoreViewRoute({
-    _i56.Key? key,
+    _i57.Key? key,
     bool isPartnerCupboard = false,
   }) : super(
           HomeStoreViewRoute.name,
@@ -1250,7 +1288,7 @@ class HomeStoreViewRouteArgs {
     this.isPartnerCupboard = false,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
   final bool isPartnerCupboard;
 
@@ -1261,8 +1299,8 @@ class HomeStoreViewRouteArgs {
 }
 
 /// generated route for
-/// [_i26.HomeMessagesView]
-class HomeMessagesViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i27.HomeMessagesView]
+class HomeMessagesViewRoute extends _i56.PageRouteInfo<void> {
   const HomeMessagesViewRoute()
       : super(
           HomeMessagesViewRoute.name,
@@ -1273,11 +1311,11 @@ class HomeMessagesViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i27.MeetingSearchView]
+/// [_i28.MeetingSearchView]
 class MeetingSearchViewRoute
-    extends _i55.PageRouteInfo<MeetingSearchViewRouteArgs> {
+    extends _i56.PageRouteInfo<MeetingSearchViewRouteArgs> {
   MeetingSearchViewRoute({
-    _i56.Key? key,
+    _i57.Key? key,
     bool isAuth = false,
   }) : super(
           MeetingSearchViewRoute.name,
@@ -1297,7 +1335,7 @@ class MeetingSearchViewRouteArgs {
     this.isAuth = false,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
   final bool isAuth;
 
@@ -1308,8 +1346,8 @@ class MeetingSearchViewRouteArgs {
 }
 
 /// generated route for
-/// [_i28.MeetingNotificationsView]
-class MeetingNotificationsViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i29.MeetingNotificationsView]
+class MeetingNotificationsViewRoute extends _i56.PageRouteInfo<void> {
   const MeetingNotificationsViewRoute()
       : super(
           MeetingNotificationsViewRoute.name,
@@ -1320,8 +1358,8 @@ class MeetingNotificationsViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i29.MeetingInvitationsView]
-class MeetingInvitationsViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i30.MeetingInvitationsView]
+class MeetingInvitationsViewRoute extends _i56.PageRouteInfo<void> {
   const MeetingInvitationsViewRoute()
       : super(
           MeetingInvitationsViewRoute.name,
@@ -1332,13 +1370,13 @@ class MeetingInvitationsViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i30.MeetingMatchingView]
+/// [_i31.MeetingMatchingView]
 class MeetingMatchingViewRoute
-    extends _i55.PageRouteInfo<MeetingMatchingViewRouteArgs> {
+    extends _i56.PageRouteInfo<MeetingMatchingViewRouteArgs> {
   MeetingMatchingViewRoute({
-    _i56.Key? key,
-    required _i57.MeetingModel meetingModel,
-    required _i58.UserModel creatorModel,
+    _i57.Key? key,
+    required _i58.MeetingModel meetingModel,
+    required _i59.UserModel creatorModel,
   }) : super(
           MeetingMatchingViewRoute.name,
           path: '/meeting-matching-view',
@@ -1359,11 +1397,11 @@ class MeetingMatchingViewRouteArgs {
     required this.creatorModel,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
-  final _i57.MeetingModel meetingModel;
+  final _i58.MeetingModel meetingModel;
 
-  final _i58.UserModel creatorModel;
+  final _i59.UserModel creatorModel;
 
   @override
   String toString() {
@@ -1372,8 +1410,8 @@ class MeetingMatchingViewRouteArgs {
 }
 
 /// generated route for
-/// [_i31.MeetingRequestsListView]
-class MeetingRequestsListViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i32.MeetingRequestsListView]
+class MeetingRequestsListViewRoute extends _i56.PageRouteInfo<void> {
   const MeetingRequestsListViewRoute()
       : super(
           MeetingRequestsListViewRoute.name,
@@ -1384,8 +1422,8 @@ class MeetingRequestsListViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i32.ChooseMeetingTypeView]
-class ChooseMeetingTypeViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i33.ChooseMeetingTypeView]
+class ChooseMeetingTypeViewRoute extends _i56.PageRouteInfo<void> {
   const ChooseMeetingTypeViewRoute()
       : super(
           ChooseMeetingTypeViewRoute.name,
@@ -1396,8 +1434,8 @@ class ChooseMeetingTypeViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i33.ChooseMeetingPersonView]
-class ChooseMeetingPersonViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i34.ChooseMeetingPersonView]
+class ChooseMeetingPersonViewRoute extends _i56.PageRouteInfo<void> {
   const ChooseMeetingPersonViewRoute()
       : super(
           ChooseMeetingPersonViewRoute.name,
@@ -1408,8 +1446,8 @@ class ChooseMeetingPersonViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i34.InputDescriptionMeetingView]
-class InputDescriptionMeetingViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i35.InputDescriptionMeetingView]
+class InputDescriptionMeetingViewRoute extends _i56.PageRouteInfo<void> {
   const InputDescriptionMeetingViewRoute()
       : super(
           InputDescriptionMeetingViewRoute.name,
@@ -1420,8 +1458,8 @@ class InputDescriptionMeetingViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i35.ChooseMeetingOccupationsView]
-class ChooseMeetingOccupationsViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i36.ChooseMeetingOccupationsView]
+class ChooseMeetingOccupationsViewRoute extends _i56.PageRouteInfo<void> {
   const ChooseMeetingOccupationsViewRoute()
       : super(
           ChooseMeetingOccupationsViewRoute.name,
@@ -1432,8 +1470,8 @@ class ChooseMeetingOccupationsViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i36.InputMeetingOccupationView]
-class InputMeetingOccupationViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i37.InputMeetingOccupationView]
+class InputMeetingOccupationViewRoute extends _i56.PageRouteInfo<void> {
   const InputMeetingOccupationViewRoute()
       : super(
           InputMeetingOccupationViewRoute.name,
@@ -1444,8 +1482,8 @@ class InputMeetingOccupationViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i37.ChooseMeetingInterestsView]
-class ChooseMeetingInterestsViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i38.ChooseMeetingInterestsView]
+class ChooseMeetingInterestsViewRoute extends _i56.PageRouteInfo<void> {
   const ChooseMeetingInterestsViewRoute()
       : super(
           ChooseMeetingInterestsViewRoute.name,
@@ -1456,8 +1494,8 @@ class ChooseMeetingInterestsViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i38.ChooseMeetingDateView]
-class ChooseMeetingDateViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i39.ChooseMeetingDateView]
+class ChooseMeetingDateViewRoute extends _i56.PageRouteInfo<void> {
   const ChooseMeetingDateViewRoute()
       : super(
           ChooseMeetingDateViewRoute.name,
@@ -1468,8 +1506,8 @@ class ChooseMeetingDateViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i39.CheckMeetingParametersView]
-class CheckMeetingParametersViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i40.CheckMeetingParametersView]
+class CheckMeetingParametersViewRoute extends _i56.PageRouteInfo<void> {
   const CheckMeetingParametersViewRoute()
       : super(
           CheckMeetingParametersViewRoute.name,
@@ -1480,11 +1518,11 @@ class CheckMeetingParametersViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i40.MeetingTimerView]
+/// [_i41.MeetingTimerView]
 class MeetingTimerViewRoute
-    extends _i55.PageRouteInfo<MeetingTimerViewRouteArgs> {
+    extends _i56.PageRouteInfo<MeetingTimerViewRouteArgs> {
   MeetingTimerViewRoute({
-    _i56.Key? key,
+    _i57.Key? key,
     bool isTimer = false,
     int meetingID = 0,
   }) : super(
@@ -1507,7 +1545,7 @@ class MeetingTimerViewRouteArgs {
     this.meetingID = 0,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
   final bool isTimer;
 
@@ -1520,12 +1558,12 @@ class MeetingTimerViewRouteArgs {
 }
 
 /// generated route for
-/// [_i41.MeetingQuestionsView]
+/// [_i42.MeetingQuestionsView]
 class MeetingQuestionsViewRoute
-    extends _i55.PageRouteInfo<MeetingQuestionsViewRouteArgs> {
+    extends _i56.PageRouteInfo<MeetingQuestionsViewRouteArgs> {
   MeetingQuestionsViewRoute({
-    _i56.Key? key,
-    required _i57.MeetingModel meetingModel,
+    _i57.Key? key,
+    required _i58.MeetingModel meetingModel,
   }) : super(
           MeetingQuestionsViewRoute.name,
           path: '/meeting-questions-view',
@@ -1544,9 +1582,9 @@ class MeetingQuestionsViewRouteArgs {
     required this.meetingModel,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
-  final _i57.MeetingModel meetingModel;
+  final _i58.MeetingModel meetingModel;
 
   @override
   String toString() {
@@ -1555,12 +1593,12 @@ class MeetingQuestionsViewRouteArgs {
 }
 
 /// generated route for
-/// [_i42.MeetingAnswersView]
+/// [_i43.MeetingAnswersView]
 class MeetingAnswersViewRoute
-    extends _i55.PageRouteInfo<MeetingAnswersViewRouteArgs> {
+    extends _i56.PageRouteInfo<MeetingAnswersViewRouteArgs> {
   MeetingAnswersViewRoute({
-    _i56.Key? key,
-    required _i57.MeetingModel meetingModel,
+    _i57.Key? key,
+    required _i58.MeetingModel meetingModel,
   }) : super(
           MeetingAnswersViewRoute.name,
           path: '/meeting-answers-view',
@@ -1579,9 +1617,9 @@ class MeetingAnswersViewRouteArgs {
     required this.meetingModel,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
-  final _i57.MeetingModel meetingModel;
+  final _i58.MeetingModel meetingModel;
 
   @override
   String toString() {
@@ -1590,12 +1628,12 @@ class MeetingAnswersViewRouteArgs {
 }
 
 /// generated route for
-/// [_i43.MeetingAnswersSuccessView]
+/// [_i44.MeetingAnswersSuccessView]
 class MeetingAnswersSuccessViewRoute
-    extends _i55.PageRouteInfo<MeetingAnswersSuccessViewRouteArgs> {
+    extends _i56.PageRouteInfo<MeetingAnswersSuccessViewRouteArgs> {
   MeetingAnswersSuccessViewRoute({
-    _i56.Key? key,
-    required _i57.MeetingModel meetingModel,
+    _i57.Key? key,
+    required _i58.MeetingModel meetingModel,
   }) : super(
           MeetingAnswersSuccessViewRoute.name,
           path: '/meeting-answers-success-view',
@@ -1614,9 +1652,9 @@ class MeetingAnswersSuccessViewRouteArgs {
     required this.meetingModel,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
-  final _i57.MeetingModel meetingModel;
+  final _i58.MeetingModel meetingModel;
 
   @override
   String toString() {
@@ -1625,8 +1663,8 @@ class MeetingAnswersSuccessViewRouteArgs {
 }
 
 /// generated route for
-/// [_i44.MeetingComplaintView]
-class MeetingComplaintViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i45.MeetingComplaintView]
+class MeetingComplaintViewRoute extends _i56.PageRouteInfo<void> {
   const MeetingComplaintViewRoute()
       : super(
           MeetingComplaintViewRoute.name,
@@ -1637,12 +1675,12 @@ class MeetingComplaintViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i45.MeetingRateFirstView]
+/// [_i46.MeetingRateFirstView]
 class MeetingRateFirstViewRoute
-    extends _i55.PageRouteInfo<MeetingRateFirstViewRouteArgs> {
+    extends _i56.PageRouteInfo<MeetingRateFirstViewRouteArgs> {
   MeetingRateFirstViewRoute({
-    _i56.Key? key,
-    required _i57.MeetingModel meetingModel,
+    _i57.Key? key,
+    required _i58.MeetingModel meetingModel,
   }) : super(
           MeetingRateFirstViewRoute.name,
           path: '/meeting-rate-first-view',
@@ -1661,9 +1699,9 @@ class MeetingRateFirstViewRouteArgs {
     required this.meetingModel,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
-  final _i57.MeetingModel meetingModel;
+  final _i58.MeetingModel meetingModel;
 
   @override
   String toString() {
@@ -1672,12 +1710,12 @@ class MeetingRateFirstViewRouteArgs {
 }
 
 /// generated route for
-/// [_i46.MeetingRateSecondView]
+/// [_i47.MeetingRateSecondView]
 class MeetingRateSecondViewRoute
-    extends _i55.PageRouteInfo<MeetingRateSecondViewRouteArgs> {
+    extends _i56.PageRouteInfo<MeetingRateSecondViewRouteArgs> {
   MeetingRateSecondViewRoute({
-    _i56.Key? key,
-    required _i57.MeetingModel meetingModel,
+    _i57.Key? key,
+    required _i58.MeetingModel meetingModel,
   }) : super(
           MeetingRateSecondViewRoute.name,
           path: '/meeting-rate-second-view',
@@ -1696,9 +1734,9 @@ class MeetingRateSecondViewRouteArgs {
     required this.meetingModel,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
-  final _i57.MeetingModel meetingModel;
+  final _i58.MeetingModel meetingModel;
 
   @override
   String toString() {
@@ -1707,8 +1745,8 @@ class MeetingRateSecondViewRouteArgs {
 }
 
 /// generated route for
-/// [_i47.PersonProfileView]
-class PersonProfileViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i48.PersonProfileView]
+class PersonProfileViewRoute extends _i56.PageRouteInfo<void> {
   const PersonProfileViewRoute()
       : super(
           PersonProfileViewRoute.name,
@@ -1719,10 +1757,10 @@ class PersonProfileViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i48.EditFieldView]
-class EditFieldViewRoute extends _i55.PageRouteInfo<EditFieldViewRouteArgs> {
+/// [_i49.EditFieldView]
+class EditFieldViewRoute extends _i56.PageRouteInfo<EditFieldViewRouteArgs> {
   EditFieldViewRoute({
-    _i56.Key? key,
+    _i57.Key? key,
     required String text1,
     required String text2,
     required String description,
@@ -1751,7 +1789,7 @@ class EditFieldViewRouteArgs {
     required this.keyName,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
   final String text1;
 
@@ -1768,11 +1806,11 @@ class EditFieldViewRouteArgs {
 }
 
 /// generated route for
-/// [_i49.ChooseCategoriesView]
+/// [_i50.ChooseCategoriesView]
 class ChooseCategoriesViewRoute
-    extends _i55.PageRouteInfo<ChooseCategoriesViewRouteArgs> {
+    extends _i56.PageRouteInfo<ChooseCategoriesViewRouteArgs> {
   ChooseCategoriesViewRoute({
-    _i56.Key? key,
+    _i57.Key? key,
     required bool isAuth,
     required String keyName,
     bool isMeeting = false,
@@ -1798,7 +1836,7 @@ class ChooseCategoriesViewRouteArgs {
     this.isMeeting = false,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
   final bool isAuth;
 
@@ -1813,8 +1851,8 @@ class ChooseCategoriesViewRouteArgs {
 }
 
 /// generated route for
-/// [_i50.WalletExchangeView]
-class WalletExchangeViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i51.WalletExchangeView]
+class WalletExchangeViewRoute extends _i56.PageRouteInfo<void> {
   const WalletExchangeViewRoute()
       : super(
           WalletExchangeViewRoute.name,
@@ -1825,8 +1863,8 @@ class WalletExchangeViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i51.WalletExchangeSuccessView]
-class WalletExchangeSuccessViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i52.WalletExchangeSuccessView]
+class WalletExchangeSuccessViewRoute extends _i56.PageRouteInfo<void> {
   const WalletExchangeSuccessViewRoute()
       : super(
           WalletExchangeSuccessViewRoute.name,
@@ -1837,12 +1875,12 @@ class WalletExchangeSuccessViewRoute extends _i55.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i52.StoreCategoryView]
+/// [_i53.StoreCategoryView]
 class StoreCategoryViewRoute
-    extends _i55.PageRouteInfo<StoreCategoryViewRouteArgs> {
+    extends _i56.PageRouteInfo<StoreCategoryViewRouteArgs> {
   StoreCategoryViewRoute({
-    _i56.Key? key,
-    required _i59.StoreProductType productType,
+    _i57.Key? key,
+    required _i60.StoreProductType productType,
     required bool isCupboard,
   }) : super(
           StoreCategoryViewRoute.name,
@@ -1864,9 +1902,9 @@ class StoreCategoryViewRouteArgs {
     required this.isCupboard,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
-  final _i59.StoreProductType productType;
+  final _i60.StoreProductType productType;
 
   final bool isCupboard;
 
@@ -1877,12 +1915,12 @@ class StoreCategoryViewRouteArgs {
 }
 
 /// generated route for
-/// [_i53.StoreProductView]
+/// [_i54.StoreProductView]
 class StoreProductViewRoute
-    extends _i55.PageRouteInfo<StoreProductViewRouteArgs> {
+    extends _i56.PageRouteInfo<StoreProductViewRouteArgs> {
   StoreProductViewRoute({
-    _i56.Key? key,
-    required _i60.ClotheModel clotheModel,
+    _i57.Key? key,
+    required _i61.ClotheModel clotheModel,
   }) : super(
           StoreProductViewRoute.name,
           path: '/store-product-view',
@@ -1901,9 +1939,9 @@ class StoreProductViewRouteArgs {
     required this.clotheModel,
   });
 
-  final _i56.Key? key;
+  final _i57.Key? key;
 
-  final _i60.ClotheModel clotheModel;
+  final _i61.ClotheModel clotheModel;
 
   @override
   String toString() {
@@ -1912,8 +1950,8 @@ class StoreProductViewRouteArgs {
 }
 
 /// generated route for
-/// [_i54.ChatPersonalView]
-class ChatPersonalViewRoute extends _i55.PageRouteInfo<void> {
+/// [_i55.ChatPersonalView]
+class ChatPersonalViewRoute extends _i56.PageRouteInfo<void> {
   const ChatPersonalViewRoute()
       : super(
           ChatPersonalViewRoute.name,

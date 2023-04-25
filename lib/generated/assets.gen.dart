@@ -9,14 +9,20 @@
 
 import 'package:flutter/widgets.dart';
 
-class $TruffleArtifactsGen {
-  const $TruffleArtifactsGen();
+class $AssetsAbiGen {
+  const $AssetsAbiGen();
 
-  /// File path: truffle-artifacts/LifeMeaning.json
-  String get lifeMeaning => 'truffle-artifacts/LifeMeaning.json';
+  /// File path: assets/abi/abi.json
+  String get abi => 'assets/abi/abi.json';
+
+  /// File path: assets/abi/erc20.json
+  String get erc20 => 'assets/abi/erc20.json';
+
+  /// File path: assets/abi/erc721.json
+  String get erc721 => 'assets/abi/erc721.json';
 
   /// List of all assets
-  List<String> get values => [lifeMeaning];
+  List<String> get values => [abi, erc20, erc721];
 }
 
 class $AssetsImagesGen {
@@ -94,8 +100,8 @@ class $AssetsImagesIconsGen {
 class Assets {
   Assets._();
 
+  static const $AssetsAbiGen abi = $AssetsAbiGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
-  static const $TruffleArtifactsGen truffleArtifacts = $TruffleArtifactsGen();
 }
 
 class AssetGenImage {

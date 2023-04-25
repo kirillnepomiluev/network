@@ -5,6 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/blockchain/home_page.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/utils.dart';
 import 'package:provider/provider.dart';
@@ -13,23 +14,24 @@ import 'package:map_launcher/map_launcher.dart';
 
 class StartViewModel extends ViewModel {
   StartViewModel(this.context) {
-    // getInit();
+    getInit();
   }
   final BuildContext context;
 
   final controller = TextEditingController();
 
   Future<void> getInit() async {
-    // AppSupabase.client.auth.signOut();
 
-    if (AppSupabase.client.auth.currentUser == null) {
-      context.router.push(const LoginViewRoute());
-    } else {
-      final userNotifier = Provider.of<UserNotifier>(context, listen: false);
-      userNotifier.setCurrentID(AppSupabase.client.auth.currentUser!.id);
-      await userNotifier.setUserDataFunc();
-      Utils.checkReg(context);
-    }
+    context.router.push(ContractTestViewRoute());
+
+    // if (AppSupabase.client.auth.currentUser == null) {
+    //   context.router.push(const LoginViewRoute());
+    // } else {
+    //   final userNotifier = Provider.of<UserNotifier>(context, listen: false);
+    //   userNotifier.setCurrentID(AppSupabase.client.auth.currentUser!.id);
+    //   await userNotifier.setUserDataFunc();
+    //   Utils.checkReg(context);
+    // }
   }
 
   Future<Position> _getCurrentLocation() async {

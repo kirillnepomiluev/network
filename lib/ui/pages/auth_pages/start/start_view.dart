@@ -5,8 +5,8 @@ import 'package:network_app/ui/pages/auth_pages/start/start_vm.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/network_row.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
-import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/res.dart';
+import 'package:network_app/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class StartView extends StatelessWidget {

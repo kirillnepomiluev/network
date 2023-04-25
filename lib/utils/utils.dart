@@ -1,12 +1,15 @@
 // ignore_for_file: parameter_assignments
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 
-import '../app/router/app_router.gr.dart';
-
 class Utils {
+
+  static String getEnv(String title) => dotenv.env[title]!;
+
   static void unFocus() {
     FocusManager.instance.primaryFocus?.unfocus();
   }
