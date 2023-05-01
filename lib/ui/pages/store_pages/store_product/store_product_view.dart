@@ -48,7 +48,7 @@ class StoreProductView extends StatelessWidget {
           ),
           bottomNavigationBar: hidBuyBottom? null : StoreProductBottom(
             cost: clotheModel.cost,
-            buyClothe: model.buyClothe,
+            onBuyClothe: model.onBuyClothe,
           ),
         );
       },);

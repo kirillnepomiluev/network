@@ -23,7 +23,7 @@ class ClotheModel {
   factory ClotheModel.fromMap(Map<String, dynamic> dataMap) {
     final String rank = dataMap['rank'] == 'usual' ? 'Обычный' : 'Редкий';
 
-    final cost = dataMap['cost'].toDouble();
+    final cost = dataMap['price'].toDouble();
 
     return ClotheModel(
         // title: dataMap['title'],
@@ -130,7 +130,7 @@ class StoreAvatarContainer extends StatelessWidget {
                 ),
 
                 Text(
-                  '${clotheModel.cost} SOL',
+                  '${clotheModel.cost} ETH',
                   style: AppTextStyles.salad16
                       .copyWith(fontWeight: FontWeight.w600),
                 ),

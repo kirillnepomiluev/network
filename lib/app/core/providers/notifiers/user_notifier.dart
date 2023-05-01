@@ -303,6 +303,7 @@ class UserNotifier with ChangeNotifier {
       } catch (error) {
         print('updateData error - $error');
       }
+
     }
 
     // final response = await AppSupabase.client

@@ -14,14 +14,14 @@ class ContractTestView extends StatefulWidget {
 
 class _ContractTestViewState extends State<ContractTestView> {
   EthereumUtils ethUtils = EthereumUtils();
-  ExampleContractNotifier exampleContractModel = ExampleContractNotifier();
 
   double _value = 0.0;
 
   @override
   Widget build(BuildContext context) {
-    final exampleContractModel = Provider.of<ExampleContractNotifier>(context);
-    final balance = exampleContractModel.balance;
+    final erc721Provider = Provider.of<ERC721ContractNotifier>(context);
+    // final balance = exampleContractModel.balance;
+    final balance = erc721Provider.balance;
 
     return Scaffold(
       appBar: AppBar(
@@ -39,7 +39,7 @@ class _ContractTestViewState extends State<ContractTestView> {
             padding: const EdgeInsets.all(20.0),
             child:
 
-            exampleContractModel.showLoading? const CircularProgressIndicator() :
+            erc721Provider.showLoading? const CircularProgressIndicator() :
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
@@ -75,7 +75,7 @@ class _ContractTestViewState extends State<ContractTestView> {
                 CustomButton(
                   title: "REFRESH",
                   color: Colors.greenAccent,
-                  onTapped: exampleContractModel.getBalance,
+                  onTapped: erc721Provider.getBalance,
                 ),
                 SfSlider(
                   min: 0.0,
@@ -96,28 +96,31 @@ class _ContractTestViewState extends State<ContractTestView> {
                   title: "DEPOSIT",
                   color: Colors.blueAccent,
                   onTapped: () async {
-                    var _depositReceipt = await exampleContractModel.depositCoin(_value);
-                    print("Deposit response: $_depositReceipt");
-                    if (_value == 0) {
-                      insertValidValue(context);
-                      return;
-                    } else {
-                      showReceipt(context, "deposit", _depositReceipt);
-                    }
+                    // var _depositReceipt = await erc721Provider.depositCoin(_value);
+                    // print("Deposit response: $_depositReceipt");
+                    // if (_value == 0) {
+                    //   insertValidValue(context);
+                    //   return;
+                    // } else {
+                    //   showReceipt(context, "deposit", _depositReceipt);
+                    // }
                   },
                 ),
                 CustomButton(
-                  title: "WITHDRAW",
+                  title: "SAFE MINT",
                   color: Colors.pinkAccent,
                   onTapped: () async {
-                    var _widthrawReceipt = await exampleContractModel.withdrawCoin(amount: _value);
-                    print("Withdraw response: $_widthrawReceipt");
-                    if (_value == 0) {
-                      insertValidValue(context);
-                      return;
-                    } else {
-                      showReceipt(context, "withdraw", _widthrawReceipt);
-                    }
+
+                    erc721Provider.safeMint();
+
+                    // var _widthrawReceipt = await exampleContractModel.withdrawCoin(amount: _value);
+                    // print("Withdraw response: $_widthrawReceipt");
+                    // if (_value == 0) {
+                    //   insertValidValue(context);
+                    //   return;
+                    // } else {
+                    //   showReceipt(context, "withdraw", _widthrawReceipt);
+                    // }
                   },
                 ),
               ],
@@ -165,7 +168,7 @@ showReceipt(BuildContext context, String text, String receipt) {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Colors.white.withOpacity(0.8),
+          backgroundColor: Colors.white.withOpacity(1),
           title: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Text(
@@ -192,7 +195,7 @@ showReceipt(BuildContext context, String text, String receipt) {
                       fontFamily: 'Raleway',
                       color: Colors.blueGrey.shade600),
                 ),
-                Text(receipt,
+                SelectableText(receipt,
                     textAlign: TextAlign.center,
                     style: const TextStyle(color: Colors.black87)),
               ],
@@ -200,7 +203,7 @@ showReceipt(BuildContext context, String text, String receipt) {
           ),
           actions: [
             ElevatedButton(
-              child: const Text('Ok'),
+              child: const Text('Ok', style: TextStyle(color: Colors.black),),
               onPressed: () {
                 Navigator.of(context).pop();
               },
