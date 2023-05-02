@@ -65,8 +65,7 @@ class MeetingInvitationsView extends StatelessWidget {
                           shrinkWrap: true,
                           itemCount: list.length,
                           itemBuilder: (BuildContext context, int index) {
-                            final meetingMap =
-                                list[index] as Map<String, dynamic>;
+                            final meetingMap = list[index] as Map<String, dynamic>;
                             MeetingModel meetingModel = MeetingModel.fromMap(meetingMap);
 
                             return Padding(

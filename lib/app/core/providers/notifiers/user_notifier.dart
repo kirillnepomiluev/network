@@ -93,8 +93,6 @@ class UserModel {
       rating = sumOne / sumTwo;
     }
 
-    print('before  sumOne $sumOne sumTwo $sumTwo rating $rating');
-
     return rating.toStringAsFixed(1);
   }
 
@@ -260,8 +258,8 @@ class UserNotifier with ChangeNotifier {
     // if (AppSupabase.client.auth.currentUser == null) {
     //   return;
     // }
-    // final userID = AppSupabase.client.auth.currentUser!.id;
-    final userID = currentUserID;
+    final userID = AppSupabase.client.auth.currentUser!.id;
+    // final userID = currentUserID;
 
     if (userID.isNotEmpty) {
       AppSupabase.client
@@ -288,12 +286,12 @@ class UserNotifier with ChangeNotifier {
   }
 
   Future<void> updateData({required Map<String, dynamic> newData}) async {
-    // if (AppSupabase.client.auth.currentUser == null) {
-    if (currentUserID.isEmpty) {
+    if (AppSupabase.client.auth.currentUser == null) {
+    // if (currentUserID.isEmpty) {  //для теста при переключении
       print('Нельзя обновить данные - не авторизован');
     } else {
-      // final id = AppSupabase.client.auth.currentUser!.id;
-      final id = currentUserID;
+      final id = AppSupabase.client.auth.currentUser!.id;
+      // final id = currentUserID;
 
       try {
         await AppSupabase.client

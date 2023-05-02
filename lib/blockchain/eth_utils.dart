@@ -120,6 +120,12 @@ class EthereumUtils {
     return '';
   }
 
+  Future<bool?> getReciept(String hash) async {
+    final reciept = await ethClient.getTransactionReceipt(hash);
+    print('reciept $reciept');
+    final status = reciept!.status;
+    return status;
+  }
 
   listenEvent({required DeployedContract contract}) async {
 
@@ -130,7 +136,6 @@ class EthereumUtils {
     final transferEvent = contract.event('Transfer');
     final filter = FilterOptions.events(contract: contract, event: transferEvent);
     final events = ethClient.events(filter);
-    // final logs = await ethClient.getTransactionReceipt('0x2ea799f13789b6f00b31d4b25ad63b4aedf2492d8669e9889bd9dcfb95b2bce9');
     // print('logs $logs');
 
     final sub = events

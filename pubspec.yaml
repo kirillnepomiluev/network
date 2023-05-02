@@ -58,6 +58,7 @@ dependencies:
   http: ^0.13.5
   flutter_dotenv:
   walletconnect_dart:
+  url_launcher:
 
 dev_dependencies:
   flutter_test:

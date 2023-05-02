@@ -20,7 +20,6 @@ class StoreProductBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final erc721Provider = Provider.of<ERC721ContractNotifier>(context);
-    // erc721Provider.balance;
 
     return BlurryContainer(
       blur: 50,

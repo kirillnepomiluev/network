@@ -5,9 +5,11 @@ import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_avatar_
 import 'package:network_app/ui/pages/store_pages/store_product/store_product_vm.dart';
 import 'package:network_app/ui/pages/store_pages/store_product/widgets/store_product_bottom.dart';
 import 'package:network_app/ui/pages/store_pages/store_product/widgets/store_product_image_container.dart';
+import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/stat_column.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class StoreProductView extends StatelessWidget {
@@ -25,7 +27,7 @@ class StoreProductView extends StatelessWidget {
         final mediaTop = MediaQuery.of(context).viewPadding.top;
         final userData = Provider.of<UserNotifier>(context).userData;
 
-        bool hidBuyBottom = userData.clothesIdList.contains(clotheModel.id);
+        bool haveThisClothe = userData.clothesIdList.contains(clotheModel.id);
 
         return Scaffold(
           body: Padding(
@@ -38,16 +40,31 @@ class StoreProductView extends StatelessWidget {
                     title: clotheModel.title, imageURL: clotheModel.imageUrl,),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 31),
-                    child: StatColumn(
-                      onBuyTokens: (){},
+                    child: Column(
+                      children: [
+                        StatColumn(
+                          onBuyTokens: (){},
+                        ),
+
+                        if(haveThisClothe)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 31),
+                            child: AppButton(onPressed: (){
+                              launchUrl(Uri.parse('https://testnets.opensea.io/assets/goerli/0xab92aed3dd22ad824123239c1571e598eeda36db/0'));
+                            }, text: 'Посмотреть'),
+                          )
+
+                      ],
                     ),
                   ),
+
+
                 ],
               ),
             ),
           ),
-          bottomNavigationBar: hidBuyBottom? null : StoreProductBottom(
-            cost: clotheModel.cost,
+          bottomNavigationBar: haveThisClothe? null : StoreProductBottom(
+            cost: clotheModel.price,
             onBuyClothe: model.onBuyClothe,
           ),
         );

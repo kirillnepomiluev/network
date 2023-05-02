@@ -22,17 +22,19 @@ class StartViewModel extends ViewModel {
 
   Future<void> getInit() async {
 
-    // context.router.push(ConnectMetamaskViewRoute());
-    // context.router.push(ContractTestViewRoute());
-
     if (AppSupabase.client.auth.currentUser == null) {
       context.router.push(const LoginViewRoute());
     } else {
       final userNotifier = Provider.of<UserNotifier>(context, listen: false);
       userNotifier.setCurrentID(AppSupabase.client.auth.currentUser!.id);
       await userNotifier.setUserDataFunc();
-      Utils.checkReg(context);
+
+      context.router.push(const ConnectMetamaskViewRoute());
+      // context.router.push(ContractTestViewRoute());
+      // Utils.checkReg(context);
     }
+
+
   }
 
   Future<Position> _getCurrentLocation() async {

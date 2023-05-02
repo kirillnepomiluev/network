@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:walletconnect_dart/walletconnect_dart.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,17 +19,14 @@ String truncateString(String text, int front, int end) {
 }
 
 String generateSessionMessage(String accountAddress) {
-  String message =
-      'Hello $accountAddress, welcome to our app. By signing this message you agree to learn and have fun with blockchain';
+  String message = 'Hello $accountAddress, welcome to our app. By signing this message you agree to learn and have fun with blockchain';
   print(message);
 
-  var hash = keccakUtf8(message);
+  final hash = keccakUtf8(message);
   final hashString = '0x${bytesToHex(hash).toString()}';
 
   return hashString;
 }
-
-
 
 class ConnectMetamaskView extends StatefulWidget {
   const ConnectMetamaskView({Key? key}) : super(key: key);
@@ -37,7 +36,9 @@ class ConnectMetamaskView extends StatefulWidget {
 }
 
 class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
-  static const needChainID = 11155111;
+
+  // static const needChainID = 11155111;
+  static const needChainID = 5;
 
   WalletConnect connector = WalletConnect(
       bridge: 'https://bridge.walletconnect.org',
@@ -60,7 +61,7 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
           _uri = uri;
           await launchUrlString(uri, mode: LaunchMode.externalApplication);
         });
-        print(session.accounts[0]);
+        print(session.accounts.first);
         print(session.chainId);
         setState(() {
           _session = session;
@@ -78,10 +79,10 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
         print(message);
 
         EthereumWalletConnectProvider provider =
-        EthereumWalletConnectProvider(connector);
+            EthereumWalletConnectProvider(connector);
         launchUrlString(_uri!, mode: LaunchMode.externalApplication);
         var signature = await provider.personalSign(
-            message: message, address: _session!.accounts[0], password: "");
+            message: message, address: _session!.accounts.first, password: "");
         print(signature);
         setState(() {
           _signature = signature;
@@ -118,25 +119,26 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
 
   @override
   Widget build(BuildContext context) {
-    connector..on(
-        'connect',
-            (session) => setState(
-              () {
-            _session = _session;
-          },
-        ))
-    ..on(
-        'session_update',
-            (SessionStatus? payload) => setState(() {
-          _session = payload;
-          print(_session!.accounts[0]);
-          print(_session!.chainId);
-        }))
-    ..on(
-        'disconnect',
-            (payload) => setState(() {
-          _session = null;
-        }));
+    connector
+      ..on(
+          'connect',
+          (session) => setState(
+                () {
+                  _session = _session;
+                },
+              ))
+      ..on(
+          'session_update',
+          (SessionStatus? payload) => setState(() {
+                _session = payload;
+                print(_session!.accounts.first);
+                print(_session!.chainId);
+              }))
+      ..on(
+          'disconnect',
+          (payload) => setState(() {
+                _session = null;
+              }));
 
     return Scaffold(
       appBar: AppBar(
@@ -148,62 +150,73 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
           children: [
             if (_session != null)
               Container(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Account',
-                    ),
-                    Text(
-                      '${_session!.accounts[0]}',
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      children: [
-                        const Text(
-                          'Chain: ',
-                        ),
-                        Text(
-                          getNetworkName(_session!.chainId),
-                        )
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    if (_session!.chainId != needChainID) const Text(
-                        'Network not supported. Switch to Sepolia') else (_signature == null)
-                        ? Container(
-                      alignment: Alignment.center,
-                      child: ElevatedButton(
-                          onPressed: () =>
-                              signMessageWithMetamask(
-                                  context,
-                                  generateSessionMessage(
-                                      _session!.accounts[0])),
-                          child: const Text('Sign Message', style: TextStyle(color: Colors.black))),
-                    )
-                        : Column(
-                      children: [
-                        Row(
-                          children: [
-                            const Text(
-                              "Signature: ",
-                            ),
-                            Text(
-                                truncateString(
-                                    _signature.toString(), 4, 2),
-                                style: GoogleFonts.inconsolata(
-                                    fontSize: 16))
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                      ],
-                    )
-                  ],
-                ))
-            else ElevatedButton(
-                onPressed: () => loginUsingMetamask(context),
-                child: const Text("Connect with Metamask", style: TextStyle(color: Colors.black),))
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Account',
+                      ),
+                      Text(
+                        '${_session!.accounts.first}',
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        children: [
+                          const Text(
+                            'Chain: ',
+                          ),
+                          Text(
+                            getNetworkName(_session!.chainId),
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      if (_session!.chainId != needChainID)
+                        const Text('Network not supported. Switch to Gepolia')
+                      else
+                        (_signature == null)
+                            ? Container(
+                                alignment: Alignment.center,
+                                child: ElevatedButton(
+                                    onPressed: () {
+
+                                      context.router.push(HomeViewRoute(initIndex: 0));
+
+                                      // signMessageWithMetamask(
+                                      //   context,
+                                      //   generateSessionMessage(
+                                      //       _session!.accounts.first));
+                                    },
+                                    child: const Text('Продолжить',
+                                        style: TextStyle(color: Colors.black))),
+                              )
+                            : Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        "Signature: ",
+                                      ),
+                                      Text(
+                                          truncateString(
+                                              _signature.toString(), 4, 2),
+                                          style: GoogleFonts.inconsolata(
+                                              fontSize: 16))
+                                    ],
+                                  ),
+                                  const SizedBox(height: 20),
+                                ],
+                              )
+                    ],
+                  ))
+            else
+              ElevatedButton(
+                  onPressed: () => loginUsingMetamask(context),
+                  child: const Text(
+                    "Connect with Metamask",
+                    style: TextStyle(color: Colors.black),
+                  ))
           ],
         ),
       ),

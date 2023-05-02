@@ -24,6 +24,7 @@ import 'package:network_app/ui/pages/auth_pages/welcome_pages/reg_success/reg_su
 import 'package:network_app/ui/pages/home_pages/home_meeting/home_meeting_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_messages/home_messages_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/home_profile_view.dart';
+import 'package:network_app/ui/pages/home_pages/home_profile/widgets/screens/orders_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/home_store_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_wallet/home_wallet_view.dart';
@@ -156,6 +157,8 @@ class RoutesLists {
     AutoRoute(page: PersonProfileView),
     AutoRoute(page: EditFieldView),
     AutoRoute(page: ChooseCategoriesView),
+
+    AutoRoute(page: OrdersView),
   ];
 
   static const List<AutoRoute> walletRoutes = [

@@ -1,4 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -163,50 +167,51 @@ insertValidValue(BuildContext context) {
       });
 }
 
-showReceipt(BuildContext context, String text, String receipt) {
+showReceipt(BuildContext context, String receipt) {
   return showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Colors.white.withOpacity(1),
+          backgroundColor: Colors.black,
           title: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Text(
-              "Thank you for submiting a $text",
+              'Транзакиця создана',
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                // fontFamily: 'vtks_distress',
-                fontSize: 18.0,
-              ),
+              style: AppTextStyles.primary18,
             ),
           ),
           content: Container(
             height: MediaQuery.of(context).size.height * 0.3,
             width: MediaQuery.of(context).size.height * 0.8,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20)
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "Use the transaction hash bellow to check if it was successful",
+                  // "Use the transaction hash bellow to check if it was successful",
+                  'Вы можете проверить статус по хэшу ниже:',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 16.0,
-                      fontFamily: 'Raleway',
-                      color: Colors.blueGrey.shade600),
+                  style: AppTextStyles.primary16,
                 ),
                 SelectableText(receipt,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.black87)),
+                  style: AppTextStyles.primary,
+                ),
               ],
             ),
           ),
+          actionsAlignment: MainAxisAlignment.center,
+          actionsPadding: EdgeInsets.only(bottom: Res.s20),
           actions: [
             ElevatedButton(
-              child: const Text('Ok', style: TextStyle(color: Colors.black),),
+              child: const Text('Посмотреть', style: TextStyle(color: Colors.black),),
               onPressed: () {
                 Navigator.of(context).pop();
-              },
+                context.router.push(OrdersViewRoute());},
             ),
           ],
         );

@@ -72,6 +72,7 @@ class ViewAvatarsCarousel extends StatelessWidget {
                       padding: EdgeInsets.only(right: Res.s10),
                       child: StoreAvatarContainer(
                         currentNote: list[index],
+                        isCupboard: isCupboard,
                       ),
                     );
                   },

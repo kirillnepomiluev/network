@@ -12,8 +12,6 @@ class MeetingModel {
     final status = dataMap['status'];
     final statusText = getStatusText(status);
 
-    print('zzzzz');
-
     return MeetingModel(
       id: dataMap['id'],
       creatorID: dataMap['creator_id'],
@@ -43,6 +41,7 @@ class MeetingModel {
       fbFromPartner: dataMap['fb_from_partner'],
     );
   }
+
   MeetingModel({
     required this.id,
     this.creatorID = '',

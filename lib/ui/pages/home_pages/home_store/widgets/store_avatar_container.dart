@@ -14,7 +14,7 @@ class ClotheModel {
     required this.id,
     required this.title,
     required this.rank,
-    required this.cost,
+    required this.price,
     required this.type,
     required this.level,
     required this.points,
@@ -37,7 +37,7 @@ class ClotheModel {
         rank: rank,
         level: dataMap['level'] ?? 1,
         points: dataMap['points'] ?? 0,
-        cost: cost,
+        price: cost,
         imageUrl: dataMap['image_url'] ?? '',
       id: dataMap['id'],
     );
@@ -46,7 +46,7 @@ class ClotheModel {
   final String title;
   final String type;
   final String rank;
-  final double cost;
+  final double price;
   final int id;
   final int level;
   final int points;
@@ -57,10 +57,12 @@ class StoreAvatarContainer extends StatelessWidget {
   const StoreAvatarContainer(
       {Key? key,
       required this.currentNote,
-      this.isViewCostume = false,})
+      this.isViewCostume = false,
+        this.isCupboard = false,})
       : super(key: key);
   final Map<String, dynamic> currentNote;
   final bool isViewCostume;
+  final bool isCupboard;
 
 
   @override
@@ -129,13 +131,15 @@ class StoreAvatarContainer extends StatelessWidget {
                   height: 15.sp, //29
                 ),
 
+                if(isCupboard==false)
                 Text(
-                  '${clotheModel.cost} ETH',
+                  '${clotheModel.price} ETH',
                   style: AppTextStyles.salad16
                       .copyWith(fontWeight: FontWeight.w600),
                 ),
+
                 SizedBox(
-                  height: Res.s14,
+                  height: isCupboard? Res.s32 : Res.s14,
                 ),
 
                 if (isAvatarBody)

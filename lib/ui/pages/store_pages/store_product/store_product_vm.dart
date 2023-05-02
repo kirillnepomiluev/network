@@ -10,6 +10,7 @@ import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/main_pages/dialog_utls.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class StoreProductViewModel extends ViewModel {
@@ -18,17 +19,23 @@ class StoreProductViewModel extends ViewModel {
   final ClotheModel clotheModel;
 
   Future<void> onBuyClothe() async {
+
     print('onBuyClothe');
 
     final erc721Provider = Provider.of<ERC721ContractNotifier>(context, listen: false);
     final userData = Provider.of<UserNotifier>(context, listen: false).userData;
 
+    final hash = await erc721Provider.safeMint();
+    // final hash = '0x6f3b2736dd6249e50dd6e89f460c7d01cd24b42c9007f50332ba66a8890dc039';
+
     final newData = {
       'user_id' : userData.id,
-      'clothe_id' : 7,
-      'hash' : 'asdasdasdasdasdasd',
-      'status' : 'created',
-      'price' : 0.01,
+      'clothe_id' : clotheModel.id,
+      'hash' : hash,
+      'status' : 'created', //done, failed
+      'price' : clotheModel.price,
+      'title' : clotheModel.title,
+      'type' : clotheModel.type,
     };
 
     try {
@@ -39,50 +46,18 @@ class StoreProductViewModel extends ViewModel {
       print('create order error - $error');
     }
 
-    // final hash = await erc721Provider.safeMint();
+    showReceipt(context, hash);
 
-    // showReceipt(context, 'purchase', 'zzzzzzzzzzzzzz');
-
-
-    // print('buyClothe');
-    //
-    // final userData = Provider.of<UserNotifier>(context, listen: false).userData;
-    //
-    // String type = clotheModel.type;
-    // print('type $type');
-    //
-    // final currentList = type == 'body'
-    //     ? userData.avatarBodyCupboard
-    //     : userData.avatarHeadCupboard;
-    // final keyName =
-    // type == 'body' ? 'avatar_body_cupboard' : 'avatar_head_cupboard';
-    //
-    // print('currentList $currentList');
-    //
-    // final newList = [...currentList, clotheModel.id];
-    //
-    // print('newList $newList');
-    //
-    // await UserNotifier().updateData(
-    //   newData: {keyName: newList},
-    // );
-    //
-    // DialogUtils.openBottomSheetInfoWithIcon(
-    //   context: context,
-    //   icon: NetworkIcons.check_circle_outlined,
-    //   text1: 'Оплата прошла ',
-    //   text2: 'успешно',
-    //   text3: 'Новую одежду вы можете\nнайти в своем шкафу',
-    //   textButton: 'Перейти в шкаф',
-    //   func: () {
-    //     context.router.pop();
-    //     context.router.push(
-    //       HomeViewRoute(initIndex: 1, isCupboard: true),
-    //     );
-    //   },
-    // );
-    //
   }
+
+
+
+
+
+
+
+
+
 
   // Future<void> onBuyClothe() async {
   //
