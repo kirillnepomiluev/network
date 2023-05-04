@@ -1,13 +1,17 @@
+import 'dart:convert';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'custom_button.dart';
 import 'eth_utils.dart';
+import 'package:http/http.dart' as http;
 
 class ContractTestView extends StatefulWidget {
   ContractTestView({Key? key}) : super(key: key);
@@ -111,20 +115,43 @@ class _ContractTestViewState extends State<ContractTestView> {
                   },
                 ),
                 CustomButton(
-                  title: "SAFE MINT",
+                  title: "TEST",
                   color: Colors.pinkAccent,
                   onTapped: () async {
+                    // erc721Provider.safeMint();
+                    // erc721Provider.addLevelAndRewardForMeet();
 
-                    erc721Provider.safeMint();
+                    const tokenURI = 'ipfs://bafybeifglluvlsceknmh3dqsho3ci7xmpjvn6fhox72ve54ncpxvwljbgq/2';
+                    final test = tokenURI.split('://').last;
+                    final link = 'https://nftstorage.link/ipfs/$test';
+                    http.Response response = await http.get(Uri.parse(link));
+                    final statusCode = response.statusCode;
+                    print('statusCode $statusCode');
 
-                    // var _widthrawReceipt = await exampleContractModel.withdrawCoin(amount: _value);
-                    // print("Withdraw response: $_widthrawReceipt");
-                    // if (_value == 0) {
-                    //   insertValidValue(context);
-                    //   return;
-                    // } else {
-                    //   showReceipt(context, "withdraw", _widthrawReceipt);
-                    // }
+                    if(statusCode==200){
+                      final results = jsonDecode(response.body);
+                      final imageFps = results['image'];
+                      final String imageFpsTest = imageFps.split('://').last;
+                      final fpsList = imageFpsTest.split('/');
+                      final storageLink = 'https://${fpsList.first}.ipfs.nftstorage.link/${fpsList.last}';
+                      print('storageLink $storageLink');
+
+                      const mumbaiContractAddress = '0xe2d074be971c9290b5bbab059f9c510b0c76936d';
+                      const webName = 'mumbai';
+                      final tokenID = fpsList.last.split('.').first;
+
+                      final seaLink = 'https://testnets.opensea.io/assets/$webName/$mumbaiContractAddress/$tokenID';
+                      print('seaLink $seaLink');
+                    }
+                    else{
+                      showSimpleDialog(title: 'Ошибка', text: 'Статус: $statusCode', context: context);
+                    }
+
+
+
+
+                    // ipfs://bafybeid36xnf6ravvigb7a46uwtspzypepukz4yu3zmzbloh2fuuzaad24/2
+
                   },
                 ),
               ],

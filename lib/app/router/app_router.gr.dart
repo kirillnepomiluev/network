@@ -17,7 +17,7 @@ import 'package:network_app/app/core/models/meeting_model.dart' as _i60;
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart'
     as _i61;
 import 'package:network_app/blockchain/connect_metamask_view.dart' as _i3;
-import 'package:network_app/blockchain/home_page.dart' as _i2;
+import 'package:network_app/blockchain/contract_test_view.dart' as _i2;
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login/login_view.dart'
     as _i4;
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_email/login_email_view.dart'

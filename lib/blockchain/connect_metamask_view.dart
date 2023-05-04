@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/blockchain/eth_utils.dart';
 import 'package:walletconnect_dart/walletconnect_dart.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,8 +38,7 @@ class ConnectMetamaskView extends StatefulWidget {
 
 class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
 
-  // static const needChainID = 11155111;
-  static const needChainID = 5;
+  static const needChainID = EthereumUtils.chainID; // 80001; //11155111, 5
 
   WalletConnect connector = WalletConnect(
       bridge: 'https://bridge.walletconnect.org',

@@ -47,20 +47,26 @@ class ContractModel {
   }
 }
 
-const String ownerAddress = '0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17';
-const String myAddress = '0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17';
+
+
 
 class EthereumUtils {
+
+  static const ownerAddress = '0x04Ee5860e4fce5560865197BCfb83b9192ce4dbD'; //0x04Ee5860e4fce5560865197BCfb83b9192ce4dbD
+  static const myAddress = '0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17';
+  static const web = 'sepolia'; //goerli
+  static const chainID = 5; // 80001; //11155111, 5
+
+
   static final envInfuraApiKey = Utils.getEnv('INFURA_API_KEY');
   static final envMetamaskPrivateKey = Utils.getEnv('METAMASK_PRIVATE_KEY');
   static final EthPrivateKey credential =
   EthPrivateKey.fromHex(envMetamaskPrivateKey);
 
-  static final infura = "https://goerli.infura.io/v3/$envInfuraApiKey";
+  static final infura = "https://$web.infura.io/v3/$envInfuraApiKey";
 
   static final http.Client httpClient = http.Client();
   final Web3Client ethClient = Web3Client(infura, httpClient);
-  static const chainID = 5;
 
   // static EthereumAddress getEthAddress(String address) => EthereumAddress.fromHex(address);
 
@@ -182,6 +188,7 @@ class ERC721ContractNotifier with ChangeNotifier {
 
   static String strGetBalance = 'getBalance';
   static String strSafeMint = '_safeMint';
+  static String strAddLevelAndRewardForMeet= 'addLevelAndRewardForMeet';
 
   bool showLoading = true;
   ERC721ContractNotifier() {
@@ -209,7 +216,7 @@ class ERC721ContractNotifier with ChangeNotifier {
   Future getBalance({bool notify = true}) async {
 
     List<dynamic> response = await EthereumUtils().read(
-        strSender: ownerAddress,
+        strSender: EthereumUtils.ownerAddress,
         contract: contractModel.contract,
         functionName: strGetBalance,
         args: []
@@ -236,14 +243,34 @@ class ERC721ContractNotifier with ChangeNotifier {
     // final logs = await EthereumUtils().ethClient.events(FilterOptions()).length;
     // print('logs $logs');
 
-
     //uint256 private _tokenPrice = 10000000000000000; //0.01 ETH
+
+    final currentFunction = strSafeMint;
+
     final response = await EthereumUtils().write(
       contract: contractModel.contract,
-      functionName: strSafeMint,
-      strSender: myAddress,
+      functionName: currentFunction,
+      strSender: EthereumUtils.myAddress,
       ethValue: 0.01,
-      args: [EthereumAddress.fromHex(myAddress)],
+      args: [EthereumAddress.fromHex(EthereumUtils.myAddress)],
+    );
+
+    print('response $response');
+    return response;
+  }
+
+
+  Future<String> addLevelAndRewardForMeet() async {
+    print('addLevelAndRewardForMeet');
+
+    final currentFunction = strAddLevelAndRewardForMeet;
+
+    final response = await EthereumUtils().write(
+      contract: contractModel.contract,
+      functionName: currentFunction,
+      strSender: EthereumUtils.myAddress,
+      // ethValue: 0.01,
+      args: [EthereumAddress.fromHex(EthereumUtils.myAddress), BigInt.from(2), EthereumAddress.fromHex(EthereumUtils.ownerAddress), BigInt.from(0), true],
     );
 
     print('response $response');

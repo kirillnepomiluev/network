@@ -5,7 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/blockchain/home_page.dart';
+import 'package:network_app/blockchain/contract_test_view.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/utils.dart';
 import 'package:provider/provider.dart';
@@ -29,8 +29,8 @@ class StartViewModel extends ViewModel {
       userNotifier.setCurrentID(AppSupabase.client.auth.currentUser!.id);
       await userNotifier.setUserDataFunc();
 
-      context.router.push(const ConnectMetamaskViewRoute());
-      // context.router.push(ContractTestViewRoute());
+      // context.router.push(const ConnectMetamaskViewRoute());
+      context.router.push(ContractTestViewRoute());
       // Utils.checkReg(context);
     }
 
