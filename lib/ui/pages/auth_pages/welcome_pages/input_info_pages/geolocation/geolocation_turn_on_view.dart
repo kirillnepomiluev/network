@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/auth_bar_row.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
+import 'package:provider/provider.dart';
 
 
 
@@ -13,6 +15,7 @@ class GeolocationTurnOnView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userNotifier = Provider.of<UserNotifier>(context);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -33,6 +36,9 @@ class GeolocationTurnOnView extends StatelessWidget {
                 ),
                 const SizedBox(height: 40,),
                 AppButton(onPressed: (){
+
+                  userNotifier.firstUpdateData();
+
                   context.router.pushAndPopUntil(HomeViewRoute(), predicate: (route) => false);
                 }, text: 'Включить геолокацию',)
               ],

@@ -58,7 +58,13 @@ dependencies:
   http: ^0.13.5
   flutter_dotenv:
   walletconnect_dart:
-  url_launcher:
+  dart_jsonwebtoken:
+  get:
+  flutter_blue_plus:
+  network_info_plus:
+  permission_handler:
+  device_info_plus:
+  maps_toolkit:
 
 dev_dependencies:
   flutter_test:
@@ -115,27 +121,27 @@ flutter:
     - family: NetworkIcons
       fonts:
         - asset: assets/fonts/icons/NetworkIcons.ttf
-#    - family: Inter
-#      fonts:
-#        - asset: assets/fonts/inter/Inter-Regular.otf
-#        - asset: assets/fonts/inter/Inter-Black.otf
-#        - asset: assets/fonts/inter/Inter-Bold.otf
-#        - asset: assets/fonts/inter/Inter-BlackItalic.otf
-#        - asset: assets/fonts/inter/Inter-BoldItalic.otf
-#        - asset: assets/fonts/inter/Inter-ExtraBold.otf
-#        - asset: assets/fonts/inter/Inter-ExtraBoldItalic.otf
-#        - asset: assets/fonts/inter/Inter-ExtraLight.otf
-#        - asset: assets/fonts/inter/Inter-ExtraLightItalic.otf
-#        - asset: assets/fonts/inter/Inter-Italic.otf
-#        - asset: assets/fonts/inter/Inter-Light.otf
-#        - asset: assets/fonts/inter/Inter-LightItalic.otf
-#        - asset: assets/fonts/inter/Inter-Medium.otf
-#        - asset: assets/fonts/inter/Inter-MediumItalic.otf
-#        - asset: assets/fonts/inter/Inter-SemiBold.otf
-#        - asset: assets/fonts/inter/Inter-SemiBoldItalic.otf
-#        - asset: assets/fonts/inter/Inter-Thin.otf
-#        - asset: assets/fonts/inter/Inter-ThinItalic.otf
-#        - asset: assets/fonts/inter/Inter-V.ttf
+    #    - family: Inter
+    #      fonts:
+    #        - asset: assets/fonts/inter/Inter-Regular.otf
+    #        - asset: assets/fonts/inter/Inter-Black.otf
+    #        - asset: assets/fonts/inter/Inter-Bold.otf
+    #        - asset: assets/fonts/inter/Inter-BlackItalic.otf
+    #        - asset: assets/fonts/inter/Inter-BoldItalic.otf
+    #        - asset: assets/fonts/inter/Inter-ExtraBold.otf
+    #        - asset: assets/fonts/inter/Inter-ExtraBoldItalic.otf
+    #        - asset: assets/fonts/inter/Inter-ExtraLight.otf
+    #        - asset: assets/fonts/inter/Inter-ExtraLightItalic.otf
+    #        - asset: assets/fonts/inter/Inter-Italic.otf
+    #        - asset: assets/fonts/inter/Inter-Light.otf
+    #        - asset: assets/fonts/inter/Inter-LightItalic.otf
+    #        - asset: assets/fonts/inter/Inter-Medium.otf
+    #        - asset: assets/fonts/inter/Inter-MediumItalic.otf
+    #        - asset: assets/fonts/inter/Inter-SemiBold.otf
+    #        - asset: assets/fonts/inter/Inter-SemiBoldItalic.otf
+    #        - asset: assets/fonts/inter/Inter-Thin.otf
+    #        - asset: assets/fonts/inter/Inter-ThinItalic.otf
+    #        - asset: assets/fonts/inter/Inter-V.ttf
 
     - family: Gilroy
       fonts:

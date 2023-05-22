@@ -121,37 +121,6 @@ class _ContractTestViewState extends State<ContractTestView> {
                     // erc721Provider.safeMint();
                     // erc721Provider.addLevelAndRewardForMeet();
 
-                    const tokenURI = 'ipfs://bafybeifglluvlsceknmh3dqsho3ci7xmpjvn6fhox72ve54ncpxvwljbgq/2';
-                    final test = tokenURI.split('://').last;
-                    final link = 'https://nftstorage.link/ipfs/$test';
-                    http.Response response = await http.get(Uri.parse(link));
-                    final statusCode = response.statusCode;
-                    print('statusCode $statusCode');
-
-                    if(statusCode==200){
-                      final results = jsonDecode(response.body);
-                      final imageFps = results['image'];
-                      final String imageFpsTest = imageFps.split('://').last;
-                      final fpsList = imageFpsTest.split('/');
-                      final storageLink = 'https://${fpsList.first}.ipfs.nftstorage.link/${fpsList.last}';
-                      print('storageLink $storageLink');
-
-                      const mumbaiContractAddress = '0xe2d074be971c9290b5bbab059f9c510b0c76936d';
-                      const webName = 'mumbai';
-                      final tokenID = fpsList.last.split('.').first;
-
-                      final seaLink = 'https://testnets.opensea.io/assets/$webName/$mumbaiContractAddress/$tokenID';
-                      print('seaLink $seaLink');
-                    }
-                    else{
-                      showSimpleDialog(title: 'Ошибка', text: 'Статус: $statusCode', context: context);
-                    }
-
-
-
-
-                    // ipfs://bafybeid36xnf6ravvigb7a46uwtspzypepukz4yu3zmzbloh2fuuzaad24/2
-
                   },
                 ),
               ],

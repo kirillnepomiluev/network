@@ -38,7 +38,7 @@ class ConnectMetamaskView extends StatefulWidget {
 
 class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
 
-  static const needChainID = EthereumUtils.chainID; // 80001; //11155111, 5
+  static final needChainID = EthereumUtils.webData.chainID; // 80001; //11155111, 5
 
   WalletConnect connector = WalletConnect(
       bridge: 'https://bridge.walletconnect.org',
@@ -95,6 +95,7 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
   }
 
   getNetworkName(chainId) {
+
     switch (chainId) {
       case 1:
         return 'Ethereum Mainnet';
@@ -108,7 +109,7 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
         return 'Kovan Testnet';
       case 137:
         return 'Polygon Mainnet';
-      case needChainID:
+      case 11155111:
         return 'Sepolia Testnet';
       case 80001:
         return 'Mumbai Testnet';

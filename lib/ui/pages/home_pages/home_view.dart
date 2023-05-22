@@ -29,6 +29,7 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     _currentPage = widget.initIndex;
     _pageController = PageController(initialPage: _currentPage);
+
     super.initState();
   }
 

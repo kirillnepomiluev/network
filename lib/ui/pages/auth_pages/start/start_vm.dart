@@ -1,16 +1,17 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:flutter/material.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:maps_toolkit/maps_toolkit.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/blockchain/contract_test_view.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/utils.dart';
+import 'package:network_info_plus/network_info_plus.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import 'package:map_launcher/map_launcher.dart';
 
 class StartViewModel extends ViewModel {
   StartViewModel(this.context) {
@@ -20,46 +21,157 @@ class StartViewModel extends ViewModel {
 
   final controller = TextEditingController();
 
+
   Future<void> getInit() async {
 
     if (AppSupabase.client.auth.currentUser == null) {
+      print('Не авторизован');
       context.router.push(const LoginViewRoute());
+      // context.router.push(ContractTestViewRoute());
+
     } else {
+
+
+      print('Авторизован');
+
       final userNotifier = Provider.of<UserNotifier>(context, listen: false);
       userNotifier.setCurrentID(AppSupabase.client.auth.currentUser!.id);
       await userNotifier.setUserDataFunc();
 
-      // context.router.push(const ConnectMetamaskViewRoute());
-      context.router.push(ContractTestViewRoute());
-      // Utils.checkReg(context);
+      Utils.checkReg(context);
+
+      // // context.router.push(const ConnectMetamaskViewRoute());
+      // context.router.push(ContractTestViewRoute());
     }
+  }
+
+  Future<void> onTap() async {
+
+    AppSupabase.client.auth.signOut();
+    // setNetwork();
+
+    // final deviceInfoPlugin = DeviceInfoPlugin();
+    // final deviceInfo = await deviceInfoPlugin.deviceInfo;
+    // final allInfo = deviceInfo.data;
+
+    // print('allInfo $allInfo');
+
+    // _getCurrentLocation();
+
+    // _liveLocation();
+
+  }
+
+
+
+
+
+  double lat = 0;
+  double long = 0;
+
+  String strLocation = '';
+
+  final jwtsecret = 'zhLvPhnmjpEAzYWsiUEY035UfQqvfw11tr9nHwcnKBmaj/h8Mi1c5Ho1k1xa5eCmaKVdEmM2bC4B7f5CvTua3A==';
+
+
+  Future<void> jwtGet() async {
+// Create a json web token
+// Pass the payload to be sent in the form of a map
+
+    final jwt = JWT(
+      // Payload
+      {
+        // 'id': 123,
+        // 'server': {
+        //   'id': '3e4fc296',
+        //   'loc': 'euw-2',
+        // }
+      },
+
+      issuer: 'supabase',
+      audience: Audience.one('authenticated'),
+      subject: '0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17',
+      // jwtId: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBraWFxcmdja214ZG5xbGVya21mIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjM5Mzc2NzAsImV4cCI6MTk3OTUxMzY3MH0.7cmkp5glMfwICqPBtxan8f8W02vdtjZb8zVVjgdEgvo'
+      //{
+      //   "iss": "supabase",
+      //   "ref": "pkiaqrgckmxdnqlerkmf",
+      //   "role": "anon",
+      //   "iat": 1663937670,
+      //   "exp": 1979513670
+      // }
+    );
+
+    // Sign it (default with HS256 algorithm)
+    final token = jwt.sign(SecretKey(jwtsecret));
+
+    print('Signed token: $token\n');
+
+    AppSupabase.client.from(AppSupabase.strUsers).insert({},);
+
+  }
+
+
+  Future<void> jwtTest() async {
+
+    final token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODQyNTExMTAsImF1ZCI6ImF1dGhlbnRpY2F0ZWQiLCJzdWIiOiIweDA5QmU2ZDNGZjVhMkExMTBlMjExMTdlMUZGNjlENTVFNjFjQjViMTciLCJpc3MiOiJzdXBhYmFzZSJ9.OZ7kHa_Tk1yXM5zIywPGvUhxX3BiMF64jWzx9cqRy5E';
+
+    // final res = await AppSupabase.client.functions.invoke(
+    //   'hello-world',
+    //   body: {'name': 'baa'},
+    //   headers: {
+    //     // 'Authorization': 'Bearer ${AppSupabase.client.auth.currentSession?.accessToken}'
+    //     'Authorization': token
+    //   },
+    // );
+    // print(res.status);
+    // print(res.data);
+
+
+    // const supabase = createClient("https://xyzcompany.supabase.co", "public-anon-key")
+    // final test = await AppSupabase.client.auth.setSession(token);
+    // print('test $test');
+
+  }
+
+
+
+
+  Future<void> testBlueTooth() async {
+
+  }
+
+  Future<void> setNetwork() async {
+    final info = NetworkInfo();
+
+    var locationStatus = await Permission.location.status;
+
+    print('locationStatus $locationStatus');
+
+    if (locationStatus.isDenied) {
+      await Permission.locationWhenInUse.request();
+    }
+    if (await Permission.location.isRestricted) {
+      openAppSettings();
+    }
+
+    if (await Permission.location.isGranted) {
+          final wifiName = await info.getWifiName(); // "FooNetwork"
+          final wifiBSSID = await info.getWifiBSSID(); // 11:22:33:44:55:66
+          final wifiIP = await info.getWifiIP(); // 192.168.1.43
+          final wifiIPv6 = await info.getWifiIPv6(); // 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+          final wifiSubmask = await info.getWifiSubmask(); // 255.255.255.0
+          final wifiBroadcast = await info.getWifiBroadcast(); // 192.168.1.255
+          final wifiGateway = await info.getWifiGatewayIP(); // 192.168.1.1
+      print('wifiName $wifiName $wifiBSSID $wifiIP $wifiIPv6 $wifiSubmask $wifiBroadcast $wifiGateway');
+    }
+
+    //    final info = NetworkInfo();
+    //
 
 
   }
 
-  Future<Position> _getCurrentLocation() async {
-    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
 
-    // if (serviceEnabled == false) {
-    //   return Future.error('Определение геолокации отключено');
-    // }
-
-    LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return Future.error('Определение геолокации отключено');
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      return Future.error(
-          'Определение геолокации отключено навсегда, включите в настройках');
-    }
-
-    return await Geolocator.getCurrentPosition();
-        // .timeout(const Duration(seconds: 5)
-  }
 
   void _liveLocation() {
     LocationSettings locationSettings = const LocationSettings(
@@ -75,6 +187,39 @@ class StartViewModel extends ViewModel {
     });
   }
 
+  Future<Position> _getCurrentLocation() async {
+    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+
+    if (serviceEnabled == false) {
+      return Future.error('Определение геолокации отключено');
+    }
+
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Определение геолокации отключено');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Определение геолокации отключено навсегда, включите в настройках');
+    }
+
+    final position = await Geolocator.getCurrentPosition();
+    lat = position.latitude;
+    long = position.longitude;
+
+    print('lat $lat long $long');
+
+    notifyListeners();
+
+    return position;
+    // .timeout(const Duration(seconds: 5)
+  }
+
+
   Future<void> _openMap(String lat, String long) async {
     String googleURL =
         'https://www.google.com/maps/search/&api=1&query=$lat,$long';
@@ -84,45 +229,31 @@ class StartViewModel extends ViewModel {
         : throw 'Could not launch $googleURL';
   }
 
-  double lat = 0;
-  double long = 0;
-
-  String strLocation = '';
-
-  Future<void> onTap() async {
-    final result = await _getCurrentLocation();
-    lat = result.latitude;
-    long = result.longitude;
-
-    try {
-      List<Placemark> placemarks = await placemarkFromCoordinates(
-        lat,
-        long,
-      );
-      print(placemarks[0]);
-      // print(placemarks[0].country);
-
-      strLocation = '${placemarks[0].country}, ${placemarks[0].name}';
-
-    } catch (err) {
-      print('Ошибка определения места: $err');
-    }
-
-    print('result $lat $long');
-    notifyListeners();
-    // _liveLocation();
-  }
 
   Future<void> openMap() async {
     // _openMap(lat, long);
-    final availableMaps = await MapLauncher.installedMaps;
-    print(
-        availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
+    ////////////////////////
 
-    await availableMaps.first.showMarker(
-      coords: Coords(lat, long),
-      title: 'Ваше местоположение',
+
+    // final availableMaps = await MapLauncher.installedMaps;
+    // print(
+    //     availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
+    //
+    // await availableMaps.first.showMarker(
+    //   coords: Coords(lat, long),
+    //   title: 'Ваше местоположение',
+    // );
+    ///////////////////////
+
+    final distanceBetweenPoints = SphericalUtil.computeDistanceBetween(
+        // LatLng(51.5073509, -0.1277583),
+        // LatLng(48.856614, 2.3522219)
+        LatLng(53.1299154, 48.4251995), //lat 53.1299154 long 48.4251995
+        LatLng(53.1287946, 48.4246461)
     );
+
+    print('distanceBetweenPoints $distanceBetweenPoints');
+
   }
 
 }

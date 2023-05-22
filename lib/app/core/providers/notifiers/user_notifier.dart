@@ -248,11 +248,25 @@ class UserNotifier with ChangeNotifier {
   }
 
   void signOut(BuildContext context) {
-    // AppSupabase.client.auth.signOut();
+    AppSupabase.client.auth.signOut();
     currentUserID = '';
     userData = UserModel.emptyModel();
     context.router.push(const StartViewRoute());
   }
+
+  Future<void> firstUpdateData() async {
+    print('firstUpdateData');
+    final data = await AppSupabase.client
+        .from(AppSupabase.strUsers)
+        .select()
+        .eq('id', AppSupabase.client.auth.currentUser!.id);
+
+    final userDataMap = data[0];
+
+    userData = UserModel.fromJson(userDataMap);
+    notifyListeners();
+  }
+
 
   Future<void> setUserDataFunc({bool isInit = false}) async {
     // if (AppSupabase.client.auth.currentUser == null) {

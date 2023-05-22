@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/constants.dart';
 import 'package:network_app/ui/pages/auth_pages/start/start_vm.dart';
+import 'package:network_app/ui/pages/auth_pages/start/test.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/network_row.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
@@ -25,7 +26,10 @@ class StartView extends StatelessWidget {
       createModelDataEx: () => StartViewModel(context),
       builder: (context, model) {
         return Scaffold(
-            body: Center(
+            body:
+                // BluePage()
+
+                Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -38,39 +42,39 @@ class StartView extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(
-                  height: 30,
-                ),
+                // const SizedBox(
+                //   height: 30,
+                // ),
 
-                AppButton(
-                  height: Res.s57,
-                  onPressed: () {
-                    onUserChoosed(Constants().userOne, context);
-                  },
-                  text: 'Первый',
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-
-                AppButton(
-                  height: Res.s57,
-                  onPressed: () {
-                    onUserChoosed(Constants().userTwo, context);
-                  },
-                  text: 'Второй',
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-
-                AppButton(
-                  height: Res.s57,
-                  onPressed: () {
-                    onUserChoosed(Constants().userThree, context);
-                  },
-                  text: 'Третий',
-                ),
+                // AppButton(
+                //   height: Res.s57,
+                //   onPressed: () {
+                //     onUserChoosed(Constants().userOne, context);
+                //   },
+                //   text: 'Первый',
+                // ),
+                // const SizedBox(
+                //   height: 20,
+                // ),
+                //
+                // AppButton(
+                //   height: Res.s57,
+                //   onPressed: () {
+                //     onUserChoosed(Constants().userTwo, context);
+                //   },
+                //   text: 'Второй',
+                // ),
+                // const SizedBox(
+                //   height: 20,
+                // ),
+                //
+                // AppButton(
+                //   height: Res.s57,
+                //   onPressed: () {
+                //     onUserChoosed(Constants().userThree, context);
+                //   },
+                //   text: 'Третий',
+                // ),
 
                 // SizedBox(height: 10,),
                 //
