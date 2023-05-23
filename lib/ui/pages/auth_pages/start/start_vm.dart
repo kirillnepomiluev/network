@@ -15,7 +15,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 class StartViewModel extends ViewModel {
   StartViewModel(this.context) {
-    getInit();
+    // getInit();
   }
   final BuildContext context;
 
@@ -45,9 +45,7 @@ class StartViewModel extends ViewModel {
     }
   }
 
-  Future<void> onTap() async {
-
-    AppSupabase.client.auth.signOut();
+  Future<void> getDeviceInfo() async {
     // setNetwork();
 
     // final deviceInfoPlugin = DeviceInfoPlugin();
@@ -55,10 +53,90 @@ class StartViewModel extends ViewModel {
     // final allInfo = deviceInfo.data;
 
     // print('allInfo $allInfo');
+  }
+  Future<void> geoHash() async {
 
+    //53.138915 48.4401995
+
+    // await AppSupabase.client.from('restaurants').insert([
+    //   {
+    //     'name': 'Two',
+    //     'location': 'POINT(48.4401995 53.138915)',           //long lat
+    //   },
+    // ]);
+
+    // final data = await AppSupabase.client
+    //     .from('restaurants')
+    //     .select()
+    //     // .eq('id', AppSupabase.client.auth.currentUser!.id)
+    // ;
+    // final userDataMap = data[0];
+    // print('userDataMap $userDataMap');
+
+
+    const radius = 1;
+    const latKm =  0.0090000;
+    const longKm = 0.0150000;
+
+    const latitude1 = 53.1299150;
+    const longitude1 = 48.4251995;
+
+    const maxLat = latitude1 + (latKm*radius);
+    const maxLong = longitude1 + (longKm*radius);
+
+    const minLat = latitude1 - (latKm*radius);
+    const minLong = longitude1 - (longKm*radius);
+
+    print('minLat $minLat minLong $minLong');
+    print('maxLat $maxLat maxLong $maxLong');
+
+    // const latitude2 = 53.1287946;
+    // const longitude2 = 48.4246461;
+
+    final distanceBetweenPoints = SphericalUtil.computeDistanceBetween(
+      // LatLng(51.5073509, -0.1277583),
+      // LatLng(48.856614, 2.3522219)
+        LatLng(latitude1, longitude1), //lat 53.1299154 long 48.4251995
+        LatLng(maxLat, maxLong)
+    );
+    print('distanceBetweenPoints $distanceBetweenPoints');
+
+    final data = await AppSupabase.client.rpc('restaurants_in_view', params: {
+      'min_lat': minLat,
+      'min_long': minLong,
+      'max_lat': maxLat,
+      'max_long': maxLong,
+    });
+
+    // final data = await AppSupabase.client.rpc('restaurants_in_view', params: {
+    //   'min_lat': 40.807,
+    //   'min_long': -73.946,
+    //   'max_lat': 40.808,
+    //   'max_long': -73.945,
+    // });
+
+
+    // final data = await AppSupabase.client.rpc('nearby_restaurants',params: {
+    //   'lat': 40.807313,
+    //   'long': -73.946713,
+    // });
+
+    print('data $data');
+
+    for(final item in data){
+      print(item);
+    }
+
+
+  }
+
+  Future<void> onTap() async {
+
+    // AppSupabase.client.auth.signOut();
     // _getCurrentLocation();
 
-    // _liveLocation();
+    geoHash();
+
 
   }
 
@@ -133,12 +211,6 @@ class StartViewModel extends ViewModel {
 
   }
 
-
-
-
-  Future<void> testBlueTooth() async {
-
-  }
 
   Future<void> setNetwork() async {
     final info = NetworkInfo();
@@ -245,14 +317,6 @@ class StartViewModel extends ViewModel {
     // );
     ///////////////////////
 
-    final distanceBetweenPoints = SphericalUtil.computeDistanceBetween(
-        // LatLng(51.5073509, -0.1277583),
-        // LatLng(48.856614, 2.3522219)
-        LatLng(53.1299154, 48.4251995), //lat 53.1299154 long 48.4251995
-        LatLng(53.1287946, 48.4246461)
-    );
-
-    print('distanceBetweenPoints $distanceBetweenPoints');
 
   }
 
