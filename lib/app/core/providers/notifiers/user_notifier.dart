@@ -20,7 +20,7 @@ class UserModel {
     this.hideAge = false,
     this.sex = '',
     this.hideSex = false,
-    this.levelText = '',
+    this.rankText = '',
     required this.interests,
     this.status = '',
     required this.occupation,
@@ -78,7 +78,7 @@ class UserModel {
     final stars4 = dataMap[getStarsKey(4)];
     final stars5 = dataMap[getStarsKey(5)];
 
-    //(5*252 + 4*124 + 3*40 + 2*29 + 1*33) / (252+124+40+29+33) = 4.11 and change
+    // (5*252 + 4*124 + 3*40 + 2*29 + 1*33) / (252+124+40+29+33) = 4.11 and change
     // final stars1 = 33;
     // final stars2 = 29;
     // final stars3 = 40;
@@ -100,15 +100,18 @@ class UserModel {
     DateTime createdDate = Utils.getDate(dataMap['created_date'])!;
     DateTime? birthdayDate = DateTime.tryParse(dataMap['birthday_date']);
     String age = _getAge(birthdayDate);
-    final mapLevel = dataMap['level'];
-    String levelText = '';
-    if (mapLevel == 'base') {
-      levelText = AppString().base;
-    } else if (mapLevel == 'standart') {
-      levelText = AppString().standart;
+    // final mapRank = dataMap['level'];
+    final mapRank = dataMap['rank'];
+    String rankText = '';
+    if (mapRank == 'base') {
+      rankText = AppString().base;
+    } else if (mapRank == 'standart') {
+      rankText = AppString().standart;
     } else {
-      levelText = AppString().premium;
+      rankText = AppString().premium;
     }
+
+    print('rankText $rankText');
 
     List avatarBodyCupboard = dataMap['avatar_body_cupboard'];
     List avatarHeadCupboard = dataMap['avatar_head_cupboard'];
@@ -128,7 +131,7 @@ class UserModel {
       hideAge: dataMap['hide_age'],
       sex: dataMap['sex'],
       hideSex: dataMap['hide_sex'],
-      levelText: levelText,
+      rankText: rankText,
       interests: dataMap['interests'],
       status: dataMap['status'],
       occupation: dataMap['occupation'],
@@ -191,7 +194,7 @@ class UserModel {
   final bool hideMeetingsGoal;
   final String sex;
   final bool hideSex;
-  final String levelText;
+  final String rankText;
   final List interests;
   final String status;
   final List occupation;

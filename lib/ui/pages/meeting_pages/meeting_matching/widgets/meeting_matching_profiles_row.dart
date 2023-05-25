@@ -25,7 +25,7 @@ class MeetingMatchingProfilesRow extends StatelessWidget {
       children: [
         MeetingMatchingProfileInfo(
           strName: userData.name,
-          level: userData.levelText,
+          level: userData.rankText,
           imageUrl: Assets.images.avatars.avatar0.keyName,
         ),
         Padding(
@@ -39,7 +39,7 @@ class MeetingMatchingProfilesRow extends StatelessWidget {
             ),),
         MeetingMatchingProfileInfo(
           strName: creatorModel.name,
-          level: creatorModel.levelText,
+          level: creatorModel.rankText,
           imageUrl: Assets.images.avatars.avatar1.keyName,
         ),
       ],

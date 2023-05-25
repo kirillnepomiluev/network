@@ -41,7 +41,7 @@ class Utils {
         .select()
         .eq('id', AppSupabase.client.auth.currentUser!.id);
 
-    level = data[0]['level']??'';
+    level = data[0]['rank']??'';
 
     if(level.isEmpty){
       context.router.push(const RegSuccessViewRoute());

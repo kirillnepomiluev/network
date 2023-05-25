@@ -104,7 +104,7 @@ class ChooseMeetingPersonView extends StatelessWidget {
                                           ),
 
                                               Text(
-                                                '${AppString.of(context).level} "${partnerModel.levelText}"',
+                                                '${AppString.of(context).level} "${partnerModel.rankText}"',
                                               ),
 
                                           SizedBox(height: Res.s20),

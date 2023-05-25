@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:flutter/material.dart';
@@ -14,24 +16,16 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class StartViewModel extends ViewModel {
+  final BuildContext context;
   StartViewModel(this.context) {
     // getInit();
   }
-  final BuildContext context;
-
-  final controller = TextEditingController();
-
-
   Future<void> getInit() async {
-
     if (AppSupabase.client.auth.currentUser == null) {
       print('Не авторизован');
       context.router.push(const LoginViewRoute());
       // context.router.push(ContractTestViewRoute());
-
     } else {
-
-
       print('Авторизован');
 
       final userNotifier = Provider.of<UserNotifier>(context, listen: false);
@@ -39,10 +33,38 @@ class StartViewModel extends ViewModel {
       await userNotifier.setUserDataFunc();
 
       Utils.checkReg(context);
-
       // // context.router.push(const ConnectMetamaskViewRoute());
       // context.router.push(ContractTestViewRoute());
     }
+  }
+
+  Future<void> onTap() async {
+    // final List data = await AppSupabase.client
+    //     .from('clothes')
+    //     .select('title, users!users_avatar_body_id_fkey!inner(name)')
+    //     // .eq('users_name', 'Admin')
+    // ;
+
+    final List data = await AppSupabase.client
+        .from('users')
+        .select('name, clothes!users_avatar_body_id_fkey!left(level)')
+        .gte('clothes.level', 2)
+    ;
+
+    final newList = data
+        .where((element) => element['clothes'] != null)
+        // .map((map) => Message.fromMap(map: map, myUserId: myUserId))
+        // .map((map) => true)
+        .toList();
+
+    print('data $data');
+    print('newList $newList');
+    // final level = data['clothes']['level'];
+    // print('level $level');
+
+
+    // final first = data.first;
+    // print('first $first');
   }
 
   Future<void> getDeviceInfo() async {
@@ -54,8 +76,8 @@ class StartViewModel extends ViewModel {
 
     // print('allInfo $allInfo');
   }
-  Future<void> geoHash() async {
 
+  Future<void> geoHash() async {
     //53.138915 48.4401995
 
     // await AppSupabase.client.from('restaurants').insert([
@@ -73,19 +95,18 @@ class StartViewModel extends ViewModel {
     // final userDataMap = data[0];
     // print('userDataMap $userDataMap');
 
-
     const radius = 1;
-    const latKm =  0.0090000;
+    const latKm = 0.0090000;
     const longKm = 0.0150000;
 
     const latitude1 = 53.1299150;
     const longitude1 = 48.4251995;
 
-    const maxLat = latitude1 + (latKm*radius);
-    const maxLong = longitude1 + (longKm*radius);
+    const maxLat = latitude1 + (latKm * radius);
+    const maxLong = longitude1 + (longKm * radius);
 
-    const minLat = latitude1 - (latKm*radius);
-    const minLong = longitude1 - (longKm*radius);
+    const minLat = latitude1 - (latKm * radius);
+    const minLong = longitude1 - (longKm * radius);
 
     print('minLat $minLat minLong $minLong');
     print('maxLat $maxLat maxLong $maxLong');
@@ -94,11 +115,10 @@ class StartViewModel extends ViewModel {
     // const longitude2 = 48.4246461;
 
     final distanceBetweenPoints = SphericalUtil.computeDistanceBetween(
-      // LatLng(51.5073509, -0.1277583),
-      // LatLng(48.856614, 2.3522219)
+        // LatLng(51.5073509, -0.1277583),
+        // LatLng(48.856614, 2.3522219)
         LatLng(latitude1, longitude1), //lat 53.1299154 long 48.4251995
-        LatLng(maxLat, maxLong)
-    );
+        LatLng(maxLat, maxLong));
     print('distanceBetweenPoints $distanceBetweenPoints');
 
     final data = await AppSupabase.client.rpc('restaurants_in_view', params: {
@@ -115,7 +135,6 @@ class StartViewModel extends ViewModel {
     //   'max_long': -73.945,
     // });
 
-
     // final data = await AppSupabase.client.rpc('nearby_restaurants',params: {
     //   'lat': 40.807313,
     //   'long': -73.946713,
@@ -123,34 +142,18 @@ class StartViewModel extends ViewModel {
 
     print('data $data');
 
-    for(final item in data){
+    for (final item in data) {
       print(item);
     }
-
-
   }
-
-  Future<void> onTap() async {
-
-    // AppSupabase.client.auth.signOut();
-    // _getCurrentLocation();
-
-    geoHash();
-
-
-  }
-
-
-
-
 
   double lat = 0;
   double long = 0;
 
   String strLocation = '';
 
-  final jwtsecret = 'zhLvPhnmjpEAzYWsiUEY035UfQqvfw11tr9nHwcnKBmaj/h8Mi1c5Ho1k1xa5eCmaKVdEmM2bC4B7f5CvTua3A==';
-
+  final jwtsecret =
+      'zhLvPhnmjpEAzYWsiUEY035UfQqvfw11tr9nHwcnKBmaj/h8Mi1c5Ho1k1xa5eCmaKVdEmM2bC4B7f5CvTua3A==';
 
   Future<void> jwtGet() async {
 // Create a json web token
@@ -184,14 +187,14 @@ class StartViewModel extends ViewModel {
 
     print('Signed token: $token\n');
 
-    AppSupabase.client.from(AppSupabase.strUsers).insert({},);
-
+    AppSupabase.client.from(AppSupabase.strUsers).insert(
+      {},
+    );
   }
 
-
   Future<void> jwtTest() async {
-
-    final token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODQyNTExMTAsImF1ZCI6ImF1dGhlbnRpY2F0ZWQiLCJzdWIiOiIweDA5QmU2ZDNGZjVhMkExMTBlMjExMTdlMUZGNjlENTVFNjFjQjViMTciLCJpc3MiOiJzdXBhYmFzZSJ9.OZ7kHa_Tk1yXM5zIywPGvUhxX3BiMF64jWzx9cqRy5E';
+    final token =
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODQyNTExMTAsImF1ZCI6ImF1dGhlbnRpY2F0ZWQiLCJzdWIiOiIweDA5QmU2ZDNGZjVhMkExMTBlMjExMTdlMUZGNjlENTVFNjFjQjViMTciLCJpc3MiOiJzdXBhYmFzZSJ9.OZ7kHa_Tk1yXM5zIywPGvUhxX3BiMF64jWzx9cqRy5E';
 
     // final res = await AppSupabase.client.functions.invoke(
     //   'hello-world',
@@ -204,13 +207,10 @@ class StartViewModel extends ViewModel {
     // print(res.status);
     // print(res.data);
 
-
     // const supabase = createClient("https://xyzcompany.supabase.co", "public-anon-key")
     // final test = await AppSupabase.client.auth.setSession(token);
     // print('test $test');
-
   }
-
 
   Future<void> setNetwork() async {
     final info = NetworkInfo();
@@ -227,23 +227,21 @@ class StartViewModel extends ViewModel {
     }
 
     if (await Permission.location.isGranted) {
-          final wifiName = await info.getWifiName(); // "FooNetwork"
-          final wifiBSSID = await info.getWifiBSSID(); // 11:22:33:44:55:66
-          final wifiIP = await info.getWifiIP(); // 192.168.1.43
-          final wifiIPv6 = await info.getWifiIPv6(); // 2001:0db8:85a3:0000:0000:8a2e:0370:7334
-          final wifiSubmask = await info.getWifiSubmask(); // 255.255.255.0
-          final wifiBroadcast = await info.getWifiBroadcast(); // 192.168.1.255
-          final wifiGateway = await info.getWifiGatewayIP(); // 192.168.1.1
-      print('wifiName $wifiName $wifiBSSID $wifiIP $wifiIPv6 $wifiSubmask $wifiBroadcast $wifiGateway');
+      final wifiName = await info.getWifiName(); // "FooNetwork"
+      final wifiBSSID = await info.getWifiBSSID(); // 11:22:33:44:55:66
+      final wifiIP = await info.getWifiIP(); // 192.168.1.43
+      final wifiIPv6 =
+          await info.getWifiIPv6(); // 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+      final wifiSubmask = await info.getWifiSubmask(); // 255.255.255.0
+      final wifiBroadcast = await info.getWifiBroadcast(); // 192.168.1.255
+      final wifiGateway = await info.getWifiGatewayIP(); // 192.168.1.1
+      print(
+          'wifiName $wifiName $wifiBSSID $wifiIP $wifiIPv6 $wifiSubmask $wifiBroadcast $wifiGateway');
     }
 
     //    final info = NetworkInfo();
     //
-
-
   }
-
-
 
   void _liveLocation() {
     LocationSettings locationSettings = const LocationSettings(
@@ -291,7 +289,6 @@ class StartViewModel extends ViewModel {
     // .timeout(const Duration(seconds: 5)
   }
 
-
   Future<void> _openMap(String lat, String long) async {
     String googleURL =
         'https://www.google.com/maps/search/&api=1&query=$lat,$long';
@@ -301,11 +298,9 @@ class StartViewModel extends ViewModel {
         : throw 'Could not launch $googleURL';
   }
 
-
   Future<void> openMap() async {
     // _openMap(lat, long);
     ////////////////////////
-
 
     // final availableMaps = await MapLauncher.installedMaps;
     // print(
@@ -316,10 +311,7 @@ class StartViewModel extends ViewModel {
     //   title: 'Ваше местоположение',
     // );
     ///////////////////////
-
-
   }
-
 }
 
 // Widget build(BuildContext context) {

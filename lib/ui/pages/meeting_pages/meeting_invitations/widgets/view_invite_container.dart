@@ -61,7 +61,7 @@ class _ViewInviteContainerState extends State<ViewInviteContainer> {
   @override
   Widget build(BuildContext context) {
     final creatorName = '${creatorModel.name}, ${creatorModel.age}';
-    final level = creatorModel.levelText;
+    final level = creatorModel.rankText;
     final meetingType = widget.meetingModel.type;
     return !show
         ? Container()
