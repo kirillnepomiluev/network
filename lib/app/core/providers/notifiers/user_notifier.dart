@@ -5,12 +5,14 @@ import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/utils/utils.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 // final userData = Provider.of<UserNotifier>(context).userData;
 class UserModel {
   UserModel({
     this.id,
     this.personID = -1,
+    this.level = 0,
     this.age = '',
     this.name = '',
     this.phone = '',
@@ -51,6 +53,8 @@ class UserModel {
     required this.avatarBodyCupboard,
     required this.avatarHeadCupboard,
     required this.clothesIdList,
+    this.lat,
+    this.long,
   });
 
   factory UserModel.emptyModel() {
@@ -111,8 +115,6 @@ class UserModel {
       rankText = AppString().premium;
     }
 
-    print('rankText $rankText');
-
     List avatarBodyCupboard = dataMap['avatar_body_cupboard'];
     List avatarHeadCupboard = dataMap['avatar_head_cupboard'];
     List clothesIdList = [...avatarBodyCupboard, ...avatarHeadCupboard];
@@ -122,6 +124,7 @@ class UserModel {
     return UserModel(
       id: dataMap['id'],
       personID: dataMap['person_id'],
+      level: dataMap['level'],
       name: dataMap['name'],
       phone: dataMap['phone'] ?? '',
       email: dataMap['email'] ?? '',
@@ -162,6 +165,8 @@ class UserModel {
       ratingStars3: dataMap[getStarsKey(3)],
       ratingStars4: dataMap[getStarsKey(4)],
       ratingStars5: dataMap[getStarsKey(5)],
+      lat: dataMap['lat'],
+      long: dataMap['long'],
     );
   }
 
@@ -223,6 +228,9 @@ class UserModel {
   final List avatarBodyCupboard;
   final List avatarHeadCupboard;
   final List clothesIdList;
+  final double? lat;
+  final double? long;
+  final int level;
 
   @override
   String toString() {
@@ -233,7 +241,9 @@ class UserModel {
 
 //Для управления данными авторизованного юзера (нельзя исп. на стр. входа, т.к. содержит в себе currentUser. Вызовет null exception)
 class UserNotifier with ChangeNotifier {
+
   UserModel userData = UserModel.emptyModel();
+
   // UserModel(
   //   createdDate: DateTime.now(),
   //   interests: [],
@@ -256,6 +266,11 @@ class UserNotifier with ChangeNotifier {
     userData = UserModel.emptyModel();
     context.router.push(const StartViewRoute());
   }
+
+  // static final stream = AppSupabase.client
+  //     .from(AppSupabase.strUsers)
+  //     .select('*, clothes!users_avatar_body_id_fkey!inner(level)')
+  //     .eq('id', AppSupabase.client.auth.currentUser!.id);
 
   Future<void> firstUpdateData() async {
     print('firstUpdateData');
@@ -333,16 +348,16 @@ class UserNotifier with ChangeNotifier {
 UserNotifier initData() {
   UserNotifier userNotifier = UserNotifier();
 
-  // AppSupabase.client.auth.onAuthStateChange.listen((data) {
-  //   final AuthChangeEvent event = data.event;
-  //   if (event == AuthChangeEvent.signedIn) {
-  //     print('авторизован');
-  //     userNotifier.setUserDataFunc();
-  //     // settingsNotifier.setSettings();
-  //   } else {
-  //     print('не авторизован');
-  //   }
-  // });
+  AppSupabase.client.auth.onAuthStateChange.listen((data) {
+    final AuthChangeEvent event = data.event;
+    if (event == AuthChangeEvent.signedIn) {
+      print('initData авторизован');
+      userNotifier.setUserDataFunc();
+    } else {
+      print('не авторизован');
+    }
+  });
+
 
   return userNotifier;
 }

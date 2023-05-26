@@ -9,7 +9,7 @@ class AppProviders{
   static final List<SingleChildWidget> provider = [
     // ChangeNotifierProvider<UserNotifier>(create: (context) => UserNotifier()), //данные для авторизованного
     ChangeNotifierProvider<UserNotifier>(create: (context) => initData()), //данные для авторизованного
-    ChangeNotifierProvider<SettingsNotifier>(create: (context) => SettingsNotifier()), //данные настроек
+    ChangeNotifierProvider<SettingsNotifier>(create: (context) => initSettings(context)), //данные настроек
     ChangeNotifierProvider<ERC721ContractNotifier>(create: (context) => ERC721ContractNotifier()), //данные контрактов/
   ];
 }

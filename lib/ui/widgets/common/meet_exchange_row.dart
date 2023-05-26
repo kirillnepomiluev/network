@@ -60,7 +60,6 @@ class MeetExchangeRow extends StatelessWidget {
                     style: AppTextStyles.black,
                   ),
 
-                  //иконка >>
                   const MeetRowIconNext(),
                 ],
               ),

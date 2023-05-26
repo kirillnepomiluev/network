@@ -2,11 +2,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
+import 'package:network_info_plus/network_info_plus.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
 
 class Utils {
+
+  static String getLevel(int level) => level<1? 'Нет костюма' : 'Уровень $level';
+
+
 
   static String getEnv(String title) => dotenv.env[title]!;
 
@@ -35,20 +42,32 @@ class Utils {
 
 
   static Future<void> checkReg(BuildContext context) async {
-    String level = '';
-    final data = await AppSupabase.client
-        .from(AppSupabase.strUsers)
-        .select()
-        .eq('id', AppSupabase.client.auth.currentUser!.id);
 
-    level = data[0]['rank']??'';
+    final userNotifier = Provider.of<UserNotifier>(context, listen: false);
 
-    if(level.isEmpty){
+    await userNotifier.firstUpdateData();
+
+    final userData = userNotifier.userData;
+    final name = userData.name;
+    print('name $name');
+    if(name.isEmpty){
       context.router.push(const RegSuccessViewRoute());
     }
     else{
       context.router.push(HomeViewRoute(),);
     }
+
+    // String level = '';
+    // final data = await AppSupabase.client
+    //     .from(AppSupabase.strUsers)
+    //     .select()
+    //     .eq('id', AppSupabase.client.auth.currentUser!.id);
+    //
+    // level = data[0]['rank']??'';
+    //
+
+
+
   }
 
 
@@ -96,7 +115,58 @@ class Utils {
 
     return resultMap;
   }
+
+
+
+  Future<void> getDeviceInfo() async {
+    // setNetwork();
+
+    // final deviceInfoPlugin = DeviceInfoPlugin();
+    // final deviceInfo = await deviceInfoPlugin.deviceInfo;
+    // final allInfo = deviceInfo.data;
+
+    // print('allInfo $allInfo');
+  }
+
+
+
+
+  Future<void> setNetwork() async {
+    final info = NetworkInfo();
+
+    var locationStatus = await Permission.location.status;
+
+    print('locationStatus $locationStatus');
+
+    if (locationStatus.isDenied) {
+      await Permission.locationWhenInUse.request();
+    }
+    if (await Permission.location.isRestricted) {
+      openAppSettings();
+    }
+
+    if (await Permission.location.isGranted) {
+      final wifiName = await info.getWifiName(); // "FooNetwork"
+      final wifiBSSID = await info.getWifiBSSID(); // 11:22:33:44:55:66
+      final wifiIP = await info.getWifiIP(); // 192.168.1.43
+      final wifiIPv6 =
+      await info.getWifiIPv6(); // 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+      final wifiSubmask = await info.getWifiSubmask(); // 255.255.255.0
+      final wifiBroadcast = await info.getWifiBroadcast(); // 192.168.1.255
+      final wifiGateway = await info.getWifiGatewayIP(); // 192.168.1.1
+      print(
+          'wifiName $wifiName $wifiBSSID $wifiIP $wifiIPv6 $wifiSubmask $wifiBroadcast $wifiGateway');
+    }
+
+    //    final info = NetworkInfo();
+    //
+  }
+
+
 }
+
+
+
 
 class HobbyModel {
   HobbyModel(this.title, this.index, {this.active = false});

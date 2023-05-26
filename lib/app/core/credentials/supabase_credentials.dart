@@ -20,4 +20,12 @@ class AppSupabase{
   static const String strMeetings = 'meetings';
   static const String strOrders = 'orders';
 
+
+  // static Future<List> selectData() async {
+  //
+  //   final stream = client.from(strUsers).select().eq('id', 'value');
+  //
+  //   return [];
+  // }
+
 }

@@ -31,17 +31,17 @@ class ClothesCarousels extends StatelessWidget {
               scrollController: model.bodyScrollContr,
               productType: StoreProductType.body,
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            //Головные уборы
-            ViewAvatarsCarousel(
-              isCupboard: isCupboard,
-              title: AppString.of(context).headwears,
-              onTap: model.goViewCategory,
-              scrollController: model.headScrollContr,
-              productType: StoreProductType.head,
-            ),
+            // const SizedBox(
+            //   height: 20,
+            // ),
+            // //Головные уборы
+            // ViewAvatarsCarousel(
+            //   isCupboard: isCupboard,
+            //   title: AppString.of(context).headwears,
+            //   onTap: model.goViewCategory,
+            //   scrollController: model.headScrollContr,
+            //   productType: StoreProductType.head,
+            // ),
             const SizedBox(
               height: 85,
             ),
