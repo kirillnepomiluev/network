@@ -1,21 +1,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
-import 'package:network_app/app/core/providers/notifiers/settings_notifier.dart';
-import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_geo.dart';
 
-import 'package:provider/provider.dart';
 
 class StartViewModel extends ViewModel {
   final BuildContext context;
   StartViewModel(this.context) {
     getInit();
-    // context.router.push(const GeolocationTurnOnViewRoute());
   }
+
   Future<void> getInit() async {
     if (AppSupabase.client.auth.currentUser == null) {
       print('Не авторизован');
@@ -38,19 +35,16 @@ class StartViewModel extends ViewModel {
 
   Future<void> onTap() async {
 
+
+    // const id = '6c4ba474-d378-4b64-84de-729873895b11';
+
+
+    // UtilsGeo.getUsersByRadius();
+    // UtilsGeo.getUsersInSquare();
+
+
     // const lat = 53.1299150;
     // const long = 48.4251995;
-    // const id = '6c4ba474-d378-4b64-84de-729873895b11';
-    //
-    // await AppSupabase.client
-    //     .from(AppSupabase.strUsers)
-    //     .update({
-    //   'lat': lat,
-    //   'long': long,
-    //   'location': 'POINT($long $lat)'
-    //     }).eq('id', id);
-
-    UtilsGeo.getUsersByRadius();
 
   }
 }

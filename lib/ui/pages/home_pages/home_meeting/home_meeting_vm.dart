@@ -10,11 +10,14 @@ import 'package:provider/provider.dart';
 
 
 class MeetingMainViewModel extends ViewModel {
+  final BuildContext context;
   MeetingMainViewModel(this.context) {
     final settingsNotifier = Provider.of<SettingsNotifier>(context, listen: false);
     pageController = PageController(initialPage: settingsNotifier.initialPage);
   }
-  final BuildContext context;
+
+
+
 
   ActiveMeetingTabs activeTab = ActiveMeetingTabs.values.first;
 

@@ -12,10 +12,10 @@ import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 
 class MeetingPartnerContainer extends StatefulWidget {
   const MeetingPartnerContainer({
-    super.key, required this.dataMap,
+    super.key, required this.partnerModel,
   });
 
-  final Map<String, dynamic> dataMap;
+  final UserModel partnerModel;
 
   @override
   State<MeetingPartnerContainer> createState() => _MeetingPartnerContainerState();
@@ -26,11 +26,12 @@ class _MeetingPartnerContainerState extends State<MeetingPartnerContainer> {
     context.router.push(const PersonProfileViewRoute());
   }
 
-  late UserModel partnerModel;
+  // late UserModel partnerModel;
 
   @override
   void initState() {
-    partnerModel = UserModel.fromJson(widget.dataMap);
+    print('init ${widget.partnerModel.name}');
+    // partnerModel = UserModel.fromJson(widget.userModel);
     super.initState();
   }
 
@@ -45,7 +46,7 @@ class _MeetingPartnerContainerState extends State<MeetingPartnerContainer> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              MeetingPartnerInfo(onPartnerTap: onPartnerTap, partnerModel: partnerModel,),
+              MeetingPartnerInfo(onPartnerTap: onPartnerTap, partnerModel: widget.partnerModel,),
               MeetExchangeRow(
                 onTap: () {
                   context.router.push(MeetingTimerViewRoute());

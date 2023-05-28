@@ -55,6 +55,7 @@ class UserModel {
     required this.clothesIdList,
     this.lat,
     this.long,
+    this.location,
   });
 
   factory UserModel.emptyModel() {
@@ -121,6 +122,8 @@ class UserModel {
 
     final rating = getRating(dataMap);
 
+    // print('zz location ${dataMap['location']}');
+
     return UserModel(
       id: dataMap['id'],
       personID: dataMap['person_id'],
@@ -167,6 +170,7 @@ class UserModel {
       ratingStars5: dataMap[getStarsKey(5)],
       lat: dataMap['lat'],
       long: dataMap['long'],
+      location: dataMap['location'],
     );
   }
 
@@ -230,6 +234,7 @@ class UserModel {
   final List clothesIdList;
   final double? lat;
   final double? long;
+  final String? location;
   final int level;
 
   @override
@@ -241,7 +246,6 @@ class UserModel {
 
 //Для управления данными авторизованного юзера (нельзя исп. на стр. входа, т.к. содержит в себе currentUser. Вызовет null exception)
 class UserNotifier with ChangeNotifier {
-
   UserModel userData = UserModel.emptyModel();
 
   // UserModel(
@@ -285,7 +289,6 @@ class UserNotifier with ChangeNotifier {
     notifyListeners();
   }
 
-
   Future<void> setUserDataFunc({bool isInit = false}) async {
     // if (AppSupabase.client.auth.currentUser == null) {
     //   return;
@@ -299,17 +302,15 @@ class UserNotifier with ChangeNotifier {
           .stream(primaryKey: ['id'])
           .eq('id', userID)
           .listen((List<Map<String, dynamic>> data) {
-
             Map<String, dynamic> userDataMap = data.first;
             // userData = UserModel(name: userDataMep['name']);
 
-            if(currentUserID==userDataMap['id']){
+            if (currentUserID == userDataMap['id']) {
               userData = UserModel.fromJson(userDataMap);
               if (isInit == false) {
                 notifyListeners();
               }
             }
-
           })
           .onError((e) {
             print('Ошибка в setUserDataFunc: $e');
@@ -317,9 +318,19 @@ class UserNotifier with ChangeNotifier {
     } else {}
   }
 
+  Future<void> locationUpdateData({
+    required double lat,
+    required double long,
+  }) async {
+    updateData(
+        newData: {'lat': lat, 'long': long, 'location': 'POINT($lat $long)'});
+  }
+
+
+
   Future<void> updateData({required Map<String, dynamic> newData}) async {
     if (AppSupabase.client.auth.currentUser == null) {
-    // if (currentUserID.isEmpty) {  //для теста при переключении
+      // if (currentUserID.isEmpty) {  //для теста при переключении
       print('Нельзя обновить данные - не авторизован');
     } else {
       final id = AppSupabase.client.auth.currentUser!.id;
@@ -333,7 +344,6 @@ class UserNotifier with ChangeNotifier {
       } catch (error) {
         print('updateData error - $error');
       }
-
     }
 
     // final response = await AppSupabase.client
@@ -358,7 +368,5 @@ UserNotifier initData() {
     }
   });
 
-
   return userNotifier;
 }
-

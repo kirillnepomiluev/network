@@ -136,8 +136,6 @@ class Utils {
 
     var locationStatus = await Permission.location.status;
 
-    print('locationStatus $locationStatus');
-
     if (locationStatus.isDenied) {
       await Permission.locationWhenInUse.request();
     }

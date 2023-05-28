@@ -7,13 +7,15 @@ import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class UtilsGeo{
-
+class UtilsGeo {
   static Future<Position?> getCurrentLocation(BuildContext context) async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
 
     if (serviceEnabled == false) {
-      showSimpleDialog(title: 'Недоступно', text: 'Опеределение геолокации отключено', context: context);
+      showSimpleDialog(
+          title: 'Недоступно',
+          text: 'Опеределение геолокации отключено',
+          context: context,);
       return null;
       // return Future.error('Определение геолокации отключено');
     }
@@ -22,21 +24,27 @@ class UtilsGeo{
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        showSimpleDialog(title: 'Недоступно', text: 'Опеределение геолокации отключено', context: context);
+        showSimpleDialog(
+            title: 'Недоступно',
+            text: 'Опеределение геолокации отключено',
+            context: context,);
         return null;
         // return Future.error('Определение геолокации отключено');
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      showSimpleDialog(title: 'Недоступно', text: 'Опеределение геолокации отключено навсегда, включите в настройках', context: context);
+      showSimpleDialog(
+          title: 'Недоступно',
+          text:
+              'Опеределение геолокации отключено навсегда, включите в настройках',
+          context: context,);
       return null;
       // return Future.error(
       //     'Определение геолокации отключено навсегда, включите в настройках');
     }
 
     final Position position = await Geolocator.getCurrentPosition();
-
 
     // notifyListeners();
 
@@ -69,13 +77,15 @@ class UtilsGeo{
   }
 
   static Future<bool> liveLocation(BuildContext context) async {
-
     final userNotifier = Provider.of<UserNotifier>(context, listen: false);
 
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
 
     if (serviceEnabled == false) {
-      showSimpleDialog(title: 'Недоступно', text: 'Опеределение геолокации отключено', context: context);
+      showSimpleDialog(
+          title: 'Недоступно',
+          text: 'Опеределение геолокации отключено',
+          context: context,);
       return false;
     }
 
@@ -83,14 +93,21 @@ class UtilsGeo{
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        showSimpleDialog(title: 'Недоступно', text: 'Опеределение геолокации отключено', context: context);
+        showSimpleDialog(
+            title: 'Недоступно',
+            text: 'Опеределение геолокации отключено',
+            context: context,);
         return false;
         // return Future.error('Определение геолокации отключено');
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      showSimpleDialog(title: 'Недоступно', text: 'Опеределение геолокации отключено навсегда, включите в настройках', context: context);
+      showSimpleDialog(
+          title: 'Недоступно',
+          text:
+              'Опеределение геолокации отключено навсегда, включите в настройках',
+          context: context,);
       return false;
       // return Future.error(
       //     'Определение геолокации отключено навсегда, включите в настройках');
@@ -103,84 +120,123 @@ class UtilsGeo{
 
     Geolocator.getPositionStream(locationSettings: locationSettings)
         .listen((Position position) {
+
       final lat = position.latitude;
       final long = position.longitude;
       print('live $lat $long');
 
-      userNotifier.updateData(newData: {
-        'lat' : lat,
-        'long' : long,
-        'location' : 'POINT($lat $long)'
-      });
+      userNotifier.locationUpdateData(lat: lat, long: long);
 
     });
 
     return true;
-
   }
 
+  static Future<List> getUsersByRadius({required num radius}) async {
+    // const radius = 2.5;
 
-  static Future<List> getUsersByRadius() async {
-    const radius = 10;
+    print('getUsersByRadius $radius');
+
+    const myLat = 53.1299150;
+    const myLong = 48.4251995; //7 после точки
+
+    final data = await AppSupabase.client.rpc('nearby_users_by_level', params: {
+      'max_distance': radius * 1000.00,
+      'my_lat': myLat,
+      'my_long': myLong
+    },);
+
+    for (final item in data) {
+      print('${item['name']} ${item['location']} lat ${item['lat']} long ${item['long']} dist_meters ${item['dist_meters']}',);
+    }
+
+    return data;
+  }
+
+  static Future<List> getUsersInSquare() async {
+
+    const id1 = '6c4ba474-d378-4b64-84de-729873895b11';
+    const id2 = '8a3c903d-5be8-4551-98bb-5cef4f9ab142';
+    const id3 = 'b5fc9702-3b39-48aa-ab77-3e33b4420bf9';
+    const id4 = 'd54726fd-a7d5-447b-b43b-dcac85097776';
+    const id5 = 'c9e44e05-7ed0-4c95-8f81-d023ab2ca443';
+    const id = id5;
+
+    const radius = 4.5;
+
     const latKm = 0.0090000;
     const longKm = 0.0150000;
 
     const latitude1 = 53.1299150;
-    const longitude1 = 48.4251995;
+    const longitude1 = 48.4251995; //7 после точки
 
-    const maxLat = latitude1 + (latKm * radius);
-    const maxLong = longitude1 + (longKm * radius);
-
-    const minLat = latitude1 - (latKm * radius);
-    const minLong = longitude1 - (longKm * radius);
+    final maxLat = latitude1 + _getNum(latKm * radius);
+    final maxLong = longitude1 + _getNum(longKm * radius);
+    final minLat = latitude1 - _getNum(latKm * radius);
+    final minLong = longitude1 - _getNum(longKm * radius);
 
     print('minLat $minLat minLong $minLong');
     print('maxLat $maxLat maxLong $maxLong');
 
-    // const latitude2 = 53.1287946;
-    // const longitude2 = 48.4246461;
 
-    // final distanceBetweenPoints = SphericalUtil.computeDistanceBetween(
-    //   // LatLng(51.5073509, -0.1277583),
-    //   // LatLng(48.856614, 2.3522219)
-    //     LatLng(latitude1, longitude1), //lat 53.1299154 long 48.4251995
-    //     LatLng(maxLat, maxLong));
-    // print('distanceBetweenPoints $distanceBetweenPoints');
 
-    // final data = await AppSupabase.client.rpc('nearby_users_all',params: {
-    //   'lat': latitude1, //40.807313,
-    //   'long': longitude1 //-73.946713,
-    // });
+    final lat = latitude1;
+    final long = maxLong;
 
-    final List data = await AppSupabase.client.rpc('nearby_users_square', params: {
+    await AppSupabase.client
+        .from(AppSupabase.strUsers)
+        .update({
+      'lat': lat,
+      'long': long,
+      'location': 'POINT($long $lat)'
+        }).eq('id', id);
+
+
+    // final List data = [];
+    final List data =
+        await AppSupabase.client.rpc('nearby_users_square', params: {
+      'my_lat': latitude1,
+      'my_long': longitude1,
       'min_lat': minLat,
       'min_long': minLong,
       'max_lat': maxLat,
       'max_long': maxLong,
-    });
-
-    // final data = await AppSupabase.client.rpc('restaurants_in_view', params: {
-    //   'min_lat': 40.807,
-    //   'min_long': -73.946,
-    //   'max_lat': 40.808,
-    //   'max_long': -73.945,
-    // });
-
-    // final data = await AppSupabase.client.rpc('nearby_restaurants',params: {
-    //   'lat': 40.807313,
-    //   'long': -73.946713,
-    // });
-
-    // print('data $data');
-
-    final list = data.where((element) => element['dist_meters']!=null).toList();
-
+    },);
     for (final item in data) {
-      print(item);
+      print('${item['name']} ${item['location']} lat ${item['lat']} long ${item['long']} dist_meters ${item['dist_meters']}',);
+      // print(item);
     }
 
     return data;
-
   }
 
+  static double _getNum(value) {
+    return double.parse(value.toStringAsFixed(7));
+  }
+
+  static num culcDistance({required double lat1, required double long1, required double lat2, required double long2}) {
+
+    final distance = SphericalUtil.computeDistanceBetween(
+        LatLng(lat1, long1), //lat 53.1299154 long 48.4251995
+        LatLng(lat2, long2),);
+
+    print('distance $distance');
+
+    return distance;
+
+    // final distanceBetweenPoints = SphericalUtil.computeDistanceBetween(
+    //     LatLng(latitude1, longitude1), //lat 53.1299154 long 48.4251995
+    //     LatLng(item['lat'], item['long']));
+    // print('distanceBetweenPoints $distanceBetweenPoints');
+  }
 }
+
+// final data = await AppSupabase.client.rpc('nearby_users_all',params: {
+//   'lat': latitude1, //40.807313,
+//   'long': longitude1 //-73.946713,
+// });
+
+// final distanceBetweenPoints = SphericalUtil.computeDistanceBetween(
+//     LatLng(latitude1, longitude1), //lat 53.1299154 long 48.4251995
+//     LatLng(maxLat, maxLong));
+// print('distanceBetweenPoints $distanceBetweenPoints');
