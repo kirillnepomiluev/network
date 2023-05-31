@@ -374,6 +374,7 @@ class AppRouter extends _i58.RootStackRouter {
           key: args.key,
           meetingModel: args.meetingModel,
           creatorModel: args.creatorModel,
+          partnerModel: args.partnerModel,
         ),
       );
     },
@@ -384,9 +385,14 @@ class AppRouter extends _i58.RootStackRouter {
       );
     },
     ChooseMeetingTypeViewRoute.name: (routeData) {
+      final args = routeData.argsAs<ChooseMeetingTypeViewRouteArgs>(
+          orElse: () => const ChooseMeetingTypeViewRouteArgs());
       return _i58.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i34.ChooseMeetingTypeView(),
+        child: _i34.ChooseMeetingTypeView(
+          key: args.key,
+          partnerModel: args.partnerModel,
+        ),
       );
     },
     ChooseMeetingPersonViewRoute.name: (routeData) {
@@ -500,9 +506,13 @@ class AppRouter extends _i58.RootStackRouter {
       );
     },
     PersonProfileViewRoute.name: (routeData) {
+      final args = routeData.argsAs<PersonProfileViewRouteArgs>();
       return _i58.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i49.PersonProfileView(),
+        child: _i49.PersonProfileView(
+          key: args.key,
+          partnerModel: args.partnerModel,
+        ),
       );
     },
     EditFieldViewRoute.name: (routeData) {
@@ -1412,6 +1422,7 @@ class MeetingMatchingViewRoute
     _i59.Key? key,
     required _i60.MeetingModel meetingModel,
     required _i61.UserModel creatorModel,
+    required _i61.UserModel partnerModel,
   }) : super(
           MeetingMatchingViewRoute.name,
           path: '/meeting-matching-view',
@@ -1419,6 +1430,7 @@ class MeetingMatchingViewRoute
             key: key,
             meetingModel: meetingModel,
             creatorModel: creatorModel,
+            partnerModel: partnerModel,
           ),
         );
 
@@ -1430,6 +1442,7 @@ class MeetingMatchingViewRouteArgs {
     this.key,
     required this.meetingModel,
     required this.creatorModel,
+    required this.partnerModel,
   });
 
   final _i59.Key? key;
@@ -1438,9 +1451,11 @@ class MeetingMatchingViewRouteArgs {
 
   final _i61.UserModel creatorModel;
 
+  final _i61.UserModel partnerModel;
+
   @override
   String toString() {
-    return 'MeetingMatchingViewRouteArgs{key: $key, meetingModel: $meetingModel, creatorModel: $creatorModel}';
+    return 'MeetingMatchingViewRouteArgs{key: $key, meetingModel: $meetingModel, creatorModel: $creatorModel, partnerModel: $partnerModel}';
   }
 }
 
@@ -1458,14 +1473,37 @@ class MeetingRequestsListViewRoute extends _i58.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i34.ChooseMeetingTypeView]
-class ChooseMeetingTypeViewRoute extends _i58.PageRouteInfo<void> {
-  const ChooseMeetingTypeViewRoute()
-      : super(
+class ChooseMeetingTypeViewRoute
+    extends _i58.PageRouteInfo<ChooseMeetingTypeViewRouteArgs> {
+  ChooseMeetingTypeViewRoute({
+    _i59.Key? key,
+    _i61.UserModel? partnerModel,
+  }) : super(
           ChooseMeetingTypeViewRoute.name,
           path: '/choose-meeting-type-view',
+          args: ChooseMeetingTypeViewRouteArgs(
+            key: key,
+            partnerModel: partnerModel,
+          ),
         );
 
   static const String name = 'ChooseMeetingTypeViewRoute';
+}
+
+class ChooseMeetingTypeViewRouteArgs {
+  const ChooseMeetingTypeViewRouteArgs({
+    this.key,
+    this.partnerModel,
+  });
+
+  final _i59.Key? key;
+
+  final _i61.UserModel? partnerModel;
+
+  @override
+  String toString() {
+    return 'ChooseMeetingTypeViewRouteArgs{key: $key, partnerModel: $partnerModel}';
+  }
 }
 
 /// generated route for
@@ -1781,14 +1819,37 @@ class MeetingRateSecondViewRouteArgs {
 
 /// generated route for
 /// [_i49.PersonProfileView]
-class PersonProfileViewRoute extends _i58.PageRouteInfo<void> {
-  const PersonProfileViewRoute()
-      : super(
+class PersonProfileViewRoute
+    extends _i58.PageRouteInfo<PersonProfileViewRouteArgs> {
+  PersonProfileViewRoute({
+    _i59.Key? key,
+    required _i61.UserModel partnerModel,
+  }) : super(
           PersonProfileViewRoute.name,
           path: '/person-profile-view',
+          args: PersonProfileViewRouteArgs(
+            key: key,
+            partnerModel: partnerModel,
+          ),
         );
 
   static const String name = 'PersonProfileViewRoute';
+}
+
+class PersonProfileViewRouteArgs {
+  const PersonProfileViewRouteArgs({
+    this.key,
+    required this.partnerModel,
+  });
+
+  final _i59.Key? key;
+
+  final _i61.UserModel partnerModel;
+
+  @override
+  String toString() {
+    return 'PersonProfileViewRouteArgs{key: $key, partnerModel: $partnerModel}';
+  }
 }
 
 /// generated route for

@@ -9,9 +9,10 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingTimerPauseDialog extends StatelessWidget {
   const MeetingTimerPauseDialog({
-    Key? key, required this.startTimer,
+    Key? key, required this.startTimer, required this.onInterrupt,
   }) : super(key: key);
   final VoidCallback startTimer;
+  final VoidCallback onInterrupt;
 
 
   @override
@@ -69,7 +70,6 @@ class MeetingTimerPauseDialog extends StatelessWidget {
                               ),
                               onPressed: () {
                                 context.router.pop();
-
                                 startTimer();
                               },
                               child: Padding(
@@ -91,9 +91,7 @@ class MeetingTimerPauseDialog extends StatelessWidget {
                                     ),
                             child: InkWell(
                               onTap: () {
-                                context.router.pushAndPopUntil(
-                                    HomeViewRoute(),
-                                    predicate: (route) => false,);
+                                onInterrupt();
                               },
                               child: Text(
                                 'Прервать',

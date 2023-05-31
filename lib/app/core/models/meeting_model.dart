@@ -1,3 +1,5 @@
+import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/utils/utils.dart';
 
 
@@ -16,6 +18,7 @@ class MeetingModel {
       id: dataMap['id'],
       creatorID: dataMap['creator_id'],
       partnerID: dataMap['partner_id'] ?? '',
+      partnerModel: UserModel.emptyModel(),
       createdDate: createdDate,
       type: dataMap['type'],
       title: dataMap['title'],
@@ -39,6 +42,8 @@ class MeetingModel {
       fbFromCreator: dataMap['fb_from_creator'],
       rateFromPartner: dataMap['rate_from_partner'],
       fbFromPartner: dataMap['fb_from_partner'],
+      creatorEntered: dataMap['creator_entered'],
+      partnerEntered: dataMap['partner_entered']
     );
   }
 
@@ -46,6 +51,7 @@ class MeetingModel {
     required this.id,
     this.creatorID = '',
     this.partnerID = '',
+    required this.partnerModel,
     required this.createdDate,
     this.type = 'Общение',
     this.title = '',
@@ -68,12 +74,15 @@ class MeetingModel {
     this.rateFromCreator,
     this.fbFromCreator,
     this.rateFromPartner,
-    this.fbFromPartner
+    this.fbFromPartner,
+    this.creatorEntered = false,
+    this.partnerEntered = false,
   });
 
   factory MeetingModel.emptyModel() {
     return MeetingModel(
         id: 0,
+        partnerModel: UserModel.emptyModel(),
         createdDate: DateTime.now(),
         scheduledDate: DateTime.now(),
         occupation: [],
@@ -115,9 +124,21 @@ class MeetingModel {
     return statusText;
   }
 
+  void updateData({required Map<String, dynamic> newData}) async {
+    try {
+      await AppSupabase.client
+          .from(AppSupabase.strMeetings)
+          .update(newData)
+          .eq('id', id);
+    } catch (error) {
+      print('updateData error - $error');
+    }
+  }
+
   int id;
   String creatorID;
   String partnerID;
+  UserModel partnerModel;
   DateTime createdDate;
   String type; //Общение, Деловая
   String title;
@@ -141,4 +162,6 @@ class MeetingModel {
   String? fbFromCreator;
   int? rateFromPartner;
   String? fbFromPartner;
+  bool creatorEntered;
+  bool partnerEntered;
 }

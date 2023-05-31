@@ -144,25 +144,30 @@ class CheckMeetingParametersView extends StatelessWidget {
                   SizedBox(
                     height: Res.s15,
                   ),
-                  StreamBuilder(
-                    stream: AppSupabase.client
-                        .from(AppSupabase.strUsers)
-                        .stream(primaryKey: ['id']).eq(
-                            'id', meetingDraft.partnerID),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        final list =
-                            snapshot.data as List<Map<String, dynamic>>;
-                        final currentMap = list.first as Map<String, dynamic>;
-                        final name = currentMap['name'];
-                        return Text(
-                          name,
-                          style: AppTextStyles.primary16,
-                        );
-                      }
-                      return const Center(child: CircularProgressIndicator());
-                    },
+
+                  Text(
+                    meetingDraft.partnerModel.name,
+                    style: AppTextStyles.primary16,
                   ),
+                  // StreamBuilder(
+                  //   stream: AppSupabase.client
+                  //       .from(AppSupabase.strUsers)
+                  //       .stream(primaryKey: ['id']).eq(
+                  //           'id', meetingDraft.partnerID),
+                  //   builder: (context, snapshot) {
+                  //     if (snapshot.hasData) {
+                  //       final list =
+                  //           snapshot.data as List<Map<String, dynamic>>;
+                  //       final currentMap = list.first as Map<String, dynamic>;
+                  //       final name = currentMap['name'];
+                  //       return Text(
+                  //         name,
+                  //         style: AppTextStyles.primary16,
+                  //       );
+                  //     }
+                  //     return const Center(child: CircularProgressIndicator());
+                  //   },
+                  // ),
 
                   SizedBox(
                     height: Res.s40,

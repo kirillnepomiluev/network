@@ -79,12 +79,12 @@ class ChooseMeetingPersonView extends StatelessWidget {
                               itemCount: list.length,
                               itemBuilder: (BuildContext context, int index) {
                                 final currentMap = list[index] as Map<String, dynamic>;
-                                final partnerModel = UserModel.fromJson(currentMap);
+                                final partnerModel = UserModel.fromMap(currentMap);
                                 return Padding(
                                   padding: EdgeInsets.only(bottom: Res.s10),
                                   child: InkWell(
                                     onTap: (){
-                                      model.onPartnerChoosed(partnerModel.id!);
+                                      model.onPartnerChoosed(partnerModel);
                                       model.onTap();
                                     },
                                     child:

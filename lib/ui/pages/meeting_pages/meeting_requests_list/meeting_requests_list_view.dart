@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
@@ -39,8 +40,7 @@ class MeetingRequestsListView extends StatelessWidget {
                 ),
                 AppButton(
                   onPressed: () {
-                    context.router
-                        .push(const ChooseMeetingTypeViewRoute());
+                    context.router.push(ChooseMeetingTypeViewRoute());
                   },
                   text: AppString.of(context).createNewRequest,
                 ),
@@ -70,16 +70,23 @@ class MeetingRequestsListView extends StatelessWidget {
                         shrinkWrap: true,
                         itemCount: list.length,
                         itemBuilder: (BuildContext context, int index) {
+
+                          MeetingModel meetingModel = MeetingModel.fromMap(list[index]);
+
                           return Padding(
                             padding: EdgeInsets.only(right: Res.s10),
                             child: MeetingRequestInfoContainer(
-                              currentNote: list[index],
+                              // currentNote: list[index],
+                              meetingModel: meetingModel,
                             ),
                           );
                         },
                       );
                     }
-                    return const Center(child: CircularProgressIndicator());
+                    return const Center(child: Padding(
+                      padding: EdgeInsets.only(top: 100),
+                      child: CircularProgressIndicator(),
+                    ));
                   },
                 ),
 

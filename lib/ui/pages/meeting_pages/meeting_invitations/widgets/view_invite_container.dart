@@ -45,7 +45,7 @@ class _ViewInviteContainerState extends State<ViewInviteContainer> {
         .select()
         .eq('id', creatorID);
 
-    creatorModel = UserModel.fromJson(dataList[0]);
+    creatorModel = UserModel.fromMap(dataList[0]);
 
     setState(() {
       show = true;

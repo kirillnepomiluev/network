@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
+import 'package:network_app/app/core/providers/notifiers/settings_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/utils/utils.dart';
@@ -101,7 +104,7 @@ class UserModel {
     return rating.toStringAsFixed(1);
   }
 
-  factory UserModel.fromJson(Map<String, dynamic> dataMap) {
+  factory UserModel.fromMap(Map<String, dynamic> dataMap) {
     DateTime createdDate = Utils.getDate(dataMap['created_date'])!;
     DateTime? birthdayDate = DateTime.tryParse(dataMap['birthday_date']);
     String age = _getAge(birthdayDate);
@@ -264,58 +267,68 @@ class UserNotifier with ChangeNotifier {
     // notifyListeners();
   }
 
-  void signOut(BuildContext context) {
-    AppSupabase.client.auth.signOut();
+  void signOut(BuildContext context, SettingsNotifier settingsNotifier) async {
+
+    // settingsNotifier.clearPartnersList();
+
+    await AppSupabase.client.auth.signOut();
+
+    if(userListener != null){
+      userListener!.cancel();
+    }
+
     currentUserID = '';
     userData = UserModel.emptyModel();
     context.router.push(const StartViewRoute());
   }
 
-  // static final stream = AppSupabase.client
-  //     .from(AppSupabase.strUsers)
-  //     .select('*, clothes!users_avatar_body_id_fkey!inner(level)')
-  //     .eq('id', AppSupabase.client.auth.currentUser!.id);
+  static const id1 = '6c4ba474-d378-4b64-84de-729873895b11';
+  static const id2 = '8a3c903d-5be8-4551-98bb-5cef4f9ab142';
+  static const id3 = 'b5fc9702-3b39-48aa-ab77-3e33b4420bf9';
+  static const id4 = 'd54726fd-a7d5-447b-b43b-dcac85097776';
+  static const id5 = 'c9e44e05-7ed0-4c95-8f81-d023ab2ca443';
+  static const testID = '';
 
   Future<void> firstUpdateData() async {
+    final id =
+        testID.isNotEmpty ? testID : AppSupabase.client.auth.currentUser!.id;
+
     print('firstUpdateData');
     final data = await AppSupabase.client
         .from(AppSupabase.strUsers)
         .select()
-        .eq('id', AppSupabase.client.auth.currentUser!.id);
+        .eq('id', id);
 
     final userDataMap = data[0];
 
-    userData = UserModel.fromJson(userDataMap);
+    userData = UserModel.fromMap(userDataMap);
     notifyListeners();
   }
 
-  Future<void> setUserDataFunc({bool isInit = false}) async {
-    // if (AppSupabase.client.auth.currentUser == null) {
-    //   return;
-    // }
-    final userID = AppSupabase.client.auth.currentUser!.id;
-    // final userID = currentUserID;
+  StreamSubscription<List<Map<String, dynamic>>>? userListener;
 
-    if (userID.isNotEmpty) {
-      AppSupabase.client
+  Future<void> setUserDataFunc({bool isInit = false}) async {
+    print('setUserDataFunc');
+    if (AppSupabase.client.auth.currentUser == null) {
+      return;
+    }
+    final id = testID.isNotEmpty ? testID : AppSupabase.client.auth.currentUser!.id;
+
+    if (id.isNotEmpty) {
+      userListener = AppSupabase.client
           .from(AppSupabase.strUsers)
           .stream(primaryKey: ['id'])
-          .eq('id', userID)
+          .eq('id', id)
           .listen((List<Map<String, dynamic>> data) {
             Map<String, dynamic> userDataMap = data.first;
-            // userData = UserModel(name: userDataMep['name']);
+            userData = UserModel.fromMap(userDataMap);
+            print('Обновили данные');
+            notifyListeners();
 
-            if (currentUserID == userDataMap['id']) {
-              userData = UserModel.fromJson(userDataMap);
-              if (isInit == false) {
-                notifyListeners();
-              }
-            }
-          })
-          .onError((e) {
-            print('Ошибка в setUserDataFunc: $e');
-          });
-    } else {}
+      });
+
+    }
+
   }
 
   Future<void> locationUpdateData({
@@ -326,16 +339,11 @@ class UserNotifier with ChangeNotifier {
         newData: {'lat': lat, 'long': long, 'location': 'POINT($lat $long)'});
   }
 
-
-
   Future<void> updateData({required Map<String, dynamic> newData}) async {
-    if (AppSupabase.client.auth.currentUser == null) {
-      // if (currentUserID.isEmpty) {  //для теста при переключении
+    final id = userData.id;
+    if (id != null) {
       print('Нельзя обновить данные - не авторизован');
     } else {
-      final id = AppSupabase.client.auth.currentUser!.id;
-      // final id = currentUserID;
-
       try {
         await AppSupabase.client
             .from(AppSupabase.strUsers)
@@ -345,11 +353,6 @@ class UserNotifier with ChangeNotifier {
         print('updateData error - $error');
       }
     }
-
-    // final response = await AppSupabase.client
-    //     .from(AppSupabase.users)
-    //     .select('*')
-    //     .eq('id', id);
   }
 
   MeetingModel meetingDraft = MeetingModel.emptyModel();

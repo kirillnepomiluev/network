@@ -4,17 +4,19 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/res.dart';
+import 'package:network_app/utils/utils.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingMatchingProfileInfo extends StatelessWidget {
   const MeetingMatchingProfileInfo({
     Key? key,
     required this.strName,
-    required this.imageUrl, required this.level,
+    required this.imageUrl,
+    required this.level,
   }) : super(key: key);
   final String strName;
   final String imageUrl;
-  final String level;
+  final int level;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,8 @@ class MeetingMatchingProfileInfo extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 5),
           child: Text(
-            '${AppString.of(context).level} "$level"',
+            Utils.getLevel(level),
+            // '${AppString.of(context).level} "$level"',
             style: AppTextStyles.primary12,
           ),
         ),

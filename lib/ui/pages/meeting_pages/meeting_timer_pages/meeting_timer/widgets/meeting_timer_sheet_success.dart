@@ -60,8 +60,11 @@ class MeetingTimerSheetSuccess extends StatelessWidget {
 
                 AppButton(
                   onPressed: () {
-                    context.router.pop();
-                    context.router.pop();
+                    context.router.pushAndPopUntil(HomeViewRoute(), predicate: (route) => false,);
+                    // Navigator.of(context).pop();
+                    // Navigator.of(context).pop();
+                    // context.router.pop();
+                    // context.router.pop();
                   },
                   text: 'Оценить позже',
                   height: 35.sp, //70

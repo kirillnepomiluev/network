@@ -35,10 +35,11 @@ class CustomSimpleDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      actionsPadding: const EdgeInsets.only(right: 20, bottom: 10),
+      // actionsPadding: const EdgeInsets.only(right: 20, bottom: 10),
+      actionsPadding: const EdgeInsets.only(bottom: 15),
       title: Text(title,
           textAlign: TextAlign.center,
-          style: AppTextStyles.primary16,
+          style: AppTextStyles.black,
       ),
       content: Text(text,
           textAlign: TextAlign.center,

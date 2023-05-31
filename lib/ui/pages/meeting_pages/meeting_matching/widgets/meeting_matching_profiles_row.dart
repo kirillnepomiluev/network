@@ -11,21 +11,22 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingMatchingProfilesRow extends StatelessWidget {
   const MeetingMatchingProfilesRow({
-    Key? key, required this.creatorModel,
+    Key? key, required this.creatorModel, required this.partnerModel,
   }) : super(key: key);
   final UserModel creatorModel;
+  final UserModel partnerModel;
 
   @override
   Widget build(BuildContext context) {
-    final userData = Provider.of<UserNotifier>(context).userData;
+    // final userData = Provider.of<UserNotifier>(context).userData;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         MeetingMatchingProfileInfo(
-          strName: userData.name,
-          level: userData.rankText,
+          strName: creatorModel.name,
+          level: creatorModel.level,
           imageUrl: Assets.images.avatars.avatar0.keyName,
         ),
         Padding(
@@ -38,8 +39,8 @@ class MeetingMatchingProfilesRow extends StatelessWidget {
               iconColor: Colors.black,
             ),),
         MeetingMatchingProfileInfo(
-          strName: creatorModel.name,
-          level: creatorModel.rankText,
+          strName: partnerModel.name,
+          level: partnerModel.level,
           imageUrl: Assets.images.avatars.avatar1.keyName,
         ),
       ],

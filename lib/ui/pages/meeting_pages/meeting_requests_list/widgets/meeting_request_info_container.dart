@@ -3,40 +3,51 @@ import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/meeting_go_icon.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bottom.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
+import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/res.dart';
+import 'package:provider/provider.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingRequestInfoContainer extends StatefulWidget {
   const MeetingRequestInfoContainer({
     Key? key,
-    required this.currentNote,
+    required this.meetingModel,
   }) : super(key: key);
-  final Map<String, dynamic> currentNote;
+  final MeetingModel meetingModel;
 
   @override
-  State<MeetingRequestInfoContainer> createState() => _MeetingRequestInfoContainerState();
+  State<MeetingRequestInfoContainer> createState() =>
+      _MeetingRequestInfoContainerState();
 }
 
-class _MeetingRequestInfoContainerState extends State<MeetingRequestInfoContainer> {
+class _MeetingRequestInfoContainerState
+    extends State<MeetingRequestInfoContainer> {
+  bool isLoading = true;
 
-  String partnerName = '';
+  Future<void> getInit() async {
+    final partnerData = await AppSupabase.client
+        .from(AppSupabase.strUsers)
+        .select()
+        .eq('id', widget.meetingModel.partnerID)
+        .single();
 
- Future<void> getInit() async {
-   final partnerData = await AppSupabase.client
-       .from(AppSupabase.strUsers)
-       .select()
-       .eq('id', AppSupabase.client.auth.currentUser!.id);
+    widget.meetingModel.partnerModel = UserModel.fromMap(partnerData);
 
-   partnerName = partnerData.first['name']??'';
-   setState(() {
+    // partnerName = partnerData.first['name']??'';
+    setState(() {
+      isLoading = false;
+    });
 
-   });
+    // level = data[0]['level']??'';
+  }
 
-   // level = data[0]['level']??'';
-}
+  // MeetingModel meetingModel = MeetingModel.fromMap(list[index]);
 
   @override
   void initState() {
@@ -57,106 +68,147 @@ class _MeetingRequestInfoContainerState extends State<MeetingRequestInfoContaine
     //   },
     // )
 
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    MeetingModel meetingModel = MeetingModel.fromMap(widget.currentNote);
+    // MeetingModel meetingModel = MeetingModel.fromMap(widget.currentNote);
     // DateFormat.yMMMMd('ru').format(newDate)
     final localizations = MaterialLocalizations.of(context);
-    final strCreatedDate = localizations.formatShortDate(meetingModel.createdDate);
-    final strSceduledDate = localizations.formatShortDate(meetingModel.scheduledDate);
+    final strCreatedDate =
+        localizations.formatShortDate(widget.meetingModel.createdDate);
+    final strSceduledDate =
+        localizations.formatShortDate(widget.meetingModel.scheduledDate);
 
-    return partnerName.isEmpty? Container() : Padding(
-      padding: EdgeInsets.only(top: Res.s20),
-      child: AppContainer(
-        width: double.infinity,
-        padV: Res.s26,
-        padH: Res.s18,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  meetingModel.type
-                  // AppString.of(context).businessMeeting
-                  ,
-                  style: AppTextStyles.primary16
-                      .copyWith(fontWeight: FontWeight.w500),
-                ),
-                Text(
-                  '#${meetingModel.id}',
-                  style: AppTextStyles.salad16
-                      .copyWith(fontWeight: FontWeight.w500),
-                ),
-              ],
+    final userData = Provider.of<UserNotifier>(context).userData;
+
+    return isLoading
+        ? Container()
+        : Padding(
+            padding: EdgeInsets.only(top: Res.s20),
+            child: AppContainer(
+              width: double.infinity,
+              padV: Res.s26,
+              padH: Res.s18,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        widget.meetingModel.type
+                        // AppString.of(context).businessMeeting
+                        ,
+                        style: AppTextStyles.primary16
+                            .copyWith(fontWeight: FontWeight.w500),
+                      ),
+                      Text(
+                        '#${widget.meetingModel.id}',
+                        style: AppTextStyles.salad16
+                            .copyWith(fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'на $strSceduledDate',
+                        style: AppTextStyles.grey,
+                      ),
+                      Text(
+                        'от $strCreatedDate',
+                        style: AppTextStyles.grey,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: Res.s20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(widget.meetingModel.partnerModel.name),
+                          SizedBox(
+                            height: Res.s20,
+                          ),
+                          Text(
+                            widget.meetingModel.description,
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                            // 'Здесь будет небольшое описание встречи, которое будет видно на 2 строчки...',
+                          ),
+                          SizedBox(
+                            height: Res.s20,
+                          ),
+                          Text('Встреча ${widget.meetingModel.statusText}'),
+                        ],
+                      ),
+
+
+                      MeetingGoIcon(
+                          creatorModel: userData,
+                          partnerModel: widget.meetingModel.partnerModel,
+                          meetingModel: widget.meetingModel),
+
+                      // Container(
+                      //   decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.circular(37),
+                      //     color: Colors.transparent,
+                      //     border: Border.all(color: AppColors.salad),),
+                      //   width: 35.sp, //66
+                      //   height: 35.sp * 1.394, //92
+                      //   child: Icon(
+                      //     NetworkIcons.arrow_long_right,
+                      //     color: AppColors.salad,
+                      //     size: 16.sp,
+                      //   ),
+                      // )
+                    ],
+                  ),
+                  if (widget.meetingModel.rateFromPartner != null)
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Divider(
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Text('${widget.meetingModel.rateFromPartner}'),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Icon(
+                              Icons.star,
+                              color: AppColors.salad,
+                              size: Res.s16,
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text('${widget.meetingModel.fbFromPartner}'),
+                      ],
+                    ),
+                ],
+              ),
             ),
-            const SizedBox(
-              height: 8,
-            ),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'на $strSceduledDate',
-                  style: AppTextStyles.grey,
-                ),
-
-                Text(
-                  'от $strCreatedDate',
-                  style: AppTextStyles.grey,
-                ),
-
-              ],
-            ),
-
-            SizedBox(
-              height: Res.s20,
-            ),
-
-            Text(partnerName),
-            SizedBox(
-              height: Res.s20,
-            ),
-            Text(
-              meetingModel.description,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-              // 'Здесь будет небольшое описание встречи, которое будет видно на 2 строчки...',
-            ),
-            SizedBox(
-              height: Res.s20,
-            ),
-            Text('Встреча ${meetingModel.statusText}'),
-
-            if(meetingModel.rateFromPartner != null)
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 10,),
-                Divider(color: Colors.white,),
-                SizedBox(height: 5,),
-                Row(
-                  children: [
-                    Text('${meetingModel.rateFromPartner}'),
-                    SizedBox(width: 5,),
-                    Icon(Icons.star, color: AppColors.salad, size: Res.s16,)
-                  ],
-                ),
-                SizedBox(height: 10,),
-                Text('${meetingModel.fbFromPartner}'),
-              ],
-            ),
-
-
-          ],
-        ),
-      ),
-    );
+          );
   }
 }

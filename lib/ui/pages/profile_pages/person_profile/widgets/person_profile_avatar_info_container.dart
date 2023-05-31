@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
@@ -12,12 +13,15 @@ import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/res.dart';
+import 'package:network_app/utils/utils.dart';
+import 'package:network_app/utils/utils_meetings.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class PersonProfileAvatarInfoContainer extends StatelessWidget {
   const PersonProfileAvatarInfoContainer({
-    Key? key,
+    Key? key, required this.partnerModel,
   }) : super(key: key);
+  final UserModel partnerModel;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +52,7 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
           Column(
             children: [
               NameWithVerification(
-                  strName: 'Джоли, 28',
+                  strName: '${partnerModel.name}, ${partnerModel.age}',
                   showVerified: true,
                   iconSize: 21.sp,
                   textStyle: AppTextStyles.primary32
@@ -60,7 +64,8 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    '${AppString.of(context).level} "${AppString.of(context).base}"',
+                      Utils.getLevel(partnerModel.level)
+                    // '${AppString.of(context).level} "${AppString.of(context).base}"',
                   ),
                   const SizedBox(
                     width: 5,
@@ -103,7 +108,10 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                 height: Res.s32,
               ),
               MeetExchangeRow(onTap: () {
-                context.router.push(const PersonProfileViewRoute());
+
+                UtilsMeeting.onMeetingTap(context, partnerModel);
+
+                // context.router.push(const PersonProfileViewRoute());
               },),
               SizedBox(
                 height: Res.s24, //32

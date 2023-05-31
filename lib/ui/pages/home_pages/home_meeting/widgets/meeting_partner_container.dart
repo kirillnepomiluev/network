@@ -8,7 +8,10 @@ import 'package:network_app/ui/pages/home_pages/home_meeting/widgets/meeting_ava
 import 'package:network_app/ui/pages/home_pages/home_meeting/widgets/meeting_partner_info.dart';
 import 'package:network_app/ui/pages/home_pages/home_meeting/widgets/meeting_row_bar.dart';
 import 'package:network_app/ui/widgets/common/meet_exchange_row.dart';
+import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
+import 'package:network_app/utils/utils_meetings.dart';
+import 'package:provider/provider.dart';
 
 class MeetingPartnerContainer extends StatefulWidget {
   const MeetingPartnerContainer({
@@ -22,8 +25,9 @@ class MeetingPartnerContainer extends StatefulWidget {
 }
 
 class _MeetingPartnerContainerState extends State<MeetingPartnerContainer> {
+
   void onPartnerTap() {
-    context.router.push(const PersonProfileViewRoute());
+    context.router.push(PersonProfileViewRoute(partnerModel: widget.partnerModel));
   }
 
   // late UserModel partnerModel;
@@ -37,6 +41,7 @@ class _MeetingPartnerContainerState extends State<MeetingPartnerContainer> {
 
   @override
   Widget build(BuildContext context) {
+
     return Stack(
       children: [
         MeetingAvatar(onPartnerTap: onPartnerTap),
@@ -49,7 +54,7 @@ class _MeetingPartnerContainerState extends State<MeetingPartnerContainer> {
               MeetingPartnerInfo(onPartnerTap: onPartnerTap, partnerModel: widget.partnerModel,),
               MeetExchangeRow(
                 onTap: () {
-                  context.router.push(MeetingTimerViewRoute());
+                  UtilsMeeting.onMeetingTap(context, widget.partnerModel);
                 },
               ),
             ],

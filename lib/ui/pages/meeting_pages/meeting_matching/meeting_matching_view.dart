@@ -13,11 +13,12 @@ import 'package:network_app/utils/res.dart';
 
 class MeetingMatchingView extends StatelessWidget {
   const MeetingMatchingView(
-      {Key? key, required this.meetingModel, required this.creatorModel})
+      {Key? key, required this.meetingModel, required this.creatorModel, required this.partnerModel})
       : super(key: key);
 
   final MeetingModel meetingModel;
   final UserModel creatorModel;
+  final UserModel partnerModel;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,8 @@ class MeetingMatchingView extends StatelessWidget {
       builder: (context, model) {
         return Scaffold(
           extendBody: true,
-          body: SafeArea(
+          body:
+          SafeArea(
             child: SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.symmetric(
@@ -40,11 +42,12 @@ class MeetingMatchingView extends StatelessWidget {
                     ),
                     MeetingMatchingProfilesRow(
                       creatorModel: creatorModel,
+                      partnerModel: partnerModel,
                     ),
                     SizedBox(
                       height: Res.s40,
                     ),
-                    const MeetingMatchingInfoContainer(),
+                    MeetingMatchingInfoContainer(meetingModel: meetingModel),
                     SizedBox(
                       height: Res.s40,
                     ),
@@ -57,7 +60,6 @@ class MeetingMatchingView extends StatelessWidget {
                       onPressed: model.onDenyMeeting,
                       text: 'Отклонить',
                     ),
-
                     SizedBox(
                       height: Res.s23,
                     ),

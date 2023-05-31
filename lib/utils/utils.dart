@@ -14,7 +14,6 @@ class Utils {
   static String getLevel(int level) => level<1? 'Нет костюма' : 'Уровень $level';
 
 
-
   static String getEnv(String title) => dotenv.env[title]!;
 
   static void unFocus() {
@@ -46,6 +45,7 @@ class Utils {
     final userNotifier = Provider.of<UserNotifier>(context, listen: false);
 
     await userNotifier.firstUpdateData();
+    // await userNotifier.setUserDataFunc();
 
     final userData = userNotifier.userData;
     final name = userData.name;

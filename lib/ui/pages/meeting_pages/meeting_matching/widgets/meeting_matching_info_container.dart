@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/app_wrap_containers_with_remove.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
@@ -10,8 +11,9 @@ import 'package:network_app/utils/res.dart';
 
 class MeetingMatchingInfoContainer extends StatelessWidget {
   const MeetingMatchingInfoContainer({
-    Key? key,
+    Key? key, required this.meetingModel,
   }) : super(key: key);
+  final MeetingModel meetingModel;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,9 @@ class MeetingMatchingInfoContainer extends StatelessWidget {
             padH: Res.s15,
             color: AppColors.salad,
             radius: AppBorderRadius.r15,
-            child: Text(AppString.of(context).businessMeeting,
+            child: Text(
+              meetingModel.type,
+              // AppString.of(context).businessMeeting,
                 style: AppTextStyles.black12,),
           ),
           SizedBox(

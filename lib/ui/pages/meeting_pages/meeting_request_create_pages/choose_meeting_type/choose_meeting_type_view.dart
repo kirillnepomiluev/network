@@ -1,5 +1,5 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_type/choose_meeting_type_vm.dart';
 import 'package:network_app/ui/widgets/buttons/button_continue.dart';
@@ -7,21 +7,21 @@ import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/common/app_radio_list.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
-import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/res.dart';
-
+import 'package:network_app/utils/utils.dart';
 
 
 
 class ChooseMeetingTypeView extends StatelessWidget {
   const ChooseMeetingTypeView({
-    Key? key,
+    Key? key, this.partnerModel,
   }) : super(key: key);
+  final UserModel? partnerModel;
 
   @override
   Widget build(BuildContext context) {
   return ViewModelBuilder<ChooseMeetingTypeViewModel>(
-      createModelDataEx: () => ChooseMeetingTypeViewModel(context),
+      createModelDataEx: () => ChooseMeetingTypeViewModel(context, partnerModel),
       builder: (context, model) {
         final mediaTop = MediaQuery.of(context).viewPadding.top;
         return Scaffold(

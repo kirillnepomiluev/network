@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/pages/profile_pages/person_profile/widgets/person_profile_avatar_info_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class PersonProfileAvatarContainer extends StatelessWidget {
   const PersonProfileAvatarContainer({
-    Key? key,
+    Key? key, required this.partnerModel,
   }) : super(key: key);
+  final UserModel partnerModel;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class PersonProfileAvatarContainer extends StatelessWidget {
                   // Colors.black
                 ],),),
           ),
-          const PersonProfileAvatarInfoContainer(),
+          PersonProfileAvatarInfoContainer(partnerModel: partnerModel),
         ],
       ),
     );

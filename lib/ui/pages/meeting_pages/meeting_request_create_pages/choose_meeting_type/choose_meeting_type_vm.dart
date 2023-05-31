@@ -4,14 +4,17 @@ import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_person/choose_meeting_person_view.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
+import 'package:network_app/utils/utils_meetings.dart';
 import 'package:provider/provider.dart';
 
 
 class ChooseMeetingTypeViewModel extends ViewModel {
-  ChooseMeetingTypeViewModel(this.context){
+  ChooseMeetingTypeViewModel(this.context, this.partnerModel){
     _getInit();
   }
   final BuildContext context;
+  final UserModel? partnerModel;
+
 
   final List<String> goalsListOptions = ['Общение', 'Деловая', 'Свидание'];
   String goalsGroupValue = '';
@@ -24,7 +27,13 @@ class ChooseMeetingTypeViewModel extends ViewModel {
     final userNotifier = Provider.of<UserNotifier>(context, listen: false);
     userNotifier.meetingDraft.type = goalsGroupValue;
     print('onTap - ${userNotifier.meetingDraft.type}');
-    context.router.push(const ChooseMeetingPersonViewRoute());
+
+    if(partnerModel==null){
+      context.router.push(const ChooseMeetingPersonViewRoute());
+    }else{
+      UtilsMeeting.onChosePartner(context, partnerModel!);
+    }
+
   }
 
   void _getInit(){

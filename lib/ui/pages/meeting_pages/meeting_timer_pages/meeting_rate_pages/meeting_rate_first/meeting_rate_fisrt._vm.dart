@@ -40,7 +40,7 @@ class MeetingRateFirstViewModel extends ViewModel {
           .eq('id', searchID);
 
       final searchData = searchList.first;
-      final UserModel searchModel = UserModel.fromJson(searchData);
+      final UserModel searchModel = UserModel.fromMap(searchData);
 
       final oldValue = searchModel.dataMap[starKey];
       final newValue = oldValue + 1;

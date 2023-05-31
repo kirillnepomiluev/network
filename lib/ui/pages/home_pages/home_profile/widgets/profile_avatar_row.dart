@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/providers/notifiers/settings_notifier.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/assets.gen.dart';
@@ -27,6 +28,8 @@ class ProfileAvatarRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final settingsNotifier = Provider.of<SettingsNotifier>(context);
+    final userNotifier = Provider.of<UserNotifier>(context);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,8 +45,8 @@ class ProfileAvatarRow extends StatelessWidget {
                 ),
                 child: InkWell(
                   onTap: (){
-                    final userNotifier = Provider.of<UserNotifier>(context, listen: false);
-                    userNotifier.signOut(context);
+
+                    userNotifier.signOut(context, settingsNotifier);
                   },
                   child: AppCircleAvatar(
                     contSize: Res.s60, //60

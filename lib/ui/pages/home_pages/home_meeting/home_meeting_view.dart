@@ -59,12 +59,11 @@ class HomeMeetingView extends StatelessWidget {
                   //     height: 50,
                   //     child: CircularProgressIndicator()))
                   //     :
-
-                  settingsNotifier.showPartnersLoading? Center(child: CircularProgressIndicator(),):
-                  partnersList.isEmpty? Center(child: Text('Нет результатов')) :
+                  settingsNotifier.showPartnersLoading? const Center(child: CircularProgressIndicator(),):
+                  partnersList.isEmpty? const Center(child: Text('Нет результатов')) :
                   PageView.builder(
                     scrollDirection: Axis.vertical,
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     controller: model.pageController,
                       onPageChanged: (int index){
                         print('page $index');

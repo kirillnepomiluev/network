@@ -28,7 +28,8 @@ class GeolocationTurnOnView extends StatelessWidget {
               children: [
                 AuthBarRow(
                   onSkip: (){
-                    userNotifier.firstUpdateData();
+                    // userNotifier.firstUpdateData();
+                    userNotifier.setUserDataFunc();
                     context.router.pushAndPopUntil(HomeViewRoute(), predicate: (route) => false);
                   },
                 ),
@@ -66,7 +67,8 @@ class GeolocationTurnOnView extends StatelessWidget {
                   print('success $success');
 
                   if(success){
-                    userNotifier.firstUpdateData();
+                    // userNotifier.firstUpdateData();
+                    userNotifier.setUserDataFunc();
                     context.router.pushAndPopUntil(HomeViewRoute(), predicate: (route) => false);
                   }
 
