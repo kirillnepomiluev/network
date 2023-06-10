@@ -267,7 +267,7 @@ class UserNotifier with ChangeNotifier {
     // notifyListeners();
   }
 
-  void signOut(BuildContext context, SettingsNotifier settingsNotifier) async {
+  Future<void> signOut(BuildContext context, SettingsNotifier settingsNotifier) async {
 
     // settingsNotifier.clearPartnersList();
 

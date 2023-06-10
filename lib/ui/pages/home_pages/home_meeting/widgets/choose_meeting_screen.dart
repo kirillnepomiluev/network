@@ -1,11 +1,8 @@
-import 'dart:ui';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/settings_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/pages/home_pages/home_meeting/widgets/meeting_tab.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
@@ -27,7 +24,7 @@ class ChooseMeetingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final SettingsNotifier settingsNotifier =
         Provider.of<SettingsNotifier>(context);
-    final partnersList = settingsNotifier.partnersList;
+    // final partnersList = settingsNotifier.partnersList;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,8 +98,6 @@ class AppDropdownDynamic extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final isWebMobile =
-        (window.physicalSize / window.devicePixelRatio).width < 450;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -127,7 +122,7 @@ class AppDropdownDynamic extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             color: Colors.white,
-            border: Border.all(color: borderColor ?? Colors.black, width: 1),
+            border: Border.all(color: borderColor ?? Colors.black),
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<dynamic>(

@@ -1,16 +1,11 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
-import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/blockchain/eth_utils.dart';
 import 'package:network_app/blockchain/contract_test_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/widgets/store_avatar_container.dart';
-import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
-import 'package:network_app/utils/main_pages/dialog_utls.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 
 class StoreProductViewModel extends ViewModel {

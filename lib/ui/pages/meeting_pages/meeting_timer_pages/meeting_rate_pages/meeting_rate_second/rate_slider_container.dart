@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/widgets/add_comment_row.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_rate_pages/widgets/rate_slitder_custom.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
@@ -28,7 +27,7 @@ class RateSliderContainer extends StatelessWidget {
           Text(title, style: AppTextStyles.primary16),
           Padding(
             padding: EdgeInsets.only(top: Res.s20),
-            child: Column(
+            child: const Column(
               children: [
                 SliderCustom(
                   sliderValue: 0,

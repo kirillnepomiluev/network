@@ -15,7 +15,7 @@ String truncateString(String text, int front, int end) {
 
   if (text.length > size) {
     String finalString =
-        "${text.substring(0, front)}...${text.substring(text.length - end)}";
+        '${text.substring(0, front)}...${text.substring(text.length - end)}';
     return finalString;
   }
 
@@ -82,8 +82,7 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
   }
 
   Future<void> jwtTest() async {
-    final token =
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODQyNTExMTAsImF1ZCI6ImF1dGhlbnRpY2F0ZWQiLCJzdWIiOiIweDA5QmU2ZDNGZjVhMkExMTBlMjExMTdlMUZGNjlENTVFNjFjQjViMTciLCJpc3MiOiJzdXBhYmFzZSJ9.OZ7kHa_Tk1yXM5zIywPGvUhxX3BiMF64jWzx9cqRy5E';
+    // final token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODQyNTExMTAsImF1ZCI6ImF1dGhlbnRpY2F0ZWQiLCJzdWIiOiIweDA5QmU2ZDNGZjVhMkExMTBlMjExMTdlMUZGNjlENTVFNjFjQjViMTciLCJpc3MiOiJzdXBhYmFzZSJ9.OZ7kHa_Tk1yXM5zIywPGvUhxX3BiMF64jWzx9cqRy5E';
 
     // final res = await AppSupabase.client.functions.invoke(
     //   'hello-world',
@@ -118,7 +117,7 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
   String? _uri;
   String? _signature;
 
-  loginUsingMetamask(BuildContext context) async {
+  Future<void> loginUsingMetamask(BuildContext context) async {
     if (!connector.connected) {
       try {
         var session = await connector.createSession(onDisplayUri: (uri) async {
@@ -136,29 +135,29 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
     }
   }
 
-  signMessageWithMetamask(BuildContext context, String message) async {
+  Future<void> signMessageWithMetamask(BuildContext context, String message) async {
     if (connector.connected) {
       try {
-        print("Message received");
+        print('Message received');
         print(message);
 
         EthereumWalletConnectProvider provider =
             EthereumWalletConnectProvider(connector);
         launchUrlString(_uri!, mode: LaunchMode.externalApplication);
         var signature = await provider.personalSign(
-            message: message, address: _session!.accounts.first, password: "");
+            message: message, address: _session!.accounts.first, password: '');
         print(signature);
         setState(() {
           _signature = signature;
         });
       } catch (exp) {
-        print("Error while signing transaction");
+        print('Error while signing transaction');
         print(exp);
       }
     }
   }
 
-  getNetworkName(chainId) {
+  String getNetworkName(chainId) {
 
     switch (chainId) {
       case 1:
@@ -223,7 +222,7 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
                         'Account',
                       ),
                       Text(
-                        '${_session!.accounts.first}',
+                        _session!.accounts.first,
                       ),
                       const SizedBox(height: 20),
                       Row(
@@ -246,7 +245,7 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
                                 child: ElevatedButton(
                                     onPressed: () {
 
-                                      context.router.push(HomeViewRoute(initIndex: 0));
+                                      context.router.push(HomeViewRoute());
 
                                       // signMessageWithMetamask(
                                       //   context,
@@ -261,7 +260,7 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
                                   Row(
                                     children: [
                                       const Text(
-                                        "Signature: ",
+                                        'Signature: ',
                                       ),
                                       Text(
                                           truncateString(
@@ -279,7 +278,7 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
               ElevatedButton(
                   onPressed: () => loginUsingMetamask(context),
                   child: const Text(
-                    "Connect with Metamask",
+                    'Connect with Metamask',
                     style: TextStyle(color: Colors.black),
                   ))
           ],

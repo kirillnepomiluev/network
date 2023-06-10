@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';

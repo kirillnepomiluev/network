@@ -8,9 +8,7 @@ import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_timer/widgets/meeting_timer_pause_dialog.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_timer/widgets/meeting_timer_sheet_success.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
-import 'package:network_app/utils/main_pages/dialog_utls.dart';
 import 'package:provider/provider.dart';
 
 class MeetingTimerViewModel extends ViewModel {
@@ -36,7 +34,7 @@ class MeetingTimerViewModel extends ViewModel {
 
   StreamSubscription<List<Map<String, dynamic>>>? meetingListener;
 
-  void getInit() async {
+  Future<void> getInit() async {
     print('meetingID $meetingID');
 
     final List dataList = await AppSupabase.client
@@ -75,7 +73,7 @@ class MeetingTimerViewModel extends ViewModel {
     }
   }
 
-  void onStartTap() async {
+  Future<void> onStartTap() async {
     final userData = Provider.of<UserNotifier>(context, listen: false).userData;
 
     bool isCreator = meetingModel.creatorID == userData.id;

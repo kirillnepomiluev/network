@@ -85,7 +85,7 @@ linter:
     cast_nullable_to_non_nullable: true
     cascade_invocations: true
     deprecated_consistency: true
-    directives_ordering: true
+#    directives_ordering: true
     flutter_style_todos: true
     join_return_with_assignment: true
     leading_newlines_in_multiline_strings: true
@@ -112,7 +112,7 @@ linter:
     prefer_mixin: false
     prefer_null_aware_method_calls: true
     public_member_api_docs: false
-    require_trailing_commas: true
+#    require_trailing_commas: true
 #    sort_child_properties_last: true
 #    sort_constructors_first: true
 #    sort_unnamed_constructors_first: true

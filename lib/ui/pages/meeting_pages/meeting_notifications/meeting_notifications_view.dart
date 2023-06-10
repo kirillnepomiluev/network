@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/generated/l10n.dart';

@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:network_app/blockchain/contract_test_view.dart';
 import 'package:network_app/blockchain/connect_metamask_view.dart';
+import 'package:network_app/blockchain/contract_test_view.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login/login_view.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_email/login_email_view.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_multiple/login_multiple_view.dart';

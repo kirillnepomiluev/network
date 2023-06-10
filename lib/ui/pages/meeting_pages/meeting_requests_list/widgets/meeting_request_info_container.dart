@@ -2,17 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
-import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/meeting_go_icon.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bottom.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
-import 'package:network_app/ui/widgets/icons/network_icons.dart';
-import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingRequestInfoContainer extends StatefulWidget {
   const MeetingRequestInfoContainer({
@@ -178,19 +173,19 @@ class _MeetingRequestInfoContainerState
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
-                        Divider(
+                        const Divider(
                           color: Colors.white,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         Row(
                           children: [
                             Text('${widget.meetingModel.rateFromPartner}'),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
                             Icon(
@@ -200,7 +195,7 @@ class _MeetingRequestInfoContainerState
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Text('${widget.meetingModel.fbFromPartner}'),

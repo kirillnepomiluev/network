@@ -5,7 +5,6 @@ import 'package:maps_toolkit/maps_toolkit.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class UtilsGeo {
   static Future<Position?> getCurrentLocation(BuildContext context) async {
@@ -180,7 +179,7 @@ class UtilsGeo {
 
 
 
-    final lat = latitude1;
+    const lat = latitude1;
     final long = maxLong;
 
     await AppSupabase.client

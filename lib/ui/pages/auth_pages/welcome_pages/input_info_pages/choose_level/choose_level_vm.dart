@@ -84,9 +84,9 @@ class ChooseLevelViewModel extends ViewModel {
                         bottom: 15,
                         top: 15,
                       ),
-                      child: Column(
+                      child: const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
                             'Базовый',
                             style: TextStyle(

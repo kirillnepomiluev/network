@@ -5,7 +5,6 @@ import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_type/choose_meeting_type_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_requests_list/widgets/meeting_request_info_container.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
@@ -90,7 +89,7 @@ class MeetingRequestsListView extends StatelessWidget {
                   },
                 ),
 
-                SizedBox(height: 30,)
+                const SizedBox(height: 30,)
 
                 // const MeetingRequestInfoContainer(),
                 // const MeetingRequestInfoContainer(),

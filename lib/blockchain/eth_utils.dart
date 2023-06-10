@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
-import 'package:network_app/utils/utils.dart';
 import 'package:web3dart/web3dart.dart';
 
 class ContractModel {
@@ -367,7 +366,7 @@ class _WebData{
       ownerAddress = '';
     }
 
-    String infura = "https://$web.infura.io/v3/$infuraApiKey";
+    String infura = 'https://$web.infura.io/v3/$infuraApiKey';
 
     return _WebData(web: web, chainID: chainID, infuraApiKey: infuraApiKey, infura: infura, erc721address: erc721address, ownerAddress: ownerAddress);
   }
@@ -379,7 +378,7 @@ class EthereumUtils {
 
   // static const ownerAddress = '0x04Ee5860e4fce5560865197BCfb83b9192ce4dbD'; //0x04Ee5860e4fce5560865197BCfb83b9192ce4dbD
   static const myAddress = '0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17';
-  static final envMetamaskPrivateKey = '524b442f7c94da5cb89808d697a3079000298021626122584a14ebbb8e170b90';
+  static const envMetamaskPrivateKey = '524b442f7c94da5cb89808d697a3079000298021626122584a14ebbb8e170b90';
 
 
   // static const web = 'sepolia'; //goerli
@@ -447,7 +446,7 @@ class EthereumUtils {
       );
       return result;
     } catch (e) {
-      print("Something wrong happened! - $e");
+      print('Something wrong happened! - $e');
     }
 
     return '';
@@ -460,7 +459,7 @@ class EthereumUtils {
     return status;
   }
 
-  listenEvent({required DeployedContract contract}) async {
+  Future<dynamic> listenEvent({required DeployedContract contract}) async {
 
     // final events = ethClient.events(FilterOptions.events(contract: contract, event: contract.event('BalanceChange')));
 
@@ -553,7 +552,7 @@ class ERC721ContractNotifier with ChangeNotifier {
         args: []
     );
 
-    print('response ${response}');
+    print('response $response');
 
     final result = response.first as BigInt;
     print('getBalance result $result'); //_BigIntImpl

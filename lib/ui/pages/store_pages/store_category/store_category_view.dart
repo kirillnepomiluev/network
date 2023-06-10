@@ -1,6 +1,4 @@
 // ignore_for_file: cast_nullable_to_non_nullable
-
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';

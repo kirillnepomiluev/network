@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
@@ -6,7 +5,6 @@ import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/meetring_invitations_vm.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/choose_invitation_screen.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/invite_containers_column.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
@@ -65,7 +63,7 @@ class MeetingInvitationsView extends StatelessWidget {
                           shrinkWrap: true,
                           itemCount: list.length,
                           itemBuilder: (BuildContext context, int index) {
-                            final meetingMap = list[index] as Map<String, dynamic>;
+                            final meetingMap = list[index];
                             MeetingModel meetingModel = MeetingModel.fromMap(meetingMap);
 
                             return Padding(

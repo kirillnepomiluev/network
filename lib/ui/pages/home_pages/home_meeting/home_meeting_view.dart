@@ -15,7 +15,6 @@ class HomeMeetingView extends StatelessWidget {
     return ViewModelBuilder<MeetingMainViewModel>(
       createModelDataEx: () => MeetingMainViewModel(context),
       builder: (context, model) {
-        final mediaTop = MediaQuery.of(context).viewPadding.top;
         final SettingsNotifier settingsNotifier = Provider.of<SettingsNotifier>(context);
         final partnersList = settingsNotifier.partnersList;
         return Scaffold(

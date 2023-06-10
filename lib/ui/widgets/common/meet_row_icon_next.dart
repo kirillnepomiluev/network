@@ -11,11 +11,11 @@ class MeetRowIconNext extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(right: Res.s21), //21
-      child: SizedBox(
+      child: const SizedBox(
         width: 20,
         height: 20,
         child: Stack(
-          children: const [
+          children: [
             Positioned(
                 left: 0,
                 child: Icon(

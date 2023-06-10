@@ -12,7 +12,6 @@ import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:network_app/utils/res.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ViewInviteContainer extends StatefulWidget {
   const ViewInviteContainer({
@@ -118,17 +117,17 @@ class _ViewInviteContainerState extends State<ViewInviteContainer> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 10,),
-                        Divider(color: Colors.white,),
-                        SizedBox(height: 5,),
+                        const SizedBox(height: 10,),
+                        const Divider(color: Colors.white,),
+                        const SizedBox(height: 5,),
                         Row(
                           children: [
                             Text('${widget.meetingModel.rateFromCreator}'),
-                            SizedBox(width: 5,),
+                            const SizedBox(width: 5,),
                             Icon(Icons.star, color: AppColors.salad, size: Res.s16,)
                           ],
                         ),
-                        SizedBox(height: 10,),
+                        const SizedBox(height: 10,),
                         Text('${widget.meetingModel.fbFromCreator}'),
                       ],
                     ),

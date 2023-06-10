@@ -13,7 +13,7 @@ void main() async {
     debug: false,
   );
 
-  await dotenv.load(fileName: ".env");
+  await dotenv.load();
 
   runApp(const App());
 }

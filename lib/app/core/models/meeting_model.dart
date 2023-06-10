@@ -124,7 +124,7 @@ class MeetingModel {
     return statusText;
   }
 
-  void updateData({required Map<String, dynamic> newData}) async {
+  Future<void> updateData({required Map<String, dynamic> newData}) async {
     try {
       await AppSupabase.client
           .from(AppSupabase.strMeetings)

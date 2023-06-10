@@ -10,8 +10,9 @@ class StartView extends StatelessWidget {
   const StartView({Key? key}) : super(key: key);
 
   Future<void> onUserChoosed(String userID, BuildContext context) async {
-    final userNotifier = Provider.of<UserNotifier>(context, listen: false);
-    userNotifier.setCurrentID(userID);
+    final userNotifier = Provider.of<UserNotifier>(context, listen: false)
+      ..setCurrentID(userID);
+    // userNotifier.setCurrentID(userID);
     await userNotifier.setUserDataFunc();
     Utils.checkReg(context);
   }

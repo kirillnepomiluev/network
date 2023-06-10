@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_timer/meeting_timer_vm.dart';
@@ -27,7 +26,7 @@ class MeetingTimerView extends StatelessWidget {
 
         final userData = Provider.of<UserNotifier>(context).userData;
         bool isCreator = model.meetingModel.creatorID == userData.id;
-        
+
         bool entered = (isCreator && model.meetingModel.creatorEntered) || (!isCreator && model.meetingModel.partnerEntered);
 
         bool bothEntered = model.meetingModel.creatorEntered && model.meetingModel.partnerEntered;
@@ -44,7 +43,7 @@ class MeetingTimerView extends StatelessWidget {
                 child: AppButton(onPressed: model.onStartTap, text: 'Начать'),
               )):
 
-              bothEntered==false? Center(child: Text('Ожидаем входа второго'),) :
+              bothEntered==false? const Center(child: Text('Ожидаем входа второго'),) :
               SingleChildScrollView(
                       child: Padding(
                         padding: EdgeInsets.symmetric(

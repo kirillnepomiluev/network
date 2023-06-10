@@ -1,17 +1,13 @@
-import 'dart:convert';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'custom_button.dart';
 import 'eth_utils.dart';
-import 'package:http/http.dart' as http;
 
 class ContractTestView extends StatefulWidget {
   ContractTestView({Key? key}) : super(key: key);
@@ -34,97 +30,94 @@ class _ContractTestViewState extends State<ContractTestView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Basic dApp",
+          'Basic dApp',
           style: TextStyle(
             // fontFamily: 'vtks_distress',
             fontSize: 25.0,
           ),
         ),
       ),
-      body: Container(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child:
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child:
 
-            erc721Provider.showLoading? const CircularProgressIndicator() :
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                Center(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.7,
-                    height: MediaQuery.of(context).size.width * 0.3,
-                    child: Card(
-                      elevation: 20.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          const Text(
-                            "Your balance:",
-                            style: TextStyle(
-                                color: Colors.black38, fontSize: 18.0),
-                          ),
-                          Text(
-                                  "$balance",
-                                  style: TextStyle(
-                                      fontSize: 25.0,
-                                      color: Colors.blue.shade600),
-                                  textAlign: TextAlign.center,
-                                ),
-                        ],
-                      ),
+          erc721Provider.showLoading? const CircularProgressIndicator() :
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Center(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  height: MediaQuery.of(context).size.width * 0.3,
+                  child: Card(
+                    elevation: 20.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const Text(
+                          'Your balance:',
+                          style: TextStyle(
+                              color: Colors.black38, fontSize: 18.0),
+                        ),
+                        Text(
+                                '$balance',
+                                style: TextStyle(
+                                    fontSize: 25.0,
+                                    color: Colors.blue.shade600),
+                                textAlign: TextAlign.center,
+                              ),
+                      ],
                     ),
                   ),
                 ),
-                CustomButton(
-                  title: "REFRESH",
-                  color: Colors.greenAccent,
-                  onTapped: erc721Provider.getBalance,
-                ),
-                SfSlider(
-                  min: 0.0,
-                  max: 10.0,
-                  value: _value,
-                  interval: 1,
-                  showTicks: true,
-                  showLabels: true,
-                  enableTooltip: true,
-                  stepSize: 1.0,
-                  onChanged: (dynamic value) {
-                    setState(() {
-                      _value = value;
-                    });
-                  },
-                ),
-                CustomButton(
-                  title: "DEPOSIT",
-                  color: Colors.blueAccent,
-                  onTapped: () async {
-                    // var _depositReceipt = await erc721Provider.depositCoin(_value);
-                    // print("Deposit response: $_depositReceipt");
-                    // if (_value == 0) {
-                    //   insertValidValue(context);
-                    //   return;
-                    // } else {
-                    //   showReceipt(context, "deposit", _depositReceipt);
-                    // }
-                  },
-                ),
-                CustomButton(
-                  title: "TEST",
-                  color: Colors.pinkAccent,
-                  onTapped: () async {
-                    // erc721Provider.safeMint();
-                    // erc721Provider.addLevelAndRewardForMeet();
+              ),
+              CustomButton(
+                title: 'REFRESH',
+                color: Colors.greenAccent,
+                onTapped: erc721Provider.getBalance,
+              ),
+              SfSlider(
+                max: 10.0,
+                value: _value,
+                interval: 1,
+                showTicks: true,
+                showLabels: true,
+                enableTooltip: true,
+                stepSize: 1.0,
+                onChanged: (dynamic value) {
+                  setState(() {
+                    _value = value;
+                  });
+                },
+              ),
+              CustomButton(
+                title: 'DEPOSIT',
+                color: Colors.blueAccent,
+                onTapped: () async {
+                  // var _depositReceipt = await erc721Provider.depositCoin(_value);
+                  // print("Deposit response: $_depositReceipt");
+                  // if (_value == 0) {
+                  //   insertValidValue(context);
+                  //   return;
+                  // } else {
+                  //   showReceipt(context, "deposit", _depositReceipt);
+                  // }
+                },
+              ),
+              CustomButton(
+                title: 'TEST',
+                color: Colors.pinkAccent,
+                onTapped: () async {
+                  // erc721Provider.safeMint();
+                  // erc721Provider.addLevelAndRewardForMeet();
 
-                  },
-                ),
-              ],
-            ),
+                },
+              ),
+            ],
           ),
         ),
       ),
@@ -132,7 +125,7 @@ class _ContractTestViewState extends State<ContractTestView> {
   }
 }
 
-insertValidValue(BuildContext context) {
+Future<void> insertValidValue(BuildContext context) {
   return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -163,7 +156,7 @@ insertValidValue(BuildContext context) {
       });
 }
 
-showReceipt(BuildContext context, String receipt) {
+Future<void> showReceipt(BuildContext context, String receipt) {
   return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -185,7 +178,6 @@ showReceipt(BuildContext context, String receipt) {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text(
                   // "Use the transaction hash bellow to check if it was successful",
@@ -207,7 +199,7 @@ showReceipt(BuildContext context, String receipt) {
               child: const Text('Посмотреть', style: TextStyle(color: Colors.black),),
               onPressed: () {
                 Navigator.of(context).pop();
-                context.router.push(OrdersViewRoute());},
+                context.router.push(const OrdersViewRoute());},
             ),
           ],
         );

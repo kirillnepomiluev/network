@@ -1,15 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:provider/provider.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 

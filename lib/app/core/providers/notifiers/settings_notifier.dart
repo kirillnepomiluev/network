@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/utils/utils_geo.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +11,7 @@ class SettingsNotifier with ChangeNotifier {
   }
 
   int initialPage = 0;
-  List<UserModel> _partnersList = [];
+  final List<UserModel> _partnersList = [];
   List<UserModel> get partnersList => _partnersList;
   void setPage(int index) {
     initialPage = index;
@@ -33,7 +32,7 @@ class SettingsNotifier with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  void onRadiusChoosed(BuildContext context, {int? newRadius}) async {
+  Future<void> onRadiusChoosed(BuildContext context, {int? newRadius}) async {
     if (newRadius != null) {
       _radius = newRadius;
     }
@@ -77,6 +76,6 @@ class SettingsNotifier with ChangeNotifier {
 
 SettingsNotifier initSettings(BuildContext context) {
   SettingsNotifier settingsData = SettingsNotifier();
-  settingsData.setSettings(context);
+  SettingsNotifier().setSettings(context);
   return settingsData;
 }

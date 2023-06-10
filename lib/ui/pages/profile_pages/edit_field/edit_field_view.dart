@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/pages/auth_pages/widgets/auth_bar_row.dart';
 import 'package:network_app/ui/pages/profile_pages/edit_field/edit_field_vm.dart';

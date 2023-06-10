@@ -6,7 +6,6 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
@@ -78,14 +77,14 @@ class ChooseMeetingPersonView extends StatelessWidget {
                               shrinkWrap: true,
                               itemCount: list.length,
                               itemBuilder: (BuildContext context, int index) {
-                                final currentMap = list[index] as Map<String, dynamic>;
+                                final currentMap = list[index];
                                 final partnerModel = UserModel.fromMap(currentMap);
                                 return Padding(
                                   padding: EdgeInsets.only(bottom: Res.s10),
                                   child: InkWell(
                                     onTap: (){
-                                      model.onPartnerChoosed(partnerModel);
-                                      model.onTap();
+                                      model..onPartnerChoosed(partnerModel)
+                                      ..onTap();
                                     },
                                     child:
                                     AppContainer(

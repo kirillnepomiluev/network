@@ -5,9 +5,7 @@ import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/screens/cupboard_screen_update_row.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_requests_list/widgets/meeting_request_info_container.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/utils/res.dart';
@@ -37,7 +35,7 @@ class OrdersView extends StatelessWidget {
                 },
                 title: AppString.of(context).listOfPersonalRequests,
               ),
-              CupboardScreenUpdateRow(onlyUpdate: true),
+              const CupboardScreenUpdateRow(onlyUpdate: true),
               SizedBox(
                 height: Res.s35,
               ),
@@ -56,13 +54,8 @@ class OrdersView extends StatelessWidget {
                         shrinkWrap: true,
                         itemCount: list.length,
                         itemBuilder: (BuildContext context, int index) {
-                          final dataMap = list[index] as Map<String, dynamic>;
+                          final dataMap = list[index];
                           final orderModel = OrderModel.fromMap(dataMap);
-
-                          final localizations =
-                              MaterialLocalizations.of(context);
-                          final strCreatedDate = localizations
-                              .formatShortDate(orderModel.createdDate);
 
                           return Padding(
                             padding: EdgeInsets.only(bottom: Res.s20),
