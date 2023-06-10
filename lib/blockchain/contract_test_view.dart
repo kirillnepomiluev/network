@@ -1,4 +1,3 @@
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
@@ -10,7 +9,7 @@ import 'custom_button.dart';
 import 'eth_utils.dart';
 
 class ContractTestView extends StatefulWidget {
-  ContractTestView({Key? key}) : super(key: key);
+  const ContractTestView({Key? key}) : super(key: key);
 
   @override
   _ContractTestViewState createState() => _ContractTestViewState();

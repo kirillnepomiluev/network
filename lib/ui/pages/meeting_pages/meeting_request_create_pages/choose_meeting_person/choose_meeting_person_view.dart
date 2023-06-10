@@ -67,7 +67,7 @@ class ChooseMeetingPersonView extends StatelessWidget {
                             .neq('id', currentID),
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
-                            final list = snapshot.data as List<Map<String, dynamic>>;
+                            final list = snapshot.data! as List<Map<String, dynamic>>;
                             // var list = currentList
                             //     .where(
                             //       (x) => userData.clothesIdList.contains(x['id']) == isCupboard,)

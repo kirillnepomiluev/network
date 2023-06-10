@@ -6,8 +6,9 @@ import 'package:provider/provider.dart';
 //Для управления данными настроек
 class SettingsNotifier with ChangeNotifier {
   Future<void> setSettings(BuildContext context) async {
+    onRadiusChoosed(context);
     // _radius = _radiusList[1];
-    loadPartners(context, radius: _radius);
+    // loadPartners(context, radius: _radius);
   }
 
   int initialPage = 0;
@@ -69,13 +70,21 @@ class SettingsNotifier with ChangeNotifier {
       //     .order('level');
     }
 
+
+    // Future.delayed(Duration(seconds: 1)).then((value) {
+    //   showPartnersLoading = false;
+    //   notifyListeners();
+    // });
+
     showPartnersLoading = false;
     notifyListeners();
+
   }
 }
 
 SettingsNotifier initSettings(BuildContext context) {
   SettingsNotifier settingsData = SettingsNotifier();
-  SettingsNotifier().setSettings(context);
+  // ignore: cascade_invocations
+  settingsData.setSettings(context);
   return settingsData;
 }

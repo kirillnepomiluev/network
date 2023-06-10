@@ -90,9 +90,7 @@ class MeetingTimerPauseDialog extends StatelessWidget {
                                 EdgeInsets.only(left: 0.064 * mediaWidth, //24
                                     ),
                             child: InkWell(
-                              onTap: () {
-                                onInterrupt();
-                              },
+                              onTap: onInterrupt,
                               child: Text(
                                 'Прервать',
                                 style: TextStyle(

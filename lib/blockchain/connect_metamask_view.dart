@@ -157,7 +157,7 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
     }
   }
 
-  String getNetworkName(chainId) {
+  String getNetworkName(int chainId) {
 
     switch (chainId) {
       case 1:

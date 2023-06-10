@@ -48,7 +48,7 @@ class OrdersView extends StatelessWidget {
                       .order('created_date'),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      final list = snapshot.data as List<Map<String, dynamic>>;
+                      final list = snapshot.data! as List<Map<String, dynamic>>;
                       return ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,

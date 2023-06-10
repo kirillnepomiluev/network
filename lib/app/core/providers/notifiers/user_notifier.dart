@@ -12,6 +12,55 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 // final userData = Provider.of<UserNotifier>(context).userData;
 class UserModel {
+
+  final String? id;
+  final String bodyURL;
+  final int personID;
+  final String name;
+  final String phone;
+  final String email;
+  final DateTime createdDate;
+  final DateTime? birthdayDate;
+  final String age;
+  final bool hideAge;
+  final bool hideFamilyStatus;
+  final bool hideMeetingsGoal;
+  final String sex;
+  final bool hideSex;
+  final String rankText;
+  final List interests;
+  final String status;
+  final List occupation;
+  final String familyStatus;
+  final String about;
+  final int points;
+  final String rating;
+  final int ratingStars1;
+  final int ratingStars2;
+  final int ratingStars3;
+  final int ratingStars4;
+  final int ratingStars5;
+  final int ratingCount;
+  final int energy;
+  final double recoverySpeed;
+  final int meetingsCount;
+  final int messagesCountDay;
+  final int likesCountDay;
+  final String meetingsGoal;
+  final bool verified;
+  final bool online;
+  final int walletTokens;
+  final Map<String, dynamic> dataMap;
+  final int avatarBodyID;
+  final int avatarHeadID;
+  final List avatarBodyCupboard;
+  final List avatarHeadCupboard;
+  final List clothesIdList;
+  final double? lat;
+  final double? long;
+  final String? location;
+  final int level;
+
   UserModel({
     this.id,
     this.personID = -1,
@@ -26,6 +75,7 @@ class UserModel {
     this.sex = '',
     this.hideSex = false,
     this.rankText = '',
+    this.bodyURL = '',
     required this.interests,
     this.status = '',
     required this.occupation,
@@ -125,10 +175,9 @@ class UserModel {
 
     final rating = getRating(dataMap);
 
-    // print('zz location ${dataMap['location']}');
-
     return UserModel(
       id: dataMap['id'],
+      bodyURL: dataMap['body_url']??'',
       personID: dataMap['person_id'],
       level: dataMap['level'],
       name: dataMap['name'],
@@ -175,6 +224,7 @@ class UserModel {
       long: dataMap['long'],
       location: dataMap['location'],
     );
+
   }
 
   static String _getAge(birthdayDate) {
@@ -193,52 +243,6 @@ class UserModel {
     return age;
   }
 
-  final String? id;
-  final int personID;
-  final String name;
-  final String phone;
-  final String email;
-  final DateTime createdDate;
-  final DateTime? birthdayDate;
-  final String age;
-  final bool hideAge;
-  final bool hideFamilyStatus;
-  final bool hideMeetingsGoal;
-  final String sex;
-  final bool hideSex;
-  final String rankText;
-  final List interests;
-  final String status;
-  final List occupation;
-  final String familyStatus;
-  final String about;
-  final int points;
-  final String rating;
-  final int ratingStars1;
-  final int ratingStars2;
-  final int ratingStars3;
-  final int ratingStars4;
-  final int ratingStars5;
-  final int ratingCount;
-  final int energy;
-  final double recoverySpeed;
-  final int meetingsCount;
-  final int messagesCountDay;
-  final int likesCountDay;
-  final String meetingsGoal;
-  final bool verified;
-  final bool online;
-  final int walletTokens;
-  final Map<String, dynamic> dataMap;
-  final int avatarBodyID;
-  final int avatarHeadID;
-  final List avatarBodyCupboard;
-  final List avatarHeadCupboard;
-  final List clothesIdList;
-  final double? lat;
-  final double? long;
-  final String? location;
-  final int level;
 
   @override
   String toString() {
@@ -307,6 +311,8 @@ class UserNotifier with ChangeNotifier {
 
   StreamSubscription<List<Map<String, dynamic>>>? userListener;
 
+  String _bodyURL = '';
+
   Future<void> setUserDataFunc({bool isInit = false}) async {
     print('setUserDataFunc');
     if (AppSupabase.client.auth.currentUser == null) {
@@ -315,16 +321,32 @@ class UserNotifier with ChangeNotifier {
     final id = testID.isNotEmpty ? testID : AppSupabase.client.auth.currentUser!.id;
 
     if (id.isNotEmpty) {
+
       userListener = AppSupabase.client
           .from(AppSupabase.strUsers)
           .stream(primaryKey: ['id'])
           .eq('id', id)
-          .listen((List<Map<String, dynamic>> data) {
+          .listen((List<Map<String, dynamic>> data) async {
             Map<String, dynamic> userDataMap = data.first;
+
+            if(_bodyURL.isEmpty || userData.avatarBodyID != userDataMap['avatar_body_id']){
+              await AppSupabase.client
+                  .from(AppSupabase.strClothes)
+                  .select('*')
+                  .eq('id', userData.avatarBodyID).single().then((value) {
+                _bodyURL = value['image_url'];
+              });
+              print('_bodyURL $_bodyURL');
+            }
+
+            userDataMap.addAll({
+              'body_url' : _bodyURL
+            });
+
             userData = UserModel.fromMap(userDataMap);
+
             print('Обновили данные');
             notifyListeners();
-
       });
 
     }

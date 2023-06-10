@@ -38,7 +38,7 @@ class _MeetingPartnerContainerState extends State<MeetingPartnerContainer> {
 
     return Stack(
       children: [
-        MeetingAvatar(onPartnerTap: onPartnerTap),
+        MeetingAvatar(onPartnerTap: onPartnerTap, partnerModel: widget.partnerModel,),
         Padding(
           padding: const EdgeInsets.only(left: 15, right: 15, bottom: 28),
           child: Column(

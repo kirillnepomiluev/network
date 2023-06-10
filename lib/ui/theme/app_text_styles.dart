@@ -6,17 +6,17 @@ import 'package:network_app/utils/res.dart';
 class AppTextStyles {
 
   static final TextTheme textTheme = TextTheme(
-    headline1: primary,
-    headline2: primary,
-    headline3: primary,
-    headline4: primary,
-    headline5: primary,
-    bodyText1: primary,
-    bodyText2: primary,
-    subtitle1: primary,
-    subtitle2: primary,
-    button: primary,
-    caption: primary,
+    displayLarge: primary,
+    displayMedium: primary,
+    displaySmall: primary,
+    headlineMedium: primary,
+    headlineSmall: primary,
+    bodyLarge: primary,
+    bodyMedium: primary,
+    titleMedium: primary,
+    titleSmall: primary,
+    labelLarge: primary,
+    bodySmall: primary,
   );
 
   static final primary = GoogleFonts.inter(

@@ -57,7 +57,7 @@ class MeetingInvitationsView extends StatelessWidget {
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         final list =
-                            snapshot.data as List<Map<String, dynamic>>;
+                            snapshot.data! as List<Map<String, dynamic>>;
                         return ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,

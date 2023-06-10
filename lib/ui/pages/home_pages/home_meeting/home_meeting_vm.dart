@@ -16,7 +16,15 @@ class MeetingMainViewModel extends ViewModel {
     pageController = PageController(initialPage: settingsNotifier.initialPage);
   }
 
-
+  // getInit() async {
+  //   final settingsNotifier = Provider.of<SettingsNotifier>(context, listen: false);
+  //   pageController = PageController(initialPage: settingsNotifier.initialPage);
+  //
+  //   if(settingsNotifier.partnersList.isEmpty){
+  //     print('ok1');
+  //     settingsNotifier.loadPartners(context, radius: 2);
+  //   }
+  // }
 
 
   ActiveMeetingTabs activeTab = ActiveMeetingTabs.values.first;
