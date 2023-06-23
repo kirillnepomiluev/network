@@ -93,8 +93,13 @@ class $AssetsImagesIconsGen {
   AssetGenImage get logoGoogle =>
       const AssetGenImage('assets/images/icons/logo_google.png');
 
+  /// File path: assets/images/icons/metamask.png
+  AssetGenImage get metamask =>
+      const AssetGenImage('assets/images/icons/metamask.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [handshake, logoFacebook, logoGoogle];
+  List<AssetGenImage> get values =>
+      [handshake, logoFacebook, logoGoogle, metamask];
 }
 
 class Assets {

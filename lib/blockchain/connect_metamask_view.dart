@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/blockchain/eth_utils.dart';
+import 'package:network_app/generated/assets.gen.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:walletconnect_dart/walletconnect_dart.dart';
 import 'package:web3dart/crypto.dart';
@@ -102,6 +103,7 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
 
 
   static final needChainID = EthereumUtils.webData.chainID; // 80001; //11155111, 5
+  // static final needChainName = EthereumUtils.webData.chainName; // 80001; //11155111, 5
 
   WalletConnect connector = WalletConnect(
       bridge: 'https://bridge.walletconnect.org',
@@ -204,14 +206,23 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
                 _session = null;
               }));
 
+    final mediaWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login Page'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Login Page'),
+      // ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Assets.images.icons.metamask.image(
+              width: mediaWidth*0.5,
+              height: mediaWidth*0.5
+            ),
+
+            SizedBox(height: 30,),
+
             if (_session != null)
               Container(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -237,7 +248,7 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
                       ),
                       const SizedBox(height: 20),
                       if (_session!.chainId != needChainID)
-                        const Text('Network not supported. Switch to Gepolia')
+                        Text('Network not supported. Switch to ${getNetworkName(needChainID)}')
                       else
                         (_signature == null)
                             ? Container(
@@ -251,8 +262,9 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
                                       //   context,
                                       //   generateSessionMessage(
                                       //       _session!.accounts.first));
+
                                     },
-                                    child: const Text('Продолжить',
+                                    child: const Text('Continue',
                                         style: TextStyle(color: Colors.black))),
                               )
                             : Column(

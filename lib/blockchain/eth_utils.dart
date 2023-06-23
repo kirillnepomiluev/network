@@ -323,52 +323,81 @@ class ContractModel {
 
 
 class _WebData{
-  final String web;
+  final String chainType;
+  final String chainName;
   final int chainID;
   final String infuraApiKey;
   final String infura;
   final String ownerAddress;
   final String erc721address;  //НАДО БУДЕТ ПОМЕНЯТЬ НА contractAddressKey
 
-  _WebData({required this.web, required this.chainID, required this.infuraApiKey, required this.infura, required this.erc721address, required this.ownerAddress});
+  _WebData({required this.chainType, required this.chainID, required this.chainName, required this.infuraApiKey, required this.infura, required this.erc721address, required this.ownerAddress});
 
   static const ethInfuraKey = 'e90250eb60d64824abaeaf3750178842';
   static const polygonInfuraKey = 'f8bf00d32b6448a3818f59c6f16e7f86';
+
+
+  static String getNetworkName(int chainId) {
+
+    switch (chainId) {
+      case 1:
+        return 'Ethereum Mainnet';
+      case 3:
+        return 'Ropsten Testnet';
+      case 4:
+        return 'Rinkeby Testnet';
+      case 5:
+        return 'Goreli Testnet';
+      case 42:
+        return 'Kovan Testnet';
+      case 137:
+        return 'Polygon Mainnet';
+      case 11155111:
+        return 'Sepolia Testnet';
+      case 80001:
+        return 'Mumbai Testnet';
+      default:
+        return 'Unknown Chain';
+    }
+  }
 
   factory _WebData.choose(String webName){
 
     int chainID = 0;
     String infuraApiKey = '';
-    String web = '';
+    String webType = '';
     String erc721address = '';
     String ownerAddress = '';
 
 
     if(webName=='sepolia'){
-      web = webName;
+      webType = webName;
       chainID = 11155111;
       infuraApiKey = ethInfuraKey;
       erc721address = '0x9ebF2d973000780b403522259b09dad9E3B59256';
       ownerAddress = '0x04Ee5860e4fce5560865197BCfb83b9192ce4dbD';
     }
     else if(webName=='mumbai'){
-      web = 'polygon-mumbai';
+      webType = 'polygon-mumbai';
       chainID = 80001;
       infuraApiKey = polygonInfuraKey;
       erc721address = '0xe2D074BE971c9290b5BbaB059F9c510B0C76936d';
       ownerAddress = '0xDbfEEa0fc1F1F2f43F7DbaD7827Cccad8C47c337';
     }
     else if(webName=='polygon'){
-      web = 'polygon-mainnet';
+      webType = 'polygon-mainnet';
       chainID = 137;
       infuraApiKey = polygonInfuraKey;
       erc721address = '';
       ownerAddress = '';
     }
 
-    String infura = 'https://$web.infura.io/v3/$infuraApiKey';
+    String infura = 'https://$webType.infura.io/v3/$infuraApiKey';
 
-    return _WebData(web: web, chainID: chainID, infuraApiKey: infuraApiKey, infura: infura, erc721address: erc721address, ownerAddress: ownerAddress);
+
+    String chainName = getNetworkName(chainID);
+
+    return _WebData(chainType: webType, chainID: chainID, chainName: chainName, infuraApiKey: infuraApiKey, infura: infura, erc721address: erc721address, ownerAddress: ownerAddress);
   }
 
 }
@@ -379,6 +408,9 @@ class EthereumUtils {
   // static const ownerAddress = '0x04Ee5860e4fce5560865197BCfb83b9192ce4dbD'; //0x04Ee5860e4fce5560865197BCfb83b9192ce4dbD
   static const myAddress = '0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17';
   static const envMetamaskPrivateKey = '524b442f7c94da5cb89808d697a3079000298021626122584a14ebbb8e170b90';
+
+
+
 
 
   // static const web = 'sepolia'; //goerli

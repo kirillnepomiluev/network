@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 class MeetingRateFirstViewModel extends ViewModel {
   MeetingRateFirstViewModel(this.context, this.meetingModel);
   final BuildContext context;
-  double sliderValue = 1.0;
+  double sliderValue = 0.0;
   final MeetingModel meetingModel;
 
   void onSliderChange(double value) {

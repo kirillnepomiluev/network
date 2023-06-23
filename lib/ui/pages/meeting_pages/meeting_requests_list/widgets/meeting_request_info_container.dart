@@ -132,6 +132,7 @@ class _MeetingRequestInfoContainerState
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(widget.meetingModel.partnerModel.name),
+                          // Text('${widget.meetingModel.partnerModel.name}, уровень ${widget.meetingModel.partnerModel.level}'),
                           SizedBox(
                             height: Res.s20,
                           ),

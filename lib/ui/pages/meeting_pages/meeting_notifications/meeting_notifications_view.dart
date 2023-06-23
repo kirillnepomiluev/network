@@ -7,6 +7,104 @@ import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
+import 'package:network_app/utils/utils.dart';
+
+
+class NotificationModel {
+  int id;
+  String userID;
+  String fromID;
+  UserModel partnerModel;
+  DateTime createdDate;
+  String type; //Общение, Деловая
+  String title;
+  String description;
+  String status;
+  String statusText;
+  int? imageUrl;
+
+  NotificationModel({
+    required this.id,
+    this.userID = '',
+    this.fromID = '',
+    required this.partnerModel,
+    required this.createdDate,
+    this.type = '',
+    this.title = '',
+    this.description = '',
+    this.imageUrl,
+    this.status ='',
+    this.statusText='',
+  });
+
+  factory NotificationModel.fromMap(Map<String, dynamic> dataMap) {
+    DateTime createdDate = Utils.getDate(dataMap['created_date'])!;
+
+    final status = dataMap['status'];
+    final statusText = getStatusText(status);
+
+    return NotificationModel(
+      id: dataMap['id'],
+      userID: dataMap['user_id'],
+      fromID: dataMap['from_id'] ?? '',
+      partnerModel: UserModel.emptyModel(),
+      createdDate: createdDate,
+      type: dataMap['type'],
+      title: dataMap['title'],
+      description: dataMap['description'],
+      status: dataMap['status'],
+      imageUrl: dataMap['image_url'],
+    );
+  }
+
+  factory NotificationModel.emptyModel() {
+    return NotificationModel(
+        id: 0,
+        partnerModel: UserModel.emptyModel(),
+        createdDate: DateTime.now(),
+    );
+  }
+
+  static String getStatusText(String status){
+
+    String statusText = '';
+
+    switch (status) {
+      case 'created':
+        statusText = 'создана';
+        break;
+      case 'cancelled':
+        statusText = 'отменено';
+        break;
+      case 'expired':
+        statusText = 'просрочена';
+        break;
+      case 'accepted':
+        statusText = 'принята';
+        break;
+      case 'denied':
+        statusText = 'отклонена';
+        break;
+      case 'active':
+        statusText = 'активна';
+        break;
+      case 'interrupted':
+        statusText = 'прервана';
+        break;
+      case 'done':
+        statusText = 'завершена';
+        break;
+    }
+
+    return statusText;
+  }
+
+  Future<void> updateData({required Map<String, dynamic> newData}) async {
+    await AppSupabase.updateData(newData: newData, collRef: AppSupabase.strNotifications, id: id);
+  }
+}
 
 
 class MeetingNotificationsView extends StatelessWidget {

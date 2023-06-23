@@ -4,6 +4,7 @@ import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 
+
 class MeetingAnswersViewModel extends ViewModel {
   MeetingAnswersViewModel(this.context, this.meetingModel){
     groupValue = answersList.first;
@@ -12,18 +13,14 @@ class MeetingAnswersViewModel extends ViewModel {
   final MeetingModel meetingModel;
 
   final List<String> answersList = [
-    'Вариант ответа A',
-    'Вариант ответа B',
-    'Вариант ответа C',
+    'Да',
+    'Нет',
+    'Не могу сказать',
   ];
 
   late String groupValue;
-
-
   final _controller = TextEditingController();
-
   int missedCount = 3;
-
   final int questionCount = 3;
   int questionIndex = 0;
   double progress = 0.00;
@@ -35,7 +32,6 @@ class MeetingAnswersViewModel extends ViewModel {
     }
 
     _controller.clear();
-
     showSendButton = false;
 
     if ((questionIndex + 1) == questionCount) {
@@ -48,7 +44,6 @@ class MeetingAnswersViewModel extends ViewModel {
 
    notifyListeners();
   }
-
 
   void onAnswerTap(String? newValue) {
       groupValue = newValue!;

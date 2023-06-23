@@ -143,11 +143,9 @@ class AppRouter extends _i58.RootStackRouter {
       );
     },
     ContractTestViewRoute.name: (routeData) {
-      final args = routeData.argsAs<ContractTestViewRouteArgs>(
-          orElse: () => const ContractTestViewRouteArgs());
       return _i58.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i2.ContractTestView(key: args.key),
+        child: const _i2.ContractTestView(),
       );
     },
     ConnectMetamaskViewRoute.name: (routeData) {
@@ -834,27 +832,14 @@ class StartViewRoute extends _i58.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.ContractTestView]
-class ContractTestViewRoute
-    extends _i58.PageRouteInfo<ContractTestViewRouteArgs> {
-  ContractTestViewRoute({_i59.Key? key})
+class ContractTestViewRoute extends _i58.PageRouteInfo<void> {
+  const ContractTestViewRoute()
       : super(
           ContractTestViewRoute.name,
           path: '/contract-test-view',
-          args: ContractTestViewRouteArgs(key: key),
         );
 
   static const String name = 'ContractTestViewRoute';
-}
-
-class ContractTestViewRouteArgs {
-  const ContractTestViewRouteArgs({this.key});
-
-  final _i59.Key? key;
-
-  @override
-  String toString() {
-    return 'ContractTestViewRouteArgs{key: $key}';
-  }
 }
 
 /// generated route for

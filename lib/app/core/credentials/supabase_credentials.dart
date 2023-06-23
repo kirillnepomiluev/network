@@ -19,13 +19,24 @@ class AppSupabase{
   static const String strClothes = 'clothes';
   static const String strMeetings = 'meetings';
   static const String strOrders = 'orders';
+  static const String strNotifications = 'notifications';
 
 
-  // static Future<List> selectData() async {
-  //
-  //   final stream = client.from(strUsers).select().eq('id', 'value');
-  //
-  //   return [];
-  // }
+  static Future<void> updateData({required Map<String, dynamic> newData, required String collRef, required int id}) async {
+
+    if(id==0){
+      return;
+    }
+
+    try {
+      await AppSupabase.client
+          .from(collRef)
+          .update(newData)
+          .eq('id', id);
+    } catch (error) {
+      print('updateData collRef $collRef id $id error - $error');
+    }
+  }
+
 
 }

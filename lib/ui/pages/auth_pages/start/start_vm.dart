@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/utils.dart';
@@ -26,8 +27,13 @@ class StartViewModel extends ViewModel {
       // await userNotifier.setUserDataFunc();
       // await settingsNotifier.setSettings(context);
 
-      Utils.checkReg(context);
-      // // context.router.push(const ConnectMetamaskViewRoute());
+      // Utils.checkReg(context);
+
+      // final meetingModel = MeetingModel.emptyModel();
+      // context.router.push(MeetingRateFirstViewRoute(meetingModel: meetingModel));
+
+
+      context.router.push(const ConnectMetamaskViewRoute());
       // context.router.push(ContractTestViewRoute());
     }
   }

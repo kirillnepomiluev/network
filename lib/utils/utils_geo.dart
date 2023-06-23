@@ -145,10 +145,10 @@ class UtilsGeo {
       'my_long': myLong
     },);
 
-    for (final item in data) {
-      print(item);
-      // print('${item['name']} ${item['location']} lat ${item['lat']} long ${item['long']} dist_meters ${item['dist_meters']}',);
-    }
+    // for (final item in data) {
+    //   // print(item);
+    //   print('${item['name']} ${item['location']} lat ${item['lat']} long ${item['long']} dist_meters ${item['dist_meters']}',);
+    // }
 
     return data;
   }

@@ -17,15 +17,21 @@ class PersonProfileAvatarContainer extends StatelessWidget {
       height: 112.sp, //662
       width: mediaWidth,
       child: Stack(
-        alignment: Alignment.topCenter,
+        alignment: Alignment.bottomCenter,
         children: [
           Positioned(
-            top: 50,
+            // top: 50,
             child: SizedBox(
-                width: mediaWidth,
-                child: Assets.images.avatars.avatar3D.image(
-                  alignment: Alignment.topCenter,
-                ),),
+                // width: mediaWidth,
+                child:
+                // Assets.images.avatars.avatar3D.image(
+                //   alignment: Alignment.topCenter,
+                // )
+                Image.network(partnerModel.bodyURL,
+                    height: double.infinity,
+                    fit: BoxFit.cover
+                )
+              ,),
           ),
           Container(
             decoration: BoxDecoration(
