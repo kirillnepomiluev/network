@@ -29,6 +29,7 @@ import 'package:network_app/ui/pages/home_pages/home_store/home_store_view.dart'
 import 'package:network_app/ui/pages/home_pages/home_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_wallet/home_wallet_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/meeting_invitations_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_invite_details/meeting_invite_details_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_matching/meeting_matching_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_notifications/meeting_notifications_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/check_meeting_parameters/check_meeting_parameters_view.dart';
@@ -123,6 +124,8 @@ class RoutesLists {
   ];
 
   static const List<AutoRoute> meetingRoutes = [
+    AutoRoute(page: MeetingInviteDetailsView),
+
     AutoRoute(page: MeetingSearchView),
     AutoRoute(page: MeetingNotificationsView),
     AutoRoute(page: MeetingInvitationsView),

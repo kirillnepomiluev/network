@@ -48,7 +48,7 @@ class EnterInfoContainer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 20), //20
                 child: Text(
-                  description ?? Constants.strLoremIpsum,
+                  description ?? AppConstants.strLoremIpsum,
                   maxLines: maxLines,
                 ),
               ),

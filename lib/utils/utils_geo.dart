@@ -134,7 +134,7 @@ class UtilsGeo {
   static Future<List> getUsersByRadius({required num radius}) async {
     // const radius = 2.5;
 
-    print('getUsersByRadius $radius');
+    // print('getUsersByRadius $radius');
 
     const myLat = 53.1299150;
     const myLong = 48.4251995; //7 после точки

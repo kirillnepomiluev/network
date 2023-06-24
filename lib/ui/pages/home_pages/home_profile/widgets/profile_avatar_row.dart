@@ -47,7 +47,9 @@ class ProfileAvatarRow extends StatelessWidget {
                   },
                   child: AppCircleAvatar(
                     contSize: Res.s60, //60
-                    imageUrl: Assets.images.avatars.avatar0.keyName,
+                    // imageUrl: Assets.images.avatars.avatar0.keyName,
+                    imageUrl: '',
+                    isAssetImage: false,
                   ),
                 ),),
 

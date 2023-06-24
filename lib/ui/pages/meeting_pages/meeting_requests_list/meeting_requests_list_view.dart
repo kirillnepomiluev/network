@@ -4,11 +4,14 @@ import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_requests_list/widgets/meeting_request_info_container.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
+import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
 
@@ -51,7 +54,9 @@ class MeetingRequestsListView extends StatelessWidget {
                   style: AppTextStyles.salad20
                       .copyWith(fontWeight: FontWeight.w600),
                 ),
-
+                SizedBox(
+                  height: Res.s20,
+                ),
                 StreamBuilder(
                   stream: AppSupabase.client
                       .from(AppSupabase.strMeetings)
@@ -69,15 +74,18 @@ class MeetingRequestsListView extends StatelessWidget {
                         shrinkWrap: true,
                         itemCount: list.length,
                         itemBuilder: (BuildContext context, int index) {
-
-                          MeetingModel meetingModel = MeetingModel.fromMap(list[index]);
-
+                          final meetingMap = list[index];
+                          MeetingModel meetingModel = MeetingModel.fromMap(meetingMap);
                           return Padding(
                             padding: EdgeInsets.only(right: Res.s10),
-                            child: MeetingRequestInfoContainer(
-                              // currentNote: list[index],
-                              meetingModel: meetingModel,
-                            ),
+                            child:
+                            ViewInviteContainerNew(
+                              meetingMap: meetingMap,
+                              isInvitation: false,
+                            )
+                            // MeetingRequestInfoContainer(
+                            //   meetingModel: meetingModel,
+                            // ),
                           );
                         },
                       );

@@ -21,7 +21,6 @@ class MeetingInvitationsView extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaTop = MediaQuery.of(context).viewPadding.top;
     final userData = Provider.of<UserNotifier>(context).userData;
-
     return ViewModelBuilder<MeetingInvitationsViewModel>(
       createModelDataEx: () => MeetingInvitationsViewModel(context),
       builder: (context, model) {
@@ -46,8 +45,8 @@ class MeetingInvitationsView extends StatelessWidget {
                     changeTab: model.changeTab,
                     activeTab: model.activeTab,
                   ),
-                  const SizedBox(
-                    height: 13,
+                  SizedBox(
+                    height: Res.s20,
                   ),
                   StreamBuilder(
                     stream: AppSupabase.client
@@ -59,21 +58,18 @@ class MeetingInvitationsView extends StatelessWidget {
                         final list =
                             snapshot.data! as List<Map<String, dynamic>>;
                         return ListView.builder(
+                          padding: EdgeInsets.zero,
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: list.length,
                           itemBuilder: (BuildContext context, int index) {
                             final meetingMap = list[index];
-                            MeetingModel meetingModel = MeetingModel.fromMap(meetingMap);
-
+                            // MeetingModel meetingModel = MeetingModel.fromMap(meetingMap);
                             return Padding(
                               padding: EdgeInsets.only(right: Res.s10),
-                              child: ViewInviteContainer(
-                                imageUrl:
-                                    Assets.images.avatars.avatar0.keyName, //0
-                                activeTab: model.activeTab,
-                                showVerified: true,
-                                meetingModel: meetingModel,
+                              child: ViewInviteContainerNew(
+                                meetingMap: meetingMap,
+                                isInvitation: true,
                               ),
                             );
                           },

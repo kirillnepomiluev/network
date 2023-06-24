@@ -38,7 +38,7 @@ class ChooseCategoriesViewModel extends ViewModel {
       }
     }
 
-    const optionsList = Constants.hobbiesList;
+    const optionsList = AppConstants.hobbiesList;
 
     for (int i = 0; i < optionsList.length; i++) {
       bool active = false;

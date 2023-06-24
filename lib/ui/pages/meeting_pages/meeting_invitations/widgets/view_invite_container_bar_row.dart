@@ -23,6 +23,7 @@ class ViewInviteContainerTop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -34,7 +35,6 @@ class ViewInviteContainerTop extends StatelessWidget {
           child: Center(
             child:
             Text(
-              // AppString.of(context).businessMeeting,
               meetingType,
                 style: AppTextStyles.primary12,),
           ),

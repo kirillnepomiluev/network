@@ -57,7 +57,7 @@ class StoreCategoryView extends StatelessWidget {
                       padV: 23,
                       padH: 18,
                       child: Text(
-                        Constants.strLoremIpsum,
+                        AppConstants.strLoremIpsum,
                         maxLines: 3,
                         overflow: TextOverflow.clip,
                         style: AppTextStyles.primary16,

@@ -6,7 +6,7 @@ import 'package:network_app/utils/res.dart';
 
 class WrapSelectContainers extends StatelessWidget {
   const WrapSelectContainers({
-    Key? key, this.list = Constants.hobbiesList, this.onTap,
+    Key? key, this.list = AppConstants.hobbiesList, this.onTap,
   }) : super(key: key);
   final List<String> list;
   final VoidCallback? onTap;

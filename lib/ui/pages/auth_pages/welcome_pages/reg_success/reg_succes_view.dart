@@ -73,7 +73,7 @@ class _RegSuccessViewState extends State<RegSuccessView> {
                                     subtitle: const Padding(
                                       padding: EdgeInsets.only(top: 15),
                                       child: Text(
-                                        Constants.strLoremIpsum,
+                                        AppConstants.strLoremIpsum,
                                         maxLines: 2,
                                       ),
                                     ),

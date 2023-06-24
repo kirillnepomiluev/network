@@ -6,6 +6,7 @@ import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/settings_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/constants.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/utils/utils.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -60,11 +61,15 @@ class UserModel {
   final double? long;
   final String? location;
   final int level;
+  final String levelText;
+  final String avatarURL;
 
   UserModel({
+    this.avatarURL = AppConstants.baseAvatarUrl,
     this.id,
     this.personID = -1,
     this.level = 0,
+    this.levelText = '',
     this.age = '',
     this.name = '',
     this.phone = '',
@@ -154,6 +159,9 @@ class UserModel {
     return rating.toStringAsFixed(1);
   }
 
+  static String getLevelText(int level) => level<1? 'Нет костюма' : 'Уровень $level';
+
+
   factory UserModel.fromMap(Map<String, dynamic> dataMap) {
     DateTime createdDate = Utils.getDate(dataMap['created_date'])!;
     DateTime? birthdayDate = DateTime.tryParse(dataMap['birthday_date']);
@@ -173,13 +181,17 @@ class UserModel {
     List avatarHeadCupboard = dataMap['avatar_head_cupboard'];
     List clothesIdList = [...avatarBodyCupboard, ...avatarHeadCupboard];
 
+    final level = dataMap['level'];
+    final levelText = getLevelText(level);
+
     final rating = getRating(dataMap);
 
     return UserModel(
       id: dataMap['id'],
       bodyURL: dataMap['body_url']??'',
       personID: dataMap['person_id'],
-      level: dataMap['level'],
+      level: level,
+      levelText: levelText,
       name: dataMap['name'],
       phone: dataMap['phone'] ?? '',
       email: dataMap['email'] ?? '',
@@ -336,7 +348,6 @@ class UserNotifier with ChangeNotifier {
                   .eq('id', userData.avatarBodyID).single().then((value) {
                 _bodyURL = value['image_url'];
               });
-              print('_bodyURL $_bodyURL');
             }
 
             userDataMap.addAll({

@@ -45,7 +45,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
                               Padding(
                                 padding: EdgeInsets.only(
                                     top: Res.s20,),
-                                child: Text(Constants.strLongLoremIpsum,
+                                child: Text(AppConstants.strLongLoremIpsum,
                                     style: AppTextStyles.primary16,),
                               )
                             ],

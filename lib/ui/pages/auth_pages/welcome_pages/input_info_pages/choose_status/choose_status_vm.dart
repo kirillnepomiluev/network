@@ -10,8 +10,8 @@ import 'package:network_app/utils/utils.dart';
 
 class ChooseStatusViewModel extends ViewModel {
   ChooseStatusViewModel(this.context) {
-    for (int i = 0; i < Constants.hobbiesList.length; i++) {
-      final item = Constants.hobbiesList[i];
+    for (int i = 0; i < AppConstants.hobbiesList.length; i++) {
+      final item = AppConstants.hobbiesList[i];
       currentList.add(HobbyModel(item, i));
     }
 

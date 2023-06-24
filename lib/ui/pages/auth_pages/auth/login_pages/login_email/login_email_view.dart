@@ -68,7 +68,7 @@ class LoginEmailView extends StatelessWidget {
                               height: Res.s20,
                             ),
                             const Text(
-                              Constants.strLoremIpsum,
+                              AppConstants.strLoremIpsum,
                               maxLines: 5,
                             ),
                           ],

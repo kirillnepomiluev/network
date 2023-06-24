@@ -28,7 +28,6 @@ class _MeetingPartnerContainerState extends State<MeetingPartnerContainer> {
 
   @override
   void initState() {
-    print('init ${widget.partnerModel.name}');
     // partnerModel = UserModel.fromJson(widget.userModel);
     super.initState();
   }

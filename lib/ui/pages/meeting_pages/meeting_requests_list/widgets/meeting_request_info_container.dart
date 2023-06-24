@@ -34,47 +34,22 @@ class _MeetingRequestInfoContainerState
 
     widget.meetingModel.partnerModel = UserModel.fromMap(partnerData);
 
-    // partnerName = partnerData.first['name']??'';
     setState(() {
       isLoading = false;
     });
-
-    // level = data[0]['level']??'';
   }
-
-  // MeetingModel meetingModel = MeetingModel.fromMap(list[index]);
 
   @override
   void initState() {
     getInit();
-    // StreamBuilder(
-    //   stream: AppSupabase.client
-    //       .from(AppSupabase.strUsers)
-    //       .stream(primaryKey: ['id'])
-    //       .eq('id', meetingDraft.partnerID),
-    //   builder: (context, snapshot) {
-    //     if (snapshot.hasData) {
-    //       final list = snapshot.data as List<Map<String, dynamic>>;
-    //       final currentMap = list.first as Map<String, dynamic>;
-    //       final name = currentMap['name'];
-    //       return Text(name, style: AppTextStyles.primary,);
-    //     }
-    //     return const Center(child: CircularProgressIndicator());
-    //   },
-    // )
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    // MeetingModel meetingModel = MeetingModel.fromMap(widget.currentNote);
-    // DateFormat.yMMMMd('ru').format(newDate)
     final localizations = MaterialLocalizations.of(context);
-    final strCreatedDate =
-        localizations.formatShortDate(widget.meetingModel.createdDate);
-    final strSceduledDate =
-        localizations.formatShortDate(widget.meetingModel.scheduledDate);
+    final strCreatedDate = localizations.formatShortDate(widget.meetingModel.createdDate);
+    final strSceduledDate = localizations.formatShortDate(widget.meetingModel.scheduledDate);
 
     final userData = Provider.of<UserNotifier>(context).userData;
 
@@ -93,9 +68,7 @@ class _MeetingRequestInfoContainerState
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        widget.meetingModel.type
-                        // AppString.of(context).businessMeeting
-                        ,
+                        widget.meetingModel.type,
                         style: AppTextStyles.primary16
                             .copyWith(fontWeight: FontWeight.w500),
                       ),
@@ -140,7 +113,6 @@ class _MeetingRequestInfoContainerState
                             widget.meetingModel.description,
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
-                            // 'Здесь будет небольшое описание встречи, которое будет видно на 2 строчки...',
                           ),
                           SizedBox(
                             height: Res.s20,
@@ -149,25 +121,8 @@ class _MeetingRequestInfoContainerState
                         ],
                       ),
 
-
                       MeetingGoIcon(
-                          creatorModel: userData,
-                          partnerModel: widget.meetingModel.partnerModel,
                           meetingModel: widget.meetingModel),
-
-                      // Container(
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(37),
-                      //     color: Colors.transparent,
-                      //     border: Border.all(color: AppColors.salad),),
-                      //   width: 35.sp, //66
-                      //   height: 35.sp * 1.394, //92
-                      //   child: Icon(
-                      //     NetworkIcons.arrow_long_right,
-                      //     color: AppColors.salad,
-                      //     size: 16.sp,
-                      //   ),
-                      // )
                     ],
                   ),
                   if (widget.meetingModel.rateFromPartner != null)

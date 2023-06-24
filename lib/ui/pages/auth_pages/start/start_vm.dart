@@ -21,19 +21,21 @@ class StartViewModel extends ViewModel {
     } else {
       print('Авторизован');
 
+      Utils.checkReg(context);
+      // context.router.push(const ConnectMetamaskViewRoute());
+
+
       // final userNotifier = Provider.of<UserNotifier>(context, listen: false);
       // final settingsNotifier = Provider.of<SettingsNotifier>(context, listen: false);
       // userNotifier.setCurrentID(AppSupabase.client.auth.currentUser!.id);
       // await userNotifier.setUserDataFunc();
       // await settingsNotifier.setSettings(context);
 
-      // Utils.checkReg(context);
 
       // final meetingModel = MeetingModel.emptyModel();
       // context.router.push(MeetingRateFirstViewRoute(meetingModel: meetingModel));
 
 
-      context.router.push(const ConnectMetamaskViewRoute());
       // context.router.push(ContractTestViewRoute());
     }
   }

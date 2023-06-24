@@ -113,6 +113,7 @@ class ChooseMeetingPersonView extends StatelessWidget {
                                               AppCircleAvatar(
                                                 imageUrl: '',
                                                 contSize: 40.sp, //83
+                                                isAssetImage: false,
                                               ),
                                               Padding(
                                                 padding: EdgeInsets.only(left: Res.s21),

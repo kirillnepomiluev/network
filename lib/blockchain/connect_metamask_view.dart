@@ -221,7 +221,7 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
               height: mediaWidth*0.5
             ),
 
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
 
             if (_session != null)
               Container(

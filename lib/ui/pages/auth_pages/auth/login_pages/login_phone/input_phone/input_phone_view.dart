@@ -57,7 +57,7 @@ class InputPhoneView extends StatelessWidget {
                               onChange: model.onPhoneFieldChange,
                             ),
                             const Text(
-                              Constants.strLoremIpsum,
+                              AppConstants.strLoremIpsum,
                               maxLines: 5,
                             ),
                           ],

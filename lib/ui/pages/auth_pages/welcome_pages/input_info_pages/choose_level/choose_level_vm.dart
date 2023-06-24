@@ -98,7 +98,7 @@ class ChooseLevelViewModel extends ViewModel {
                           Padding(
                             padding: EdgeInsets.only(top: 20),
                             child: Text(
-                              '${Constants.strLongLoremIpsum}\n\n${Constants.strLongLoremIpsum}',
+                              '${AppConstants.strLongLoremIpsum}\n\n${AppConstants.strLongLoremIpsum}',
                               style: TextStyle(
                                 fontSize: 16,
                               ),

@@ -41,7 +41,7 @@ class SettingsNotifier with ChangeNotifier {
   }
 
   Future<void> loadPartners(BuildContext context, {required num radius}) async {
-    print('loadPartners $radius km');
+    // print('loadPartners $radius km');
     partnersList.clear();
     initialPage = 0;
 
