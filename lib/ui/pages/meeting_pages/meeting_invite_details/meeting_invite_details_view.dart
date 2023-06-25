@@ -40,7 +40,7 @@ class MeetingInviteDetailsView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppBarRow(
+                const AppBarRow(
                   // title: AppString.of(context).listOfPersonalRequests,
                 ),
                 SizedBox(
@@ -127,7 +127,7 @@ class InviteContainerInfo extends StatelessWidget {
           ),
 
           SizedBox(height: Res.s10),
-          Divider(color: Colors.grey,),
+          const Divider(color: Colors.grey,),
           SizedBox(height: Res.s10),
 
 
@@ -160,36 +160,48 @@ class InviteContainerInfo extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                 if(meetingModel.rateFromCreator != null)
                   _RateInfo(
                     fromCreator: true,
                     meetingModel: meetingModel,
                   ),
-
                 if (meetingModel.rateFromPartner != null)
                   _RateInfo(
                     fromCreator: false,
                     meetingModel: meetingModel,
                   ),
 
-
                   SizedBox(height: Res.s10),
-                  Divider(color: Colors.white,),
+                  const Divider(color: Colors.white,),
                   SizedBox(height: Res.s10),
-                  Text('Уровень создателя ${meetingModel.creatorLevel}'),
+                  Text('На момент встречи:'),
                   SizedBox(height: 5),
-                  Text('Уровень партнера ${meetingModel.partnerLevel}'),
-                  SizedBox(height: 5),
-                  Text('Вопросы и ответы тут'),
-                  SizedBox(height: 5),
-                  Text('Инфо о проведенном времени'),
-                  SizedBox(height: 5),
-                  Text('Инфо о жалобе может быть'),
+                  Row(children: [
+                    Text('• Уровень создателя'),
+                    SizedBox(width: 5,),
+                    Text(meetingModel.creatorLevel.toString()),
+                  ],),
+                  const SizedBox(height: 5),
+                  Row(children: [
+                    Text('• Уровень партнера'),
+                    SizedBox(width: 12,),
+                    Text(meetingModel.partnerLevel.toString()),
+                  ],),
+                  const SizedBox(height: 15),
+                  const Text('Вопросы и ответы тут'),
+                  const SizedBox(height: 15),
 
+                  ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 5,
+                      itemBuilder: (context, index) => Text('Вопрос ${index+1}')),
+
+                  const SizedBox(height: 15),
+                  const Text('Инфо о проведенном времени'),
+                  const SizedBox(height: 15),
+                  const Text('Инфо о жалобе может быть'),
               ],),
-
-
 
         ],
       ),
