@@ -103,7 +103,10 @@ class InviteContainerInfo extends StatelessWidget {
           InviteContainerAvatarRow(
             meetingModel: meetingModel,
             isInvitation: isInvitation,
+            showDetails: showDetails,
           ),
+
+
           SizedBox(height: meetingModel.status !='created' ? Res.s15 : Res.s10),
           Row(
             // crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,8 +117,6 @@ class InviteContainerInfo extends StatelessWidget {
                   padding: EdgeInsets.only(right: Res.s20),
                   child: Text(
                     meetingModel.description,
-                    // 'aaaaaa bbbbbbb',
-                    // 'фыовдлфыовдлфыдвофдылвфывдлфыовлофыдлвфдылводфлыв фывфыв фыв фыв фыв фыв фыв ф в',
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -162,45 +163,20 @@ class InviteContainerInfo extends StatelessWidget {
                 children: [
                 if(meetingModel.rateFromCreator != null)
                   _RateInfo(
+                    title: isInvitation? 'Отзыв партнера' : 'Ваш отзыв          ',
                     fromCreator: true,
                     meetingModel: meetingModel,
                   ),
                 if (meetingModel.rateFromPartner != null)
                   _RateInfo(
+                    title: isInvitation? 'Ваш отзыв          ' : 'Отзыв партнера',
                     fromCreator: false,
                     meetingModel: meetingModel,
                   ),
 
-                  SizedBox(height: Res.s10),
-                  const Divider(color: Colors.white,),
-                  SizedBox(height: Res.s10),
-                  Text('На момент встречи:'),
-                  SizedBox(height: 5),
-                  Row(children: [
-                    Text('• Уровень создателя'),
-                    SizedBox(width: 5,),
-                    Text(meetingModel.creatorLevel.toString()),
-                  ],),
-                  const SizedBox(height: 5),
-                  Row(children: [
-                    Text('• Уровень партнера'),
-                    SizedBox(width: 12,),
-                    Text(meetingModel.partnerLevel.toString()),
-                  ],),
-                  const SizedBox(height: 15),
-                  const Text('Вопросы и ответы тут'),
-                  const SizedBox(height: 15),
-
-                  ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: 5,
-                      itemBuilder: (context, index) => Text('Вопрос ${index+1}')),
-
-                  const SizedBox(height: 15),
-                  const Text('Инфо о проведенном времени'),
-                  const SizedBox(height: 15),
-                  const Text('Инфо о жалобе может быть'),
+                  // SizedBox(height: Res.s10),
+                  // const Divider(color: Colors.white,),
+                  // SizedBox(height: Res.s10),
               ],),
 
         ],
@@ -210,14 +186,18 @@ class InviteContainerInfo extends StatelessWidget {
 }
 
 class _RateInfo extends StatelessWidget {
-  const _RateInfo({Key? key, required this.fromCreator, required this.meetingModel}) : super(key: key);
+  const _RateInfo({Key? key, required this.fromCreator, required this.meetingModel, required this.title}) : super(key: key);
   final bool fromCreator;
   final MeetingModel meetingModel;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
 
-    final title = 'Отзыв ${fromCreator? 'создателя' : 'партнера'}';
+    final userData = Provider.of<UserNotifier>(context).userData;
+
+    // final title = 'Отзыв ${fromCreator? 'создателя' : 'партнера'}';
+    // final title = '${fromCreator && !isInvitation? 'Ваш отзыв          ' : 'Отзыв партнера'}';
     final rate = fromCreator? meetingModel.rateFromCreator : meetingModel.rateFromPartner;
     final fb = fromCreator? meetingModel.fbFromCreator : meetingModel.fbFromPartner;
 
@@ -232,9 +212,13 @@ class _RateInfo extends StatelessWidget {
           children: [
             Text(title),
             const SizedBox(width: 15,),
-            Text(rate.toString()),
-            const SizedBox(width: 5,),
-            Icon(Icons.star, color: AppColors.salad, size: Res.s16,)
+            Row(children: [
+              for(int i=0; i<rate!; i++)
+                Icon(Icons.star, color: AppColors.salad, size: Res.s16,)
+            ],)
+            // Text(rate.toString()),
+            // const SizedBox(width: 5,),
+            // Icon(Icons.star, color: AppColors.salad, size: Res.s16,)
           ],
         ),
         const SizedBox(height: 10,),

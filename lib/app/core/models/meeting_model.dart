@@ -29,8 +29,8 @@ class MeetingModel {
   List questionsList; //List<Map<String, dynamic>>
   String status;
   String statusText;
-  int? creatorRating;
-  int? partnerRating;
+  // int? creatorRating;
+  // int? partnerRating;
   int? rateFromCreator;
   String? fbFromCreator;
   int? rateFromPartner;
@@ -72,8 +72,8 @@ class MeetingModel {
     this.questionsMissedCount = 0,
     this.questionsAnsweredCount = 0,
     required this.questionsList,
-    this.creatorRating,
-    this.partnerRating,
+    // this.creatorRating,
+    // this.partnerRating,
     this.rateFromCreator,
     this.fbFromCreator,
     this.rateFromPartner,
@@ -150,8 +150,8 @@ class MeetingModel {
       questionsList: dataMap['questions_list'] ?? [],
       status: status,
       statusText: statusText,
-      creatorRating: dataMap['creator_rating'],
-      partnerRating: dataMap['partner_rating'],
+      // creatorRating: dataMap['creator_rating'],
+      // partnerRating: dataMap['partner_rating'],
       rateFromCreator: dataMap['rate_from_creator'],
       fbFromCreator: dataMap['fb_from_creator'],
       rateFromPartner: dataMap['rate_from_partner'],
@@ -195,8 +195,8 @@ class MeetingModel {
         questionsList: dataMap['questions_list'] ?? [],
         status: status,
         statusText: statusText,
-        creatorRating: dataMap['creator_rating'],
-        partnerRating: dataMap['partner_rating'],
+        // creatorRating: dataMap['creator_rating'],
+        // partnerRating: dataMap['partner_rating'],
         rateFromCreator: dataMap['rate_from_creator'],
         fbFromCreator: dataMap['fb_from_creator'],
         rateFromPartner: dataMap['rate_from_partner'],

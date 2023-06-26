@@ -14,11 +14,12 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 class InviteContainerAvatarRow extends StatelessWidget {
   const InviteContainerAvatarRow({
     Key? key,
-   required this.meetingModel,  required this.isInvitation,
+   required this.meetingModel,  required this.isInvitation, required this.showDetails,
   }) : super(key: key);
 
   final MeetingModel meetingModel;
   final bool isInvitation;
+  final bool showDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,18 @@ class InviteContainerAvatarRow extends StatelessWidget {
             children: [
               NameWithVerification(strName: userModel.name, showVerified: userModel.verified),
               SizedBox(height: 10,),
-              Text(userLevel)
+              Text(userLevel),
+              if(showDetails)
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Text('(ваш уровень ${isInvitation? meetingModel.partnerLevel : meetingModel.creatorLevel})'),
+              ),
+
+              // Row(children: [
+              //   Text('• Ваш уровень ${isInvitation? meetingModel.creatorLevel : meetingModel.partnerLevel}'),
+              //   SizedBox(width: 5,),
+              //   Text(isInvitation? meetingModel.creatorLevel.toString() : meetingModel.partnerLevel.toString()),
+              // ],),
             ],
           )
         ],
