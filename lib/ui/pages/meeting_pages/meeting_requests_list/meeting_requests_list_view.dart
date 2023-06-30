@@ -4,14 +4,11 @@ import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_requests_list/widgets/meeting_request_info_container.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
-import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
 

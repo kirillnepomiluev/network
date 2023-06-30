@@ -87,7 +87,7 @@ class MessageContainer extends StatelessWidget {
                 Positioned(
                     top: 0,
                     child: AppCircleAvatar(
-                      imageUrl: photoMap['url'] as String,
+                      avatarUrl: photoMap['url'] as String,
                       contSize: contSize,
                     ),),
                 if (photoMap['name'] != 'Станислав')

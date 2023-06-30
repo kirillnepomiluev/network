@@ -64,7 +64,7 @@
   "metPeopleNear": "Meet people near you",
   "yourLocationWillBeUsed": "Your location will be used to show potential meeting partners",
   "profile": "Profile",
-  "cupboard": "cupboard",
+  "cupboard": "Cupboard",
   "friends": "Friends",
   "readyToMeet": "Ready to meet",
   "rating": "rating",
@@ -139,5 +139,8 @@
   "date": "Date",
   "ofPartner": "a partner",
   "dateOfMeeting": "Дата встречи",
-  "partner": "Партнер"
+  "partner": "Партнер",
+  "profilePhoto": "Profile photo",
+  "changeThePhoto": "Change the photo",
+  "chooseNewPhoto": "Choose new photo"
 }

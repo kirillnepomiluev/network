@@ -38,6 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "byInterests": MessageLookupByLibrary.simpleMessage("По интересам"),
         "categoryOfMeeting":
             MessageLookupByLibrary.simpleMessage("Категория встречи"),
+        "changeThePhoto":
+            MessageLookupByLibrary.simpleMessage("Change the photo"),
         "chat": MessageLookupByLibrary.simpleMessage("Чат"),
         "check": MessageLookupByLibrary.simpleMessage("Проверьте"),
         "choose": MessageLookupByLibrary.simpleMessage("Выберете"),
@@ -47,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Выбрать дату начала"),
         "chooseInterests":
             MessageLookupByLibrary.simpleMessage("Выберете интересы"),
+        "chooseNewPhoto":
+            MessageLookupByLibrary.simpleMessage("Choose new photo"),
         "chooseStatus": MessageLookupByLibrary.simpleMessage("Выберете статус"),
         "code": MessageLookupByLibrary.simpleMessage("код"),
         "createNewRequest":
@@ -146,6 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Укажите период для"),
         "premium": MessageLookupByLibrary.simpleMessage("Премиум"),
         "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
+        "profilePhoto": MessageLookupByLibrary.simpleMessage("Profile photo"),
         "rare": MessageLookupByLibrary.simpleMessage("Редкий"),
         "rating": MessageLookupByLibrary.simpleMessage("рейтинг"),
         "readyToMeet": MessageLookupByLibrary.simpleMessage("Готов к встрече"),

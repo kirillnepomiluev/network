@@ -31,7 +31,7 @@ class PartnerCupboardRow extends StatelessWidget {
         ),
         const Padding(
           padding: EdgeInsets.only(top: 20, bottom: 10),
-          child: ProfileAvatarRow(title: 'Джоли, 28', showNotifications: false),
+          child: ProfileAvatarRowOld(title: 'Джоли, 28', showNotifications: false),
         ),
       ],
     );

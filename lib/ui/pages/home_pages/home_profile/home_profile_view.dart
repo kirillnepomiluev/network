@@ -1,12 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
+import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/home_profile_vm.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/choose_interface.dart';
-import 'package:network_app/ui/pages/home_pages/home_profile/widgets/profile_avatar_row.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/screens/cupboard_screen.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/screens/profile_screen.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bottom.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
+import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -35,11 +38,40 @@ class HomeProfileView extends StatelessWidget {
                 SizedBox(
                   height: mediaTop,
                 ),
-                ProfileAvatarRow(
-                  title: '${userData.name}, ${userData.age}',
-                  status: userData.status,
-                  onNotificationIconTap: model.onNotificationIconTap,
+
+                // ProfileAvatarRow(
+                //   title: '${userData.name}, ${userData.age}',
+                //   status: userData.status,
+                //   onNotificationIconTap: model.onNotificationIconTap,
+                // ),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: Res.s15,),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: InkWell(
+                          onTap: (){
+                            context.router.push(const AvatarEditViewRoute());
+                          },
+                          child: PartnerAvatarRow(
+                            userModel: userData,
+                            partnerLevel: userData.level,
+                            yourLevel: userData.level,
+                            showYourLevel: false,
+                            contSize: Res.s60,
+                          ),
+                        ),
+                      ),
+
+                      IconButton(onPressed: (){
+                        context.router.push(const SettingsMainViewRoute());
+                      }, icon: const Icon(Icons.menu, color: Colors.white,), iconSize: Res.s26,),
+
+                    ],
+                  ),
                 ),
+
                 //Выбор интерфейса
                 ChooseProfileScreen(
                   activeProfileTab: model.activeTab,

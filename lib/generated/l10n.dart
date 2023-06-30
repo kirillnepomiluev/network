@@ -700,10 +700,10 @@ class AppString {
     );
   }
 
-  /// `cupboard`
+  /// `Cupboard`
   String get cupboard {
     return Intl.message(
-      'cupboard',
+      'Cupboard',
       name: 'cupboard',
       desc: '',
       args: [],
@@ -1455,6 +1455,36 @@ class AppString {
     return Intl.message(
       'Партнер',
       name: 'partner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile photo`
+  String get profilePhoto {
+    return Intl.message(
+      'Profile photo',
+      name: 'profilePhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change the photo`
+  String get changeThePhoto {
+    return Intl.message(
+      'Change the photo',
+      name: 'changeThePhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose new photo`
+  String get chooseNewPhoto {
+    return Intl.message(
+      'Choose new photo',
+      name: 'chooseNewPhoto',
       desc: '',
       args: [],
     );

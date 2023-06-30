@@ -10,7 +10,6 @@ import 'package:network_app/ui/pages/auth_pages/auth/recovery_pages/recovery/rec
 import 'package:network_app/ui/pages/auth_pages/auth/recovery_pages/recovery_email/recovery_email_view.dart';
 import 'package:network_app/ui/pages/auth_pages/start/start_view.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_date/choose_birth_date_view.dart';
-import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_interests/choose_interests_view.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_level/choose_level_view.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_occupation/choose_occupation_view.dart';
 import 'package:network_app/ui/pages/auth_pages/welcome_pages/input_info_pages/choose_sex/choose_sex_view.dart';
@@ -53,6 +52,8 @@ import 'package:network_app/ui/pages/messages_pages/chat_personal/chat_personal_
 import 'package:network_app/ui/pages/profile_pages/choose_categories/choose_categories_view.dart';
 import 'package:network_app/ui/pages/profile_pages/edit_field/edit_field_view.dart';
 import 'package:network_app/ui/pages/profile_pages/person_profile/person_profile_view.dart';
+import 'package:network_app/ui/pages/settings_pages/avatar_edit/avatar_edit_view.dart';
+import 'package:network_app/ui/pages/settings_pages/settings_main/settings_main_view.dart';
 import 'package:network_app/ui/pages/store_pages/store_category/store_category_view.dart';
 import 'package:network_app/ui/pages/store_pages/store_product/store_product_view.dart';
 import 'package:network_app/ui/pages/wallet_pages/wallet_exchange/wallet_exchange_view.dart';
@@ -69,6 +70,9 @@ import 'package:network_app/ui/pages/wallet_pages/wallet_exchange_success/wallet
     ...RoutesLists.walletRoutes,
     ...RoutesLists.storeRoutes,
     ...RoutesLists.messagesRoutes,
+
+    AutoRoute(page: SettingsMainView),
+    AutoRoute(page: AvatarEditView),
 
     // AutoRoute(
     //   page: HomeView,

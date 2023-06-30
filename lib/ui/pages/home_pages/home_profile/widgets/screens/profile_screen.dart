@@ -10,7 +10,6 @@ import 'package:network_app/ui/widgets/common/stat_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({
@@ -38,23 +37,23 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Tima',
-                    style: AppTextStyles.primary26
-                        .copyWith(fontWeight: FontWeight.w700),),
 
-                SizedBox(
-                  height: Res.s12,
-                ),
-
-                Text(
-                    userData.rankText,
-                  // AppString.of(context).baseLevel,
-                ),
-
-                SizedBox(
-                  height: 25.sp,
-                ),
+                // Text(
+                //   'Tima',
+                //     style: AppTextStyles.primary26
+                //         .copyWith(fontWeight: FontWeight.w700),),
+                //
+                // SizedBox(
+                //   height: Res.s12,
+                // ),
+                //
+                // Text(
+                //     userData.rankText,
+                //   // AppString.of(context).baseLevel,
+                // ),
+                // SizedBox(
+                //   height: 25.sp,
+                // ),
 
                 //Готов к встрече
                 AppContainer(

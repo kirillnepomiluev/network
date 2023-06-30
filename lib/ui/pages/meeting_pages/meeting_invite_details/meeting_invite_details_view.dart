@@ -1,27 +1,16 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
-import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_requests_list/widgets/meeting_request_info_container.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
-import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/meeting_go_icon.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bar_row.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bottom.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
-import 'package:network_app/ui/widgets/icons/network_icons.dart';
-import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingInviteDetailsView extends StatelessWidget {
@@ -113,8 +102,7 @@ class InviteContainerInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
 
-              meetingModel.description.isEmpty?
-              Expanded(
+              if (meetingModel.description.isEmpty) Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(right: Res.s40 ),
                   child:
@@ -144,9 +132,7 @@ class InviteContainerInfo extends StatelessWidget {
                       ],),
                   ],)
                 ),
-              )
-              :
-              Expanded(
+              ) else Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(right: Res.s20 ),
                   child:
@@ -188,7 +174,7 @@ class InviteContainerInfo extends StatelessWidget {
                   ),
 
                   Text(
-                    '${meetingModel.createdDateText}',
+                    meetingModel.createdDateText,
                     style: AppTextStyles.grey,
                   ),
                 ],),
@@ -201,13 +187,13 @@ class InviteContainerInfo extends StatelessWidget {
                 if(meetingModel.rateFromCreator != null)
                   _RateInfo(
                     // title: isInvitation? AppString.of(context).partner_feedback : '${AppString.of(context).your_feedback}          ',
-                    title: isInvitation? AppString.of(context).partner_feedback : '${AppString.of(context).your_feedback}',
+                    title: isInvitation? AppString.of(context).partner_feedback : AppString.of(context).your_feedback,
                     fromCreator: true,
                     meetingModel: meetingModel,
                   ),
                 if (meetingModel.rateFromPartner != null)
                   _RateInfo(
-                    title: isInvitation? '${AppString.of(context).your_feedback}' : AppString.of(context).partner_feedback,
+                    title: isInvitation? AppString.of(context).your_feedback : AppString.of(context).partner_feedback,
                     fromCreator: false,
                     meetingModel: meetingModel,
                   ),

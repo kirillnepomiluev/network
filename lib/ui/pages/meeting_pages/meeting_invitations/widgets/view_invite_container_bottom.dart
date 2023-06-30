@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/meeting_go_icon.dart';
-import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
-import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/res.dart';
-import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_locale.dart';
-import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class InviteContainerAvatarRow extends StatelessWidget {
@@ -40,11 +34,12 @@ class InviteContainerAvatarRow extends StatelessWidget {
 
 
 class PartnerAvatarRow extends StatelessWidget {
-  const PartnerAvatarRow({Key? key, required this.userModel, required this.partnerLevel, required this.yourLevel, required this.showYourLevel}) : super(key: key);
+  const PartnerAvatarRow({Key? key, required this.userModel, required this.partnerLevel, required this.yourLevel, required this.showYourLevel, this.contSize}) : super(key: key);
   final UserModel userModel;
   final int partnerLevel;
   final int yourLevel;
   final bool showYourLevel;
+  final double? contSize;
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +47,8 @@ class PartnerAvatarRow extends StatelessWidget {
     return Row(
       children: [
         AppCircleAvatar(
-          imageUrl: userModel.avatarURL,
-          contSize: 40.sp, //83
+          avatarUrl: userModel.avatarURL,
+          contSize: contSize??40.sp, //83
           isAssetImage: false,
         ),
         SizedBox(width: Res.s20,),

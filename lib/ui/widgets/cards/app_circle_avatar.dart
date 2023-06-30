@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/generated/assets.gen.dart';
 
 class AppCircleAvatar extends StatelessWidget {
   const AppCircleAvatar(
-      {Key? key, required this.imageUrl, required this.contSize, this.isAssetImage = true,})
+      {Key? key, this.avatarUrl='', required this.contSize, this.isAssetImage = true,})
       : super(key: key);
-  final String imageUrl;
+  final String avatarUrl;
   final double contSize;
   final bool isAssetImage;
 
@@ -14,7 +13,7 @@ class AppCircleAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
 
     // final url = imageUrl.isEmpty? Assets.images.avatars.avatar0.keyName : imageUrl;
-    final url = imageUrl.isEmpty? AppConstants.baseAvatarUrl : imageUrl;
+    final url = avatarUrl.isEmpty? AppConstants.baseAvatarUrl : avatarUrl;
 
     return Container(
       decoration: BoxDecoration(
@@ -23,14 +22,14 @@ class AppCircleAvatar extends StatelessWidget {
         image:
         isAssetImage?
         DecorationImage(
-          image: AssetImage(imageUrl),
-          fit: BoxFit.fitHeight,
+          image: AssetImage(avatarUrl),
+          fit: BoxFit.cover,
           // alignment: Alignment.bottomCenter
         )
         :
         DecorationImage(
           image: NetworkImage(url),
-          fit: BoxFit.fitHeight,
+          fit: BoxFit.cover,
           // alignment: Alignment.bottomCenter
         ),
       ),

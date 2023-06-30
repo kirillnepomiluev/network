@@ -54,18 +54,17 @@ dependencies:
   geocoding:
   map_launcher:
   web3dart: ^2.6.1
-  web_socket_channel: ^2.4.0
   http: ^0.13.5
   flutter_dotenv:
   walletconnect_dart:
   dart_jsonwebtoken:
-  get:
   flutter_blue_plus:
   network_info_plus:
   permission_handler:
   device_info_plus:
   maps_toolkit:
-  flutter_rating_bar: ^4.0.1
+  flutter_rating_bar:
+  file_picker:
 
 dev_dependencies:
   flutter_test:

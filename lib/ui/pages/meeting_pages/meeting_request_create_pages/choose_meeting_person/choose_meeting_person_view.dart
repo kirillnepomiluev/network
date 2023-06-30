@@ -5,19 +5,13 @@ import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bottom.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_person/choose_meeting_person_vm.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
-import 'package:network_app/ui/theme/app_colors.dart';
-import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
-import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
-import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 
 class ChooseMeetingPersonView extends StatelessWidget {

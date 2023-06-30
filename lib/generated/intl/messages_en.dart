@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("By types of meeting"),
         "byInterests": MessageLookupByLibrary.simpleMessage("by interests"),
         "categoryOfMeeting": MessageLookupByLibrary.simpleMessage("Type"),
+        "changeThePhoto":
+            MessageLookupByLibrary.simpleMessage("Change the photo"),
         "chat": MessageLookupByLibrary.simpleMessage("Chat"),
         "check": MessageLookupByLibrary.simpleMessage("Check"),
         "choose": MessageLookupByLibrary.simpleMessage("Choose"),
@@ -46,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Choose start date"),
         "chooseInterests":
             MessageLookupByLibrary.simpleMessage("Choose your interests"),
+        "chooseNewPhoto":
+            MessageLookupByLibrary.simpleMessage("Choose new photo"),
         "chooseStatus": MessageLookupByLibrary.simpleMessage("Choose status"),
         "code": MessageLookupByLibrary.simpleMessage("the code"),
         "createNewRequest":
@@ -56,7 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Created earlier"),
         "creatingOfPersonalRequest":
             MessageLookupByLibrary.simpleMessage("Create a personal request"),
-        "cupboard": MessageLookupByLibrary.simpleMessage("cupboard"),
+        "cupboard": MessageLookupByLibrary.simpleMessage("Cupboard"),
         "currency": MessageLookupByLibrary.simpleMessage("Currency"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateOfMeeting": MessageLookupByLibrary.simpleMessage("Дата встречи"),
@@ -137,6 +141,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Specify the period for"),
         "premium": MessageLookupByLibrary.simpleMessage("Premium"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "profilePhoto": MessageLookupByLibrary.simpleMessage("Profile photo"),
         "rare": MessageLookupByLibrary.simpleMessage("Rare"),
         "rating": MessageLookupByLibrary.simpleMessage("rating"),
         "readyToMeet": MessageLookupByLibrary.simpleMessage("Ready to meet"),

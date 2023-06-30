@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:network_info_plus/network_info_plus.dart';
 import 'package:permission_handler/permission_handler.dart';

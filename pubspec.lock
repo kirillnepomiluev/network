@@ -329,6 +329,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.4"
+  file_picker:
+    dependency: "direct main"
+    description:
+      name: file_picker
+      sha256: b85eb92b175767fdaa0c543bf3b0d1f610fe966412ea72845fe5ba7801e763ff
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.2.10"
   fixnum:
     dependency: transitive
     description:
@@ -387,6 +395,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_plugin_android_lifecycle:
+    dependency: transitive
+    description:
+      name: flutter_plugin_android_lifecycle
+      sha256: "950e77c2bbe1692bc0874fc7fb491b96a4dc340457f4ea1641443d0a6c1ea360"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.15"
   flutter_rating_bar:
     dependency: "direct main"
     description:
@@ -501,14 +517,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.1"
-  get:
-    dependency: "direct main"
-    description:
-      name: get
-      sha256: "2ba20a47c8f1f233bed775ba2dd0d3ac97b4cf32fc17731b3dfc672b06b0e92a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.6.5"
   glob:
     dependency: transitive
     description:
@@ -1315,7 +1323,7 @@ packages:
     source: hosted
     version: "2.6.1"
   web_socket_channel:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: web_socket_channel
       sha256: d88238e5eac9a42bb43ca4e721edba3c08c6354d4a53063afaa568516217621b

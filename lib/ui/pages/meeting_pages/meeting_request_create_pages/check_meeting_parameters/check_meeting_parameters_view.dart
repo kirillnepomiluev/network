@@ -9,7 +9,6 @@ import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/app_wrap_containers_with_remove.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bottom.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
-import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';

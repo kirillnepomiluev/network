@@ -34,7 +34,7 @@ class MessagesMiniAvatar extends StatelessWidget {
               child: Stack(
                 children: [
                   AppCircleAvatar(
-                    imageUrl: photoMap['url'] as String,
+                    avatarUrl: photoMap['url'] as String,
                     contSize: contWidth,
                   ),
                   if (photoMap['online'] as bool)

@@ -31,7 +31,7 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
   errors:
     unused_local_variable: ignore
-    unused_import: ignore
+    unused_import: info
     unused_field: ignore
   exclude:
     - "**.g.dart"

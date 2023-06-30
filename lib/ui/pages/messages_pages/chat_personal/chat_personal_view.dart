@@ -206,7 +206,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
                                           const Positioned(
                                               top: 0,
                                               child: AppCircleAvatar(
-                                                  imageUrl:
+                                                  avatarUrl:
                                                       'assets/images/avatars/avatar_0.png',
                                                   contSize: 45,),),
                                           Positioned(

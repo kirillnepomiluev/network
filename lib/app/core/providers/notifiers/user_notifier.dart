@@ -67,6 +67,8 @@ class UserModel {
 
   UserModel({
     this.avatarURL = AppConstants.baseAvatarUrl,
+    this.bodyURL = AppConstants.baseBodyUrl,
+
     this.id,
     this.personID = -1,
     this.level = 0,
@@ -81,7 +83,6 @@ class UserModel {
     this.sex = '',
     this.hideSex = false,
     this.rankText = '',
-    this.bodyURL = '',
     required this.interests,
     this.status = '',
     required this.occupation,
@@ -186,6 +187,7 @@ class UserModel {
     final rating = getRating(dataMap);
 
     return UserModel(
+      avatarURL: dataMap['avatar_url']??AppConstants.baseAvatarUrl,
       id: dataMap['id'],
       distMeters: dataMap['dist_meters'],
       bodyURL: dataMap['body_url']??'',
@@ -250,7 +252,7 @@ class UserModel {
       if (lastDate.compareTo(birthdayDate) >= 0) {
         age = difInYears;
       } else {
-        age = (difInYears - 1);
+        age = difInYears - 1;
       }
     }
     return age;

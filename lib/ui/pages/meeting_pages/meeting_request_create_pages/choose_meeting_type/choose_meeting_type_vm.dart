@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/constants.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/utils_meetings.dart';

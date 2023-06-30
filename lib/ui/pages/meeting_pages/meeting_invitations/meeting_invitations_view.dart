@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
-import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
-import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/meetring_invitations_vm.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/choose_invitation_screen.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container.dart';

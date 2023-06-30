@@ -5,7 +5,6 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
-import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_locale.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -21,9 +20,7 @@ class MeetingPartnerInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final userData = Provider.of<UserNotifier>(context).userData;
-
     final status =  partnerModel.status.isEmpty? "I'm looking for new friends 🤝" : partnerModel.status;
-
     return InkWell(
       onTap: onPartnerTap,
       child: Column(
@@ -31,7 +28,6 @@ class MeetingPartnerInfo extends StatelessWidget {
         children: [
           NameWithVerification(
             userModel: partnerModel,
-            showFullName: false,
             iconSize: 20.sp,
             textStyle:
                 AppTextStyles.primary26.copyWith(fontWeight: FontWeight.w700),
@@ -39,9 +35,17 @@ class MeetingPartnerInfo extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Text(
-            UtilsLocale.getLevelText(partnerModel.level, context), style: AppTextStyles.primary.copyWith(fontWeight: FontWeight.w500),
-            // '${AppString.of(context).level} "${AppString.of(context).base}"',
+          Row(
+            children: [
+              const SizedBox(width: 3,),
+              Text(
+                UtilsLocale.getLevelText(partnerModel.level, context), style: AppTextStyles.primary.copyWith(fontWeight: FontWeight.w500),
+                // '${AppString.of(context).level} "${AppString.of(context).base}"',
+              ),
+              const SizedBox(width: 8,),
+              RhombusText(level: partnerModel.level,)
+
+            ],
           ),
           const SizedBox(
             height: 10,
@@ -58,10 +62,10 @@ class MeetingPartnerInfo extends StatelessWidget {
                   fontWeight: FontWeight.w400,),
             ),
           ),
-          const SizedBox(
-            height: 15,
-          ),
-          const RhombusText(),
+          // const SizedBox(
+          //   height: 15,
+          // ),
+          // const RhombusText(),
           const SizedBox(
             height: 15,
           ),

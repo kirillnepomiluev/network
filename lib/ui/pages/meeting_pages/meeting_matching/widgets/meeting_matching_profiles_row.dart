@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
-import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_matching/widgets/meeting_matching_profile_info.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
