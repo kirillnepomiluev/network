@@ -142,7 +142,8 @@ class UtilsMeeting {
     final userNotifier = Provider.of<UserNotifier>(context, listen: false);
     userNotifier.meetingDraft.partnerID = partnerModel.id!;
     userNotifier.meetingDraft.partnerModel = partnerModel;
-    print('onTap - ${userNotifier.meetingDraft.partnerID}');
+    // userNotifier.meetingDraft.partnerLevel = partnerModel.level;
+    // print('onTap - ${userNotifier.meetingDraft.partnerID}');
     context.router.push(const InputDescriptionMeetingViewRoute());
   }
 

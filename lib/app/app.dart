@@ -8,15 +8,27 @@ import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
-class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
   static final router = AppRouter();
 
   @override
-  State<App> createState() => _AppState();
+  State<MyApp> createState() => _MyAppState();
+
+  static _MyAppState? of(BuildContext context) => context.findAncestorStateOfType<_MyAppState>();
+
 }
 
-class _AppState extends State<App> {
+class _MyAppState extends State<MyApp> {
+
+  Locale _locale = const Locale('en');
+  void setLocale(String languageCode) {
+    setState(() {
+      _locale = Locale.fromSubtags(languageCode: languageCode);
+    });
+
+    // MyApp.of(context)!.setLocale('ru');
+  }
 
   // @override
   // void initState() {
@@ -46,12 +58,13 @@ class _AppState extends State<App> {
         child: ResponsiveSizer(
           builder: (context, orientation, screenType) {
             return MaterialApp.router(
-              routerDelegate: App.router.delegate(),
-              routeInformationParser: App.router.defaultRouteParser(),
+              routerDelegate: MyApp.router.delegate(),
+              routeInformationParser: MyApp.router.defaultRouteParser(),
               debugShowCheckedModeBanner: false,
               title: 'Network',
               theme: AppTheme.mainTheme,
-              locale: const Locale('ru', 'RU'),
+              // locale: const Locale('ru', 'RU'),
+              locale: _locale,
               localizationsDelegates: const [
                 AppString.delegate,
                 GlobalMaterialLocalizations.delegate,

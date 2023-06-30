@@ -1,6 +1,7 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_meeting/home_meeting_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_messages/home_messages_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/home_profile_view.dart';
@@ -88,27 +89,27 @@ class _HomeViewState extends State<HomeView> {
             items: <BottomBarItem>[
               _barItem(
                   icon: NetworkIcons.people,
-                  text: 'Встречи',
+                  text: AppString.of(context).meetings,
                   fontSize: fontSize,
                   iconSize: iconSize,),
               _barItem(
                   icon: NetworkIcons.person,
-                  text: 'Профиль',
+                  text: AppString.of(context).profile,
                   fontSize: fontSize,
                   iconSize: iconSize,),
               _barItem(
                   icon: NetworkIcons.wallet,
-                  text: 'Кошелек',
+                  text: AppString.of(context).wallet,
                   fontSize: fontSize,
                   iconSize: iconSize,),
               _barItem(
                   icon: NetworkIcons.cart,
-                  text: 'Магазин',
+                  text: AppString.of(context).store,
                   fontSize: fontSize,
                   iconSize: iconSize,),
               _barItem(
                   icon: NetworkIcons.chat,
-                  text: 'Чат',
+                  text: AppString.of(context).chat,
                   fontSize: fontSize,
                   iconSize: iconSize,),
             ],

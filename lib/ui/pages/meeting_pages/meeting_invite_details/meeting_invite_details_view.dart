@@ -112,10 +112,45 @@ class InviteContainerInfo extends StatelessWidget {
             // crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+
+              meetingModel.description.isEmpty?
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.only(right: Res.s20),
-                  child: Text(
+                  padding: EdgeInsets.only(right: Res.s40 ),
+                  child:
+                  Column(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(meetingModel.statusText),
+
+                        Text('${meetingModel.tokens} ${AppString.of(context).ofTokens}', style: AppTextStyles.salad,),
+                      ],
+                    ),
+                    SizedBox(height: Res.s10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '#${meetingModel.id}',
+                          style: AppTextStyles.grey,
+                          // style: AppTextStyles.salad16.copyWith(fontWeight: FontWeight.w500),
+                        ),
+
+                        Text(
+                          meetingModel.createdDateText,
+                          style: AppTextStyles.grey,
+                        ),
+                      ],),
+                  ],)
+                ),
+              )
+              :
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(right: Res.s20 ),
+                  child:
+                  Text(
                     meetingModel.description,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
@@ -127,34 +162,36 @@ class InviteContainerInfo extends StatelessWidget {
             ],
           ),
 
-          SizedBox(height: Res.s10),
-          const Divider(color: Colors.grey,),
-          SizedBox(height: Res.s10),
+          if(meetingModel.description.isNotEmpty)
+            Column(children: [
+              SizedBox(height: Res.s10),
+              const Divider(color: Colors.grey,),
+              SizedBox(height: Res.s10),
 
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('Встреча ${meetingModel.statusText}'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(meetingModel.statusText),
 
-              Text('${meetingModel.reward} ${AppString.of(context).ofTokens}', style: AppTextStyles.salad,),
-            ],
-          ),
-          SizedBox(height: Res.s10),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '#${meetingModel.id}',
-                style: AppTextStyles.grey,
-                // style: AppTextStyles.salad16.copyWith(fontWeight: FontWeight.w500),
+                  Text('${meetingModel.tokens} ${AppString.of(context).ofTokens}', style: AppTextStyles.salad,),
+                ],
               ),
+              SizedBox(height: Res.s10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '#${meetingModel.id}',
+                    style: AppTextStyles.grey,
+                    // style: AppTextStyles.salad16.copyWith(fontWeight: FontWeight.w500),
+                  ),
 
-              Text(
-                'от ${meetingModel.createdDateText}',
-                style: AppTextStyles.grey,
-              ),
+                  Text(
+                    '${meetingModel.createdDateText}',
+                    style: AppTextStyles.grey,
+                  ),
+                ],),
             ],),
 
             if(showDetails)
@@ -163,13 +200,14 @@ class InviteContainerInfo extends StatelessWidget {
                 children: [
                 if(meetingModel.rateFromCreator != null)
                   _RateInfo(
-                    title: isInvitation? 'Отзыв партнера' : 'Ваш отзыв          ',
+                    // title: isInvitation? AppString.of(context).partner_feedback : '${AppString.of(context).your_feedback}          ',
+                    title: isInvitation? AppString.of(context).partner_feedback : '${AppString.of(context).your_feedback}',
                     fromCreator: true,
                     meetingModel: meetingModel,
                   ),
                 if (meetingModel.rateFromPartner != null)
                   _RateInfo(
-                    title: isInvitation? 'Ваш отзыв          ' : 'Отзыв партнера',
+                    title: isInvitation? '${AppString.of(context).your_feedback}' : AppString.of(context).partner_feedback,
                     fromCreator: false,
                     meetingModel: meetingModel,
                   ),
@@ -209,9 +247,10 @@ class _RateInfo extends StatelessWidget {
         const SizedBox(height: 5,),
 
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(title),
-            const SizedBox(width: 15,),
+            // const SizedBox(width: 15,),
             Row(children: [
               for(int i=0; i<rate!; i++)
                 Icon(Icons.star, color: AppColors.salad, size: Res.s16,)

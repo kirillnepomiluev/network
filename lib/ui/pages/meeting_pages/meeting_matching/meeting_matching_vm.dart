@@ -53,7 +53,6 @@ class MeetingMatchingViewModel extends ViewModel {
     'What do you do at home when there is no one and nothing to do?',
     'What are you thinking about now?',
     'Where and where do you see yourself in 5 years? And in 10 years?',
-
   ];
 
   //   1.  'What is your favorite, brightest and most fun childhood memory?
@@ -79,7 +78,7 @@ class MeetingMatchingViewModel extends ViewModel {
 
   List<MeetingQuestionModel> questionsListNew = [];
 
-  createQuestionList(){
+  void createQuestionList(){
 
     for(int i=0; i<questionsList.length; i++){
       final answerList = [];

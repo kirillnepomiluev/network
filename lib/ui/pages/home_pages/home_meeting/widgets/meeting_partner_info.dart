@@ -6,6 +6,7 @@ import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/utils.dart';
+import 'package:network_app/utils/utils_locale.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingPartnerInfo extends StatelessWidget {
@@ -21,7 +22,7 @@ class MeetingPartnerInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     // final userData = Provider.of<UserNotifier>(context).userData;
 
-    final status =  partnerModel.status.isEmpty? 'ищу партнера для бизнеса 🤝' : partnerModel.status;
+    final status =  partnerModel.status.isEmpty? "I'm looking for new friends 🤝" : partnerModel.status;
 
     return InkWell(
       onTap: onPartnerTap,
@@ -29,9 +30,8 @@ class MeetingPartnerInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           NameWithVerification(
-            strName: '${partnerModel.name}, ${partnerModel.age}',
-            // strName: '${userData.name}, ${userData.age}',
-            showVerified: true,
+            userModel: partnerModel,
+            showFullName: false,
             iconSize: 20.sp,
             textStyle:
                 AppTextStyles.primary26.copyWith(fontWeight: FontWeight.w700),
@@ -40,7 +40,7 @@ class MeetingPartnerInfo extends StatelessWidget {
             height: 10,
           ),
           Text(
-            Utils.getLevel(partnerModel.level)
+            UtilsLocale.getLevelText(partnerModel.level, context), style: AppTextStyles.primary.copyWith(fontWeight: FontWeight.w500),
             // '${AppString.of(context).level} "${AppString.of(context).base}"',
           ),
           const SizedBox(

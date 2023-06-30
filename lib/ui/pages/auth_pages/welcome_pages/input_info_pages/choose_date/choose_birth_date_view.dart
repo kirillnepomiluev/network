@@ -48,19 +48,20 @@ class ChooseBirthDateView extends StatelessWidget {
                     ),
 
                     AppButton(
-                      text: isAuth? 'Продолжить' : 'Записать',
+                      text: isAuth? AppString.of(context).toContinue : AppString.of(context).toWrite,
                         onPressed: model.dateChoosed ? model.onTap : null,
                     ),
 
                     // AppButtonContinue(
                     //   onPressed: model.dateChoosed ? model.onTap : null,
                     // ),
+
                     const SizedBox(
                       height: 30,
                     ),
                     if(isAuth)
                     AppCheckListTile(
-                      width: 180,
+                      width: double.infinity,
                       onChanged: model.onHideAgeCheckBox,
                       value: model.hideAge,
                       title: AppString.of(context).hideAge,

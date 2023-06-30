@@ -96,6 +96,7 @@ class _ChooseSexViewState extends State<ChooseSexView> {
                       onChanged: model.onHideSexCheckBox,
                       value: model.hideSex,
                       title: AppString.of(context).hideSex,
+                      isCenter: true,
                     ),
 
                     // SizedBox(

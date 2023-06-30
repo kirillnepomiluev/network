@@ -1,10 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/constants.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/app_wrap_containers_with_remove.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bottom.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
@@ -109,7 +112,7 @@ class CheckMeetingParametersView extends StatelessWidget {
                   ),
                   // const CheckMeetingDate(),
                   // const TitleStatText('Период для планирования встречи'),
-                  const TitleStatText('Дата встречи'),
+                  TitleStatText(AppString.of(context).dateOfMeeting),
                   SizedBox(
                     height: Res.s20,
                   ),
@@ -139,15 +142,23 @@ class CheckMeetingParametersView extends StatelessWidget {
                     ],
                   ),
 
-                  const TitleStatText('Партнер'),
+                  TitleStatText(AppString.of(context).partner),
                   SizedBox(
-                    height: Res.s15,
+                    height: Res.s20,
                   ),
 
-                  Text(
-                    meetingDraft.partnerModel.name,
-                    style: AppTextStyles.primary16,
+                  // Text(
+                  //   meetingDraft.partnerModel.name,
+                  //   style: AppTextStyles.primary16,
+                  // ),
+
+                  PartnerAvatarRow(
+                    userModel: meetingDraft.partnerModel,
+                    partnerLevel: meetingDraft.partnerModel.level,
+                    yourLevel: userNotifier.userData.level,
+                    showYourLevel: false,
                   ),
+
                   // StreamBuilder(
                   //   stream: AppSupabase.client
                   //       .from(AppSupabase.strUsers)
@@ -169,25 +180,33 @@ class CheckMeetingParametersView extends StatelessWidget {
                   // ),
 
                   SizedBox(
-                    height: Res.s40,
+                    height: Res.s32,
                   ),
                   AppButton(
                     onPressed: () async {
                       final userID = userNotifier.userData.id;
                       print('userID $userID');
+
+                      final partnerLevel = meetingDraft.partnerModel.level;
+                      final tokens = partnerLevel*100;
+
                       await AppSupabase.client
                           .from(AppSupabase.strMeetings)
                           .insert({
+                        'creator_level' : userNotifier.userData.level,
+                        'partner_level' : partnerLevel,
+                        'questions_list' : AppConstants.questionsList,
+                        'tokens' : tokens>0? tokens : userNotifier.userData.level*100,
                         'creator_id': userNotifier.userData.id,
-                        'partner_id': meetingDraft.partnerID,
+                        'partner_id': meetingDraft.partnerModel.id,
                         'type': meetingDraft.type,
                         'description': meetingDraft.description,
                         'occupation': meetingDraft.occupation,
                         'interests': meetingDraft.interests,
-                        'scheduled_date':
-                            meetingDraft.scheduledDate.toIso8601String(),
+                        'scheduled_date': meetingDraft.scheduledDate.toIso8601String(),
                       }).then((value) {
-                        print('Then');
+                        // print('Then');
+                        userNotifier.meetingDraft = MeetingModel.emptyModel();
                         context.router.pushAndPopUntil(
                           const MeetingRequestsListViewRoute(),
                           predicate: (route) => false,

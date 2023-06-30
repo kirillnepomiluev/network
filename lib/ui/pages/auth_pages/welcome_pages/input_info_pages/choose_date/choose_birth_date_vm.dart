@@ -45,7 +45,10 @@ class ChooseBirthDateViewModel extends ViewModel {
     if(isAuth){
       context.router.push(const ChooseSexViewRoute());
       UserNotifier().updateData(
-        newData: {'hide_age': hideAge, 'birthday_date': newDate},
+        newData: {
+          'hide_age': hideAge,
+          'birthday_date': newDate
+        },
       );
     }
     else{

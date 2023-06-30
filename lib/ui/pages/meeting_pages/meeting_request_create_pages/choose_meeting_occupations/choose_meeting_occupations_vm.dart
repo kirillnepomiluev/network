@@ -16,10 +16,10 @@ class ChooseMeetingOccupationViewModel extends ViewModel {
   }
 
   void onSelect(String item) {
-    if (choosedOptions.length < 3) {
-      choosedOptions.add(item);
-      notifyListeners();
-    }
+      if(choosedOptions.contains(item)==false){
+        choosedOptions.add(item);
+        notifyListeners();
+      }
   }
 
 }

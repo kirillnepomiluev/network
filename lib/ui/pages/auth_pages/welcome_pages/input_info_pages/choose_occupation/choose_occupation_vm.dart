@@ -13,8 +13,8 @@ class ChooseOccupationViewModel extends ViewModel {
   final BuildContext context;
 
   void getInit(){
-    for (int i = 0; i < AppConstants.hobbiesList.length; i++) {
-      final item = AppConstants.hobbiesList[i];
+    for (int i = 0; i < AppConstants.occupationsList.length; i++) {
+      final item = AppConstants.occupationsList[i];
       currentList.add(HobbyModel(item, i));
     }
 

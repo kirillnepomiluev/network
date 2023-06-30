@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/utils/utils.dart';
+import 'package:network_app/utils/utils_locale.dart';
 import 'package:provider/provider.dart';
 
 class MeetingModel {
@@ -40,10 +41,10 @@ class MeetingModel {
   bool creatorEntered;
   bool partnerEntered;
   bool isEmpty;
-  int reward;
+  int tokens;
 
   MeetingModel({
-    this.reward = 0,
+    this.tokens = 0,
     this.isEmpty = true,
     this.createdDateText = '',
     this.scheduledDateText = '',
@@ -55,7 +56,7 @@ class MeetingModel {
     required this.creatorModel,
     required this.partnerModel,
     required this.createdDate,
-    this.type = 'Общение',
+    this.type = '',
     this.title = '',
     this.description = '',
     required this.occupation,
@@ -116,7 +117,7 @@ class MeetingModel {
     DateTime? meetingEndDate = Utils.getDate(dataMap['end_date'] ?? '');
     DateTime scheduledDate = Utils.getDate(dataMap['scheduled_date'])!;
     final status = dataMap['status'];
-    final statusText = getStatusText(status);
+    final statusText = UtilsLocale.getStatusText(status, context);
 
     final localizations = MaterialLocalizations.of(context);
     // final createdDateText = localizations.formatShortDate(createdDate);
@@ -124,7 +125,7 @@ class MeetingModel {
     final scheduledDateText = localizations.formatShortDate(scheduledDate);
 
     return MeetingModel(
-      reward: dataMap['reward'],
+      tokens: dataMap['tokens'],
       isEmpty: false,
       createdDateText: createdDateText,
       scheduledDateText: scheduledDateText,
@@ -169,7 +170,9 @@ class MeetingModel {
     DateTime? meetingEndDate = Utils.getDate(dataMap['end_date'] ?? '');
     DateTime scheduledDate = Utils.getDate(dataMap['scheduled_date'])!;
     final status = dataMap['status'];
-    final statusText = getStatusText(status);
+
+    // final statusText = getStatusText(status);
+    final statusText = 'Встреча $status';
 
     return MeetingModel(
         isEmpty: false,
@@ -217,38 +220,38 @@ class MeetingModel {
         questionsList: []);
   }
 
-  static String getStatusText(String status) {
-    String statusText = '';
-
-    switch (status) {
-      case 'created':
-        statusText = 'создана';
-        break;
-      case 'cancelled':
-        statusText = 'отменено';
-        break;
-      case 'expired':
-        statusText = 'просрочена';
-        break;
-      case 'accepted':
-        statusText = 'принята';
-        break;
-      case 'denied':
-        statusText = 'отклонена';
-        break;
-      case 'active':
-        statusText = 'активна';
-        break;
-      case 'interrupted':
-        statusText = 'прервана';
-        break;
-      case 'done':
-        statusText = 'завершена';
-        break;
-    }
-
-    return statusText;
-  }
+  // static String getStatusText(String status) {
+  //   String statusText = '';
+  //
+  //   switch (status) {
+  //     case 'created':
+  //       statusText = 'создана';
+  //       break;
+  //     case 'cancelled':
+  //       statusText = 'отменено';
+  //       break;
+  //     case 'expired':
+  //       statusText = 'просрочена';
+  //       break;
+  //     case 'accepted':
+  //       statusText = 'принята';
+  //       break;
+  //     case 'denied':
+  //       statusText = 'отклонена';
+  //       break;
+  //     case 'active':
+  //       statusText = 'активна';
+  //       break;
+  //     case 'interrupted':
+  //       statusText = 'прервана';
+  //       break;
+  //     case 'done':
+  //       statusText = 'завершена';
+  //       break;
+  //   }
+  //
+  //   return statusText;
+  // }
 
   Future<void> updateData({required Map<String, dynamic> newData}) async {
     try {

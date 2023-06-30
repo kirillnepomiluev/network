@@ -41,8 +41,8 @@ class ChooseMeetingDateView extends StatelessWidget {
                       EnterInfoContainer(
                         text1: '${AppString.of(context).pointPeriodFor} ',
                         text2: AppString.of(context).ofPlaningMeeting,
-                        description:
-                            'Здесь будет небольшое описание, что именно здесь нужно указать',
+                        // showDescription: true,
+                        description: 'You can change this date and time later',
                       ),
                       SizedBox(
                         height: Res.s40,

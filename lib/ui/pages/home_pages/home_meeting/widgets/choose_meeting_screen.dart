@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/app.dart';
 import 'package:network_app/app/core/providers/notifiers/settings_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
@@ -11,7 +12,7 @@ import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class ChooseMeetingScreen extends StatelessWidget {
+class ChooseMeetingScreen extends StatefulWidget {
   const ChooseMeetingScreen({
     Key? key,
     required this.activeTab,
@@ -20,6 +21,11 @@ class ChooseMeetingScreen extends StatelessWidget {
   final ActiveMeetingTabs activeTab;
   final Function(ActiveMeetingTabs) changeTab;
 
+  @override
+  State<ChooseMeetingScreen> createState() => _ChooseMeetingScreenState();
+}
+
+class _ChooseMeetingScreenState extends State<ChooseMeetingScreen> {
   @override
   Widget build(BuildContext context) {
     final SettingsNotifier settingsNotifier =
@@ -134,7 +140,7 @@ class AppDropdownDynamic extends StatelessWidget {
                   return Container(
                     alignment: Alignment.center,
                     child: Text(
-                      '$item км',
+                      '$item ${AppString.of(context).km}',
                       // item.toString(),
                       textAlign: TextAlign.center,
                       style: AppTextStyles.black
@@ -148,7 +154,7 @@ class AppDropdownDynamic extends StatelessWidget {
                 return DropdownMenuItem<dynamic>(
                   value: value,
                   child: Text(
-                      '$value км'
+                      '$value ${AppString.of(context).km}'
                       // value.toString()
                       , textAlign: TextAlign.center),
                 );

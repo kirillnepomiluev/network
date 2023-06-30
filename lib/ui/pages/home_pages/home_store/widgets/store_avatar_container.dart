@@ -7,6 +7,8 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/res.dart';
+import 'package:network_app/utils/utils.dart';
+import 'package:network_app/utils/utils_locale.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ClotheModel {
@@ -147,7 +149,8 @@ class StoreAvatarContainer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Уровень ${clotheModel.level}',
+                        // 'Уровень ${clotheModel.level}',
+                        UtilsLocale.getLevelText(clotheModel.level, context),
                         style: AppTextStyles.primary12,
                       ),
                       const SizedBox(
@@ -175,7 +178,8 @@ class StoreAvatarContainer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Уровень ${clotheModel.level}',
+                        // 'Уровень ${clotheModel.level}',
+                        UtilsLocale.getLevelText(clotheModel.level, context),
                         style: AppTextStyles.primary12,
                       ),
                       const SizedBox(

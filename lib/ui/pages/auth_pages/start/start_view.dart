@@ -22,6 +22,9 @@ class StartView extends StatelessWidget {
     return ViewModelBuilder<StartViewModel>(
       createModelDataEx: () => StartViewModel(context),
       builder: (context, model) {
+
+        final userNotifier = Provider.of<UserNotifier>(context);
+
         return Scaffold(
             body:
             // BluePage()

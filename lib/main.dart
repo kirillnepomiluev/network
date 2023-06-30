@@ -15,5 +15,5 @@ void main() async {
 
   await dotenv.load();
 
-  runApp(const App());
+  runApp(const MyApp());
 }

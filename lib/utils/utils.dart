@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:network_info_plus/network_info_plus.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -11,7 +12,7 @@ import 'package:provider/provider.dart';
 
 class Utils {
 
-  static String getLevel(int level) => level<1? 'Нет костюма' : 'Уровень $level';
+  // static String getLevel(int level, BuildContext context) => level<1? AppString.of(context).haveNotCostume : '${AppString.of(context).level} $level';
 
 
   static String getEnv(String title) => dotenv.env[title]!;
@@ -55,6 +56,7 @@ class Utils {
     }
     else{
       context.router.push(HomeViewRoute(),);
+      // context.router.push(GeolocationTurnOnViewRoute(),);
     }
 
     // String level = '';
@@ -95,8 +97,8 @@ class Utils {
     return displayedList;
   }
 
-  static Map<String, dynamic> onSelectContainer(
-      int neededIndex, List<HobbyModel> currentList, List<String> resultList,) {
+  static Map<String, dynamic> onSelectContainer(int neededIndex, List<HobbyModel> currentList, List<String> resultList) {
+
     final wasActive = currentList[neededIndex].active;
     currentList[neededIndex].active = !wasActive;
 

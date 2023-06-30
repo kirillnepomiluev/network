@@ -71,7 +71,7 @@ class GeolocationTurnOnView extends StatelessWidget {
                     context.router.pushAndPopUntil(HomeViewRoute(), predicate: (route) => false);
                   }
 
-                }, text: 'Включить геолокацию',)
+                }, text: '${AppString.of(context).turnOn} ${AppString.of(context).ofGeolocation}',)
               ],
             ),
           ),

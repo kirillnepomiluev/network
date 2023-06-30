@@ -50,1191 +50,1411 @@ class AppString {
     return Localizations.of<AppString>(context, AppString);
   }
 
-  /// `Войти`
+  /// `Sign in`
   String get signIn {
     return Intl.message(
-      'Войти',
+      'Sign in',
       name: 'signIn',
       desc: '',
       args: [],
     );
   }
 
-  /// `Главное в связах\n - это`
+  /// `The key to communication\n - is`
   String get mainThingInRelationsIs {
     return Intl.message(
-      'Главное в связах\n - это',
+      'The key to communication\n - is',
       name: 'mainThingInRelationsIs',
       desc: '',
       args: [],
     );
   }
 
-  /// `связи`
+  /// `connections`
   String get relations {
     return Intl.message(
-      'связи',
+      'connections',
       name: 'relations',
       desc: '',
       args: [],
     );
   }
 
-  /// `Выполните`
+  /// `Make`
   String get execute {
     return Intl.message(
-      'Выполните',
+      'Make',
       name: 'execute',
       desc: '',
       args: [],
     );
   }
 
-  /// `вход`
+  /// `enter`
   String get enter {
     return Intl.message(
-      'вход',
+      'enter',
       name: 'enter',
       desc: '',
       args: [],
     );
   }
 
-  /// `Войти по номеру телефона`
+  /// `Sign in by phone`
   String get signInByPhone {
     return Intl.message(
-      'Войти по номеру телефона',
+      'Sign in by phone',
       name: 'signInByPhone',
       desc: '',
       args: [],
     );
   }
 
-  /// `Войти с помошью почты`
+  /// `Sign in by email`
   String get signInByEmail {
     return Intl.message(
-      'Войти с помошью почты',
+      'Sign in by email',
       name: 'signInByEmail',
       desc: '',
       args: [],
     );
   }
 
-  /// `Войти через Google`
+  /// `Sign in by Google`
   String get signInByGoogle {
     return Intl.message(
-      'Войти через Google',
+      'Sign in by Google',
       name: 'signInByGoogle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Войти через Facebook`
+  /// `Sign in by Facebook`
   String get signInByFacebook {
     return Intl.message(
-      'Войти через Facebook',
+      'Sign in by Facebook',
       name: 'signInByFacebook',
       desc: '',
       args: [],
     );
   }
 
-  /// `Введите`
+  /// `Input`
   String get input {
     return Intl.message(
-      'Введите',
+      'Input',
       name: 'input',
       desc: '',
       args: [],
     );
   }
 
-  /// `код`
+  /// `the code`
   String get code {
     return Intl.message(
-      'код',
+      'the code',
       name: 'code',
       desc: '',
       args: [],
     );
   }
 
-  /// `Отправленный на номер`
+  /// `Sent to phone number`
   String get sentToPhoneNumber {
     return Intl.message(
-      'Отправленный на номер',
+      'Sent to phone number',
       name: 'sentToPhoneNumber',
       desc: '',
       args: [],
     );
   }
 
-  /// `Повторить попытку`
+  /// `Retry`
   String get retry {
     return Intl.message(
-      'Повторить попытку',
+      'Retry',
       name: 'retry',
       desc: '',
       args: [],
     );
   }
 
-  /// `ваш номер`
+  /// `your number`
   String get yourPhoneNumber {
     return Intl.message(
-      'ваш номер',
+      'your number',
       name: 'yourPhoneNumber',
       desc: '',
       args: [],
     );
   }
 
-  /// `Отправить код`
+  /// `Send code`
   String get sendCode {
     return Intl.message(
-      'Отправить код',
+      'Send code',
       name: 'sendCode',
       desc: '',
       args: [],
     );
   }
 
-  /// `Восстановление`
+  /// `Recovery`
   String get recovery {
     return Intl.message(
-      'Восстановление',
+      'Recovery',
       name: 'recovery',
       desc: '',
       args: [],
     );
   }
 
-  /// `аккаунта`
+  /// `of account`
   String get ofAccount {
     return Intl.message(
-      'аккаунта',
+      'of account',
       name: 'ofAccount',
       desc: '',
       args: [],
     );
   }
 
-  /// `Введите адрес электронной почты`
+  /// `Input email address`
   String get inputEmailAddress {
     return Intl.message(
-      'Введите адрес электронной почты',
+      'Input email address',
       name: 'inputEmailAddress',
       desc: '',
       args: [],
     );
   }
 
-  /// `Введите адрес`
+  /// `Input address`
   String get inputAddress {
     return Intl.message(
-      'Введите адрес',
+      'Input address',
       name: 'inputAddress',
       desc: '',
       args: [],
     );
   }
 
-  /// `электронной почты`
+  /// `of email`
   String get ofEmail {
     return Intl.message(
-      'электронной почты',
+      'of email',
       name: 'ofEmail',
       desc: '',
       args: [],
     );
   }
 
-  /// `Чтобы восстановить доступ к своему аккаунту`
+  /// `to regain access to your account`
   String get toRecoveryAccess {
     return Intl.message(
-      'Чтобы восстановить доступ к своему аккаунту',
+      'to regain access to your account',
       name: 'toRecoveryAccess',
       desc: '',
       args: [],
     );
   }
 
-  /// `Восстановить доступ`
+  /// `restore access`
   String get recoveryAccess {
     return Intl.message(
-      'Восстановить доступ',
+      'restore access',
       name: 'recoveryAccess',
       desc: '',
       args: [],
     );
   }
 
-  /// `Поздравляем!`
+  /// `Congratulations!`
   String get weCongratulate {
     return Intl.message(
-      'Поздравляем!',
+      'Congratulations!',
       name: 'weCongratulate',
       desc: '',
       args: [],
     );
   }
 
-  /// `Вы успешно зарегистрировались\nв нашем приложении!!`
+  /// `You successfully signed up in our app!!`
   String get youSuccessfullySignedUp {
     return Intl.message(
-      'Вы успешно зарегистрировались\nв нашем приложении!!',
+      'You successfully signed up in our app!!',
       name: 'youSuccessfullySignedUp',
       desc: '',
       args: [],
     );
   }
 
-  /// `Правило`
+  /// `Rule`
   String get rule {
     return Intl.message(
-      'Правило',
+      'Rule',
       name: 'rule',
       desc: '',
       args: [],
     );
   }
 
-  /// `Принять`
+  /// `Accept`
   String get accept {
     return Intl.message(
-      'Принять',
+      'Accept',
       name: 'accept',
       desc: '',
       args: [],
     );
   }
 
-  /// `ваше имя`
+  /// `your name`
   String get yourName {
     return Intl.message(
-      'ваше имя',
+      'your name',
       name: 'yourName',
       desc: '',
       args: [],
     );
   }
 
-  /// `Так оно будет отображаться в Network`
+  /// `It will be displayed in app`
   String get soWillDisplayInNetwork {
     return Intl.message(
-      'Так оно будет отображаться в Network',
+      'It will be displayed in app',
       name: 'soWillDisplayInNetwork',
       desc: '',
       args: [],
     );
   }
 
-  /// `Продолжить`
+  /// `Continue`
   String get toContinue {
     return Intl.message(
-      'Продолжить',
+      'Continue',
       name: 'toContinue',
       desc: '',
       args: [],
     );
   }
 
-  /// `дату рождения`
+  /// `birthday`
   String get ofBirthDay {
     return Intl.message(
-      'дату рождения',
+      'birthday',
       name: 'ofBirthDay',
       desc: '',
       args: [],
     );
   }
 
-  /// `Вы можете скрыть свой возраст`
+  /// `You can hide your age`
   String get youCanHideYourAge {
     return Intl.message(
-      'Вы можете скрыть свой возраст',
+      'You can hide your age',
       name: 'youCanHideYourAge',
       desc: '',
       args: [],
     );
   }
 
-  /// `Скрыть возраст`
+  /// `Hide age`
   String get hideAge {
     return Intl.message(
-      'Скрыть возраст',
+      'Hide age',
       name: 'hideAge',
       desc: '',
       args: [],
     );
   }
 
-  /// `пол`
+  /// `sex`
   String get sex {
     return Intl.message(
-      'пол',
+      'sex',
       name: 'sex',
       desc: '',
       args: [],
     );
   }
 
-  /// `Выберете`
+  /// `Choose`
   String get choose {
     return Intl.message(
-      'Выберете',
+      'Choose',
       name: 'choose',
       desc: '',
       args: [],
     );
   }
 
-  /// `Вы можете скрыть свой пол`
+  /// `You can hide your sex`
   String get youCanHideYourSex {
     return Intl.message(
-      'Вы можете скрыть свой пол',
+      'You can hide your sex',
       name: 'youCanHideYourSex',
       desc: '',
       args: [],
     );
   }
 
-  /// `Женщина`
+  /// `Female`
   String get female {
     return Intl.message(
-      'Женщина',
+      'Female',
       name: 'female',
       desc: '',
       args: [],
     );
   }
 
-  /// `Мужчина`
+  /// `Male`
   String get male {
     return Intl.message(
-      'Мужчина',
+      'Male',
       name: 'male',
       desc: '',
       args: [],
     );
   }
 
-  /// `Скрыть пол`
+  /// `Hide sex`
   String get hideSex {
     return Intl.message(
-      'Скрыть пол',
+      'Hide sex',
       name: 'hideSex',
       desc: '',
       args: [],
     );
   }
 
-  /// `Уровень`
+  /// `Level`
   String get level {
     return Intl.message(
-      'Уровень',
+      'Level',
       name: 'level',
       desc: '',
       args: [],
     );
   }
 
-  /// `Базовый`
+  /// `Base`
   String get base {
     return Intl.message(
-      'Базовый',
+      'Base',
       name: 'base',
       desc: '',
       args: [],
     );
   }
 
-  /// `Стандартный`
+  /// `Standart`
   String get standart {
     return Intl.message(
-      'Стандартный',
+      'Standart',
       name: 'standart',
       desc: '',
       args: [],
     );
   }
 
-  /// `Премиум`
+  /// `Premium`
   String get premium {
     return Intl.message(
-      'Премиум',
+      'Premium',
       name: 'premium',
       desc: '',
       args: [],
     );
   }
 
-  /// `Выберете интересы`
+  /// `Choose your interests`
   String get chooseInterests {
     return Intl.message(
-      'Выберете интересы',
+      'Choose your interests',
       name: 'chooseInterests',
       desc: '',
       args: [],
     );
   }
 
-  /// `интересы`
+  /// `your interests`
   String get interests {
     return Intl.message(
-      'интересы',
+      'your interests',
       name: 'interests',
       desc: '',
       args: [],
     );
   }
 
-  /// `Пропустить`
+  /// `Skip`
   String get skip {
     return Intl.message(
-      'Пропустить',
+      'Skip',
       name: 'skip',
       desc: '',
       args: [],
     );
   }
 
-  /// `Добавить`
+  /// `Add`
   String get toAdd {
     return Intl.message(
-      'Добавить',
+      'Add',
       name: 'toAdd',
       desc: '',
       args: [],
     );
   }
 
-  /// `Выберете статус`
+  /// `Choose status`
   String get chooseStatus {
     return Intl.message(
-      'Выберете статус',
+      'Choose status',
       name: 'chooseStatus',
       desc: '',
       args: [],
     );
   }
 
-  /// `статус`
+  /// `status`
   String get status {
     return Intl.message(
-      'статус',
+      'status',
       name: 'status',
       desc: '',
       args: [],
     );
   }
 
-  /// `Статус будет отображаться в вашем профиле`
+  /// `The status will be displayed on your profile`
   String get statusWillShowenInYourProfile {
     return Intl.message(
-      'Статус будет отображаться в вашем профиле',
+      'The status will be displayed on your profile',
       name: 'statusWillShowenInYourProfile',
       desc: '',
       args: [],
     );
   }
 
-  /// `Ввести свой статус`
+  /// `Input your status`
   String get inputOwnStatus {
     return Intl.message(
-      'Ввести свой статус',
+      'Input your status',
       name: 'inputOwnStatus',
       desc: '',
       args: [],
     );
   }
 
-  /// `Введите свой`
+  /// `Input your`
   String get inputOwn {
     return Intl.message(
-      'Введите свой',
+      'Input your',
       name: 'inputOwn',
       desc: '',
       args: [],
     );
   }
 
-  /// `сферу деятельности`
+  /// `occupation`
   String get ofOccupation {
     return Intl.message(
-      'сферу деятельности',
+      'occupation',
       name: 'ofOccupation',
       desc: '',
       args: [],
     );
   }
 
-  /// `Сфера деятельности будет отображаться в вашем профиле`
+  /// `Occupation will be displayed on your profile`
   String get occupationsWillBeShowedInProfile {
     return Intl.message(
-      'Сфера деятельности будет отображаться в вашем профиле',
+      'Occupation will be displayed on your profile',
       name: 'occupationsWillBeShowedInProfile',
       desc: '',
       args: [],
     );
   }
 
-  /// `Вы можете выбрать`
+  /// `You can choose`
   String get youCanChoose {
     return Intl.message(
-      'Вы можете выбрать',
+      'You can choose',
       name: 'youCanChoose',
       desc: '',
       args: [],
     );
   }
 
-  /// `варианта`
+  /// `options`
   String get ofOptions {
     return Intl.message(
-      'варианта',
+      'options',
       name: 'ofOptions',
       desc: '',
       args: [],
     );
   }
 
-  /// `Ввести свой вариант`
+  /// `Input your option`
   String get inputOwnOption {
     return Intl.message(
-      'Ввести свой вариант',
+      'Input your option',
       name: 'inputOwnOption',
       desc: '',
       args: [],
     );
   }
 
-  /// `свой вариант`
+  /// `your option`
   String get ownOption {
     return Intl.message(
-      'свой вариант',
+      'your option',
       name: 'ownOption',
       desc: '',
       args: [],
     );
   }
 
-  /// `Расскажите`
+  /// `Tell us`
   String get tell {
     return Intl.message(
-      'Расскажите',
+      'Tell us',
       name: 'tell',
       desc: '',
       args: [],
     );
   }
 
-  /// `о вас`
+  /// `about you`
   String get aboutYou {
     return Intl.message(
-      'о вас',
+      'about you',
       name: 'aboutYou',
       desc: '',
       args: [],
     );
   }
 
-  /// `Это информация будет отображаться в вашем профиле`
+  /// `This info will be displayed on your profile`
   String get thisInfoWillBeShowedInProfile {
     return Intl.message(
-      'Это информация будет отображаться в вашем профиле',
+      'This info will be displayed on your profile',
       name: 'thisInfoWillBeShowedInProfile',
       desc: '',
       args: [],
     );
   }
 
-  /// `Включите`
+  /// `Turn on`
   String get turnOn {
     return Intl.message(
-      'Включите',
+      'Turn on',
       name: 'turnOn',
       desc: '',
       args: [],
     );
   }
 
-  /// `геолокацию`
+  /// `geolocation`
   String get ofGeolocation {
     return Intl.message(
-      'геолокацию',
+      'geolocation',
       name: 'ofGeolocation',
       desc: '',
       args: [],
     );
   }
 
-  /// `Знакомьтесь и встречайтесь\nс людьми рядом с вами`
+  /// `Meet people near you`
   String get metPeopleNear {
     return Intl.message(
-      'Знакомьтесь и встречайтесь\nс людьми рядом с вами',
+      'Meet people near you',
       name: 'metPeopleNear',
       desc: '',
       args: [],
     );
   }
 
-  /// `Ваше местоположение будет использовано для показа потенциальных партнеров для встреч`
+  /// `Your location will be used to show potential meeting partners`
   String get yourLocationWillBeUsed {
     return Intl.message(
-      'Ваше местоположение будет использовано для показа потенциальных партнеров для встреч',
+      'Your location will be used to show potential meeting partners',
       name: 'yourLocationWillBeUsed',
       desc: '',
       args: [],
     );
   }
 
-  /// `Профиль`
+  /// `Profile`
   String get profile {
     return Intl.message(
-      'Профиль',
+      'Profile',
       name: 'profile',
       desc: '',
       args: [],
     );
   }
 
-  /// `Шкаф`
+  /// `cupboard`
   String get cupboard {
     return Intl.message(
-      'Шкаф',
+      'cupboard',
       name: 'cupboard',
       desc: '',
       args: [],
     );
   }
 
-  /// `Друзья`
+  /// `Friends`
   String get friends {
     return Intl.message(
-      'Друзья',
+      'Friends',
       name: 'friends',
       desc: '',
       args: [],
     );
   }
 
-  /// `Готов к встрече`
+  /// `Ready to meet`
   String get readyToMeet {
     return Intl.message(
-      'Готов к встрече',
+      'Ready to meet',
       name: 'readyToMeet',
       desc: '',
       args: [],
     );
   }
 
-  /// `рейтинг`
+  /// `rating`
   String get rating {
     return Intl.message(
-      'рейтинг',
+      'rating',
       name: 'rating',
       desc: '',
       args: [],
     );
   }
 
-  /// `Базовый уровень`
+  /// `Base level`
   String get baseLevel {
     return Intl.message(
-      'Базовый уровень',
+      'Base level',
       name: 'baseLevel',
       desc: '',
       args: [],
     );
   }
 
-  /// `баллов`
+  /// `points`
   String get ofPoints {
     return Intl.message(
-      'баллов',
+      'points',
       name: 'ofPoints',
       desc: '',
       args: [],
     );
   }
 
-  /// `встречи`
+  /// `meetings`
   String get meets {
     return Intl.message(
-      'встречи',
+      'meetings',
       name: 'meets',
       desc: '',
       args: [],
     );
   }
 
-  /// `Аватары`
+  /// `Avatars`
   String get avatars {
     return Intl.message(
-      'Аватары',
+      'Avatars',
       name: 'avatars',
       desc: '',
       args: [],
     );
   }
 
-  /// `Редкий`
+  /// `Rare`
   String get rare {
     return Intl.message(
-      'Редкий',
+      'Rare',
       name: 'rare',
       desc: '',
       args: [],
     );
   }
 
-  /// `Обычный`
+  /// `Usual`
   String get usual {
     return Intl.message(
-      'Обычный',
+      'Usual',
       name: 'usual',
       desc: '',
       args: [],
     );
   }
 
-  /// `Головные уборы`
+  /// `Headwears`
   String get headwears {
     return Intl.message(
-      'Головные уборы',
+      'Headwears',
       name: 'headwears',
       desc: '',
       args: [],
     );
   }
 
-  /// `пустой`
+  /// `empty`
   String get empty {
     return Intl.message(
-      'пустой',
+      'empty',
       name: 'empty',
       desc: '',
       args: [],
     );
   }
 
-  /// `Посетите магазин, чтобы купить новые\nпредметы для своего персонажа`
+  /// `Visit the store to buy new\nitems for your character`
   String get visitStoreToBuyThingsForYourCharacter {
     return Intl.message(
-      'Посетите магазин, чтобы купить новые\nпредметы для своего персонажа',
+      'Visit the store to buy new\nitems for your character',
       name: 'visitStoreToBuyThingsForYourCharacter',
       desc: '',
       args: [],
     );
   }
 
-  /// `Посетить магазин`
+  /// `Visit the store`
   String get visitStore {
     return Intl.message(
-      'Посетить магазин',
+      'Visit the store',
       name: 'visitStore',
       desc: '',
       args: [],
     );
   }
 
-  /// `Для вас`
+  /// `For you`
   String get forYou {
     return Intl.message(
-      'Для вас',
+      'For you',
       name: 'forYou',
       desc: '',
       args: [],
     );
   }
 
-  /// `По близости`
+  /// `Near`
   String get near {
     return Intl.message(
-      'По близости',
+      'Near',
       name: 'near',
       desc: '',
       args: [],
     );
   }
 
-  /// `Личные запросы`
+  /// `Personal requests`
   String get personalRequests {
     return Intl.message(
-      'Личные запросы',
+      'Personal requests',
       name: 'personalRequests',
       desc: '',
       args: [],
     );
   }
 
-  /// `Онлайн`
+  /// `Online`
   String get online {
     return Intl.message(
-      'Онлайн',
+      'Online',
       name: 'online',
       desc: '',
       args: [],
     );
   }
 
-  /// `Обменять`
+  /// `Exchange`
   String get exchange {
     return Intl.message(
-      'Обменять',
+      'Exchange',
       name: 'exchange',
       desc: '',
       args: [],
     );
   }
 
-  /// `Встретиться`
+  /// `To meet`
   String get toMeet {
     return Intl.message(
-      'Встретиться',
+      'To meet',
       name: 'toMeet',
       desc: '',
       args: [],
     );
   }
 
-  /// `Токены`
+  /// `Tokens`
   String get tokens {
     return Intl.message(
-      'Токены',
+      'Tokens',
       name: 'tokens',
       desc: '',
       args: [],
     );
   }
 
-  /// `Валюта`
+  /// `Currency`
   String get currency {
     return Intl.message(
-      'Валюта',
+      'Currency',
       name: 'currency',
       desc: '',
       args: [],
     );
   }
 
-  /// `Кошелек`
+  /// `Wallet`
   String get wallet {
     return Intl.message(
-      'Кошелек',
+      'Wallet',
       name: 'wallet',
       desc: '',
       args: [],
     );
   }
 
-  /// `Сообщения`
+  /// `Messages`
   String get messages {
     return Intl.message(
-      'Сообщения',
+      'Messages',
       name: 'messages',
       desc: '',
       args: [],
     );
   }
 
-  /// `Приглашения`
+  /// `Invitations`
   String get invitations {
     return Intl.message(
-      'Приглашения',
+      'Invitations',
       name: 'invitations',
       desc: '',
       args: [],
     );
   }
 
-  /// `Партнеры`
+  /// `Partners`
   String get partners {
     return Intl.message(
-      'Партнеры',
+      'Partners',
       name: 'partners',
       desc: '',
       args: [],
     );
   }
 
-  /// `Деловая встреча`
+  /// `Business meeting`
   String get businessMeeting {
     return Intl.message(
-      'Деловая встреча',
+      'Business meeting',
       name: 'businessMeeting',
       desc: '',
       args: [],
     );
   }
 
-  /// `токенов`
+  /// `tokens`
   String get ofTokens {
     return Intl.message(
-      'токенов',
+      'tokens',
       name: 'ofTokens',
       desc: '',
       args: [],
     );
   }
 
-  /// `Токены за встречу`
+  /// `Tokens for meeting`
   String get tokensForMeeting {
     return Intl.message(
-      'Токены за встречу',
+      'Tokens for meeting',
       name: 'tokensForMeeting',
       desc: '',
       args: [],
     );
   }
 
-  /// `Начать чат`
+  /// `Start chat`
   String get toStartChat {
     return Intl.message(
-      'Начать чат',
+      'Start chat',
       name: 'toStartChat',
       desc: '',
       args: [],
     );
   }
 
-  /// `Уведомления`
+  /// `Notifications`
   String get notifications {
     return Intl.message(
-      'Уведомления',
+      'Notifications',
       name: 'notifications',
       desc: '',
       args: [],
     );
   }
 
-  /// `Список личных запросов`
+  /// `List of personal requests`
   String get listOfPersonalRequests {
     return Intl.message(
-      'Список личных запросов',
+      'List of personal requests',
       name: 'listOfPersonalRequests',
       desc: '',
       args: [],
     );
   }
 
-  /// `Создать новый запрос`
+  /// `Create new request`
   String get createNewRequest {
     return Intl.message(
-      'Создать новый запрос',
+      'Create new request',
       name: 'createNewRequest',
       desc: '',
       args: [],
     );
   }
 
-  /// `Созданные раннее`
+  /// `Created earlier`
   String get createdBefore {
     return Intl.message(
-      'Созданные раннее',
+      'Created earlier',
       name: 'createdBefore',
       desc: '',
       args: [],
     );
   }
 
-  /// `Искать`
+  /// `Search`
   String get toSearch {
     return Intl.message(
-      'Искать',
+      'Search',
       name: 'toSearch',
       desc: '',
       args: [],
     );
   }
 
-  /// `Поиск`
+  /// `Search`
   String get search {
     return Intl.message(
-      'Поиск',
+      'Search',
       name: 'search',
       desc: '',
       args: [],
     );
   }
 
-  /// `По интересам`
+  /// `by interests`
   String get byInterests {
     return Intl.message(
-      'По интересам',
+      'by interests',
       name: 'byInterests',
       desc: '',
       args: [],
     );
   }
 
-  /// `По категориям встречи`
+  /// `By types of meeting`
   String get byCategoriesOfMeeting {
     return Intl.message(
-      'По категориям встречи',
+      'By types of meeting',
       name: 'byCategoriesOfMeeting',
       desc: '',
       args: [],
     );
   }
 
-  /// `Создание личного запроса`
+  /// `Create a personal request`
   String get creatingOfPersonalRequest {
     return Intl.message(
-      'Создание личного запроса',
+      'Create a personal request',
       name: 'creatingOfPersonalRequest',
       desc: '',
       args: [],
     );
   }
 
-  /// `категорию встречи`
+  /// `type of meeting`
   String get ofCategoryOfMeeting {
     return Intl.message(
-      'категорию встречи',
+      'type of meeting',
       name: 'ofCategoryOfMeeting',
       desc: '',
       args: [],
     );
   }
 
-  /// `Кратко опишите`
+  /// `Briefly describe`
   String get shortlyDescribe {
     return Intl.message(
-      'Кратко опишите',
+      'Briefly describe',
       name: 'shortlyDescribe',
       desc: '',
       args: [],
     );
   }
 
-  /// `какую встречу вы планируете`
+  /// `what meeting are you planning`
   String get whatMeetingAreYouPlaning {
     return Intl.message(
-      'какую встречу вы планируете',
+      'what meeting are you planning',
       name: 'whatMeetingAreYouPlaning',
       desc: '',
       args: [],
     );
   }
 
-  /// `Укажите период для`
+  /// `Specify the period for`
   String get pointPeriodFor {
     return Intl.message(
-      'Укажите период для',
+      'Specify the period for',
       name: 'pointPeriodFor',
       desc: '',
       args: [],
     );
   }
 
-  /// `планирования встречи`
+  /// `planning of the meeting`
   String get ofPlaningMeeting {
     return Intl.message(
-      'планирования встречи',
+      'planning of the meeting',
       name: 'ofPlaningMeeting',
       desc: '',
       args: [],
     );
   }
 
-  /// `Выбрать дату начала`
+  /// `Choose start date`
   String get chooseDateOfStart {
     return Intl.message(
-      'Выбрать дату начала',
+      'Choose start date',
       name: 'chooseDateOfStart',
       desc: '',
       args: [],
     );
   }
 
-  /// `Выбрать дату окончания`
+  /// `Choose end date`
   String get chooseDateOfEnd {
     return Intl.message(
-      'Выбрать дату окончания',
+      'Choose end date',
       name: 'chooseDateOfEnd',
       desc: '',
       args: [],
     );
   }
 
-  /// `Проверьте`
+  /// `Check`
   String get check {
     return Intl.message(
-      'Проверьте',
+      'Check',
       name: 'check',
       desc: '',
       args: [],
     );
   }
 
-  /// `все параметры встречи`
+  /// `all the parameters of the meeting`
   String get allParametrsOfMeeting {
     return Intl.message(
-      'все параметры встречи',
+      'all the parameters of the meeting',
       name: 'allParametrsOfMeeting',
       desc: '',
       args: [],
     );
   }
 
-  /// `Категория встречи`
+  /// `Type`
   String get categoryOfMeeting {
     return Intl.message(
-      'Категория встречи',
+      'Type',
       name: 'categoryOfMeeting',
       desc: '',
       args: [],
     );
   }
 
-  /// `Описание встречи`
+  /// `Description`
   String get descriptionOfMeeting {
     return Intl.message(
-      'Описание встречи',
+      'Description',
       name: 'descriptionOfMeeting',
       desc: '',
       args: [],
     );
   }
 
-  /// `Сфера деятельности`
+  /// `Occupation`
   String get occupation {
     return Intl.message(
-      'Сфера деятельности',
+      'Occupation',
       name: 'occupation',
       desc: '',
       args: [],
     );
   }
 
-  /// `Интересы`
+  /// `Interests`
   String get interestsTitle {
     return Intl.message(
-      'Интересы',
+      'Interests',
       name: 'interestsTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Создать запрос`
+  /// `Create a request`
   String get createRequest {
     return Intl.message(
-      'Создать запрос',
+      'Create a request',
       name: 'createRequest',
       desc: '',
       args: [],
     );
   }
 
-  /// `Стандартный уровень`
+  /// `Standart level`
   String get standartLevel {
     return Intl.message(
-      'Стандартный уровень',
+      'Standart level',
       name: 'standartLevel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write`
+  String get toWrite {
+    return Intl.message(
+      'Write',
+      name: 'toWrite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No costume`
+  String get haveNotCostume {
+    return Intl.message(
+      'No costume',
+      name: 'haveNotCostume',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Meetings`
+  String get meetings {
+    return Intl.message(
+      'Meetings',
+      name: 'meetings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Store`
+  String get store {
+    return Intl.message(
+      'Store',
+      name: 'store',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat`
+  String get chat {
+    return Intl.message(
+      'Chat',
+      name: 'chat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `km`
+  String get km {
+    return Intl.message(
+      'km',
+      name: 'km',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Created`
+  String get meetingCreated {
+    return Intl.message(
+      'Created',
+      name: 'meetingCreated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancelled`
+  String get meetingCancelled {
+    return Intl.message(
+      'Cancelled',
+      name: 'meetingCancelled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expired`
+  String get meetingExpired {
+    return Intl.message(
+      'Expired',
+      name: 'meetingExpired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accepted`
+  String get meetingAccepted {
+    return Intl.message(
+      'Accepted',
+      name: 'meetingAccepted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Denied`
+  String get meetingDenied {
+    return Intl.message(
+      'Denied',
+      name: 'meetingDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Active`
+  String get meetingActive {
+    return Intl.message(
+      'Active',
+      name: 'meetingActive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Interrupted`
+  String get meetingInterrupted {
+    return Intl.message(
+      'Interrupted',
+      name: 'meetingInterrupted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done`
+  String get meetingDone {
+    return Intl.message(
+      'Done',
+      name: 'meetingDone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Partner feedback`
+  String get partner_feedback {
+    return Intl.message(
+      'Partner feedback',
+      name: 'partner_feedback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your feedback`
+  String get your_feedback {
+    return Intl.message(
+      'Your feedback',
+      name: 'your_feedback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chatting`
+  String get Chatting {
+    return Intl.message(
+      'Chatting',
+      name: 'Chatting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Business`
+  String get business {
+    return Intl.message(
+      'Business',
+      name: 'business',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get date {
+    return Intl.message(
+      'Date',
+      name: 'date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `a partner`
+  String get ofPartner {
+    return Intl.message(
+      'a partner',
+      name: 'ofPartner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Дата встречи`
+  String get dateOfMeeting {
+    return Intl.message(
+      'Дата встречи',
+      name: 'dateOfMeeting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Партнер`
+  String get partner {
+    return Intl.message(
+      'Партнер',
+      name: 'partner',
       desc: '',
       args: [],
     );

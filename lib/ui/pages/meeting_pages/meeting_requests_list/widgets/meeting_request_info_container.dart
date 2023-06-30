@@ -117,7 +117,7 @@ class _MeetingRequestInfoContainerState
                           SizedBox(
                             height: Res.s20,
                           ),
-                          Text('Встреча ${widget.meetingModel.statusText}'),
+                          Text(widget.meetingModel.statusText),
                         ],
                       ),
 

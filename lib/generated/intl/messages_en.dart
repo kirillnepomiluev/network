@@ -22,170 +22,191 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "aboutYou": MessageLookupByLibrary.simpleMessage("о вас"),
-        "accept": MessageLookupByLibrary.simpleMessage("Принять"),
-        "allParametrsOfMeeting":
-            MessageLookupByLibrary.simpleMessage("все параметры встречи"),
-        "avatars": MessageLookupByLibrary.simpleMessage("Аватары"),
-        "base": MessageLookupByLibrary.simpleMessage("Базовый"),
-        "baseLevel": MessageLookupByLibrary.simpleMessage("Базовый уровень"),
+        "Chatting": MessageLookupByLibrary.simpleMessage("Chatting"),
+        "aboutYou": MessageLookupByLibrary.simpleMessage("about you"),
+        "accept": MessageLookupByLibrary.simpleMessage("Accept"),
+        "allParametrsOfMeeting": MessageLookupByLibrary.simpleMessage(
+            "all the parameters of the meeting"),
+        "avatars": MessageLookupByLibrary.simpleMessage("Avatars"),
+        "base": MessageLookupByLibrary.simpleMessage("Base"),
+        "baseLevel": MessageLookupByLibrary.simpleMessage("Base level"),
+        "business": MessageLookupByLibrary.simpleMessage("Business"),
         "businessMeeting":
-            MessageLookupByLibrary.simpleMessage("Деловая встреча"),
+            MessageLookupByLibrary.simpleMessage("Business meeting"),
         "byCategoriesOfMeeting":
-            MessageLookupByLibrary.simpleMessage("По категориям встречи"),
-        "byInterests": MessageLookupByLibrary.simpleMessage("По интересам"),
-        "categoryOfMeeting":
-            MessageLookupByLibrary.simpleMessage("Категория встречи"),
-        "check": MessageLookupByLibrary.simpleMessage("Проверьте"),
-        "choose": MessageLookupByLibrary.simpleMessage("Выберете"),
+            MessageLookupByLibrary.simpleMessage("By types of meeting"),
+        "byInterests": MessageLookupByLibrary.simpleMessage("by interests"),
+        "categoryOfMeeting": MessageLookupByLibrary.simpleMessage("Type"),
+        "chat": MessageLookupByLibrary.simpleMessage("Chat"),
+        "check": MessageLookupByLibrary.simpleMessage("Check"),
+        "choose": MessageLookupByLibrary.simpleMessage("Choose"),
         "chooseDateOfEnd":
-            MessageLookupByLibrary.simpleMessage("Выбрать дату окончания"),
+            MessageLookupByLibrary.simpleMessage("Choose end date"),
         "chooseDateOfStart":
-            MessageLookupByLibrary.simpleMessage("Выбрать дату начала"),
+            MessageLookupByLibrary.simpleMessage("Choose start date"),
         "chooseInterests":
-            MessageLookupByLibrary.simpleMessage("Выберете интересы"),
-        "chooseStatus": MessageLookupByLibrary.simpleMessage("Выберете статус"),
-        "code": MessageLookupByLibrary.simpleMessage("код"),
+            MessageLookupByLibrary.simpleMessage("Choose your interests"),
+        "chooseStatus": MessageLookupByLibrary.simpleMessage("Choose status"),
+        "code": MessageLookupByLibrary.simpleMessage("the code"),
         "createNewRequest":
-            MessageLookupByLibrary.simpleMessage("Создать новый запрос"),
-        "createRequest": MessageLookupByLibrary.simpleMessage("Создать запрос"),
+            MessageLookupByLibrary.simpleMessage("Create new request"),
+        "createRequest":
+            MessageLookupByLibrary.simpleMessage("Create a request"),
         "createdBefore":
-            MessageLookupByLibrary.simpleMessage("Созданные раннее"),
+            MessageLookupByLibrary.simpleMessage("Created earlier"),
         "creatingOfPersonalRequest":
-            MessageLookupByLibrary.simpleMessage("Создание личного запроса"),
-        "cupboard": MessageLookupByLibrary.simpleMessage("Шкаф"),
-        "currency": MessageLookupByLibrary.simpleMessage("Валюта"),
+            MessageLookupByLibrary.simpleMessage("Create a personal request"),
+        "cupboard": MessageLookupByLibrary.simpleMessage("cupboard"),
+        "currency": MessageLookupByLibrary.simpleMessage("Currency"),
+        "date": MessageLookupByLibrary.simpleMessage("Date"),
+        "dateOfMeeting": MessageLookupByLibrary.simpleMessage("Дата встречи"),
         "descriptionOfMeeting":
-            MessageLookupByLibrary.simpleMessage("Описание встречи"),
-        "empty": MessageLookupByLibrary.simpleMessage("пустой"),
-        "enter": MessageLookupByLibrary.simpleMessage("вход"),
-        "exchange": MessageLookupByLibrary.simpleMessage("Обменять"),
-        "execute": MessageLookupByLibrary.simpleMessage("Выполните"),
-        "female": MessageLookupByLibrary.simpleMessage("Женщина"),
-        "forYou": MessageLookupByLibrary.simpleMessage("Для вас"),
-        "friends": MessageLookupByLibrary.simpleMessage("Друзья"),
-        "headwears": MessageLookupByLibrary.simpleMessage("Головные уборы"),
-        "hideAge": MessageLookupByLibrary.simpleMessage("Скрыть возраст"),
-        "hideSex": MessageLookupByLibrary.simpleMessage("Скрыть пол"),
-        "input": MessageLookupByLibrary.simpleMessage("Введите"),
-        "inputAddress": MessageLookupByLibrary.simpleMessage("Введите адрес"),
-        "inputEmailAddress": MessageLookupByLibrary.simpleMessage(
-            "Введите адрес электронной почты"),
-        "inputOwn": MessageLookupByLibrary.simpleMessage("Введите свой"),
+            MessageLookupByLibrary.simpleMessage("Description"),
+        "empty": MessageLookupByLibrary.simpleMessage("empty"),
+        "enter": MessageLookupByLibrary.simpleMessage("enter"),
+        "exchange": MessageLookupByLibrary.simpleMessage("Exchange"),
+        "execute": MessageLookupByLibrary.simpleMessage("Make"),
+        "female": MessageLookupByLibrary.simpleMessage("Female"),
+        "forYou": MessageLookupByLibrary.simpleMessage("For you"),
+        "friends": MessageLookupByLibrary.simpleMessage("Friends"),
+        "haveNotCostume": MessageLookupByLibrary.simpleMessage("No costume"),
+        "headwears": MessageLookupByLibrary.simpleMessage("Headwears"),
+        "hideAge": MessageLookupByLibrary.simpleMessage("Hide age"),
+        "hideSex": MessageLookupByLibrary.simpleMessage("Hide sex"),
+        "input": MessageLookupByLibrary.simpleMessage("Input"),
+        "inputAddress": MessageLookupByLibrary.simpleMessage("Input address"),
+        "inputEmailAddress":
+            MessageLookupByLibrary.simpleMessage("Input email address"),
+        "inputOwn": MessageLookupByLibrary.simpleMessage("Input your"),
         "inputOwnOption":
-            MessageLookupByLibrary.simpleMessage("Ввести свой вариант"),
+            MessageLookupByLibrary.simpleMessage("Input your option"),
         "inputOwnStatus":
-            MessageLookupByLibrary.simpleMessage("Ввести свой статус"),
-        "interests": MessageLookupByLibrary.simpleMessage("интересы"),
-        "interestsTitle": MessageLookupByLibrary.simpleMessage("Интересы"),
-        "invitations": MessageLookupByLibrary.simpleMessage("Приглашения"),
-        "level": MessageLookupByLibrary.simpleMessage("Уровень"),
+            MessageLookupByLibrary.simpleMessage("Input your status"),
+        "interests": MessageLookupByLibrary.simpleMessage("your interests"),
+        "interestsTitle": MessageLookupByLibrary.simpleMessage("Interests"),
+        "invitations": MessageLookupByLibrary.simpleMessage("Invitations"),
+        "km": MessageLookupByLibrary.simpleMessage("km"),
+        "level": MessageLookupByLibrary.simpleMessage("Level"),
         "listOfPersonalRequests":
-            MessageLookupByLibrary.simpleMessage("Список личных запросов"),
-        "mainThingInRelationsIs":
-            MessageLookupByLibrary.simpleMessage("Главное в связах\n - это"),
-        "male": MessageLookupByLibrary.simpleMessage("Мужчина"),
-        "meets": MessageLookupByLibrary.simpleMessage("встречи"),
-        "messages": MessageLookupByLibrary.simpleMessage("Сообщения"),
-        "metPeopleNear": MessageLookupByLibrary.simpleMessage(
-            "Знакомьтесь и встречайтесь\nс людьми рядом с вами"),
-        "near": MessageLookupByLibrary.simpleMessage("По близости"),
-        "notifications": MessageLookupByLibrary.simpleMessage("Уведомления"),
-        "occupation":
-            MessageLookupByLibrary.simpleMessage("Сфера деятельности"),
+            MessageLookupByLibrary.simpleMessage("List of personal requests"),
+        "mainThingInRelationsIs": MessageLookupByLibrary.simpleMessage(
+            "The key to communication\n - is"),
+        "male": MessageLookupByLibrary.simpleMessage("Male"),
+        "meetingAccepted": MessageLookupByLibrary.simpleMessage("Accepted"),
+        "meetingActive": MessageLookupByLibrary.simpleMessage("Active"),
+        "meetingCancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
+        "meetingCreated": MessageLookupByLibrary.simpleMessage("Created"),
+        "meetingDenied": MessageLookupByLibrary.simpleMessage("Denied"),
+        "meetingDone": MessageLookupByLibrary.simpleMessage("Done"),
+        "meetingExpired": MessageLookupByLibrary.simpleMessage("Expired"),
+        "meetingInterrupted":
+            MessageLookupByLibrary.simpleMessage("Interrupted"),
+        "meetings": MessageLookupByLibrary.simpleMessage("Meetings"),
+        "meets": MessageLookupByLibrary.simpleMessage("meetings"),
+        "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+        "metPeopleNear":
+            MessageLookupByLibrary.simpleMessage("Meet people near you"),
+        "near": MessageLookupByLibrary.simpleMessage("Near"),
+        "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+        "occupation": MessageLookupByLibrary.simpleMessage("Occupation"),
         "occupationsWillBeShowedInProfile":
             MessageLookupByLibrary.simpleMessage(
-                "Сфера деятельности будет отображаться в вашем профиле"),
-        "ofAccount": MessageLookupByLibrary.simpleMessage("аккаунта"),
-        "ofBirthDay": MessageLookupByLibrary.simpleMessage("дату рождения"),
+                "Occupation will be displayed on your profile"),
+        "ofAccount": MessageLookupByLibrary.simpleMessage("of account"),
+        "ofBirthDay": MessageLookupByLibrary.simpleMessage("birthday"),
         "ofCategoryOfMeeting":
-            MessageLookupByLibrary.simpleMessage("категорию встречи"),
-        "ofEmail": MessageLookupByLibrary.simpleMessage("электронной почты"),
-        "ofGeolocation": MessageLookupByLibrary.simpleMessage("геолокацию"),
-        "ofOccupation":
-            MessageLookupByLibrary.simpleMessage("сферу деятельности"),
-        "ofOptions": MessageLookupByLibrary.simpleMessage("варианта"),
+            MessageLookupByLibrary.simpleMessage("type of meeting"),
+        "ofEmail": MessageLookupByLibrary.simpleMessage("of email"),
+        "ofGeolocation": MessageLookupByLibrary.simpleMessage("geolocation"),
+        "ofOccupation": MessageLookupByLibrary.simpleMessage("occupation"),
+        "ofOptions": MessageLookupByLibrary.simpleMessage("options"),
+        "ofPartner": MessageLookupByLibrary.simpleMessage("a partner"),
         "ofPlaningMeeting":
-            MessageLookupByLibrary.simpleMessage("планирования встречи"),
-        "ofPoints": MessageLookupByLibrary.simpleMessage("баллов"),
-        "ofTokens": MessageLookupByLibrary.simpleMessage("токенов"),
-        "online": MessageLookupByLibrary.simpleMessage("Онлайн"),
-        "ownOption": MessageLookupByLibrary.simpleMessage("свой вариант"),
-        "partners": MessageLookupByLibrary.simpleMessage("Партнеры"),
+            MessageLookupByLibrary.simpleMessage("planning of the meeting"),
+        "ofPoints": MessageLookupByLibrary.simpleMessage("points"),
+        "ofTokens": MessageLookupByLibrary.simpleMessage("tokens"),
+        "online": MessageLookupByLibrary.simpleMessage("Online"),
+        "ownOption": MessageLookupByLibrary.simpleMessage("your option"),
+        "partner": MessageLookupByLibrary.simpleMessage("Партнер"),
+        "partner_feedback":
+            MessageLookupByLibrary.simpleMessage("Partner feedback"),
+        "partners": MessageLookupByLibrary.simpleMessage("Partners"),
         "personalRequests":
-            MessageLookupByLibrary.simpleMessage("Личные запросы"),
+            MessageLookupByLibrary.simpleMessage("Personal requests"),
         "pointPeriodFor":
-            MessageLookupByLibrary.simpleMessage("Укажите период для"),
-        "premium": MessageLookupByLibrary.simpleMessage("Премиум"),
-        "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
-        "rare": MessageLookupByLibrary.simpleMessage("Редкий"),
-        "rating": MessageLookupByLibrary.simpleMessage("рейтинг"),
-        "readyToMeet": MessageLookupByLibrary.simpleMessage("Готов к встрече"),
-        "recovery": MessageLookupByLibrary.simpleMessage("Восстановление"),
+            MessageLookupByLibrary.simpleMessage("Specify the period for"),
+        "premium": MessageLookupByLibrary.simpleMessage("Premium"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "rare": MessageLookupByLibrary.simpleMessage("Rare"),
+        "rating": MessageLookupByLibrary.simpleMessage("rating"),
+        "readyToMeet": MessageLookupByLibrary.simpleMessage("Ready to meet"),
+        "recovery": MessageLookupByLibrary.simpleMessage("Recovery"),
         "recoveryAccess":
-            MessageLookupByLibrary.simpleMessage("Восстановить доступ"),
-        "relations": MessageLookupByLibrary.simpleMessage("связи"),
-        "retry": MessageLookupByLibrary.simpleMessage("Повторить попытку"),
-        "rule": MessageLookupByLibrary.simpleMessage("Правило"),
-        "search": MessageLookupByLibrary.simpleMessage("Поиск"),
-        "sendCode": MessageLookupByLibrary.simpleMessage("Отправить код"),
+            MessageLookupByLibrary.simpleMessage("restore access"),
+        "relations": MessageLookupByLibrary.simpleMessage("connections"),
+        "retry": MessageLookupByLibrary.simpleMessage("Retry"),
+        "rule": MessageLookupByLibrary.simpleMessage("Rule"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "sendCode": MessageLookupByLibrary.simpleMessage("Send code"),
         "sentToPhoneNumber":
-            MessageLookupByLibrary.simpleMessage("Отправленный на номер"),
-        "sex": MessageLookupByLibrary.simpleMessage("пол"),
+            MessageLookupByLibrary.simpleMessage("Sent to phone number"),
+        "sex": MessageLookupByLibrary.simpleMessage("sex"),
         "shortlyDescribe":
-            MessageLookupByLibrary.simpleMessage("Кратко опишите"),
-        "signIn": MessageLookupByLibrary.simpleMessage("Войти"),
+            MessageLookupByLibrary.simpleMessage("Briefly describe"),
+        "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
         "signInByEmail":
-            MessageLookupByLibrary.simpleMessage("Войти с помошью почты"),
+            MessageLookupByLibrary.simpleMessage("Sign in by email"),
         "signInByFacebook":
-            MessageLookupByLibrary.simpleMessage("Войти через Facebook"),
+            MessageLookupByLibrary.simpleMessage("Sign in by Facebook"),
         "signInByGoogle":
-            MessageLookupByLibrary.simpleMessage("Войти через Google"),
+            MessageLookupByLibrary.simpleMessage("Sign in by Google"),
         "signInByPhone":
-            MessageLookupByLibrary.simpleMessage("Войти по номеру телефона"),
-        "skip": MessageLookupByLibrary.simpleMessage("Пропустить"),
-        "soWillDisplayInNetwork": MessageLookupByLibrary.simpleMessage(
-            "Так оно будет отображаться в Network"),
-        "standart": MessageLookupByLibrary.simpleMessage("Стандартный"),
-        "standartLevel":
-            MessageLookupByLibrary.simpleMessage("Стандартный уровень"),
-        "status": MessageLookupByLibrary.simpleMessage("статус"),
+            MessageLookupByLibrary.simpleMessage("Sign in by phone"),
+        "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "soWillDisplayInNetwork":
+            MessageLookupByLibrary.simpleMessage("It will be displayed in app"),
+        "standart": MessageLookupByLibrary.simpleMessage("Standart"),
+        "standartLevel": MessageLookupByLibrary.simpleMessage("Standart level"),
+        "status": MessageLookupByLibrary.simpleMessage("status"),
         "statusWillShowenInYourProfile": MessageLookupByLibrary.simpleMessage(
-            "Статус будет отображаться в вашем профиле"),
-        "tell": MessageLookupByLibrary.simpleMessage("Расскажите"),
+            "The status will be displayed on your profile"),
+        "store": MessageLookupByLibrary.simpleMessage("Store"),
+        "tell": MessageLookupByLibrary.simpleMessage("Tell us"),
         "thisInfoWillBeShowedInProfile": MessageLookupByLibrary.simpleMessage(
-            "Это информация будет отображаться в вашем профиле"),
-        "toAdd": MessageLookupByLibrary.simpleMessage("Добавить"),
-        "toContinue": MessageLookupByLibrary.simpleMessage("Продолжить"),
-        "toMeet": MessageLookupByLibrary.simpleMessage("Встретиться"),
+            "This info will be displayed on your profile"),
+        "toAdd": MessageLookupByLibrary.simpleMessage("Add"),
+        "toContinue": MessageLookupByLibrary.simpleMessage("Continue"),
+        "toMeet": MessageLookupByLibrary.simpleMessage("To meet"),
         "toRecoveryAccess": MessageLookupByLibrary.simpleMessage(
-            "Чтобы восстановить доступ к своему аккаунту"),
-        "toSearch": MessageLookupByLibrary.simpleMessage("Искать"),
-        "toStartChat": MessageLookupByLibrary.simpleMessage("Начать чат"),
-        "tokens": MessageLookupByLibrary.simpleMessage("Токены"),
+            "to regain access to your account"),
+        "toSearch": MessageLookupByLibrary.simpleMessage("Search"),
+        "toStartChat": MessageLookupByLibrary.simpleMessage("Start chat"),
+        "toWrite": MessageLookupByLibrary.simpleMessage("Write"),
+        "tokens": MessageLookupByLibrary.simpleMessage("Tokens"),
         "tokensForMeeting":
-            MessageLookupByLibrary.simpleMessage("Токены за встречу"),
-        "turnOn": MessageLookupByLibrary.simpleMessage("Включите"),
-        "usual": MessageLookupByLibrary.simpleMessage("Обычный"),
-        "visitStore": MessageLookupByLibrary.simpleMessage("Посетить магазин"),
+            MessageLookupByLibrary.simpleMessage("Tokens for meeting"),
+        "turnOn": MessageLookupByLibrary.simpleMessage("Turn on"),
+        "usual": MessageLookupByLibrary.simpleMessage("Usual"),
+        "visitStore": MessageLookupByLibrary.simpleMessage("Visit the store"),
         "visitStoreToBuyThingsForYourCharacter":
             MessageLookupByLibrary.simpleMessage(
-                "Посетите магазин, чтобы купить новые\nпредметы для своего персонажа"),
-        "wallet": MessageLookupByLibrary.simpleMessage("Кошелек"),
-        "weCongratulate": MessageLookupByLibrary.simpleMessage("Поздравляем!"),
-        "whatMeetingAreYouPlaning":
-            MessageLookupByLibrary.simpleMessage("какую встречу вы планируете"),
-        "youCanChoose":
-            MessageLookupByLibrary.simpleMessage("Вы можете выбрать"),
-        "youCanHideYourAge": MessageLookupByLibrary.simpleMessage(
-            "Вы можете скрыть свой возраст"),
+                "Visit the store to buy new\nitems for your character"),
+        "wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
+        "weCongratulate":
+            MessageLookupByLibrary.simpleMessage("Congratulations!"),
+        "whatMeetingAreYouPlaning": MessageLookupByLibrary.simpleMessage(
+            "what meeting are you planning"),
+        "youCanChoose": MessageLookupByLibrary.simpleMessage("You can choose"),
+        "youCanHideYourAge":
+            MessageLookupByLibrary.simpleMessage("You can hide your age"),
         "youCanHideYourSex":
-            MessageLookupByLibrary.simpleMessage("Вы можете скрыть свой пол"),
+            MessageLookupByLibrary.simpleMessage("You can hide your sex"),
         "youSuccessfullySignedUp": MessageLookupByLibrary.simpleMessage(
-            "Вы успешно зарегистрировались\nв нашем приложении!!"),
+            "You successfully signed up in our app!!"),
         "yourLocationWillBeUsed": MessageLookupByLibrary.simpleMessage(
-            "Ваше местоположение будет использовано для показа потенциальных партнеров для встреч"),
-        "yourName": MessageLookupByLibrary.simpleMessage("ваше имя"),
-        "yourPhoneNumber": MessageLookupByLibrary.simpleMessage("ваш номер")
+            "Your location will be used to show potential meeting partners"),
+        "yourName": MessageLookupByLibrary.simpleMessage("your name"),
+        "yourPhoneNumber": MessageLookupByLibrary.simpleMessage("your number"),
+        "your_feedback": MessageLookupByLibrary.simpleMessage("Your feedback")
       };
 }

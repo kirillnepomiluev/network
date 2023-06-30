@@ -41,18 +41,25 @@ class SettingsNotifier with ChangeNotifier {
   }
 
   Future<void> loadPartners(BuildContext context, {required num radius}) async {
-    // print('loadPartners $radius km');
+    print('loadPartners $radius km');
     partnersList.clear();
     initialPage = 0;
 
     showPartnersLoading = true;
     notifyListeners();
 
-    final userNotifier = Provider.of<UserNotifier>(context, listen: false);
-    final id = userNotifier.userData.id;
+    final userData = Provider.of<UserNotifier>(context, listen: false).userData;
+    final id = userData.id;
 
-    if (id != null) {
-      final usersList = await UtilsGeo.getUsersByRadius(radius: radius);
+    final location = userData.location;
+    // final myLat = userNotifier.userData.lat;
+    // final myLong = userNotifier.userData.long;
+    const myLat = 53.1299150;
+    const myLong = 48.4251995; //7 после точки
+
+    if (id != null && location != null) {
+
+      final usersList = await UtilsGeo.getUsersByRadius(radius: radius, myLat: myLat, myLong: myLong);
 
       for (final item in usersList) {
         final userModel = UserModel.fromMap(item);
@@ -60,25 +67,10 @@ class SettingsNotifier with ChangeNotifier {
           partnersList.add(userModel);
         }
       }
-
-      // _partnersList.where((element) => )
-
-      // partnersList = await AppSupabase.client
-      //     .from(AppSupabase.strUsers)
-      //     .select()
-      //     .neq('id', id)
-      //     .order('level');
     }
-
-
-    // Future.delayed(Duration(seconds: 1)).then((value) {
-    //   showPartnersLoading = false;
-    //   notifyListeners();
-    // });
 
     showPartnersLoading = false;
     notifyListeners();
-
   }
 }
 

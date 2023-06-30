@@ -24,9 +24,7 @@ class MeetingMatchingProfilesRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         MeetingMatchingProfileInfo(
-          strName: creatorModel.name,
-          level: creatorModel.level,
-          imageUrl: Assets.images.avatars.avatar0.keyName,
+          userModel: creatorModel,
         ),
         Padding(
             padding: EdgeInsets.only(top: Res.s35), //35
@@ -38,9 +36,7 @@ class MeetingMatchingProfilesRow extends StatelessWidget {
               iconColor: Colors.black,
             ),),
         MeetingMatchingProfileInfo(
-          strName: partnerModel.name,
-          level: partnerModel.level,
-          imageUrl: Assets.images.avatars.avatar1.keyName,
+          userModel: partnerModel,
         ),
       ],
     );

@@ -21,6 +21,8 @@ class ChooseCategoriesViewModel extends ViewModel {
   final String keyName;
   final bool isMeeting;
 
+  bool isOccupation = false;
+
   void getInit() {
     List initialList = [];
 
@@ -33,12 +35,13 @@ class ChooseCategoriesViewModel extends ViewModel {
         if (keyName == 'interests') {
           initialList = userNotifier.meetingDraft.interests;
         } else {
+          isOccupation = true;
           initialList = userNotifier.meetingDraft.occupation;
         }
       }
     }
 
-    const optionsList = AppConstants.hobbiesList;
+    final optionsList = isOccupation? AppConstants.occupationsList : AppConstants.hobbiesList;
 
     for (int i = 0; i < optionsList.length; i++) {
       bool active = false;

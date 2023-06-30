@@ -31,30 +31,30 @@ class ChooseInterestsViewModel extends ViewModel {
         active = true;
       }
 
-      currentList.add(HobbyModel(item, i, active: active));
+      hobbiesList.add(HobbyModel(item, i, active: active));
     }
 
-    displayedList = currentList;
+    displayedList = hobbiesList;
   }
 
   void unFocus() {
     Utils.unFocus();
   }
 
-  List<HobbyModel> currentList = [];
+  List<HobbyModel> hobbiesList = [];
   List<HobbyModel> displayedList = [];
   List<String> resultList = [];
 
   final textController = TextEditingController(text: '');
 
   void onSearchChanged(String? value) {
-    displayedList = Utils.onSearchChanged(value, displayedList, currentList);
+    displayedList = Utils.onSearchChanged(value, displayedList, hobbiesList);
     notifyListeners();
   }
 
   void onSelectContainer(int neededIndex) {
-    final resultMap = Utils.onSelectContainer(neededIndex, currentList,  resultList);
-    currentList = resultMap['currentList'];
+    final resultMap = Utils.onSelectContainer(neededIndex, hobbiesList,  resultList);
+    hobbiesList = resultMap['currentList'];
     notifyListeners();
   }
 
@@ -64,9 +64,12 @@ class ChooseInterestsViewModel extends ViewModel {
   }
 
   void writeData() {
-    for(final item in currentList){
+    for(final item in hobbiesList){
       if(item.active){
-        resultList.add(item.title);
+        final title = item.title;
+        if(resultList.contains(title)==false){
+          resultList.add(title);
+        }
       }
     }
 

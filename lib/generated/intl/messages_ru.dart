@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Chatting": MessageLookupByLibrary.simpleMessage("Общение"),
         "aboutYou": MessageLookupByLibrary.simpleMessage("о вас"),
         "accept": MessageLookupByLibrary.simpleMessage("Принять"),
         "allParametrsOfMeeting":
@@ -29,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "avatars": MessageLookupByLibrary.simpleMessage("Аватары"),
         "base": MessageLookupByLibrary.simpleMessage("Базовый"),
         "baseLevel": MessageLookupByLibrary.simpleMessage("Базовый уровень"),
+        "business": MessageLookupByLibrary.simpleMessage("Бизнес"),
         "businessMeeting":
             MessageLookupByLibrary.simpleMessage("Деловая встреча"),
         "byCategoriesOfMeeting":
@@ -36,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "byInterests": MessageLookupByLibrary.simpleMessage("По интересам"),
         "categoryOfMeeting":
             MessageLookupByLibrary.simpleMessage("Категория встречи"),
+        "chat": MessageLookupByLibrary.simpleMessage("Чат"),
         "check": MessageLookupByLibrary.simpleMessage("Проверьте"),
         "choose": MessageLookupByLibrary.simpleMessage("Выберете"),
         "chooseDateOfEnd":
@@ -55,6 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Создание личного запроса"),
         "cupboard": MessageLookupByLibrary.simpleMessage("Шкаф"),
         "currency": MessageLookupByLibrary.simpleMessage("Валюта"),
+        "date": MessageLookupByLibrary.simpleMessage("Свидание"),
+        "dateOfMeeting": MessageLookupByLibrary.simpleMessage("Дата встречи"),
         "descriptionOfMeeting":
             MessageLookupByLibrary.simpleMessage("Описание встречи"),
         "empty": MessageLookupByLibrary.simpleMessage("пустой"),
@@ -64,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "female": MessageLookupByLibrary.simpleMessage("Женщина"),
         "forYou": MessageLookupByLibrary.simpleMessage("Для вас"),
         "friends": MessageLookupByLibrary.simpleMessage("Друзья"),
+        "haveNotCostume": MessageLookupByLibrary.simpleMessage("Нет костюма"),
         "headwears": MessageLookupByLibrary.simpleMessage("Головные уборы"),
         "hideAge": MessageLookupByLibrary.simpleMessage("Скрыть возраст"),
         "hideSex": MessageLookupByLibrary.simpleMessage("Скрыть пол"),
@@ -79,16 +85,34 @@ class MessageLookup extends MessageLookupByLibrary {
         "interests": MessageLookupByLibrary.simpleMessage("интересы"),
         "interestsTitle": MessageLookupByLibrary.simpleMessage("Интересы"),
         "invitations": MessageLookupByLibrary.simpleMessage("Приглашения"),
+        "km": MessageLookupByLibrary.simpleMessage("км"),
         "level": MessageLookupByLibrary.simpleMessage("Уровень"),
         "listOfPersonalRequests":
             MessageLookupByLibrary.simpleMessage("Список личных запросов"),
         "mainThingInRelationsIs":
             MessageLookupByLibrary.simpleMessage("Главное в связах\n - это"),
         "male": MessageLookupByLibrary.simpleMessage("Мужчина"),
+        "meetingAccepted":
+            MessageLookupByLibrary.simpleMessage("Встреча принята"),
+        "meetingActive":
+            MessageLookupByLibrary.simpleMessage("Встреча активна"),
+        "meetingCancelled":
+            MessageLookupByLibrary.simpleMessage("Встреча отменена"),
+        "meetingCreated":
+            MessageLookupByLibrary.simpleMessage("Встреча создана"),
+        "meetingDenied":
+            MessageLookupByLibrary.simpleMessage("Встреча отклонена"),
+        "meetingDone":
+            MessageLookupByLibrary.simpleMessage("Встреча завершена"),
+        "meetingExpired":
+            MessageLookupByLibrary.simpleMessage("Встреча просрочена"),
+        "meetingInterrupted":
+            MessageLookupByLibrary.simpleMessage("Встреча прервана"),
+        "meetings": MessageLookupByLibrary.simpleMessage("Встречи"),
         "meets": MessageLookupByLibrary.simpleMessage("встречи"),
         "messages": MessageLookupByLibrary.simpleMessage("Сообщения"),
         "metPeopleNear": MessageLookupByLibrary.simpleMessage(
-            "Знакомьтесь и встречайтесь\nс людьми рядом с вами"),
+            "Знакомьтесь и встречайтесь с людьми рядом с вами"),
         "near": MessageLookupByLibrary.simpleMessage("По близости"),
         "notifications": MessageLookupByLibrary.simpleMessage("Уведомления"),
         "occupation":
@@ -105,12 +129,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "ofOccupation":
             MessageLookupByLibrary.simpleMessage("сферу деятельности"),
         "ofOptions": MessageLookupByLibrary.simpleMessage("варианта"),
+        "ofPartner": MessageLookupByLibrary.simpleMessage("партнера"),
         "ofPlaningMeeting":
             MessageLookupByLibrary.simpleMessage("планирования встречи"),
         "ofPoints": MessageLookupByLibrary.simpleMessage("баллов"),
         "ofTokens": MessageLookupByLibrary.simpleMessage("токенов"),
         "online": MessageLookupByLibrary.simpleMessage("Онлайн"),
         "ownOption": MessageLookupByLibrary.simpleMessage("свой вариант"),
+        "partner": MessageLookupByLibrary.simpleMessage("Партнер"),
+        "partner_feedback":
+            MessageLookupByLibrary.simpleMessage("Отзыв партнера"),
         "partners": MessageLookupByLibrary.simpleMessage("Партнеры"),
         "personalRequests":
             MessageLookupByLibrary.simpleMessage("Личные запросы"),
@@ -152,6 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "status": MessageLookupByLibrary.simpleMessage("статус"),
         "statusWillShowenInYourProfile": MessageLookupByLibrary.simpleMessage(
             "Статус будет отображаться в вашем профиле"),
+        "store": MessageLookupByLibrary.simpleMessage("Магазин"),
         "tell": MessageLookupByLibrary.simpleMessage("Расскажите"),
         "thisInfoWillBeShowedInProfile": MessageLookupByLibrary.simpleMessage(
             "Это информация будет отображаться в вашем профиле"),
@@ -162,6 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Чтобы восстановить доступ к своему аккаунту"),
         "toSearch": MessageLookupByLibrary.simpleMessage("Искать"),
         "toStartChat": MessageLookupByLibrary.simpleMessage("Начать чат"),
+        "toWrite": MessageLookupByLibrary.simpleMessage("Записать"),
         "tokens": MessageLookupByLibrary.simpleMessage("Токены"),
         "tokensForMeeting":
             MessageLookupByLibrary.simpleMessage("Токены за встречу"),
@@ -186,6 +216,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "yourLocationWillBeUsed": MessageLookupByLibrary.simpleMessage(
             "Ваше местоположение будет использовано для показа потенциальных партнеров для встреч"),
         "yourName": MessageLookupByLibrary.simpleMessage("ваше имя"),
-        "yourPhoneNumber": MessageLookupByLibrary.simpleMessage("ваш номер")
+        "yourPhoneNumber": MessageLookupByLibrary.simpleMessage("ваш номер"),
+        "your_feedback": MessageLookupByLibrary.simpleMessage("Ваш отзыв")
       };
 }

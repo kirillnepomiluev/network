@@ -131,7 +131,7 @@ class ChooseMeetingOccupationsView extends StatelessWidget {
                           spacing: Res.s14,
                           runSpacing: Res.s14,
                           children: [
-                            for (final item in AppConstants.hobbiesList)
+                            for (final item in AppConstants.occupationsList)
                               OptionsContainer(
                                 title: item,
                                 onTap: () {

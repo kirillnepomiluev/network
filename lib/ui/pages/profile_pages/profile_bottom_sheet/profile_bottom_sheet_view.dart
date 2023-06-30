@@ -216,7 +216,7 @@ class ProfileBottomSheetView extends StatelessWidget {
                             AppCheckListTile(
                               value: model.hideAge,
                               onChanged: model.onHideAgeCheckBox,
-                              title: 'Скрыть возраст',
+                              title: AppString.of(context).hideAge,
                             ),
                             const TitleStatText('Семейное положение'),
                             SizedBox(

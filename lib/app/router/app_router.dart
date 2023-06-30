@@ -105,7 +105,7 @@ class RoutesLists {
     AutoRoute(page: ChooseBirthDateView),
     AutoRoute(page: ChooseSexView),
     AutoRoute(page: ChooseLevelView),
-    AutoRoute(page: ChooseInterestsView),
+    // AutoRoute(page: ChooseInterestsView),
     AutoRoute(page: ChooseStatusView),
     AutoRoute(page: InputStatusView),
     AutoRoute(page: ChooseOccupationView),

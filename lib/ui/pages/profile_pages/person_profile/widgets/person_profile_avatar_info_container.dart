@@ -12,6 +12,7 @@ import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/res.dart';
 import 'package:network_app/utils/utils.dart';
+import 'package:network_app/utils/utils_locale.dart';
 import 'package:network_app/utils/utils_meetings.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -49,12 +50,15 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
           ),
           Column(
             children: [
-              NameWithVerification(
-                  strName: '${partnerModel.name}, ${partnerModel.age}',
-                  showVerified: true,
-                  iconSize: 21.sp,
-                  textStyle: AppTextStyles.primary32
-                      .copyWith(fontWeight: FontWeight.w600),),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: NameWithVerification(
+                    userModel: partnerModel,
+                    showFullName: true,
+                    iconSize: 21.sp,
+                    textStyle: AppTextStyles.primary32
+                        .copyWith(fontWeight: FontWeight.w600),),
+              ),
               SizedBox(
                 height: Res.s10,
               ),
@@ -62,7 +66,7 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                      Utils.getLevel(partnerModel.level)
+                      UtilsLocale.getLevelText(partnerModel.level, context)
                     // '${AppString.of(context).level} "${AppString.of(context).base}"',
                   ),
                   const SizedBox(

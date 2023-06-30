@@ -3,6 +3,26 @@
 
 class AppConstants {
 
+  static List<String> questionsList = [
+    // 'Какой-нибудь вопрос?',
+    // 'Зададим вопрос по-сложнее?))))',
+    // 'А еще вопрос может быть длинным придлинным и на него тоже нужно ответить?',
+    // 'Какой-нибудь вопрос?',
+    // 'Зададим вопрос по-сложнее?))))',
+    // 'Какой-нибудь вопрос?',
+    'What is your favorite, brightest and most fun childhood memory?',
+    'What amuses and makes you laugh the most?',
+    'What are three things about you that will surprise me?',
+    'What should be considered normal and should be allowed?',
+    'What do people not know about you?',
+    'What are you looking forward to in the future?',
+    'Do you have a secret ability?',
+    'What do you do at home when there is no one and nothing to do?',
+    'What are you thinking about now?',
+    'Where and where do you see yourself in 5 years? And in 10 years?',
+  ];
+
+
   // static const String baseAvatarUrl = 'https://pkiaqrgckmxdnqlerkmf.supabase.co/storage/v1/object/public/clothes/body/usual/avatar_3D.png';
   static const String baseAvatarUrl = 'https://pkiaqrgckmxdnqlerkmf.supabase.co/storage/v1/object/public/clothes/head/usual/default.png';
 
@@ -24,27 +44,67 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna netus tempus, qua
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna netus tempus, quam ut congue egestas. Morbi sapien turpis morbi orci, lectus ultrices egestas egestas lacus. Dictum fermentum mus dolor cras. Luctus tellus tortor, egestas lobortis tellus. Aliquam feugiat vestibulum nunc, tortor. Sed porttitor id risus ipsum tortor. In in et porttitor eu nam proin neque, lectus. ''';
 
   static const List<String> hobbiesList = [
-    'Чтение',
-    'Общение',
-    'Мотоциклы',
-    'Коллекционирование',
-    'Спорт',
-    'Дизайн',
-    'Автомобили',
-    'Компьютерные игры',
-    'Кино',
-    'Интернет',
-    'Сканворды и кроссворды',
-    'Писательская деятельность',
-    'Живопись',
-    'Стенография',
-    'Астрология',
-    'Паркур',
-    'Хореография',
-    'Модельный бизнес',
+    // 'Чтение',
+    // 'Общение',
+    // 'Мотоциклы',
+    // 'Коллекционирование',
+    // 'Спорт',
+    // 'Дизайн',
+    // 'Автомобили',
+    // 'Компьютерные игры',
+    // 'Кино',
+    // 'Интернет',
+    // 'Сканворды и кроссворды',
+    // 'Писательская деятельность',
+    // 'Живопись',
+    // 'Астрология',
+    // 'Паркур',
+    // 'Хореография',
+    // 'Модельный бизнес',
+    'Reading',
+    'Communication',
+    'Motorcycles',
+    'Collecting',
+    'Sport',
+    'Design',
+    'Cars',
+    'Computer games',
+    'Movie',
+    'Internet',
+    'Scanwords and crosswords',
+    'Writing',
+    'Painting',
+    'Astrology',
+    'Parkour',
+    'Choreography',
+    'Model business',
   ];
 
-  // static final List<HobbyModel> hobbiesListOfMap = [
+
+  static const List<String> occupationsList = [
+    'Analytics',
+    'Sport',
+    'Communication',
+    'Couching',
+    'Management',
+    'Music',
+    'Video',
+    'Art',
+    'Sales',
+    'SMM',
+    'Healthcare',
+    'Lawyer',
+    'Actor',
+    'Driver',
+    'Designer',
+    'Developer',
+    'Model',
+    'Photographer',
+    'Scientist',
+  ];
+
+
+// static final List<HobbyModel> hobbiesListOfMap = [
   //   HobbyModel('Чтение', 1),
   //   HobbyModel('Общение', 2),
   //   HobbyModel('Мотоциклы', 3),

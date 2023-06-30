@@ -8,6 +8,8 @@ import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/res.dart';
+import 'package:network_app/utils/utils.dart';
+import 'package:network_app/utils/utils_locale.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -23,57 +25,57 @@ class InviteContainerAvatarRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final userData = Provider.of<UserNotifier>(context).userData;
     final userModel = isInvitation? meetingModel.creatorModel : meetingModel.partnerModel;
-
-    // print('view isInvitation $isInvitation ${meetingModel.creatorModel.name} ${meetingModel.partnerModel.name}');
-    final level = isInvitation? meetingModel.creatorLevel : meetingModel.partnerLevel;
-    final userLevel = UserModel.getLevelText(level);
-    // final userLevel = userModel.levelText;
-
+    final partnerLevel = isInvitation? meetingModel.creatorLevel : meetingModel.partnerLevel;
+    final yourLevel = isInvitation? meetingModel.partnerLevel : meetingModel.creatorLevel;
     return
-      Row(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
+      PartnerAvatarRow(
+        userModel: userModel,
+        partnerLevel: partnerLevel,
+        yourLevel: yourLevel,
+        showYourLevel: showDetails,
+      );
+  }
+}
 
-          AppCircleAvatar(
-            imageUrl: userModel.avatarURL,
-            contSize: 40.sp, //83
-            isAssetImage: false,
-          ),
 
-          SizedBox(width: Res.s20,),
+class PartnerAvatarRow extends StatelessWidget {
+  const PartnerAvatarRow({Key? key, required this.userModel, required this.partnerLevel, required this.yourLevel, required this.showYourLevel}) : super(key: key);
+  final UserModel userModel;
+  final int partnerLevel;
+  final int yourLevel;
+  final bool showYourLevel;
 
-          Column(
+  @override
+  Widget build(BuildContext context) {
+    final userLevel = UtilsLocale.getLevelText(partnerLevel, context);
+    return Row(
+      children: [
+        AppCircleAvatar(
+          imageUrl: userModel.avatarURL,
+          contSize: 40.sp, //83
+          isAssetImage: false,
+        ),
+        SizedBox(width: Res.s20,),
+        Flexible(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              NameWithVerification(strName: userModel.name, showVerified: userModel.verified),
-              SizedBox(height: 10,),
-              Text(userLevel),
-              if(showDetails)
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: Text('(ваш уровень ${isInvitation? meetingModel.partnerLevel : meetingModel.creatorLevel})'),
+              NameWithVerification(
+                  userModel: userModel,
               ),
-
-              // Row(children: [
-              //   Text('• Ваш уровень ${isInvitation? meetingModel.creatorLevel : meetingModel.partnerLevel}'),
-              //   SizedBox(width: 5,),
-              //   Text(isInvitation? meetingModel.creatorLevel.toString() : meetingModel.partnerLevel.toString()),
-              // ],),
+              const SizedBox(height: 10,),
+              Text(userLevel),
+              if(showYourLevel)
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text('(ваш уровень $yourLevel)'),
+                ),
             ],
-          )
-        ],
-      );
-   //    Row(
-   //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-   //    children: [
-   // ,
-   //
-   //      MeetingGoIcon(meetingModel: meetingModel),
-   //
-   //    ],
-   //  );
+          ),
+        )
+      ],
+    );
   }
 }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bottom.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_person/choose_meeting_person_vm.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
@@ -28,7 +29,6 @@ class ChooseMeetingPersonView extends StatelessWidget {
   Widget build(BuildContext context) {
     final userData = Provider.of<UserNotifier>(context,).userData;
     final currentID = userData.id;
-    print('userData ${userData.id}');
 
     return ViewModelBuilder<ChooseMeetingPersonViewModel>(
       createModelDataEx: () => ChooseMeetingPersonViewModel(context),
@@ -51,14 +51,12 @@ class ChooseMeetingPersonView extends StatelessWidget {
                       ),
                       EnterInfoContainer(
                         text1: '${AppString.of(context).choose} ',
-                        text2: 'партнера',
+                        text2: AppString.of(context).ofPartner,
                         showDescription: false,
                         fontSize: Res.s24,
                       ),
 
-                      SizedBox(
-                        height: Res.s20,
-                      ),
+                      SizedBox(height: Res.s20,),
 
                       StreamBuilder(
                         stream: AppSupabase.client
@@ -73,6 +71,7 @@ class ChooseMeetingPersonView extends StatelessWidget {
                             //       (x) => userData.clothesIdList.contains(x['id']) == isCupboard,)
                             //     .toList();
                             return ListView.builder(
+                              padding: EdgeInsets.zero,
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: list.length,
@@ -95,51 +94,58 @@ class ChooseMeetingPersonView extends StatelessWidget {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
 
-                                          NameWithVerification(
-                                              strName: partnerModel.name, showVerified: true),
-
-                                          SizedBox(
-                                            height: Res.s15,
+                                          PartnerAvatarRow(
+                                            userModel: partnerModel,
+                                            partnerLevel: partnerModel.level,
+                                            yourLevel: userData.level,
+                                            showYourLevel: false,
                                           ),
 
-                                              Text(
-                                                '${AppString.of(context).level} "${partnerModel.rankText}"',
-                                              ),
-
-                                          SizedBox(height: Res.s20),
-
-                                          Row(
-                                            children: [
-                                              AppCircleAvatar(
-                                                imageUrl: '',
-                                                contSize: 40.sp, //83
-                                                isAssetImage: false,
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.only(left: Res.s21),
-                                                child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    AppIconContainer(
-                                                      icon: Icons.call_made,
-                                                      contColor: AppColors.salad,
-                                                      iconColor: Colors.black,
-                                                      boxShape: BoxShape.circle,
-                                                      iconSize: 15.sp,
-                                                      contSize: Res.s18,
-                                                    ),
-                                                    SizedBox(
-                                                      height: Res.s10,
-                                                    ),
-                                                    Text('250 м',
-                                                      style: AppTextStyles.salad20
-                                                          .copyWith(fontWeight: FontWeight.w600),)
-                                                  ],
-                                                ),
-                                              ),
-
-                                            ],
-                                          ),
+                                          // NameWithVerification(
+                                          //     strName: partnerModel.name, showVerified: true),
+                                          //
+                                          // SizedBox(
+                                          //   height: Res.s15,
+                                          // ),
+                                          //
+                                          //     Text(
+                                          //       '${AppString.of(context).level} "${partnerModel.rankText}"',
+                                          //     ),
+                                          //
+                                          // SizedBox(height: Res.s20),
+                                          //
+                                          // Row(
+                                          //   children: [
+                                          //     AppCircleAvatar(
+                                          //       imageUrl: '',
+                                          //       contSize: 40.sp, //83
+                                          //       isAssetImage: false,
+                                          //     ),
+                                          //     Padding(
+                                          //       padding: EdgeInsets.only(left: Res.s21),
+                                          //       child: Column(
+                                          //         crossAxisAlignment: CrossAxisAlignment.start,
+                                          //         children: [
+                                          //           AppIconContainer(
+                                          //             icon: Icons.call_made,
+                                          //             contColor: AppColors.salad,
+                                          //             iconColor: Colors.black,
+                                          //             boxShape: BoxShape.circle,
+                                          //             iconSize: 15.sp,
+                                          //             contSize: Res.s18,
+                                          //           ),
+                                          //           SizedBox(
+                                          //             height: Res.s10,
+                                          //           ),
+                                          //           Text('250 м',
+                                          //             style: AppTextStyles.salad20
+                                          //                 .copyWith(fontWeight: FontWeight.w600),)
+                                          //         ],
+                                          //       ),
+                                          //     ),
+                                          //
+                                          //   ],
+                                          // ),
 
                                         ],
                                       ),

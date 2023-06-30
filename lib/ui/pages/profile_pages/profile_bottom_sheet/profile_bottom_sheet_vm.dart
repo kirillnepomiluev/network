@@ -66,7 +66,7 @@ class ProfileBottomSheetViewModel extends ViewModel {
     },);
   }
 
-  final List<String> sexListOptions = ['Мужчина', 'Женщина'];
+
   String sexGroupValue = '';
   void onSexRadioChoose(String? newValue){
     sexGroupValue = newValue!;
@@ -118,7 +118,12 @@ class ProfileBottomSheetViewModel extends ViewModel {
     },);
   }
 
+  final List<String> sexListOptions = [];
+
   void _getInit(){
+
+    sexListOptions.addAll([AppString.of(context).male, AppString().female]);
+
     final userData = Provider.of<UserNotifier>(context).userData;
     hideSex = userData.hideSex;
     hideAge = userData.hideAge;

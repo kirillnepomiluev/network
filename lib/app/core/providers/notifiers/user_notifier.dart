@@ -22,7 +22,7 @@ class UserModel {
   final String email;
   final DateTime createdDate;
   final DateTime? birthdayDate;
-  final String age;
+  final int? age;
   final bool hideAge;
   final bool hideFamilyStatus;
   final bool hideMeetingsGoal;
@@ -60,8 +60,9 @@ class UserModel {
   final double? lat;
   final double? long;
   final String? location;
+  final double? distMeters;
   final int level;
-  final String levelText;
+  // final String levelText;
   final String avatarURL;
 
   UserModel({
@@ -69,8 +70,8 @@ class UserModel {
     this.id,
     this.personID = -1,
     this.level = 0,
-    this.levelText = '',
-    this.age = '',
+    // this.levelText = '',
+    this.age,
     this.name = '',
     this.phone = '',
     this.email = '',
@@ -114,6 +115,7 @@ class UserModel {
     this.lat,
     this.long,
     this.location,
+    this.distMeters,
   });
 
   factory UserModel.emptyModel() {
@@ -159,13 +161,10 @@ class UserModel {
     return rating.toStringAsFixed(1);
   }
 
-  static String getLevelText(int level) => level<1? 'Нет костюма' : 'Уровень $level';
-
-
   factory UserModel.fromMap(Map<String, dynamic> dataMap) {
     DateTime createdDate = Utils.getDate(dataMap['created_date'])!;
     DateTime? birthdayDate = DateTime.tryParse(dataMap['birthday_date']);
-    String age = _getAge(birthdayDate);
+    int? age = _getAge(birthdayDate);
     // final mapRank = dataMap['level'];
     final mapRank = dataMap['rank'];
     String rankText = '';
@@ -182,16 +181,17 @@ class UserModel {
     List clothesIdList = [...avatarBodyCupboard, ...avatarHeadCupboard];
 
     final level = dataMap['level'];
-    final levelText = getLevelText(level);
+    // final levelText = level<1? "Hasn't costume" : 'Level $level';
 
     final rating = getRating(dataMap);
 
     return UserModel(
       id: dataMap['id'],
+      distMeters: dataMap['dist_meters'],
       bodyURL: dataMap['body_url']??'',
       personID: dataMap['person_id'],
       level: level,
-      levelText: levelText,
+      // levelText: levelText,
       name: dataMap['name'],
       phone: dataMap['phone'] ?? '',
       email: dataMap['email'] ?? '',
@@ -239,22 +239,22 @@ class UserModel {
 
   }
 
-  static String _getAge(birthdayDate) {
-    String age = '';
+  static int? _getAge(birthdayDate) {
+    // int age = '';
+    int? age;
     if (birthdayDate != null) {
       final currentYear = DateTime.now().year;
       final lastDate =
           DateTime(currentYear, birthdayDate.month, birthdayDate.day);
-      final difInYears = currentYear - birthdayDate.year;
+      final difInYears = (currentYear - birthdayDate.year).toInt();
       if (lastDate.compareTo(birthdayDate) >= 0) {
-        age = difInYears.toString();
+        age = difInYears;
       } else {
-        age = (difInYears - 1).toString();
+        age = (difInYears - 1);
       }
     }
     return age;
   }
-
 
   @override
   String toString() {
@@ -304,10 +304,13 @@ class UserNotifier with ChangeNotifier {
   static const id4 = 'd54726fd-a7d5-447b-b43b-dcac85097776';
   static const id5 = 'c9e44e05-7ed0-4c95-8f81-d023ab2ca443';
   static const testID = '';
-
+  final id = testID.isNotEmpty ? testID :  AppSupabase.client.auth.currentUser != null? AppSupabase.client.auth.currentUser!.id : null;
   Future<void> firstUpdateData() async {
-    final id =
-        testID.isNotEmpty ? testID : AppSupabase.client.auth.currentUser!.id;
+    // final id = testID.isNotEmpty ? testID : AppSupabase.client.auth.currentUser!.id;
+
+    if(id==null) {
+      return;
+    }
 
     print('firstUpdateData');
     final data = await AppSupabase.client
@@ -327,12 +330,13 @@ class UserNotifier with ChangeNotifier {
 
   Future<void> setUserDataFunc({bool isInit = false}) async {
     print('setUserDataFunc');
-    if (AppSupabase.client.auth.currentUser == null) {
+    if(id==null) {
       return;
     }
-    final id = testID.isNotEmpty ? testID : AppSupabase.client.auth.currentUser!.id;
-
-    if (id.isNotEmpty) {
+    // if (AppSupabase.client.auth.currentUser == null) {
+    //   return;
+    // }
+    // final id = testID.isNotEmpty ? testID : AppSupabase.client.auth.currentUser!.id;
 
       userListener = AppSupabase.client
           .from(AppSupabase.strUsers)
@@ -360,8 +364,6 @@ class UserNotifier with ChangeNotifier {
             notifyListeners();
       });
 
-    }
-
   }
 
   Future<void> locationUpdateData({
@@ -372,12 +374,16 @@ class UserNotifier with ChangeNotifier {
         newData: {'lat': lat, 'long': long, 'location': 'POINT($lat $long)'});
   }
 
-  Future<void> updateData({required Map<String, dynamic> newData}) async {
-    final id = userData.id;
-    if (id != null) {
+  Future<void> updateData({String routeName = '', required Map<String, dynamic> newData}) async {
+    // final id = userData.id;
+
+    if (id == null) {
       print('Нельзя обновить данные - не авторизован');
     } else {
       try {
+
+        print('${routeName.isEmpty?'': 'routeName $routeName - '}update data $id - $newData');
+
         await AppSupabase.client
             .from(AppSupabase.strUsers)
             .update(newData)

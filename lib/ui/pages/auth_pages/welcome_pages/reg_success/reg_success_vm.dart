@@ -18,7 +18,9 @@ class RegSuccessViewModel extends ViewModel {
 
   void getInit(){
     if(AppSupabase.client.auth.currentUser!=null){
-      UserNotifier().updateData(newData: {
+      UserNotifier().updateData(
+        routeName: RegSuccessViewRoute.name,
+        newData: {
         'email' : AppSupabase.client.auth.currentUser!.email??'',
         'phone' : AppSupabase.client.auth.currentUser!.phone??''
       },);

@@ -83,9 +83,6 @@ class MeetingRequestsListView extends StatelessWidget {
                               meetingMap: meetingMap,
                               isInvitation: false,
                             )
-                            // MeetingRequestInfoContainer(
-                            //   meetingModel: meetingModel,
-                            // ),
                           );
                         },
                       );
@@ -96,9 +93,7 @@ class MeetingRequestsListView extends StatelessWidget {
                     ));
                   },
                 ),
-
                 const SizedBox(height: 30,)
-
                 // const MeetingRequestInfoContainer(),
                 // const MeetingRequestInfoContainer(),
               ],

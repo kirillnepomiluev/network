@@ -131,13 +131,15 @@ class UtilsGeo {
     return true;
   }
 
-  static Future<List> getUsersByRadius({required num radius}) async {
+  static Future<List> getUsersByRadius({required num radius, required double myLat, required double myLong}) async {
     // const radius = 2.5;
 
     // print('getUsersByRadius $radius');
 
-    const myLat = 53.1299150;
-    const myLong = 48.4251995; //7 после точки
+    // const myLat = 53.1299150;
+    // const myLong = 48.4251995; //7 после точки
+
+
 
     final data = await AppSupabase.client.rpc('nearby_users', params: {
       'max_distance': radius * 1000.00,
