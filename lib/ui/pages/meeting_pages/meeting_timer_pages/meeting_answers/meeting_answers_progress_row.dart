@@ -9,10 +9,11 @@ import 'package:network_app/utils/res.dart';
 class MeetingAnswersProgressRow extends StatelessWidget {
   const MeetingAnswersProgressRow({
     Key? key,
-   required this.progress,
+   required this.progress, required this.questionCount,
   }) : super(key: key);
 
   final double progress;
+  final int questionCount;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,7 @@ class MeetingAnswersProgressRow extends StatelessWidget {
             radius: AppBorderRadius.r15,
             child: Center(
                 child: Text(
-              '3',
+              '$questionCount',
               style:
                   AppTextStyles.primary.copyWith(fontWeight: FontWeight.w500),
             ),),

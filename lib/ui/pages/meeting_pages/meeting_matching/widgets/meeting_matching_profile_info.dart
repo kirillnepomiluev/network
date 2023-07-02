@@ -9,9 +9,10 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingMatchingProfileInfo extends StatelessWidget {
   const MeetingMatchingProfileInfo({
-    Key? key, required this.userModel,
+    Key? key, required this.userModel, required this.level,
   }) : super(key: key);
   final UserModel userModel;
+  final int level;
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +35,8 @@ class MeetingMatchingProfileInfo extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 5),
           child: Text(
-            UtilsLocale.getLevelText(userModel.level, context),
-            // '${AppString.of(context).level} "$level"',
-            style: AppTextStyles.primary12,
+            UtilsLocale.getLevelText(level, context),
+            style: AppTextStyles.primary,
           ),
         ),
       ],

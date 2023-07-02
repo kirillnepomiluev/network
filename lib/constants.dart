@@ -4,22 +4,21 @@
 class AppConstants {
 
   static List<String> questionsList = [
-    // 'Какой-нибудь вопрос?',
-    // 'Зададим вопрос по-сложнее?))))',
-    // 'А еще вопрос может быть длинным придлинным и на него тоже нужно ответить?',
-    // 'Какой-нибудь вопрос?',
-    // 'Зададим вопрос по-сложнее?))))',
-    // 'Какой-нибудь вопрос?',
-    'What is your favorite, brightest and most fun childhood memory?',
-    'What amuses and makes you laugh the most?',
-    'What are three things about you that will surprise me?',
-    'What should be considered normal and should be allowed?',
-    'What do people not know about you?',
-    'What are you looking forward to in the future?',
-    'Do you have a secret ability?',
-    'What do you do at home when there is no one and nothing to do?',
-    'What are you thinking about now?',
-    'Where and where do you see yourself in 5 years? And in 10 years?',
+    'Do you like walking?',
+    'Do you like pets?',
+    '',
+    '',
+
+    // 'What is your favorite, brightest and most fun childhood memory?',
+    // 'What amuses and makes you laugh the most?',
+    // 'What are three things about you that will surprise me?',
+    // 'What should be considered normal and should be allowed?',
+    // 'What do people not know about you?',
+    // 'What are you looking forward to in the future?',
+    // 'Do you have a secret ability?',
+    // 'What do you do at home when there is no one and nothing to do?',
+    // 'What are you thinking about now?',
+    // 'Where and where do you see yourself in 5 years? And in 10 years?',
   ];
 
 

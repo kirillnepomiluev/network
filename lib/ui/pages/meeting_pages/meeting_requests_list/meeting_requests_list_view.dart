@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
-import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/l10n.dart';
@@ -62,17 +61,13 @@ class MeetingRequestsListView extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       final list = snapshot.data! as List<Map<String, dynamic>>;
-                      // var list = currentList
-                      //     .where(
-                      //       (x) => userData.clothesIdList.contains(x['id']) == isCupboard,)
-                      //     .toList();
+                      // var list = currentList.where((x) => userData.clothesIdList.contains(x['id']) == isCupboard,).toList();
                       return ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: list.length,
                         itemBuilder: (BuildContext context, int index) {
                           final meetingMap = list[index];
-                          MeetingModel meetingModel = MeetingModel.fromMap(meetingMap);
                           return Padding(
                             padding: EdgeInsets.only(right: Res.s10),
                             child:

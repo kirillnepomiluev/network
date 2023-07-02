@@ -42,9 +42,6 @@ class NotificationModel {
   factory NotificationModel.fromMap(Map<String, dynamic> dataMap) {
     DateTime createdDate = Utils.getDate(dataMap['created_date'])!;
 
-    final status = dataMap['status'];
-    final statusText = getStatusText(status);
-
     return NotificationModel(
       id: dataMap['id'],
       userID: dataMap['user_id'],
@@ -65,40 +62,6 @@ class NotificationModel {
         partnerModel: UserModel.emptyModel(),
         createdDate: DateTime.now(),
     );
-  }
-
-  static String getStatusText(String status){
-
-    String statusText = '';
-
-    switch (status) {
-      case 'created':
-        statusText = 'создана';
-        break;
-      case 'cancelled':
-        statusText = 'отменено';
-        break;
-      case 'expired':
-        statusText = 'просрочена';
-        break;
-      case 'accepted':
-        statusText = 'принята';
-        break;
-      case 'denied':
-        statusText = 'отклонена';
-        break;
-      case 'active':
-        statusText = 'активна';
-        break;
-      case 'interrupted':
-        statusText = 'прервана';
-        break;
-      case 'done':
-        statusText = 'завершена';
-        break;
-    }
-
-    return statusText;
   }
 
   Future<void> updateData({required Map<String, dynamic> newData}) async {

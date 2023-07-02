@@ -24,7 +24,7 @@ class SettingsMainView extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    const AppBarRow(),
+                    const AppBarRow(title: 'Settings'),
                     SizedBox(
                       height: 23.sp, //30
                     ),

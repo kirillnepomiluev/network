@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
+import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_matching/widgets/meeting_matching_profile_info.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
@@ -9,10 +9,12 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingMatchingProfilesRow extends StatelessWidget {
   const MeetingMatchingProfilesRow({
-    Key? key, required this.creatorModel, required this.partnerModel,
+    Key? key, required this.meetingModel,
+    // required this.creatorModel, required this.partnerModel,
   }) : super(key: key);
-  final UserModel creatorModel;
-  final UserModel partnerModel;
+  // final UserModel creatorModel;
+  // final UserModel partnerModel;
+  final MeetingModel meetingModel;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,8 @@ class MeetingMatchingProfilesRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         MeetingMatchingProfileInfo(
-          userModel: creatorModel,
+          userModel: meetingModel.creatorModel,
+          level: meetingModel.creatorLevel,
         ),
         Padding(
             padding: EdgeInsets.only(top: Res.s35), //35
@@ -35,7 +38,8 @@ class MeetingMatchingProfilesRow extends StatelessWidget {
               iconColor: Colors.black,
             ),),
         MeetingMatchingProfileInfo(
-          userModel: partnerModel,
+          userModel: meetingModel.partnerModel,
+          level: meetingModel.partnerLevel,
         ),
       ],
     );

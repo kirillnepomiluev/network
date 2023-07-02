@@ -24,7 +24,7 @@ class MeetingMatchingInfoContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '92% совпадений',
+            '92% match',
             style: AppTextStyles.salad24.copyWith(fontWeight: FontWeight.w600),
             textAlign: TextAlign.center,
           ),
@@ -38,7 +38,6 @@ class MeetingMatchingInfoContainer extends StatelessWidget {
             radius: AppBorderRadius.r15,
             child: Text(
               meetingModel.type,
-              // AppString.of(context).businessMeeting,
                 style: AppTextStyles.black12,),
           ),
           SizedBox(
@@ -47,12 +46,13 @@ class MeetingMatchingInfoContainer extends StatelessWidget {
           Row(
             children: [
               Text(AppString.of(context).tokensForMeeting,
-                  style: AppTextStyles.primary12,),
+                  style: AppTextStyles.primary,),
               Padding(
                 padding: const EdgeInsets.only(left: 7),
                 child: RhombusText(
                   fontSize: Res.s18,
                   fontWeight: FontWeight.w500,
+                  tokens: meetingModel.tokens,
                 ),
               )
             ],
@@ -60,7 +60,8 @@ class MeetingMatchingInfoContainer extends StatelessWidget {
           SizedBox(
             height: Res.s26,
           ),
-      const AppWrapContainersWithRemove(listOptions: ['Большой теннис', 'Бассейн', 'Управление', 'Маркетинг'],)
+
+          const AppWrapContainersWithRemove(listOptions: ['Big tennis', 'Waterpool', 'Management', 'Marketing'],)
 
           // Wrap(
           //   spacing: UtilsResponsive.getResSize(10),

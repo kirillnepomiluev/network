@@ -35,7 +35,8 @@ class RecoveryEmailView extends StatelessWidget {
                     ),
 
                     const SizedBox(height: 36,),
-                    const AppTextField(initialValue: 'Введите адрес электронной почты'),
+                    // const AppTextField(initialValue: 'Введите адрес электронной почты'),
+                    AppTextField(initialValue: AppString.of(context).inputEmailAddress),
                     const SizedBox(height: 62,),
 
                     AppButton(

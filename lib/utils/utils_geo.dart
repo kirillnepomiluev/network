@@ -7,6 +7,7 @@ import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:provider/provider.dart';
 
 class UtilsGeo {
+
   static Future<Position?> getCurrentLocation(BuildContext context) async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
 

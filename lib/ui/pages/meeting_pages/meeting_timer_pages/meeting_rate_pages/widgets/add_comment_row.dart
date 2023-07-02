@@ -45,7 +45,7 @@ class _AddCommentRowState extends State<AddCommentRow> {
               const Padding(
                 padding: EdgeInsets.only(left: 21, bottom: 2),
                 child: Text(
-                  'Добавить комментарий',
+                  'Add feedback',
                 ),
               )
             ],
@@ -61,9 +61,9 @@ class _AddCommentRowState extends State<AddCommentRow> {
               child: AppTextField(
                 controller: widget.controller,
               ),),
-          SizedBox(
-            height: Res.s20,
-          ),
+          // SizedBox(
+          //   height: Res.s20,
+          // ),
           AppButton(
               width: 55.sp,
               height: 30.sp,
@@ -77,7 +77,10 @@ class _AddCommentRowState extends State<AddCommentRow> {
                   showTextField = false;
                 });
               },
-              text: 'Отменить',),
+              text: 'Cancel',),
+          // SizedBox(
+          //   height: Res.s20,
+          // ),
         ],
       );
 }

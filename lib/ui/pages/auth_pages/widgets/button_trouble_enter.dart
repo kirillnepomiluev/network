@@ -21,16 +21,22 @@ class TroubleLoginTextLink extends StatelessWidget {
               right: 0,
               bottom: 10,
               child: Text(
-                'Проблемы со входом?',
-                style: AppTextStyles.grey.copyWith(fontWeight: FontWeight.w500),
+                // 'Проблемы со входом?',
+                "Can't sign in?",
+                style: AppTextStyles.grey.copyWith(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500),
               ),
             ),
             Positioned(
               right: 0,
               bottom: 0,
               child: Text(
-                '_____________________________',
-                style: AppTextStyles.grey12.copyWith(fontWeight: FontWeight.bold),
+                // '_____________________________',
+                '__________________',
+                style: AppTextStyles.grey12.copyWith(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold),
               ),
             )
           ],

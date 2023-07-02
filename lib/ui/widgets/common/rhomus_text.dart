@@ -11,13 +11,13 @@ class RhombusText extends StatelessWidget {
     this.fontSize,
     this.padLeft = 5,
     this.fontWeight = FontWeight.w400,
-    this.level = 0,
+    this.tokens = 0,
   }) : super(key: key);
   final double? iconSize;
   final double? fontSize;
   final double padLeft;
   final FontWeight fontWeight;
-  final int level;
+  final int tokens;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class RhombusText extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          '+${level*100}',
+          '+$tokens',
           style: TextStyle(
               fontSize: fontSize??Res.s14, //14
               color: AppColors.salad,

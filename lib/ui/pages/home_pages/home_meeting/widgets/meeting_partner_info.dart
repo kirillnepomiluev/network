@@ -6,6 +6,7 @@ import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/utils_locale.dart';
+import 'package:network_app/utils/utils_meetings.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingPartnerInfo extends StatelessWidget {
@@ -43,7 +44,9 @@ class MeetingPartnerInfo extends StatelessWidget {
                 // '${AppString.of(context).level} "${AppString.of(context).base}"',
               ),
               const SizedBox(width: 8,),
-              RhombusText(level: partnerModel.level,)
+              RhombusText(
+                tokens: UtilsMeeting.culcTokens(partnerModel),
+              )
 
             ],
           ),

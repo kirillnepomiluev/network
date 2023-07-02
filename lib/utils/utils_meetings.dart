@@ -113,7 +113,11 @@ class _NeedCostumeDialog extends StatelessWidget {
 
 class UtilsMeeting {
 
-  static void onMeetingTap(BuildContext context, UserModel partnerModel) {
+  static int culcTokens(UserModel partnerModel) {
+    return partnerModel.level*100;
+  }
+
+    static void onMeetingTap(BuildContext context, UserModel partnerModel) {
     final userData = Provider.of<UserNotifier>(context, listen: false).userData;
     final myLevel = userData.level;
     final partnerLevel = partnerModel.level;

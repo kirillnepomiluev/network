@@ -20,7 +20,7 @@ class MeetingGoIcon extends StatelessWidget {
     final width = 32.sp;
 
     return
-      meetingModel.status != 'created'? Container():
+      // meetingModel.status != 'created'? Container():
       InkWell(
         onTap: () {
           context.router.push(MeetingMatchingViewRoute(creatorModel: meetingModel.creatorModel, meetingModel: meetingModel, partnerModel: meetingModel.partnerModel));

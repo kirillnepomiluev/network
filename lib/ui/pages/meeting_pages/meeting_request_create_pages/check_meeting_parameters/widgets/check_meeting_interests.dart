@@ -21,7 +21,7 @@ class CheckMeetingInterests extends StatelessWidget {
             height: Res.s20,
         ),
 
-        const AppWrapContainersWithRemove(listOptions: ['Большой теннис', 'Бассейн', 'Управление', 'Маркетинг'], showAdd: true,),
+        const AppWrapContainersWithRemove(listOptions: ['Big tennis', 'Waterpool', 'Management', 'Marketing'], showAdd: true,),
 
         SizedBox(
           height: Res.s20,

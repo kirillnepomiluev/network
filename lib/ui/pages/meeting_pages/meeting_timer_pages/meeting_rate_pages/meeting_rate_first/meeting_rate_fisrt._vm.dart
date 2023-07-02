@@ -4,6 +4,7 @@ import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,12 @@ class MeetingRateFirstViewModel extends ViewModel {
 
   final controller = TextEditingController();
 
+  bool showLoading = false;
+
   Future<void> onRateTap() async {
+
+    showLoading = true;
+    notifyListeners();
 
     final int rate = sliderValue.toInt();
     print('rate $rate meetingID - ${meetingModel.id}');
@@ -71,6 +77,11 @@ class MeetingRateFirstViewModel extends ViewModel {
       context.router.pushAndPopUntil(HomeViewRoute(), predicate: (route) => false,);
 
     } catch (error) {
+
+      showLoading = false;
+      notifyListeners();
+      showSimpleDialog(title: 'Error', text: error.toString(), context: context);
+
       print('updateData error - $error');
     }
 

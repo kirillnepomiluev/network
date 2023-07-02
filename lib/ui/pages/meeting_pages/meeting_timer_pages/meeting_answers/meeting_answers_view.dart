@@ -5,6 +5,7 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_a
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_answers/meeting_answers_skip_question.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_answers/meeting_answers_vm.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_answers/widgets/meeting_answers_radio_list_tile.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_questions/meeting_questions_vm.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
@@ -24,6 +25,9 @@ class MeetingAnswersView extends StatelessWidget {
         builder: (context, model) {
           final mediaHeight = MediaQuery.of(context).size.height;
           final mediaWidth = MediaQuery.of(context).size.width;
+          final qusetionModel = meetingModel.questionsList[model.questionIndex] as MeetingQuestionModel;
+          final answerList = qusetionModel.answersList.isEmpty? ['Yes', 'No', "I don't know"] : qusetionModel.answersList;
+
           return Scaffold(
             body: SafeArea(
               child: SingleChildScrollView(
@@ -43,6 +47,7 @@ class MeetingAnswersView extends StatelessWidget {
                     //Прогресс
                     MeetingAnswersProgressRow(
                       progress: model.progress,
+                      questionCount: model.questionCount,
                     ),
 
                     SizedBox(
@@ -66,12 +71,13 @@ class MeetingAnswersView extends StatelessWidget {
                           MeetingAnswersQuestionItem(
                             questionCount: model.questionCount,
                             questionIndex: model.questionIndex,
+                            meetingModel: meetingModel,
                           ),
                           SizedBox(
                             height: Res.s40,
                           ),
-
-                          for (final answer in model.answersList)
+                          // for (final answer in model.answersList)
+                          for (final answer in answerList)
                             MeetingAnswersRadioListTile(
                                 title: answer,
                                 groupValue: model.groupValue,
@@ -87,7 +93,7 @@ class MeetingAnswersView extends StatelessWidget {
                           ),
                           AppButton(
                             onPressed: model.sendFunction,
-                            text: 'Следующий вопрос',
+                            text: 'Next question',
                           ),
                         ],
                       ),

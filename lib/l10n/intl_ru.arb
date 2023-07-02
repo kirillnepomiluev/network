@@ -142,5 +142,7 @@
   "partner": "Партнер",
   "profilePhoto": "Profile photo",
   "changeThePhoto": "Change the photo",
-  "chooseNewPhoto": "Choose new photo"
+  "chooseNewPhoto": "Choose new photo",
+  "meetingRejected": "Rejected",
+  "signUp": "Sign Up"
 }

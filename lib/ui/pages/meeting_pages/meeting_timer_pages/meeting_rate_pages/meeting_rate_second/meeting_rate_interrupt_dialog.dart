@@ -36,8 +36,8 @@ class MeetingRateInterruptDialog extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const RichTextTwo(
-                  text1: 'Вы уверены, что хотите\n',
-                  text2: 'прервать встречу',
+                  text1: 'Are you sure\n',
+                  text2: 'you want to end the meeting?',
                   fontSize: 16,
                   fontWeight1: FontWeight.w500,
                   fontWeight2: FontWeight.w500,
@@ -46,7 +46,7 @@ class MeetingRateInterruptDialog extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.only(top: 37),
                   child: Text(
-                    'Вы сможете продолжить оценку позже,\nоткрыв историю встреч',
+                    'You may rate the meeting later',
                     style: TextStyle(
                         color: AppColors.textGray,
                         fontSize: 14, //16
@@ -79,7 +79,7 @@ class MeetingRateInterruptDialog extends StatelessWidget {
                                 horizontal: 0.0266 * mediaWidth, //15
                                 ),
                             child: Text(
-                              'Продолжить',
+                              'Continue',
                               style: TextStyle(
                                   color: AppColors.textBlack,
                                   fontSize: 16.5.sp, //14
@@ -96,7 +96,7 @@ class MeetingRateInterruptDialog extends StatelessWidget {
                                 predicate: (route) => false,);
                           },
                           child: Text(
-                            'Прервать',
+                            'Interrupt',
                             style: TextStyle(
                                 fontSize: 16.5.sp, //14
                                 fontWeight: FontWeight.w400,

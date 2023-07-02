@@ -34,7 +34,7 @@ class MeetingAnswersSkipQuestion extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.5),
                     child: Text(
-                      'Пропустить этот вопрос',
+                      'Skip the question',
                     ),
                   ),
                   Padding(
@@ -53,13 +53,13 @@ class MeetingAnswersSkipQuestion extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 6, left: 8),
+          padding: const EdgeInsets.only(top: 15, left: 8),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('Вы можете пропустить ', style: AppTextStyles.grey10),
-              Text('$missedCount вопроса',
-                  style: AppTextStyles.salad10,),
+              Text('You may skip ', style: AppTextStyles.grey12),
+              Text('$missedCount questions',
+                  style: AppTextStyles.salad12,),
             ],
           ),
         ),

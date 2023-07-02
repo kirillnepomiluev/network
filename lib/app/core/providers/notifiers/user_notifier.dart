@@ -188,9 +188,10 @@ class UserModel {
 
     return UserModel(
       avatarURL: dataMap['avatar_url']??AppConstants.baseAvatarUrl,
+      bodyURL: dataMap['body_url']??AppConstants.baseBodyUrl,
+
       id: dataMap['id'],
       distMeters: dataMap['dist_meters'],
-      bodyURL: dataMap['body_url']??'',
       personID: dataMap['person_id'],
       level: level,
       // levelText: levelText,
@@ -306,15 +307,19 @@ class UserNotifier with ChangeNotifier {
   static const id4 = 'd54726fd-a7d5-447b-b43b-dcac85097776';
   static const id5 = 'c9e44e05-7ed0-4c95-8f81-d023ab2ca443';
   static const testID = '';
-  final id = testID.isNotEmpty ? testID :  AppSupabase.client.auth.currentUser != null? AppSupabase.client.auth.currentUser!.id : null;
+
+  static String? getID() => testID.isNotEmpty ? testID :  AppSupabase.client.auth.currentUser != null? AppSupabase.client.auth.currentUser!.id : null;
+
   Future<void> firstUpdateData() async {
     // final id = testID.isNotEmpty ? testID : AppSupabase.client.auth.currentUser!.id;
+
+    final id = getID();
+    print('firstUpdateData id $id');
 
     if(id==null) {
       return;
     }
 
-    print('firstUpdateData');
     final data = await AppSupabase.client
         .from(AppSupabase.strUsers)
         .select()
@@ -331,7 +336,8 @@ class UserNotifier with ChangeNotifier {
   String _bodyURL = '';
 
   Future<void> setUserDataFunc({bool isInit = false}) async {
-    print('setUserDataFunc');
+    final id = getID();
+    print('setUserDataFunc id $id');
     if(id==null) {
       return;
     }
@@ -379,13 +385,14 @@ class UserNotifier with ChangeNotifier {
   Future<void> updateData({String routeName = '', required Map<String, dynamic> newData}) async {
     // final id = userData.id;
 
+    final id = getID();
+    print('updateData id $id');
+
     if (id == null) {
       print('Нельзя обновить данные - не авторизован');
     } else {
       try {
-
         print('${routeName.isEmpty?'': 'routeName $routeName - '}update data $id - $newData');
-
         await AppSupabase.client
             .from(AppSupabase.strUsers)
             .update(newData)

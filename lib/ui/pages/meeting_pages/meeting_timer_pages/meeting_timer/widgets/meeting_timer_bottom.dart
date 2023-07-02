@@ -55,12 +55,12 @@ class MeetingTimerBottom extends StatelessWidget {
                   onPressed: () {
                     context.router.push(MeetingQuestionsViewRoute(meetingModel: meetingModel));
                   },
-                  text: 'Показать вопросы',
+                  text: 'Show questions',
                 ),
                 SizedBox(
                   height: Res.s26,
                 ),
-                Text('Чтобы получить больше токенов,\nответеть на вопросы',
+                Text('To get more tokens answer the questions',
                     textAlign: TextAlign.center,
                     style: AppTextStyles.primary16,),
               ],

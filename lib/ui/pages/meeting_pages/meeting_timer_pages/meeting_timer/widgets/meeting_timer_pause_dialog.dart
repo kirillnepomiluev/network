@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
+import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/ui/widgets/texts/rich_text_two.dart';
@@ -45,8 +46,8 @@ class MeetingTimerPauseDialog extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     RichTextTwo(
-                      text1: 'Вы уверены, что хотите\n',
-                      text2: 'прервать встречу',
+                      text1: 'Are you sure you want\nto end ',
+                      text2: 'the meeting?',
                       fontSize: 17.5.sp,
                       fontWeight1: FontWeight.w500,
                       fontWeight2: FontWeight.w500,
@@ -78,7 +79,7 @@ class MeetingTimerPauseDialog extends StatelessWidget {
                                     horizontal: 0.0266 * mediaWidth, //15
                                     ),
                                 child: Text(
-                                  'Продолжить',
+                                  'Continue',
                                   style: TextStyle(
                                       color: AppColors.textBlack,
                                       fontSize: 16.5.sp, //14
@@ -92,7 +93,7 @@ class MeetingTimerPauseDialog extends StatelessWidget {
                             child: InkWell(
                               onTap: onInterrupt,
                               child: Text(
-                                'Прервать',
+                                'Interrupt',
                                 style: TextStyle(
                                     fontSize: 16.5.sp, //14
                                     fontWeight: FontWeight.w400,
@@ -131,8 +132,8 @@ class MeetingTimerPauseDialog extends StatelessWidget {
                         ),
                       ),
                       RichTextTwo(
-                        text1: 'Если у вас возникли проблемы\nвы можете ',
-                        text2: 'оставить жалобу',
+                        text1: 'You may leave\na complaint ',
+                        text2: 'anonymously',
                         fontSize: 17.5.sp,
                         fontWeight1: FontWeight.w500,
                         fontWeight2: FontWeight.w500,
@@ -163,7 +164,7 @@ class MeetingTimerPauseDialog extends StatelessWidget {
                                   ),
                               child: Text(
                                 // 'Создать чат',
-                                'Пожаловаться',
+                                'Complain',
                                 style: TextStyle(
                                     color: AppColors.textBlack,
                                     fontSize: 16.5.sp, //14

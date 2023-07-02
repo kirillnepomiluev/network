@@ -105,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "meetingExpired": MessageLookupByLibrary.simpleMessage("Expired"),
         "meetingInterrupted":
             MessageLookupByLibrary.simpleMessage("Interrupted"),
+        "meetingRejected": MessageLookupByLibrary.simpleMessage("Rejected"),
         "meetings": MessageLookupByLibrary.simpleMessage("Meetings"),
         "meets": MessageLookupByLibrary.simpleMessage("meetings"),
         "messages": MessageLookupByLibrary.simpleMessage("Messages"),
@@ -147,7 +148,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "readyToMeet": MessageLookupByLibrary.simpleMessage("Ready to meet"),
         "recovery": MessageLookupByLibrary.simpleMessage("Recovery"),
         "recoveryAccess":
-            MessageLookupByLibrary.simpleMessage("restore access"),
+            MessageLookupByLibrary.simpleMessage("Restore access"),
         "relations": MessageLookupByLibrary.simpleMessage("connections"),
         "retry": MessageLookupByLibrary.simpleMessage("Retry"),
         "rule": MessageLookupByLibrary.simpleMessage("Rule"),
@@ -167,6 +168,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sign in by Google"),
         "signInByPhone":
             MessageLookupByLibrary.simpleMessage("Sign in by phone"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "soWillDisplayInNetwork":
             MessageLookupByLibrary.simpleMessage("It will be displayed in app"),
@@ -183,7 +185,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "toContinue": MessageLookupByLibrary.simpleMessage("Continue"),
         "toMeet": MessageLookupByLibrary.simpleMessage("To meet"),
         "toRecoveryAccess": MessageLookupByLibrary.simpleMessage(
-            "to regain access to your account"),
+            "To regain access to your account"),
         "toSearch": MessageLookupByLibrary.simpleMessage("Search"),
         "toStartChat": MessageLookupByLibrary.simpleMessage("Start chat"),
         "toWrite": MessageLookupByLibrary.simpleMessage("Write"),

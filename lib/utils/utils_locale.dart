@@ -21,8 +21,8 @@ class UtilsLocale {
       case 'accepted':
         statusText = AppString.of(context).meetingAccepted;
         break;
-      case 'denied':
-        statusText = AppString.of(context).meetingDenied;
+      case 'rejected':
+        statusText = AppString.of(context).meetingRejected;
         break;
       case 'active':
         statusText = AppString.of(context).meetingActive;

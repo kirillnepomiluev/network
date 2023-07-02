@@ -112,6 +112,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Встреча просрочена"),
         "meetingInterrupted":
             MessageLookupByLibrary.simpleMessage("Встреча прервана"),
+        "meetingRejected": MessageLookupByLibrary.simpleMessage("Rejected"),
         "meetings": MessageLookupByLibrary.simpleMessage("Встречи"),
         "meets": MessageLookupByLibrary.simpleMessage("встречи"),
         "messages": MessageLookupByLibrary.simpleMessage("Сообщения"),
@@ -176,6 +177,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Войти через Google"),
         "signInByPhone":
             MessageLookupByLibrary.simpleMessage("Войти по номеру телефона"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skip": MessageLookupByLibrary.simpleMessage("Пропустить"),
         "soWillDisplayInNetwork": MessageLookupByLibrary.simpleMessage(
             "Так оно будет отображаться в Network"),

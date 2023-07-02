@@ -23,13 +23,16 @@ class MeetingTimerView extends StatelessWidget {
       createModelDataEx: () =>
           MeetingTimerViewModel(context, isTimer, meetingID),
       builder: (context, model) {
-
         final userData = Provider.of<UserNotifier>(context).userData;
         bool isCreator = model.meetingModel.creatorID == userData.id;
 
-        bool entered = (isCreator && model.meetingModel.creatorEntered) || (!isCreator && model.meetingModel.partnerEntered);
+        bool entered = (isCreator && model.meetingModel.creatorEntered) ||
+            (!isCreator && model.meetingModel.partnerEntered);
 
-        bool bothEntered = model.meetingModel.creatorEntered && model.meetingModel.partnerEntered;
+        bool bothEntered = model.meetingModel.creatorEntered &&
+            model.meetingModel.partnerEntered;
+
+        print('tokens ${model.meetingModel.tokens}');
 
         return WillPopScope(
           onWillPop: model.onWillPop,
@@ -37,14 +40,7 @@ class MeetingTimerView extends StatelessWidget {
             child: Scaffold(
               body: model.showLoading
                   ? const Center(child: CircularProgressIndicator())
-                  :
-              entered==false? Center(child: Padding(
-                padding: const EdgeInsets.all(30),
-                child: AppButton(onPressed: model.onStartTap, text: 'Начать'),
-              )):
-
-              bothEntered==false? const Center(child: Text('Ожидаем входа второго'),) :
-              SingleChildScrollView(
+                  : SingleChildScrollView(
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: Res.s16,
@@ -64,29 +60,52 @@ class MeetingTimerView extends StatelessWidget {
                             SizedBox(
                               height: 29.sp, //50
                             ),
-                            Text(
-                              model.isPaused
-                                  ? 'Начните встречу'
-                                  : 'до конца встречи',
-                              style: AppTextStyles.primary22,
+
+                            if(isTimer==false)
+                            Padding(
+                              padding: EdgeInsets.only(bottom: Res.s24),
+                              child: Text(
+                                'Start the meeting',
+                                style: AppTextStyles.primary22,
+                              ),
                             ),
+
                             SizedBox(
-                              height: Res.s24,
+                              height: Res.s24, //50
                             ),
-                            Text(
-                              'Минимальное время встречи\nдля начисления баллов 20 минут',
-                              style: AppTextStyles.primary16,
-                              textAlign: TextAlign.center,
+
+                            Padding(
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: Res.s20),
+                              child: Text(
+                                // 'Минимальное время встречи для начисления баллов 20 минут',
+                                'The minimum meeting time for scoring is 20 minutes',
+                                // 'To receive tokens, you need to spend 20 minutes together',
+                                style: AppTextStyles.primary16,
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                             SizedBox(
                               height: 35.sp, //91
                             ),
-                            MeetingTimerBottom(
-                              isTimer: isTimer,
-                              isPaused: model.isPaused,
-                              onGoTap: model.onGoTap,
-                              meetingModel: model.meetingModel,
-                            ),
+                            if (entered == false)
+                              Center(
+                                  child: Padding(
+                                padding: const EdgeInsets.all(30),
+                                child: AppButton(
+                                    onPressed: model.onStartTap, text: 'Start'),
+                              ))
+                            else
+                              bothEntered == false
+                                  ? Center(
+                                      child: Text('Waiting for the partner', style: AppTextStyles.salad16,),
+                                    )
+                                  : MeetingTimerBottom(
+                                      isTimer: isTimer,
+                                      isPaused: model.isPaused,
+                                      onGoTap: model.onGoTap,
+                                      meetingModel: model.meetingModel,
+                                    ),
                           ],
                         ),
                       ),

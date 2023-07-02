@@ -30,100 +30,111 @@ class MeetingRateFirstView extends StatelessWidget {
             },
             child: Scaffold(
               // backgroundColor: Colors.white,
-              body: SafeArea(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: Res.s16,),
-                          child: const AppBarRow(),
-                        ),
-                        SizedBox(
-                          height: 22.sp, //60
-                        ),
-                        const RichTextTwo(
-                          text1: 'Как прошла ',
-                          text2: 'встреча?',
-                          color1: AppColors.salad,
-                          color2: AppColors.textWhite,
-                        ),
-                      ],
-                    ),
-                    // SizedBox(height: 30,),
-                    Column(
-                      children: [
-                        Icon(
-                          NetworkIcons.smile_wave,
-                          size: 45.sp, //100
-                          color: AppColors.salad,
-                        ),
-                        SizedBox(
-                          height: 43.sp, //93
-                        ),
-
-                        // const SliderCustom(
-                        //   min: 0,
-                        //   max: 100,
-                        //   showLabelsRow: false,
-                        //   sLiderValue: 50,
-                        //   // stepSize: 5
-                        // ),
-                        // const RateSliderContainer(title: 'Возникла ли симпатия?'),
-
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child:
-                          RatingBar.builder(
-                            unratedColor: Colors.white,
-                            itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                            itemBuilder: (context, _) => const Icon(
-                              Icons.star,
-                              color: AppColors.salad,
-                            ),
-                            onRatingUpdate: model.onSliderChange
-                            // (rating) {
-                            //   print(rating);
-                            // },
-                          )
-
-                          // SliderCustom(
-                          //   sliderValue: model.sliderValue,
-                          //   onSliderChange: model.onSliderChange,
-                          //   min: 1,
-                          //   max: 5,
-                          //   showLabelsRow: true,
-                          //   stepSize: 4,
-                          // ),
-
-                        ),
-
-                        SizedBox(
-                          height: Res.s60, //60
-                        ),
-                        Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: Res.s20,
-                            ),
-                            child: AddCommentRow(controller: model.controller),),
-                      ],
-                    ),
-                    // SizedBox(
-                    //   height: Res.s57, //93
-                    // ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: Res.s16,
-                        right: Res.s16,
-                        bottom: Res.s35,
+              body: SingleChildScrollView(
+                child: SafeArea(
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: Res.s16,),
+                            child: const AppBarRow(),
+                          ),
+                          SizedBox(
+                            height: 22.sp, //60
+                          ),
+                          const RichTextTwo(
+                            text1: 'How was ',
+                            text2: 'the meeting?',
+                            color1: AppColors.salad,
+                            color2: AppColors.textWhite,
+                          ),
+                        ],
                       ),
-                      child: AppButton(
-                          onPressed: model.onRateTap,
-                          text: 'Оценить',),
-                    ),
-                  ],
+                      // SizedBox(height: 30,),
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: 30.sp, //60
+                          ),
+                          Icon(
+                            NetworkIcons.smile_wave,
+                            size: 45.sp, //100
+                            color: AppColors.salad,
+                          ),
+                          SizedBox(
+                            height: 30.sp, //60
+                          ),
+
+                          // const SliderCustom(
+                          //   min: 0,
+                          //   max: 100,
+                          //   showLabelsRow: false,
+                          //   sLiderValue: 50,
+                          //   // stepSize: 5
+                          // ),
+                          // const RateSliderContainer(title: 'Возникла ли симпатия?'),
+
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child:
+                            RatingBar.builder(
+                              unratedColor: Colors.white,
+                              itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                              itemBuilder: (context, _) => const Icon(
+                                Icons.star,
+                                color: AppColors.salad,
+                              ),
+                              onRatingUpdate: model.onSliderChange
+                              // (rating) {
+                              //   print(rating);
+                              // },
+                            )
+
+                            // SliderCustom(
+                            //   sliderValue: model.sliderValue,
+                            //   onSliderChange: model.onSliderChange,
+                            //   min: 1,
+                            //   max: 5,
+                            //   showLabelsRow: true,
+                            //   stepSize: 4,
+                            // ),
+
+                          ),
+
+                          SizedBox(
+                            height: 30.sp, //60
+                          ),
+                          Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: Res.s20,
+                              ),
+                              child: AddCommentRow(controller: model.controller),),
+                          SizedBox(
+                            height: 30.sp, //60
+                          ),
+                        ],
+                      ),
+                      // SizedBox(
+                      //   height: Res.s57, //93
+                      // ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: Res.s16,
+                          right: Res.s16,
+                          bottom: Res.s35,
+                        ),
+                        child:
+                        model.showLoading? Center(child: CircularProgressIndicator(),):
+                        AppButton(
+                            onPressed: model.onRateTap,
+                            text: 'Rate',),
+                      ),
+
+                    ],
+                  ),
                 ),
               ),
             ),

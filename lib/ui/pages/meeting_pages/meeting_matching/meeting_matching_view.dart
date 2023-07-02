@@ -4,10 +4,14 @@ import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_matching/meeting_matching_vm.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_matching/widgets/meeting_matching_info_container.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_matching/widgets/meeting_matching_profiles_row.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
+import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/res.dart';
+import 'package:network_app/utils/utils_locale.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingMatchingView extends StatelessWidget {
   const MeetingMatchingView(
@@ -23,6 +27,7 @@ class MeetingMatchingView extends StatelessWidget {
     return ViewModelBuilder<MeetingMatchingViewModel>(
       createModelDataEx: () => MeetingMatchingViewModel(context, meetingModel),
       builder: (context, model) {
+        final mediaWidth = MediaQuery.of(context).size.width;
         return Scaffold(
           extendBody: true,
           body:
@@ -39,27 +44,63 @@ class MeetingMatchingView extends StatelessWidget {
                       height: Res.s25,
                     ),
                     MeetingMatchingProfilesRow(
-                      creatorModel: creatorModel,
-                      partnerModel: partnerModel,
+                      meetingModel: meetingModel,
                     ),
                     SizedBox(
                       height: Res.s40,
                     ),
+
                     MeetingMatchingInfoContainer(meetingModel: meetingModel),
+
+
+                    if(model.status=='created' || model.status=='accepted')
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: Res.s32,
+                        ),
+
+                        if(model.status=='accepted')
+                          AppButton(
+                            onPressed: model.onStartMeeting,
+                            text: 'Start the meeting',
+                          )
+                        else
+                        Column(
+                          children: [
+                            AppButton(
+                              onPressed: model.onAcceptMeeting,
+                              text: 'Accept',
+                            ),
+
+                            SizedBox(height: Res.s26),
+                            InkWell(
+                              onTap: model.onRejectMeeting,
+                              child: AppContainer.outlined(
+                                  width: mediaWidth,
+                                  height: 35.sp,
+                                  child: Text('Reject',
+                                    style: AppTextStyles.primary18.copyWith(fontWeight: FontWeight.w500),
+                                    textAlign: TextAlign.center,
+                                  )),
+                            ),
+                          ],
+                        ),
+                      ],
+                    )
+                    else
+                      Padding(
+                        padding: EdgeInsets.only(top: Res.s20),
+                        child: Text(UtilsLocale.getStatusText(model.status, context), style: AppTextStyles.primary20,),
+                      ),
+
+                    // AppButton(
+                    //   onPressed: model.onDenyMeeting,
+                    //   text: 'Reject',
+                    // ),
+
                     SizedBox(
                       height: Res.s40,
-                    ),
-                    AppButton(
-                      onPressed: model.onStartMeeting,
-                      text: 'Встретиться',
-                    ),
-                    SizedBox(height: Res.s20),
-                    AppButton(
-                      onPressed: model.onDenyMeeting,
-                      text: 'Отклонить',
-                    ),
-                    SizedBox(
-                      height: Res.s23,
                     ),
                   ],
                 ),

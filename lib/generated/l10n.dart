@@ -250,20 +250,20 @@ class AppString {
     );
   }
 
-  /// `to regain access to your account`
+  /// `To regain access to your account`
   String get toRecoveryAccess {
     return Intl.message(
-      'to regain access to your account',
+      'To regain access to your account',
       name: 'toRecoveryAccess',
       desc: '',
       args: [],
     );
   }
 
-  /// `restore access`
+  /// `Restore access`
   String get recoveryAccess {
     return Intl.message(
-      'restore access',
+      'Restore access',
       name: 'recoveryAccess',
       desc: '',
       args: [],
@@ -1485,6 +1485,26 @@ class AppString {
     return Intl.message(
       'Choose new photo',
       name: 'chooseNewPhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rejected`
+  String get meetingRejected {
+    return Intl.message(
+      'Rejected',
+      name: 'meetingRejected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Up`
+  String get signUp {
+    return Intl.message(
+      'Sign Up',
+      name: 'signUp',
       desc: '',
       args: [],
     );

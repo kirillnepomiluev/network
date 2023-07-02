@@ -45,7 +45,7 @@ class PersonProfileStatColumn extends StatelessWidget {
           const AppTextField(initialValue: 'Женщина, 37 лет, свободна, цель встречи: деловая.', enabled: false,),
           const TitleStatText('Интересы'),
           const SizedBox(height: 20,),
-          const AppWrapContainersWithRemove(listOptions: ['Большой теннис', 'Бассейн', 'Управление', 'Маркетинг']),
+          const AppWrapContainersWithRemove(listOptions: ['Big tennis', 'Waterpool', 'Management', 'Marketing']),
 
 
           // Wrap(

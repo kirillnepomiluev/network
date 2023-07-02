@@ -46,7 +46,7 @@ class LoginEmailView extends StatelessWidget {
                           children: [
                             RichTextTwo(
                               text1: '${AppString.of(context).input} ',
-                              text2: 'email и пароль',
+                              text2: 'email and password',
                               fontSize: Res.s21,
                             ), //24
                             SizedBox(
@@ -61,7 +61,7 @@ class LoginEmailView extends StatelessWidget {
                             ),
                             AppTextField(
                               controller: model.passwordContr,
-                              labelText: 'Пароль',
+                              labelText: 'Password',
                               obscureText: true,
                             ),
                             SizedBox(
@@ -85,14 +85,14 @@ class LoginEmailView extends StatelessWidget {
                         children: [
                           AppButton(
                             onPressed: model.signInByEmail,
-                            text: 'Войти',
+                            text: AppString.of(context).signIn,
                           ),
                           const SizedBox(
                             height: 20,
                           ),
                           AppButton(
                             onPressed: model.signUpByEmail,
-                            text: 'Зарегаться',
+                            text: AppString.of(context).signUp,
                           ),
                           // const SizedBox(
                           //   height: 20,

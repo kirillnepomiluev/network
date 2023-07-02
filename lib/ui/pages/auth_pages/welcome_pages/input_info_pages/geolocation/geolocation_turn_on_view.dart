@@ -62,7 +62,6 @@ class GeolocationTurnOnView extends StatelessWidget {
                   // }
 
                   final success = await UtilsGeo.liveLocation(context);
-
                   print('success $success');
 
                   if(success){

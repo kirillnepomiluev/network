@@ -9,6 +9,7 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_t
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_timer/widgets/meeting_timer_sheet_success.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
+import 'package:network_app/utils/utils_geo.dart';
 import 'package:provider/provider.dart';
 
 class MeetingTimerViewModel extends ViewModel {
@@ -42,15 +43,17 @@ class MeetingTimerViewModel extends ViewModel {
         .select()
         .eq('id', meetingID);
 
-    meetingModel = MeetingModel.fromMap(dataList.first);
+    // meetingModel = MeetingModel.fromMap(dataList.first);
+    meetingModel = await MeetingModel.create(dataList.first, context);
 
     meetingListener = AppSupabase.client
         .from(AppSupabase.strMeetings)
         .stream(primaryKey: ['id'])
         .eq('id', meetingID)
-        .listen((List<Map<String, dynamic>> data) {
+        .listen((List<Map<String, dynamic>> data) async {
           print('meeting listen');
-          meetingModel = MeetingModel.fromMap(data.first);
+          // meetingModel = MeetingModel.fromMap(data.first);
+          meetingModel = await MeetingModel.create(dataList.first, context);
           notifyListeners();
         });
 
@@ -74,13 +77,15 @@ class MeetingTimerViewModel extends ViewModel {
   }
 
   Future<void> onStartTap() async {
-    final userData = Provider.of<UserNotifier>(context, listen: false).userData;
+    final success = await UtilsGeo.liveLocation(context);
+    print('onStartTap success $success');
 
-    bool isCreator = meetingModel.creatorID == userData.id;
-
-    String key = isCreator ? 'creator_entered' : 'partner_entered';
-
-    meetingModel.updateData(newData: {key: true});
+    if(success){
+      final userData = Provider.of<UserNotifier>(context, listen: false).userData;
+      bool isCreator = meetingModel.creatorID == userData.id;
+      String key = isCreator ? 'creator_entered' : 'partner_entered';
+      meetingModel.updateData(newData: {key: true});
+    }
   }
 
   Future<bool> onWillPop() async {

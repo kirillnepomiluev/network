@@ -59,9 +59,11 @@ class ChooseBirthDateView extends StatelessWidget {
                     const SizedBox(
                       height: 30,
                     ),
+
                     if(isAuth)
                     AppCheckListTile(
-                      width: double.infinity,
+                      isCenter: true,
+                      // width: double.infinity,
                       onChanged: model.onHideAgeCheckBox,
                       value: model.hideAge,
                       title: AppString.of(context).hideAge,

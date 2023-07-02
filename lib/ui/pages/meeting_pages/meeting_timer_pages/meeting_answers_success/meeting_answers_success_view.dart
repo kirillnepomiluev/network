@@ -43,11 +43,11 @@ class MeetingAnswersSuccessView extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(
-                        padding: EdgeInsets.only(top: 30.sp), //49
+                        padding: EdgeInsets.only(top: 30.sp, left: Res.s10, right: Res.s10), //49
                         child: const RichTextTwo(
-                          text1: 'Поздравляем, ',
+                          text1: 'Congratulations, ',
                           color1: AppColors.salad,
-                          text2: 'вы ответили\nна все вопросы',
+                          text2: "you've answered all the questions.",
                           color2: AppColors.textWhite,
                           textAlign: TextAlign.center,
                         ),),
@@ -57,14 +57,17 @@ class MeetingAnswersSuccessView extends StatelessWidget {
                         fontSize: Res.s60, //60
                         iconSize: Res.s40,
                         fontWeight: FontWeight.w600,
+                        // tokens: 50,
+                        tokens: (meetingModel.tokens/5).toInt(),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
                         top: 48.sp, //118
+                          // left: Res.s32, right: Res.s32
                       ),
                       child: Text(
-                        'Здесь размещаем какую-то\nдополнительную информацию',
+                        'Now you may just discuss\nwhatever you want',
                         style: AppTextStyles.primary16.copyWith(
                           height: 1.3,
                         ),

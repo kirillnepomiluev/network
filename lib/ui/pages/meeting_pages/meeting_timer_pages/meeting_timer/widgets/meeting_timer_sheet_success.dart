@@ -31,8 +31,8 @@ class MeetingTimerSheetSuccess extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(top: 34.sp), //63
             child: const RichTextTwo(
-              text1: 'Вы получили\n',
-              text2: 'токены за встречу',
+              text1: 'You received tokens\n',
+              text2: 'for the meeting',
               textAlign: TextAlign.center,
             ),
           ),
@@ -40,7 +40,9 @@ class MeetingTimerSheetSuccess extends StatelessWidget {
           RhombusText(
               fontSize: Res.s60, //60
               iconSize: Res.s40, //45
-              fontWeight: FontWeight.w600,),
+              fontWeight: FontWeight.w600,
+          tokens: meetingModel.tokens,
+          ),
 
           Padding(
               padding: EdgeInsets.only(bottom: Res.s20),
@@ -52,7 +54,7 @@ class MeetingTimerSheetSuccess extends StatelessWidget {
                     context.router.pop();
                     context.router.push(MeetingRateFirstViewRoute(meetingModel: meetingModel));
                   },
-                  text: 'Оценить встречу',
+                  text: 'Rate the meeting',
                 ),
 
                 SizedBox(height: 23.sp), //30
@@ -60,12 +62,8 @@ class MeetingTimerSheetSuccess extends StatelessWidget {
                 AppButton(
                   onPressed: () {
                     context.router.pushAndPopUntil(HomeViewRoute(), predicate: (route) => false,);
-                    // Navigator.of(context).pop();
-                    // Navigator.of(context).pop();
-                    // context.router.pop();
-                    // context.router.pop();
                   },
-                  text: 'Оценить позже',
+                  text: 'Rate later',
                   height: 35.sp, //70
                   buttonColor: Colors.black,
                   textStyle: AppTextStyles.primary18,

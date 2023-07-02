@@ -12,13 +12,13 @@ class AppContainer extends StatelessWidget {
       this.padV = 0, //23
       this.child,
       this.width,
-      this.height, this.boxBorder,
+      this.height, this.boxBorder, this.borderColor,
       })
       : super(key: key);
 
-  factory AppContainer.outlined({required Widget child, double? width, double? height}){
+  factory AppContainer.outlined({required Widget child, double? width, double? height, Color? borderColor}){
     return AppContainer(
-      boxBorder: Border.all(color: AppColors.salad),
+      boxBorder: Border.all(color: borderColor??AppColors.salad),
       color: Colors.transparent,
       padH: 18.sp,
       padV: 18.sp,
@@ -28,6 +28,7 @@ class AppContainer extends StatelessWidget {
     );
   }
   final Color? color;
+  final Color? borderColor;
   final double radius;
   final double padH;
   final double padV;

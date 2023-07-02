@@ -86,7 +86,9 @@ class _RegSuccessViewState extends State<RegSuccessView> {
 
                     const SizedBox(height: 42,),
 
-                    AppButton(onPressed: model.onTap, text: AppString.of(context).accept,)
+                    AppButton(onPressed: model.onTap, text: AppString.of(context).accept,),
+
+                    const SizedBox(height: 30,),
 
                   ],
                 ),

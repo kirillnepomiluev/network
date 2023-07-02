@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/pages/profile_pages/person_profile/widgets/person_profile_avatar_container.dart';
-import 'package:network_app/ui/pages/profile_pages/person_profile/widgets/person_profile_stat_column.dart';
 import 'package:network_app/ui/pages/settings_pages/avatar_edit/avatar_edit_vm.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
-import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/res.dart';
@@ -25,7 +22,7 @@ class AvatarEditView extends StatelessWidget {
         return Scaffold(
           body: SafeArea(
             child:
-            model.showLoading? Center(child: CircularProgressIndicator(),):
+            model.showLoading? const Center(child: CircularProgressIndicator(),):
             SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: Res.s15),
@@ -35,14 +32,12 @@ class AvatarEditView extends StatelessWidget {
 
                     AppBarRow(title: AppString.of(context).profilePhoto,),
                     SizedBox(height: Res.s26,),
-
                     // AppCircleAvatar(
                     //   avatarUrl: userData.avatarURL,
                     //   // contSize: contSize??40.sp,
                     //   contSize: mediaWidth,
                     //   isAssetImage: false,
                     // ),
-
                     Container(
                       width: mediaWidth, //120
                       height: mediaWidth,
@@ -68,12 +63,13 @@ class AvatarEditView extends StatelessWidget {
 
                     AppButton(onPressed: model.addPhotoFunc, text: AppString.of(context).chooseNewPhoto),
                     SizedBox(height: Res.s26,),
+
                     if(model.photoChoosed)
                     AppButton(onPressed: model.uploadPhotoFunc, text: AppString.of(context).changeThePhoto)
 
-
                     // PersonProfileAvatarContainer(partnerModel: userData),
                     // const PersonProfileStatColumn()
+
                   ],
                 ),
               ),

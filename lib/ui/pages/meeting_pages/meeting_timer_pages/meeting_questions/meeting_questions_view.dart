@@ -21,6 +21,8 @@ class MeetingQuestionsView extends StatelessWidget {
     return ViewModelBuilder<MeetingQuestionsViewModel>(
         createModelDataEx: () => MeetingQuestionsViewModel(context),
         builder: (context, model) {
+
+          meetingModel.questionsList = model.questionsListNew;
           return Scaffold(
             extendBody: true,
             body: SafeArea(
@@ -32,9 +34,9 @@ class MeetingQuestionsView extends StatelessWidget {
                     children: [
                      const AppBarRow(),
                       SizedBox(height: Res.s35,),
-                      const RichTextTwo(
-                        text1: 'Вам необходимо ответить\nна ',
-                        text2: '10 вопросов',
+                      RichTextTwo(
+                        text1: 'You should answer to ',
+                        text2: '${model.questionsListNew.length} questions',
                       ),
                       SizedBox(height: Res.s35,),
                       //Начать с 1-го вопроса
@@ -43,7 +45,7 @@ class MeetingQuestionsView extends StatelessWidget {
                           context.router
                               .push(MeetingAnswersViewRoute(meetingModel: meetingModel));
                         },
-                        text: 'Начать с 1-го вопроса',
+                        text: 'Start with the 1st question',
                       ),
 
                       SizedBox(height: Res.s35,),
@@ -58,13 +60,16 @@ class MeetingQuestionsView extends StatelessWidget {
                               mainAxisSpacing: Res.s12,
                               mainAxisExtent: 46.sp,   //112
                           ),
-                          itemCount: model.questionsList.length,
+                          itemCount: model.questionsListNew.length,
                           itemBuilder: (_, index) {
                             return
                               MeetingQuestionContainer(
-                                text: model.questionsList[index],
+                                text: model.questionsListNew[index].title,
                               );
-                          },)
+                          },),
+
+                      SizedBox(height: Res.s32,),
+
                     ],
                   ),
                 ),
