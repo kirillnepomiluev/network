@@ -56,7 +56,7 @@ class AvatarEditViewModel extends ViewModel {
   }
 
 
-  Future<void> uploadPhotoFunc() async{
+  Future<void> uploadPhotoFunc(UserNotifier userNotifier) async{
 
       if(file==null){
         print('Нет файла');
@@ -69,7 +69,7 @@ class AvatarEditViewModel extends ViewModel {
     try {
       print('try');
       final avatarFile = file!;
-      final userNotifier = provider.Provider.of<UserNotifier>(context, listen: false);
+      // final userNotifier = provider.Provider.of<UserNotifier>(context, listen: false);
 
       final String path = await AppSupabase.client.storage.from('avatars').upload(
         '${userNotifier.userData.id}/$photoName',

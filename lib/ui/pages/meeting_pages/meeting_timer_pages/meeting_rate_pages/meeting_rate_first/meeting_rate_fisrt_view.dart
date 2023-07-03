@@ -127,7 +127,7 @@ class MeetingRateFirstView extends StatelessWidget {
                           bottom: Res.s35,
                         ),
                         child:
-                        model.showLoading? Center(child: CircularProgressIndicator(),):
+                        model.showLoading? const Center(child: CircularProgressIndicator(),):
                         AppButton(
                             onPressed: model.onRateTap,
                             text: 'Rate',),

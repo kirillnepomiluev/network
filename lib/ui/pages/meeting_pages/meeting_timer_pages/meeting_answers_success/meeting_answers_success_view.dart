@@ -58,7 +58,7 @@ class MeetingAnswersSuccessView extends StatelessWidget {
                         iconSize: Res.s40,
                         fontWeight: FontWeight.w600,
                         // tokens: 50,
-                        tokens: (meetingModel.tokens/5).toInt(),
+                        tokens: meetingModel.tokens~/5,
                       ),
                     ),
                     Padding(

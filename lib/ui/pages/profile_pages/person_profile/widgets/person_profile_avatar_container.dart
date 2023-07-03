@@ -32,6 +32,15 @@ class PersonProfileAvatarContainer extends StatelessWidget {
                 )
               ,),
           ),
+
+          // Positioned(
+          //   top: 70,
+          //   left: 15,
+          //   // right: 15,
+          //   // padding: EdgeInsets.only(top: 10, left: 15),
+          //   child: MeetingOnlineContainer(partnerModel: partnerModel),
+          // ),
+
           Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(

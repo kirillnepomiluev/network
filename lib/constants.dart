@@ -22,8 +22,8 @@ class AppConstants {
   ];
 
 
-  static const String baseAvatarUrl = 'https://pkiaqrgckmxdnqlerkmf.supabase.co/storage/v1/object/public/clothes/head/usual/default.png';
-  static const String baseBodyUrl = 'https://pkiaqrgckmxdnqlerkmf.supabase.co/storage/v1/object/public/clothes/body/usual/avatar_3D.png';
+  static const String baseAvatarUrl = 'https://pkiaqrgckmxdnqlerkmf.supabase.co/storage/v1/object/public/clothes/head/usual/head.png';
+  static const String baseBodyUrl = 'https://pkiaqrgckmxdnqlerkmf.supabase.co/storage/v1/object/public/clothes/body/usual/usual.png';
 
   static const String userOne = '71af7780-a104-43a4-a6cf-4239a03fc6f0';
   static const String userTwo = '40bb032a-3b18-46d5-acec-4c9b848b431a';

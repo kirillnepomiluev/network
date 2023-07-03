@@ -4,7 +4,6 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 import 'package:network_app/utils/utils.dart';
-import 'package:network_app/utils/res.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AddCommentRow extends StatefulWidget {

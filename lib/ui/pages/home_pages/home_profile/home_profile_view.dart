@@ -21,10 +21,10 @@ class HomeProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userData = Provider.of<UserNotifier>(context).userData;
     return ViewModelBuilder<ProfileMainViewModel>(
       createModelDataEx: () => ProfileMainViewModel(context, isCupboardInit),
       builder: (context, model) {
+        final userData = Provider.of<UserNotifier>(context).userData;
         final mediaTop = MediaQuery.of(context).viewPadding.top + 10;
         return Scaffold(
           extendBody: true,
@@ -93,7 +93,7 @@ class HomeProfileView extends StatelessWidget {
                             // 'https://pkiaqrgckmxdnqlerkmf.supabase.co/storage/v1/object/public/clothes/body/usual/avatar_3D.png',
                             height: 110.sp,
                             // width: mediaWidth,
-                            fit: BoxFit.cover
+                            fit: BoxFit.fitWidth
                           )
                         ),
 

@@ -60,7 +60,7 @@ class UserModel {
   final double? lat;
   final double? long;
   final String? location;
-  final double? distMeters;
+  final num? distMeters;
   final int level;
   // final String levelText;
   final String avatarURL;
@@ -185,6 +185,10 @@ class UserModel {
     // final levelText = level<1? "Hasn't costume" : 'Level $level';
 
     final rating = getRating(dataMap);
+
+    print('name ${dataMap['name']}');
+
+    // final num distMeters = dataMap['dist_meters'];
 
     return UserModel(
       avatarURL: dataMap['avatar_url']??AppConstants.baseAvatarUrl,
@@ -353,14 +357,14 @@ class UserNotifier with ChangeNotifier {
           .listen((List<Map<String, dynamic>> data) async {
             Map<String, dynamic> userDataMap = data.first;
 
-            if(_bodyURL.isEmpty || userData.avatarBodyID != userDataMap['avatar_body_id']){
+            // if(_bodyURL.isEmpty || userData.avatarBodyID != userDataMap['avatar_body_id']){
               await AppSupabase.client
                   .from(AppSupabase.strClothes)
                   .select('*')
                   .eq('id', userData.avatarBodyID).single().then((value) {
                 _bodyURL = value['image_url'];
               });
-            }
+            // }
 
             userDataMap.addAll({
               'body_url' : _bodyURL
@@ -379,7 +383,11 @@ class UserNotifier with ChangeNotifier {
     required double long,
   }) async {
     updateData(
-        newData: {'lat': lat, 'long': long, 'location': 'POINT($lat $long)'});
+        newData: {
+          'lat': lat,
+          'long': long,
+          'location': 'POINT($long $lat)'
+        });
   }
 
   Future<void> updateData({String routeName = '', required Map<String, dynamic> newData}) async {
@@ -401,6 +409,8 @@ class UserNotifier with ChangeNotifier {
         print('updateData error - $error');
       }
     }
+
+    notifyListeners();
   }
 
   MeetingModel meetingDraft = MeetingModel.emptyModel();

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/generated/l10n.dart';
+import 'package:network_app/ui/pages/home_pages/home_meeting/widgets/meeting_online_container.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/meet_exchange_row.dart';
 import 'package:network_app/ui/widgets/common/rhomus_text.dart';
@@ -33,17 +33,24 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              AppBackButton(contColor: AppColors.black1A.withOpacity(0.65)),
-              AppContainer(
-                padV: Res.s14,
-                padH: Res.s15,
-                color: AppColors.salad,
-                radius: AppBorderRadius.r15,
-                child: Center(
-                    child: Text(AppString.of(context).businessMeeting,
-                        style: AppTextStyles.black12,),),
+              // AppBackButton(contColor: AppColors.black1A.withOpacity(0.65)),
+
+              MeetingOnlineContainer(partnerModel: partnerModel),
+
+              Padding(
+                padding: const EdgeInsets.only(top: 3),
+                child: AppContainer(
+                  padV: Res.s14,
+                  padH: Res.s15,
+                  color: AppColors.salad,
+                  radius: AppBorderRadius.r15,
+                  child: Center(
+                      child: Text(AppString.of(context).businessMeeting,
+                          style: AppTextStyles.black12,),),
+                ),
               ),
             ],
           ),
@@ -71,14 +78,16 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                   const SizedBox(
                     width: 5,
                   ),
-                  const RhombusText()
+                  RhombusText(
+                    tokens: UtilsMeeting.culcTokens(partnerModel),
+                  )
                 ],
               ),
               SizedBox(
                 height: Res.s26,
               ),
               const Text(
-                '250 м в направлении',
+                '250 m from you',
               ),
               SizedBox(height: Res.s10),
               AppContainer(
@@ -90,7 +99,7 @@ class PersonProfileAvatarInfoContainer extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const Text(
-                        'Открыть карту',
+                        'Open map',
                       ),
                       Padding(
                           padding: EdgeInsets.only(

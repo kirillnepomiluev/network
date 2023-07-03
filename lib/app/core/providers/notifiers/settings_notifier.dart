@@ -52,12 +52,14 @@ class SettingsNotifier with ChangeNotifier {
     final id = userData.id;
 
     final location = userData.location;
-    // final myLat = userNotifier.userData.lat;
-    // final myLong = userNotifier.userData.long;
-    const myLat = 53.1299150;
-    const myLong = 48.4251995; //7 после точки
+
 
     if (id != null && location != null) {
+
+      final myLat = userData.lat!;
+      final myLong = userData.long!;
+      // const myLat = 53.1299150;
+      // const myLong = 48.4251995; //7 после точки
 
       final usersList = await UtilsGeo.getUsersByRadius(radius: radius, myLat: myLat, myLong: myLong);
 

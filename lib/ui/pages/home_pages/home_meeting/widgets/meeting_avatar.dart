@@ -23,22 +23,17 @@ class MeetingAvatar extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           children: [
             Positioned(
-              // top: Res.s15,
-              // left: Res.s15,
               child:
               Image.network(partnerModel.bodyURL,
                     height: 110.sp,
                   fit: BoxFit.cover
               )
-              // Assets.images.avatars.avatar3D.image(
-              //   height: 110.sp, //681
-              // ),
             ),
-            const Positioned(
+            Positioned(
               top: 10,
               left: 15,
               // padding: EdgeInsets.only(top: 10, left: 15),
-              child: MeetingOnlineContainer(),
+              child: MeetingOnlineContainer(partnerModel: partnerModel),
             ),
             Container(
               decoration: BoxDecoration(

@@ -11,10 +11,8 @@ class AppCircleAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     // final url = imageUrl.isEmpty? Assets.images.avatars.avatar0.keyName : imageUrl;
     final url = avatarUrl.isEmpty? AppConstants.baseAvatarUrl : avatarUrl;
-
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
