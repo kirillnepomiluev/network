@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
+import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/meeting_go_icon.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
@@ -32,7 +33,7 @@ class _MeetingRequestInfoContainerState
         .eq('id', widget.meetingModel.partnerID)
         .single();
 
-    widget.meetingModel.partnerModel = UserModel.fromMap(partnerData);
+    widget.meetingModel.partnerModel = await UserModel.create(partnerData);
 
     setState(() {
       isLoading = false;

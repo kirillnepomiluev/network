@@ -82,9 +82,9 @@ class MeetingAnswersSuccessView extends StatelessWidget {
                         // Navigator.of(context).pop();
                         // Navigator.of(context).pop();
                         // Navigator.of(context).pop();
-                        context.router.push(MeetingTimerViewRoute(isTimer: true, meetingID: meetingModel.id));
+                        context.router.push(MeetingTimerViewRoute(isTimer: true, meetingID: meetingModel.id!));
                       },
-                      text: 'Начать чат',
+                      text: 'Continue',
                     ),
                   ],
                 ),

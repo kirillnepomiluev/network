@@ -10,110 +10,240 @@ import 'package:network_app/ui/widgets/common/stat_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
+import 'package:network_app/ui/pages/home_pages/home_profile/home_profile_top.dart';
+import 'package:network_app/ui/pages/home_pages/home_profile/widgets/choose_interface.dart';
+import 'package:network_app/utils/main_pages/main_enums.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({
     Key? key,
-    required this.openBottomSheetProfile,
+    required this.openBottomSheetProfile, required this.activeTab, required this.changeTab,
   }) : super(key: key);
   final VoidCallback openBottomSheetProfile;
+  final ActiveProfileTabs activeTab;
+  final Function(ActiveProfileTabs) changeTab;
 
   @override
   Widget build(BuildContext context) {
     final userData = Provider.of<UserNotifier>(context).userData;
-    return Padding(
-      padding: EdgeInsets.only(
-          top: Res.s25,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-
-          Padding(
-            padding: EdgeInsets.only(
-                left: Res.s15,
+    final mediaTop = MediaQuery.of(context).viewPadding.top + 10;
+    return
+      SizedBox(
+        // height: MediaQuery.of(context).size.height,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            //Верхняя часть профиля
+            const HomeProfileTop(),
+            //Выбор интерфейса
+            ChooseProfileScreen(
+              activeProfileTab: activeTab,
+              changeTab: changeTab,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
 
-                // Text(
-                //   'Tima',
-                //     style: AppTextStyles.primary26
-                //         .copyWith(fontWeight: FontWeight.w700),),
-                //
-                // SizedBox(
-                //   height: Res.s12,
-                // ),
-                //
-                // Text(
-                //     userData.rankText,
-                //   // AppString.of(context).baseLevel,
-                // ),
-                // SizedBox(
-                //   height: 25.sp,
-                // ),
+            Expanded(
+              child: Stack(
+                alignment: activeTab == ActiveProfileTabs.cupboard
+                    ? Alignment.topCenter
+                    : Alignment.centerRight,
+                children: [
 
-                //Готов к встрече
-                AppContainer(
-                  padV: Res.s16,
-                  color: AppColors.salad,
-                  radius: AppBorderRadius.r15,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: Res.s15,
-                            ),
-                        child: Icon(
-                          NetworkIcons.check_thin,
-                          size: Res.s14,
-                          color: Colors.black,
-                        ),
+                    Positioned(
+                        child: Image.network(userData.clotheUrl,
+                            height: 110.sp,
+                            fit: BoxFit.cover)),
+
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: Res.s25,
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: Res.s12,
-                            right: Res.s20,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+
+                          Padding(
+                            padding: EdgeInsets.only(
+                              left: Res.s15,
                             ),
-                        child: Text(AppString.of(context).readyToMeet,
-                            style: AppTextStyles.darkSalad
-                                .copyWith(fontWeight: FontWeight.w500),),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+
+                                //Готов к встрече
+                                AppContainer(
+                                  padV: Res.s16,
+                                  color: AppColors.salad,
+                                  radius: AppBorderRadius.r15,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                          left: Res.s15,
+                                        ),
+                                        child: Icon(
+                                          NetworkIcons.check_thin,
+                                          size: Res.s14,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                          left: Res.s12,
+                                          right: Res.s20,
+                                        ),
+                                        child: Text(AppString.of(context).readyToMeet,
+                                          style: AppTextStyles.darkSalad
+                                              .copyWith(fontWeight: FontWeight.w500),),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  left: Res.s15,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    StatMiniContainer(
+                                      title: userData.tokens.toString(), subtitle: AppString.of(context).ofTokens,),
+                                    StatMiniContainer(
+                                      title: userData.meetingsCount.toString(), subtitle: AppString.of(context).meets,),
+                                    StatMiniContainer(
+                                      title: userData.rating.toString(), subtitle: AppString.of(context).rating,),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: Res.s32,),
+                              ProfileBottomCurve(
+                                openBottomSheetProfile: openBottomSheetProfile,
+                              ),
+                            ],
+                          )
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-              ],
+                    )
+
+                ],
+              ),
             ),
-          ),
-          Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                    left: Res.s15,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    StatMiniContainer(
-                        title: userData.points.toString(), subtitle: AppString.of(context).ofPoints,),
-                    StatMiniContainer(
-                        title: userData.meetingsCount.toString(), subtitle: AppString.of(context).meets,),
-                    StatMiniContainer(
-                        title: userData.rating.toString(), subtitle: AppString.of(context).rating,),
-                  ],
-                ),
-              ),
-              SizedBox(height: Res.s32,),
-              ProfileBottomCurve(
-                openBottomSheetProfile: openBottomSheetProfile,
-              ),
-            ],
-          )
-        ],
-      ),
-    );
+          ],
+        ),
+      );
   }
 }
+
+// class ProfileScreen extends StatelessWidget {
+//   const ProfileScreen({
+//     Key? key,
+//     required this.openBottomSheetProfile,
+//   }) : super(key: key);
+//   final VoidCallback openBottomSheetProfile;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final userData = Provider.of<UserNotifier>(context).userData;
+//     return Padding(
+//       padding: EdgeInsets.only(
+//           top: Res.s25,
+//       ),
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         children: [
+//
+//           Padding(
+//             padding: EdgeInsets.only(
+//                 left: Res.s15,
+//             ),
+//             child: Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//
+//                 // Text(
+//                 //   'Tima',
+//                 //     style: AppTextStyles.primary26
+//                 //         .copyWith(fontWeight: FontWeight.w700),),
+//                 //
+//                 // SizedBox(
+//                 //   height: Res.s12,
+//                 // ),
+//                 //
+//                 // Text(
+//                 //     userData.rankText,
+//                 //   // AppString.of(context).baseLevel,
+//                 // ),
+//                 // SizedBox(
+//                 //   height: 25.sp,
+//                 // ),
+//
+//                 //Готов к встрече
+//                 AppContainer(
+//                   padV: Res.s16,
+//                   color: AppColors.salad,
+//                   radius: AppBorderRadius.r15,
+//                   child: Row(
+//                     mainAxisSize: MainAxisSize.min,
+//                     children: [
+//                       Padding(
+//                         padding: EdgeInsets.only(
+//                             left: Res.s15,
+//                             ),
+//                         child: Icon(
+//                           NetworkIcons.check_thin,
+//                           size: Res.s14,
+//                           color: Colors.black,
+//                         ),
+//                       ),
+//                       Padding(
+//                         padding: EdgeInsets.only(
+//                             left: Res.s12,
+//                             right: Res.s20,
+//                             ),
+//                         child: Text(AppString.of(context).readyToMeet,
+//                             style: AppTextStyles.darkSalad
+//                                 .copyWith(fontWeight: FontWeight.w500),),
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+//           Column(
+//             children: [
+//               Padding(
+//                 padding: EdgeInsets.only(
+//                     left: Res.s15,
+//                 ),
+//                 child: Row(
+//                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                   children: [
+//                     StatMiniContainer(
+//                         title: userData.points.toString(), subtitle: AppString.of(context).ofPoints,),
+//                     StatMiniContainer(
+//                         title: userData.meetingsCount.toString(), subtitle: AppString.of(context).meets,),
+//                     StatMiniContainer(
+//                         title: userData.rating.toString(), subtitle: AppString.of(context).rating,),
+//                   ],
+//                 ),
+//               ),
+//               SizedBox(height: Res.s32,),
+//               ProfileBottomCurve(
+//                 openBottomSheetProfile: openBottomSheetProfile,
+//               ),
+//             ],
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }

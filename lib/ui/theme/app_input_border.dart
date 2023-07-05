@@ -38,6 +38,7 @@ class AppInputBorder {
     disabledBorder: _transBorder,
     hintStyle: AppTextStyles.primary,
     labelStyle: AppTextStyles.primary,
+    // hintText: 'Lorem Impusm'
   );
 
 

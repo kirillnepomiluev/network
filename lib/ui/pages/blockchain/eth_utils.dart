@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:network_app/constants.dart';
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:web3dart/web3dart.dart';
@@ -336,7 +337,6 @@ class _WebData{
   static const ethInfuraKey = 'e90250eb60d64824abaeaf3750178842';
   static const polygonInfuraKey = 'f8bf00d32b6448a3818f59c6f16e7f86';
 
-
   static String getNetworkName(int chainId) {
 
     switch (chainId) {
@@ -486,7 +486,6 @@ class EthereumUtils {
 
   Future<bool?> getReciept(String hash) async {
     final reciept = await ethClient.getTransactionReceipt(hash);
-    print('reciept $reciept');
     final status = reciept!.status;
     return status;
   }
@@ -636,6 +635,13 @@ class ERC721ContractNotifier with ChangeNotifier {
 
   Future<String> safeMint() async {
     print('safeMint');
+    if(AppConstants.isTest){
+      // const hash = '0x6f3b2736dd6249e50dd6e89f460c7d01cd24b42c9007f50332ba66a8890dc039'; //Goerli
+      const hash = '0xd06ff88ceaa657ae5412aad3b6ea7e589086ebb35eb4ff553e7b7e8c3c981d64'; //Mumbai
+      return hash;
+    }
+
+
 
     // final transferEvent = contractModel.contract.event('Transfer');
     // final filter = FilterOptions.events(contract: contractModel.contract, event: transferEvent);
@@ -659,9 +665,9 @@ class ERC721ContractNotifier with ChangeNotifier {
     );
 
     print('response $response');
+
     return response;
   }
-
 
   Future<String> addLevelAndRewardForMeet() async {
     print('addLevelAndRewardForMeet');

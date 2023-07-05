@@ -39,4 +39,19 @@ class AppSupabase{
   }
 
 
+  static Future<List?> getData({required String collRef, required dynamic id}) async {
+
+    try {
+      final List list = await AppSupabase.client
+          .from(collRef)
+          .select()
+          .eq('id', id);
+
+      return list;
+
+    } catch (error) {
+      print('getData collRef $collRef id $id error - $error');
+    }
+    return null;
+  }
 }

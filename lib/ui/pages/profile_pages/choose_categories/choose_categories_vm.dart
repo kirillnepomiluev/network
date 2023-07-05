@@ -26,6 +26,8 @@ class ChooseCategoriesViewModel extends ViewModel {
   void getInit() {
     List initialList = [];
 
+    isOccupation = !(keyName == 'interests');
+
     if (!isAuth) {
       final userNotifier = Provider.of<UserNotifier>(context, listen: false);
       final userData = userNotifier.userData;
@@ -73,14 +75,14 @@ class ChooseCategoriesViewModel extends ViewModel {
   }
 
   void onSelectContainer(int neededIndex) {
-    final resultMap =
-        Utils.onSelectContainer(neededIndex, currentList, resultList);
+    final resultMap = Utils.onSelectContainer(neededIndex, currentList, resultList);
     currentList = resultMap['currentList'];
     notifyListeners();
   }
 
   void onNextPage() {
     Utils.unFocus();
+
     if (isMeeting) {
       if (keyName == 'interests') {
         context.router.push(const ChooseMeetingDateViewRoute());
@@ -89,18 +91,23 @@ class ChooseCategoriesViewModel extends ViewModel {
       }
       return;
     }
+
     if (isAuth) {
+      print('OK1');
       if (keyName == 'interests') {
+        print('OK2');
         context.router.push(
           ChooseCategoriesViewRoute(
             isAuth: isAuth,
             keyName: 'occupation',
+            isMeeting: isMeeting
           ),
         );
       } else {
         context.router.push(const InputAboutYouViewRoute());
       }
-    } else {
+    }
+    else {
       context.router.pop();
     }
 
@@ -108,8 +115,9 @@ class ChooseCategoriesViewModel extends ViewModel {
   }
 
   void writeData() {
+    print('write data');
     for (final item in currentList) {
-      if (item.active) {
+      if (item.active && resultList.contains(item.title)==false) {
         resultList.add(item.title);
       }
     }

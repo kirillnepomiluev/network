@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/models/order_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/blockchain/eth_utils.dart';
-import 'package:network_app/ui/pages/home_pages/home_profile/widgets/screens/orders_view.dart';
+import 'package:network_app/ui/pages/blockchain/eth_utils.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
@@ -41,7 +41,6 @@ class _CupboardScreenUpdateRowState extends State<CupboardScreenUpdateRow> {
 
               print('userID ${userData.id}');
 
-
               final orders = await AppSupabase.client
                   .from(AppSupabase.strOrders)
                   .select()
@@ -55,7 +54,7 @@ class _CupboardScreenUpdateRowState extends State<CupboardScreenUpdateRow> {
 
                 // const hash = '0x0b95ca9eddce85a174abfd32b9eff2a508c2aea459dbcfe884ceed06bdb158d0';
                 final hash = orderModel.hash;
-                final type = orderModel.type;
+                final type = orderModel.clotheModel.type;
                 final clotheID = orderModel.clotheID;
 
                 print('hash $hash clotheID $clotheID');
@@ -63,10 +62,13 @@ class _CupboardScreenUpdateRowState extends State<CupboardScreenUpdateRow> {
                 final success = await EthereumUtils().getReciept(hash);
                 print('success $success');
 
-                if (success != null) {
-                  final newList = type == 'body'
-                      ? userData.avatarBodyCupboard
-                      : userData.avatarHeadCupboard;
+                if (success != null)
+                {
+                  // final newList = type == 'body'
+                  //     ? userData.avatarBodyCupboard
+                  //     : userData.avatarHeadCupboard;
+
+                  final newList = userData.avatarBodyCupboard;
 
                   if (newList.contains(clotheID) == false) {
                     newList.add(clotheID);
@@ -101,7 +103,7 @@ class _CupboardScreenUpdateRowState extends State<CupboardScreenUpdateRow> {
             onPressed: () {
               context.router.push(const OrdersViewRoute());
             },
-            text: 'Покупки'),
+            text: 'Purchases'),
       ],
     );
   }

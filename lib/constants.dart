@@ -1,7 +1,7 @@
 
-
-
 class AppConstants {
+
+  static bool isTest = true;
 
   static List<String> questionsList = [
     'Do you like walking?',

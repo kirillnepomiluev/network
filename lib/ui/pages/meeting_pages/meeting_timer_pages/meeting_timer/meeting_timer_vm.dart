@@ -38,27 +38,28 @@ class MeetingTimerViewModel extends ViewModel {
   Future<void> getInit() async {
     print('meetingID $meetingID');
 
-    final List dataList = await AppSupabase.client
+    final List initMeetingsList = await AppSupabase.client
         .from(AppSupabase.strMeetings)
         .select()
         .eq('id', meetingID);
 
-    // meetingModel = MeetingModel.fromMap(dataList.first);
-    meetingModel = await MeetingModel.create(dataList.first, context);
+    // meetingModel = MeetingModel.fromMap(initMeetingsList.first);
+    meetingModel = await MeetingModel.create(initMeetingsList.first, context);
 
     meetingListener = AppSupabase.client
         .from(AppSupabase.strMeetings)
         .stream(primaryKey: ['id'])
         .eq('id', meetingID)
         .listen((List<Map<String, dynamic>> data) async {
-          print('meeting listen');
           // meetingModel = MeetingModel.fromMap(data.first);
-          meetingModel = await MeetingModel.create(dataList.first, context);
+          meetingModel = await MeetingModel.create(data.first, context);
+          // print('creatorEntered ${meetingModel.creatorEntered} partnerEntered ${meetingModel.partnerEntered}');
+
           notifyListeners();
         });
 
-    // if(dataList.isNotEmpty){
-    //   meetingModel = MeetingModel.fromMap(dataList.first);
+    // if(initMeetingsList.isNotEmpty){
+    //   meetingModel = MeetingModel.fromMap(initMeetingsList.first);
     //   // duration = Duration(seconds: meetingModel.meetingDurationMaxSeconds);
     // }
 
@@ -76,7 +77,12 @@ class MeetingTimerViewModel extends ViewModel {
     }
   }
 
+  bool showStartLoading = false;
+
   Future<void> onStartTap() async {
+    showStartLoading = true;
+    notifyListeners();
+
     final success = await UtilsGeo.liveLocation(context);
     print('onStartTap success $success');
 
@@ -84,8 +90,12 @@ class MeetingTimerViewModel extends ViewModel {
       final userData = Provider.of<UserNotifier>(context, listen: false).userData;
       bool isCreator = meetingModel.creatorID == userData.id;
       String key = isCreator ? 'creator_entered' : 'partner_entered';
-      meetingModel.updateData(newData: {key: true});
+      await meetingModel.updateData(newData: {key: true});
     }
+
+    showStartLoading = false;
+    notifyListeners();
+
   }
 
   Future<bool> onWillPop() async {

@@ -69,7 +69,7 @@ class MeetingMatchingViewModel extends ViewModel {
   }
 
   void onStartMeeting(){
-    context.router.push(MeetingTimerViewRoute(meetingID: meetingModel.id));
+    context.router.push(MeetingTimerViewRoute(meetingID: meetingModel.id!));
   }
 
 

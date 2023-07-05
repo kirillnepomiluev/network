@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
+import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/constants.dart';
-import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';

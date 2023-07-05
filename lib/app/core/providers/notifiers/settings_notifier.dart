@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/utils/utils_geo.dart';
 import 'package:provider/provider.dart';
@@ -53,7 +54,6 @@ class SettingsNotifier with ChangeNotifier {
 
     final location = userData.location;
 
-
     if (id != null && location != null) {
 
       final myLat = userData.lat!;
@@ -64,7 +64,7 @@ class SettingsNotifier with ChangeNotifier {
       final usersList = await UtilsGeo.getUsersByRadius(radius: radius, myLat: myLat, myLong: myLong);
 
       for (final item in usersList) {
-        final userModel = UserModel.fromMap(item);
+        final userModel = await UserModel.create(item);
         if (userModel.id != id) {
           partnersList.add(userModel);
         }

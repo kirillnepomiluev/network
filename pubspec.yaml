@@ -65,6 +65,7 @@ dependencies:
   maps_toolkit:
   flutter_rating_bar:
   file_picker:
+  pull_to_refresh:
 
 dev_dependencies:
   flutter_test:

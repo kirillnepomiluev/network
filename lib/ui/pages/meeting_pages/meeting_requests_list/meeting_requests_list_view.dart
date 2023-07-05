@@ -17,7 +17,6 @@ class MeetingRequestsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userData = Provider.of<UserNotifier>(context).userData;
-
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(

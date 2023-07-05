@@ -32,7 +32,7 @@ class MeetingTimerView extends StatelessWidget {
         bool bothEntered = model.meetingModel.creatorEntered &&
             model.meetingModel.partnerEntered;
 
-        print('tokens ${model.meetingModel.tokens}');
+        print('entered $entered');
 
         return WillPopScope(
           onWillPop: model.onWillPop,
@@ -92,7 +92,9 @@ class MeetingTimerView extends StatelessWidget {
                               Center(
                                   child: Padding(
                                 padding: const EdgeInsets.all(30),
-                                child: AppButton(
+                                child:
+                                model.showStartLoading? const CircularProgressIndicator():
+                                AppButton(
                                     onPressed: model.onStartTap, text: 'Start'),
                               ))
                             else

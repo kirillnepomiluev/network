@@ -1,6 +1,6 @@
 import 'package:network_app/app/core/providers/notifiers/settings_notifier.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
-import 'package:network_app/blockchain/eth_utils.dart';
+import 'package:network_app/ui/pages/blockchain/eth_utils.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart' show SingleChildWidget;
 

@@ -77,17 +77,17 @@ class InviteContainerInfo extends StatelessWidget {
                   child:
                   Text(
                     meetingModel.type,
-                    style: AppTextStyles.primary12,),
+                    style: AppTextStyles.primary16,),
                 ),
               ),
               Text(meetingModel.scheduledDateText,
-                style: AppTextStyles.salad,
+                style: AppTextStyles.salad16,
                 // style: AppTextStyles.primary.copyWith(color: AppColors.grey3),
               )
             ],
           ),
 
-          SizedBox(height: Res.s20),
+          SizedBox(height: Res.s25),
 
           InviteContainerAvatarRow(
             meetingModel: meetingModel,
@@ -139,6 +139,7 @@ class InviteContainerInfo extends StatelessWidget {
                   Text(
                     meetingModel.description,
                     maxLines: 3,
+                    style: AppTextStyles.primary16,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
@@ -153,14 +154,12 @@ class InviteContainerInfo extends StatelessWidget {
               SizedBox(height: Res.s10),
               const Divider(color: Colors.grey,),
               SizedBox(height: Res.s10),
-
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(meetingModel.statusText),
+                  Text(meetingModel.statusText, style: AppTextStyles.primary16,),
 
-                  Text('${meetingModel.tokens} ${AppString.of(context).ofTokens}', style: AppTextStyles.salad,),
+                  Text('${meetingModel.tokens} ${AppString.of(context).ofTokens}', style: AppTextStyles.salad16,),
                 ],
               ),
               SizedBox(height: Res.s10),
@@ -169,13 +168,13 @@ class InviteContainerInfo extends StatelessWidget {
                 children: [
                   Text(
                     '#${meetingModel.id}',
-                    style: AppTextStyles.grey,
+                    style: AppTextStyles.grey16,
                     // style: AppTextStyles.salad16.copyWith(fontWeight: FontWeight.w500),
                   ),
 
                   Text(
                     meetingModel.createdDateText,
-                    style: AppTextStyles.grey,
+                    style: AppTextStyles.grey16,
                   ),
                 ],),
             ],),

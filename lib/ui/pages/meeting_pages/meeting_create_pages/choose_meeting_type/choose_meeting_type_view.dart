@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
+import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_type/choose_meeting_type_vm.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_create_pages/choose_meeting_type/choose_meeting_type_vm.dart';
 import 'package:network_app/ui/widgets/buttons/button_continue.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';

@@ -18,7 +18,10 @@ class ChooseMeetingDateViewModel extends ViewModel {
   String startTime = '';
 
   void getInit() {
-    eventDate = eventDate.add(const Duration(minutes: 10));
+
+    print('eventDate $eventDate');
+
+    eventDate = eventDate.add(const Duration(hours: 10));
     eventTime = TimeOfDay.fromDateTime(eventDate);
     setDate();
   }
@@ -73,8 +76,8 @@ class ChooseMeetingDateViewModel extends ViewModel {
 
   Future<void> onTap() async {
     final userNotifier = Provider.of<UserNotifier>(context, listen: false);
-    final meetingPlaningDate =
-        eventDate.add(Duration(hours: eventTime.hour, minutes: eventTime.minute));
+    final date = DateTime(eventDate.year, eventDate.month, eventDate.day);
+    final meetingPlaningDate = date.add(Duration(hours: eventTime.hour, minutes: eventTime.minute));
     print('requestDate $meetingPlaningDate');
     userNotifier.meetingDraft.scheduledDate = meetingPlaningDate;
     context.router.push(const CheckMeetingParametersViewRoute());

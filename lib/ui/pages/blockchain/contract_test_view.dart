@@ -160,11 +160,11 @@ Future<void> showReceipt(BuildContext context, String receipt) {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.black.withOpacity(0.8),
           title: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Text(
-              'Транзакиця создана',
+              'Transaction is created',
               textAlign: TextAlign.center,
               style: AppTextStyles.primary18,
             ),
@@ -180,7 +180,8 @@ Future<void> showReceipt(BuildContext context, String receipt) {
               children: <Widget>[
                 Text(
                   // "Use the transaction hash bellow to check if it was successful",
-                  'Вы можете проверить статус по хэшу ниже:',
+                  // 'Вы можете проверить статус по хэшу ниже:',
+                  'You can check its status by this hash:',
                   textAlign: TextAlign.center,
                   style: AppTextStyles.primary16,
                 ),
@@ -195,7 +196,7 @@ Future<void> showReceipt(BuildContext context, String receipt) {
           actionsPadding: EdgeInsets.only(bottom: Res.s20),
           actions: [
             ElevatedButton(
-              child: const Text('Посмотреть', style: TextStyle(color: Colors.black),),
+              child: const Text('View', style: TextStyle(color: Colors.black),),
               onPressed: () {
                 Navigator.of(context).pop();
                 context.router.push(const OrdersViewRoute());},

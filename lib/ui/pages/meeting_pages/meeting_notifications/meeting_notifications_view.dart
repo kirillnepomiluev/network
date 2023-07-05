@@ -1,5 +1,6 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_notifications/widgets/meeting_notifications_info_container.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
@@ -8,7 +9,6 @@ import 'package:network_app/ui/widgets/icons/app_icon_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
-import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/utils/utils.dart';
 
 

@@ -1440,20 +1440,20 @@ class AppString {
     );
   }
 
-  /// `Дата встречи`
+  /// `Meeting date`
   String get dateOfMeeting {
     return Intl.message(
-      'Дата встречи',
+      'Meeting date',
       name: 'dateOfMeeting',
       desc: '',
       args: [],
     );
   }
 
-  /// `Партнер`
+  /// `Partner`
   String get partner {
     return Intl.message(
-      'Партнер',
+      'Partner',
       name: 'partner',
       desc: '',
       args: [],

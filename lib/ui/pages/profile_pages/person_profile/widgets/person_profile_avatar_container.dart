@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
+import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/ui/pages/profile_pages/person_profile/widgets/person_profile_avatar_info_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -26,7 +26,7 @@ class PersonProfileAvatarContainer extends StatelessWidget {
                 // Assets.images.avatars.avatar3D.image(
                 //   alignment: Alignment.topCenter,
                 // )
-                Image.network(partnerModel.bodyURL,
+                Image.network(partnerModel.clotheUrl,
                     height: double.infinity,
                     fit: BoxFit.cover
                 )

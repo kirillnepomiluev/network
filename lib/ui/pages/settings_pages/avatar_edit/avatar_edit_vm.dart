@@ -7,7 +7,6 @@ import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart' as provider;
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 

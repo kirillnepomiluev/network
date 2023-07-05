@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
-import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
+import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invite_details/meeting_invite_details_view.dart';
 

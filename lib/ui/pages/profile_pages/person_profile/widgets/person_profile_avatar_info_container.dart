@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
+import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_meeting/widgets/meeting_online_container.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';

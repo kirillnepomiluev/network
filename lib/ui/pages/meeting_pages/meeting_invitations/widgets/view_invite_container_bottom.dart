@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
-import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
+import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/ui/widgets/cards/app_circle_avatar.dart';
 import 'package:network_app/ui/widgets/texts/name_with_verification.dart';
 import 'package:network_app/utils/res.dart';
@@ -64,7 +64,7 @@ class PartnerAvatarRow extends StatelessWidget {
               if(showYourLevel)
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
-                  child: Text('(ваш уровень $yourLevel)'),
+                  child: Text('(Your level $yourLevel)'),
                 ),
             ],
           ),

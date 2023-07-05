@@ -9,6 +9,7 @@ import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/app_wrap_containers_with_remove.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bottom.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/cards/enter_info_container.dart';
@@ -35,6 +36,9 @@ class CheckMeetingParametersView extends StatelessWidget {
     final strTime = localizations.formatTimeOfDay(
       TimeOfDay.fromDateTime(meetingDraft.scheduledDate),
     );
+
+    final height = Res.s18;
+
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(top: mediaTop),
@@ -62,43 +66,46 @@ class CheckMeetingParametersView extends StatelessWidget {
                   // const CheckMeetingCategoryOfMeeting(),
                   TitleStatText(AppString.of(context).categoryOfMeeting),
                   SizedBox(
-                    height: Res.s20,
+                    height: height,
                   ),
-                  AppContainer(
-                    padH: Res.s15,
-                    padV: Res.s10,
-                    radius: AppBorderRadius.r10,
-                    child: Text(
-                        // AppString.of(context).businessMeeting,
-                        meetingDraft.type),
-                  ),
+                  Text(meetingDraft.type, style: AppTextStyles.primary18,),
+                  // AppContainer(
+                  //   padH: Res.s15,
+                  //   padV: Res.s10,
+                  //   radius: AppBorderRadius.r10,
+                  //   child: Text(
+                  //       // AppString.of(context).businessMeeting,
+                  //       meetingDraft.type),
+                  // ),
 
                   // const CheckMeetingDescriptionOfMeeting(),
                   TitleStatText(AppString.of(context).descriptionOfMeeting),
                   SizedBox(
-                    height: Res.s10,
+                    height: height,
                   ),
-                  AppContainer.outlined(
-                    width: double.infinity,
-                    child: Text(meetingDraft.description),
-                  ),
+                  // Text('One two three four five six seven eight nine ten eleven twelve', style: AppTextStyles.primary18,),
+                  Text(meetingDraft.description, style: AppTextStyles.primary18,),
+                  // AppContainer.outlined(
+                  //   width: double.infinity,
+                  //   child: Text(meetingDraft.description),
+                  // ),
 
                   // const CheckMeetingOccupation(),
                   TitleStatText(AppString.of(context).occupation),
                   SizedBox(
-                    height: Res.s20,
+                    height: height,
                   ),
                   AppWrapContainersWithRemove(
                     listOptions: meetingDraft.occupation,
                   ),
 
-                  SizedBox(
-                    height: Res.s20,
-                  ),
+                  // SizedBox(
+                  //   height: Res.s15,
+                  // ),
 
                   TitleStatText(AppString.of(context).interestsTitle),
                   SizedBox(
-                    height: Res.s20,
+                    height: height,
                   ),
 
                   AppWrapContainersWithRemove(
@@ -106,14 +113,14 @@ class CheckMeetingParametersView extends StatelessWidget {
                   ),
 
                   // const CheckMeetingInterests(),
-                  SizedBox(
-                    height: Res.s20,
-                  ),
+                  // SizedBox(
+                  //   height: Res.s15,
+                  // ),
                   // const CheckMeetingDate(),
                   // const TitleStatText('Период для планирования встречи'),
                   TitleStatText(AppString.of(context).dateOfMeeting),
                   SizedBox(
-                    height: Res.s20,
+                    height: height,
                   ),
                   Row(
                     children: [
@@ -128,7 +135,7 @@ class CheckMeetingParametersView extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: Res.s10,
+                        width: Res.s15,
                       ),
                       AppContainer(
                         padV: Res.s15,
@@ -143,7 +150,7 @@ class CheckMeetingParametersView extends StatelessWidget {
 
                   TitleStatText(AppString.of(context).partner),
                   SizedBox(
-                    height: Res.s20,
+                    height: height,
                   ),
 
                   // Text(

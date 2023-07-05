@@ -1,274 +1,15 @@
 import 'dart:async';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
+import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/app/core/providers/notifiers/settings_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/constants.dart';
-import 'package:network_app/generated/l10n.dart';
-import 'package:network_app/utils/utils.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 // final userData = Provider.of<UserNotifier>(context).userData;
-class UserModel {
 
-  final String? id;
-  final String bodyURL;
-  final int personID;
-  final String name;
-  final String phone;
-  final String email;
-  final DateTime createdDate;
-  final DateTime? birthdayDate;
-  final int? age;
-  final bool hideAge;
-  final bool hideFamilyStatus;
-  final bool hideMeetingsGoal;
-  final String sex;
-  final bool hideSex;
-  final String rankText;
-  final List interests;
-  final String status;
-  final List occupation;
-  final String familyStatus;
-  final String about;
-  final int points;
-  final String rating;
-  final int ratingStars1;
-  final int ratingStars2;
-  final int ratingStars3;
-  final int ratingStars4;
-  final int ratingStars5;
-  final int ratingCount;
-  final int energy;
-  final double recoverySpeed;
-  final int meetingsCount;
-  final int messagesCountDay;
-  final int likesCountDay;
-  final String meetingsGoal;
-  final bool verified;
-  final bool online;
-  final int walletTokens;
-  final Map<String, dynamic> dataMap;
-  final int avatarBodyID;
-  final int avatarHeadID;
-  final List avatarBodyCupboard;
-  final List avatarHeadCupboard;
-  final List clothesIdList;
-  final double? lat;
-  final double? long;
-  final String? location;
-  final num? distMeters;
-  final int level;
-  // final String levelText;
-  final String avatarURL;
-
-  UserModel({
-    this.avatarURL = AppConstants.baseAvatarUrl,
-    this.bodyURL = AppConstants.baseBodyUrl,
-
-    this.id,
-    this.personID = -1,
-    this.level = 0,
-    // this.levelText = '',
-    this.age,
-    this.name = '',
-    this.phone = '',
-    this.email = '',
-    required this.createdDate,
-    this.birthdayDate,
-    this.hideAge = false,
-    this.sex = '',
-    this.hideSex = false,
-    this.rankText = '',
-    required this.interests,
-    this.status = '',
-    required this.occupation,
-    this.familyStatus = '',
-    this.hideFamilyStatus = false,
-    this.hideMeetingsGoal = false,
-    this.about = '',
-    this.points = 0,
-    this.rating = '0.0',
-    this.ratingCount = 0,
-    this.ratingStars1 = 0,
-    this.ratingStars2 = 0,
-    this.ratingStars3 = 0,
-    this.ratingStars4 = 0,
-    this.ratingStars5 = 0,
-    this.energy = 0,
-    this.recoverySpeed = 1.0,
-    this.meetingsCount = 0,
-    this.messagesCountDay = 0,
-    this.likesCountDay = 0,
-    this.meetingsGoal = '',
-    this.verified = false,
-    this.online = false,
-    this.walletTokens = 0,
-    required this.dataMap,
-    this.avatarBodyID = 1,
-    this.avatarHeadID = 3,
-    required this.avatarBodyCupboard,
-    required this.avatarHeadCupboard,
-    required this.clothesIdList,
-    this.lat,
-    this.long,
-    this.location,
-    this.distMeters,
-  });
-
-  factory UserModel.emptyModel() {
-    return UserModel(
-      createdDate: DateTime.now(),
-      interests: [],
-      occupation: [],
-      dataMap: {},
-      avatarHeadCupboard: [],
-      avatarBodyCupboard: [],
-      clothesIdList: [],
-    );
-  }
-
-  static String getStarsKey(int rate) {
-    return 'rate_$rate';
-  }
-
-  static String getRating(Map<String, dynamic> dataMap) {
-    double rating = 0.0;
-
-    final stars1 = dataMap[getStarsKey(1)];
-    final stars2 = dataMap[getStarsKey(2)];
-    final stars3 = dataMap[getStarsKey(3)];
-    final stars4 = dataMap[getStarsKey(4)];
-    final stars5 = dataMap[getStarsKey(5)];
-
-    // (5*252 + 4*124 + 3*40 + 2*29 + 1*33) / (252+124+40+29+33) = 4.11 and change
-    // final stars1 = 33;
-    // final stars2 = 29;
-    // final stars3 = 40;
-    // final stars4 = 124;
-    // final stars5 = 252;
-
-    final sumOne =
-        stars1 * 1 + stars2 * 2 + stars3 * 3 + stars4 * 4 + stars5 * 5;
-    final sumTwo = stars1 + stars2 + stars3 + stars4 + stars5;
-
-    if (sumTwo > 0) {
-      rating = sumOne / sumTwo;
-    }
-
-    return rating.toStringAsFixed(1);
-  }
-
-  factory UserModel.fromMap(Map<String, dynamic> dataMap) {
-    DateTime createdDate = Utils.getDate(dataMap['created_date'])!;
-    DateTime? birthdayDate = DateTime.tryParse(dataMap['birthday_date']);
-    int? age = _getAge(birthdayDate);
-    // final mapRank = dataMap['level'];
-    final mapRank = dataMap['rank'];
-    String rankText = '';
-    if (mapRank == 'base') {
-      rankText = AppString().base;
-    } else if (mapRank == 'standart') {
-      rankText = AppString().standart;
-    } else {
-      rankText = AppString().premium;
-    }
-
-    List avatarBodyCupboard = dataMap['avatar_body_cupboard'];
-    List avatarHeadCupboard = dataMap['avatar_head_cupboard'];
-    List clothesIdList = [...avatarBodyCupboard, ...avatarHeadCupboard];
-
-    final level = dataMap['level'];
-    // final levelText = level<1? "Hasn't costume" : 'Level $level';
-
-    final rating = getRating(dataMap);
-
-    print('name ${dataMap['name']}');
-
-    // final num distMeters = dataMap['dist_meters'];
-
-    return UserModel(
-      avatarURL: dataMap['avatar_url']??AppConstants.baseAvatarUrl,
-      bodyURL: dataMap['body_url']??AppConstants.baseBodyUrl,
-
-      id: dataMap['id'],
-      distMeters: dataMap['dist_meters'],
-      personID: dataMap['person_id'],
-      level: level,
-      // levelText: levelText,
-      name: dataMap['name'],
-      phone: dataMap['phone'] ?? '',
-      email: dataMap['email'] ?? '',
-      createdDate: createdDate,
-      birthdayDate: birthdayDate,
-      age: age,
-      hideAge: dataMap['hide_age'],
-      sex: dataMap['sex'],
-      hideSex: dataMap['hide_sex'],
-      rankText: rankText,
-      interests: dataMap['interests'],
-      status: dataMap['status'],
-      occupation: dataMap['occupation'],
-      familyStatus: dataMap['family_status'],
-      about: dataMap['about'],
-      points: dataMap['points'],
-      rating: rating,
-      ratingCount: dataMap['rating_count'],
-      energy: dataMap['energy'],
-      recoverySpeed: dataMap['recovery_speed'],
-      meetingsCount: dataMap['meetings_count'],
-      messagesCountDay: dataMap['messages_count_day'],
-      likesCountDay: dataMap['likes_count_day'],
-      meetingsGoal: dataMap['meetings_goal'],
-      verified: dataMap['verified'],
-      online: dataMap['online'],
-      walletTokens: dataMap['wallet_tokens'],
-      dataMap: dataMap,
-      hideFamilyStatus: dataMap['hide_family_status'],
-      hideMeetingsGoal: dataMap['hide_meetings_goal'],
-      avatarBodyID: dataMap['avatar_body_id'],
-      avatarHeadID: dataMap['avatar_head_id'],
-      avatarBodyCupboard: avatarBodyCupboard,
-      avatarHeadCupboard: avatarHeadCupboard,
-      clothesIdList: clothesIdList,
-      ratingStars1: dataMap[getStarsKey(1)],
-      ratingStars2: dataMap[getStarsKey(2)],
-      ratingStars3: dataMap[getStarsKey(3)],
-      ratingStars4: dataMap[getStarsKey(4)],
-      ratingStars5: dataMap[getStarsKey(5)],
-      lat: dataMap['lat'],
-      long: dataMap['long'],
-      location: dataMap['location'],
-    );
-
-  }
-
-  static int? _getAge(birthdayDate) {
-    // int age = '';
-    int? age;
-    if (birthdayDate != null) {
-      final currentYear = DateTime.now().year;
-      final lastDate =
-          DateTime(currentYear, birthdayDate.month, birthdayDate.day);
-      final difInYears = (currentYear - birthdayDate.year).toInt();
-      if (lastDate.compareTo(birthdayDate) >= 0) {
-        age = difInYears;
-      } else {
-        age = difInYears - 1;
-      }
-    }
-    return age;
-  }
-
-  @override
-  String toString() {
-    return '$id - $name';
-  }
-  // List<UserModel> fromJson(String str) => List<UserModel>.from(json.decode(str).map((x) => UserModel.fromJson(x)));
-}
 
 //Для управления данными авторизованного юзера (нельзя исп. на стр. входа, т.к. содержит в себе currentUser. Вызовет null exception)
 class UserNotifier with ChangeNotifier {
@@ -328,20 +69,49 @@ class UserNotifier with ChangeNotifier {
         .from(AppSupabase.strUsers)
         .select()
         .eq('id', id);
-
     final userDataMap = data[0];
-
-    userData = UserModel.fromMap(userDataMap);
+    userData = await UserModel.create(userDataMap);
     notifyListeners();
   }
 
-  StreamSubscription<List<Map<String, dynamic>>>? userListener;
+  // Future<void> firstUpdateData() async {
+  //   // final id = testID.isNotEmpty ? testID : AppSupabase.client.auth.currentUser!.id;
+  //
+  //   final id = getID();
+  //   print('firstUpdateData id $id');
+  //
+  //   if(id==null) {
+  //     return;
+  //   }
+  //
+  //   final data = await AppSupabase.client
+  //       .from(AppSupabase.strUsers)
+  //       .select()
+  //       .eq('id', id);
+  //
+  //   final userDataMap = data[0];
+  //
+  //   await AppSupabase.client
+  //       .from(AppSupabase.strClothes)
+  //       .select('*')
+  //       .eq('id', userDataMap['avatar_body_id']).single().then((value) {
+  //     // _bodyURL = value['image_url'];
+  //
+  //     userDataMap.addAll({
+  //       'clothe_url' : value['image_url'],
+  //       'clothe_level' :  value['level'],
+  //     });
+  //     // print('У костюма - ${userDataMap['avatar_body_id']} - level ${value['level']}');
+  //   });
+  //
+  //   userData = UserModel.fromMap(userDataMap);
+  //   notifyListeners();
+  // }
 
-  String _bodyURL = '';
+  StreamSubscription<List<Map<String, dynamic>>>? userListener;
 
   Future<void> setUserDataFunc({bool isInit = false}) async {
     final id = getID();
-    print('setUserDataFunc id $id');
     if(id==null) {
       return;
     }
@@ -356,23 +126,9 @@ class UserNotifier with ChangeNotifier {
           .eq('id', id)
           .listen((List<Map<String, dynamic>> data) async {
             Map<String, dynamic> userDataMap = data.first;
+            userData = await UserModel.create(userDataMap);
 
-            // if(_bodyURL.isEmpty || userData.avatarBodyID != userDataMap['avatar_body_id']){
-              await AppSupabase.client
-                  .from(AppSupabase.strClothes)
-                  .select('*')
-                  .eq('id', userData.avatarBodyID).single().then((value) {
-                _bodyURL = value['image_url'];
-              });
-            // }
-
-            userDataMap.addAll({
-              'body_url' : _bodyURL
-            });
-
-            userData = UserModel.fromMap(userDataMap);
-
-            print('Обновили данные');
+            print('Обновили данные - level ${userData.level}');
             notifyListeners();
       });
 

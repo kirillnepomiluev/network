@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
-import 'package:network_app/ui/widgets/icons/network_icons.dart';
 import 'package:network_app/utils/res.dart';
 
 
@@ -15,34 +14,33 @@ class ViewCategoryIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(right: Res.s15),
-      child: InkWell(
-        onTap: onPressed,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              title,
-              style: AppTextStyles.primary22.copyWith(fontWeight: FontWeight.w600),
-              textAlign: TextAlign.start,
-            ),
+      child:
+      Text(
+        title,
+        style: AppTextStyles.primary22.copyWith(fontWeight: FontWeight.w600),
+        textAlign: TextAlign.start,
+      )
+      // InkWell(
+      //   onTap: onPressed,
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //     children: [
+      //       Text(
+      //         title,
+      //         style: AppTextStyles.primary22.copyWith(fontWeight: FontWeight.w600),
+      //         textAlign: TextAlign.start,
+      //       ),
+      //
+      //       Icon(
+      //         NetworkIcons.arrow_long_right,
+      //         color: Colors.white,
+      //         size: Res.s18,
+      //       ),
+      //
+      //     ],
+      //   ),
+      // ),
 
-            Icon(
-              NetworkIcons.arrow_long_right,
-              color: Colors.white,
-              size: Res.s18,
-            ),
-
-            // IconButton(
-            //   onPressed: onPressed,
-            //   icon: const Icon(
-            //     NetworkIcons.arrow_long_right,
-            //     color: Colors.white,
-            //   ),
-            //   iconSize: Res.s20,
-            // )
-          ],
-        ),
-      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_locale.dart';
@@ -8,7 +9,7 @@ import 'package:provider/provider.dart';
 class MeetingModel {
   int creatorLevel;
   int partnerLevel;
-  int id;
+  int? id;
   String creatorID;
   String partnerID;
   UserModel creatorModel;
@@ -44,13 +45,13 @@ class MeetingModel {
   int tokens;
 
   MeetingModel({
+    this.id,
     this.tokens = 0,
     this.isEmpty = true,
     this.createdDateText = '',
     this.scheduledDateText = '',
     this.creatorLevel = 0,
     this.partnerLevel = 0,
-    required this.id,
     this.creatorID = '',
     this.partnerID = '',
     required this.creatorModel,
@@ -86,6 +87,7 @@ class MeetingModel {
   static Future<MeetingModel> create(Map<String, dynamic> dataMap, BuildContext context) async {
     final userData = Provider.of<UserNotifier>(context, listen: false).userData;
     final userID = userData.id;
+    print('userData.id ${userData.id}');
     final String creatorID = dataMap['creator_id'] ?? '';
     final String partnerID = dataMap['partner_id'] ?? '';
     UserModel creatorModel = UserModel.emptyModel();
@@ -93,7 +95,6 @@ class MeetingModel {
     if (userID != null) {
       final isCreator = userID == creatorID;
       final searchID = isCreator ? partnerID : creatorID;
-
 
       final searchData = await AppSupabase.client
           .from(AppSupabase.strUsers)
@@ -105,9 +106,9 @@ class MeetingModel {
 
       if (isCreator) {
         creatorModel = userData;
-        partnerModel = UserModel.fromMap(searchData);
+        partnerModel = await UserModel.create(searchData);
       } else {
-        creatorModel = UserModel.fromMap(searchData);
+        creatorModel = await UserModel.create(searchData);
         partnerModel = userData;
       }
     }
@@ -123,6 +124,8 @@ class MeetingModel {
     // final createdDateText = localizations.formatShortDate(createdDate);
     final createdDateText = localizations.formatCompactDate(createdDate);
     final scheduledDateText = localizations.formatShortDate(scheduledDate);
+
+    // print('oook creator_entered ${dataMap['creator_entered']} partner_entered ${dataMap['partner_entered']}');
 
     return MeetingModel(
       tokens: dataMap['tokens'],
@@ -210,7 +213,6 @@ class MeetingModel {
 
   factory MeetingModel.emptyModel() {
     return MeetingModel(
-        id: 0,
         creatorModel: UserModel.emptyModel(),
         partnerModel: UserModel.emptyModel(),
         createdDate: DateTime.now(),

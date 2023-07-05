@@ -39,7 +39,7 @@ void opeinInfoSheet({required BuildContext context, required String title}) {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Энергия',
+                              Text(title,
                                   style: AppTextStyles.salad32
                                       .copyWith(fontWeight: FontWeight.w600),),
                               Padding(
@@ -140,9 +140,9 @@ class ProgressParametr extends StatelessWidget {
                         RichTextTwo(
                           text1: text1,
                           text2: text2,
-                          fontSize: Res.s16,
+                          fontSize: Res.s18,
                           fontWeight1: FontWeight.w400,
-                          fontWeight2: FontWeight.w700,
+                          fontWeight2: FontWeight.w500,
                         ),
                         Padding(
                           padding: EdgeInsets.only(

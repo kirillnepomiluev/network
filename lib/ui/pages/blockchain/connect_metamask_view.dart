@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/blockchain/eth_utils.dart';
+import 'package:network_app/ui/pages/blockchain/eth_utils.dart';
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:walletconnect_dart/walletconnect_dart.dart';
@@ -111,6 +111,7 @@ class _ConnectMetamaskViewState extends State<ConnectMetamaskView> {
           name: 'My App',
           description: 'An app for converting pictures to NFT',
           url: 'https://walletconnect.org',
+          // url: 'https://coodes.org',
           icons: [
             'https://files.gitbook.com/v0/b/gitbook-legacy-files/o/spaces%2F-LJJeCjcLrr53DcT1Ml7%2Favatar.png?alt=media'
           ]));

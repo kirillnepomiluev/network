@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:network_app/utils/utils_meetings.dart';
@@ -16,17 +17,16 @@ class ChooseMeetingPersonViewModel extends ViewModel {
   void onPartnerChoosed(UserModel newPartnerModel){
     choosedPartnerID = newPartnerModel.id!;
     choosedPartnerModel = newPartnerModel;
+    UtilsMeeting.onChosePartner(context, choosedPartnerModel);
     notifyListeners();
   }
 
-  void onTap(){
-    // final userNotifier = Provider.of<UserNotifier>(context, listen: false);
-    // userNotifier.meetingDraft.partnerID = choosedPartnerID;
-    // print('onTap - ${userNotifier.meetingDraft.partnerID}');
-    // context.router.push(const InputDescriptionMeetingViewRoute());
-
-    UtilsMeeting.onChosePartner(context, choosedPartnerModel);
-  }
+  // void onTap(){
+  //   // final userNotifier = Provider.of<UserNotifier>(context, listen: false);
+  //   // userNotifier.meetingDraft.partnerID = choosedPartnerID;
+  //   // print('onTap - ${userNotifier.meetingDraft.partnerID}');
+  //   // context.router.push(const InputDescriptionMeetingViewRoute());
+  // }
 
   void _getInit(){
     // final userData = Provider.of<UserNotifier>(context).userData;

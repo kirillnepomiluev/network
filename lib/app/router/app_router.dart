@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:network_app/blockchain/connect_metamask_view.dart';
-import 'package:network_app/blockchain/contract_test_view.dart';
+import 'package:network_app/ui/pages/blockchain/connect_metamask_view.dart';
+import 'package:network_app/ui/pages/blockchain/contract_test_view.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login/login_view.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_email/login_email_view.dart';
 import 'package:network_app/ui/pages/auth_pages/auth/login_pages/login_multiple/login_multiple_view.dart';
@@ -23,7 +23,7 @@ import 'package:network_app/ui/pages/auth_pages/welcome_pages/reg_success/reg_su
 import 'package:network_app/ui/pages/home_pages/home_meeting/home_meeting_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_messages/home_messages_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/home_profile_view.dart';
-import 'package:network_app/ui/pages/home_pages/home_profile/widgets/screens/orders_view.dart';
+import 'package:network_app/ui/pages/profile_pages/orders/orders_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/home_store_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_wallet/home_wallet_view.dart';
@@ -31,14 +31,11 @@ import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/meeting_i
 import 'package:network_app/ui/pages/meeting_pages/meeting_invite_details/meeting_invite_details_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_matching/meeting_matching_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_notifications/meeting_notifications_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/check_meeting_parameters/check_meeting_parameters_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_date/choose_meeting_date_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_interests/choose_meeting_interests_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_occupations/choose_meeting_occupations_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_person/choose_meeting_person_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/choose_meeting_type/choose_meeting_type_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/input_meeting_description/input_meeting_description_view.dart';
-import 'package:network_app/ui/pages/meeting_pages/meeting_request_create_pages/input_meeting_occupation/input_meeting_occupation.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_create_pages/check_meeting_parameters/check_meeting_parameters_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_create_pages/choose_meeting_date/choose_meeting_date_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_create_pages/choose_meeting_person/choose_meeting_person_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_create_pages/choose_meeting_type/choose_meeting_type_view.dart';
+import 'package:network_app/ui/pages/meeting_pages/meeting_create_pages/input_meeting_description/input_meeting_description_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_requests_list/meeting_requests_list_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_search/meeting_search_view.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_timer_pages/meeting_answers/meeting_answers_view.dart';
@@ -143,9 +140,9 @@ class RoutesLists {
     AutoRoute(page: ChooseMeetingTypeView),
     AutoRoute(page: ChooseMeetingPersonView),
     AutoRoute(page: InputDescriptionMeetingView),
-    AutoRoute(page: ChooseMeetingOccupationsView),
-    AutoRoute(page: InputMeetingOccupationView),
-    AutoRoute(page: ChooseMeetingInterestsView),
+    // AutoRoute(page: ChooseMeetingOccupationsView),
+    // AutoRoute(page: InputMeetingOccupationView),
+    // AutoRoute(page: ChooseMeetingInterestsView),
     AutoRoute(page: ChooseMeetingDateView),
     AutoRoute(page: CheckMeetingParametersView),
   ];

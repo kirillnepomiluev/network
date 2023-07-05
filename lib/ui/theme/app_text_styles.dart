@@ -44,6 +44,7 @@ class AppTextStyles {
   static final grey = primary.copyWith(color: AppColors.textGray,);
   static final grey10 = grey.copyWith(fontSize: Res.s10);
   static final grey12 = grey.copyWith(fontSize: Res.s12);
+  static final grey16 = grey.copyWith(fontSize: Res.s16);
 
   static final salad = primary.copyWith(color: AppColors.salad);
   static final salad10 = salad.copyWith(fontSize: Res.s10,);

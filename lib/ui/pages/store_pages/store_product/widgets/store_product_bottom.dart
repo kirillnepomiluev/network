@@ -9,11 +9,12 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class StoreProductBottom extends StatelessWidget {
   const StoreProductBottom({
-    Key? key, required this.onBuyClothe, required this.cost,
+    Key? key, required this.onBuyClothe, required this.cost, required this.showButtonLoading,
   }) : super(key: key);
 
   final VoidCallback onBuyClothe;
   final double cost;
+  final bool showButtonLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +35,17 @@ class StoreProductBottom extends StatelessWidget {
                     .copyWith(fontWeight: FontWeight.w600),),
           ),
           Padding(
-              padding: EdgeInsets.only(right: Res.s15),
-              child: AppButton(
+              padding: EdgeInsets.only(right: showButtonLoading? Res.s60 : Res.s15),
+              child:
+              showButtonLoading? const CircularProgressIndicator() :
+
+              AppButton(
                 width: 60.sp, //180
                 height: 32.sp,   //50
-                textStyle: AppTextStyles.black,
+                textStyle: AppTextStyles.black18,
                 borderRadius: AppBorderRadius.r15,
                 onPressed: onBuyClothe,
-                text: 'Купить сейчас',
+                text: 'Buy',
               ),)
         ],
       ),

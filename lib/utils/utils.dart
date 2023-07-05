@@ -49,11 +49,12 @@ class Utils {
 
     final userData = userNotifier.userData;
     final name = userData.name;
-    print('name $name');
+    // print('name $name');
     if(name.isEmpty){
       context.router.push(const RegSuccessViewRoute());
     }
     else{
+      // context.router.push(const RegSuccessViewRoute());
       context.router.push(HomeViewRoute(),);
       // context.router.push(GeolocationTurnOnViewRoute(),);
     }
@@ -111,7 +112,6 @@ class Utils {
 
     final resultMap = {
       'currentList': currentList,
-      // 'resultList': resultList,
     };
 
     return resultMap;

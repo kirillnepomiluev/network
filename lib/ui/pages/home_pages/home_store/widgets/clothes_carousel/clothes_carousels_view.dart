@@ -34,7 +34,7 @@ class ClothesCarousels extends StatelessWidget {
             // const SizedBox(
             //   height: 20,
             // ),
-            // //Головные уборы
+            // //Headwears
             // ViewAvatarsCarousel(
             //   isCupboard: isCupboard,
             //   title: AppString.of(context).headwears,

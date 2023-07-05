@@ -126,7 +126,7 @@ class AppDropdownDynamic extends StatelessWidget {
           padding: EdgeInsets.only(right: Res.s15),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: Colors.white,
+            color: Colors.white.withOpacity(0.1),
             border: Border.all(color: borderColor ?? Colors.black),
           ),
           child: DropdownButtonHideUnderline(
@@ -142,7 +142,7 @@ class AppDropdownDynamic extends StatelessWidget {
                       '$item ${AppString.of(context).km}',
                       // item.toString(),
                       textAlign: TextAlign.center,
-                      style: AppTextStyles.black
+                      style: AppTextStyles.primary
                           .copyWith(fontWeight: FontWeight.w700),
                     ),
                   );

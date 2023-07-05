@@ -77,19 +77,19 @@ class StoreCategoryView extends StatelessWidget {
                             changeTab: model.changeTab,
                             activeTab: model.activeTab,
                             tabName: ActiveStoreFilerTabs.price,
-                            text: 'Цена',
+                            text: 'Price',
                           ),
                           StoreFilterTab(
                             changeTab: model.changeTab,
                             activeTab: model.activeTab,
                             tabName: ActiveStoreFilerTabs.category,
-                            text: 'Категория',
+                            text: 'Category',
                           ),
                           StoreFilterTab(
                             changeTab: model.changeTab,
                             activeTab: model.activeTab,
                             tabName: ActiveStoreFilerTabs.level,
-                            text: 'Уровень',
+                            text: 'Level',
                           ),
                         ],
                       ),
@@ -110,7 +110,7 @@ class StoreCategoryView extends StatelessWidget {
                           var list = currentList
                               .where(
                                 (x) =>
-                                    userData.clothesIdList.contains(x['id']) ==
+                                    userData.avatarBodyCupboard.contains(x['id']) ==
                                     isCupboard,
                               )
                               .toList();
@@ -129,6 +129,7 @@ class StoreCategoryView extends StatelessWidget {
                                       child: StoreAvatarContainer(
                                         currentNote: list[index],
                                         isViewCostume: true,
+                                        contHeight: null,
                                       ),
                                     );
                                   },
@@ -151,6 +152,7 @@ class StoreCategoryView extends StatelessWidget {
                                     return StoreAvatarContainer(
                                       // width: 55.sp,
                                       currentNote: list[index],
+                                      contHeight: null,
                                     );
                                   },
                                 ),

@@ -63,7 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cupboard": MessageLookupByLibrary.simpleMessage("Cupboard"),
         "currency": MessageLookupByLibrary.simpleMessage("Currency"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
-        "dateOfMeeting": MessageLookupByLibrary.simpleMessage("Дата встречи"),
+        "dateOfMeeting": MessageLookupByLibrary.simpleMessage("Meeting date"),
         "descriptionOfMeeting":
             MessageLookupByLibrary.simpleMessage("Description"),
         "empty": MessageLookupByLibrary.simpleMessage("empty"),
@@ -132,7 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ofTokens": MessageLookupByLibrary.simpleMessage("tokens"),
         "online": MessageLookupByLibrary.simpleMessage("Online"),
         "ownOption": MessageLookupByLibrary.simpleMessage("your option"),
-        "partner": MessageLookupByLibrary.simpleMessage("Партнер"),
+        "partner": MessageLookupByLibrary.simpleMessage("Partner"),
         "partner_feedback":
             MessageLookupByLibrary.simpleMessage("Partner feedback"),
         "partners": MessageLookupByLibrary.simpleMessage("Partners"),
