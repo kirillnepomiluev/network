@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/home_profile_vm.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/screens/cupboard_screen.dart';
 import 'package:network_app/ui/pages/home_pages/home_profile/widgets/screens/profile_screen.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/main_pages/main_enums.dart';
-import 'package:provider/provider.dart';
 
 class HomeProfileView extends StatelessWidget {
   const HomeProfileView({Key? key, this.isCupboardInit = false})
@@ -17,8 +15,6 @@ class HomeProfileView extends StatelessWidget {
     return ViewModelBuilder<ProfileMainViewModel>(
       createModelDataEx: () => ProfileMainViewModel(context, isCupboardInit),
       builder: (context, model) {
-        final userData = Provider.of<UserNotifier>(context).userData;
-        final mediaTop = MediaQuery.of(context).viewPadding.top + 10;
         return Scaffold(
             extendBody: true,
             body: Container(

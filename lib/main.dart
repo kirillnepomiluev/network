@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:network_app/app/app.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/providers/notifiers/wallet_provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'dart:io';
 
@@ -22,6 +23,9 @@ void main() async {
     anonKey: AppSupabase.apiKey,
     debug: false,
   );
+
+  // WalletProvider walletProvider = WalletProvider();
+  // await walletProvider.loadPrivateKey();
 
   await dotenv.load();
 

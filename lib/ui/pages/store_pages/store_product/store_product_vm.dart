@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/clothe_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
-import 'package:network_app/ui/pages/blockchain/eth_utils.dart';
+import 'package:network_app/app/core/providers/eth_utils.dart';
 import 'package:network_app/ui/pages/blockchain/contract_test_view.dart';
 import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';

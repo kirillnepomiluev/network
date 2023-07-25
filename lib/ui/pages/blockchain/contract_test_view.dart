@@ -6,7 +6,7 @@ import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'custom_button.dart';
-import 'eth_utils.dart';
+import '../../../app/core/providers/eth_utils.dart';
 
 class ContractTestView extends StatefulWidget {
   const ContractTestView({Key? key}) : super(key: key);

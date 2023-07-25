@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
-import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/generated/l10n.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/utils/res.dart';
-import 'package:provider/provider.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/meeting_go_icon.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/view_invite_container_bottom.dart';
 import 'package:network_app/ui/theme/app_border_radius.dart';
@@ -19,8 +17,6 @@ class MeetingInviteDetailsView extends StatelessWidget {
   final bool isInvitation;
   @override
   Widget build(BuildContext context) {
-    final userData = Provider.of<UserNotifier>(context).userData;
-
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -216,8 +212,6 @@ class _RateInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    final userData = Provider.of<UserNotifier>(context).userData;
 
     // final title = 'Отзыв ${fromCreator? 'создателя' : 'партнера'}';
     // final title = '${fromCreator && !isInvitation? 'Ваш отзыв          ' : 'Отзыв партнера'}';

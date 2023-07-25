@@ -27,7 +27,6 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userData = Provider.of<UserNotifier>(context).userData;
-    final mediaTop = MediaQuery.of(context).viewPadding.top + 10;
     return
       SizedBox(
         // height: MediaQuery.of(context).size.height,

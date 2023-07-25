@@ -25,7 +25,6 @@ class MeetingQuestionsViewModel extends ViewModel {
 
   void createQuestionList(){
     for(int i=0; i<AppConstants.questionsList.length; i++){
-      final answerList = [];
       questionsListNew.add(MeetingQuestionModel(id: i+1, title: AppConstants.questionsList[i], answersList: []));
     }
   }

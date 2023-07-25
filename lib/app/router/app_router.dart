@@ -53,12 +53,16 @@ import 'package:network_app/ui/pages/settings_pages/avatar_edit/avatar_edit_view
 import 'package:network_app/ui/pages/settings_pages/settings_main/settings_main_view.dart';
 import 'package:network_app/ui/pages/store_pages/store_category/store_category_view.dart';
 import 'package:network_app/ui/pages/store_pages/store_product/store_product_view.dart';
+import 'package:network_app/ui/pages/wallet_pages/pages/create_or_import.dart';
+import 'package:network_app/ui/pages/wallet_pages/pages/wallet_login_page.dart';
 import 'package:network_app/ui/pages/wallet_pages/wallet_exchange/wallet_exchange_view.dart';
 import 'package:network_app/ui/pages/wallet_pages/wallet_exchange_success/wallet_exchange_success_view.dart';
 
 @AdaptiveAutoRouter(
   // replaceInRouteName: 'View,Route',
   routes: <AutoRoute>[
+
+
     ...RoutesLists.authRoutes,
     ...RoutesLists.welcomeRoutes,
     ...RoutesLists.homeRoutes,
@@ -85,6 +89,10 @@ class $AppRouter {}
 class RoutesLists {
   static const List<AutoRoute> authRoutes = [
     AutoRoute(page: StartView, initial: true),
+
+    AutoRoute(page: WalletLoginPage),
+    AutoRoute(page: WalletCreateOrImportPage),
+
     AutoRoute(page: ContractTestView),
     AutoRoute(page: ConnectMetamaskView),
 

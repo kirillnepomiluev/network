@@ -376,6 +376,8 @@ class _WebData{
       infuraApiKey = ethInfuraKey;
       erc721address = '0x9ebF2d973000780b403522259b09dad9E3B59256';
       ownerAddress = '0x04Ee5860e4fce5560865197BCfb83b9192ce4dbD';
+      // erc721address = '0xAb92aED3Dd22ad824123239c1571E598eEDa36db';
+      // ownerAddress = '0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17';
     }
     else if(webName=='mumbai'){
       webType = 'polygon-mumbai';
@@ -403,14 +405,12 @@ class _WebData{
 }
 
 class EthereumUtils {
-  static final webData = _WebData.choose('mumbai');
+  static final webData = _WebData.choose('sepolia');
 
   // static const ownerAddress = '0x04Ee5860e4fce5560865197BCfb83b9192ce4dbD'; //0x04Ee5860e4fce5560865197BCfb83b9192ce4dbD
-  static const myAddress = '0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17';
+  // static const myAddress = '0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17';
+  static const myAddress = '0xc14dafbc12e001a4109c2fd313a24b985863070b';
   static const envMetamaskPrivateKey = '524b442f7c94da5cb89808d697a3079000298021626122584a14ebbb8e170b90';
-
-
-
 
 
   // static const web = 'sepolia'; //goerli
@@ -419,8 +419,7 @@ class EthereumUtils {
   // static final infura = "https://$web.infura.io/v3/$envInfuraApiKey";
 
 
-  static final EthPrivateKey credential =
-  EthPrivateKey.fromHex(envMetamaskPrivateKey);
+  static final EthPrivateKey credential = EthPrivateKey.fromHex(envMetamaskPrivateKey);
 
 
   static final http.Client httpClient = http.Client();
@@ -464,8 +463,13 @@ class EthereumUtils {
       }
 
       final ethFunction = contract.function(functionName);
+
+      final EthPrivateKey moralistCredential = EthPrivateKey.fromHex('1e13471ec6d7430dd605acbbb2a2539ba14cb7c3358b3d55d6ecef173fcf908c');
+
+
       final result = await ethClient.sendTransaction(
-        credential,
+        // credential,
+        moralistCredential,
         Transaction.callContract(
           value: value,
           from: sender,
@@ -540,7 +544,9 @@ class ERC721ContractNotifier with ChangeNotifier {
   static const contractName = 'ERC721SuitUnlimited';
   // static const contractAddress = '0x9ebF2d973000780b403522259b09dad9E3B59256'; //sepolia
   static final contractAddress = EthereumUtils.webData.erc721address; //sepolia
-  static final abiPath = Assets.abi.abi;
+  // static final abiPath = Assets.abi.abi;
+  // static final abiPath = Assets.abi.erc721;
+  static final abiPath = Assets.abi.sepolia721;
   late ContractModel contractModel;
 
   static String strGetBalance = 'getBalance';
@@ -635,13 +641,11 @@ class ERC721ContractNotifier with ChangeNotifier {
 
   Future<String> safeMint() async {
     print('safeMint');
-    if(AppConstants.isTest){
-      // const hash = '0x6f3b2736dd6249e50dd6e89f460c7d01cd24b42c9007f50332ba66a8890dc039'; //Goerli
-      const hash = '0xd06ff88ceaa657ae5412aad3b6ea7e589086ebb35eb4ff553e7b7e8c3c981d64'; //Mumbai
-      return hash;
-    }
-
-
+    // if(AppConstants.isTest){
+    //   // const hash = '0x6f3b2736dd6249e50dd6e89f460c7d01cd24b42c9007f50332ba66a8890dc039'; //Goerli
+    //   const hash = '0xd06ff88ceaa657ae5412aad3b6ea7e589086ebb35eb4ff553e7b7e8c3c981d64'; //Mumbai
+    //   return hash;
+    // }
 
     // final transferEvent = contractModel.contract.event('Transfer');
     // final filter = FilterOptions.events(contract: contractModel.contract, event: transferEvent);
@@ -660,7 +664,8 @@ class ERC721ContractNotifier with ChangeNotifier {
       contract: contractModel.contract,
       functionName: currentFunction,
       strSender: EthereumUtils.myAddress,
-      ethValue: 0.01,
+      // ethValue: 0.01,
+      ethValue: 0.05,
       args: [EthereumAddress.fromHex(EthereumUtils.myAddress)],
     );
 

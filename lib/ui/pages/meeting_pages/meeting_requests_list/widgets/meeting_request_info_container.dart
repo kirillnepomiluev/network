@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/meeting_model.dart';
 import 'package:network_app/app/core/models/user_model.dart';
-import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/ui/pages/meeting_pages/meeting_invitations/widgets/meeting_go_icon.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/utils/res.dart';
-import 'package:provider/provider.dart';
 
 class MeetingRequestInfoContainer extends StatefulWidget {
   const MeetingRequestInfoContainer({
@@ -51,8 +49,6 @@ class _MeetingRequestInfoContainerState
     final localizations = MaterialLocalizations.of(context);
     final strCreatedDate = localizations.formatShortDate(widget.meetingModel.createdDate);
     final strSceduledDate = localizations.formatShortDate(widget.meetingModel.scheduledDate);
-
-    final userData = Provider.of<UserNotifier>(context).userData;
 
     return isLoading
         ? Container()

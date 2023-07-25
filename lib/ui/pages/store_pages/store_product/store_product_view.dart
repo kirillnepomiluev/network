@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/models/clothe_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
-import 'package:network_app/ui/pages/blockchain/eth_utils.dart';
+import 'package:network_app/app/core/providers/eth_utils.dart';
 import 'package:network_app/ui/pages/store_pages/store_product/store_product_vm.dart';
 import 'package:network_app/ui/pages/store_pages/store_product/widgets/store_product_bottom.dart';
 import 'package:network_app/ui/pages/store_pages/store_product/widgets/store_product_image_container.dart';

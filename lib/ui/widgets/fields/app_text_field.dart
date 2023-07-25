@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/ui/theme/app_input_border.dart';
+import 'package:network_app/ui/theme/app_text_styles.dart';
 
 class AppTextField extends StatelessWidget {
   const AppTextField(
@@ -11,7 +12,7 @@ class AppTextField extends StatelessWidget {
         this.enabled = true,
         this.labelText,
         this.obscureText = false,
-        this.onChange,
+        this.onChanged,
       })
       : super(key: key);
   final TextEditingController? controller;
@@ -21,7 +22,7 @@ class AppTextField extends StatelessWidget {
   final bool obscureText;
   final String? initialValue;
   final String? labelText;
-  final Function(String? newValue)? onChange;
+  final Function(String? newValue)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class AppTextField extends StatelessWidget {
       // style: AppTextStyles.primary,
       textInputAction: TextInputAction.done,
       cursorColor: Colors.white,
-      onChanged: onChange,
+      onChanged: onChanged,
       autofocus: autofocus,
       maxLines: obscureText? 1 : null,
       obscureText: obscureText,
@@ -40,6 +41,7 @@ class AppTextField extends StatelessWidget {
           ? AppInputBorder.inputDecorationTransparent
           : AppInputBorder.inputDecorationBorder.copyWith(
         labelText: labelText,
+        labelStyle: AppTextStyles.grey
       ),
     );
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/order_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
-import 'package:network_app/ui/pages/blockchain/eth_utils.dart';
+import 'package:network_app/app/core/providers/eth_utils.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/utils/res.dart';
@@ -36,7 +36,6 @@ class _OrderContainerState extends State<OrderContainer> {
         final clotheModel = orderModel.clotheModel;
         print('checkTransaction of ${orderModel.id} - ${clotheModel.title} - userID ${userNotifier.userData.id}');
         final hash = orderModel.hash;
-        final type = orderModel.clotheModel.type;
         // final clotheID = orderModel.clotheID;
         final success = await EthereumUtils().getReciept(hash);
         if (success != null) {

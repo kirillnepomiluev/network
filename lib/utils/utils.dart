@@ -54,9 +54,8 @@ class Utils {
       context.router.push(const RegSuccessViewRoute());
     }
     else{
-      // context.router.push(const RegSuccessViewRoute());
-      context.router.push(HomeViewRoute(),);
-      // context.router.push(GeolocationTurnOnViewRoute(),);
+      // context.router.push(HomeViewRoute(),);
+      context.router.push(WalletLoginPageRoute(),);
     }
 
     // String level = '';

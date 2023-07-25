@@ -84,7 +84,6 @@ class _OrdersViewState extends State<OrdersView> {
   @override
   Widget build(BuildContext context) {
     final userNotifier = Provider.of<UserNotifier>(context);
-    final userData = userNotifier.userData;
     return Scaffold(
       body: SafeArea(
         child: Padding(

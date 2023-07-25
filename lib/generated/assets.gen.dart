@@ -21,8 +21,11 @@ class $AssetsAbiGen {
   /// File path: assets/abi/erc721.json
   String get erc721 => 'assets/abi/erc721.json';
 
+  /// File path: assets/abi/sepolia721.json
+  String get sepolia721 => 'assets/abi/sepolia721.json';
+
   /// List of all assets
-  List<String> get values => [abi, erc20, erc721];
+  List<String> get values => [abi, erc20, erc721, sepolia721];
 }
 
 class $AssetsImagesGen {

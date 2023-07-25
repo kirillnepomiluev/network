@@ -26,7 +26,6 @@ class StoreAvatarContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final clotheModel = ClotheModel.fromMap(currentNote);
-    final isAvatarBody = clotheModel.type == 'body';
     final mediaWidth = MediaQuery.of(context).size.width;
     final double contWidth =
         isViewCostume ? mediaWidth : mediaWidth * 0.8; //217.57

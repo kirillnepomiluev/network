@@ -33,7 +33,7 @@ class SearchTextField extends StatelessWidget {
           Expanded(
             child: AppTextField(
               controller: controller,
-              onChange: onChange,
+              onChanged: onChange,
               isTransparent: true,
             ),
           ),

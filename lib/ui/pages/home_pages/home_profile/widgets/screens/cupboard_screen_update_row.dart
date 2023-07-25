@@ -4,7 +4,7 @@ import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/order_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
-import 'package:network_app/ui/pages/blockchain/eth_utils.dart';
+import 'package:network_app/app/core/providers/eth_utils.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
