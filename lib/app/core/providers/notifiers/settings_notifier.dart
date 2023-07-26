@@ -61,7 +61,8 @@ class SettingsNotifier with ChangeNotifier {
       // const myLat = 53.1299150;
       // const myLong = 48.4251995; //7 после точки
 
-      final usersList = await UtilsGeo.getUsersByRadius(radius: radius, myLat: myLat, myLong: myLong);
+      // final usersList = await UtilsGeo.getUsersByRadius(radius: radius, myLat: myLat, myLong: myLong);
+      final usersList = [];
 
       for (final item in usersList) {
         final userModel = await UserModel.create(item);

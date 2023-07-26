@@ -13,12 +13,15 @@ class WalletLoginPage extends StatelessWidget {
 
     print('walletProvider.privateKey ${walletProvider.privateKey}');
 
-    if (walletProvider.privateKey == null) {
+    if(walletProvider.initialized==false){
+      return const CircularProgressIndicator();
+    }
+    else if (walletProvider.privateKey == null) {
       // If private key doesn't exist, load CreateOrImportPage
       return const WalletCreateOrImportPage();
     } else {
       // If private key exists, load WalletPage
-      return WalletPage();
+      return const WalletPage();
     }
   }
 }

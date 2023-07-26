@@ -15,22 +15,32 @@ abstract class WalletAddressService {
 
 class WalletProvider extends ChangeNotifier implements WalletAddressService {
 
+  bool initialized = false;
+
   WalletProvider() {
     getInit();
   }
 
-  getInit(){
+  void getInit(){
     loadPrivateKey();
   }
 
   // Variable to store the private key
   String? privateKey;
 
-  // Load the private key from the shared preferences
+  Future<void> logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('privateKey');
+    privateKey=null;
+    notifyListeners();
+  }
+
+    // Load the private key from the shared preferences
   Future<void> loadPrivateKey() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     privateKey = prefs.getString('privateKey');
     print('loadPrivateKey - $privateKey');
+    initialized = true;
     notifyListeners();
   }
 
@@ -61,7 +71,7 @@ class WalletProvider extends ChangeNotifier implements WalletAddressService {
   @override
   Future<EthereumAddress> getPublicKey(String privateKey) async {
     final private = EthPrivateKey.fromHex(privateKey);
-    final address = await private.address;
+    final address = private.address;
     return address;
   }
 
@@ -69,30 +79,96 @@ class WalletProvider extends ChangeNotifier implements WalletAddressService {
 
 
 
-
-
-  static Future<Map<String, dynamic>> sendHttpReq({required String address, required String chainName}) async {
+  static Future<Map<String, dynamic>> httpPost({required String domen, required String url, required Map<String, dynamic> dataMap}) async {
     const headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     };
     final encoding = Encoding.getByName('utf-8');
-
-    final dataMap = {
-      "jsonrpc":"2.0",
-      "method":"eth_getBalance",
-      "params":[address,"latest"],"id":1
-    };
-
     String jsonBody = json.encode(dataMap);
     Map<String, dynamic> results = {};
 
-    var client = http.Client();
+    final client = http.Client();
     try {
-      var response = await http.post(Uri.https('sepolia.infura.io',
-          'v3/e90250eb60d64824abaeaf3750178842'
-        // 'v3/82c60c8157c1431a81209503dd6f2815'
-      ), body: jsonBody, headers: headers, encoding: encoding);
+       final response = await http.post(Uri.https(domen, url), body: jsonBody, headers: headers, encoding: encoding);
+       results = json.decode(response.body);
+    }
+    finally {
+      client.close();
+    }
+
+    print('results $results');
+
+    return results;
+  }
+
+
+
+  static Future<Map<String, dynamic>> getBalance({required String address, required String chainName}) async {
+    final dataMap = {
+      'jsonrpc':'2.0',
+      'method':'eth_getBalance',
+      'params':[address,'latest'],'id':1
+    };
+    Map<String, dynamic> results = await httpPost(domen: 'sepolia.infura.io', url: 'v3/e90250eb60d64824abaeaf3750178842', dataMap: dataMap);
+    print('results $results');
+    return results;
+  }
+
+  static Future<int> getBalances({required String address, required String chainName}) async {
+    print('getBalances');
+
+    //0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17
+    //sepolia
+    final dataMap = await getBalance(address: address, chainName: chainName);
+    final String balanceHex = dataMap['result']??'';
+
+    if(balanceHex.isEmpty){
+      return 0;
+    }else{
+      return int.parse(balanceHex);
+    }
+
+  }
+
+  List<NftModel> nftList = [];
+
+  Future<void> getNftList() async {
+    print('getNftList');
+
+    const chainID = 80001;
+    const walletAddress = '0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17';
+    //https://nft.api.infura.io/networks/80001/accounts/0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17/assets/nfts
+    final results = await httpsAuthGet(domen: 'nft.api.infura.io', url: 'networks/$chainID/accounts/$walletAddress/assets/nfts');
+
+    List assets = results['assets']??[];
+    for(final item in assets){
+      final metadata = item['metadata'];
+      final NftModel nftModel = NftModel.fromMap(metadata);
+      nftList.add(nftModel);
+    }
+
+    print('nftList');
+    for(final nftModel in nftList){
+      print(nftModel);
+    }
+
+    notifyListeners();
+  }
+
+
+  static Future<Map<String, dynamic>> httpsAuthGet({required String domen, required String url}) async {
+    print('getNftList');
+    Map<String, dynamic> results = {};
+
+    String username = 'e90250eb60d64824abaeaf3750178842'; //infuraOpenKey
+    String password = '2aafe54e680949c08dcd2764cb6bb42f'; //infuraCloseKey
+    String basicAuth = 'Basic ${base64.encode(utf8.encode('$username:$password'))}';
+    final Map<String, String> headers = {'authorization': basicAuth};
+
+    final client = http.Client();
+    try {
+      http.Response response = await http.get(Uri.https(domen, url), headers: headers);
       results = json.decode(response.body);
     }
     finally {
@@ -104,22 +180,24 @@ class WalletProvider extends ChangeNotifier implements WalletAddressService {
     return results;
   }
 
-  static Future<int> getBalances({required String address, required String chainName}) async {
-    print('getBalances');
+}
 
-    //0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17
-    //sepolia
-    final dataMap = await sendHttpReq(address: address, chainName: chainName);
-    final String balanceHex = dataMap['result']??'';
+class NftModel{
+  final String name;
+  final String description;
+  final String imageUrl;
 
-    if(balanceHex.isEmpty){
-      return 0;
-    }else{
-      return int.parse(balanceHex);
-    }
+  NftModel({required this.name, required this.description, required this.imageUrl});
 
+  factory NftModel.fromMap(Map<String, dynamic> metadata){
+    final String tokenURI = metadata['image'];
+    final String imageUrl = tokenURI.replaceFirst('ipfs://', 'https://ipfs.io/ipfs/');
+    return NftModel(name: metadata['name'], description: metadata['description'], imageUrl: imageUrl);
   }
 
-
+  @override
+  String toString() {
+    return '$name - $description - $imageUrl';
+  }
 
 }

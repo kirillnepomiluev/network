@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/wallet_provider.dart';
+import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/pages/wallet_pages/pages/wallet.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
@@ -31,10 +33,13 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
 
         Utils.unFocus();
 
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => WalletPage()),
-        );
+        context.router.pushAndPopUntil(HomeViewRoute(initIndex: 2), predicate: (route) => false);
+
+
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => const WalletPage()),
+        // );
 
       });
     }else{
@@ -49,7 +54,7 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
 
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => WalletPage()),
+        MaterialPageRoute(builder: (context) => const WalletPage()),
       );
     }
 

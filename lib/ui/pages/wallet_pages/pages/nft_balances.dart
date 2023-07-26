@@ -1,80 +1,75 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:network_app/app/core/providers/notifiers/wallet_provider.dart';
+import 'package:provider/provider.dart';
 
-class NFTListPage extends StatefulWidget {
-  final String address;
-  final String chain;
-
-  const NFTListPage({
-    Key? key,
-    required this.address,
-    required this.chain,
-  }) : super(key: key);
-
-  @override
-  _NFTListPageState createState() => _NFTListPageState();
-}
-
-class _NFTListPageState extends State<NFTListPage> {
-  List<dynamic> _nftList = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _loadNFTList();
-  }
-
-  Future<void> _loadNFTList() async {
-    final response = await http.get(
-        Uri.parse(
-            'http://192.168.100.47:5002/get_user_nfts?address=${widget.address}&chain=${widget.chain}'),
-        headers: {'Content-Type': 'application/json'});
-
-    if (response.statusCode == 200) {
-      final jsonData = jsonDecode(response.body);
-      setState(() {
-        _nftList = jsonData['result'];
-      });
-    } else {
-      throw Exception('Failed to load NFT list');
-    }
-  }
+class NftListScreen extends StatelessWidget {
+  const NftListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        for (var nft in _nftList)
-          Card(
+    final walletProvider = Provider.of<WalletProvider>(context);
+    final nftList = walletProvider.nftList;
+    return
+      ListView.builder(
+        shrinkWrap: true,
+        itemCount: nftList.length,
+        itemBuilder: (BuildContext context, int index) {
+          return
+            _NftCard(nft: nftList[index],);
+        },
+      );
+  }
+}
+
+class _NftCard extends StatelessWidget {
+  const _NftCard({Key? key, required this.nft}) : super(key: key);
+  final NftModel nft;
+
+  @override
+  Widget build(BuildContext context) {
+    final mediaWidth = MediaQuery.of(context).size.width;
+    final double size = mediaWidth*0.4;
+    return Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: Row(
+        children: [
+
+          SizedBox(
+            width: size,
+            height: size, // adjust the height as needed
+            child: nft.imageUrl.isNotEmpty
+                ? Image.network(
+              nft.imageUrl,
+              fit: BoxFit.contain,
+            )
+                : const Center(
+              child: Text('Img'),
+            ),
+          ),
+
+          const SizedBox(width: 10,),
+
+          Flexible(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${nft['name']}',
+                  nft.name,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
-                  height: 200, // adjust the height as needed
-                  child: nft['normalized_metadata']['image'] != null
-                      ? Image.network(
-                          nft['normalized_metadata']['image'],
-                          fit: BoxFit.contain,
-                        )
-                      : const Center(
-                          child: Text('Img'),
-                        ),
-                ),
+
+                const SizedBox(height: 20,),
+
                 Text(
-                  '${nft['normalized_metadata']['description']}',
+                  nft.description,
                 ),
               ],
             ),
           ),
-      ],
+        ],
+      ),
     );
   }
 }

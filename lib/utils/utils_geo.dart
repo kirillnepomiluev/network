@@ -69,8 +69,7 @@ class UtilsGeo {
     // const myLat = 53.1299150;
     // const myLong = 48.4251995; //7 после точки
 
-    // final data = await AppSupabase.client.rpc('nearby_users', params: {
-    final data = await AppSupabase.client.rpc('nearby_users_new', params: {
+    final data = await AppSupabase.client.rpc('nearby_users', params: {
       'max_distance': radius * 1000.00,
       'my_lat': myLat,
       'my_long': myLong

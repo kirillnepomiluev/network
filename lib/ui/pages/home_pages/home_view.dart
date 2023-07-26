@@ -7,6 +7,8 @@ import 'package:network_app/ui/pages/home_pages/home_messages/home_messages_view
 import 'package:network_app/ui/pages/home_pages/home_profile/home_profile_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_store/home_store_view.dart';
 import 'package:network_app/ui/pages/home_pages/home_wallet/home_wallet_view.dart';
+import 'package:network_app/ui/pages/wallet_pages/pages/wallet.dart';
+import 'package:network_app/ui/pages/wallet_pages/pages/wallet_login_page.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
 
@@ -55,7 +57,8 @@ class _HomeViewState extends State<HomeView> {
         children: [
           const HomeMeetingView(),
           HomeProfileView(isCupboardInit: widget.isCupboard),
-          const HomeWalletView(),
+          // const HomeWalletView(),
+          const WalletLoginPage(),
           const HomeStoreView(),
           const HomeMessagesView(),
         ],

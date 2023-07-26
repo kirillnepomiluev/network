@@ -60,6 +60,7 @@ class _ChooseMeetingScreenState extends State<ChooseMeetingScreen> {
         AppDropdownDynamic(
           optionsList: settingsNotifier.radiusList,
           strChoosed: settingsNotifier.radius,
+          addText: AppString.of(context).km,
           onOptionChoosed: (newValue) {
             settingsNotifier.onRadiusChoosed(context, newRadius: newValue);
           },
@@ -89,7 +90,9 @@ class AppDropdownDynamic extends StatelessWidget {
   final Function(dynamic) onOptionChoosed;
   final double? width;
   final double? height;
+  final double? radius;
   final String label;
+  final String addText;
   final Color? borderColor;
   const AppDropdownDynamic({
     Key? key,
@@ -99,7 +102,8 @@ class AppDropdownDynamic extends StatelessWidget {
     this.width,
     this.height,
     this.label = '',
-    this.borderColor,
+    this.borderColor, this.radius,
+    this.addText='',
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -125,12 +129,14 @@ class AppDropdownDynamic extends StatelessWidget {
           height: height ?? (Res.s57), //48
           padding: EdgeInsets.only(right: Res.s15),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(radius??8),
             color: Colors.white.withOpacity(0.1),
             border: Border.all(color: borderColor ?? Colors.black),
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<dynamic>(
+              borderRadius: BorderRadius.circular(radius??8),
+              // dropdownColor: Colors.black.withOpacity(0.5),
               isExpanded: true,
               value: strChoosed,
               style: const TextStyle(color: Colors.black),
@@ -139,7 +145,8 @@ class AppDropdownDynamic extends StatelessWidget {
                   return Container(
                     alignment: Alignment.center,
                     child: Text(
-                      '$item ${AppString.of(context).km}',
+                      // '$item ${AppString.of(context).km}',
+                      '$item $addText',
                       // item.toString(),
                       textAlign: TextAlign.center,
                       style: AppTextStyles.primary
@@ -153,7 +160,8 @@ class AppDropdownDynamic extends StatelessWidget {
                 return DropdownMenuItem<dynamic>(
                   value: value,
                   child: Text(
-                      '$value ${AppString.of(context).km}'
+                    // '$value ${AppString.of(context).km}'
+                      '$value $addText'
                       // value.toString()
                       , textAlign: TextAlign.center),
                 );

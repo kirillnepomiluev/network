@@ -59,13 +59,13 @@ class SendTokensPage extends StatelessWidget {
     );
   }
 
-  void sendTransaction(String receiver, EtherAmount txValue) async {
-    var apiUrl = "Your RPC Url"; // Replace with your API
+  Future<void> sendTransaction(String receiver, EtherAmount txValue) async {
+    var apiUrl = 'Your RPC Url'; // Replace with your API
     // Replace with your API
     var httpClient = http.Client();
     var ethClient = Web3Client(apiUrl, httpClient);
 
-    EthPrivateKey credentials = EthPrivateKey.fromHex('0x' + privateKey);
+    EthPrivateKey credentials = EthPrivateKey.fromHex('0x$privateKey');
 
     EtherAmount etherAmount = await ethClient.getBalance(credentials.address);
     EtherAmount gasPrice = await ethClient.getGasPrice();

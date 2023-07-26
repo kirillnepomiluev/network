@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-import 'package:network_app/constants.dart';
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:web3dart/web3dart.dart';
