@@ -1,3 +1,5 @@
+import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/models/clothe_model.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:flutter/foundation.dart';
 import 'package:bip39/bip39.dart' as bip39;
@@ -22,6 +24,7 @@ class WalletProvider extends ChangeNotifier implements WalletAddressService {
   }
 
   void getInit(){
+    nftList.clear();
     loadPrivateKey();
   }
 
@@ -29,6 +32,7 @@ class WalletProvider extends ChangeNotifier implements WalletAddressService {
   String? privateKey;
 
   Future<void> logout() async {
+    nftList.clear();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('privateKey');
     privateKey=null;
@@ -134,6 +138,28 @@ class WalletProvider extends ChangeNotifier implements WalletAddressService {
   List<NftModel> nftList = [];
 
   Future<void> getNftList() async {
+
+    print('getNftList $nftList');
+
+    final dataList = await AppSupabase.client
+        .from(AppSupabase.strClothes)
+        .select('*').limit(6);
+
+    final List<NftModel> currentList = [];
+    int i = 1;
+    for(final dataMap in dataList){
+      final clotheModel = ClotheModel.fromMap(dataMap);
+      final NftModel nftModel = NftModel(name: '${clotheModel.title} #$i', description: 'NFT Network suits', imageUrl: clotheModel.imageUrl);
+      currentList.add(nftModel);
+      i++;
+    }
+
+    nftList = currentList;
+
+    notifyListeners();
+  }
+
+  Future<void> getNftListReal() async {
     print('getNftList');
 
     const chainID = 80001;
@@ -147,12 +173,10 @@ class WalletProvider extends ChangeNotifier implements WalletAddressService {
       final NftModel nftModel = NftModel.fromMap(metadata);
       nftList.add(nftModel);
     }
-
-    print('nftList');
-    for(final nftModel in nftList){
-      print(nftModel);
-    }
-
+    // print('nftList');
+    // for(final nftModel in nftList){
+    //   print(nftModel);
+    // }
     notifyListeners();
   }
 

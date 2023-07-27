@@ -144,17 +144,13 @@ class UserModel {
     List avatarBodyCupboard = dataMap['avatar_body_cupboard'];
     final level = dataMap['clothe_level'];
 
-    print('have tokens ${dataMap['tokens']}');
-
     final rating = getRating(dataMap);
     return UserModel(
       avatarURL: dataMap['avatar_url'] ?? AppConstants.baseAvatarUrl,
       clotheUrl: dataMap['clothe_url'] ?? AppConstants.baseBodyUrl,
 
       id: dataMap['id'],
-      distMeters: dataMap['dist_meters'],
       personID: dataMap['person_id'],
-      level: level,
       // levelText: levelText,
       name: dataMap['name'],
       phone: dataMap['phone'] ?? '',
@@ -196,9 +192,12 @@ class UserModel {
       ratingStars3: dataMap[getStarsKey(3)],
       ratingStars4: dataMap[getStarsKey(4)],
       ratingStars5: dataMap[getStarsKey(5)],
+
       lat: dataMap['lat'],
       long: dataMap['long'],
       location: dataMap['location'],
+      distMeters: dataMap['dist_meters'],
+      level: level,
     );
   }
 

@@ -64,21 +64,24 @@ class UtilsGeo {
   }
 
   static Future<List> getUsersByRadius({required num radius, required double myLat, required double myLong}) async {
-    // const radius = 2.5;
-    // print('getUsersByRadius $radius');
-    // const myLat = 53.1299150;
-    // const myLong = 48.4251995; //7 после точки
+    // const myLat = 61,259107;
+    // const myLong = 73,41862925; //7 после точки
+
+    // final data = await AppSupabase.client.rpc('nearby_restaurants',params: {
+    //   'lat': 40.807313,
+    //   'long': -73.946713,
+    // });
 
     final data = await AppSupabase.client.rpc('nearby_users', params: {
       'max_distance': radius * 1000.00,
       'my_lat': myLat,
       'my_long': myLong
-    },);
+    },) ;
 
     for (final item in data) {
-     // print(item);
+     print(item);
       // print('${item['name']} ${item['location']} lat ${item['lat']} long ${item['long']} dist_meters ${item['dist_meters']}',);
-      print('${item['name']} clothe_level ${item['clothe_level']} clothe_url ${item['clothe_url']}',);
+      // print('${item['name']} clothe_level ${item['clothe_level']} clothe_url ${item['clothe_url']}',);
     }
 
     return data;

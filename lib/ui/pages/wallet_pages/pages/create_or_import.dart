@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/pages/wallet_pages/pages/generate_mnemonic_page.dart';
 import 'package:network_app/ui/pages/wallet_pages/pages/import_wallet.dart';
+import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class WalletCreateOrImportPage extends StatelessWidget {
   const WalletCreateOrImportPage({super.key});
@@ -47,33 +49,49 @@ class WalletCreateOrImportPage extends StatelessWidget {
             const SizedBox(height: 50.0),
 
             // Login button
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const GenerateMnemonicPage(),
-                  ),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    Colors.blue, // Customize button background color
-                foregroundColor: Colors.white, // Customize button text color
-                padding: const EdgeInsets.all(20.0),
-              ),
-              child: const Text(
-                'Create Wallet',
-                style: TextStyle(
-                  fontSize: 18.0,
-                ),
-              ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //         builder: (context) => const GenerateMnemonicPage(),
+            //       ),
+            //     );
+            //   },
+            //   style: ElevatedButton.styleFrom(
+            //     backgroundColor:
+            //         Colors.blue, // Customize button background color
+            //     foregroundColor: Colors.white, // Customize button text color
+            //     padding: const EdgeInsets.all(20.0),
+            //   ),
+            //   child: const Text(
+            //     'Create Wallet',
+            //     style: TextStyle(
+            //       fontSize: 18.0,
+            //     ),
+            //   ),
+            // ),
+
+            AppButton(onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const GenerateMnemonicPage(),
+                    ),
+                  );
+            }, text: 'Create Wallet',
+              // buttonColor: Colors.blue,
+              // textColor: Colors.white,
             ),
 
             const SizedBox(height: 16.0),
 
             // Register button
             AppButton(
+              // height: 32.sp,
+              buttonColor: Colors.transparent,
+              borderColor: AppColors.salad,
+              textColor: Colors.white,
               onPressed: () {
                 // Add your register logic here
                 Navigator.push(
@@ -83,7 +101,7 @@ class WalletCreateOrImportPage extends StatelessWidget {
                   ),
                 );
               },
-              text: 'Import from Seed',
+              text: 'Import with mnemonic',
 
               // style: ElevatedButton.styleFrom(
               //   backgroundColor:

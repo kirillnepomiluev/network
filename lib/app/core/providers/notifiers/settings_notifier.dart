@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/utils/utils_geo.dart';
@@ -62,13 +63,37 @@ class SettingsNotifier with ChangeNotifier {
       // const myLong = 48.4251995; //7 после точки
 
       // final usersList = await UtilsGeo.getUsersByRadius(radius: radius, myLat: myLat, myLong: myLong);
-      final usersList = [];
+      // final usersList = [];
+
+    final usersList = await AppSupabase.client
+          .from(AppSupabase.strUsers)
+          .select('*');
+
+    print('usersList $usersList');
 
       for (final item in usersList) {
-        final userModel = await UserModel.create(item);
-        if (userModel.id != id) {
-          partnersList.add(userModel);
+
+        final lat = item['lat'];
+        final long = item['long'];
+
+        if(lat!=null && long!=null){
+          final distMeters = UtilsGeo.culcDistance(lat1: myLat, long1: myLong, lat2: lat, long2: long);
+          item['dist_meters'] = distMeters;
+
+
+          final restricted = radius*1000;
+          if(distMeters<restricted){
+            final userModel = await UserModel.create(item);
+
+            print('distMeters ${userModel.distMeters} restricted $restricted');
+
+            if (userModel.id != id) {
+              partnersList.add(userModel);
+            }
+          }
+
         }
+
       }
     }
 

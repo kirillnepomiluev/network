@@ -65,9 +65,7 @@ class HomeMeetingView extends StatelessWidget {
                     physics: const BouncingScrollPhysics(),
                     controller: model.pageController,
                       onPageChanged: (int index){
-                        print('page $index');
                         settingsNotifier.setPage(index);
-                        // initialPage = index;
                       },
                     itemCount: partnersList.length,
                     itemBuilder: (context, position) {

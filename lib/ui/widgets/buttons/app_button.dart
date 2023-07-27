@@ -15,14 +15,14 @@ class AppButton extends StatelessWidget {
         required this.text,
         this.buttonColor = Colors.white,
         this.textColor = AppColors.textBlack,
-        this.borderColor = Colors.white,
+        this.borderColor,
         this.borderRadius = AppBorderRadius.r20,
         this.textStyle,
       })
       : super(key: key);
   final Color buttonColor;
   final Color textColor;
-  final Color borderColor;
+  final Color? borderColor;
   final String text;
   final double? width;
   final double? height;
@@ -41,7 +41,7 @@ class AppButton extends StatelessWidget {
           disabledBackgroundColor: Colors.grey,
             backgroundColor: buttonColor,
             shape: RoundedRectangleBorder(
-              side: BorderSide(color: borderColor),
+              side: BorderSide(color: borderColor??buttonColor),
               borderRadius: BorderRadius.circular(borderRadius),
             ),
         ),
@@ -49,7 +49,7 @@ class AppButton extends StatelessWidget {
           text,
           style:
           textStyle??
-            AppTextStyles.black18.copyWith(fontWeight: FontWeight.w500),
+            AppTextStyles.black18.copyWith(fontWeight: FontWeight.w500, color: textColor?? Colors.black),
           // AppTextStyles.primary18.copyWith(color: textColor, fontWeight: FontWeight.w500),
         ),
       ),

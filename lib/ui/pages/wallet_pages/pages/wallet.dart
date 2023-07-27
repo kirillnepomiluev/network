@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:network_app/app/core/providers/eth_utils.dart';
 import 'package:network_app/app/core/providers/notifiers/wallet_provider.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
@@ -9,6 +10,7 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:web3dart/web3dart.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class WalletPage extends StatefulWidget {
   const WalletPage({Key? key}) : super(key: key);
@@ -30,7 +32,9 @@ class _WalletPageState extends State<WalletPage> {
 
   String addresshex = '';
 
-  Future<void> updateBalance(WalletProvider walletProvider) async {
+  bool _showLoading = false;
+
+  Future<void> updataBalance(WalletProvider walletProvider) async {
     int newBalance = await WalletProvider.getBalances(
         address: addresshex,
         chainName: 'sepolia'
@@ -39,10 +43,20 @@ class _WalletPageState extends State<WalletPage> {
     print('latestBalance $latestBalance');
     String latestBalanceInEther = latestBalance.getValueInUnit(EtherUnit.ether).toString();
 
-    walletProvider.getNftList();
+    strBalance = latestBalanceInEther;
+  }
+
+  Future<void> onRefresh(WalletProvider walletProvider) async {
 
     setState(() {
-      strBalance = latestBalanceInEther;
+      _showLoading = true;
+    });
+
+    await walletProvider.getNftList();
+    await updataBalance(walletProvider);
+
+    setState(() {
+      _showLoading = false;
     });
   }
 
@@ -51,7 +65,7 @@ class _WalletPageState extends State<WalletPage> {
     String? privateKey = prefs.getString('privateKey');
     if (privateKey != null) {
       final walletProvider = Provider.of<WalletProvider>(context, listen: false);
-      walletProvider.getNftList();
+      // walletProvider.getNftList();
 
       await walletProvider.loadPrivateKey();
       EthereumAddress address = await walletProvider.getPublicKey(privateKey);
@@ -62,7 +76,7 @@ class _WalletPageState extends State<WalletPage> {
       });
       print(pvKey);
       addresshex = address.hex;
-      updateBalance(walletProvider);
+      updataBalance(walletProvider);
     }
   }
 
@@ -79,7 +93,7 @@ class _WalletPageState extends State<WalletPage> {
 
   }
 
-  static List optionsList = ['Sepolia', 'Mumbai'];
+  static List optionsList = ['Ethereum', 'Polygon'];
 
   String strChoosed = optionsList.first;
 
@@ -113,7 +127,7 @@ class _WalletPageState extends State<WalletPage> {
           child: Column(
             children: [
               // const Text('Wallet', style: AppTextStyles.primary20,),
-              // SizedBox(height: 30,),
+              SizedBox(height: 20,),
               AppDropdownDynamic(optionsList: optionsList, strChoosed: strChoosed, onOptionChoosed: onOptionChoosed, width: 200, radius: 20,),
               SizedBox(height: 30,),
 
@@ -132,12 +146,20 @@ class _WalletPageState extends State<WalletPage> {
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 16.0),
-                    Text(
-                      walletAddress,
-                      style: const TextStyle(
-                        fontSize: 20.0,
+                    InkWell(
+                      onTap: (){
+                        Clipboard.setData(ClipboardData(text: walletAddress));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Wallet address copied to clipboard')),
+                        );
+                      },
+                      child: Text(
+                        walletAddress,
+                        style: const TextStyle(
+                          fontSize: 20.0,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 32.0),
                     const Text(
@@ -161,6 +183,7 @@ class _WalletPageState extends State<WalletPage> {
               ),
               SizedBox(height: 30,),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Column(
@@ -178,10 +201,14 @@ class _WalletPageState extends State<WalletPage> {
                   ),
                   Column(
                     children: [
+                      _showLoading?Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: CircularProgressIndicator(),
+                      ):
                       FloatingActionButton(
                         heroTag: 'refreshButton', // Unique tag for send button
                         onPressed: () async {
-                          updateBalance(walletProvider);
+                          onRefresh(walletProvider);
                         },
                         child: const Icon(Icons.replay_outlined),
                       ),
@@ -205,7 +232,7 @@ class _WalletPageState extends State<WalletPage> {
                       ],
                     ),
                     SizedBox(
-                      height: 500,
+                      height: 460,
                       child: TabBarView(
                         children: [
                           Column(
@@ -217,13 +244,13 @@ class _WalletPageState extends State<WalletPage> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'Sepolia ETH',
-                                      style: AppTextStyles.primary24,
+                                      'ETH',
+                                      style: AppTextStyles.primary16,
                                     ),
                                     Flexible(
                                       child: Text(
                                         strBalance,
-                                        style: AppTextStyles.primary24,
+                                        style: AppTextStyles.primary16,
                                       ),
                                     )
                                   ],
@@ -236,18 +263,37 @@ class _WalletPageState extends State<WalletPage> {
 
                           Padding(
                             padding: const EdgeInsets.only(left: 20, top: 20),
-                            child: Column(children: [
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
 
-                              InkWell(
-                                onTap: (){
-                                  onLogoutTap(walletProvider);
-                                },
-                                child: const Row(children: [
-                                  Icon(Icons.logout, color: Colors.white,),
-                                  SizedBox(width: 10,),
-                                  Text('Change wallet')
-                                ],),
-                              )
+                                InkWell(
+                                  onTap: (){
+                                    launchUrl(Uri.parse(
+                                        'https://etherscan.io/address/$walletAddress'
+                                        // 'https://etherscan.io/address/0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17'
+                                    ));
+                                  },
+                                  child: const Row(children: [
+                                    Icon(Icons.web_outlined, color: Colors.white,),
+                                    SizedBox(width: 10,),
+                                    Text('Etherscan')
+                                  ],),
+                                ),
+
+                              SizedBox(height: 20,),
+
+                                InkWell(
+                                  onTap: (){
+                                    onLogoutTap(walletProvider);
+
+                                  },
+                                  child: const Row(children: [
+                                    Icon(Icons.logout, color: Colors.white,),
+                                    SizedBox(width: 10,),
+                                    Text('Change wallet')
+                                  ],),
+                                ),
 
                             ],),
                           ),
