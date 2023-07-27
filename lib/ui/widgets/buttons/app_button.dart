@@ -14,14 +14,14 @@ class AppButton extends StatelessWidget {
         this.height,
         required this.text,
         this.buttonColor = Colors.white,
-        this.textColor = AppColors.textBlack,
+        this.textColor,
         this.borderColor,
         this.borderRadius = AppBorderRadius.r20,
         this.textStyle,
       })
       : super(key: key);
   final Color buttonColor;
-  final Color textColor;
+  final Color? textColor;
   final Color? borderColor;
   final String text;
   final double? width;
