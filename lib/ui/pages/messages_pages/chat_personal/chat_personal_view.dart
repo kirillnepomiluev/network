@@ -164,7 +164,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
         // return false;
       },
       child: Scaffold(
-        extendBody: true,
+        // extendBody: true,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           toolbarHeight: 70,
@@ -486,36 +486,39 @@ class _BottomBar extends StatelessWidget {
               )),
 
           if(emojiShowing)
-            EmojiPicker(
-              textEditingController: textController,
-              config: Config(
-                columns: numEmojiColumns,
-                emojiSizeMax: emojiSize,
-                verticalSpacing: 0,
-                horizontalSpacing: 0,
-                gridPadding: EdgeInsets.zero,
-                initCategory: Category.RECENT,
-                bgColor: const Color(0xFFF2F2F2),
-                indicatorColor: Colors.blue,
-                iconColor: Colors.grey,
-                iconColorSelected: Colors.blue,
-                backspaceColor: Colors.blue,
-                skinToneDialogBgColor: Colors.white,
-                skinToneIndicatorColor: Colors.grey,
-                enableSkinTones: true,
-                recentTabBehavior: RecentTabBehavior.RECENT,
-                recentsLimit: 28,
-                replaceEmojiOnLimitExceed: false,
-                noRecents: const Text(
-                  'No Recents',
-                  style: TextStyle(fontSize: 20, color: Colors.black26),
-                  textAlign: TextAlign.center,
+            SizedBox(
+              height: 250,
+              child: EmojiPicker(
+                textEditingController: textController,
+                config: Config(
+                  columns: numEmojiColumns,
+                  emojiSizeMax: emojiSize,
+                  verticalSpacing: 0,
+                  horizontalSpacing: 0,
+                  gridPadding: EdgeInsets.zero,
+                  initCategory: Category.RECENT,
+                  bgColor: const Color(0xFFF2F2F2),
+                  indicatorColor: Colors.blue,
+                  iconColor: Colors.grey,
+                  iconColorSelected: Colors.blue,
+                  backspaceColor: Colors.blue,
+                  skinToneDialogBgColor: Colors.white,
+                  skinToneIndicatorColor: Colors.grey,
+                  enableSkinTones: true,
+                  recentTabBehavior: RecentTabBehavior.RECENT,
+                  recentsLimit: 28,
+                  replaceEmojiOnLimitExceed: false,
+                  noRecents: const Text(
+                    'No Recents',
+                    style: TextStyle(fontSize: 20, color: Colors.black26),
+                    textAlign: TextAlign.center,
+                  ),
+                  loadingIndicator: const SizedBox.shrink(),
+                  tabIndicatorAnimDuration: kTabScrollDuration,
+                  categoryIcons: const CategoryIcons(),
+                  buttonMode: ButtonMode.MATERIAL,
+                  checkPlatformCompatibility: true,
                 ),
-                loadingIndicator: const SizedBox.shrink(),
-                tabIndicatorAnimDuration: kTabScrollDuration,
-                categoryIcons: const CategoryIcons(),
-                buttonMode: ButtonMode.MATERIAL,
-                checkPlatformCompatibility: true,
               ),
             )
 
