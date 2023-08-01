@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/wallet_provider.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/assets.gen.dart';
-import 'package:network_app/ui/pages/wallet_pages/pages/wallet.dart';
-import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/fields/app_text_field.dart';
 import 'package:network_app/utils/utils.dart';
 import 'package:provider/provider.dart';
-import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 class VerifyMnemonicPage extends StatefulWidget {
   final String mnemonic;
@@ -32,11 +29,11 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
   Future<void> verifyMnemonic(WalletProvider walletProvider) async {
 
    Utils.unFocus();
-    await Future.delayed(Duration(milliseconds: 100));
+    await Future.delayed(const Duration(milliseconds: 100));
     setState(() {
       isLoading = true;
     });
-    await Future.delayed(Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 500));
 
     if (verificationText.trim() == widget.mnemonic.trim()) {
 
@@ -75,7 +72,7 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
                 height: 200
               ),
 
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
 
               Text('Preparing your wallet...', style: AppTextStyles.primary20,),
             ],
@@ -93,8 +90,8 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
 
               Column(
                 children: [
-                  AppBarRow(),
-                  SizedBox(height: 20,),
+                  const AppBarRow(),
+                  const SizedBox(height: 20,),
                   Text(
                     'Please verify your mnemonic phrase. Before continuing, make sure you have saved the phrase.',
                     style: AppTextStyles.primary18,

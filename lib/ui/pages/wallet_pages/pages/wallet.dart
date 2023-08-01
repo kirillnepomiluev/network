@@ -97,9 +97,9 @@ class _WalletPageState extends State<WalletPage> {
 
   String strChoosed = optionsList.first;
 
-  void onOptionChoosed(value){
+  void onOptionChoosed(dynamic value){
     setState(() {
-      strChoosed = value!;
+      strChoosed = value;
     });
   }
 
@@ -127,9 +127,9 @@ class _WalletPageState extends State<WalletPage> {
           child: Column(
             children: [
               // const Text('Wallet', style: AppTextStyles.primary20,),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               AppDropdownDynamic(optionsList: optionsList, strChoosed: strChoosed, onOptionChoosed: onOptionChoosed, width: 200, radius: 20,),
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
 
               Container(
                 // height: MediaQuery.of(context).size.height * 0.4,
@@ -181,7 +181,7 @@ class _WalletPageState extends State<WalletPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -201,11 +201,10 @@ class _WalletPageState extends State<WalletPage> {
                   ),
                   Column(
                     children: [
-                      _showLoading?Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
+                      if (_showLoading) const Padding(
+                        padding: EdgeInsets.only(bottom: 8),
                         child: CircularProgressIndicator(),
-                      ):
-                      FloatingActionButton(
+                      ) else FloatingActionButton(
                         heroTag: 'refreshButton', // Unique tag for send button
                         onPressed: () async {
                           onRefresh(walletProvider);
@@ -281,7 +280,7 @@ class _WalletPageState extends State<WalletPage> {
                                   ],),
                                 ),
 
-                              SizedBox(height: 20,),
+                              const SizedBox(height: 20,),
 
                                 InkWell(
                                   onTap: (){

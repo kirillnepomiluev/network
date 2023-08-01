@@ -16,6 +16,7 @@ class HomeMessagesView extends StatelessWidget {
         createModelDataEx: () => HomeMessagesViewModel(context),
         builder: (context, model) {
           final mediaTop = MediaQuery.of(context).viewPadding.top;
+
           return Scaffold(
             body: Padding(
               padding: EdgeInsets.only(

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/wallet_provider.dart';
 import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/generated/assets.gen.dart';
-import 'package:network_app/ui/pages/wallet_pages/pages/wallet.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
@@ -42,11 +41,11 @@ class _ImportWalletState extends State<ImportWallet> {
   Future<void> verifyMnemonic(WalletProvider walletProvider) async {
 
     Utils.unFocus();
-    await Future.delayed(Duration(milliseconds: 100));
+    await Future.delayed(const Duration(milliseconds: 100));
     setState(() {
       isLoading = true;
     });
-    await Future.delayed(Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 500));
 
     await walletProvider.getPrivateKey(mnemonic);
 
@@ -74,7 +73,7 @@ class _ImportWalletState extends State<ImportWallet> {
                   height: 200
               ),
 
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
 
               Text('Preparing your wallet...', style: AppTextStyles.primary20,),
             ],
@@ -91,10 +90,10 @@ class _ImportWalletState extends State<ImportWallet> {
             children: [
               Column(
                 children: [
-                  AppBarRow(),
-                  SizedBox(height: 20,),
+                  const AppBarRow(),
+                  const SizedBox(height: 20,),
                   Text(
-                    'Input a mnemonic phrase to access an existing wallet. If you don\'t have a wallet yet, you can create one on the previous page',
+                    "Input a mnemonic phrase to access an existing wallet. If you don't have a wallet yet, you can create one on the previous page",
                     style: AppTextStyles.primary18,
                   ),
                 ],

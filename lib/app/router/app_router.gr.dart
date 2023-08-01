@@ -574,9 +574,14 @@ class AppRouter extends _i59.RootStackRouter {
       );
     },
     ChatPersonalViewRoute.name: (routeData) {
+      final args = routeData.argsAs<ChatPersonalViewRouteArgs>();
       return _i59.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i56.ChatPersonalView(),
+        child: _i56.ChatPersonalView(
+          key: args.key,
+          chatID: args.chatID,
+          partnerModel: args.partnerModel,
+        ),
       );
     },
     SettingsMainViewRoute.name: (routeData) {
@@ -2049,14 +2054,42 @@ class StoreProductViewRouteArgs {
 
 /// generated route for
 /// [_i56.ChatPersonalView]
-class ChatPersonalViewRoute extends _i59.PageRouteInfo<void> {
-  const ChatPersonalViewRoute()
-      : super(
+class ChatPersonalViewRoute
+    extends _i59.PageRouteInfo<ChatPersonalViewRouteArgs> {
+  ChatPersonalViewRoute({
+    _i60.Key? key,
+    required int chatID,
+    required _i62.UserModel partnerModel,
+  }) : super(
           ChatPersonalViewRoute.name,
           path: '/chat-personal-view',
+          args: ChatPersonalViewRouteArgs(
+            key: key,
+            chatID: chatID,
+            partnerModel: partnerModel,
+          ),
         );
 
   static const String name = 'ChatPersonalViewRoute';
+}
+
+class ChatPersonalViewRouteArgs {
+  const ChatPersonalViewRouteArgs({
+    this.key,
+    required this.chatID,
+    required this.partnerModel,
+  });
+
+  final _i60.Key? key;
+
+  final int chatID;
+
+  final _i62.UserModel partnerModel;
+
+  @override
+  String toString() {
+    return 'ChatPersonalViewRouteArgs{key: $key, chatID: $chatID, partnerModel: $partnerModel}';
+  }
 }
 
 /// generated route for

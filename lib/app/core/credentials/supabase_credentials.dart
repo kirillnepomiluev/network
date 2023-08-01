@@ -20,6 +20,8 @@ class AppSupabase{
   static const String strMeetings = 'meetings';
   static const String strOrders = 'orders';
   static const String strNotifications = 'notifications';
+  static const String strMessages = 'chats_messages';
+  static const String strChats = 'chats';
 
 
   static Future<void> updateData({required Map<String, dynamic> newData, required String collRef, required int id}) async {

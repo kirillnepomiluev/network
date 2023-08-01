@@ -70,6 +70,11 @@ dependencies:
   ed25519_hd_key: ^2.2.0
   hex: ^0.2.0
   shared_preferences: ^2.1.1
+  timeago:
+  image_picker:
+  fluttertoast:
+  emoji_picker_flutter:
+  flutter_keyboard_visibility:
 
 dev_dependencies:
   flutter_test:

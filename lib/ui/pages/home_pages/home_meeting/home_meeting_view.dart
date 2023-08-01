@@ -64,9 +64,7 @@ class HomeMeetingView extends StatelessWidget {
                     scrollDirection: Axis.vertical,
                     physics: const BouncingScrollPhysics(),
                     controller: model.pageController,
-                      onPageChanged: (int index){
-                        settingsNotifier.setPage(index);
-                      },
+                      onPageChanged: settingsNotifier.setPage,
                     itemCount: partnersList.length,
                     itemBuilder: (context, position) {
                       final userModel = partnersList[position];

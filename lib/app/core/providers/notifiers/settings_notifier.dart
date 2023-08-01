@@ -20,7 +20,7 @@ class SettingsNotifier with ChangeNotifier {
     initialPage = index;
   }
 
-  int _radius = 2;
+  int _radius = 5;
   int get radius => _radius;
 
   final List<int> _radiusList = [1, 2, 3, 4, 5];

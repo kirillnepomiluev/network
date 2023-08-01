@@ -4,7 +4,6 @@ import 'package:network_app/ui/pages/wallet_pages/pages/generate_mnemonic_page.d
 import 'package:network_app/ui/pages/wallet_pages/pages/import_wallet.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/widgets/buttons/app_button.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class WalletCreateOrImportPage extends StatelessWidget {
   const WalletCreateOrImportPage({super.key});

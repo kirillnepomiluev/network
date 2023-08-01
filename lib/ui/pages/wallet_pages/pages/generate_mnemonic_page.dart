@@ -47,8 +47,8 @@ class GenerateMnemonicPage extends StatelessWidget {
 
               Column(
                 children: [
-                  AppBarRow(),
-                  SizedBox(height: 20,),
+                  const AppBarRow(),
+                  const SizedBox(height: 20,),
                   Text(
                     'Please store this mnemonic phrase safely. You will not be able to restore access to the wallet without it. We do not store this data.',
                     style: AppTextStyles.primary18,
