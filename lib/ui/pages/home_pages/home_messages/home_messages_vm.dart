@@ -1,54 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
+import 'package:provider/provider.dart';
 
 class HomeMessagesViewModel extends ViewModel {
-  HomeMessagesViewModel(this.context);
+  HomeMessagesViewModel(this.context){
+    loadChats();
+  }
   final BuildContext context;
 
-
-  List<Map<String, dynamic>> photoList = [
-    <String, dynamic>{
-      'name' :   'Джоли',
-      'status' :   'Запланирована встреча',
-      'url' :   'assets/images/avatars/avatar_0.png',
-      'online' : false,
-    },
-
-    <String, dynamic>{
-      'name' : 'Станислав',
-      'status' : 'Встреча проведена',
-      'url' :  'assets/images/avatars/avatar_2.png',
-      'online' : true,
-    },
-
-    <String, dynamic>{
-      'name' : 'Меган',
-      'status' : 'Приглашение на встречу',
-      'url' :  'assets/images/avatars/avatar_1.png',
-      'online' : false,
-    },
-
-    <String, dynamic>{
-      'name' : 'Игорь',
-      'status' :  'Запланирована встреча',
-      'url' :  'assets/images/avatars/avatar_2.png',
-      'online' : true,
-    },
-
-    <String, dynamic>{
-      'name' :   'Джоли',
-      'status' :   'Запланирована встреча',
-      'url' :   'assets/images/avatars/avatar_0.png',
-      'online' : false,
-    },
-
-    <String, dynamic>{
-      'name' :   'Джоли',
-      'status' :   'Запланирована встреча',
-      'url' :   'assets/images/avatars/avatar_1.png',
-      'online' : false,
-    },
-
-  ];
+  List chatsList = [];
+  Future<void> loadChats() async {
+    // print('loadChats');
+    final userData = Provider.of<UserNotifier>(context, listen: false).userData;
+    chatsList = await AppSupabase.client.from(AppSupabase.strChats).select().contains('users', [userData.id]).order('update_date')
+        // .eq('started', true)
+    ;
+    // print('chatsList $chatsList');
+    notifyListeners();
+  }
 
 }

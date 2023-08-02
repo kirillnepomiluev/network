@@ -28,8 +28,8 @@ class HomeMessagesView extends StatelessWidget {
                 child: Column(
                   children: [
                     const MessagesBarRow(),
-                    MessagesInvitationsRow(photoList: model.photoList),
-                    MessagesWrap(photoList: model.photoList),
+                    const MessagesInvitationsRow(),
+                    MessagesWrap(chatsList: model.chatsList),
                   ],
                 ),
               ),

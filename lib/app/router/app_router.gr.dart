@@ -581,6 +581,7 @@ class AppRouter extends _i59.RootStackRouter {
           key: args.key,
           chatID: args.chatID,
           partnerModel: args.partnerModel,
+          messagesList: args.messagesList,
         ),
       );
     },
@@ -2060,6 +2061,7 @@ class ChatPersonalViewRoute
     _i60.Key? key,
     required int chatID,
     required _i62.UserModel partnerModel,
+    required List<dynamic> messagesList,
   }) : super(
           ChatPersonalViewRoute.name,
           path: '/chat-personal-view',
@@ -2067,6 +2069,7 @@ class ChatPersonalViewRoute
             key: key,
             chatID: chatID,
             partnerModel: partnerModel,
+            messagesList: messagesList,
           ),
         );
 
@@ -2078,6 +2081,7 @@ class ChatPersonalViewRouteArgs {
     this.key,
     required this.chatID,
     required this.partnerModel,
+    required this.messagesList,
   });
 
   final _i60.Key? key;
@@ -2086,9 +2090,11 @@ class ChatPersonalViewRouteArgs {
 
   final _i62.UserModel partnerModel;
 
+  final List<dynamic> messagesList;
+
   @override
   String toString() {
-    return 'ChatPersonalViewRouteArgs{key: $key, chatID: $chatID, partnerModel: $partnerModel}';
+    return 'ChatPersonalViewRouteArgs{key: $key, chatID: $chatID, partnerModel: $partnerModel, messagesList: $messagesList}';
   }
 }
 
