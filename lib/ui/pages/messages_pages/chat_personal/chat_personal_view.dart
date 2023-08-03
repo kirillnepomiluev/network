@@ -50,15 +50,14 @@ class MessageModel {
         timeText: timeText);
   }
 
-
   factory MessageModel.fromMap(Map<String, dynamic> dataMap) {
     DateTime createdDate = Utils.getDate(dataMap['created_date'])!;
     final timeText = timeago.format(createdDate, locale: 'en');
 
     return MessageModel(
-        text: dataMap['text']??'',
-        id: dataMap['id']??0,
-        chatID: dataMap['chat_id']??0,
+        text: dataMap['text'] ?? '',
+        id: dataMap['id'] ?? 0,
+        chatID: dataMap['chat_id'] ?? 0,
         createDate: createdDate,
         userID: dataMap['user_id'],
         imageUrl: dataMap['image_url'],
@@ -68,7 +67,10 @@ class MessageModel {
 
 class ChatPersonalView extends StatefulWidget {
   const ChatPersonalView(
-      {Key? key, required this.chatID, required this.partnerModel, required this.messagesList})
+      {Key? key,
+      required this.chatID,
+      required this.partnerModel,
+      required this.messagesList})
       : super(key: key);
   final int chatID;
   final UserModel partnerModel;
@@ -88,20 +90,23 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
     print(
         'sendFunction chatID ${widget.chatID} - userData ${userData.id} - text ${textController.text}');
 
-    final messageMap = await AppSupabase.client.from(AppSupabase.strMessages).insert({
-      'user_id': userData.id,
-      'text': textController.text,
-      'chat_id': widget.chatID
-    }).select('id').single();
+    final messageMap = await AppSupabase.client
+        .from(AppSupabase.strMessages)
+        .insert({
+          'user_id': userData.id,
+          'text': textController.text,
+          'chat_id': widget.chatID
+        })
+        .select('id')
+        .single();
 
     final messageID = messageMap['id'];
     // print('messageID $messageID- type ${messageID.runtimeType}');
 
     await AppSupabase.client.from(AppSupabase.strChats).update({
       'update_date': DateTime.now().toIso8601String(),
-      'last_message_id': messageID
+      // 'last_message_id': messageID
     }).eq('id', widget.chatID);
-
 
     textController.clear();
     setState(() {});
@@ -124,15 +129,26 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
   FocusNode focusNode = FocusNode();
 
   Future<void> onEmojiTap() async {
+
     if (emojiShowing) {
+      print('Показаны эмодзи');
       setState(() {
         emojiShowing = !emojiShowing;
       });
-      Future.delayed(const Duration(milliseconds: 100));
+      await Future.delayed(const Duration(milliseconds: 200));
 
-      focusNode.requestFocus();
+      setState(() {
+        focusNode.requestFocus();
+      });
+
     } else {
-      focusNode.unfocus();
+      print('Скрыты эмодзи');
+      if (focusNode.hasFocus){
+        setState(() {
+          focusNode.unfocus();
+        });
+        await Future.delayed(const Duration(milliseconds: 200));
+      }
 
       setState(() {
         emojiShowing = !emojiShowing;
@@ -140,24 +156,51 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
 
       // SystemChannels.textInput.invokeMethod('TextInput.hide');
     }
+
   }
 
   //////////////////////////////
 
   bool emojiShowing = false;
 
+
+  Future<void> onKeybordShow() async {
+    print('onKeybordShow');
+    setState(() {
+      emojiShowing = false;
+    });
+    await Future.delayed(const Duration(milliseconds: 100));
+    // focusNode.requestFocus();
+
+    // focusNode.addListener(() async {
+    //
+    //   if(focusNode.hasFocus){
+    //     print("HAS FOCUS");
+    //
+    //     setState(() {
+    //       emojiShowing = false;
+    //     });
+    //     await Future.delayed(const Duration(milliseconds: 100));
+    //     focusNode.requestFocus();
+    //
+    //     // setState(() {
+    //     //   focusNode.unfocus();
+    //     // });
+    //     // setState(() {
+    //     //   emojiShowing = false;
+    //     // });
+    //   }else{
+    //     print("UN FOCUS");
+    //   }
+    //
+    //   },
+    // );
+  }
+
   @override
   void initState() {
     super.initState();
-    focusNode.addListener(
-      () {
-        if (focusNode.hasFocus) {
-          setState(() {
-            emojiShowing = false;
-          });
-        }
-      },
-    );
+    // listener();
   }
 
   @override
@@ -166,7 +209,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
     super.dispose();
   }
 
-  void onBackPress(){
+  void onBackPress() {
     if (focusNode.hasFocus || emojiShowing) {
       setState(() {
         emojiShowing = false;
@@ -191,7 +234,8 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
           automaticallyImplyLeading: false,
           toolbarHeight: 70,
           elevation: 0,
-          title: _AppBarTitle(partnerModel: widget.partnerModel, onBackPress: onBackPress),
+          title: _AppBarTitle(
+              partnerModel: widget.partnerModel, onBackPress: onBackPress),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -199,131 +243,12 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
             // _AppBarTitle(),
             Expanded(
                 child: GestureDetector(
-                  onTap: Utils.unFocus,
-                  child:
-
-                  StreamBuilder(
-                    stream: AppSupabase.client
-                        .from(AppSupabase.strMessages)
-                        .stream(primaryKey: ['id'])
-                        .eq('chat_id', widget.chatID),
-                        // .order('created_date'),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        // final list = snapshot.data! as List<Map<String, dynamic>>;
-                        final list = snapshot.data! as List;
-                        return ListView.builder(
-                          reverse: true,
-                          controller: scrollController,
-                          padding: const EdgeInsets.only(top: 20, bottom: 10),
-                          shrinkWrap: true,
-                          itemCount: list.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return MessageCont(
-                                partnerModel: widget.partnerModel, dataMap: list[index]);
-
-                            // Column(
-                            //   children: [
-                            //     if (index == 0)
-                            //       Padding(
-                            //         padding: const EdgeInsets.only(bottom: 20),
-                            //         child: Column(
-                            //           children: [
-                            //             Padding(
-                            //               padding: const EdgeInsets.only(bottom: 25),
-                            //               child: Text(
-                            //                 'Сегодня, 12:01',
-                            //                 style: TextStyle(
-                            //                   fontSize: 15.5.sp, //12
-                            //                   color: AppColors.textGray,
-                            //                   fontWeight: FontWeight.w400,),
-                            //               ),
-                            //             ),
-                            //             Container(
-                            //               padding: const EdgeInsets.all(15),
-                            //               width: MediaQuery.of(context).size.width * 0.9,
-                            //               decoration: BoxDecoration(
-                            //                 color: AppColors.white10,
-                            //                 // color: Colors.grey.shade300,
-                            //                 borderRadius: BorderRadius.circular(15),),
-                            //               child: Row(
-                            //                 children: [
-                            //                   Padding(
-                            //                     padding: const EdgeInsets.only(right: 20),
-                            //                     child: SizedBox(
-                            //                       height: 45,
-                            //                       width: 48,
-                            //                       child: Stack(
-                            //                         alignment: Alignment.topCenter,
-                            //                         children: [
-                            //                           Positioned(
-                            //                             top: 0,
-                            //                             child: AppCircleAvatar(
-                            //                               avatarUrl: partnerModel.avatarURL,
-                            //                               // avatarUrl: 'assets/images/avatars/avatar_0.png',
-                            //                               isAssetImage: false,
-                            //                               contSize: 45,),),
-                            //                           Positioned(
-                            //                             right: 0,
-                            //                             bottom: 0,
-                            //                             child: Container(
-                            //                               decoration:
-                            //                               const BoxDecoration(
-                            //                                 color:
-                            //                                 AppColors.salad,
-                            //                                 shape:
-                            //                                 BoxShape.circle,),
-                            //                               width: 17,
-                            //                               height: 17,
-                            //                               child: const Icon(
-                            //                                 NetworkIcons.electric,
-                            //                                 size: 7,
-                            //                                 color: Colors.black,
-                            //                               ),),)
-                            //                         ],
-                            //                       ),
-                            //                     ),
-                            //                   ),
-                            //                   Flexible(
-                            //                     child: Column(
-                            //                       crossAxisAlignment:
-                            //                       CrossAxisAlignment.start,
-                            //                       children: [
-                            //                         Text(
-                            //                           'У вас запланирована встреча с Джоли',
-                            //                           style: TextStyle(
-                            //                             color: AppColors.salad,
-                            //                             fontSize: 15.5.sp, //12
-                            //                             fontWeight: FontWeight.w600,),
-                            //                         ),
-                            //                         Padding(
-                            //                           padding: const EdgeInsets.only(top: 5),
-                            //                           child: Text(
-                            //                             'Пообщайтесь и обговорите важные моменты.',
-                            //                             style: TextStyle(
-                            //                               fontSize: 15.5.sp, //12
-                            //                               fontWeight: FontWeight.w400,),
-                            //                           ),
-                            //                         ),
-                            //                       ],
-                            //                     ),),
-                            //                 ],
-                            //               ),
-                            //             )
-                            //           ],
-                            //         ),
-                            //
-                            //       ),
-                            //     MessageCont(partnerModel: partnerModel, dataMap: list[index]),
-                            //   ],
-                            // );
-                          },
-                        );
-                      }
-                      return const Center(child: CircularProgressIndicator());
-                    },
-                  ),
-                )),
+              onTap: Utils.unFocus,
+              child: _Body(
+                  scrollController: scrollController,
+                  partnerModel: widget.partnerModel,
+                  chatID: widget.chatID),
+            )),
             _BottomBar(
               focusNode: focusNode,
               onChanged: onChanged,
@@ -332,6 +257,7 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
               sendFunction: sendFunction,
               emojiShowing: emojiShowing,
               onEmojiTap: onEmojiTap,
+              onKeybordShow: onKeybordShow,
             )
           ],
         ),
@@ -365,9 +291,7 @@ class _Body extends StatelessWidget {
             .order('created_date'),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            // final list = snapshot.data! as List<Map<String, dynamic>>;
             final list = snapshot.data! as List;
-            print('list $list');
             return ListView.builder(
               reverse: true,
               controller: scrollController,
@@ -375,104 +299,7 @@ class _Body extends StatelessWidget {
               shrinkWrap: true,
               itemCount: list.length,
               itemBuilder: (BuildContext context, int index) {
-                return MessageCont(
-                    partnerModel: partnerModel, dataMap: list[index]);
-
-                // Column(
-                //   children: [
-                //     if (index == 0)
-                //       Padding(
-                //         padding: const EdgeInsets.only(bottom: 20),
-                //         child: Column(
-                //           children: [
-                //             Padding(
-                //               padding: const EdgeInsets.only(bottom: 25),
-                //               child: Text(
-                //                 'Сегодня, 12:01',
-                //                 style: TextStyle(
-                //                   fontSize: 15.5.sp, //12
-                //                   color: AppColors.textGray,
-                //                   fontWeight: FontWeight.w400,),
-                //               ),
-                //             ),
-                //             Container(
-                //               padding: const EdgeInsets.all(15),
-                //               width: MediaQuery.of(context).size.width * 0.9,
-                //               decoration: BoxDecoration(
-                //                 color: AppColors.white10,
-                //                 // color: Colors.grey.shade300,
-                //                 borderRadius: BorderRadius.circular(15),),
-                //               child: Row(
-                //                 children: [
-                //                   Padding(
-                //                     padding: const EdgeInsets.only(right: 20),
-                //                     child: SizedBox(
-                //                       height: 45,
-                //                       width: 48,
-                //                       child: Stack(
-                //                         alignment: Alignment.topCenter,
-                //                         children: [
-                //                           Positioned(
-                //                             top: 0,
-                //                             child: AppCircleAvatar(
-                //                               avatarUrl: partnerModel.avatarURL,
-                //                               // avatarUrl: 'assets/images/avatars/avatar_0.png',
-                //                               isAssetImage: false,
-                //                               contSize: 45,),),
-                //                           Positioned(
-                //                             right: 0,
-                //                             bottom: 0,
-                //                             child: Container(
-                //                               decoration:
-                //                               const BoxDecoration(
-                //                                 color:
-                //                                 AppColors.salad,
-                //                                 shape:
-                //                                 BoxShape.circle,),
-                //                               width: 17,
-                //                               height: 17,
-                //                               child: const Icon(
-                //                                 NetworkIcons.electric,
-                //                                 size: 7,
-                //                                 color: Colors.black,
-                //                               ),),)
-                //                         ],
-                //                       ),
-                //                     ),
-                //                   ),
-                //                   Flexible(
-                //                     child: Column(
-                //                       crossAxisAlignment:
-                //                       CrossAxisAlignment.start,
-                //                       children: [
-                //                         Text(
-                //                           'У вас запланирована встреча с Джоли',
-                //                           style: TextStyle(
-                //                             color: AppColors.salad,
-                //                             fontSize: 15.5.sp, //12
-                //                             fontWeight: FontWeight.w600,),
-                //                         ),
-                //                         Padding(
-                //                           padding: const EdgeInsets.only(top: 5),
-                //                           child: Text(
-                //                             'Пообщайтесь и обговорите важные моменты.',
-                //                             style: TextStyle(
-                //                               fontSize: 15.5.sp, //12
-                //                               fontWeight: FontWeight.w400,),
-                //                           ),
-                //                         ),
-                //                       ],
-                //                     ),),
-                //                 ],
-                //               ),
-                //             )
-                //           ],
-                //         ),
-                //
-                //       ),
-                //     MessageCont(partnerModel: partnerModel, dataMap: list[index]),
-                //   ],
-                // );
+                return MessageCont(partnerModel: partnerModel, dataMap: list[index]);
               },
             );
           }
@@ -493,10 +320,7 @@ class MessageCont extends StatelessWidget {
   final Map<String, dynamic> dataMap;
   @override
   Widget build(BuildContext context) {
-    final userData = Provider.of<UserNotifier>(
-      context,
-    ).userData;
-
+    final userData = Provider.of<UserNotifier>(context).userData;
     final messageModel = MessageModel.fromMap(dataMap);
 
     bool isYou = messageModel.userID == userData.id;
@@ -504,6 +328,9 @@ class MessageCont extends StatelessWidget {
     String timeText = messageModel.timeText;
 
     final mediaWidth = MediaQuery.of(context).size.width;
+
+    // print('MessageCont - $strText');
+
     return Padding(
       padding: const EdgeInsets.only(
         left: 10, right: 10, top: 10,
@@ -524,7 +351,7 @@ class MessageCont extends StatelessWidget {
               color: AppColors.white10,
             ),
             padding: const EdgeInsets.all(15),
-            child: Text(
+            child: SelectableText(
               strText,
               style: TextStyle(
                 // color: isYou ? AppColors.textBlack : AppColors.textWhite,
@@ -534,9 +361,7 @@ class MessageCont extends StatelessWidget {
               ),
             ),
           ),
-          // if (intMin < 2)
-          //   Container()
-          // else
+
           Padding(
             padding: const EdgeInsets.only(
               top: 5,
@@ -545,25 +370,21 @@ class MessageCont extends StatelessWidget {
               mainAxisAlignment:
                   isYou ? MainAxisAlignment.end : MainAxisAlignment.start,
               children: [
-                if (isYou == false)
-                  Container()
-                else
-                  Icon(
-                    NetworkIcons.check_double,
-                    color: AppColors.salad,
-                    size: Res.s10, //12
+                Text(
+                  timeText,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.grey.shade600,
+                    fontWeight: FontWeight.w400,
                   ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 6.5),
-                  child: Text(
-                    // '$intMin мин',
-                    timeText,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey.shade600,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
+                ),
+                const SizedBox(
+                  width: 6,
+                ),
+                Icon(
+                  NetworkIcons.check_double,
+                  color: AppColors.salad,
+                  size: Res.s10, //12
                 ),
               ],
             ),
@@ -583,13 +404,14 @@ class _BottomBar extends StatelessWidget {
     required this.sendFunction,
     required this.onEmojiTap,
     required this.emojiShowing,
-    required this.focusNode,
+    required this.focusNode, required this.onKeybordShow,
   }) : super(key: key);
   final Function(String) onChanged;
   final TextEditingController textController;
   final bool showSendButton;
   final VoidCallback sendFunction;
   final VoidCallback onEmojiTap;
+  final VoidCallback onKeybordShow;
   final bool emojiShowing;
   final FocusNode focusNode;
 
@@ -635,6 +457,7 @@ class _BottomBar extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: _TextEditor(
+                        onKeybordShow: onKeybordShow,
                           onChanged: onChanged,
                           controller: textController,
                           focusNode: focusNode),
@@ -728,21 +551,28 @@ class _AppBarTitle extends StatelessWidget {
           //   ],
           // ),
           Expanded(
-            child: Row(children: [
-              SizedBox(width: 30,),
-
-              AppCircleAvatar(contSize: Res.s35, isAssetImage: false, avatarUrl: partnerModel.avatarURL,),
-              SizedBox(width: 30,),
-
-              Text(
-                partnerModel.name,
-                style: TextStyle(
-                  fontSize: 20.sp, //20
-                  fontWeight: FontWeight.w600,
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 30,
                 ),
-              ),
-
-            ],),
+                AppCircleAvatar(
+                  contSize: Res.s35,
+                  isAssetImage: false,
+                  avatarUrl: partnerModel.avatarURL,
+                ),
+                const SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  partnerModel.name,
+                  style: TextStyle(
+                    fontSize: 20.sp, //20
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
           ),
           // Text(
           //   partnerModel.name,
@@ -763,11 +593,12 @@ class _TextEditor extends StatelessWidget {
       {Key? key,
       required this.onChanged,
       required this.controller,
-      required this.focusNode})
+      required this.focusNode, required this.onKeybordShow})
       : super(key: key);
   final Function(String) onChanged;
   final TextEditingController controller;
   final FocusNode focusNode;
+  final VoidCallback onKeybordShow;
 
   @override
   Widget build(BuildContext context) {
@@ -777,6 +608,7 @@ class _TextEditor extends StatelessWidget {
         ),
         // height: 75,
         child: TextField(
+          onTap: onKeybordShow,
             focusNode: focusNode,
             maxLines: null,
             controller: controller,
