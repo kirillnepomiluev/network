@@ -101,12 +101,12 @@ class _ChatPersonalViewState extends State<ChatPersonalView> {
         .single();
 
     final messageID = messageMap['id'];
-    // print('messageID $messageID- type ${messageID.runtimeType}');
+    print('messageID $messageID');
 
-    await AppSupabase.client.from(AppSupabase.strChats).update({
-      'update_date': DateTime.now().toIso8601String(),
-      // 'last_message_id': messageID
-    }).eq('id', widget.chatID);
+    // await AppSupabase.client.from(AppSupabase.strChats).update({
+    //   'update_date': DateTime.now().toIso8601String(),
+    //   // 'last_message_id': messageID
+    // }).eq('id', widget.chatID);
 
     textController.clear();
     setState(() {});

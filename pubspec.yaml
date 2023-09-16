@@ -75,6 +75,8 @@ dependencies:
   fluttertoast:
   emoji_picker_flutter:
   flutter_keyboard_visibility:
+  cached_network_image:
+  cache_manager:
 
 dev_dependencies:
   flutter_test:

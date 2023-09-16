@@ -259,7 +259,7 @@ class _MessageContainerState extends State<MessageContainer> {
                       context.router.push(ChatPersonalViewRoute(
                         chatID: id,
                         partnerModel: partnerModel,
-                        messagesList: []
+                        messagesList: const []
                       ));
 
                       // Navigator.push(

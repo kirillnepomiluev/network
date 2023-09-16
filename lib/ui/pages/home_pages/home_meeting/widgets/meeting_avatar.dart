@@ -1,13 +1,17 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/ui/pages/home_pages/home_meeting/widgets/meeting_online_container.dart';
+import 'package:network_app/ui/widgets/cards/app_cached_image.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
+import 'package:network_app/utils/utils.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingAvatar extends StatelessWidget {
   const MeetingAvatar({
     Key? key,
-    required this.onPartnerTap, required this.partnerModel,
+    required this.onPartnerTap,
+    required this.partnerModel,
   }) : super(key: key);
   final VoidCallback onPartnerTap;
   final UserModel partnerModel;
@@ -23,12 +27,10 @@ class MeetingAvatar extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           children: [
             Positioned(
-              child:
-              Image.network(partnerModel.clotheUrl,
-                    height: 110.sp,
-                  fit: BoxFit.cover
-              )
-            ),
+                child: AppCachedImage(
+              url: partnerModel.clotheUrl,
+              height: 110.sp,
+            )),
             Positioned(
               top: 10,
               left: 15,
@@ -37,17 +39,13 @@ class MeetingAvatar extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      stops: const [
-                    0.3,
-                    1
-                  ],
-                      colors: [
-                    Colors.transparent,
-                    Colors.black.withOpacity(0.88)
-                  ],),),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: const [0.3, 1],
+                  colors: [Colors.transparent, Colors.black.withOpacity(0.88)],
+                ),
+              ),
             )
           ],
         ),

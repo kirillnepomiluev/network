@@ -8,6 +8,24 @@ import 'package:network_app/utils/main_pages/main_enums.dart';
 import 'package:network_info_plus/network_info_plus.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+
+
+class AppCacheManager {
+  static const key = 'general';
+  static CacheManager instance = CacheManager(
+    Config(
+      key,
+      stalePeriod: const Duration(days: 7),  //автоматически удалит неиспользуемый кэш через это время
+      // maxNrOfCacheObjects: 20,
+      // repo: JsonCacheInfoRepository(databaseName: key),
+      // fileSystem: IOFileSystem(key),
+      // fileService: HttpFileService(),
+    ),
+  );
+}
+
+
 
 class Utils {
 
@@ -18,6 +36,7 @@ class Utils {
 
   static void unFocus() {
     FocusManager.instance.primaryFocus?.unfocus();
+    // SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
   }
 
   static DateTime? getDate(String strDate){

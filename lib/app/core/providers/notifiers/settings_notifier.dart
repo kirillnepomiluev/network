@@ -1,14 +1,28 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
+import 'package:network_app/utils/utils.dart';
 import 'package:network_app/utils/utils_geo.dart';
 import 'package:provider/provider.dart';
 
+
+
+
 //Для управления данными настроек
 class SettingsNotifier with ChangeNotifier {
+
+  Future cacheImageNew(String urlImage, BuildContext context) {
+    return precacheImage(
+      CachedNetworkImageProvider(urlImage, cacheManager: AppCacheManager.instance),
+      context);
+  }
+
   Future<void> setSettings(BuildContext context) async {
-    onRadiusChoosed(context);
+
+    // onRadiusChoosed(context);
+    WidgetsBinding.instance.addPostFrameCallback((_) => onRadiusChoosed(context));
     // _radius = _radiusList[1];
     // loadPartners(context, radius: _radius);
   }
@@ -62,39 +76,57 @@ class SettingsNotifier with ChangeNotifier {
       // const myLat = 53.1299150;
       // const myLong = 48.4251995; //7 после точки
 
-      // final usersList = await UtilsGeo.getUsersByRadius(radius: radius, myLat: myLat, myLong: myLong);
+      final usersList = await UtilsGeo.getUsersByRadius(radius: radius, myLat: myLat, myLong: myLong);
       // final usersList = [];
 
-    final usersList = await AppSupabase.client
-          .from(AppSupabase.strUsers)
-          .select('*');
+    // final usersList = await AppSupabase.client
+    //       .from(AppSupabase.strUsers)
+    //       .select('*');
+    //
+    // print('usersList $usersList');
+    //
+    for (final item in usersList) {
 
-    print('usersList $usersList');
+      final userModel = await UserModel.create(item);
 
-      for (final item in usersList) {
+      // if(userModel.avatarURL.isNotEmpty){
+      //   precacheImage(
+      //       NetworkImage(userModel.avatarURL),
+      //       context);
+      // }
 
-        final lat = item['lat'];
-        final long = item['long'];
+      if(userModel.avatarURL.isNotEmpty){
+        cacheImageNew(userModel.avatarURL, context);
+      }
+      if(userModel.clotheUrl.isNotEmpty){
+        cacheImageNew(userModel.clotheUrl, context);
+      }
 
-        if(lat!=null && long!=null){
-          final distMeters = UtilsGeo.culcDistance(lat1: myLat, long1: myLong, lat2: lat, long2: long);
-          item['dist_meters'] = distMeters;
+      partnersList.add(userModel);
 
+        // final lat = item['lat'];
+        // final long = item['long'];
 
-          final restricted = radius*1000;
-          if(distMeters<restricted){
-            final userModel = await UserModel.create(item);
-
-            print('distMeters ${userModel.distMeters} restricted $restricted');
-
-            if (userModel.id != id) {
-              partnersList.add(userModel);
-            }
-          }
-
-        }
+        // if(lat!=null && long!=null){
+        //   final distMeters = UtilsGeo.culcDistance(lat1: myLat, long1: myLong, lat2: lat, long2: long);
+        //   item['dist_meters'] = distMeters;
+        //
+        //
+        //   final restricted = radius*1000;
+        //   if(distMeters<restricted){
+        //     final userModel = await UserModel.create(item);
+        //
+        //     print('distMeters ${userModel.distMeters} restricted $restricted');
+        //
+        //     if (userModel.id != id) {
+        //       partnersList.add(userModel);
+        //     }
+        //   }
+        // }
 
       }
+
+
     }
 
     showPartnersLoading = false;

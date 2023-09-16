@@ -78,11 +78,12 @@ class UtilsGeo {
       'my_long': myLong
     },) ;
 
-    for (final item in data) {
-     print(item);
-      // print('${item['name']} ${item['location']} lat ${item['lat']} long ${item['long']} dist_meters ${item['dist_meters']}',);
-      // print('${item['name']} clothe_level ${item['clothe_level']} clothe_url ${item['clothe_url']}',);
-    }
+    // print('data $data');
+    // for (final item in data) {
+    //  print(item);
+    //   // print('${item['name']} ${item['location']} lat ${item['lat']} long ${item['long']} dist_meters ${item['dist_meters']}',);
+    //   // print('${item['name']} clothe_level ${item['clothe_level']} clothe_url ${item['clothe_url']}',);
+    // }
 
     return data;
   }
@@ -221,17 +222,17 @@ class UtilsGeo {
 
   // static Future<void> openMap() async {
   //   // _openMap(lat, long);
-  //   ////////////////////////
+  //   //////////////////////
   //
-  //   // final availableMaps = await MapLauncher.installedMaps;
-  //   // print(
-  //   //     availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
-  //   //
-  //   // await availableMaps.first.showMarker(
-  //   //   coords: Coords(lat, long),
-  //   //   title: 'Ваше местоположение',
-  //   // );
-  //   ///////////////////////
+  //   final availableMaps = await MapLauncher.installedMaps;
+  //   print(
+  //       availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
+  //
+  //   await availableMaps.first.showMarker(
+  //     coords: Coords(lat, long),
+  //     title: 'Ваше местоположение',
+  //   );
+  //   /////////////////////
   // }
 
 }

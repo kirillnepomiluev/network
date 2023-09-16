@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/constants.dart';
+import 'package:network_app/utils/utils.dart';
 
 class AppCircleAvatar extends StatelessWidget {
   const AppCircleAvatar(
@@ -13,7 +15,12 @@ class AppCircleAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     // final url = imageUrl.isEmpty? Assets.images.avatars.avatar0.keyName : imageUrl;
     final url = avatarUrl.isEmpty? AppConstants.baseAvatarUrl : avatarUrl;
-    return Container(
+    return
+      // CircleAvatar(
+      //   backgroundImage:  CachedNetworkImageProvider(url),
+      //   radius: 20,
+      // );
+      Container(
       decoration: BoxDecoration(
         color: Colors.white,
         shape: BoxShape.circle,
@@ -26,7 +33,8 @@ class AppCircleAvatar extends StatelessWidget {
         )
         :
         DecorationImage(
-          image: NetworkImage(url),
+          image: CachedNetworkImageProvider(url, cacheManager: AppCacheManager.instance),
+          // image: NetworkImage(url),
           fit: BoxFit.cover,
           // alignment: Alignment.bottomCenter
         ),

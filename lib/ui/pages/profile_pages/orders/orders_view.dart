@@ -126,6 +126,7 @@ class _OrdersViewState extends State<OrdersView> {
                     },
                   ),
                 )
+
                 // StreamBuilder(
                 //   stream: AppSupabase.client
                 //       .from(AppSupabase.strOrders)
