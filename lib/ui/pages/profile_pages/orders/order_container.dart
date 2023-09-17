@@ -7,7 +7,6 @@ import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/utils/res.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 // ignore: must_be_immutable
 class OrderContainer extends StatefulWidget {
@@ -23,53 +22,60 @@ class OrderContainer extends StatefulWidget {
 
 class _OrderContainerState extends State<OrderContainer> {
 
-  OrderModel orderModel = OrderModel.emptyModel();
+  OrderModel orderModelInit = OrderModel.emptyModel();
   bool showLoading = true;
 
-  Future<void> checkTransaction(OrderModel orderModel) async {
-      // final orderModel = OrderModel.fromMap(widget.dataMap);
-      final userNotifier = Provider.of<UserNotifier>(context, listen: false);
-      final userData = userNotifier.userData;
-
-      bool created = orderModel.status=='created';
-      if(created){
-        final clotheModel = orderModel.clotheModel;
-        print('checkTransaction of ${orderModel.id} - ${clotheModel.title} - userID ${userNotifier.userData.id}');
-        final hash = orderModel.hash;
-        // final clotheID = orderModel.clotheID;
-        final success = await EthereumUtils().getReciept(hash);
-        if (success != null) {
-          final clotheID = clotheModel.id;
-          final newList = userData.avatarBodyCupboard;
-          if (newList.contains(clotheID) == false) {
-            newList.add(clotheID);
-            final Map<String, dynamic> newData = {
-              'avatar_body_cupboard': newList,
-            };
-            if(userData.level<clotheModel.level){
-                newData.addAll({
-                  'avatar_body_id': clotheModel.id,
-                  // 'level' : clotheModel.level
-                });
-              }
-
-            await userNotifier.updateData(newData: newData);
-          }
-          await AppSupabase.client.from(AppSupabase.strOrders).update({
-            'status': 'done', //done, failed
-            'success': success,
-          }).eq('id', orderModel.id);
-        }
-      }
-  }
+  // Future<void> checkTransaction(OrderModel orderModel) async {
+  //     // final orderModel = OrderModel.fromMap(widget.dataMap);
+  //     final userNotifier = Provider.of<UserNotifier>(context, listen: false);
+  //     final userData = userNotifier.userData;
+  //
+  //     bool created = orderModel.status=='created';
+  //     if(created){
+  //       final clotheModel = orderModel.clotheModel;
+  //       print('checkTransaction of ${orderModel.id} - ${clotheModel.title} - userID ${userNotifier.userData.id}');
+  //       final hash = orderModel.hash;
+  //       // final clotheID = orderModel.clotheID;
+  //       final success = await EthereumUtils().getReciept(hash);
+  //       if (success != null) {
+  //         final clotheID = clotheModel.id;
+  //         final newList = userData.avatarBodyCupboard;
+  //         if (newList.contains(clotheID) == false) {
+  //           newList.add(clotheID);
+  //           final Map<String, dynamic> newData = {
+  //             'avatar_body_cupboard': newList,
+  //           };
+  //
+  //           // Это временно убрал, но понадобится в будущем
+  //           // if(userData.level<clotheModel.level){
+  //               newData.addAll({
+  //                 'avatar_body_id': clotheModel.id,
+  //                 // 'level' : clotheModel.level
+  //               });
+  //             // }
+  //
+  //           await userNotifier.updateData(newData: newData);
+  //         }
+  //         await AppSupabase.client.from(AppSupabase.strOrders).update({
+  //           'status': 'done', //done, failed
+  //           'success': success,
+  //         }).eq('id', orderModel.id);
+  //       }
+  //     }
+  // }
 
   Future<void> getInit() async {
     // print('getInit - ${widget.dataMap}');
-    orderModel = await OrderModel.create(widget.dataMap);
-    checkTransaction(orderModel);
+    orderModelInit = await OrderModel.create(widget.dataMap);
+
+    // checkTransaction(orderModel);
     setState(() {
       showLoading = false;
     });
+  }
+
+  void onViewTransaction(){
+    EthereumUtils.viewTransaction(orderModelInit.hash);
   }
 
   @override
@@ -80,9 +86,12 @@ class _OrderContainerState extends State<OrderContainer> {
 
   @override
   Widget build(BuildContext context) {
+
+    final orderModel = OrderModel.fromMap(widget.dataMap);
+
     // print('order ${orderModel.id} - ${orderModel.clotheModel.title} - ${widget.dataMap}');
     return
-      orderModel.id==null? Container():
+      orderModelInit.id==null? Container():
       Padding(
       padding: EdgeInsets.only(bottom: Res.s20),
       child:
@@ -102,7 +111,7 @@ class _OrderContainerState extends State<OrderContainer> {
                       '# ${orderModel.id} ',
                     ),
                     Text(
-                      orderModel.clotheModel.title, style: AppTextStyles.salad,
+                      orderModelInit.clotheModel.title, style: AppTextStyles.salad, maxLines: 1,
                     ),
                   ],
                 ),
@@ -130,12 +139,7 @@ class _OrderContainerState extends State<OrderContainer> {
               height: 10,
             ),
             InkWell(
-              onTap: () {
-                launchUrl(Uri.parse(
-                    // 'https://goerli.etherscan.io/tx/${orderModel.hash}'
-                    'https://mumbai.polygonscan.com/tx/${orderModel.hash}'
-                ));
-              },
+              onTap: onViewTransaction,
               child: Text(
                 'View the transaction',
                 style: AppTextStyles.primary.copyWith(color: Colors.blue),

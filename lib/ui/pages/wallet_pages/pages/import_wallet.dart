@@ -48,6 +48,7 @@ class _ImportWalletState extends State<ImportWallet> {
     await Future.delayed(const Duration(milliseconds: 500));
 
     await walletProvider.getPrivateKey(mnemonic);
+    await walletProvider.getInit();
 
     context.router.pushAndPopUntil(HomeViewRoute(initIndex: 2), predicate: (route) => false);
   }

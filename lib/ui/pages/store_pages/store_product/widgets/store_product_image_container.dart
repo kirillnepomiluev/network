@@ -3,6 +3,7 @@ import 'package:network_app/app/core/models/clothe_model.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:network_app/ui/widgets/buttons/app_back_button.dart';
+import 'package:network_app/ui/widgets/cards/app_cached_image.dart';
 import 'package:network_app/utils/res.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -31,7 +32,8 @@ class StoreProductImageContainer extends StatelessWidget {
             child:
             clotheModel.imageUrl.isEmpty
             ? Container()
-            : Image.network(
+            :
+            AppCachedImage(
               clotheModel.imageUrl,
               fit: BoxFit.contain,
             ),

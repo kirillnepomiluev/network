@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:network_app/app/core/models/clothe_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/core/providers/eth_utils.dart';
+import 'package:network_app/app/core/providers/notifiers/wallet_provider.dart';
 import 'package:network_app/ui/pages/store_pages/store_product/store_product_vm.dart';
 import 'package:network_app/ui/pages/store_pages/store_product/widgets/store_product_bottom.dart';
 import 'package:network_app/ui/pages/store_pages/store_product/widgets/store_product_image_container.dart';
@@ -27,6 +28,7 @@ class StoreProductView extends StatelessWidget {
         final mediaTop = MediaQuery.of(context).viewPadding.top;
         final userData = Provider.of<UserNotifier>(context).userData;
         final erc721Provider = Provider.of<ERC721ContractNotifier>(context);
+        final walletProvider = Provider.of<WalletProvider>(context);
 
         bool haveThisClothe = userData.avatarBodyCupboard.contains(clotheModel.id);
 
@@ -68,7 +70,7 @@ class StoreProductView extends StatelessWidget {
             cost: clotheModel.price,
             showButtonLoading: model.showButtonLoading,
             onBuyClothe: (){
-              model.onBuyClothe(erc721Provider);
+              model.onBuyClothe(erc721Provider, walletProvider);
             },
           ),
         );

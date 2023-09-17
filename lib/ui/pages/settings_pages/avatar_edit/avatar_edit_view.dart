@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/generated/l10n.dart';
@@ -8,6 +9,7 @@ import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/app_bar_row.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_builder.dart';
 import 'package:network_app/utils/res.dart';
+import 'package:network_app/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 
@@ -54,7 +56,7 @@ class AvatarEditView extends StatelessWidget {
                         )
                             :
                         DecorationImage(
-                          image: NetworkImage(userData.avatarURL),
+                          image: CachedNetworkImageProvider(userData.avatarURL, cacheManager: AppCacheManager.instance),
                           fit: BoxFit.cover,
                           // alignment: Alignment.bottomCenter
                         ),

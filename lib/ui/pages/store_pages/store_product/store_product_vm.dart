@@ -1,12 +1,18 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
 import 'package:network_app/app/core/models/clothe_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/app/core/providers/eth_utils.dart';
+import 'package:network_app/app/core/providers/notifiers/wallet_provider.dart';
+import 'package:network_app/app/router/app_router.gr.dart';
 import 'package:network_app/ui/pages/blockchain/contract_test_view.dart';
+import 'package:network_app/ui/widgets/dialogs/dialog_with_button.dart';
 import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:network_app/ui/widgets/view_model/view_model_data.dart';
 import 'package:provider/provider.dart';
+
+
 
 
 class StoreProductViewModel extends ViewModel {
@@ -16,16 +22,35 @@ class StoreProductViewModel extends ViewModel {
 
   bool showButtonLoading = false;
 
-  Future<void> onBuyClothe(ERC721ContractNotifier erc721Provider) async {
+  Future<void> onBuyClothe(ERC721ContractNotifier erc721Provider, WalletProvider walletProvider) async {
+
+    final privateKey = walletProvider.privateKey;
+    if(privateKey.isEmpty){
+      return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) => AppDialogWithButton(title: 'You need to create a wallet', subTitle: "It's simple", buttonText: 'Go to wallet', buttonFunc: (){
+          context.router.pop();
+          context.router.push(HomeViewRoute(initIndex: 2));
+        })
+
+          );
+    }
 
     showButtonLoading = true;
     notifyListeners();
 
-    print('onBuyClothe');
-
     // final erc721Provider = Provider.of<ERC721ContractNotifier>(context, listen: false);
     final userData = Provider.of<UserNotifier>(context, listen: false).userData;
-    final hash = await erc721Provider.safeMint();
+    // final walletProvider = Provider.of<WalletProvider>(context, listen: false);
+
+    final hash = await erc721Provider.safeMint(walletProvider.walletAddress, walletProvider.privateKey);
+    if(hash.isEmpty){
+      showSimpleDialog(title: 'Error', text: 'Something went wrong', context: context);
+      showButtonLoading = false;
+      notifyListeners();
+      return;
+    }
+
 
     final newData = {
       'user_id' : userData.id,
@@ -51,7 +76,7 @@ class StoreProductViewModel extends ViewModel {
     showButtonLoading = false;
     notifyListeners();
 
-    showReceipt(context, hash);
+    showReceiptDialog(context, hash);
   }
 
 

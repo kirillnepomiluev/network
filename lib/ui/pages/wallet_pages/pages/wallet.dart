@@ -8,9 +8,7 @@ import 'package:network_app/ui/pages/home_pages/home_meeting/widgets/choose_meet
 import 'package:network_app/ui/pages/wallet_pages/pages/nft_balances.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:web3dart/web3dart.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 
 class WalletPage extends StatefulWidget {
   const WalletPage({Key? key}) : super(key: key);
@@ -20,65 +18,71 @@ class WalletPage extends StatefulWidget {
 }
 
 class _WalletPageState extends State<WalletPage> {
-  String walletAddress = '';
-  String strBalance = '';
-  String pvKey = '';
+  // String walletAddress = '';
+  // String strBalance = '';
+  // String pvKey = '';
 
   @override
   void initState() {
     super.initState();
-    getInit();
+    // getInit();
   }
 
-  String addresshex = '';
+  // String addresshex = '';
+  // bool showLoading = false;
 
-  bool _showLoading = false;
+  // Future<void> updataBalance(WalletProvider walletProvider) async {
+  //   int newBalance = await WalletProvider.getBalances(
+  //       address: addresshex,
+  //       chainName: 'sepolia'
+  //   );
+  //   EtherAmount latestBalance = EtherAmount.fromInt(EtherUnit.wei, newBalance);
+  //   print('latestBalance $latestBalance');
+  //   String latestBalanceInEther = latestBalance.getValueInUnit(EtherUnit.ether).toString();
+  //
+  //   strBalance = latestBalanceInEther;
+  //
+  //   setState(() {
+  //   });
+  //
+  // }
 
-  Future<void> updataBalance(WalletProvider walletProvider) async {
-    int newBalance = await WalletProvider.getBalances(
-        address: addresshex,
-        chainName: 'sepolia'
-    );
-    EtherAmount latestBalance = EtherAmount.fromInt(EtherUnit.wei, newBalance);
-    print('latestBalance $latestBalance');
-    String latestBalanceInEther = latestBalance.getValueInUnit(EtherUnit.ether).toString();
+  // Future<void> onRefresh(WalletProvider walletProvider) async {
+  //
+  //   setState(() {
+  //     showLoading = true;
+  //   });
+  //
+  //   await walletProvider.getNftList();
+  //   await updataBalance(walletProvider);
+  //
+  //   setState(() {
+  //     showLoading = false;
+  //   });
+  // }
 
-    strBalance = latestBalanceInEther;
-  }
-
-  Future<void> onRefresh(WalletProvider walletProvider) async {
-
-    setState(() {
-      _showLoading = true;
-    });
-
-    await walletProvider.getNftList();
-    await updataBalance(walletProvider);
-
-    setState(() {
-      _showLoading = false;
-    });
-  }
-
-  Future<void> getInit() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? privateKey = prefs.getString('privateKey');
-    if (privateKey != null) {
-      final walletProvider = Provider.of<WalletProvider>(context, listen: false);
-      // walletProvider.getNftList();
-
-      await walletProvider.loadPrivateKey();
-      EthereumAddress address = await walletProvider.getPublicKey(privateKey);
-      print(address.hex);
-      setState(() {
-        walletAddress = address.hex;
-        pvKey = privateKey;
-      });
-      print(pvKey);
-      addresshex = address.hex;
-      updataBalance(walletProvider);
-    }
-  }
+  // Future<void> getInit() async {
+  //
+  //   print('========= getInit');
+  //
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   String? privateKey = prefs.getString('privateKey');
+  //   if (privateKey != null) {
+  //     final walletProvider = Provider.of<WalletProvider>(context, listen: false);
+  //     // walletProvider.getNftList();
+  //
+  //     await walletProvider.loadPrivateKey();
+  //     EthereumAddress address = await walletProvider.getPublicKey(privateKey);
+  //     print(address.hex);
+  //     setState(() {
+  //       walletAddress = address.hex;
+  //       pvKey = privateKey;
+  //     });
+  //     print(pvKey);
+  //     addresshex = address.hex;
+  //     updataBalance(walletProvider);
+  //   }
+  // }
 
   Future<void> onSendTap(ERC721ContractNotifier erc721Provider, WalletProvider walletProvider) async {
 
@@ -148,13 +152,13 @@ class _WalletPageState extends State<WalletPage> {
                     const SizedBox(height: 16.0),
                     InkWell(
                       onTap: (){
-                        Clipboard.setData(ClipboardData(text: walletAddress));
+                        Clipboard.setData(ClipboardData(text: walletProvider.walletAddress));
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Wallet address copied to clipboard')),
                         );
                       },
                       child: Text(
-                        walletAddress,
+                        walletProvider.walletAddress,
                         style: const TextStyle(
                           fontSize: 20.0,
                         ),
@@ -172,7 +176,7 @@ class _WalletPageState extends State<WalletPage> {
                     ),
                     const SizedBox(height: 16.0),
                     Text(
-                      strBalance,
+                      walletProvider.strBalance,
                       style: const TextStyle(
                         fontSize: 20.0,
                       ),
@@ -201,14 +205,12 @@ class _WalletPageState extends State<WalletPage> {
                   ),
                   Column(
                     children: [
-                      if (_showLoading) const Padding(
+                      if (walletProvider.showLoading) const Padding(
                         padding: EdgeInsets.only(bottom: 8),
                         child: CircularProgressIndicator(),
                       ) else FloatingActionButton(
                         heroTag: 'refreshButton', // Unique tag for send button
-                        onPressed: () async {
-                          onRefresh(walletProvider);
-                        },
+                        onPressed: walletProvider.onRefresh,
                         child: const Icon(Icons.replay_outlined),
                       ),
                       const SizedBox(height: 8.0),
@@ -248,7 +250,7 @@ class _WalletPageState extends State<WalletPage> {
                                     ),
                                     Flexible(
                                       child: Text(
-                                        strBalance,
+                                        walletProvider.strBalance,
                                         style: AppTextStyles.primary16,
                                       ),
                                     )
@@ -267,12 +269,7 @@ class _WalletPageState extends State<WalletPage> {
                               children: [
 
                                 InkWell(
-                                  onTap: (){
-                                    launchUrl(Uri.parse(
-                                        'https://etherscan.io/address/$walletAddress'
-                                        // 'https://etherscan.io/address/0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17'
-                                    ));
-                                  },
+                                  onTap: walletProvider.onEtherscanTap,
                                   child: const Row(children: [
                                     Icon(Icons.web_outlined, color: Colors.white,),
                                     SizedBox(width: 10,),

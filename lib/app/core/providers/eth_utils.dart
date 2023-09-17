@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:network_app/generated/assets.gen.dart';
 import 'package:network_app/ui/widgets/dialogs/simple_dialog.dart';
 import 'package:web3dart/web3dart.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContractModel {
   final String contractName;
@@ -23,10 +24,8 @@ class ContractModel {
     required String abiPath,
     required String contractAddressKey,
   }) async {
-
     // final String envContractAddress = Utils.getEnv(contractAddressKey);
     final envContractAddress = contractAddressKey;
-
 
     final contract = await getDeployedContract(
         contractName: contractName,
@@ -49,6 +48,12 @@ class ContractModel {
         EthereumAddress.fromHex(envContractAddress));
     return contract;
   }
+
+  @override
+  String toString() {
+    return 'contractModel $contractName $envContractAddress';
+  }
+
 }
 
 // class EthereumUtils {
@@ -323,15 +328,15 @@ class ContractModel {
 
 
 class _WebData{
-  final String chainType;
   final String chainName;
+  final String chainTitle;
   final int chainID;
   final String infuraApiKey;
   final String infura;
   final String ownerAddress;
   final String erc721address;  //НАДО БУДЕТ ПОМЕНЯТЬ НА contractAddressKey
 
-  _WebData({required this.chainType, required this.chainID, required this.chainName, required this.infuraApiKey, required this.infura, required this.erc721address, required this.ownerAddress});
+  _WebData({required this.chainName, required this.chainID, required this.chainTitle, required this.infuraApiKey, required this.infura, required this.erc721address, required this.ownerAddress});
 
   static const ethInfuraKey = 'e90250eb60d64824abaeaf3750178842';
   static const polygonInfuraKey = 'f8bf00d32b6448a3818f59c6f16e7f86';
@@ -364,13 +369,13 @@ class _WebData{
 
     int chainID = 0;
     String infuraApiKey = '';
-    String webType = '';
+    String chainName = '';
     String erc721address = '';
     String ownerAddress = '';
 
 
     if(webName=='sepolia'){
-      webType = webName;
+      chainName = webName;
       chainID = 11155111;
       infuraApiKey = ethInfuraKey;
       erc721address = '0x9ebF2d973000780b403522259b09dad9E3B59256';
@@ -379,36 +384,55 @@ class _WebData{
       // ownerAddress = '0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17';
     }
     else if(webName=='mumbai'){
-      webType = 'polygon-mumbai';
+      chainName = 'polygon-mumbai';
       chainID = 80001;
       infuraApiKey = polygonInfuraKey;
       erc721address = '0xe2D074BE971c9290b5BbaB059F9c510B0C76936d';
       ownerAddress = '0xDbfEEa0fc1F1F2f43F7DbaD7827Cccad8C47c337';
     }
     else if(webName=='polygon'){
-      webType = 'polygon-mainnet';
+      chainName = 'polygon-mainnet';
       chainID = 137;
       infuraApiKey = polygonInfuraKey;
       erc721address = '';
       ownerAddress = '';
     }
 
-    String infura = 'https://$webType.infura.io/v3/$infuraApiKey';
+    String infura = 'https://$chainName.infura.io/v3/$infuraApiKey';
 
 
-    String chainName = getNetworkName(chainID);
+    String chainTitle = getNetworkName(chainID);
 
-    return _WebData(chainType: webType, chainID: chainID, chainName: chainName, infuraApiKey: infuraApiKey, infura: infura, erc721address: erc721address, ownerAddress: ownerAddress);
+    return _WebData(chainName: chainName, chainID: chainID, chainTitle: chainTitle, infuraApiKey: infuraApiKey, infura: infura, erc721address: erc721address, ownerAddress: ownerAddress);
   }
 
 }
 
 class EthereumUtils {
+
+  static void viewInEtherScan(String address){
+    launchUrl(Uri.parse(
+        'https://${EthereumUtils.webData.chainName}.etherscan.io/address/$address'
+      // 'https://etherscan.io/address/0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17'
+    ));
+  }
+
+  static void viewTransaction(String hash){
+
+    print('chainName ${EthereumUtils.webData.chainName}');
+
+    launchUrl(Uri.parse(
+      'https://sepolia.etherscan.io/tx/$hash'
+      //   'https://mumbai.polygonscan.com/tx/${orderModel.hash}'
+    ));
+  }
+
   static final webData = _WebData.choose('sepolia');
 
   // static const ownerAddress = '0x04Ee5860e4fce5560865197BCfb83b9192ce4dbD'; //0x04Ee5860e4fce5560865197BCfb83b9192ce4dbD
   // static const myAddress = '0x09Be6d3Ff5a2A110e21117e1FF69D55E61cB5b17';
-  static const myAddress = '0xc14dafbc12e001a4109c2fd313a24b985863070b';
+  // static const myAddress = '0xc14dafbc12e001a4109c2fd313a24b985863070b';
+
   static const envMetamaskPrivateKey = '524b442f7c94da5cb89808d697a3079000298021626122584a14ebbb8e170b90';
 
 
@@ -418,7 +442,7 @@ class EthereumUtils {
   // static final infura = "https://$web.infura.io/v3/$envInfuraApiKey";
 
 
-  static final EthPrivateKey credential = EthPrivateKey.fromHex(envMetamaskPrivateKey);
+  // static final EthPrivateKey credential = EthPrivateKey.fromHex(envMetamaskPrivateKey);
 
 
   static final http.Client httpClient = http.Client();
@@ -449,6 +473,7 @@ class EthereumUtils {
         required List<dynamic> args,
         required DeployedContract contract,
         double ethValue = 0.0,
+        required String walletPrivateKey,
         String strSender = ''}) async {
     try {
       EthereumAddress? sender =
@@ -463,12 +488,13 @@ class EthereumUtils {
 
       final ethFunction = contract.function(functionName);
 
-      final EthPrivateKey moralistCredential = EthPrivateKey.fromHex('1e13471ec6d7430dd605acbbb2a2539ba14cb7c3358b3d55d6ecef173fcf908c');
+      // final EthPrivateKey ethPrivateKey = EthPrivateKey.fromHex('1e13471ec6d7430dd605acbbb2a2539ba14cb7c3358b3d55d6ecef173fcf908c');
+      final EthPrivateKey ethPrivateKey = EthPrivateKey.fromHex(walletPrivateKey);
 
 
       final result = await ethClient.sendTransaction(
         // credential,
-        moralistCredential,
+        ethPrivateKey,
         Transaction.callContract(
           value: value,
           from: sender,
@@ -488,8 +514,18 @@ class EthereumUtils {
   }
 
   Future<bool?> getReciept(String hash) async {
-    final reciept = await ethClient.getTransactionReceipt(hash);
-    final status = reciept!.status;
+
+    if(hash.isEmpty){
+      return null;
+    }
+
+    final receipt = await ethClient.getTransactionReceipt(hash);
+
+    if(receipt==null){
+      return null;
+    }
+
+    final status = receipt.status;
     return status;
   }
 
@@ -638,34 +674,20 @@ class ERC721ContractNotifier with ChangeNotifier {
     }
   }
 
-  Future<String> safeMint() async {
-    print('safeMint');
-    // if(AppConstants.isTest){
-    //   // const hash = '0x6f3b2736dd6249e50dd6e89f460c7d01cd24b42c9007f50332ba66a8890dc039'; //Goerli
-    //   const hash = '0xd06ff88ceaa657ae5412aad3b6ea7e589086ebb35eb4ff553e7b7e8c3c981d64'; //Mumbai
-    //   return hash;
-    // }
-
-    // final transferEvent = contractModel.contract.event('Transfer');
-    // final filter = FilterOptions.events(contract: contractModel.contract, event: transferEvent);
-    // // final events = EthereumUtils().ethClient.events(filter);
-    //
-    // // final logs = await EthereumUtils().ethClient.getTransactionReceipt('0x2ea799f13789b6f00b31d4b25ad63b4aedf2492d8669e9889bd9dcfb95b2bce9');
-    // // final logs = await EthereumUtils().ethClient.events(filter).forEach((element) {print(element.address.toString());});
-    // final logs = await EthereumUtils().ethClient.events(FilterOptions()).length;
-    // print('logs $logs');
-
-    //uint256 private _tokenPrice = 10000000000000000; //0.01 ETH
+  Future<String> safeMint(String walletAddress, String walletPrivateKey) async {
+    print('ERC721 safeMint - walletAddress $walletAddress privateKy $walletPrivateKey - contractModel $contractModel');
 
     final currentFunction = strSafeMint;
 
     final response = await EthereumUtils().write(
       contract: contractModel.contract,
       functionName: currentFunction,
-      strSender: EthereumUtils.myAddress,
-      // ethValue: 0.01,
+      // strSender: EthereumUtils.myAddress,
+      strSender: walletAddress,
+      walletPrivateKey: walletPrivateKey,
       ethValue: 0.05,
-      args: [EthereumAddress.fromHex(EthereumUtils.myAddress)],
+      // args: [EthereumAddress.fromHex(EthereumUtils.myAddress)],
+      args: [EthereumAddress.fromHex(walletAddress)],
     );
 
     print('response $response');
@@ -673,7 +695,7 @@ class ERC721ContractNotifier with ChangeNotifier {
     return response;
   }
 
-  Future<String> addLevelAndRewardForMeet() async {
+  Future<String> addLevelAndRewardForMeet(String walletAddress, String walletPrivateKey) async {
     print('addLevelAndRewardForMeet');
 
     final currentFunction = strAddLevelAndRewardForMeet;
@@ -681,9 +703,13 @@ class ERC721ContractNotifier with ChangeNotifier {
     final response = await EthereumUtils().write(
       contract: contractModel.contract,
       functionName: currentFunction,
-      strSender: EthereumUtils.myAddress,
+      // strSender: EthereumUtils.myAddress,
+      strSender: walletAddress,
+      walletPrivateKey: walletPrivateKey,
       // ethValue: 0.01,
-      args: [EthereumAddress.fromHex(EthereumUtils.myAddress), BigInt.from(2), EthereumAddress.fromHex(EthereumUtils.webData.ownerAddress), BigInt.from(0), true],
+      // args: [EthereumAddress.fromHex(EthereumUtils.myAddress),
+      args: [EthereumAddress.fromHex(walletAddress),
+        BigInt.from(2), EthereumAddress.fromHex(EthereumUtils.webData.ownerAddress), BigInt.from(0), true],
     );
 
     print('response $response');

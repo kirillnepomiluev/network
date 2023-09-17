@@ -92,6 +92,7 @@ class ViewAvatarsCarousel extends StatelessWidget {
               return SizedBox(
                 height: contHeight,
                 child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
                   // padding: EdgeInsets.zero,
                   shrinkWrap: true,
                   controller: scrollController,

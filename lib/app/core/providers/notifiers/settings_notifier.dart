@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/credentials/supabase_credentials.dart';
+import 'package:network_app/app/core/models/clothe_model.dart';
 import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/app/core/providers/notifiers/user_notifier.dart';
 import 'package:network_app/utils/utils.dart';
@@ -23,6 +24,16 @@ class SettingsNotifier with ChangeNotifier {
 
     // onRadiusChoosed(context);
     WidgetsBinding.instance.addPostFrameCallback((_) => onRadiusChoosed(context));
+
+    final clothesList = await AppSupabase.client
+          .from(AppSupabase.strClothes)
+          .select('*');
+
+    for(final item in clothesList){
+      final clotheModel = ClotheModel.fromMap(item);
+      cacheImageNew(clotheModel.imageUrl, context);
+    }
+
     // _radius = _radiusList[1];
     // loadPartners(context, radius: _radius);
   }
@@ -34,7 +45,7 @@ class SettingsNotifier with ChangeNotifier {
     initialPage = index;
   }
 
-  int _radius = 5;
+  int _radius = 1;
   int get radius => _radius;
 
   final List<int> _radiusList = [1, 2, 3, 4, 5];
@@ -102,7 +113,10 @@ class SettingsNotifier with ChangeNotifier {
         cacheImageNew(userModel.clotheUrl, context);
       }
 
-      partnersList.add(userModel);
+          if (userModel.id != id) {
+            partnersList.add(userModel);
+          }
+
 
         // final lat = item['lat'];
         // final long = item['long'];

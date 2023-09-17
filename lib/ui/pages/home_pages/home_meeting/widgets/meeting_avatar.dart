@@ -1,10 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/models/user_model.dart';
 import 'package:network_app/ui/pages/home_pages/home_meeting/widgets/meeting_online_container.dart';
 import 'package:network_app/ui/widgets/cards/app_cached_image.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
-import 'package:network_app/utils/utils.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MeetingAvatar extends StatelessWidget {
@@ -28,7 +26,7 @@ class MeetingAvatar extends StatelessWidget {
           children: [
             Positioned(
                 child: AppCachedImage(
-              url: partnerModel.clotheUrl,
+              partnerModel.clotheUrl,
               height: 110.sp,
             )),
             Positioned(

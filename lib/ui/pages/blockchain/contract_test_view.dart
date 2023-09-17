@@ -155,7 +155,7 @@ Future<void> insertValidValue(BuildContext context) {
       });
 }
 
-Future<void> showReceipt(BuildContext context, String receipt) {
+Future<void> showReceiptDialog(BuildContext context, String receipt) {
   return showDialog(
       context: context,
       builder: (BuildContext context) {

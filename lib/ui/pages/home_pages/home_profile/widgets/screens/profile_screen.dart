@@ -5,6 +5,7 @@ import 'package:network_app/ui/pages/home_pages/home_profile/widgets/profile_bot
 import 'package:network_app/ui/theme/app_border_radius.dart';
 import 'package:network_app/ui/theme/app_colors.dart';
 import 'package:network_app/ui/theme/app_text_styles.dart';
+import 'package:network_app/ui/widgets/cards/app_cached_image.dart';
 import 'package:network_app/ui/widgets/cards/app_container.dart';
 import 'package:network_app/ui/widgets/common/stat_container.dart';
 import 'package:network_app/ui/widgets/icons/network_icons.dart';
@@ -49,9 +50,9 @@ class ProfileScreen extends StatelessWidget {
                 children: [
 
                     Positioned(
-                        child: Image.network(userData.clotheUrl,
+                        child: AppCachedImage(userData.clotheUrl,
                             height: 110.sp,
-                            fit: BoxFit.cover)),
+                            )),
 
                     Padding(
                       padding: EdgeInsets.only(

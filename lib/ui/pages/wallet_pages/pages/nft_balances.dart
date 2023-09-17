@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_app/app/core/providers/notifiers/wallet_provider.dart';
+import 'package:network_app/ui/widgets/cards/app_cached_image.dart';
 import 'package:provider/provider.dart';
 
 class NftListScreen extends StatelessWidget {
@@ -38,7 +39,7 @@ class _NftCard extends StatelessWidget {
             width: size,
             height: size, // adjust the height as needed
             child: nft.imageUrl.isNotEmpty
-                ? Image.network(
+                ? AppCachedImage(
               nft.imageUrl,
               fit: BoxFit.contain,
             )

@@ -70,10 +70,10 @@ class Utils {
     final name = userData.name;
     // print('name $name');
     if(name.isEmpty){
-      context.router.push(const RegSuccessViewRoute());
+      context.router.pushAndPopUntil(const RegSuccessViewRoute(), predicate: (route) => false,);
     }
     else{
-      context.router.push(HomeViewRoute(),);
+      context.router.pushAndPopUntil(HomeViewRoute(), predicate: (route) => false,);
       // context.router.push(const WalletLoginPageRoute(),);
     }
 

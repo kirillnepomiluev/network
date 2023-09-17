@@ -11,12 +11,20 @@ class WalletLoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final walletProvider = Provider.of<WalletProvider>(context);
 
-    print('walletProvider.privateKey ${walletProvider.privateKey}');
+    // print('walletProvider.privateKey ${walletProvider.privateKey}');
 
     if(walletProvider.initialized==false){
-      return const CircularProgressIndicator();
+      return const Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+              width: 30,
+              height: 30,
+              child: CircularProgressIndicator()),
+        ],
+      );
     }
-    else if (walletProvider.privateKey == null) {
+    else if (walletProvider.privateKey.isEmpty) {
       // If private key doesn't exist, load CreateOrImportPage
       return const WalletCreateOrImportPage();
     } else {

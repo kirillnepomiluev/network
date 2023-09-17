@@ -38,6 +38,7 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
     if (verificationText.trim() == widget.mnemonic.trim()) {
 
       await walletProvider.getPrivateKey(widget.mnemonic);
+      await walletProvider.getInit();
 
       context.router.pushAndPopUntil(HomeViewRoute(initIndex: 2), predicate: (route) => false);
       // Navigator.push(

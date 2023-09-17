@@ -3,20 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:network_app/utils/utils.dart';
 
 class AppCachedImage extends StatelessWidget {
-  const AppCachedImage({
+  const AppCachedImage(this.url, {
     super.key,
-    required this.url, this.height, this.width,
+    this.height, this.width, this.fit = BoxFit.cover,
   });
   final String url;
   final double? height;
   final double? width;
+  final BoxFit fit;
 
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       cacheManager: AppCacheManager.instance,
       imageUrl: url,
-      fit: BoxFit.cover,
+      fit: fit,
       width: width,
       height: height,
     );
